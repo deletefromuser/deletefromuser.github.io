@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Java 将对象序列化为字符串 读取字符串反序列化为对象 – HA</title>
+<meta name="description" content="Java 将对象序列化为字符串 读取字符串反序列化为对象 import java.io.Serializable; class test { public static String object2String(Object obj) { String objBody = null; ByteArrayOutputStream baops …">
+<meta name="created" content="2019-01-13T01:33:58+0800">
+<meta name="modified" content="2019-01-13T01:33:58+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="Java 将对象序列化为字符串 读取字符串反序列化为对象">
+<meta property="og:url" content="deletefromuser.github.io/java/2017051901/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="deletefromuser.github.io/java/2017051901/">
+<link rel="apple-touch-icon" href="/deletefromuser.github.io/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/deletefromuser.github.io/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
+<link rel="stylesheet" href="/deletefromuser.github.io/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Java 将对象序列化为字符串 读取字符串反序列化为对象",
+    "datePublished": "2019-01-13T01:33:58+08:00",
+    "dateModified": "2019-01-13T01:33:58+08:00",
+    "url" : "deletefromuser.github.io/java/2017051901/",
+    "description": "Java 将对象序列化为字符串 读取字符串反序列化为对象 import java.io.Serializable; class test { public static String object2String(Object obj) { String objBody = null; ByteArrayOutputStream baops …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "deletefromuser.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "deletefromuser.github.io"
+    }
+  }
+</script>
+
+<script src="/deletefromuser.github.io/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/deletefromuser.github.io/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/deletefromuser.github.io/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/deletefromuser.github.io/" title="Home" rel="home" class="header__logo"><img src="/deletefromuser.github.io/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/deletefromuser.github.io/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="deletefromuser.github.io/">Home</a></li>
+<li><a href="deletefromuser.github.io/article/">Articles</a></li>
+<li><a href="deletefromuser.github.io/chickensoup/">Chickensoups</a></li>
+<li><a href="deletefromuser.github.io/csharp/">Csharps</a></li>
+<li><a href="deletefromuser.github.io/git/">Gits</a></li>
+<li><a href="deletefromuser.github.io/java/" class="active" aria-current="page">Javas</a></li>
+<li><a href="deletefromuser.github.io/nihongo/">Nihongos</a></li>
+<li><a href="deletefromuser.github.io/problem/">Problems</a></li>
+<li><a href="deletefromuser.github.io/sql/">Sqls</a></li>
+<li><a href="deletefromuser.github.io/web/">Webs</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-java single-view">
+<header>
+<h1 class="title ">Java 将对象序列化为字符串 读取字符串反序列化为对象</h1>
+</header>
+<div class="content">
+<p>Java 将对象序列化为字符串 读取字符串反序列化为对象</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.io.Serializable<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">test</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">object2String</span><span style="color:#f92672">(</span>Object obj<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        String objBody <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        ByteArrayOutputStream baops <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        ObjectOutputStream oos <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            baops <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ByteArrayOutputStream<span style="color:#f92672">();</span>
+            oos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectOutputStream<span style="color:#f92672">(</span>baops<span style="color:#f92672">);</span>
+            oos<span style="color:#f92672">.</span><span style="color:#a6e22e">writeObject</span><span style="color:#f92672">(</span>obj<span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bytes <span style="color:#f92672">=</span> baops<span style="color:#f92672">.</span><span style="color:#a6e22e">toByteArray</span><span style="color:#f92672">();</span>
+            objBody <span style="color:#f92672">=</span> Base64<span style="color:#f92672">.</span><span style="color:#a6e22e">encodeToString</span><span style="color:#f92672">(</span>bytes<span style="color:#f92672">,</span> Base64<span style="color:#f92672">.</span><span style="color:#a6e22e">DEFAULT</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            Log<span style="color:#f92672">.</span><span style="color:#a6e22e">e</span><span style="color:#f92672">(</span>tag<span style="color:#f92672">,</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>oos <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+                    oos<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>baops <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+                    baops<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                Log<span style="color:#f92672">.</span><span style="color:#a6e22e">e</span><span style="color:#f92672">(</span>tag<span style="color:#f92672">,</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> objBody<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;unchecked&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>T <span style="color:#66d9ef">extends</span> Serializable<span style="color:#f92672">&gt;</span> T <span style="color:#a6e22e">getObjectFromString</span>
+            <span style="color:#f92672">(</span>String objBody<span style="color:#f92672">,</span> Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> clazz<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bytes <span style="color:#f92672">=</span> Base64<span style="color:#f92672">.</span><span style="color:#a6e22e">decode</span><span style="color:#f92672">(</span>objBody<span style="color:#f92672">,</span> Base64<span style="color:#f92672">.</span><span style="color:#a6e22e">DEFAULT</span><span style="color:#f92672">);</span>
+        ObjectInputStream ois <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        T obj <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            ois <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectInputStream<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> ByteArrayInputStream<span style="color:#f92672">(</span>bytes<span style="color:#f92672">));</span>
+            obj <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>T<span style="color:#f92672">)</span> ois<span style="color:#f92672">.</span><span style="color:#a6e22e">readObject</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            Log<span style="color:#f92672">.</span><span style="color:#a6e22e">e</span><span style="color:#f92672">(</span>tag<span style="color:#f92672">,</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>ClassNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            Log<span style="color:#f92672">.</span><span style="color:#a6e22e">e</span><span style="color:#f92672">(</span>tag<span style="color:#f92672">,</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>ois <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+                    ois<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                Log<span style="color:#f92672">.</span><span style="color:#a6e22e">e</span><span style="color:#f92672">(</span>tag<span style="color:#f92672">,</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> obj<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><strong>reference</strong></p>
+<ol>
+<li><a href="http://blog.csdn.net/cshichao/article/details/8659341">Java 序列化学习 —— Object序列化成字符串</a></li>
+<li><a href="http://blog.csdn.net/cubesky/article/details/38753861">解决序列化中的问题java.io.StreamCorruptedException: invalid stream header:EFBFBDEF</a></li>
+<li><a href="https://github.com/qiao4/Timber/blob/master/app/src/main/java/com/naman14/timber/utils/Helpers.java">code</a></li>
+</ol>
+
+
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>

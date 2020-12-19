@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sqls on HA</title>
+    <link>deletefromuser.github.io/sql/</link>
+    <description>Recent content in Sqls on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 13 Jan 2019 01:33:58 +0800</lastBuildDate>
+    <atom:link href="deletefromuser.github.io/sql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>outer apply 和 left join 再辨析</title>
+      <link>deletefromuser.github.io/sql/2017022001/</link>
+      <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
+      <guid>deletefromuser.github.io/sql/2017022001/</guid>
+      <description>&lt;p&gt;outer apply 和 left join 再辨析&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;過濾條件位置不同（看下面例子可以看出來）&lt;/li&gt;
+&lt;li&gt;outer apply可以較方便地實現控制參照表參照記錄的個數，left join稍微麻煩一些&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面要實現一個需求，現在有兩個表，一個作者表（裡面主要有作者名稱字段、作者id字段）、還有一個書籍表（主要有書籍名稱、作者id、價格）。現在我們需要找出查出作者信息，同時要參照出該作者所寫書籍中價格最高的一本書的名字、價格。&lt;/p&gt;
+&lt;p&gt;mssql&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;--加查詢條件是為了顯示效果，去掉沒用的記錄
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;--兩個表的信息 圖一
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; author &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; author_id &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;);
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; book &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; author_id &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;) 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; author_id,price &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;;
+&lt;span style=&#34;color:#75715e&#34;&gt;--outer apply實現 圖二 上
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;isnull&lt;/span&gt;(sub.book_name, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; book_name, &lt;span style=&#34;color:#66d9ef&#34;&gt;isnull&lt;/span&gt;(sub.price, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; price
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; author main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;outer&lt;/span&gt; apply (&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; top &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; book_name, price 
+           &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; book s 
+		   &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; s.author_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.author_id
+		   &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; price
+) sub
+&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;isnull&lt;/span&gt;(sub.price, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;span style=&#34;color:#75715e&#34;&gt;--left join實現 圖二下
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;isnull&lt;/span&gt;(sub.book_name, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; book_name, &lt;span style=&#34;color:#66d9ef&#34;&gt;isnull&lt;/span&gt;(sub.price, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; price
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; author main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; book sub &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; sub.author_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.author_id
+                      &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; sub.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; top &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; s.id 
+					                &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; book s
+									&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; s.author_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.author_id)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;isnull&lt;/span&gt;(sub.price, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;span style=&#34;color:#75715e&#34;&gt;--錯誤語句 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;,sub.book_name
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; author main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; top &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; book_name 
+           &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; book s 
+		   &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; s.author_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.author_id &lt;span style=&#34;color:#75715e&#34;&gt;--无法绑定由多个部分组成的标识符 &amp;#34;main.author_id&amp;#34;。可看出在這個位置獲取不到主表的數據
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;) sub &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
+&lt;span style=&#34;color:#75715e&#34;&gt;--在outer apply的別名後也不能再進行過濾了
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;isnull&lt;/span&gt;(sub.book_name, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; book_name, &lt;span style=&#34;color:#66d9ef&#34;&gt;isnull&lt;/span&gt;(sub.price, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; price
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; author main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;outer&lt;/span&gt; apply (&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; top &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; book_name, price 
+           &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; book s 
+		   &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; s.author_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.author_id
+		   &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; price
+) sub &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color:#75715e&#34;&gt;--該處有語法錯誤
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;isnull&lt;/span&gt;(sub.price, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;--參照表更新表數據的方式 雖然下面語句參照完全沒有必要
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;update&lt;/span&gt; main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; main.age &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.age &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; author main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;inner&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; book sub &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; sub.author_id &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;) 
+           &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; main.author_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sub.author_id;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/ODO8msP.jpg&#34; alt=&#34;圖一&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/0IiKvF6.jpg&#34; alt=&#34;圖二&#34;&gt;&lt;/p&gt;
+&lt;p&gt;mysql&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;create&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; fruit(
+fruit_name char(&lt;span style=&#34;color:#ae81ff&#34;&gt;40&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;,
+fruit_id int(&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;,
+id int &lt;span style=&#34;color:#66d9ef&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; auto_increment,
+&lt;span style=&#34;color:#66d9ef&#34;&gt;primary&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;key&lt;/span&gt;(id)
+)
+&lt;span style=&#34;color:#75715e&#34;&gt;/*關閉安全更新模式，同時參照子表更新主表*/&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; sql_safe_updates &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;update&lt;/span&gt; fruit_month_price main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;inner&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; fruit sub &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; sub.fruit_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.name
+&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; main.fruit_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sub.fruit_id;
+&lt;span style=&#34;color:#75715e&#34;&gt;/*查詢水果表，並參照出價格價格最高所在記錄的數量和價格*/&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;, ifnull(sub.num, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; num, ifnull(sub.price, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; price
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; fruit_month_price sub &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; main.fruit_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sub.fruit_id
+								   &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; sub.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; id &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price s
+                                                  &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; s.fruit_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.fruit_id
+                                                  &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; price &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;
+                                                  &lt;span style=&#34;color:#66d9ef&#34;&gt;limit&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/3348705/how-to-limit-results-of-a-left-join&#34;&gt;How to limit results of a LEFT JOIN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/15626493/left-join-only-first-row&#34;&gt;LEFT JOIN only first row&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/9588423/sql-server-inner-join-when-updating&#34;&gt;SQL Server - inner join when updating [duplicate]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/8057565/mysql-update-statement-inner-join-tables&#34;&gt;MYSQL Update Statement Inner Join Tables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11448068/mysql-error-code-1175-during-update-in-mysql-workbench&#34;&gt;MySQL error code: 1175 during UPDATE in MySQL Workbench&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/JuneZhang/archive/2010/08/26/1809306.html&#34;&gt;MySql 里的IFNULL、NULLIF和ISNULL用法&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sqlserver row_number() 函數的用法</title>
+      <link>deletefromuser.github.io/sql/2017022301/</link>
+      <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
+      <guid>deletefromuser.github.io/sql/2017022301/</guid>
+      <description>&lt;p&gt;sqlserver row_number() 函數的用法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
+       , row_number() over (partition &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;month&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; sn 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;month&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/zCSwo8C.jpg&#34; alt=&#34;result&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上面代碼中意為以字段name分組，每組內部以字段year、month（默認升序）排序為每個記錄順序編號，如果partition by columnName不要的話則會把全部記錄當成一組來編號。&lt;/p&gt;
+&lt;p&gt;最大作用就是表示行號，今天寫視圖就碰到了，需要給表格每一行編號，在實際中用過一次對理解有很大幫助啊，這個記得學過好多次，結果用的時候還是需要google。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/fxgachiever/archive/2010/09/15/1826792.html&#34;&gt;ROW_NUMBER() OVER函数的基本用法&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sqlserver 事务简单使用</title>
+      <link>deletefromuser.github.io/sql/2017032901/</link>
+      <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
+      <guid>deletefromuser.github.io/sql/2017032901/</guid>
+      <description>&lt;p&gt;sqlserver 事务简单使用&lt;/p&gt;
+&lt;p&gt;今天第一次在工作中用到事务，在找一个下数量被条件卡住的错误时，是先更新一个表中的数据，在检查数量有没有小于0的，有就要报错。追踪到语句后，只用最后一句查询卡住的语句查询发现正常，不存在问题。经理提醒才发现是先更新再检查，只查最后一句是查的没更新之前的，不是报错时的状态。&lt;/p&gt;
+&lt;p&gt;这时候就用到事务了，想模拟错误时的情况又不想把数据导到临时表里，用完再倒回去，太麻烦。使用事务，更新之前开启事务，更新之后查询表状态，从而找到原因。(上面错误的原因就是更新完之后库存数量变为负值了)&lt;/p&gt;
+&lt;p&gt;mysql test&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;start&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;transaction&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; test;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;update&lt;/span&gt; test &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1&amp;#39;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; test;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;rollback&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; test;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;mssql&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;begin&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;transaction&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; test;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;update&lt;/span&gt; test &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1&amp;#39;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; test;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;rollback&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;transaction&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ps:连续三天加班到10点半多，不想说了，浪费我的时间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.mysqltutorial.org/mysql-transaction.aspx&#34;&gt;MySQL Transaction&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://dev.mysql.com/doc/refman/5.7/en/commit.html&#34;&gt;14.3.1 START TRANSACTION, COMMIT, and ROLLBACK Syntax&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.jellythink.com/archives/952&#34;&gt;说说MySQL中的事务&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/knowledgesea/p/3714417.html&#34;&gt;SQL Server中的事务与锁&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/16737910/generating-a-random-unique-8-character-string-using-mysql&#34;&gt;Generating a random &amp;amp; unique 8 character string using MySQL&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/39257391/how-do-i-generate-a-unique-random-string-for-one-of-my-mysql-table-columns&#34;&gt;How do I generate a unique, random string for one of my MySql table columns?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sqlserver 修改主键约束</title>
+      <link>deletefromuser.github.io/sql/2017040501/</link>
+      <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
+      <guid>deletefromuser.github.io/sql/2017040501/</guid>
+      <description>&lt;p&gt;sqlserver 修改主键约束&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;sp_help book
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;exists&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; sysobjects &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;PK__book__AFEBF550AD55A29F&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;begin&lt;/span&gt;
+	print &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pk exists&amp;#39;&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; book &lt;span style=&#34;color:#66d9ef&#34;&gt;drop&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;constraint&lt;/span&gt; PK__book__AFEBF550AD55A29F
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; book &lt;span style=&#34;color:#66d9ef&#34;&gt;add&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;constraint&lt;/span&gt; PK__book &lt;span style=&#34;color:#66d9ef&#34;&gt;primary&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;key&lt;/span&gt; clustered
+(
+book_name &lt;span style=&#34;color:#66d9ef&#34;&gt;asc&lt;/span&gt;,
+id &lt;span style=&#34;color:#66d9ef&#34;&gt;asc&lt;/span&gt;
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/sunxuchu/p/5578057.html&#34;&gt;SQL Server 创建表 添加主键 添加列常用SQL语句&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sql獲取水果價格表中每種水果在一年內的最高價格所在月份</title>
+      <link>deletefromuser.github.io/sql/2017021901/</link>
+      <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
+      <guid>deletefromuser.github.io/sql/2017021901/</guid>
+      <description>&lt;p&gt;sql獲取水果價格表中每種水果在一年內的最高價格所在月份&lt;/p&gt;
+&lt;p&gt;mysql&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;fruit_month_price&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; (
+  &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; char(&lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; int(&lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;month&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; int(&lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;price&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; float &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;id&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; int(&lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt; AUTO_INCREMENT,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;KEY&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;id&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;id&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;)
+) ENGINE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;InnoDB AUTO_INCREMENT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;17&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DEFAULT&lt;/span&gt; CHARSET&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;utf8;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;insert&lt;/span&gt; fruit_month_price(name, &lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;month&lt;/span&gt;, price)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2017&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;union&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2015&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;union&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2017&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;union&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2015&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;37&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;union&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orange&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2011&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;368&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;union&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orange&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2015&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;14&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;union&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orange&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2014&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;union&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;union&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1993&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;68&lt;/span&gt;
+...
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+(
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; id &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price sub
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; sub.name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.name &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; main.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sub.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; price &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;limit&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+) 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;month&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;/*加字段*/&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; fruit_month_price &lt;span style=&#34;color:#66d9ef&#34;&gt;add&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;column&lt;/span&gt; num float &lt;span style=&#34;color:#66d9ef&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;span style=&#34;color:#75715e&#34;&gt;/*創建存儲過程，更新字段
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;每個語句結束後都必須加&amp;#39;;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;set語句必須位於所有的declare語句的後面，不然會報語法錯誤
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;declare i int(20);
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;set i = 0;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;declare finished int(2);//報錯
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;declare語句好像只能在只能在存儲過程以及函數裡面使用（cursor確實是，這個好像是）
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;(也就是說享用cursor遍歷一個表必須創建一個存儲過程或函數？)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;declare聲明變量時不帶@符號，可以用set @i = 3直接聲明變量@i
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;由於不帶@所以變量名盡量不要與查詢的表的列名相同
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;賦值符號有兩種=和:=，set是=即可，select賦值時使用:=（此時=被用作比較運算符）
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;set @i = 2;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;select @i = 3;#0
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;select @i = 2;#1
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;select @i;    #2
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;select @i := 3;#3
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;select @i;    #3
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;drop&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;procedure&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;exists&lt;/span&gt; test;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;delimiter&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;create&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;procedure&lt;/span&gt; test()
+&lt;span style=&#34;color:#66d9ef&#34;&gt;begin&lt;/span&gt;
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;declare&lt;/span&gt; i int(&lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;declare&lt;/span&gt; finished int(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;declare&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;cursor&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; id &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;declare&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;handler&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;found&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; finished &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; finished &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;open&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;fetch&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; i;
+  while finished &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;update&lt;/span&gt; fruit_month_price &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; round(rand() &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;fetch&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; i;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt; while;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;close&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;delimiter&lt;/span&gt; ;
+&lt;span style=&#34;color:#75715e&#34;&gt;/*調用存儲過程*/&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;call&lt;/span&gt; test()
+&lt;span style=&#34;color:#75715e&#34;&gt;/*按水果名+年份統計
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;where條件中子查詢加了limit之後報錯
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;This version of MySQL doesn&amp;#39;t yet support &amp;#39;LIMIT &amp;amp; IN/ALL/ANY/SOME subquery&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;在這裡in和=效果差不多好像*/&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;,sumA.amount
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; (
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;sum&lt;/span&gt;(num &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; price) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; amount
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;group&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;
+) sumA &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; sumA.name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.name &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; sumA.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; main.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 
+(
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; id &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price sub
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; sub.name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.name &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; sub.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; price &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;limit&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; main.name,main.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;,main.&lt;span style=&#34;color:#66d9ef&#34;&gt;month&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;;
+&lt;span style=&#34;color:#75715e&#34;&gt;/*具體作用不太清楚，創建語句時出錯，一直在查詢不結束時，重連數據庫
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;運行語句，用id殺掉第一條*/&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;show&lt;/span&gt; processlist;
+kill &lt;span style=&#34;color:#ae81ff&#34;&gt;74&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;mssql&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; [dbo].[fruit_month_price](
+	[name] [varchar](&lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt;,
+	[&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;] [int] &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt;,
+	[&lt;span style=&#34;color:#66d9ef&#34;&gt;month&lt;/span&gt;] [int] &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt;,
+	[price] [float] &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt;,
+	[id] [int] &lt;span style=&#34;color:#66d9ef&#34;&gt;IDENTITY&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt;,
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;primary&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;key&lt;/span&gt; clustered(id &lt;span style=&#34;color:#66d9ef&#34;&gt;asc&lt;/span&gt;)
+)
+&lt;span style=&#34;color:#75715e&#34;&gt;--drop table fruit_month_price
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;--查詢每種水果每年的最高價格
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 
+(
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; top &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; id &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price sub
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; sub.name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.name &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; sub.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; price &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;
+)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;month&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;--添加數量字段
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; fruit_month_price &lt;span style=&#34;color:#66d9ef&#34;&gt;add&lt;/span&gt; num float &lt;span style=&#34;color:#66d9ef&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;--為數量字段賦隨機值
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;declare&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;i int, &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;cursor&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;cursor&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; id &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price
+&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;open&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fetch&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;next&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;i
+while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;begin&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;update&lt;/span&gt; fruit_month_price &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; round((rand() &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;), &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;i;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;fetch&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;next&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;i
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;close&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;deallocate&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;c&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;--查詢每種水果的最高價格所在行的信息並統計出每種水果的銷售總額
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;,sumA.amount
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; (
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;sum&lt;/span&gt;(num &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; price) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; amount
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;group&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name
+) sumA &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; sumA.name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.name
+&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; id &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; 
+(
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; top &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; id &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price sub
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; sub.name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.name
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; price &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;
+)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;month&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;--按水果名+年份統計
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;,sumA.amount
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; (
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;sum&lt;/span&gt;(num &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; price) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; amount
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;group&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;
+) sumA &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; sumA.name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.name &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; sumA.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; id &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; 
+(
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; top &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; id &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price sub
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; sub.name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.name &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; sub.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; price &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;
+)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;month&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;result&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/9KOBmS8.jpg&#34; alt=&#34;result&#34;&gt;&lt;/p&gt;
+&lt;p&gt;mysql中有一個問題，下面語句中，第二個語句在兩個字段相乘後多了很多小數位&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; main.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;,num&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;price
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price main
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; name,&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/idKruGe.jpg&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/eEfn18k.jpg&#34; alt=&#34;2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;選取其中一條記錄舉例，banana 1993中1.68*1本應該是1.68，卻顯示1.6799999475479126，不知道為什麼，mssql據說也有這個問題，但是在這個例子裡沒有。（公司裡經常提到在減少庫存後檢驗的時候要加上round函數之後校驗，不然會出現減少之後庫存數量變為-0.000000000001時，其實是正常的，但是程序卻報錯的情況，據說是數據庫問題，也就是說mysql比mssql情況更嚴重）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oschina.net/question/89964_65912&#34;&gt;关于 MySQL LEFT JOIN 你可能需要了解的三点&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/newbie_coder/article/details/9279265&#34;&gt;MySQL SELECT LIMIT指定行数查询&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/zhoujinyi/p/3433823.html&#34;&gt;INNODB自增主键的一些问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wzhiju.iteye.com/blog/1507910&#34;&gt;mysql 数据库自增id 的总结&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/chenmh/p/5203429.html&#34;&gt;MySQL 变量和条件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/huihuangjiuai/article/details/37881123&#34;&gt;mysql创建存储过程declare 变量时报错&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/wangtao_20/archive/2011/02/21/1959734.html&#34;&gt;mysql变量使用总结&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.ihuxu.com/explaination-of-the-mysql-variables-usage-and-the-use-case/&#34;&gt;深入MySQL用户自定义变量：使用详解及其使用场景案例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://particle128.com/posts/2014/09/MySQL-bug.html&#34;&gt;MySQL存储过程中变量名不能和列名相同&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/u012256142/article/details/40743887&#34;&gt;MySql存储过程—游标使用(Cursor)，（遍历）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/tiana0/article/details/12647777&#34;&gt;SQL Server 2008 游标使用实例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/lyhabc/p/3793524.html&#34;&gt;我的MYSQL学习心得（十） 自定义存储过程和函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.mysqltutorial.org/mysql-cursor/&#34;&gt; MySQL Cursor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/piaomiao1314/p/mysqli_error_2014.html&#34;&gt;mysql错误之2014&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/rootq/archive/2009/05/27/1490523.html&#34;&gt;MySql中delimiter的作用是什么?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>判断日期是否是工作日(sqlserver)，判断一个月中有多少工作日(C#)</title>
+      <link>deletefromuser.github.io/sql/2017042601/</link>
+      <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
+      <guid>deletefromuser.github.io/sql/2017042601/</guid>
+      <description>&lt;p&gt;判断日期是否是工作日(sqlserver)，判断一个月中有多少工作日(C#)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;print (datepart(weekday, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2017-04-24&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
+print (datepart(weekday, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2017-04-26&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
+print (datepart(weekday, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2017-04-30&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;--周一到周日 0-6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; GetWeekdayNum(DateTime dt) {
+            dt = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DateTime(dt.Year, dt.Month, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; monthDays = dt.Subtract(dt.AddMonths(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;));
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num = &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i = &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;; i &amp;lt;= Math.Abs(monthDays.TotalDays) - &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;; i++) {
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; dtTemp = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DateTime(dt.Year, dt.Month, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt; + i);
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(dtTemp.DayOfWeek != DayOfWeek.Saturday &amp;amp;&amp;amp; dtTemp.DayOfWeek != DayOfWeek.Sunday) {
+                    num++;
+                }
+            }
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt; + num;
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

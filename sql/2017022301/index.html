@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>sqlserver row_number() 函數的用法 – HA</title>
+<meta name="description" content="sqlserver row_number() 函數的用法 select * from fruit_month_price; select * , row_number() over (partition by name order by year, month) as sn from fruit_month_price order by …">
+<meta name="created" content="2019-01-13T01:33:58+0800">
+<meta name="modified" content="2019-01-13T01:33:58+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="sqlserver row_number() 函數的用法">
+<meta property="og:url" content="deletefromuser.github.io/sql/2017022301/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="deletefromuser.github.io/sql/2017022301/">
+<link rel="apple-touch-icon" href="/deletefromuser.github.io/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/deletefromuser.github.io/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
+<link rel="stylesheet" href="/deletefromuser.github.io/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "sqlserver row_number() 函數的用法",
+    "datePublished": "2019-01-13T01:33:58+08:00",
+    "dateModified": "2019-01-13T01:33:58+08:00",
+    "url" : "deletefromuser.github.io/sql/2017022301/",
+    "description": "sqlserver row_number() 函數的用法 select * from fruit_month_price; select * , row_number() over (partition by name order by year, month) as sn from fruit_month_price order by …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "deletefromuser.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "deletefromuser.github.io"
+    }
+  }
+</script>
+
+<script src="/deletefromuser.github.io/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/deletefromuser.github.io/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/deletefromuser.github.io/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/deletefromuser.github.io/" title="Home" rel="home" class="header__logo"><img src="/deletefromuser.github.io/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/deletefromuser.github.io/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="deletefromuser.github.io/">Home</a></li>
+<li><a href="deletefromuser.github.io/article/">Articles</a></li>
+<li><a href="deletefromuser.github.io/chickensoup/">Chickensoups</a></li>
+<li><a href="deletefromuser.github.io/csharp/">Csharps</a></li>
+<li><a href="deletefromuser.github.io/git/">Gits</a></li>
+<li><a href="deletefromuser.github.io/java/">Javas</a></li>
+<li><a href="deletefromuser.github.io/nihongo/">Nihongos</a></li>
+<li><a href="deletefromuser.github.io/problem/">Problems</a></li>
+<li><a href="deletefromuser.github.io/sql/" class="active" aria-current="page">Sqls</a></li>
+<li><a href="deletefromuser.github.io/web/">Webs</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-sql single-view">
+<header>
+<h1 class="title ">sqlserver row_number() 函數的用法</h1>
+</header>
+<div class="content">
+<p>sqlserver row_number() 函數的用法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> fruit_month_price;
+
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span>
+       , row_number() over (partition <span style="color:#66d9ef">by</span> name <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">year</span>, <span style="color:#66d9ef">month</span>) <span style="color:#66d9ef">as</span> sn 
+<span style="color:#66d9ef">from</span> fruit_month_price
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> name,<span style="color:#66d9ef">year</span>,<span style="color:#66d9ef">month</span>
+</code></pre></div><p><img src="https://i.imgur.com/zCSwo8C.jpg" alt="result"></p>
+<p>上面代碼中意為以字段name分組，每組內部以字段year、month（默認升序）排序為每個記錄順序編號，如果partition by columnName不要的話則會把全部記錄當成一組來編號。</p>
+<p>最大作用就是表示行號，今天寫視圖就碰到了，需要給表格每一行編號，在實際中用過一次對理解有很大幫助啊，這個記得學過好多次，結果用的時候還是需要google。</p>
+<p><strong>reference</strong></p>
+<ol>
+<li><a href="http://www.cnblogs.com/fxgachiever/archive/2010/09/15/1826792.html">ROW_NUMBER() OVER函数的基本用法</a></li>
+</ol>
+
+
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>

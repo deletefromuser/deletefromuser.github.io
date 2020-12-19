@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Git的配置和初级使用 – HA</title>
+<meta name="description" content="Git的配置和初级使用  下载安装Git之后，先把仓库下载下来 git clone https://github.com/qiao4/qiao4.github.io 在下载下来的文件夹中右键Git Bash Here，当然也有一个Git GUI Here，但是你知道的，有zb需求，还是用命令行吧 打开命令行后git status，查看仓库 …">
+<meta name="created" content="2019-01-13T01:33:58+0800">
+<meta name="modified" content="2019-01-13T01:33:58+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="Git的配置和初级使用">
+<meta property="og:url" content="deletefromuser.github.io/problem/2017030402/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="deletefromuser.github.io/problem/2017030402/">
+<link rel="apple-touch-icon" href="/deletefromuser.github.io/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/deletefromuser.github.io/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
+<link rel="stylesheet" href="/deletefromuser.github.io/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Git的配置和初级使用",
+    "datePublished": "2019-01-13T01:33:58+08:00",
+    "dateModified": "2019-01-13T01:33:58+08:00",
+    "url" : "deletefromuser.github.io/problem/2017030402/",
+    "description": "Git的配置和初级使用  下载安装Git之后，先把仓库下载下来 git clone https://github.com/qiao4/qiao4.github.io 在下载下来的文件夹中右键Git Bash Here，当然也有一个Git GUI Here，但是你知道的，有zb需求，还是用命令行吧 打开命令行后git status，查看仓库 …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "deletefromuser.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "deletefromuser.github.io"
+    }
+  }
+</script>
+
+<script src="/deletefromuser.github.io/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/deletefromuser.github.io/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/deletefromuser.github.io/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/deletefromuser.github.io/" title="Home" rel="home" class="header__logo"><img src="/deletefromuser.github.io/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/deletefromuser.github.io/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="deletefromuser.github.io/">Home</a></li>
+<li><a href="deletefromuser.github.io/article/">Articles</a></li>
+<li><a href="deletefromuser.github.io/chickensoup/">Chickensoups</a></li>
+<li><a href="deletefromuser.github.io/csharp/">Csharps</a></li>
+<li><a href="deletefromuser.github.io/git/">Gits</a></li>
+<li><a href="deletefromuser.github.io/java/">Javas</a></li>
+<li><a href="deletefromuser.github.io/nihongo/">Nihongos</a></li>
+<li><a href="deletefromuser.github.io/problem/" class="active" aria-current="page">Problems</a></li>
+<li><a href="deletefromuser.github.io/sql/">Sqls</a></li>
+<li><a href="deletefromuser.github.io/web/">Webs</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-problem single-view">
+<header>
+<h1 class="title ">Git的配置和初级使用</h1>
+</header>
+<div class="content">
+<p>Git的配置和初级使用</p>
+<ul>
+<li>下载安装Git之后，先把仓库下载下来
+<code>git clone https://github.com/qiao4/qiao4.github.io</code></li>
+<li>在下载下来的文件夹中右键Git Bash Here，当然也有一个Git GUI Here，但是你知道的，有zb需求，还是用命令行吧</li>
+<li>打开命令行后<code>git status</code>，查看仓库状态，查看仓库是否有未提交的文件，没有的话会显示clean</li>
+</ul>
+<pre><code>   On branch master
+   Your branch is up-to-date with 'origin/master'.
+   nothing to commit, working tree clean
+</code></pre><ul>
+<li>修改或者新增文件后，再调用<code>git status</code>，untracked files即为还没有添加到仓库的文件</li>
+</ul>
+<pre><code>On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+        modified:   index2.md
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+        post/2017030401.md
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre><ul>
+<li>添加更改到仓库<code>git add .</code>，<code>.</code>表示添加当前文件夹下的所有文件，当然也可以指定文件名
+使用默认设置的话，在windows下会有如下警告</li>
+</ul>
+<pre><code>warning: LF will be replaced by CRLF in index2.md.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in post/2017030401.md.
+The file will have its original line endings in your working directory.
+</code></pre><p>输入<code>git config --global core.autocrlf false</code>即可（windows和unix的换行符不一样导致，具体不太清楚）</p>
+<ul>
+<li>提交到仓库，第一次使用时必须设置邮箱用户名，依照提示设置即可，可随意设置，主要作用好像就是在log里显示提交人，提交时的附加信息是必须的不能为空</li>
+</ul>
+<pre><code>$ git commit -m &quot;add 2017030401 about wikizh&quot;
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email &quot;you@example.com&quot;
+  git config --global user.name &quot;Your Name&quot;
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for &lt;(NULL)&gt;) not allowed
+</code></pre><ul>
+<li>提交到远程仓库<code>git push</code>,执行后会弹出界面，输入github的用户名密码即可</li>
+<li>总结一下所谓初级使用就是只使用如下几句命令</li>
+</ul>
+<pre><code>git status
+git add .
+git commit -m &quot;add 2017030401 about wikizh&quot;
+git push
+git pull
+git clone https://github.com/qiao4/qiao4.github.io --这个不太常用
+</code></pre><p>ps:markdown使用```代码块的时候上下最好空一行，否则可能显示会有问题</p>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://github.com/git-for-windows/git/releases/download/v2.12.0.windows.1/Git-2.12.0-64-bit.exe">Git-Windows</a></li>
+<li><a href="https://www.oschina.net/question/59932_33853">Git添加文件时出现了一个warning，是什么意思呢？</a></li>
+<li>​<a href="https://stackoverflow.com/questions/5834014/lf-will-be-replaced-by-crlf-in-git-what-is-that-and-is-it-important">LF will be replaced by CRLF in git - What is that and is it important? </a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%8F%9B%E8%A1%8C">换行</a></li>
+<li><a href="http://support.ghost.org/installing-ghost-windows/">在windows中安装ghost</a></li>
+</ul>
+
+
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>

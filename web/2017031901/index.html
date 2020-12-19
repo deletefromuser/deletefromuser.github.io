@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>JSONP跨域獲取JSON數據 – HA</title>
+<meta name="description" content="JSONP跨域獲取JSON數據 客戶端請求數據 &amp;amp;lt;!doctype html&amp;amp;gt; &amp;amp;lt;html&amp;amp;gt; &amp;amp;lt;head&amp;amp;gt; &amp;amp;lt;title&amp;amp;gt;App Engine Demo&amp;amp;lt;/title&amp;amp;gt; &amp;amp;lt;script …">
+<meta name="created" content="2019-01-13T01:33:58+0800">
+<meta name="modified" content="2019-01-13T01:33:58+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="JSONP跨域獲取JSON數據">
+<meta property="og:url" content="deletefromuser.github.io/web/2017031901/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="deletefromuser.github.io/web/2017031901/">
+<link rel="apple-touch-icon" href="/deletefromuser.github.io/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/deletefromuser.github.io/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
+<link rel="stylesheet" href="/deletefromuser.github.io/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "JSONP跨域獲取JSON數據",
+    "datePublished": "2019-01-13T01:33:58+08:00",
+    "dateModified": "2019-01-13T01:33:58+08:00",
+    "url" : "deletefromuser.github.io/web/2017031901/",
+    "description": "JSONP跨域獲取JSON數據 客戶端請求數據 \u0026amp;lt;!doctype html\u0026amp;gt; \u0026amp;lt;html\u0026amp;gt; \u0026amp;lt;head\u0026amp;gt; \u0026amp;lt;title\u0026amp;gt;App Engine Demo\u0026amp;lt;/title\u0026amp;gt; \u0026amp;lt;script …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "deletefromuser.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "deletefromuser.github.io"
+    }
+  }
+</script>
+
+<script src="/deletefromuser.github.io/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/deletefromuser.github.io/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/deletefromuser.github.io/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/deletefromuser.github.io/" title="Home" rel="home" class="header__logo"><img src="/deletefromuser.github.io/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/deletefromuser.github.io/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="deletefromuser.github.io/">Home</a></li>
+<li><a href="deletefromuser.github.io/article/">Articles</a></li>
+<li><a href="deletefromuser.github.io/chickensoup/">Chickensoups</a></li>
+<li><a href="deletefromuser.github.io/csharp/">Csharps</a></li>
+<li><a href="deletefromuser.github.io/git/">Gits</a></li>
+<li><a href="deletefromuser.github.io/java/">Javas</a></li>
+<li><a href="deletefromuser.github.io/nihongo/">Nihongos</a></li>
+<li><a href="deletefromuser.github.io/problem/">Problems</a></li>
+<li><a href="deletefromuser.github.io/sql/">Sqls</a></li>
+<li><a href="deletefromuser.github.io/web/" class="active" aria-current="page">Webs</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-web single-view">
+<header>
+<h1 class="title ">JSONP跨域獲取JSON數據</h1>
+</header>
+<div class="content">
+<p>JSONP跨域獲取JSON數據</p>
+<p>客戶端請求數據</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">title</span>&gt;App Engine Demo&lt;/<span style="color:#f92672">title</span>&gt;
+&lt;<span style="color:#f92672">script</span>
+	<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+	&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;result&#34;</span>&gt;Loading...&lt;/<span style="color:#f92672">div</span>&gt;
+	&lt;<span style="color:#f92672">br</span> /&gt;
+	&lt;<span style="color:#f92672">p</span>&gt;add p&lt;/<span style="color:#f92672">p</span>&gt;
+	&lt;<span style="color:#f92672">br</span> /&gt;
+	&lt;<span style="color:#f92672">script</span>&gt;
+		<span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">ready</span>(<span style="color:#66d9ef">function</span>() {
+			<span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>({
+				<span style="color:#a6e22e">async</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+				<span style="color:#a6e22e">url</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://hanotfun.appspot.com/demo&#34;</span>,
+				<span style="color:#a6e22e">type</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;GET&#34;</span>,
+				<span style="color:#a6e22e">dataType</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;jsonp&#39;</span>,
+				<span style="color:#a6e22e">jsonp</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;callback&#39;</span>,
+				<span style="color:#a6e22e">success</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>) {
+					<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#result&#39;</span>).<span style="color:#a6e22e">html</span>(<span style="color:#e6db74">&#34;Hello, &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">name</span>);
+				}
+			});
+		});
+	&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p>服務器端必須對處理請求，不能直接返回json數據，而要用callback參數對數據進行包裝</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/*
+</span><span style="color:#75715e"> * Copyright 2016 Google Inc. All Rights Reserved.
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+</span><span style="color:#75715e"> * you may not use this file except in compliance with the License.
+</span><span style="color:#75715e"> * You may obtain a copy of the License at
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * http://www.apache.org/licenses/LICENSE-2.0
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * Unless required by applicable law or agreed to in writing, software
+</span><span style="color:#75715e"> * distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+</span><span style="color:#75715e"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+</span><span style="color:#75715e"> * See the License for the specific language governing permissions and
+</span><span style="color:#75715e"> * limitations under the License.
+</span><span style="color:#75715e"> */</span>
+
+<span style="color:#f92672">package</span> myapp<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> javax.servlet.http.HttpServlet<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> javax.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> javax.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoServlet</span> <span style="color:#66d9ef">extends</span> HttpServlet <span style="color:#f92672">{</span>
+  <span style="color:#a6e22e">@Override</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doGet</span><span style="color:#f92672">(</span>HttpServletRequest req<span style="color:#f92672">,</span> HttpServletResponse resp<span style="color:#f92672">)</span>
+      <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+	  String callback <span style="color:#f92672">=</span> req<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;callback&#34;</span><span style="color:#f92672">);</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>callback <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> callback<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			resp<span style="color:#f92672">.</span><span style="color:#a6e22e">setContentType</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;text/plain&#34;</span><span style="color:#f92672">);</span>
+			resp<span style="color:#f92672">.</span><span style="color:#a6e22e">getWriter</span><span style="color:#f92672">().</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>callback <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;({ \&#34;name\&#34;: \&#34;World\&#34; })&#34;</span><span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+			resp<span style="color:#f92672">.</span><span style="color:#a6e22e">setContentType</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;text/plain&#34;</span><span style="color:#f92672">);</span>
+			resp<span style="color:#f92672">.</span><span style="color:#a6e22e">getWriter</span><span style="color:#f92672">().</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{ \&#34;name\&#34;: \&#34;World\&#34; }&#34;</span><span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+<span style="color:#75715e">//如果不包裝會報“Uncaught SyntaxError: Unexpected token :”錯誤
+</span></code></pre></div><p>檢測到請求中包含callback參數時對返回數據進行包裝，否則直接返回json數據。</p>
+<p><strong>reference</strong></p>
+<ul>
+<li>
+<p><a href="http://www.cnblogs.com/ada-zheng/p/4349840.html">JSONP跨域请求数据报错 “Unexpected token :”的解决办法</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/ada-zheng/p/4349845.html">js中几种实用的跨域方法原理详解</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/10507345/ajax-and-jsonp-parseerror-and-uncaught-syntaxerror-unexpected-token">$.ajax and JSONP. ParseError and Uncaught SyntaxError: Unexpected token :</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/33366992/ajax-with-jsonp-returns-error-callback-is-undefined">AJAX with JSONP returns error Callback is Undefined</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/14318710/ajax-get-status-was-ok-but-jsonp-callback-returns-undefined-data">AJAX Get status was Ok but jsonp callback returns undefined data</a></p>
+</li>
+<li>
+<p><a href="http://crossoverjie.top/2016/10/18/SSM6/">SSM(六)跨域传输</a></p>
+</li>
+<li>
+<p><a href="http://8366.iteye.com/blog/744057">使用Jsonp方式跨域获取json</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/13993385/returning-jsonp-instead-of-json-from-a-jsp">Returning JSONP instead of JSON from a JSP</a></p>
+</li>
+<li>
+<p><a href="http://www.fbloggs.com/2010/07/09/how-to-access-cross-domain-data-with-ajax-using-jsonp-jquery-and-php/">How to access cross-domain data with AJAX using JSONP, jQuery and PHP</a></p>
+</li>
+<li>
+<p><a href="https://code-ken.github.io/2016/07/13/jsonp-json-ajax/">JSONP跨域问题的解决方法</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html">说说JSON和JSONP，也许你会豁然开朗，含jQuery用例</a></p>
+</li>
+<li>
+<p><a href="https://learn.jquery.com/ajax/working-with-jsonp/">Working with JSONP</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/7936610/json-uncaught-syntaxerror-unexpected-token">json Uncaught SyntaxError: Unexpected token :</a></p>
+</li>
+<li>
+<p><a href="http://www.magicsite.cn/blog/web/JS/JS142838.html">Jsonp完成js跨域请求</a></p>
+</li>
+</ul>
+
+
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>

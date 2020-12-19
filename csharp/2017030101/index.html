@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>C# using 用法 – HA</title>
+<meta name="description" content="C# using 用法  引入命名空間using System.Threading; 定義命名空間的別名using Thread = System.Threading; using(define class A,B;){use A;}的形式效果和java中帶資源的try語句很相似  using中聲明的對象必須實現IDisposable，且 …">
+<meta name="created" content="2019-01-13T01:33:58+0800">
+<meta name="modified" content="2019-01-13T01:33:58+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="C# using 用法">
+<meta property="og:url" content="deletefromuser.github.io/csharp/2017030101/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="deletefromuser.github.io/csharp/2017030101/">
+<link rel="apple-touch-icon" href="/deletefromuser.github.io/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/deletefromuser.github.io/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
+<link rel="stylesheet" href="/deletefromuser.github.io/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "C# using 用法",
+    "datePublished": "2019-01-13T01:33:58+08:00",
+    "dateModified": "2019-01-13T01:33:58+08:00",
+    "url" : "deletefromuser.github.io/csharp/2017030101/",
+    "description": "C# using 用法  引入命名空間using System.Threading; 定義命名空間的別名using Thread = System.Threading; using(define class A,B;){use A;}的形式效果和java中帶資源的try語句很相似  using中聲明的對象必須實現IDisposable，且 …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "deletefromuser.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "deletefromuser.github.io"
+    }
+  }
+</script>
+
+<script src="/deletefromuser.github.io/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/deletefromuser.github.io/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/deletefromuser.github.io/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/deletefromuser.github.io/" title="Home" rel="home" class="header__logo"><img src="/deletefromuser.github.io/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/deletefromuser.github.io/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="deletefromuser.github.io/">Home</a></li>
+<li><a href="deletefromuser.github.io/article/">Articles</a></li>
+<li><a href="deletefromuser.github.io/chickensoup/">Chickensoups</a></li>
+<li><a href="deletefromuser.github.io/csharp/" class="active" aria-current="page">Csharps</a></li>
+<li><a href="deletefromuser.github.io/git/">Gits</a></li>
+<li><a href="deletefromuser.github.io/java/">Javas</a></li>
+<li><a href="deletefromuser.github.io/nihongo/">Nihongos</a></li>
+<li><a href="deletefromuser.github.io/problem/">Problems</a></li>
+<li><a href="deletefromuser.github.io/sql/">Sqls</a></li>
+<li><a href="deletefromuser.github.io/web/">Webs</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-csharp single-view">
+<header>
+<h1 class="title ">C# using 用法</h1>
+</header>
+<div class="content">
+<p>C# using 用法</p>
+<ol>
+<li>引入命名空間<code>using System.Threading;</code></li>
+<li>定義命名空間的別名<code>using Thread = System.Threading;</code></li>
+<li><code>using(define class A,B;){use A;}</code>的形式效果和java中帶資源的try語句很相似
+<ul>
+<li>using中聲明的對象必須實現IDisposable，且聲明多個對象時類型要一致(也可以直接用IDisposable接口對象來定義對象來規避)；而java中帶資源的try語句也類似，<code>try(define A,B){use A,B}catch(){]</code>中的對象也必須實現AutoCloseable或者Closeable接口，但是不要求類型一致</li>
+</ul>
+</li>
+</ol>
+<p><strong>reference</strong></p>
+<ol>
+<li><a href="http://blog.csdn.net/wanderocn/article/details/6659811">C#-using用法详解</a></li>
+<li><a href="https://www.cnblogs.com/prince1988/archive/2009/03/29/1424479.html">c# using 关键字的用法</a></li>
+<li><a href="http://www.csharp-examples.net/using/">C# Using Statement Examples</a></li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/yh598w02.aspx">using 语句（C# 参考）</a></li>
+<li><a href="http://blog.csdn.net/u012421846/article/details/46129237">带资源的try语句</a></li>
+<li>Java核心技術 11.2.4 帶資源的try語句</li>
+</ol>
+
+
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>

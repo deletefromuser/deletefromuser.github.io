@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>java 函数返回多个函数值/引用類型認識 – HA</title>
+<meta name="description" content="java 函数返回多个函数值/引用類型認識 開宗明義，Java中函數的參數傳遞都是值傳遞，不存在引用傳遞。基本數據類型傳遞的是本身的值，而引用類型（對象，數組等）傳遞的同樣值，但是是引用的地址的值。同樣，我們知道值傳遞時，在函數內的改變不影響原參數的值，很好理解（在函數內將int類型自增，執行函數後，原值不會改變）。同樣，套用到引用類型參 …">
+<meta name="created" content="2019-01-13T01:33:58+0800">
+<meta name="modified" content="2019-01-13T01:33:58+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="java 函数返回多个函数值/引用類型認識">
+<meta property="og:url" content="deletefromuser.github.io/java/2017021902/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="deletefromuser.github.io/java/2017021902/">
+<link rel="apple-touch-icon" href="/deletefromuser.github.io/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/deletefromuser.github.io/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
+<link rel="stylesheet" href="/deletefromuser.github.io/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "java 函数返回多个函数值/引用類型認識",
+    "datePublished": "2019-01-13T01:33:58+08:00",
+    "dateModified": "2019-01-13T01:33:58+08:00",
+    "url" : "deletefromuser.github.io/java/2017021902/",
+    "description": "java 函数返回多个函数值/引用類型認識 開宗明義，Java中函數的參數傳遞都是值傳遞，不存在引用傳遞。基本數據類型傳遞的是本身的值，而引用類型（對象，數組等）傳遞的同樣值，但是是引用的地址的值。同樣，我們知道值傳遞時，在函數內的改變不影響原參數的值，很好理解（在函數內將int類型自增，執行函數後，原值不會改變）。同樣，套用到引用類型參 …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "deletefromuser.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "deletefromuser.github.io"
+    }
+  }
+</script>
+
+<script src="/deletefromuser.github.io/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/deletefromuser.github.io/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/deletefromuser.github.io/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/deletefromuser.github.io/" title="Home" rel="home" class="header__logo"><img src="/deletefromuser.github.io/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/deletefromuser.github.io/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="deletefromuser.github.io/">Home</a></li>
+<li><a href="deletefromuser.github.io/article/">Articles</a></li>
+<li><a href="deletefromuser.github.io/chickensoup/">Chickensoups</a></li>
+<li><a href="deletefromuser.github.io/csharp/">Csharps</a></li>
+<li><a href="deletefromuser.github.io/git/">Gits</a></li>
+<li><a href="deletefromuser.github.io/java/" class="active" aria-current="page">Javas</a></li>
+<li><a href="deletefromuser.github.io/nihongo/">Nihongos</a></li>
+<li><a href="deletefromuser.github.io/problem/">Problems</a></li>
+<li><a href="deletefromuser.github.io/sql/">Sqls</a></li>
+<li><a href="deletefromuser.github.io/web/">Webs</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-java single-view">
+<header>
+<h1 class="title ">java 函数返回多个函数值/引用類型認識</h1>
+</header>
+<div class="content">
+<p>java 函数返回多个函数值/引用類型認識</p>
+<p>開宗明義，Java中函數的參數傳遞都是值傳遞，不存在引用傳遞。基本數據類型傳遞的是本身的值，而引用類型（對象，數組等）傳遞的同樣值，但是是引用的地址的值。同樣，我們知道值傳遞時，在函數內的改變不影響原參數的值，很好理解（在函數內將int類型自增，執行函數後，原值不會改變）。同樣，套用到引用類型參數時，在函數內引用的改變不影響原來對象的引用。也就是說，如果將傳入的對象重新賦值亦即引用改變，不會影響原來的對象。但是如果在函數內部，在不改變傳入參數的引用的同時，修改對象，這種情況下就修改了原對象，亦即實現了引用傳值。</p>
+<p>比如，傳入Integer、String對象時，由於他們沒有改變自身的方法，當重新賦值時，自身的引用發生了改變，因此在函數內改變它們的值，也不會傳遞到函數外。但是如果你傳入一個int或者Object類型的數組（引用類型），並且在函數內改變數組內某一項的值，只要不在函數內重新新建數組（改變了引用），對數組的改變就會導致函數外的數組改變。當對數組某項重新賦值時，就算此時改變了這一個對象的引用，但是整個數組的引用並沒有因此改變。舉例（可能不對，應該是沒錯的）一個大小為2的對象數組，這個數組中三個引用，其中整個對象A的引用為a，其中A指向數組內兩個對象的引用B-&gt;b和C-c，此時對B重新賦值B-&gt;d，傳入對象A的引用仍然是a，這種情況下改變就會作用到數組本身了。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">methodLikeCSharpOutParam</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> result<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	result<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">methodLikeCSharpOutParamByO</span><span style="color:#f92672">(</span>Integer ob<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	ob <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">methodLikeCSharpOutParamByOs</span><span style="color:#f92672">(</span>Object<span style="color:#f92672">[]</span> os<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	os<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> i <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>1<span style="color:#f92672">];</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;int[] before i is &#34;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span>
+ClassMethodTest<span style="color:#f92672">.</span><span style="color:#a6e22e">methodLikeCSharpOutParam</span><span style="color:#f92672">(</span>i<span style="color:#f92672">);</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;int[] after i is &#34;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span>
+Integer io <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Integer<span style="color:#f92672">(-</span>1<span style="color:#f92672">);</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;object before i is &#34;</span> <span style="color:#f92672">+</span> io<span style="color:#f92672">);</span>
+ClassMethodTest<span style="color:#f92672">.</span><span style="color:#a6e22e">methodLikeCSharpOutParamByO</span><span style="color:#f92672">(</span>io<span style="color:#f92672">);</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;object after i is &#34;</span> <span style="color:#f92672">+</span> io<span style="color:#f92672">);</span>
+Object<span style="color:#f92672">[]</span> os <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>2<span style="color:#f92672">];</span>
+os<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;object[] before i is &#34;</span> <span style="color:#f92672">+</span> os<span style="color:#f92672">[</span>0<span style="color:#f92672">].</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
+ClassMethodTest<span style="color:#f92672">.</span><span style="color:#a6e22e">methodLikeCSharpOutParamByOs</span><span style="color:#f92672">(</span>os<span style="color:#f92672">);</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;object[] after i is &#34;</span> <span style="color:#f92672">+</span> os<span style="color:#f92672">[</span>0<span style="color:#f92672">].</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
+<span style="color:#75715e">/* output
+</span><span style="color:#75715e">int[] before i is 0
+</span><span style="color:#75715e">int[] after i is 1
+</span><span style="color:#75715e">object before i is -1
+</span><span style="color:#75715e">object after i is -1
+</span><span style="color:#75715e">object[] before i is -1
+</span><span style="color:#75715e">object[] after i is 1
+</span><span style="color:#75715e">*/</span>
+</code></pre></div><p>c++</p>
+<p>不管是基本數據類型還是類，只要不使用引用或者指針，參數傳遞都是值傳遞，函數內的改變不會作用于函數外。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">item</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">int</span> x;
+	<span style="color:#66d9ef">int</span> y;
+	item() {
+		x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+		y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+	}
+};
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> i) {
+	i<span style="color:#f92672">++</span>;
+	<span style="color:#66d9ef">return</span>;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addd</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> i) {
+	i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+	<span style="color:#66d9ef">return</span>;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">adddd</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> i) {
+	<span style="color:#f92672">*</span>i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+	<span style="color:#66d9ef">return</span>;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">change</span>(item i) {
+	i.x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+	cout<span style="color:#f92672">&lt;&lt;</span>i.x<span style="color:#f92672">&lt;&lt;</span>endl;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeRef</span>(item<span style="color:#f92672">&amp;</span> i) {
+	i.x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+	cout<span style="color:#f92672">&lt;&lt;</span>i.x<span style="color:#f92672">&lt;&lt;</span>endl;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changePoi</span>(item<span style="color:#f92672">*</span> i) {
+	i<span style="color:#f92672">-&gt;</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+	cout<span style="color:#f92672">&lt;&lt;</span>i<span style="color:#f92672">-&gt;</span>x<span style="color:#f92672">&lt;&lt;</span>endl;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+	cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;before &#34;</span><span style="color:#f92672">&lt;&lt;</span>i<span style="color:#f92672">&lt;&lt;</span>endl;
+	adddd(<span style="color:#f92672">&amp;</span>i);
+	cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;after &#34;</span><span style="color:#f92672">&lt;&lt;</span>i<span style="color:#f92672">&lt;&lt;</span>endl;
+
+	item it;
+	cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;item before &#34;</span><span style="color:#f92672">&lt;&lt;</span>it.x<span style="color:#f92672">&lt;&lt;</span>endl;
+	<span style="color:#75715e">//change(it);
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//changeRef(it);
+</span><span style="color:#75715e"></span>	changePoi(<span style="color:#f92672">&amp;</span>it);
+	cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;item after &#34;</span><span style="color:#f92672">&lt;&lt;</span>it.x<span style="color:#f92672">&lt;&lt;</span>endl;
+
+	system(<span style="color:#e6db74">&#34;PAUSE&#34;</span>);
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>2、3年沒寫過C++代碼連helloworld都不會寫了，還要查資料，在這個main文件裡，在main函數中調用的函數必須要在main函數之上定義，不太懂為什麼。</p>
+<p><strong>reference</strong></p>
+<ol>
+<li><a href="https://www.zhihu.com/question/31203609">java到底是值传递还是引用传递？</a></li>
+<li><a href="http://tjuking.iteye.com/blog/1405532">Java中参数传递类型只有值传递</a></li>
+<li><a href="http://flyfoxs.iteye.com/blog/2071984">JAVA函数可以修改传入的变量吗?</a></li>
+<li><a href="http://blog.csdn.net/javazejian/article/details/51192130">java基本数据类型传递与引用传递区别详解</a></li>
+<li><a href="http://www.cnblogs.com/luosongchao/p/3298150.html">java对象数组</a></li>
+<li><a href="http://blog.csdn.net/maoyeqiu/article/details/49249871">java 函数返回多个函数值</a></li>
+<li><a href="http://www.dewen.net.cn/q/8567/%E5%A6%82%E4%BD%95%E4%B8%8D%E9%80%9A%E8%BF%87%E6%95%B0%E7%BB%84%E8%BF%94%E5%9B%9E%E5%A4%9A%E4%B8%AA%E5%80%BC%EF%BC%9F">如何不通过数组返回多个值？</a></li>
+<li><a href="https://www.zhihu.com/question/31203609">java到底是值传递还是引用传递？</a></li>
+<li><a href="http://flyfoxs.iteye.com/blog/2071984">JAVA函数可以修改传入的变量吗?</a></li>
+<li><a href="https://www.zhihu.com/question/34904653">Java对于修改Integer变量值的问题？</a></li>
+<li><a href="http://bbs.csdn.net/topics/360204849">java中如何将Object类型转换为int类型 </a></li>
+<li><a href="http://www.cnblogs.com/youxin/p/5388436.html">Java 类型转换以及Object转成其他类型</a></li>
+<li><a href="http://blog.csdn.net/javazejian/article/details/51192130">java基本数据类型传递与引用传递区别详解</a></li>
+</ol>
+
+
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>

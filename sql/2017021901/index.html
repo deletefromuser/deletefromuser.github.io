@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>sql獲取水果價格表中每種水果在一年內的最高價格所在月份 – HA</title>
+<meta name="description" content="sql獲取水果價格表中每種水果在一年內的最高價格所在月份 mysql CREATE TABLE `fruit_month_price` ( `name` char(20) NOT NULL, `year` int(11) NOT NULL, `month` int(11) NOT NULL, `price` float NOT NULL, …">
+<meta name="created" content="2019-01-13T01:33:58+0800">
+<meta name="modified" content="2019-01-13T01:33:58+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="sql獲取水果價格表中每種水果在一年內的最高價格所在月份">
+<meta property="og:url" content="deletefromuser.github.io/sql/2017021901/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="deletefromuser.github.io/sql/2017021901/">
+<link rel="apple-touch-icon" href="/deletefromuser.github.io/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/deletefromuser.github.io/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
+<link rel="stylesheet" href="/deletefromuser.github.io/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "sql獲取水果價格表中每種水果在一年內的最高價格所在月份",
+    "datePublished": "2019-01-13T01:33:58+08:00",
+    "dateModified": "2019-01-13T01:33:58+08:00",
+    "url" : "deletefromuser.github.io/sql/2017021901/",
+    "description": "sql獲取水果價格表中每種水果在一年內的最高價格所在月份 mysql CREATE TABLE `fruit_month_price` ( `name` char(20) NOT NULL, `year` int(11) NOT NULL, `month` int(11) NOT NULL, `price` float NOT NULL, …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "deletefromuser.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "deletefromuser.github.io"
+    }
+  }
+</script>
+
+<script src="/deletefromuser.github.io/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/deletefromuser.github.io/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/deletefromuser.github.io/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/deletefromuser.github.io/" title="Home" rel="home" class="header__logo"><img src="/deletefromuser.github.io/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/deletefromuser.github.io/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="deletefromuser.github.io/">Home</a></li>
+<li><a href="deletefromuser.github.io/article/">Articles</a></li>
+<li><a href="deletefromuser.github.io/chickensoup/">Chickensoups</a></li>
+<li><a href="deletefromuser.github.io/csharp/">Csharps</a></li>
+<li><a href="deletefromuser.github.io/git/">Gits</a></li>
+<li><a href="deletefromuser.github.io/java/">Javas</a></li>
+<li><a href="deletefromuser.github.io/nihongo/">Nihongos</a></li>
+<li><a href="deletefromuser.github.io/problem/">Problems</a></li>
+<li><a href="deletefromuser.github.io/sql/" class="active" aria-current="page">Sqls</a></li>
+<li><a href="deletefromuser.github.io/web/">Webs</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-sql single-view">
+<header>
+<h1 class="title ">sql獲取水果價格表中每種水果在一年內的最高價格所在月份</h1>
+</header>
+<div class="content">
+<p>sql獲取水果價格表中每種水果在一年內的最高價格所在月份</p>
+<p>mysql</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>fruit_month_price<span style="color:#f92672">`</span> (
+  <span style="color:#f92672">`</span>name<span style="color:#f92672">`</span> char(<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span><span style="color:#66d9ef">year</span><span style="color:#f92672">`</span> int(<span style="color:#ae81ff">11</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span><span style="color:#66d9ef">month</span><span style="color:#f92672">`</span> int(<span style="color:#ae81ff">11</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>price<span style="color:#f92672">`</span> float <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> int(<span style="color:#ae81ff">11</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> AUTO_INCREMENT,
+  <span style="color:#66d9ef">KEY</span> <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>)
+) ENGINE<span style="color:#f92672">=</span>InnoDB AUTO_INCREMENT<span style="color:#f92672">=</span><span style="color:#ae81ff">17</span> <span style="color:#66d9ef">DEFAULT</span> CHARSET<span style="color:#f92672">=</span>utf8;
+
+<span style="color:#66d9ef">insert</span> fruit_month_price(name, <span style="color:#66d9ef">year</span>, <span style="color:#66d9ef">month</span>, price)
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#ae81ff">2017</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">3</span>
+<span style="color:#66d9ef">union</span>
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#ae81ff">2015</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">5</span>.<span style="color:#ae81ff">7</span>
+<span style="color:#66d9ef">union</span>
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#ae81ff">2017</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">2</span>
+<span style="color:#66d9ef">union</span>
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#ae81ff">2015</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">2</span>.<span style="color:#ae81ff">37</span>
+<span style="color:#66d9ef">union</span>
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;orange&#39;</span>, <span style="color:#ae81ff">2011</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">5</span>.<span style="color:#ae81ff">368</span>
+<span style="color:#66d9ef">union</span>
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;orange&#39;</span>, <span style="color:#ae81ff">2015</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">14</span>.<span style="color:#ae81ff">3</span>
+<span style="color:#66d9ef">union</span>
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;orange&#39;</span>, <span style="color:#ae81ff">2014</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">5</span>
+<span style="color:#66d9ef">union</span>
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;banana&#39;</span>, <span style="color:#ae81ff">2016</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">2</span>.<span style="color:#ae81ff">3</span>
+<span style="color:#66d9ef">union</span>
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;banana&#39;</span>, <span style="color:#ae81ff">1993</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">68</span>
+...
+<span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>
+<span style="color:#66d9ef">from</span> fruit_month_price main
+<span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span>
+(
+	<span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> fruit_month_price sub
+    <span style="color:#66d9ef">where</span> sub.name <span style="color:#f92672">=</span> main.name <span style="color:#66d9ef">and</span> main.<span style="color:#66d9ef">year</span> <span style="color:#f92672">=</span> sub.<span style="color:#66d9ef">year</span>
+    <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> price <span style="color:#66d9ef">desc</span>
+	<span style="color:#66d9ef">limit</span> <span style="color:#ae81ff">1</span>
+) 
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> name,<span style="color:#66d9ef">year</span>,<span style="color:#66d9ef">month</span>
+<span style="color:#75715e">/*加字段*/</span>
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> fruit_month_price <span style="color:#66d9ef">add</span> <span style="color:#66d9ef">column</span> num float <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#75715e">/*創建存儲過程，更新字段
+</span><span style="color:#75715e">每個語句結束後都必須加&#39;;&#39;
+</span><span style="color:#75715e">set語句必須位於所有的declare語句的後面，不然會報語法錯誤
+</span><span style="color:#75715e">declare i int(20);
+</span><span style="color:#75715e">set i = 0;
+</span><span style="color:#75715e">declare finished int(2);//報錯
+</span><span style="color:#75715e">declare語句好像只能在只能在存儲過程以及函數裡面使用（cursor確實是，這個好像是）
+</span><span style="color:#75715e">(也就是說享用cursor遍歷一個表必須創建一個存儲過程或函數？)
+</span><span style="color:#75715e">declare聲明變量時不帶@符號，可以用set @i = 3直接聲明變量@i
+</span><span style="color:#75715e">由於不帶@所以變量名盡量不要與查詢的表的列名相同
+</span><span style="color:#75715e">賦值符號有兩種=和:=，set是=即可，select賦值時使用:=（此時=被用作比較運算符）
+</span><span style="color:#75715e">set @i = 2;
+</span><span style="color:#75715e">select @i = 3;#0
+</span><span style="color:#75715e">select @i = 2;#1
+</span><span style="color:#75715e">select @i;    #2
+</span><span style="color:#75715e">select @i := 3;#3
+</span><span style="color:#75715e">select @i;    #3
+</span><span style="color:#75715e">*/</span>
+<span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> test;
+<span style="color:#66d9ef">delimiter</span> <span style="color:#f92672">//</span>
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> test()
+<span style="color:#66d9ef">begin</span>
+
+  <span style="color:#66d9ef">declare</span> i int(<span style="color:#ae81ff">20</span>);
+  <span style="color:#66d9ef">declare</span> finished int(<span style="color:#ae81ff">2</span>);
+  <span style="color:#66d9ef">declare</span> <span style="color:#66d9ef">c</span> <span style="color:#66d9ef">cursor</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> fruit_month_price;
+  <span style="color:#66d9ef">declare</span> <span style="color:#66d9ef">continue</span> <span style="color:#66d9ef">handler</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">found</span> <span style="color:#66d9ef">set</span> finished <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">set</span> finished <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">set</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+  <span style="color:#66d9ef">open</span> <span style="color:#66d9ef">c</span>;
+  <span style="color:#66d9ef">fetch</span> <span style="color:#66d9ef">c</span> <span style="color:#66d9ef">into</span> i;
+  while finished <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">do</span>
+	<span style="color:#66d9ef">update</span> fruit_month_price <span style="color:#66d9ef">set</span> num <span style="color:#f92672">=</span> round(rand() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> i;
+	<span style="color:#66d9ef">fetch</span> <span style="color:#66d9ef">c</span> <span style="color:#66d9ef">into</span> i;
+  <span style="color:#66d9ef">end</span> while;
+  <span style="color:#66d9ef">close</span> <span style="color:#66d9ef">c</span>;
+<span style="color:#66d9ef">end</span><span style="color:#f92672">//</span>
+<span style="color:#66d9ef">delimiter</span> ;
+<span style="color:#75715e">/*調用存儲過程*/</span>
+<span style="color:#66d9ef">call</span> test()
+<span style="color:#75715e">/*按水果名+年份統計
+</span><span style="color:#75715e">where條件中子查詢加了limit之後報錯
+</span><span style="color:#75715e">This version of MySQL doesn&#39;t yet support &#39;LIMIT &amp; IN/ALL/ANY/SOME subquery&#39;
+</span><span style="color:#75715e">在這裡in和=效果差不多好像*/</span>
+<span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>,sumA.amount
+<span style="color:#66d9ef">from</span> fruit_month_price main
+<span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> (
+    <span style="color:#66d9ef">select</span> name,<span style="color:#66d9ef">year</span>,<span style="color:#66d9ef">sum</span>(num <span style="color:#f92672">*</span> price) <span style="color:#66d9ef">as</span> amount
+	<span style="color:#66d9ef">from</span> fruit_month_price
+	<span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> name,<span style="color:#66d9ef">year</span>
+) sumA <span style="color:#66d9ef">on</span> sumA.name <span style="color:#f92672">=</span> main.name <span style="color:#66d9ef">and</span> sumA.<span style="color:#66d9ef">year</span> <span style="color:#f92672">=</span> main.<span style="color:#66d9ef">year</span>
+<span style="color:#66d9ef">where</span> main.id <span style="color:#f92672">=</span> 
+(
+	<span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> fruit_month_price sub
+    <span style="color:#66d9ef">where</span> sub.name <span style="color:#f92672">=</span> main.name <span style="color:#66d9ef">and</span> sub.<span style="color:#66d9ef">year</span> <span style="color:#f92672">=</span> main.<span style="color:#66d9ef">year</span>
+    <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> price <span style="color:#66d9ef">desc</span>
+    <span style="color:#66d9ef">limit</span> <span style="color:#ae81ff">1</span>
+)
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> main.name,main.<span style="color:#66d9ef">year</span>,main.<span style="color:#66d9ef">month</span>;
+
+<span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>
+<span style="color:#66d9ef">from</span> fruit_month_price main
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> name,<span style="color:#66d9ef">year</span>;
+<span style="color:#75715e">/*具體作用不太清楚，創建語句時出錯，一直在查詢不結束時，重連數據庫
+</span><span style="color:#75715e">運行語句，用id殺掉第一條*/</span>
+<span style="color:#66d9ef">show</span> processlist;
+kill <span style="color:#ae81ff">74</span>
+</code></pre></div><p>mssql</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> [dbo].[fruit_month_price](
+	[name] [varchar](<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+	[<span style="color:#66d9ef">year</span>] [int] <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+	[<span style="color:#66d9ef">month</span>] [int] <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+	[price] [float] <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+	[id] [int] <span style="color:#66d9ef">IDENTITY</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+	<span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span> clustered(id <span style="color:#66d9ef">asc</span>)
+)
+<span style="color:#75715e">--drop table fruit_month_price
+</span><span style="color:#75715e">--查詢每種水果每年的最高價格
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>
+<span style="color:#66d9ef">from</span> fruit_month_price main
+<span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> 
+(
+	<span style="color:#66d9ef">select</span> top <span style="color:#ae81ff">1</span> id <span style="color:#66d9ef">from</span> fruit_month_price sub
+    <span style="color:#66d9ef">where</span> sub.name <span style="color:#f92672">=</span> main.name <span style="color:#66d9ef">and</span> sub.<span style="color:#66d9ef">year</span> <span style="color:#f92672">=</span> main.<span style="color:#66d9ef">year</span>
+    <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> price <span style="color:#66d9ef">desc</span>
+)
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> name,<span style="color:#66d9ef">year</span>,<span style="color:#66d9ef">month</span>
+<span style="color:#75715e">--添加數量字段
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> fruit_month_price <span style="color:#66d9ef">add</span> num float <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>
+<span style="color:#75715e">--為數量字段賦隨機值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">declare</span> <span style="color:#f92672">@</span>i int, <span style="color:#f92672">@</span><span style="color:#66d9ef">c</span> <span style="color:#66d9ef">cursor</span>;
+<span style="color:#66d9ef">set</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">c</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">cursor</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> fruit_month_price
+<span style="color:#66d9ef">set</span> <span style="color:#f92672">@</span>i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">open</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">c</span>
+<span style="color:#66d9ef">fetch</span> <span style="color:#66d9ef">next</span> <span style="color:#66d9ef">from</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">c</span> <span style="color:#66d9ef">into</span> <span style="color:#f92672">@</span>i
+while(<span style="color:#f92672">@@</span>FETCH_STATUS <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+<span style="color:#66d9ef">begin</span>
+	<span style="color:#66d9ef">update</span> fruit_month_price <span style="color:#66d9ef">set</span> num <span style="color:#f92672">=</span> round((rand() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>), <span style="color:#ae81ff">0</span>)
+	<span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> <span style="color:#f92672">@</span>i;
+	<span style="color:#66d9ef">fetch</span> <span style="color:#66d9ef">next</span> <span style="color:#66d9ef">from</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">c</span> <span style="color:#66d9ef">into</span> <span style="color:#f92672">@</span>i
+<span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">close</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">c</span>
+<span style="color:#66d9ef">deallocate</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">c</span>
+<span style="color:#75715e">--查詢每種水果的最高價格所在行的信息並統計出每種水果的銷售總額
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>,sumA.amount
+<span style="color:#66d9ef">from</span> fruit_month_price main
+<span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> (
+    <span style="color:#66d9ef">select</span> name,<span style="color:#66d9ef">sum</span>(num <span style="color:#f92672">*</span> price) <span style="color:#66d9ef">as</span> amount
+	<span style="color:#66d9ef">from</span> fruit_month_price
+	<span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> name
+) sumA <span style="color:#66d9ef">on</span> sumA.name <span style="color:#f92672">=</span> main.name
+<span style="color:#66d9ef">where</span> id <span style="color:#66d9ef">in</span> 
+(
+	<span style="color:#66d9ef">select</span> top <span style="color:#ae81ff">1</span> id <span style="color:#66d9ef">from</span> fruit_month_price sub
+    <span style="color:#66d9ef">where</span> sub.name <span style="color:#f92672">=</span> main.name
+    <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> price <span style="color:#66d9ef">desc</span>
+)
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> name,<span style="color:#66d9ef">year</span>,<span style="color:#66d9ef">month</span>
+<span style="color:#75715e">--按水果名+年份統計
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>,sumA.amount
+<span style="color:#66d9ef">from</span> fruit_month_price main
+<span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> (
+    <span style="color:#66d9ef">select</span> name,<span style="color:#66d9ef">year</span>,<span style="color:#66d9ef">sum</span>(num <span style="color:#f92672">*</span> price) <span style="color:#66d9ef">as</span> amount
+	<span style="color:#66d9ef">from</span> fruit_month_price
+	<span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> name,<span style="color:#66d9ef">year</span>
+) sumA <span style="color:#66d9ef">on</span> sumA.name <span style="color:#f92672">=</span> main.name <span style="color:#66d9ef">and</span> sumA.<span style="color:#66d9ef">year</span> <span style="color:#f92672">=</span> main.<span style="color:#66d9ef">year</span>
+<span style="color:#66d9ef">where</span> id <span style="color:#66d9ef">in</span> 
+(
+	<span style="color:#66d9ef">select</span> top <span style="color:#ae81ff">1</span> id <span style="color:#66d9ef">from</span> fruit_month_price sub
+    <span style="color:#66d9ef">where</span> sub.name <span style="color:#f92672">=</span> main.name <span style="color:#66d9ef">and</span> sub.<span style="color:#66d9ef">year</span> <span style="color:#f92672">=</span> main.<span style="color:#66d9ef">year</span>
+    <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> price <span style="color:#66d9ef">desc</span>
+)
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> name,<span style="color:#66d9ef">year</span>,<span style="color:#66d9ef">month</span>
+</code></pre></div><p>result</p>
+<p><img src="https://i.imgur.com/9KOBmS8.jpg" alt="result"></p>
+<p>mysql中有一個問題，下面語句中，第二個語句在兩個字段相乘後多了很多小數位</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>
+<span style="color:#66d9ef">from</span> fruit_month_price main
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> name,<span style="color:#66d9ef">year</span>;
+<span style="color:#66d9ef">select</span> name,<span style="color:#66d9ef">year</span>,num<span style="color:#f92672">*</span>price
+<span style="color:#66d9ef">from</span> fruit_month_price main
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> name,<span style="color:#66d9ef">year</span>
+</code></pre></div><p><img src="https://i.imgur.com/idKruGe.jpg" alt="1"></p>
+<p><img src="https://i.imgur.com/eEfn18k.jpg" alt="2"></p>
+<p>選取其中一條記錄舉例，banana 1993中1.68*1本應該是1.68，卻顯示1.6799999475479126，不知道為什麼，mssql據說也有這個問題，但是在這個例子裡沒有。（公司裡經常提到在減少庫存後檢驗的時候要加上round函數之後校驗，不然會出現減少之後庫存數量變為-0.000000000001時，其實是正常的，但是程序卻報錯的情況，據說是數據庫問題，也就是說mysql比mssql情況更嚴重）</p>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://www.oschina.net/question/89964_65912">关于 MySQL LEFT JOIN 你可能需要了解的三点</a></li>
+<li><a href="http://blog.csdn.net/newbie_coder/article/details/9279265">MySQL SELECT LIMIT指定行数查询</a></li>
+<li><a href="http://www.cnblogs.com/zhoujinyi/p/3433823.html">INNODB自增主键的一些问题</a></li>
+<li><a href="http://wzhiju.iteye.com/blog/1507910">mysql 数据库自增id 的总结</a></li>
+<li><a href="http://www.cnblogs.com/chenmh/p/5203429.html">MySQL 变量和条件</a></li>
+<li><a href="http://blog.csdn.net/huihuangjiuai/article/details/37881123">mysql创建存储过程declare 变量时报错</a></li>
+<li><a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/21/1959734.html">mysql变量使用总结</a></li>
+<li><a href="http://blog.ihuxu.com/explaination-of-the-mysql-variables-usage-and-the-use-case/">深入MySQL用户自定义变量：使用详解及其使用场景案例</a></li>
+<li><a href="http://particle128.com/posts/2014/09/MySQL-bug.html">MySQL存储过程中变量名不能和列名相同</a></li>
+<li><a href="http://blog.csdn.net/u012256142/article/details/40743887">MySql存储过程—游标使用(Cursor)，（遍历）</a></li>
+<li><a href="http://blog.csdn.net/tiana0/article/details/12647777">SQL Server 2008 游标使用实例</a></li>
+<li><a href="http://www.cnblogs.com/lyhabc/p/3793524.html">我的MYSQL学习心得（十） 自定义存储过程和函数</a></li>
+<li><a href="http://www.mysqltutorial.org/mysql-cursor/"> MySQL Cursor</a></li>
+<li><a href="http://www.cnblogs.com/piaomiao1314/p/mysqli_error_2014.html">mysql错误之2014</a></li>
+<li><a href="http://www.cnblogs.com/rootq/archive/2009/05/27/1490523.html">MySql中delimiter的作用是什么?</a></li>
+</ul>
+
+
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>

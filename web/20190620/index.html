@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>tomcat安装&amp;let&#39;s encrypt配置 – HA</title>
+<meta name="description" content="tomcat安装&amp;amp;amp;let&amp;amp;rsquo;s encrypt配置 ###安装java cd /hometar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz// tempexport PATH=$PWD/jdk8u212-b04/bin:$PATHjava …">
+<meta name="created" content="2019-01-13T01:33:58+0800">
+<meta name="modified" content="2019-01-13T01:33:58+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="tomcat安装&amp;let&#39;s encrypt配置">
+<meta property="og:url" content="deletefromuser.github.io/web/20190620/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="deletefromuser.github.io/web/20190620/">
+<link rel="apple-touch-icon" href="/deletefromuser.github.io/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/deletefromuser.github.io/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
+<link rel="stylesheet" href="/deletefromuser.github.io/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "tomcat安装\u0026let's encrypt配置",
+    "datePublished": "2019-01-13T01:33:58+08:00",
+    "dateModified": "2019-01-13T01:33:58+08:00",
+    "url" : "deletefromuser.github.io/web/20190620/",
+    "description": "tomcat安装\u0026amp;amp;let\u0026amp;rsquo;s encrypt配置 ###安装java cd /home\rtar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz\r// temp\rexport PATH=$PWD/jdk8u212-b04/bin:$PATH\rjava …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "deletefromuser.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "deletefromuser.github.io"
+    }
+  }
+</script>
+
+<script src="/deletefromuser.github.io/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/deletefromuser.github.io/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/deletefromuser.github.io/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/deletefromuser.github.io/" title="Home" rel="home" class="header__logo"><img src="/deletefromuser.github.io/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/deletefromuser.github.io/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="deletefromuser.github.io/">Home</a></li>
+<li><a href="deletefromuser.github.io/article/">Articles</a></li>
+<li><a href="deletefromuser.github.io/chickensoup/">Chickensoups</a></li>
+<li><a href="deletefromuser.github.io/csharp/">Csharps</a></li>
+<li><a href="deletefromuser.github.io/git/">Gits</a></li>
+<li><a href="deletefromuser.github.io/java/">Javas</a></li>
+<li><a href="deletefromuser.github.io/nihongo/">Nihongos</a></li>
+<li><a href="deletefromuser.github.io/problem/">Problems</a></li>
+<li><a href="deletefromuser.github.io/sql/">Sqls</a></li>
+<li><a href="deletefromuser.github.io/web/" class="active" aria-current="page">Webs</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-web single-view">
+<header>
+<h1 class="title ">tomcat安装&amp;let&#39;s encrypt配置</h1>
+</header>
+<div class="content">
+<p>tomcat安装&amp;let&rsquo;s encrypt配置</p>
+<p>###安装java</p>
+<pre><code>cd /home
+tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz
+// temp
+export PATH=$PWD/jdk8u212-b04/bin:$PATH
+java -version
+
+//final
+vi /etc/profile
+`
+JAVA_HOME=/home/jdk8u212-b04
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+export JAVA_HOME
+export PATH
+`
+log out and log in
+
+wget -O- -q -T 1 -t 1 https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b04/OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz.sha256.txt | sha256sum -c
+</code></pre><p>###安装tomcat</p>
+<pre><code>sudo groupadd tomcat
+sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+
+cd /tmp
+curl -O http://apache.mirrors.pair.com/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.tar.gz
+sudo mkdir /opt/tomcat
+sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
+
+cd /opt/tomcat
+sudo chgrp -R tomcat /opt/tomcat
+sudo chmod -R g+r conf
+sudo chmod g+x conf
+sudo chown -R tomcat webapps/ work/ temp/ logs/
+
+sudo nano /etc/systemd/system/tomcat.service
+修改Environment=JAVA_HOME=/home/jdk8u212-b04
+
+sudo systemctl daemon-reload
+sudo systemctl start tomcat
+sudo systemctl status tomcat
+
+sudo ufw allow 8080
+
+sudo systemctl enable tomcat
+</code></pre><p>现在应该可以用8080端口正常访问了</p>
+<p>###转发80端口到8080端口</p>
+<pre><code>iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
+iptables -t nat -I OUTPUT -p tcp -o lo --dport 80 -j REDIRECT --to-ports 8080
+</code></pre><p>改完之后应该可以不用加端口号访问了，以后443转发8443也是同样的操作</p>
+<pre><code>iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 8443
+iptables -t nat -I OUTPUT -p tcp -o lo --dport 443 -j REDIRECT --to-ports 8443
+</code></pre><p>###配置letsencrypt</p>
+<pre><code>sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot
+
+sudo certbot certonly --webroot
+这里需要输入两个东西，域名和tomcat ROOT所在地址
+www.xxx.com
+/opt/tomcat/webapps/ROOT
+
+cd /etc/letsencrypt/live/www.xxx.com
+cp cert.pem /opt/tomcat/conf
+cp chain.pem /opt/tomcat/conf
+cp privkey.pem /opt/tomcat/conf
+
+chown tomcat:tomcat *.pem
+
+///etc/letsencrypt/renewal-hooks/post/copy2tomcat.sh
+cd /etc/letsencrypt/live/www.xxx.cc
+cp cert.pem /opt/tomcat/conf
+cp chain.pem /opt/tomcat/conf
+cp privkey.pem /opt/tomcat/conf
+
+cd /opt/tomcat/conf
+chown tomcat:tomcat *.pem
+
+service tomcat restart
+</code></pre><p>然后转发443端口到8443端口之后，就可以通过https访问网站了</p>
+<p>###重定向http到https</p>
+<p><strong>server.xml</strong></p>
+<pre><code> &lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; 
+               redirectPort=&quot;443&quot;/&gt;
+</code></pre><p><strong>web.xml(<code>&lt;/web-app&gt;之前</code>)</strong></p>
+<pre><code> &lt;!-- Require HTTPS for everything except /img (favicon) and /css. --&gt;
+    &lt;security-constraint&gt;
+        &lt;web-resource-collection&gt;
+            &lt;web-resource-name&gt;HTTPSOnly&lt;/web-resource-name&gt;
+            &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+        &lt;/web-resource-collection&gt;
+        &lt;user-data-constraint&gt;
+            &lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;
+        &lt;/user-data-constraint&gt;
+    &lt;/security-constraint&gt;
+    &lt;security-constraint&gt;
+        &lt;web-resource-collection&gt;
+            &lt;web-resource-name&gt;HTTPSOrHTTP&lt;/web-resource-name&gt;
+            &lt;url-pattern&gt;*.ico&lt;/url-pattern&gt;
+            &lt;url-pattern&gt;/img/*&lt;/url-pattern&gt;
+            &lt;url-pattern&gt;/css/*&lt;/url-pattern&gt;
+        &lt;/web-resource-collection&gt;
+        &lt;user-data-constraint&gt;
+            &lt;transport-guarantee&gt;NONE&lt;/transport-guarantee&gt;
+        &lt;/user-data-constraint&gt;
+    &lt;/security-constraint&gt;
+</code></pre><p>ps:修改完之后记得查看文件的权限，如果被改成root的话，需要再修改权限<code>chown tomcat:tomcat web.xml</code></p>
+<p>###自动更新证书（todo）</p>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804">https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804</a></li>
+<li><a href="https://adoptopenjdk.net/installation.html#x64_linux-jdk">https://adoptopenjdk.net/installation.html#x64_linux-jdk</a></li>
+<li><a href="https://serverfault.com/questions/211536/iptables-port-redirect-not-working-for-localhost">https://serverfault.com/questions/211536/iptables-port-redirect-not-working-for-localhost</a></li>
+<li><a href="https://certbot.eff.org/lets-encrypt/ubuntubionic-other">https://certbot.eff.org/lets-encrypt/ubuntubionic-other</a></li>
+<li><a href="https://medium.com/@raupach/how-to-install-lets-encrypt-with-tomcat-3db8a469e3d2">https://medium.com/@raupach/how-to-install-lets-encrypt-with-tomcat-3db8a469e3d2</a></li>
+<li><a href="https://www.infoworld.com/article/3304289/how-to-configure-tomcat-to-always-require-https.html">https://www.infoworld.com/article/3304289/how-to-configure-tomcat-to-always-require-https.html</a></li>
+</ul>
+
+
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>
