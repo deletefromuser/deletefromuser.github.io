@@ -6,13 +6,13 @@
     <description>Recent content in Gits on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Jan 2019 01:33:58 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 23 Mar 2017 03:33:58 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>git 將文件轉移位置</title>
       <link>https://deletefromuser.github.io/git/2017032303/</link>
-      <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
+      <pubDate>Thu, 23 Mar 2017 03:33:58 +0800</pubDate>
       <guid>https://deletefromuser.github.io/git/2017032303/</guid>
       <description>&lt;p&gt;git 將文件轉移位置&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;git mv 2017032003.md csharp&lt;/code&gt;&lt;/p&gt;

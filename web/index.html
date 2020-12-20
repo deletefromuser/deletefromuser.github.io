@@ -6,8 +6,8 @@
 <title>Webs – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/web/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2019-01-13T01:33:58+0800">
-<meta name="modified" content="2019-01-13T01:33:58+0800">
+<meta name="created" content="2019-06-20T01:33:58+0800">
+<meta name="modified" content="2019-06-20T01:33:58+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,15 +66,15 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/web/" class="active" aria-current="page">Webs</a></li>
 <li><a href="/article/">Articles</a></li>
+<li><a href="/problem/">Problems</a></li>
+<li><a href="/java/">Javas</a></li>
+<li><a href="/sql/">Sqls</a></li>
 <li><a href="/chickensoup/">Chickensoups</a></li>
 <li><a href="/csharp/">Csharps</a></li>
 <li><a href="/git/">Gits</a></li>
-<li><a href="/java/">Javas</a></li>
 <li><a href="/nihongo/">Nihongos</a></li>
-<li><a href="/problem/">Problems</a></li>
-<li><a href="/sql/">Sqls</a></li>
-<li><a href="/web/" class="active" aria-current="page">Webs</a></li>
 </ul>
 </nav>
 
@@ -83,21 +83,21 @@
 <h1 class="title">Webs</h1>
 <article class="section-web list-view">
 <header>
-<h2 class="title "><a href="/web/2017031901/">JSONP跨域獲取JSON數據</a></h2>
-
-</header>
-<div class="content">
-JSONP跨域獲取JSON數據 客戶端請求數據 &lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;App Engine Demo&lt;/title&gt; &lt;script src=&#34;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&#34;&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;result&#34;&gt;Loading...&lt;/div&gt; &lt;br /&gt; &lt;p&gt;add p&lt;/p&gt; &lt;br /&gt; &lt;script&gt; $(document).ready(function() { $.ajax({ async : false, url : &#34;https://hanotfun.appspot.com/demo&#34;, type : &#34;GET&#34;, dataType : &#39;jsonp&#39;, jsonp : &#39;callback&#39;, success : function(data) { $(&#39;#result&#39;).html(&#34;Hello, &#34; + data.name); } });
-</div>
-</article>
-
-<article class="section-web list-view">
-<header>
 <h2 class="title "><a href="/web/20190620/">tomcat安装&amp;let&#39;s encrypt配置</a></h2>
 
 </header>
 <div class="content">
 tomcat安装&amp;let&rsquo;s encrypt配置 ###安装java cd /home tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz // temp export PATH=$PWD/jdk8u212-b04/bin:$PATH java -version //final vi /etc/profile ` JAVA_HOME=/home/jdk8u212-b04 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin export JAVA_HOME export PATH ` log out and log in wget
+</div>
+</article>
+
+<article class="section-web list-view">
+<header>
+<h2 class="title "><a href="/web/2017031901/">JSONP跨域獲取JSON數據</a></h2>
+
+</header>
+<div class="content">
+JSONP跨域獲取JSON數據 客戶端請求數據 &lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;App Engine Demo&lt;/title&gt; &lt;script src=&#34;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&#34;&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;result&#34;&gt;Loading...&lt;/div&gt; &lt;br /&gt; &lt;p&gt;add p&lt;/p&gt; &lt;br /&gt; &lt;script&gt; $(document).ready(function() { $.ajax({ async : false, url : &#34;https://hanotfun.appspot.com/demo&#34;, type : &#34;GET&#34;, dataType : &#39;jsonp&#39;, jsonp : &#39;callback&#39;, success : function(data) { $(&#39;#result&#39;).html(&#34;Hello, &#34; + data.name); } });
 </div>
 </article>
 
