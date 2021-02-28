@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bashes on HA</title>
+    <link>https://deletefromuser.github.io/bash/</link>
+    <description>Recent content in Bashes on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Feb 2021 21:02:00 +0800</lastBuildDate>
+    <atom:link href="https://deletefromuser.github.io/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>将所有文件夹的内容分别打包到同名的zip文件内</title>
+      <link>https://deletefromuser.github.io/bash/2021022801/</link>
+      <pubDate>Sun, 28 Feb 2021 21:02:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/bash/2021022801/</guid>
+      <description>&lt;p&gt;下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件&lt;/p&gt;
+&lt;p&gt;以前还写了个sh好像，没想到一行就能搞定&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;for dir in */; do ( cd &amp;quot;$dir&amp;quot; &amp;amp;&amp;amp; zip -r ../&amp;quot;${dir%/}&amp;quot;.zip . ) done&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;#####来源
+&lt;a href=&#34;https://unix.stackexchange.com/a/441025&#34;&gt;Zip all subfolders inside a folder to individual zip file&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
