@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Webs on HA</title>
-    <link>https://deletefromuser.github.io/web/</link>
+    <link>/blog/web/</link>
     <description>Recent content in Webs on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 20 Jun 2019 01:33:58 +0800</lastBuildDate>
-    <atom:link href="https://deletefromuser.github.io/web/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/blog/web/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>tomcat安装&amp;let&#39;s encrypt配置</title>
-      <link>https://deletefromuser.github.io/web/20190620/</link>
+      <link>/blog/web/20190620/</link>
       <pubDate>Thu, 20 Jun 2019 01:33:58 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/web/20190620/</guid>
+      <guid>/blog/web/20190620/</guid>
       <description>&lt;p&gt;tomcat安装&amp;amp;let&amp;rsquo;s encrypt配置&lt;/p&gt;
 &lt;p&gt;###安装java&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cd /home
@@ -137,9 +137,9 @@ service tomcat restart
     
     <item>
       <title>JSONP跨域獲取JSON數據</title>
-      <link>https://deletefromuser.github.io/web/2017031901/</link>
+      <link>/blog/web/2017031901/</link>
       <pubDate>Sun, 19 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/web/2017031901/</guid>
+      <guid>/blog/web/2017031901/</guid>
       <description>&lt;p&gt;JSONP跨域獲取JSON數據&lt;/p&gt;
 &lt;p&gt;客戶端請求數據&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!doctype html&amp;gt;&lt;/span&gt;

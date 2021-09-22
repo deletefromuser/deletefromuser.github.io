@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Articles on HA</title>
-    <link>https://deletefromuser.github.io/article/</link>
+    <link>/blog/article/</link>
     <description>Recent content in Articles on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Jan 2019 01:33:58 +0800</lastBuildDate>
-    <atom:link href="https://deletefromuser.github.io/article/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/blog/article/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>eclipse中一键全部展开目录树</title>
-      <link>https://deletefromuser.github.io/article/20190120/</link>
+      <link>/blog/article/20190120/</link>
       <pubDate>Sun, 20 Jan 2019 01:33:58 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/article/20190120/</guid>
+      <guid>/blog/article/20190120/</guid>
       <description>&lt;h1 id=&#34;eclipse中一键全部展开目录树&#34;&gt;eclipse中一键全部展开目录树&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;在package explorer中使用&lt;code&gt;*&lt;/code&gt;能展开全部的目录树&lt;/li&gt;
@@ -35,9 +35,9 @@
     
     <item>
       <title>使用thymeleaf和spring security提供的csrf方法</title>
-      <link>https://deletefromuser.github.io/article/20190113/</link>
+      <link>/blog/article/20190113/</link>
       <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/article/20190113/</guid>
+      <guid>/blog/article/20190113/</guid>
       <description>&lt;h3 id=&#34;使用thymeleaf和spring-security提供的csrf方法&#34;&gt;使用thymeleaf和spring security提供的csrf方法&lt;/h3&gt;
 &lt;p&gt;只需要在html内的form在设置action时使用thymeleaf属性th:action即可&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;th:action&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@{login}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt;&amp;gt;
@@ -208,9 +208,9 @@
     
     <item>
       <title>如何成為一個快樂的人</title>
-      <link>https://deletefromuser.github.io/article/2017031401/</link>
+      <link>/blog/article/2017031401/</link>
       <pubDate>Tue, 14 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/article/2017031401/</guid>
+      <guid>/blog/article/2017031401/</guid>
       <description>&lt;p&gt;[節選翻譯]如何成為一個快樂的人(11種方法)&lt;/p&gt;
 &lt;h3 id=&#34;1不要太過在意幾乎任何事情&#34;&gt;1.不要太過在意(幾乎任何事情)&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -306,9 +306,9 @@
     
     <item>
       <title>編程代碼風格相關文章</title>
-      <link>https://deletefromuser.github.io/article/2017031203/</link>
+      <link>/blog/article/2017031203/</link>
       <pubDate>Sun, 12 Mar 2017 12:03:58 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/article/2017031203/</guid>
+      <guid>/blog/article/2017031203/</guid>
       <description>&lt;p&gt;編程代碼風格相關文章&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.hawstein.com/posts/google-java-style.html&#34;&gt;Google Java编程风格指南&lt;/a&gt;&lt;/li&gt;
