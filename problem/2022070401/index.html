@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>win10中去掉资源管理器的OneDrive项目&amp;隐藏工具栏 – HA</title>
-<meta name="description" content="win10中去掉资源管理器的OneDrive项目\隐藏工具栏 打开注册表编辑器，修改HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}\System.IsPinnedToNameSpaceTree为0 默认资源管理器工具栏都是点到对应的菜单选项才出来的，不知道为什么 …">
-<meta name="created" content="2017-04-01T01:33:58+0800">
-<meta name="modified" content="2017-04-01T01:33:58+0800">
+<title>virtualbox 虚拟机硬盘扩容 – HA</title>
+<meta name="description" content=" click File &amp;amp;gt; Virtual Media Manager in the main VirtualBox window Select a virtual hard disk in the list and use the “Size” slider at the bottom of the window to …">
+<meta name="created" content="2022-07-04T16:00:00+0800">
+<meta name="modified" content="2022-07-04T16:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="win10中去掉资源管理器的OneDrive项目&amp;隐藏工具栏">
-<meta property="og:url" content="/blog/problem/2017040101/">
+<meta property="og:title" content="virtualbox 虚拟机硬盘扩容">
+<meta property="og:url" content="/blog/problem/2022070401/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/blog/problem/2017040101/">
+<link rel="canonical" href="/blog/problem/2022070401/">
 <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/blog/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "win10中去掉资源管理器的OneDrive项目\u0026隐藏工具栏",
-    "datePublished": "2017-04-01T01:33:58+08:00",
-    "dateModified": "2017-04-01T01:33:58+08:00",
-    "url" : "/blog/problem/2017040101/",
-    "description": "win10中去掉资源管理器的OneDrive项目\\隐藏工具栏 打开注册表编辑器，修改HKEY_CLASSES_ROOT\\CLSID\\{018D5C66-4533-4307-9B53-224DE2ED1FE6}\\System.IsPinnedToNameSpaceTree为0 默认资源管理器工具栏都是点到对应的菜单选项才出来的，不知道为什么 …",
+    "headline": "virtualbox 虚拟机硬盘扩容",
+    "datePublished": "2022-07-04T16:00:00+08:00",
+    "dateModified": "2022-07-04T16:00:00+08:00",
+    "url" : "/blog/problem/2022070401/",
+    "description": " click File \u0026amp;gt; Virtual Media Manager in the main VirtualBox window Select a virtual hard disk in the list and use the “Size” slider at the bottom of the window to …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -86,15 +86,18 @@
 <main class="main layout__main">
 <article class="section-problem single-view">
 <header>
-<h1 class="title ">win10中去掉资源管理器的OneDrive项目&amp;隐藏工具栏</h1>
+<h1 class="title ">virtualbox 虚拟机硬盘扩容</h1>
 </header>
 <div class="content">
-<p>win10中去掉资源管理器的OneDrive项目\隐藏工具栏</p>
-<p>打开注册表编辑器，修改<code>HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}\System.IsPinnedToNameSpaceTree</code>为0</p>
-<p>默认资源管理器工具栏都是点到对应的菜单选项才出来的，不知道为什么突然固定在那不会自动隐藏了。</p>
-<p>使用Ctrl+F1可以显示或隐藏工具栏</p>
+<ol>
+<li>click File &gt; Virtual Media Manager in the main VirtualBox window</li>
+<li>Select a virtual hard disk in the list and use the “Size” slider at the bottom of the window to change its size. Click “Apply” when you’re done</li>
+<li>boot ubuntu virtual machine, use GParted to Resize</li>
+</ol>
 <p><strong>reference</strong></p>
-<p><a href="https://www.howtogeek.com/225973/how-to-disable-onedrive-and-remove-it-from-file-explorer-on-windows-10/">How to Disable OneDrive and Remove It From File Explorer on Windows 10</a></p>
+<ol>
+<li><a href="https://www.howtogeek.com/124622/how-to-enlarge-a-virtual-machines-disk-in-virtualbox-or-vmware">How To Enlarge a Virtual Machine’s Disk in VirtualBox or VMware</a></li>
+</ol>
 
 
 </div>

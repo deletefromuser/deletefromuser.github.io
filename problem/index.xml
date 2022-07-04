@@ -6,8 +6,25 @@
     <description>Recent content in Problems on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Aug 2017 01:33:58 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jul 2022 16:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/problem/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>virtualbox 虚拟机硬盘扩容</title>
+      <link>/blog/problem/2022070401/</link>
+      <pubDate>Mon, 04 Jul 2022 16:00:00 +0800</pubDate>
+      <guid>/blog/problem/2022070401/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;click File &amp;gt; Virtual Media Manager in the main VirtualBox window&lt;/li&gt;
+&lt;li&gt;Select a virtual hard disk in the list and use the “Size” slider at the bottom of the window to change its size. Click “Apply” when you’re done&lt;/li&gt;
+&lt;li&gt;boot ubuntu virtual machine, use GParted to Resize&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.howtogeek.com/124622/how-to-enlarge-a-virtual-machines-disk-in-virtualbox-or-vmware&#34;&gt;How To Enlarge a Virtual Machine’s Disk in VirtualBox or VMware&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>windows修改右鍵“發送到”菜單&amp;如何快速打開SendTo文件夾</title>
