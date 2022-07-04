@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gits on HA</title>
-    <link>/git/</link>
+    <link>/blog/git/</link>
     <description>Recent content in Gits on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 23 Mar 2017 03:33:58 +0800</lastBuildDate>
-    <atom:link href="/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/blog/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>git 將文件轉移位置</title>
-      <link>/git/2017032303/</link>
+      <link>/blog/git/2017032303/</link>
       <pubDate>Thu, 23 Mar 2017 03:33:58 +0800</pubDate>
-      <guid>/git/2017032303/</guid>
+      <guid>/blog/git/2017032303/</guid>
       <description>&lt;p&gt;git 將文件轉移位置&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;git mv 2017032003.md csharp&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;

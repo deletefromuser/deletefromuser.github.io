@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HA</title>
-    <link>/</link>
+    <link>/blog/</link>
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Jul 2022 16:00:00 +0800</lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>virtualbox 虚拟机硬盘扩容</title>
-      <link>/problem/2022070401/</link>
+      <link>/blog/problem/2022070401/</link>
       <pubDate>Mon, 04 Jul 2022 16:00:00 +0800</pubDate>
-      <guid>/problem/2022070401/</guid>
+      <guid>/blog/problem/2022070401/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;click File &amp;gt; Virtual Media Manager in the main VirtualBox window&lt;/li&gt;
 &lt;li&gt;Select a virtual hard disk in the list and use the “Size” slider at the bottom of the window to change its size. Click “Apply” when you’re done&lt;/li&gt;
@@ -28,9 +28,9 @@
     
     <item>
       <title>测试Google Cloud Translation API v2</title>
-      <link>/cloud/20220703/</link>
+      <link>/blog/cloud/20220703/</link>
       <pubDate>Sun, 03 Jul 2022 10:33:00 +0800</pubDate>
-      <guid>/cloud/20220703/</guid>
+      <guid>/blog/cloud/20220703/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;事先申请api key，免费额度足够用了(每月50w字符)&lt;/li&gt;
 &lt;li&gt;curl测试&lt;/li&gt;
@@ -55,9 +55,9 @@
     
     <item>
       <title>将所有文件夹的内容分别打包到同名的zip文件内</title>
-      <link>/bash/2021022801/</link>
+      <link>/blog/bash/2021022801/</link>
       <pubDate>Sun, 28 Feb 2021 21:02:00 +0800</pubDate>
-      <guid>/bash/2021022801/</guid>
+      <guid>/blog/bash/2021022801/</guid>
       <description>&lt;p&gt;下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件&lt;/p&gt;
 &lt;p&gt;以前还写了个sh好像，没想到一行就能搞定&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;for dir in */; do ( cd &amp;quot;$dir&amp;quot; &amp;amp;&amp;amp; zip -r ../&amp;quot;${dir%/}&amp;quot;.zip . ) done&lt;/code&gt;&lt;/p&gt;
@@ -68,9 +68,9 @@
     
     <item>
       <title>tomcat安装&amp;let&#39;s encrypt配置</title>
-      <link>/web/20190620/</link>
+      <link>/blog/web/20190620/</link>
       <pubDate>Thu, 20 Jun 2019 01:33:58 +0800</pubDate>
-      <guid>/web/20190620/</guid>
+      <guid>/blog/web/20190620/</guid>
       <description>&lt;p&gt;tomcat安装&amp;amp;let&amp;rsquo;s encrypt配置&lt;/p&gt;
 &lt;p&gt;###安装java&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cd /home
@@ -194,9 +194,9 @@ service tomcat restart
     
     <item>
       <title>eclipse中一键全部展开目录树</title>
-      <link>/article/20190120/</link>
+      <link>/blog/article/20190120/</link>
       <pubDate>Sun, 20 Jan 2019 01:33:58 +0800</pubDate>
-      <guid>/article/20190120/</guid>
+      <guid>/blog/article/20190120/</guid>
       <description>&lt;h1 id=&#34;eclipse中一键全部展开目录树&#34;&gt;eclipse中一键全部展开目录树&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;在package explorer中使用&lt;code&gt;*&lt;/code&gt;能展开全部的目录树&lt;/li&gt;
@@ -218,9 +218,9 @@ service tomcat restart
     
     <item>
       <title>使用thymeleaf和spring security提供的csrf方法</title>
-      <link>/article/20190113/</link>
+      <link>/blog/article/20190113/</link>
       <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
-      <guid>/article/20190113/</guid>
+      <guid>/blog/article/20190113/</guid>
       <description>&lt;h3 id=&#34;使用thymeleaf和spring-security提供的csrf方法&#34;&gt;使用thymeleaf和spring security提供的csrf方法&lt;/h3&gt;
 &lt;p&gt;只需要在html内的form在设置action时使用thymeleaf属性th:action即可&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;th:action&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@{login}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt;&amp;gt;
@@ -391,9 +391,9 @@ service tomcat restart
     
     <item>
       <title>windows修改右鍵“發送到”菜單&amp;如何快速打開SendTo文件夾</title>
-      <link>/problem/2017082701/</link>
+      <link>/blog/problem/2017082701/</link>
       <pubDate>Sun, 27 Aug 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017082701/</guid>
+      <guid>/blog/problem/2017082701/</guid>
       <description>&lt;p&gt;windows修改右鍵“發送到”菜單&amp;amp;如何快速打開SendTo文件夾&lt;/p&gt;
 &lt;h3 id=&#34;右鍵發送到所在的文件夾&#34;&gt;右鍵“發送到”所在的文件夾&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;C:\Users\UserName\AppData\Roaming\Microsoft\Windows\SendTo&lt;/code&gt;&lt;/p&gt;
@@ -414,9 +414,9 @@ service tomcat restart
     
     <item>
       <title>VirtualBox主机虚拟机共享剪贴板设置之后没用的问题</title>
-      <link>/problem/2017061501/</link>
+      <link>/blog/problem/2017061501/</link>
       <pubDate>Thu, 15 Jun 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017061501/</guid>
+      <guid>/blog/problem/2017061501/</guid>
       <description>&lt;p&gt;VirtualBox主机虚拟机共享剪贴板设置之后没用的问题&lt;/p&gt;
 &lt;p&gt;在设置中启用共享剪贴板之后，还要虚拟机本身安装增强功能之后才可以使用。&lt;/p&gt;
 &lt;p&gt;具体方法为：&lt;/p&gt;
@@ -439,9 +439,9 @@ service tomcat restart
     
     <item>
       <title>Java 将对象序列化为字符串 读取字符串反序列化为对象</title>
-      <link>/java/2017051901/</link>
+      <link>/blog/java/2017051901/</link>
       <pubDate>Fri, 19 May 2017 01:33:58 +0800</pubDate>
-      <guid>/java/2017051901/</guid>
+      <guid>/blog/java/2017051901/</guid>
       <description>&lt;p&gt;Java 将对象序列化为字符串 读取字符串反序列化为对象&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.Serializable&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
 
@@ -508,9 +508,9 @@ service tomcat restart
     
     <item>
       <title>判断日期是否是工作日(sqlserver)，判断一个月中有多少工作日(C#)</title>
-      <link>/sql/2017042601/</link>
+      <link>/blog/sql/2017042601/</link>
       <pubDate>Wed, 26 Apr 2017 01:33:58 +0800</pubDate>
-      <guid>/sql/2017042601/</guid>
+      <guid>/blog/sql/2017042601/</guid>
       <description>&lt;p&gt;判断日期是否是工作日(sqlserver)，判断一个月中有多少工作日(C#)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;print (datepart(weekday, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2017-04-24&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
 print (datepart(weekday, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2017-04-26&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
@@ -533,9 +533,9 @@ print (datepart(weekday, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2017
     
     <item>
       <title>让你的每一天更有意义的十种方法</title>
-      <link>/chickensoup/2017041101/</link>
+      <link>/blog/chickensoup/2017041101/</link>
       <pubDate>Tue, 11 Apr 2017 01:33:58 +0800</pubDate>
-      <guid>/chickensoup/2017041101/</guid>
+      <guid>/blog/chickensoup/2017041101/</guid>
       <description>&lt;h3 id=&#34;让你的每一天更有意义的十种方法&#34;&gt;让你的每一天更有意义的十种方法&lt;/h3&gt;
 &lt;p&gt;by Dan Pedersen&lt;/p&gt;
 &lt;ul&gt;
@@ -556,9 +556,9 @@ print (datepart(weekday, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2017
     
     <item>
       <title>C#重命名文件夹下的文件</title>
-      <link>/csharp/2017041001/</link>
+      <link>/blog/csharp/2017041001/</link>
       <pubDate>Mon, 10 Apr 2017 01:33:58 +0800</pubDate>
-      <guid>/csharp/2017041001/</guid>
+      <guid>/blog/csharp/2017041001/</guid>
       <description>&lt;p&gt;C#重命名文件夹下的文件&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; files = System.IO.Directory.EnumerateFiles(desPath);
             &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(formatStr.Length == &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) {
@@ -668,9 +668,9 @@ print (datepart(weekday, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2017
     
     <item>
       <title>sqlserver 修改主键约束</title>
-      <link>/sql/2017040501/</link>
+      <link>/blog/sql/2017040501/</link>
       <pubDate>Wed, 05 Apr 2017 01:33:58 +0800</pubDate>
-      <guid>/sql/2017040501/</guid>
+      <guid>/blog/sql/2017040501/</guid>
       <description>&lt;p&gt;sqlserver 修改主键约束&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;sp_help book
 
@@ -694,9 +694,9 @@ id &lt;span style=&#34;color:#66d9ef&#34;&gt;asc&lt;/span&gt;
     
     <item>
       <title>win10中去掉资源管理器的OneDrive项目&amp;隐藏工具栏</title>
-      <link>/problem/2017040101/</link>
+      <link>/blog/problem/2017040101/</link>
       <pubDate>Sat, 01 Apr 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017040101/</guid>
+      <guid>/blog/problem/2017040101/</guid>
       <description>&lt;p&gt;win10中去掉资源管理器的OneDrive项目\隐藏工具栏&lt;/p&gt;
 &lt;p&gt;打开注册表编辑器，修改&lt;code&gt;HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}\System.IsPinnedToNameSpaceTree&lt;/code&gt;为0&lt;/p&gt;
 &lt;p&gt;默认资源管理器工具栏都是点到对应的菜单选项才出来的，不知道为什么突然固定在那不会自动隐藏了。&lt;/p&gt;
@@ -708,9 +708,9 @@ id &lt;span style=&#34;color:#66d9ef&#34;&gt;asc&lt;/span&gt;
     
     <item>
       <title>在C#项目中使用sqlite</title>
-      <link>/csharp/2017033101/</link>
+      <link>/blog/csharp/2017033101/</link>
       <pubDate>Fri, 31 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/csharp/2017033101/</guid>
+      <guid>/blog/csharp/2017033101/</guid>
       <description>&lt;p&gt;在C#项目中使用sqlite&lt;/p&gt;
 &lt;h3 id=&#34;引入文件&#34;&gt;引入文件&lt;/h3&gt;
 &lt;p&gt;从官网下载了几个dll文件都有问题之后，最终放弃，使用VS自带的NuGet包管理工具，搜索安装即可，没有杂七杂八的问题&lt;/p&gt;
@@ -767,9 +767,9 @@ SharpLearn.Program.ShowTable(tb);
     
     <item>
       <title>sqlserver 事务简单使用</title>
-      <link>/sql/2017032901/</link>
+      <link>/blog/sql/2017032901/</link>
       <pubDate>Wed, 29 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/sql/2017032901/</guid>
+      <guid>/blog/sql/2017032901/</guid>
       <description>&lt;p&gt;sqlserver 事务简单使用&lt;/p&gt;
 &lt;p&gt;今天第一次在工作中用到事务，在找一个下数量被条件卡住的错误时，是先更新一个表中的数据，在检查数量有没有小于0的，有就要报错。追踪到语句后，只用最后一句查询卡住的语句查询发现正常，不存在问题。经理提醒才发现是先更新再检查，只查最后一句是查的没更新之前的，不是报错时的状态。&lt;/p&gt;
 &lt;p&gt;这时候就用到事务了，想模拟错误时的情况又不想把数据导到临时表里，用完再倒回去，太麻烦。使用事务，更新之前开启事务，更新之后查询表状态，从而找到原因。(上面错误的原因就是更新完之后库存数量变为负值了)&lt;/p&gt;
@@ -817,9 +817,9 @@ SharpLearn.Program.ShowTable(tb);
     
     <item>
       <title>使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code</title>
-      <link>/problem/2017032603/</link>
+      <link>/blog/problem/2017032603/</link>
       <pubDate>Sun, 26 Mar 2017 03:33:58 +0800</pubDate>
-      <guid>/problem/2017032603/</guid>
+      <guid>/blog/problem/2017032603/</guid>
       <description>&lt;p&gt;使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code&lt;/p&gt;
 &lt;p&gt;在Android Studio中加了一个依赖之后，编译出错，解决办法是在项目的属性中设置 sourceCompatibility 和 targetCompatibility 为1.7&lt;/p&gt;
 &lt;p&gt;同时在build.gradle中添加jackOptions&lt;/p&gt;
@@ -848,9 +848,9 @@ SharpLearn.Program.ShowTable(tb);
     
     <item>
       <title>Android连接电脑新增文件无法显示的问题</title>
-      <link>/problem/2017032602/</link>
+      <link>/blog/problem/2017032602/</link>
       <pubDate>Sun, 26 Mar 2017 02:33:58 +0800</pubDate>
-      <guid>/problem/2017032602/</guid>
+      <guid>/blog/problem/2017032602/</guid>
       <description>&lt;p&gt;Android连接电脑新增文件无法显示的问题&lt;/p&gt;
 &lt;p&gt;在调试app时，创建文件，在手机上可以看到文件新建成功，但是在电脑上看不到文件。这个bug不知道为什么好几年都不修复。&lt;/p&gt;
 &lt;p&gt;解决办法是在新增文件后&lt;/p&gt;
@@ -872,9 +872,9 @@ SharpLearn.Program.ShowTable(tb);
     
     <item>
       <title>Android Studio 函数描述弹出很慢的问题</title>
-      <link>/problem/2017032601/</link>
+      <link>/blog/problem/2017032601/</link>
       <pubDate>Sun, 26 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017032601/</guid>
+      <guid>/blog/problem/2017032601/</guid>
       <description>&lt;p&gt;Android Studio 函数描述弹出很慢的问题&lt;/p&gt;
 &lt;p&gt;找到版本对应的目录，将在线查询替换为本地查询，需要在SDKmanager中先下载SDK文档&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;.AndroidStudio2.2\config\options\jdk.table.xml
@@ -895,9 +895,9 @@ file://C:/DevelopTool/Android/sdk/docs/reference/
     
     <item>
       <title>Chrome Keep扩展运行出错的问题解决</title>
-      <link>/problem/2017032501/</link>
+      <link>/blog/problem/2017032501/</link>
       <pubDate>Sat, 25 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017032501/</guid>
+      <guid>/blog/problem/2017032501/</guid>
       <description>&lt;p&gt;Chrome Keep扩展运行出错的问题解决&lt;/p&gt;
 &lt;p&gt;主要问题还是扩展连接的网址被墙的原因，将其加入代理即可&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;*.googleapis.com
@@ -915,9 +915,9 @@ file://C:/DevelopTool/Android/sdk/docs/reference/
     
     <item>
       <title>git 將文件轉移位置</title>
-      <link>/git/2017032303/</link>
+      <link>/blog/git/2017032303/</link>
       <pubDate>Thu, 23 Mar 2017 03:33:58 +0800</pubDate>
-      <guid>/git/2017032303/</guid>
+      <guid>/blog/git/2017032303/</guid>
       <description>&lt;p&gt;git 將文件轉移位置&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;git mv 2017032003.md csharp&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
@@ -929,9 +929,9 @@ file://C:/DevelopTool/Android/sdk/docs/reference/
     
     <item>
       <title>C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋</title>
-      <link>/csharp/2017032302/</link>
+      <link>/blog/csharp/2017032302/</link>
       <pubDate>Thu, 23 Mar 2017 02:33:58 +0800</pubDate>
-      <guid>/csharp/2017032302/</guid>
+      <guid>/blog/csharp/2017032302/</guid>
       <description>&lt;p&gt;C# 對一個類進行方法上的擴展 &amp;amp; 為方法添加註釋&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;StringExtension&lt;/span&gt; {
         &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;
@@ -960,9 +960,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>C#獲取窗體寬度、獲取兩個日期的時間差</title>
-      <link>/csharp/2017032201/</link>
+      <link>/blog/csharp/2017032201/</link>
       <pubDate>Wed, 22 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/csharp/2017032201/</guid>
+      <guid>/blog/csharp/2017032201/</guid>
       <description>&lt;p&gt;C#獲取窗體寬度、獲取兩個日期的時間差&lt;/p&gt;
 &lt;h4 id=&#34;在窗體改變時改變控件的寬度&#34;&gt;在窗體改變時改變控件的寬度&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; FormTemp_Resize(&lt;span style=&#34;color:#66d9ef&#34;&gt;object&lt;/span&gt; sender, EventArgs e) {
@@ -1018,9 +1018,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>C#判斷DataColumn的字段類型</title>
-      <link>/csharp/2017032101/</link>
+      <link>/blog/csharp/2017032101/</link>
       <pubDate>Tue, 21 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/csharp/2017032101/</guid>
+      <guid>/blog/csharp/2017032101/</guid>
       <description>&lt;p&gt;C#判斷DataColumn的字段類型&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;今天做的一個要把表格型數據導入一個 DataTable 中，讀取都是字符串，table 中有字段是數值類型，讀取時Int32也當作Double解析，因為導入字符串可能為空，所以需要在導入時當前列是否是數值列，如果是進行 Double.TryParse 操作，解析失敗的賦值為0&lt;/p&gt;
@@ -1052,9 +1052,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>聽說Linq</title>
-      <link>/csharp/2017032003/</link>
+      <link>/blog/csharp/2017032003/</link>
       <pubDate>Mon, 20 Mar 2017 03:33:58 +0800</pubDate>
-      <guid>/csharp/2017032003/</guid>
+      <guid>/blog/csharp/2017032003/</guid>
       <description>&lt;p&gt;聽說Linq&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; System.Linq;
 ...
@@ -1080,9 +1080,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>Visual Studio使用過程中的問題</title>
-      <link>/problem/2017032002/</link>
+      <link>/blog/problem/2017032002/</link>
       <pubDate>Mon, 20 Mar 2017 02:33:58 +0800</pubDate>
-      <guid>/problem/2017032002/</guid>
+      <guid>/blog/problem/2017032002/</guid>
       <description>&lt;p&gt;Visual Studio使用過程中的問題&lt;/p&gt;
 &lt;h4 id=&#34;格式化快捷鍵及樣式&#34;&gt;格式化快捷鍵及樣式&lt;/h4&gt;
 &lt;p&gt;快捷鍵為&lt;code&gt;Ctrl+K-&amp;gt;Ctrl+D&lt;/code&gt;&lt;/p&gt;
@@ -1127,9 +1127,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>Chrome谷歌翻譯擴展沒有網絡連接的問題</title>
-      <link>/problem/2017032001/</link>
+      <link>/blog/problem/2017032001/</link>
       <pubDate>Mon, 20 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017032001/</guid>
+      <guid>/blog/problem/2017032001/</guid>
       <description>&lt;p&gt;Chrome谷歌翻譯擴展沒有網絡連接的問題&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;提取翻译时出错，请检查网络连接。&lt;/p&gt;
@@ -1140,9 +1140,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>JSONP跨域獲取JSON數據</title>
-      <link>/web/2017031901/</link>
+      <link>/blog/web/2017031901/</link>
       <pubDate>Sun, 19 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/web/2017031901/</guid>
+      <guid>/blog/web/2017031901/</guid>
       <description>&lt;p&gt;JSONP跨域獲取JSON數據&lt;/p&gt;
 &lt;p&gt;客戶端請求數據&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!doctype html&amp;gt;&lt;/span&gt;
@@ -1263,9 +1263,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>Tomcat配置問題匯總</title>
-      <link>/problem/2017031902/</link>
+      <link>/blog/problem/2017031902/</link>
       <pubDate>Sun, 19 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017031902/</guid>
+      <guid>/blog/problem/2017031902/</guid>
       <description>&lt;p&gt;Tomcat配置問題匯總&lt;/p&gt;
 &lt;h4 id=&#34;解壓後點擊startup運行閃退&#34;&gt;解壓後點擊startup運行閃退&lt;/h4&gt;
 &lt;p&gt;原因可能是沒有配置環境變量，JAVA_HOME，JRE_HOME，CLASSPATH幾個，不想配的話在catalina.bat裡手動設置應該也是可以的，我設置了但是還是不行，但是在eclipse裡面可以運行，於是就沒有深究&lt;/p&gt;
@@ -1321,9 +1321,9 @@ b. 修改conf/context.xml，如下：&lt;/p&gt;
     
     <item>
       <title>使用Android Studio中遇到的錯誤</title>
-      <link>/problem/2017031602/</link>
+      <link>/blog/problem/2017031602/</link>
       <pubDate>Thu, 16 Mar 2017 02:33:58 +0800</pubDate>
-      <guid>/problem/2017031602/</guid>
+      <guid>/blog/problem/2017031602/</guid>
       <description>&lt;p&gt;使用Android Studio中遇到的錯誤&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Error:Failed to open zip file.
 Gradle&#39;s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.)
@@ -1344,9 +1344,9 @@ https://stackoverflow.com/questions/42652980/errorfailed-to-open-zip-file-gradle
     
     <item>
       <title>文件Hash校驗Hash軟件</title>
-      <link>/problem/2017031601/</link>
+      <link>/blog/problem/2017031601/</link>
       <pubDate>Thu, 16 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017031601/</guid>
+      <guid>/blog/problem/2017031601/</guid>
       <description>&lt;p&gt;文件Hash校驗Hash軟件&lt;/p&gt;
 &lt;p&gt;下了個eclipse的安裝包，看了下下載鏈接是http的，於是打算校驗一下hash值，沒想到官網上只給了一個SHA512的值，裝的7Zip只支持到SHA256，於是下了幾個hash校驗軟件。&lt;/p&gt;
 &lt;p&gt;本來打算下以前用過的hashcalc，不過好像不是開源軟件，而且上次下載的遊戲安裝包校驗出錯，文件拖進去點擊校驗之後程序就卡死了。就上wiki上找開源的而且最近有更新的校驗軟件，找了幾個試用了一下。&lt;/p&gt;
@@ -1376,9 +1376,9 @@ QuickHash:
     
     <item>
       <title>在C#和sqlserver中獲取字符串的真實大小</title>
-      <link>/csharp/2017031402/</link>
+      <link>/blog/csharp/2017031402/</link>
       <pubDate>Tue, 14 Mar 2017 02:33:58 +0800</pubDate>
-      <guid>/csharp/2017031402/</guid>
+      <guid>/blog/csharp/2017031402/</guid>
       <description>&lt;p&gt;在C#和sqlserver中獲取字符串的真實大小(要睡覺了沒驗證)&lt;/p&gt;
 &lt;p&gt;C#&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; len1 = System.Text.Encoding.Default.GetBytes(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aaa&amp;#34;&lt;/span&gt;).Length; &lt;span style=&#34;color:#75715e&#34;&gt;//结果为 3
@@ -1393,9 +1393,9 @@ QuickHash:
     
     <item>
       <title>如何成為一個快樂的人</title>
-      <link>/article/2017031401/</link>
+      <link>/blog/article/2017031401/</link>
       <pubDate>Tue, 14 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/article/2017031401/</guid>
+      <guid>/blog/article/2017031401/</guid>
       <description>&lt;p&gt;[節選翻譯]如何成為一個快樂的人(11種方法)&lt;/p&gt;
 &lt;h3 id=&#34;1不要太過在意幾乎任何事情&#34;&gt;1.不要太過在意(幾乎任何事情)&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -1491,9 +1491,9 @@ QuickHash:
     
     <item>
       <title>編程代碼風格相關文章</title>
-      <link>/article/2017031203/</link>
+      <link>/blog/article/2017031203/</link>
       <pubDate>Sun, 12 Mar 2017 12:03:58 +0800</pubDate>
-      <guid>/article/2017031203/</guid>
+      <guid>/blog/article/2017031203/</guid>
       <description>&lt;p&gt;編程代碼風格相關文章&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.hawstein.com/posts/google-java-style.html&#34;&gt;Google Java编程风格指南&lt;/a&gt;&lt;/li&gt;
@@ -1504,9 +1504,9 @@ QuickHash:
     
     <item>
       <title>使用gcloud source克隆代碼出錯的問題</title>
-      <link>/problem/2017031202/</link>
+      <link>/blog/problem/2017031202/</link>
       <pubDate>Sun, 12 Mar 2017 02:33:58 +0800</pubDate>
-      <guid>/problem/2017031202/</guid>
+      <guid>/blog/problem/2017031202/</guid>
       <description>&lt;p&gt;使用gcloud source克隆代碼出錯的問題&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;gcloud source repos clone java-gae-quickstart --project=mytest-161202&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;在Google Cloud Platform中創建好代碼庫，並且在本機安裝好Google Cloud SDK之後，使用上面的語句克隆代碼庫出錯&lt;/p&gt;
@@ -1544,9 +1544,9 @@ gcloud config set proxy/type http
     
     <item>
       <title>MS-Windows下Emacs显示中文卡頓</title>
-      <link>/problem/2017031201/</link>
+      <link>/blog/problem/2017031201/</link>
       <pubDate>Sun, 12 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017031201/</guid>
+      <guid>/blog/problem/2017031201/</guid>
       <description>&lt;p&gt;MS-Windows下Emacs显示中文卡頓&lt;/p&gt;
 &lt;p&gt;emacs顯示中文有bug，更換一下默認字體就好了
 Options-&amp;gt;Set Default Font&lt;/p&gt;
@@ -1563,9 +1563,9 @@ Options-&amp;gt;Set Default Font&lt;/p&gt;
     
     <item>
       <title>解壓大文件提示存儲空間不足</title>
-      <link>/problem/2017030901/</link>
+      <link>/blog/problem/2017030901/</link>
       <pubDate>Thu, 09 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017030901/</guid>
+      <guid>/blog/problem/2017030901/</guid>
       <description>&lt;p&gt;解壓大文件提示存儲空間不足&lt;/p&gt;
 &lt;p&gt;下載一個8G大的文件，解壓的時候提示存儲空間不足，一看E盤明明還有20G空間啊，試試解壓到D盤，還是不行，最後不一下全部解壓，把裡面的文件一個一個解壓，這時候沒問題了。這時候終於想到，可能是C盤空間不足的原因(不到7G的剩餘空間)，解壓時會把臨時文件放到C盤，再從臨時文件轉移到目標位置。&lt;/p&gt;
 &lt;p&gt;所以說C盤留足空間有時候還是必要的&lt;/p&gt;
@@ -1574,9 +1574,9 @@ Options-&amp;gt;Set Default Font&lt;/p&gt;
     
     <item>
       <title>windows遠程桌面設置全屏快捷鍵</title>
-      <link>/problem/2017030801/</link>
+      <link>/blog/problem/2017030801/</link>
       <pubDate>Wed, 08 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017030801/</guid>
+      <guid>/blog/problem/2017030801/</guid>
       <description>&lt;p&gt;windows遠程桌面設置全屏快捷鍵&lt;/p&gt;
 &lt;p&gt;在開啟遠程桌面的時候，上方有一個連接欄顯示很煩人，可以通過設置去掉，但是去掉之後就需要使用快捷鍵來返回主機&lt;/p&gt;
 &lt;ul&gt;
@@ -1592,9 +1592,9 @@ Options-&amp;gt;Set Default Font&lt;/p&gt;
     
     <item>
       <title>Git的配置和初级使用</title>
-      <link>/problem/2017030402/</link>
+      <link>/blog/problem/2017030402/</link>
       <pubDate>Sat, 04 Mar 2017 02:33:58 +0800</pubDate>
-      <guid>/problem/2017030402/</guid>
+      <guid>/blog/problem/2017030402/</guid>
       <description>&lt;p&gt;Git的配置和初级使用&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;下载安装Git之后，先把仓库下载下来
@@ -1671,9 +1671,9 @@ git clone https://github.com/rsa2063/rsa2063.github.io --这个不太常用
     
     <item>
       <title>如何不翻墙访问维基百科</title>
-      <link>/problem/2017030401/</link>
+      <link>/blog/problem/2017030401/</link>
       <pubDate>Sat, 04 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017030401/</guid>
+      <guid>/blog/problem/2017030401/</guid>
       <description>&lt;p&gt;如何不翻墙访问维基百科&lt;/p&gt;
 &lt;p&gt;政府好像没有下定决心要封维基百科，只用了dns污染，其实不用翻墙就可以访问了。办法自然是换一个dns解析服务器，并且使用dnscrypt。&lt;/p&gt;
 &lt;ol&gt;
@@ -1693,9 +1693,9 @@ git clone https://github.com/rsa2063/rsa2063.github.io --这个不太常用
     
     <item>
       <title>在ubuntu中安裝shadowsocks，美化桌面gdm3</title>
-      <link>/problem/2017030201/</link>
+      <link>/blog/problem/2017030201/</link>
       <pubDate>Thu, 02 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017030201/</guid>
+      <guid>/blog/problem/2017030201/</guid>
       <description>&lt;p&gt;在ubuntu中安裝shadowsocks，美化桌面gdm3&lt;/p&gt;
 &lt;h4 id=&#34;安裝shadowsocks&#34;&gt;安裝shadowsocks&lt;/h4&gt;
 &lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:hzwhuang/ss-qt5
@@ -1724,9 +1724,9 @@ gdm3自帶gnome還是怎樣，反正這個可以用，前幾次只裝了gnome，
     
     <item>
       <title>C# using 用法</title>
-      <link>/csharp/2017030101/</link>
+      <link>/blog/csharp/2017030101/</link>
       <pubDate>Wed, 01 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/csharp/2017030101/</guid>
+      <guid>/blog/csharp/2017030101/</guid>
       <description>&lt;p&gt;C# using 用法&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;引入命名空間&lt;code&gt;using System.Threading;&lt;/code&gt;&lt;/li&gt;
@@ -1751,9 +1751,9 @@ gdm3自帶gnome還是怎樣，反正這個可以用，前幾次只裝了gnome，
     
     <item>
       <title>在windows中添加自啟動</title>
-      <link>/problem/2017022704/</link>
+      <link>/blog/problem/2017022704/</link>
       <pubDate>Mon, 27 Feb 2017 04:33:58 +0800</pubDate>
-      <guid>/problem/2017022704/</guid>
+      <guid>/blog/problem/2017022704/</guid>
       <description>&lt;p&gt;在windows中添加自啟動&lt;/p&gt;
 &lt;p&gt;在&lt;code&gt;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup&lt;/code&gt;目錄下放入要開機啟動程序的快捷方式即可&lt;/p&gt;
 </description>
@@ -1761,9 +1761,9 @@ gdm3自帶gnome還是怎樣，反正這個可以用，前幾次只裝了gnome，
     
     <item>
       <title>ubuntu系統安裝</title>
-      <link>/problem/2017022703/</link>
+      <link>/blog/problem/2017022703/</link>
       <pubDate>Mon, 27 Feb 2017 03:33:58 +0800</pubDate>
-      <guid>/problem/2017022703/</guid>
+      <guid>/blog/problem/2017022703/</guid>
       <description>&lt;p&gt;ubuntu系統安裝&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;下載系統鏡像並製作U盘啟動盤&lt;/li&gt;
@@ -1788,9 +1788,9 @@ gdm3自帶gnome還是怎樣，反正這個可以用，前幾次只裝了gnome，
     
     <item>
       <title>如何用U盘製作啟動盤</title>
-      <link>/problem/2017022702/</link>
+      <link>/blog/problem/2017022702/</link>
       <pubDate>Mon, 27 Feb 2017 02:33:58 +0800</pubDate>
-      <guid>/problem/2017022702/</guid>
+      <guid>/blog/problem/2017022702/</guid>
       <description>&lt;p&gt;如何用U盘製作啟動盤&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;備份U盘中的文件&lt;/li&gt;
@@ -1810,9 +1810,9 @@ gdm3自帶gnome還是怎樣，反正這個可以用，前幾次只裝了gnome，
     
     <item>
       <title>用網線連接連接兩台電腦進行文件傳輸</title>
-      <link>/problem/2017022701/</link>
+      <link>/blog/problem/2017022701/</link>
       <pubDate>Mon, 27 Feb 2017 01:33:58 +0800</pubDate>
-      <guid>/problem/2017022701/</guid>
+      <guid>/blog/problem/2017022701/</guid>
       <description>&lt;p&gt;用網線連接連接兩台電腦進行文件傳輸&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;修改兩台電腦的本地連接設置，ipv4設置到一個網段下&lt;/li&gt;
@@ -1853,9 +1853,9 @@ gdm3自帶gnome還是怎樣，反正這個可以用，前幾次只裝了gnome，
     
     <item>
       <title>sqlserver row_number() 函數的用法</title>
-      <link>/sql/2017022301/</link>
+      <link>/blog/sql/2017022301/</link>
       <pubDate>Thu, 23 Feb 2017 01:33:58 +0800</pubDate>
-      <guid>/sql/2017022301/</guid>
+      <guid>/blog/sql/2017022301/</guid>
       <description>&lt;p&gt;sqlserver row_number() 函數的用法&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; fruit_month_price;
 
@@ -1875,9 +1875,9 @@ gdm3自帶gnome還是怎樣，反正這個可以用，前幾次只裝了gnome，
     
     <item>
       <title>outer apply 和 left join 再辨析</title>
-      <link>/sql/2017022001/</link>
+      <link>/blog/sql/2017022001/</link>
       <pubDate>Mon, 20 Feb 2017 01:33:58 +0800</pubDate>
-      <guid>/sql/2017022001/</guid>
+      <guid>/blog/sql/2017022001/</guid>
       <description>&lt;p&gt;outer apply 和 left join 再辨析&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;過濾條件位置不同（看下面例子可以看出來）&lt;/li&gt;
@@ -1966,9 +1966,9 @@ id int &lt;span style=&#34;color:#66d9ef&#34;&gt;not&lt;/span&gt; &lt;span style
     
     <item>
       <title>java 函数返回多个函数值/引用類型認識</title>
-      <link>/java/2017021902/</link>
+      <link>/blog/java/2017021902/</link>
       <pubDate>Sun, 19 Feb 2017 02:33:58 +0800</pubDate>
-      <guid>/java/2017021902/</guid>
+      <guid>/blog/java/2017021902/</guid>
       <description>&lt;p&gt;java 函数返回多个函数值/引用類型認識&lt;/p&gt;
 &lt;p&gt;開宗明義，Java中函數的參數傳遞都是值傳遞，不存在引用傳遞。基本數據類型傳遞的是本身的值，而引用類型（對象，數組等）傳遞的同樣值，但是是引用的地址的值。同樣，我們知道值傳遞時，在函數內的改變不影響原參數的值，很好理解（在函數內將int類型自增，執行函數後，原值不會改變）。同樣，套用到引用類型參數時，在函數內引用的改變不影響原來對象的引用。也就是說，如果將傳入的對象重新賦值亦即引用改變，不會影響原來的對象。但是如果在函數內部，在不改變傳入參數的引用的同時，修改對象，這種情況下就修改了原對象，亦即實現了引用傳值。&lt;/p&gt;
 &lt;p&gt;比如，傳入Integer、String對象時，由於他們沒有改變自身的方法，當重新賦值時，自身的引用發生了改變，因此在函數內改變它們的值，也不會傳遞到函數外。但是如果你傳入一個int或者Object類型的數組（引用類型），並且在函數內改變數組內某一項的值，只要不在函數內重新新建數組（改變了引用），對數組的改變就會導致函數外的數組改變。當對數組某項重新賦值時，就算此時改變了這一個對象的引用，但是整個數組的引用並沒有因此改變。舉例（可能不對，應該是沒錯的）一個大小為2的對象數組，這個數組中三個引用，其中整個對象A的引用為a，其中A指向數組內兩個對象的引用B-&amp;gt;b和C-c，此時對B重新賦值B-&amp;gt;d，傳入對象A的引用仍然是a，這種情況下改變就會作用到數組本身了。&lt;/p&gt;
@@ -2080,9 +2080,9 @@ System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#3
     
     <item>
       <title>sql獲取水果價格表中每種水果在一年內的最高價格所在月份</title>
-      <link>/sql/2017021901/</link>
+      <link>/blog/sql/2017021901/</link>
       <pubDate>Sun, 19 Feb 2017 01:33:58 +0800</pubDate>
-      <guid>/sql/2017021901/</guid>
+      <guid>/blog/sql/2017021901/</guid>
       <description>&lt;p&gt;sql獲取水果價格表中每種水果在一年內的最高價格所在月份&lt;/p&gt;
 &lt;p&gt;mysql&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;fruit_month_price&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; (
@@ -2294,9 +2294,9 @@ while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;
     
     <item>
       <title>不加班但是也没有其他兴趣的问题</title>
-      <link>/nihongo/2017010901/</link>
+      <link>/blog/nihongo/2017010901/</link>
       <pubDate>Mon, 09 Jan 2017 01:33:58 +0800</pubDate>
-      <guid>/nihongo/2017010901/</guid>
+      <guid>/blog/nihongo/2017010901/</guid>
       <description>&lt;p&gt;不加班但是也没有其他兴趣的问题&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;从2月24日起，被企业称为「特别星期五」的措施会首次实行，具体内容为在每个月末的星期五将下班时间提前。但是讽刺的是就算下班时间提前，好像还是有很多「没有其他兴趣」的人很困惑「到底要干些什么好呢」。虽然提倡了很久「工作生活平衡」，但是究竟要怎么做才能在工作和私人生活两方都度过充实的生活呢？著有「低学历精英」、「99.9%的人际关系都是不需要的」等书，同时对公司职员的工作经历以及职业生涯问题很熟悉的IT相关公司MCJ的董事安井元康提出了「没有其他兴趣」问题的解决方法&lt;/p&gt;

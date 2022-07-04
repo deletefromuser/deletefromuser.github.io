@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Clouds on HA</title>
-    <link>/cloud/</link>
+    <link>/blog/cloud/</link>
     <description>Recent content in Clouds on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 03 Jul 2022 10:33:00 +0800</lastBuildDate>
-    <atom:link href="/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/blog/cloud/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>测试Google Cloud Translation API v2</title>
-      <link>/cloud/20220703/</link>
+      <link>/blog/cloud/20220703/</link>
       <pubDate>Sun, 03 Jul 2022 10:33:00 +0800</pubDate>
-      <guid>/cloud/20220703/</guid>
+      <guid>/blog/cloud/20220703/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;事先申请api key，免费额度足够用了(每月50w字符)&lt;/li&gt;
 &lt;li&gt;curl测试&lt;/li&gt;
