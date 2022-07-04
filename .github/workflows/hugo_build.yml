@@ -35,6 +35,9 @@ jobs:
         run: |
           set -e
           printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
+          cd public
+          git checkout main
+          cd ..
           hugo -t zen
           cd public
           git config user.name github-actions[bot]
@@ -54,4 +57,3 @@ jobs:
           echo "-------- log start ---------"
           git log -20
           echo "-------- log end ---------"
-          git push
