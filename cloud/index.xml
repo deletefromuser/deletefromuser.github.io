@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clouds on HA</title>
+    <link>/blog/cloud/</link>
+    <description>Recent content in Clouds on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Jul 2022 10:33:00 +0800</lastBuildDate>
+    <atom:link href="/blog/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>测试Google Cloud Translation API v2</title>
+      <link>/blog/cloud/20220703/</link>
+      <pubDate>Sun, 03 Jul 2022 10:33:00 +0800</pubDate>
+      <guid>/blog/cloud/20220703/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;事先申请api key，免费额度足够用了(每月50w字符)&lt;/li&gt;
+&lt;li&gt;curl测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -s -X POST -H &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Content-Type: application/json&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\ \
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --data &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;q&amp;#39;: &amp;#39;The Great Pyramid of Giza (also known as the Pyramid of Khufu or the
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        Pyramid of Cheops) is the oldest and largest of the three pyramids in
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        the Giza pyramid complex.&amp;#39;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;source&amp;#39;: &amp;#39;en&amp;#39;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;target&amp;#39;: &amp;#39;es&amp;#39;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;format&amp;#39;: &amp;#39;text&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://translation.googleapis.com/language/translate/v2?key=XXXXXXXXXXXXXXXXXXXXXXXXXX&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/62231731/google-cloud-translation-api-issue&#34;&gt;Google cloud translation API issue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/translate/docs/reference/rest/v2/translate&#34;&gt;Method: translate  |  Cloud Translation  |  Google Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/translate/pricing&#34;&gt;Pricing  |  Cloud Translation  |  Google Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

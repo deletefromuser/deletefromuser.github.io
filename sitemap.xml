@@ -3,12 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/bash/</loc>
-    <lastmod>2021-02-28T21:02:00+08:00</lastmod>
+    <loc>/blog/cloud/</loc>
+    <lastmod>2022-07-03T10:33:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/</loc>
+    <lastmod>2022-07-03T10:33:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/cloud/20220703/</loc>
+    <lastmod>2022-07-03T10:33:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/bash/</loc>
     <lastmod>2021-02-28T21:02:00+08:00</lastmod>
   </url>
   

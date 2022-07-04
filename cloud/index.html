@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Javas – HA</title>
-<link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/java/index.xml">
+<title>Clouds – HA</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/cloud/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2017-05-19T01:33:58+0800">
-<meta name="modified" content="2017-05-19T01:33:58+0800">
+<meta name="created" content="2022-07-03T10:33:00+0800">
+<meta name="modified" content="2022-07-03T10:33:00+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="Javas">
-<meta property="og:url" content="/blog/java/">
+<meta property="og:title" content="Clouds">
+<meta property="og:url" content="/blog/cloud/">
 <meta property="og:type" content="website">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/blog/java/">
+<link rel="canonical" href="/blog/cloud/">
 <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/blog/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
@@ -30,8 +30,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "url" : "/blog/java/",
-    "name": "Javas",
+    "url" : "/blog/cloud/",
+    "name": "Clouds",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -66,12 +66,12 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/cloud/">Clouds</a></li>
+<li><a href="/blog/cloud/" class="active" aria-current="page">Clouds</a></li>
 <li><a href="/blog/bash/">Bashes</a></li>
 <li><a href="/blog/web/">Webs</a></li>
 <li><a href="/blog/article/">Articles</a></li>
 <li><a href="/blog/problem/">Problems</a></li>
-<li><a href="/blog/java/" class="active" aria-current="page">Javas</a></li>
+<li><a href="/blog/java/">Javas</a></li>
 <li><a href="/blog/sql/">Sqls</a></li>
 <li><a href="/blog/chickensoup/">Chickensoups</a></li>
 <li><a href="/blog/csharp/">Csharps</a></li>
@@ -82,24 +82,14 @@
 
 
 <main class="main layout__main">
-<h1 class="title">Javas</h1>
-<article class="section-java list-view">
+<h1 class="title">Clouds</h1>
+<article class="section-cloud list-view">
 <header>
-<h2 class="title "><a href="/blog/java/2017051901/">Java 将对象序列化为字符串 读取字符串反序列化为对象</a></h2>
+<h2 class="title "><a href="/blog/cloud/20220703/">测试Google Cloud Translation API v2</a></h2>
 
 </header>
 <div class="content">
-Java 将对象序列化为字符串 读取字符串反序列化为对象 import java.io.Serializable; class test { public static String object2String(Object obj) { String objBody = null; ByteArrayOutputStream baops = null; ObjectOutputStream oos = null; try { baops = new ByteArrayOutputStream(); oos = new ObjectOutputStream(baops); oos.writeObject(obj); byte[] bytes = baops.toByteArray(); objBody = Base64.encodeToString(bytes, Base64.DEFAULT); } catch(IOException e) { Log.e(tag,
-</div>
-</article>
-
-<article class="section-java list-view">
-<header>
-<h2 class="title "><a href="/blog/java/2017021902/">java 函数返回多个函数值/引用類型認識</a></h2>
-
-</header>
-<div class="content">
-java 函数返回多个函数值/引用類型認識 開宗明義，Java中函數的參數傳遞都是值傳遞，不存在引用傳遞。基本數據類型傳遞的是本身的值，而引用類型（對
+事先申请api key，免费额度足够用了(每月50w字符) curl测试 curl -s -X POST -H &#34;Content-Type: application/json&#34; \ \ --data &#34;{ &#39;q&#39;: &#39;The Great Pyramid of Giza (also known as the Pyramid of Khufu or the Pyramid of Cheops) is the oldest and largest of the
 </div>
 </article>
 
