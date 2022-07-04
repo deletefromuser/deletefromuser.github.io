@@ -37,7 +37,7 @@ jobs:
           cd public
           git checkout main
           cd ..
-          hugo -t zen
+          hugo -t zen -b "/"
           cd public
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@github.com
