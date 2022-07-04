@@ -48,7 +48,7 @@ jobs:
           fi
           if ! git status | grep -q 'nothing to commit, working tree clean'; then
             git commit -m "$msg"
-            git checkout -B self-host
+            git checkout self-host
             cd ..
             hugo -t zen
             cd public
