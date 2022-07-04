@@ -45,7 +45,12 @@ jobs:
             msg="$*" 
           fi
           git commit -m "$msg"
-          git config -l
           git remote -v
           git status
+          echo "-------- log start ---------"
+          git log -20
+          echo "-------- log end ---------"
           git push origin main
+          echo "-------- log start ---------"
+          git log -20
+          echo "-------- log end ---------"
