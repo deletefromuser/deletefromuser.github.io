@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Csharps on HA</title>
-    <link>/blog/csharp/</link>
+    <link>/csharp/</link>
     <description>Recent content in Csharps on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 10 Apr 2017 01:33:58 +0800</lastBuildDate>
-    <atom:link href="/blog/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/csharp/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>C#重命名文件夹下的文件</title>
-      <link>/blog/csharp/2017041001/</link>
+      <link>/csharp/2017041001/</link>
       <pubDate>Mon, 10 Apr 2017 01:33:58 +0800</pubDate>
-      <guid>/blog/csharp/2017041001/</guid>
+      <guid>/csharp/2017041001/</guid>
       <description>&lt;p&gt;C#重命名文件夹下的文件&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; files = System.IO.Directory.EnumerateFiles(desPath);
             &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(formatStr.Length == &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) {
@@ -123,9 +123,9 @@
     
     <item>
       <title>在C#项目中使用sqlite</title>
-      <link>/blog/csharp/2017033101/</link>
+      <link>/csharp/2017033101/</link>
       <pubDate>Fri, 31 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/blog/csharp/2017033101/</guid>
+      <guid>/csharp/2017033101/</guid>
       <description>&lt;p&gt;在C#项目中使用sqlite&lt;/p&gt;
 &lt;h3 id=&#34;引入文件&#34;&gt;引入文件&lt;/h3&gt;
 &lt;p&gt;从官网下载了几个dll文件都有问题之后，最终放弃，使用VS自带的NuGet包管理工具，搜索安装即可，没有杂七杂八的问题&lt;/p&gt;
@@ -182,9 +182,9 @@ SharpLearn.Program.ShowTable(tb);
     
     <item>
       <title>C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋</title>
-      <link>/blog/csharp/2017032302/</link>
+      <link>/csharp/2017032302/</link>
       <pubDate>Thu, 23 Mar 2017 02:33:58 +0800</pubDate>
-      <guid>/blog/csharp/2017032302/</guid>
+      <guid>/csharp/2017032302/</guid>
       <description>&lt;p&gt;C# 對一個類進行方法上的擴展 &amp;amp; 為方法添加註釋&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;StringExtension&lt;/span&gt; {
         &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;
@@ -213,9 +213,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>C#獲取窗體寬度、獲取兩個日期的時間差</title>
-      <link>/blog/csharp/2017032201/</link>
+      <link>/csharp/2017032201/</link>
       <pubDate>Wed, 22 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/blog/csharp/2017032201/</guid>
+      <guid>/csharp/2017032201/</guid>
       <description>&lt;p&gt;C#獲取窗體寬度、獲取兩個日期的時間差&lt;/p&gt;
 &lt;h4 id=&#34;在窗體改變時改變控件的寬度&#34;&gt;在窗體改變時改變控件的寬度&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; FormTemp_Resize(&lt;span style=&#34;color:#66d9ef&#34;&gt;object&lt;/span&gt; sender, EventArgs e) {
@@ -271,9 +271,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>C#判斷DataColumn的字段類型</title>
-      <link>/blog/csharp/2017032101/</link>
+      <link>/csharp/2017032101/</link>
       <pubDate>Tue, 21 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/blog/csharp/2017032101/</guid>
+      <guid>/csharp/2017032101/</guid>
       <description>&lt;p&gt;C#判斷DataColumn的字段類型&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;今天做的一個要把表格型數據導入一個 DataTable 中，讀取都是字符串，table 中有字段是數值類型，讀取時Int32也當作Double解析，因為導入字符串可能為空，所以需要在導入時當前列是否是數值列，如果是進行 Double.TryParse 操作，解析失敗的賦值為0&lt;/p&gt;
@@ -305,9 +305,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>聽說Linq</title>
-      <link>/blog/csharp/2017032003/</link>
+      <link>/csharp/2017032003/</link>
       <pubDate>Mon, 20 Mar 2017 03:33:58 +0800</pubDate>
-      <guid>/blog/csharp/2017032003/</guid>
+      <guid>/csharp/2017032003/</guid>
       <description>&lt;p&gt;聽說Linq&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; System.Linq;
 ...
@@ -333,9 +333,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>在C#和sqlserver中獲取字符串的真實大小</title>
-      <link>/blog/csharp/2017031402/</link>
+      <link>/csharp/2017031402/</link>
       <pubDate>Tue, 14 Mar 2017 02:33:58 +0800</pubDate>
-      <guid>/blog/csharp/2017031402/</guid>
+      <guid>/csharp/2017031402/</guid>
       <description>&lt;p&gt;在C#和sqlserver中獲取字符串的真實大小(要睡覺了沒驗證)&lt;/p&gt;
 &lt;p&gt;C#&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; len1 = System.Text.Encoding.Default.GetBytes(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aaa&amp;#34;&lt;/span&gt;).Length; &lt;span style=&#34;color:#75715e&#34;&gt;//结果为 3
@@ -350,9 +350,9 @@ Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sel
     
     <item>
       <title>C# using 用法</title>
-      <link>/blog/csharp/2017030101/</link>
+      <link>/csharp/2017030101/</link>
       <pubDate>Wed, 01 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/blog/csharp/2017030101/</guid>
+      <guid>/csharp/2017030101/</guid>
       <description>&lt;p&gt;C# using 用法&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;引入命名空間&lt;code&gt;using System.Threading;&lt;/code&gt;&lt;/li&gt;

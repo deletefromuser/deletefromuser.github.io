@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javas on HA</title>
-    <link>/blog/java/</link>
+    <link>/java/</link>
     <description>Recent content in Javas on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 19 May 2017 01:33:58 +0800</lastBuildDate>
-    <atom:link href="/blog/java/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/java/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Java 将对象序列化为字符串 读取字符串反序列化为对象</title>
-      <link>/blog/java/2017051901/</link>
+      <link>/java/2017051901/</link>
       <pubDate>Fri, 19 May 2017 01:33:58 +0800</pubDate>
-      <guid>/blog/java/2017051901/</guid>
+      <guid>/java/2017051901/</guid>
       <description>&lt;p&gt;Java 将对象序列化为字符串 读取字符串反序列化为对象&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.Serializable&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
 
@@ -80,9 +80,9 @@
     
     <item>
       <title>java 函数返回多个函数值/引用類型認識</title>
-      <link>/blog/java/2017021902/</link>
+      <link>/java/2017021902/</link>
       <pubDate>Sun, 19 Feb 2017 02:33:58 +0800</pubDate>
-      <guid>/blog/java/2017021902/</guid>
+      <guid>/java/2017021902/</guid>
       <description>&lt;p&gt;java 函数返回多个函数值/引用類型認識&lt;/p&gt;
 &lt;p&gt;開宗明義，Java中函數的參數傳遞都是值傳遞，不存在引用傳遞。基本數據類型傳遞的是本身的值，而引用類型（對象，數組等）傳遞的同樣值，但是是引用的地址的值。同樣，我們知道值傳遞時，在函數內的改變不影響原參數的值，很好理解（在函數內將int類型自增，執行函數後，原值不會改變）。同樣，套用到引用類型參數時，在函數內引用的改變不影響原來對象的引用。也就是說，如果將傳入的對象重新賦值亦即引用改變，不會影響原來的對象。但是如果在函數內部，在不改變傳入參數的引用的同時，修改對象，這種情況下就修改了原對象，亦即實現了引用傳值。&lt;/p&gt;
 &lt;p&gt;比如，傳入Integer、String對象時，由於他們沒有改變自身的方法，當重新賦值時，自身的引用發生了改變，因此在函數內改變它們的值，也不會傳遞到函數外。但是如果你傳入一個int或者Object類型的數組（引用類型），並且在函數內改變數組內某一項的值，只要不在函數內重新新建數組（改變了引用），對數組的改變就會導致函數外的數組改變。當對數組某項重新賦值時，就算此時改變了這一個對象的引用，但是整個數組的引用並沒有因此改變。舉例（可能不對，應該是沒錯的）一個大小為2的對象數組，這個數組中三個引用，其中整個對象A的引用為a，其中A指向數組內兩個對象的引用B-&amp;gt;b和C-c，此時對B重新賦值B-&amp;gt;d，傳入對象A的引用仍然是a，這種情況下改變就會作用到數組本身了。&lt;/p&gt;
