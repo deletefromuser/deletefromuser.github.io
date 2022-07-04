@@ -33,14 +33,14 @@ jobs:
 
       - name: build hugo & commit & push
         run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@github.com
           printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
           cd public
           git checkout main
           cd ..
           hugo -t zen -b "/"
           cd public
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@github.com
           git add .
           msg="rebuilding site $(date)"
           if [ -n "$*" ]; then 
@@ -48,7 +48,13 @@ jobs:
           fi
           if ! git status | grep -q 'nothing to commit, working tree clean'; then
             git commit -m "$msg"
-            git push
+            git checkout -B self-host
+            cd ..
+            hugo -t zen
+            cd public
+            git add .
+            git commit -m "$msg"
+            git push --all
           fi
 
           
