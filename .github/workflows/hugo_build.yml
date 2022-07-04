@@ -50,7 +50,8 @@ jobs:
           echo "-------- log start ---------"
           git log -20
           echo "-------- log end ---------"
-          git push origin main
+          git push origin main -v
           echo "-------- log start ---------"
           git log -20
           echo "-------- log end ---------"
+          git push
