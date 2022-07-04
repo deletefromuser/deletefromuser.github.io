@@ -30,7 +30,7 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: "0.68.3"
-          
+
       - name: build hugo & commit & push
         run: |
           set -e
