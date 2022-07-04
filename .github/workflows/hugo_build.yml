@@ -33,7 +33,6 @@ jobs:
 
       - name: build hugo & commit & push
         run: |
-          set -e
           printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
           cd public
           git checkout main
@@ -48,12 +47,4 @@ jobs:
             msg="$*" 
           fi
           git commit -m "$msg"
-          git remote -v
-          git status
-          echo "-------- log start ---------"
-          git log -20
-          echo "-------- log end ---------"
-          git push origin main -v
-          echo "-------- log start ---------"
-          git log -20
-          echo "-------- log end ---------"
+          git push
