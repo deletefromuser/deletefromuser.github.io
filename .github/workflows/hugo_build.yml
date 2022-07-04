@@ -42,7 +42,7 @@ jobs:
           hugo -t zen -b "/"
           cd public
           git add .
-          msg="rebuilding site $(date)"
+          msg= "rebuilding site $(TZ='Asia/Shanghai' date '+%Y-%m-%dT%H:%M:%S+08:00')"
           if [ -n "$*" ]; then 
             msg="$*" 
           fi
