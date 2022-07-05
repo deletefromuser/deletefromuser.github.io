@@ -55,6 +55,7 @@ jobs:
             git add .
             git commit -m "$msg"
             git push --all
+            curl -s -o ${{ secrets.SELF_HOST_URL }}
           fi
 
           
