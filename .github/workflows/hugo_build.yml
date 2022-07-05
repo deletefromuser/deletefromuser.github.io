@@ -34,7 +34,7 @@ jobs:
       - name: build hugo & commit & push
         run: |
           git config --global user.name github-actions[bot]
-          git config --global user.email github-actions[bot]@github.com
+          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
           printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
           cd public
           git checkout main
