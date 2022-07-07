@@ -3,8 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/bash/</loc>
+    <lastmod>2022-07-07T16:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/bash/2022070701/</loc>
+    <lastmod>2022-07-07T16:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/</loc>
-    <lastmod>2022-07-04T16:00:00+08:00</lastmod>
+    <lastmod>2022-07-07T16:00:00+08:00</lastmod>
   </url>
   
   <url>
@@ -25,11 +35,6 @@
   <url>
     <loc>/cloud/20220703/</loc>
     <lastmod>2022-07-03T10:33:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/bash/</loc>
-    <lastmod>2021-02-28T21:02:00+08:00</lastmod>
   </url>
   
   <url>

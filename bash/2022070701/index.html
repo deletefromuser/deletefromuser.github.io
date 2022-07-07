@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>bash函数 &amp; user 代行 – HA</title>
+<meta name="description" content="bash函数 将函数追加写入~/.bashrc文件即可持久化，否则只在当前shell session内有效，关闭即无效  不要忘记加完需要source ~/.bashrc才会生效  function functionName { &amp;amp;lt;commands&amp;amp;gt; } 例子： function f1 { echo &amp;amp;#34;Hello …">
+<meta name="created" content="2022-07-07T16:00:00+0800">
+<meta name="modified" content="2022-07-07T16:00:00+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="bash函数 &amp; user 代行">
+<meta property="og:url" content="/bash/2022070701/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/bash/2022070701/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
+<link rel="stylesheet" href="/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "bash函数 \u0026 user 代行",
+    "datePublished": "2022-07-07T16:00:00+08:00",
+    "dateModified": "2022-07-07T16:00:00+08:00",
+    "url" : "/bash/2022070701/",
+    "description": "bash函数 将函数追加写入~/.bashrc文件即可持久化，否则只在当前shell session内有效，关闭即无效  不要忘记加完需要source ~/.bashrc才会生效  function functionName { \u0026amp;lt;commands\u0026amp;gt; } 例子： function f1 { echo \u0026amp;#34;Hello …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/bash/" class="active" aria-current="page">Bashes</a></li>
+<li><a href="/problem/">Problems</a></li>
+<li><a href="/cloud/">Clouds</a></li>
+<li><a href="/web/">Webs</a></li>
+<li><a href="/article/">Articles</a></li>
+<li><a href="/java/">Javas</a></li>
+<li><a href="/sql/">Sqls</a></li>
+<li><a href="/chickensoup/">Chickensoups</a></li>
+<li><a href="/csharp/">Csharps</a></li>
+<li><a href="/git/">Gits</a></li>
+<li><a href="/nihongo/">Nihongos</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-bash single-view">
+<header>
+<h1 class="title ">bash函数 &amp; user 代行</h1>
+</header>
+<div class="content">
+<h2 id="bash函数">bash函数</h2>
+<p>将函数追加写入<code>~/.bashrc</code>文件即可持久化，否则只在当前shell session内有效，关闭即无效</p>
+<blockquote>
+<p>不要忘记加完需要<code>source ~/.bashrc</code>才会生效</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> functionName <span style="color:#f92672">{</span>
+        &lt;commands&gt;
+<span style="color:#f92672">}</span>
+</code></pre></div><p>例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> f1 <span style="color:#f92672">{</span>
+        echo <span style="color:#e6db74">&#34;Hello I&#39;m function 1&#34;</span>
+        echo <span style="color:#e6db74">&#34;Bye!&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="linux下root用户指定user执行操作">linux下root用户指定user执行操作</h2>
+<p><code>sudo -H -u otheruser bash -c 'echo &quot;I am $USER, with uid $UID&quot;'</code></p>
+<blockquote>
+<p>-H 可选，使用<code>bash -c xxx</code>可执行多条命令，单个命令可直接跟user参数后面</p>
+</blockquote>
+<p><strong>reference</strong></p>
+<ol>
+<li><a href="https://phoenixnap.com/kb/bash-function">Bash Function &amp; How to Use It</a></li>
+<li><a href="https://askubuntu.com/questions/294736/run-a-shell-script-as-another-user-that-has-no-password">Run a shell script as another user that has no password</a></li>
+</ol>
+
+
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>

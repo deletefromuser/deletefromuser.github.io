@@ -6,8 +6,39 @@
     <description>Recent content in Bashes on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Feb 2021 21:02:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 07 Jul 2022 16:00:00 +0800</lastBuildDate>
     <atom:link href="/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>bash函数 &amp; user 代行</title>
+      <link>/bash/2022070701/</link>
+      <pubDate>Thu, 07 Jul 2022 16:00:00 +0800</pubDate>
+      <guid>/bash/2022070701/</guid>
+      <description>&lt;h2 id=&#34;bash函数&#34;&gt;bash函数&lt;/h2&gt;
+&lt;p&gt;将函数追加写入&lt;code&gt;~/.bashrc&lt;/code&gt;文件即可持久化，否则只在当前shell session内有效，关闭即无效&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不要忘记加完需要&lt;code&gt;source ~/.bashrc&lt;/code&gt;才会生效&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; functionName &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &amp;lt;commands&amp;gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; f1 &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello I&amp;#39;m function 1&amp;#34;&lt;/span&gt;
+        echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bye!&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;linux下root用户指定user执行操作&#34;&gt;linux下root用户指定user执行操作&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;sudo -H -u otheruser bash -c &#39;echo &amp;quot;I am $USER, with uid $UID&amp;quot;&#39;&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-H 可选，使用&lt;code&gt;bash -c xxx&lt;/code&gt;可执行多条命令，单个命令可直接跟user参数后面&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://phoenixnap.com/kb/bash-function&#34;&gt;Bash Function &amp;amp; How to Use It&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/294736/run-a-shell-script-as-another-user-that-has-no-password&#34;&gt;Run a shell script as another user that has no password&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>将所有文件夹的内容分别打包到同名的zip文件内</title>
