@@ -6,8 +6,27 @@
     <description>Recent content in Problems on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jul 2022 16:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 08 Jul 2022 10:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/problem/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>win10 开始菜单去掉web搜索结果</title>
+      <link>/blog/problem/2022070801/</link>
+      <pubDate>Fri, 08 Jul 2022 10:00:00 +0800</pubDate>
+      <guid>/blog/problem/2022070801/</guid>
+      <description>&lt;h2 id=&#34;针对windows-10-version-1909&#34;&gt;针对Windows 10 version 1909&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;打开注册表编辑器 &lt;code&gt;regedit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;进入 &lt;code&gt;计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search&lt;/code&gt; 目录&lt;/li&gt;
+&lt;li&gt;CortanaConsent 项目值改为0，没有则新建&lt;/li&gt;
+&lt;li&gt;新建 BingSearchEnabled 项目值改为0&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bennetrichter.de/en/tutorials/windows-10-disable-web-search/&#34;&gt;Windows 10 - Disable Web Search in Start Menu&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>virtualbox 虚拟机硬盘扩容</title>
