@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>C# using 用法 – HA</title>
-<meta name="description" content="C# using 用法  引入命名空間using System.Threading; 定義命名空間的別名using Thread = System.Threading; using(define class A,B;){use A;}的形式效果和java中帶資源的try語句很相似  using中聲明的對象必須實現IDisposable，且 …">
-<meta name="created" content="2017-03-01T01:33:58+0800">
-<meta name="modified" content="2017-03-01T01:33:58+0800">
+<title>win10 开始菜单去掉web搜索结果 – HA</title>
+<meta name="description" content="针对Windows 10 version 1909  打开注册表编辑器 regedit 进入 计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search 目录 CortanaConsent 项目值改为0，没有则新建 新建 BingSearchEnabled  …">
+<meta name="created" content="2022-07-08T10:00:00+0800">
+<meta name="modified" content="2022-07-08T10:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="C# using 用法">
-<meta property="og:url" content="/csharp/2017030101/">
+<meta property="og:title" content="win10 开始菜单去掉web搜索结果">
+<meta property="og:url" content="/problem/2022070801/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/csharp/2017030101/">
+<link rel="canonical" href="/problem/2022070801/">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "C# using 用法",
-    "datePublished": "2017-03-01T01:33:58+08:00",
-    "dateModified": "2017-03-01T01:33:58+08:00",
-    "url" : "/csharp/2017030101/",
-    "description": "C# using 用法  引入命名空間using System.Threading; 定義命名空間的別名using Thread = System.Threading; using(define class A,B;){use A;}的形式效果和java中帶資源的try語句很相似  using中聲明的對象必須實現IDisposable，且 …",
+    "headline": "win10 开始菜单去掉web搜索结果",
+    "datePublished": "2022-07-08T10:00:00+08:00",
+    "dateModified": "2022-07-08T10:00:00+08:00",
+    "url" : "/problem/2022070801/",
+    "description": "针对Windows 10 version 1909  打开注册表编辑器 regedit 进入 计算机\\HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search 目录 CortanaConsent 项目值改为0，没有则新建 新建 BingSearchEnabled  …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/"
@@ -68,7 +68,7 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/">Home</a></li>
-<li><a href="/problem/">Problems</a></li>
+<li><a href="/problem/" class="active" aria-current="page">Problems</a></li>
 <li><a href="/bash/">Bashes</a></li>
 <li><a href="/cloud/">Clouds</a></li>
 <li><a href="/web/">Webs</a></li>
@@ -76,7 +76,7 @@
 <li><a href="/java/">Javas</a></li>
 <li><a href="/sql/">Sqls</a></li>
 <li><a href="/chickensoup/">Chickensoups</a></li>
-<li><a href="/csharp/" class="active" aria-current="page">Csharps</a></li>
+<li><a href="/csharp/">Csharps</a></li>
 <li><a href="/git/">Gits</a></li>
 <li><a href="/nihongo/">Nihongos</a></li>
 </ul>
@@ -84,29 +84,21 @@
 
 
 <main class="main layout__main">
-<article class="section-csharp single-view">
+<article class="section-problem single-view">
 <header>
-<h1 class="title ">C# using 用法</h1>
+<h1 class="title ">win10 开始菜单去掉web搜索结果</h1>
 </header>
 <div class="content">
-<p>C# using 用法</p>
+<h2 id="针对windows-10-version-1909">针对Windows 10 version 1909</h2>
 <ol>
-<li>引入命名空間<code>using System.Threading;</code></li>
-<li>定義命名空間的別名<code>using Thread = System.Threading;</code></li>
-<li><code>using(define class A,B;){use A;}</code>的形式效果和java中帶資源的try語句很相似
-<ul>
-<li>using中聲明的對象必須實現IDisposable，且聲明多個對象時類型要一致(也可以直接用IDisposable接口對象來定義對象來規避)；而java中帶資源的try語句也類似，<code>try(define A,B){use A,B}catch(){]</code>中的對象也必須實現AutoCloseable或者Closeable接口，但是不要求類型一致</li>
-</ul>
-</li>
+<li>打开注册表编辑器 <code>regedit</code></li>
+<li>进入 <code>计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search</code> 目录</li>
+<li>CortanaConsent 项目值改为0，没有则新建</li>
+<li>新建 BingSearchEnabled 项目值改为0</li>
 </ol>
 <p><strong>reference</strong></p>
 <ol>
-<li><a href="http://blog.csdn.net/wanderocn/article/details/6659811">C#-using用法详解</a></li>
-<li><a href="https://www.cnblogs.com/prince1988/archive/2009/03/29/1424479.html">c# using 关键字的用法</a></li>
-<li><a href="http://www.csharp-examples.net/using/">C# Using Statement Examples</a></li>
-<li><a href="https://msdn.microsoft.com/zh-cn/library/yh598w02.aspx">using 语句（C# 参考）</a></li>
-<li><a href="http://blog.csdn.net/u012421846/article/details/46129237">带资源的try语句</a></li>
-<li>Java核心技術 11.2.4 帶資源的try語句</li>
+<li><a href="https://www.bennetrichter.de/en/tutorials/windows-10-disable-web-search/">Windows 10 - Disable Web Search in Start Menu</a></li>
 </ol>
 
 

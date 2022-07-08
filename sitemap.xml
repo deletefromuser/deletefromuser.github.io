@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/</loc>
+    <lastmod>2022-07-08T10:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/problem/</loc>
+    <lastmod>2022-07-08T10:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/problem/2022070801/</loc>
+    <lastmod>2022-07-08T10:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/bash/</loc>
     <lastmod>2022-07-07T16:00:00+08:00</lastmod>
   </url>
@@ -10,16 +25,6 @@
   <url>
     <loc>/bash/2022070701/</loc>
     <lastmod>2022-07-07T16:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2022-07-07T16:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/problem/</loc>
-    <lastmod>2022-07-04T16:00:00+08:00</lastmod>
   </url>
   
   <url>
