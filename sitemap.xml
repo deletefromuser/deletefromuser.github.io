@@ -3,27 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/</loc>
+    <lastmod>2022-07-11T17:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/web/</loc>
+    <lastmod>2022-07-11T17:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/web/2022071101/</loc>
+    <lastmod>2022-07-11T17:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/git/</loc>
     <lastmod>2022-07-10T17:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/</loc>
-    <lastmod>2022-07-10T17:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/web/</loc>
-    <lastmod>2022-07-10T17:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/git/2022071001/</loc>
-    <lastmod>2022-07-10T17:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/web/2022071101/</loc>
     <lastmod>2022-07-10T17:00:00+08:00</lastmod>
   </url>
   
