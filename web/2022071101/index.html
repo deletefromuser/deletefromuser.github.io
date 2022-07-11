@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>删除 git 远程仓库中忘记加入 .gitignore 的资源 – HA</title>
-<meta name="description" content=" git rm --cached remove_file add file to gitignore git add .gitignore git commit -m &amp;amp;quot;Excluding&amp;amp;quot;  reference  Git: How to remove file from index without deleting …">
+<title>引用cdn静态资源时添加哈希值验证防篡改 – HA</title>
+<meta name="description" content="例子： &amp;amp;lt;script src=&amp;amp;#34;https://example.com/example-framework.js&amp;amp;#34; integrity=&amp;amp;#34;sha384-oqVuAfXRKap7fdgcCY5uykM6&#43;R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&amp;amp;#34; …">
 <meta name="created" content="2022-07-10T17:00:00+0800">
 <meta name="modified" content="2022-07-10T17:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="删除 git 远程仓库中忘记加入 .gitignore 的资源">
-<meta property="og:url" content="/blog/git/2022071001/">
+<meta property="og:title" content="引用cdn静态资源时添加哈希值验证防篡改">
+<meta property="og:url" content="/blog/web/2022071101/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/blog/git/2022071001/">
+<link rel="canonical" href="/blog/web/2022071101/">
 <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/blog/css/styles.203e732c5f61011e9025d06034f611850df429e48ce7532103b43b9a18e86dd4.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "删除 git 远程仓库中忘记加入 .gitignore 的资源",
+    "headline": "引用cdn静态资源时添加哈希值验证防篡改",
     "datePublished": "2022-07-10T17:00:00+08:00",
     "dateModified": "2022-07-10T17:00:00+08:00",
-    "url" : "/blog/git/2022071001/",
-    "description": " git rm --cached remove_file add file to gitignore git add .gitignore git commit -m \u0026amp;quot;Excluding\u0026amp;quot;  reference  Git: How to remove file from index without deleting …",
+    "url" : "/blog/web/2022071101/",
+    "description": "例子： \u0026amp;lt;script src=\u0026amp;#34;https://example.com/example-framework.js\u0026amp;#34; integrity=\u0026amp;#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC\u0026amp;#34; …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -68,8 +68,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
-<li><a href="/blog/git/" class="active" aria-current="page">Gits</a></li>
-<li><a href="/blog/web/">Webs</a></li>
+<li><a href="/blog/git/">Gits</a></li>
+<li><a href="/blog/web/" class="active" aria-current="page">Webs</a></li>
 <li><a href="/blog/problem/">Problems</a></li>
 <li><a href="/blog/bash/">Bashes</a></li>
 <li><a href="/blog/cloud/">Clouds</a></li>
@@ -84,20 +84,20 @@
 
 
 <main class="main layout__main">
-<article class="section-git single-view">
+<article class="section-web single-view">
 <header>
-<h1 class="title ">删除 git 远程仓库中忘记加入 .gitignore 的资源</h1>
+<h1 class="title ">引用cdn静态资源时添加哈希值验证防篡改</h1>
 </header>
 <div class="content">
+<p>例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://example.com/example-framework.js&#34;</span>
+        <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&#34;</span>
+        <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</code></pre></div><h3 id="生成-sri-哈希的工具">生成 SRI 哈希的工具</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">shasum -b -a <span style="color:#ae81ff">384</span> example-framework.js | xxd -r -p | base64
+</code></pre></div><p><strong>reference</strong></p>
 <ol>
-<li><code>git rm --cached remove_file</code></li>
-<li><code>add file to gitignore</code></li>
-<li><code>git add .gitignore</code></li>
-<li><code>git commit -m &quot;Excluding&quot;</code></li>
-</ol>
-<p><strong>reference</strong></p>
-<ol>
-<li><a href="https://stackoverflow.com/a/42141656/19120213">Git: How to remove file from index without deleting files from any repository</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity">Subresource Integrity - Web 安全 | MDN</a></li>
 </ol>
 
 
