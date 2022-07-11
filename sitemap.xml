@@ -13,7 +13,17 @@
   </url>
   
   <url>
+    <loc>/web/</loc>
+    <lastmod>2022-07-10T17:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/git/2022071001/</loc>
+    <lastmod>2022-07-10T17:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/web/2022071101/</loc>
     <lastmod>2022-07-10T17:00:00+08:00</lastmod>
   </url>
   
@@ -59,11 +69,6 @@
   
   <url>
     <loc>/web/20190620/</loc>
-    <lastmod>2019-06-20T01:33:58+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/web/</loc>
     <lastmod>2019-06-20T01:33:58+08:00</lastmod>
   </url>
   

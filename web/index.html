@@ -6,8 +6,8 @@
 <title>Webs – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/web/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2019-06-20T01:33:58+0800">
-<meta name="modified" content="2019-06-20T01:33:58+0800">
+<meta name="created" content="2022-07-10T17:00:00+0800">
+<meta name="modified" content="2022-07-10T17:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -67,10 +67,10 @@
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
 <li><a href="/git/">Gits</a></li>
+<li><a href="/web/" class="active" aria-current="page">Webs</a></li>
 <li><a href="/problem/">Problems</a></li>
 <li><a href="/bash/">Bashes</a></li>
 <li><a href="/cloud/">Clouds</a></li>
-<li><a href="/web/" class="active" aria-current="page">Webs</a></li>
 <li><a href="/article/">Articles</a></li>
 <li><a href="/java/">Javas</a></li>
 <li><a href="/sql/">Sqls</a></li>
@@ -83,6 +83,16 @@
 
 <main class="main layout__main">
 <h1 class="title">Webs</h1>
+<article class="section-web list-view">
+<header>
+<h2 class="title "><a href="/web/2022071101/">引用cdn静态资源时添加哈希值验证防篡改</a></h2>
+
+</header>
+<div class="content">
+例子： &lt;script src=&#34;https://example.com/example-framework.js&#34; integrity=&#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt; 生成 SRI 哈希的工具 shasum -b -a 384 example-framework.js | xxd -r -p | base64 reference Subresource Integrity - Web 安全 | MDN
+</div>
+</article>
+
 <article class="section-web list-view">
 <header>
 <h2 class="title "><a href="/web/20190620/">tomcat安装&amp;let&#39;s encrypt配置</a></h2>
