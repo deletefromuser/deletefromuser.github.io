@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>将所有文件夹的内容分别打包到同名的zip文件内 – HA</title>
-<meta name="description" content="下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件 以前还写了个sh好像，没想到一行就能搞定 for dir in */; do ( cd &amp;amp;quot;$dir&amp;amp;quot; &amp;amp;amp;&amp;amp;amp; zip -r ../&amp;amp;quot;${dir%/}&amp;amp;quot;.zip . ) done …">
+<title>将所有文件夹的内容分别打包到同名的zip文件内 &amp; 批量解压rar文件 – HA</title>
+<meta name="description" content="下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件 以前还写了个sh好像，没想到一行就能搞定 将所有文件夹的内容分别打包到同名的zip文件内 for dir in */; do ( cd &amp;amp;quot;$dir&amp;amp;quot; &amp;amp;amp;&amp;amp;amp; zip -r …">
 <meta name="created" content="2021-02-28T21:02:00+0800">
 <meta name="modified" content="2021-02-28T21:02:00+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="将所有文件夹的内容分别打包到同名的zip文件内">
+<meta property="og:title" content="将所有文件夹的内容分别打包到同名的zip文件内 &amp; 批量解压rar文件">
 <meta property="og:url" content="/blog/bash/2021022801/">
 <meta property="og:type" content="article">
 
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "将所有文件夹的内容分别打包到同名的zip文件内",
+    "headline": "将所有文件夹的内容分别打包到同名的zip文件内 \u0026 批量解压rar文件",
     "datePublished": "2021-02-28T21:02:00+08:00",
     "dateModified": "2021-02-28T21:02:00+08:00",
     "url" : "/blog/bash/2021022801/",
-    "description": "下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件 以前还写了个sh好像，没想到一行就能搞定 for dir in */; do ( cd \u0026amp;quot;$dir\u0026amp;quot; \u0026amp;amp;\u0026amp;amp; zip -r ../\u0026amp;quot;${dir%/}\u0026amp;quot;.zip . ) done …",
+    "description": "下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件 以前还写了个sh好像，没想到一行就能搞定 将所有文件夹的内容分别打包到同名的zip文件内 for dir in */; do ( cd \u0026amp;quot;$dir\u0026amp;quot; \u0026amp;amp;\u0026amp;amp; zip -r …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -87,7 +87,7 @@
 <main class="main layout__main">
 <article class="single-view single-view--bash">
 <header>
-<h1 class="title title-submitted">将所有文件夹的内容分别打包到同名的zip文件内</h1>
+<h1 class="title title-submitted">将所有文件夹的内容分别打包到同名的zip文件内 &amp; 批量解压rar文件</h1>
 <div class="submitted">
 <time class="created-date" datetime="2021-02-28T21:02:00&#43;08:00">2021-02-28 21:02</time>
 </div>
@@ -95,7 +95,10 @@
 <div class="content">
 <p>下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件</p>
 <p>以前还写了个sh好像，没想到一行就能搞定</p>
+<h2 id="将所有文件夹的内容分别打包到同名的zip文件内">将所有文件夹的内容分别打包到同名的zip文件内</h2>
 <p><code>for dir in */; do ( cd &quot;$dir&quot; &amp;&amp; zip -r ../&quot;${dir%/}&quot;.zip . ) done</code></p>
+<h2 id="批量解压rar文件">批量解压rar文件</h2>
+<p><code>for file in ./*.rar; do ( unrar x &quot;$file&quot; ) done</code></p>
 <p>#####来源
 <a href="https://unix.stackexchange.com/a/441025">Zip all subfolders inside a folder to individual zip file</a></p>
 
