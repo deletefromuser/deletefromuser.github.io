@@ -4,7 +4,7 @@ name: build hugo
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+  workflow_dispatch:
   repository_dispatch:
     types: [generate]
 
@@ -39,7 +39,7 @@ jobs:
           cd public
           git checkout main
           cd ..
-          hugo -t zen -b "/"
+          hugo -t zen -b "https://deletefromuser.github.io/"
           cd public
           git add .
           msg="rebuilding site $(TZ='Asia/Shanghai' date '+%Y-%m-%dT%H:%M:%S+08:00')"
