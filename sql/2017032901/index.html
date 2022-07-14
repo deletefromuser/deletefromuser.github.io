@@ -6,7 +6,7 @@
 <title>sqlserver 事务简单使用 – HA</title>
 <meta name="description" content="sqlserver 事务简单使用 今天第一次在工作中用到事务，在找一个下数量被条件卡住的错误时，是先更新一个表中的数据，在检查数量有没有小于0的，有就要报错。追踪到语句后，只用最后一句查询卡住的语句查询发现正常，不存在问题。经理提醒才发现是先更新再检查，只查最后一句是查的没更新之前的，不是报错时的状态。 这时候就用到事务了，想模拟错误时的 …">
 <meta name="created" content="2017-03-29T01:33:58+0800">
-<meta name="modified" content="2017-03-29T01:33:58+0800">
+<meta name="modified" content="2020-12-20T11:17:02+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "sqlserver 事务简单使用",
     "datePublished": "2017-03-29T01:33:58+08:00",
-    "dateModified": "2017-03-29T01:33:58+08:00",
+    "dateModified": "2020-12-20T11:17:02+08:00",
     "url" : "/blog/sql/2017032901/",
     "description": "sqlserver 事务简单使用 今天第一次在工作中用到事务，在找一个下数量被条件卡住的错误时，是先更新一个表中的数据，在检查数量有没有小于0的，有就要报错。追踪到语句后，只用最后一句查询卡住的语句查询发现正常，不存在问题。经理提醒才发现是先更新再检查，只查最后一句是查的没更新之前的，不是报错时的状态。 这时候就用到事务了，想模拟错误时的 …",
     "mainEntityOfPage": {
@@ -139,6 +139,10 @@
 </div>
 
 <div class="content content--bottom">
+<p class="content-dates">
+Updated: 2020-12-20 11:17<br>
+Created: 2017-03-29 01:33
+</p>
 </div>
 </article>
 </main>
