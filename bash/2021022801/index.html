@@ -99,8 +99,10 @@
 <p><code>for dir in */; do ( cd &quot;$dir&quot; &amp;&amp; zip -r ../&quot;${dir%/}&quot;.zip . ) done</code></p>
 <h2 id="批量解压rar文件">批量解压rar文件</h2>
 <p><code>for file in ./*.rar; do ( unrar x &quot;$file&quot; ) done</code></p>
-<p>#####来源
-<a href="https://unix.stackexchange.com/a/441025">Zip all subfolders inside a folder to individual zip file</a></p>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://unix.stackexchange.com/a/441025">Zip all subfolders inside a folder to individual zip file</a></li>
+</ul>
 
 </div>
 
