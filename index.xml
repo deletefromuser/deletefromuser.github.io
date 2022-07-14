@@ -234,8 +234,10 @@
 &lt;p&gt;&lt;code&gt;for dir in */; do ( cd &amp;quot;$dir&amp;quot; &amp;amp;&amp;amp; zip -r ../&amp;quot;${dir%/}&amp;quot;.zip . ) done&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;批量解压rar文件&#34;&gt;批量解压rar文件&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;for file in ./*.rar; do ( unrar x &amp;quot;$file&amp;quot; ) done&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;#####来源
-&lt;a href=&#34;https://unix.stackexchange.com/a/441025&#34;&gt;Zip all subfolders inside a folder to individual zip file&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/a/441025&#34;&gt;Zip all subfolders inside a folder to individual zip file&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
