@@ -4,7 +4,7 @@
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2022-07-17T11:24:51+08:00</lastmod>
+    <lastmod>2022-07-17T17:52:00+08:00</lastmod>
   </url>
   
   <url>
@@ -69,7 +69,7 @@
   
   <url>
     <loc>/blog/watch/</loc>
-    <lastmod>2022-07-17T11:24:51+08:00</lastmod>
+    <lastmod>2022-07-17T17:52:00+08:00</lastmod>
   </url>
   
   <url>
@@ -88,6 +88,11 @@
   </url>
   
   <url>
+    <loc>/blog/watch/2022040101/</loc>
+    <lastmod>2022-07-17T17:52:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/book/2022030801/</loc>
     <lastmod>2022-05-26T12:00:00+08:00</lastmod>
   </url>
@@ -95,6 +100,21 @@
   <url>
     <loc>/blog/book/2022030701/</loc>
     <lastmod>2022-03-07T12:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/watch/2022010101/</loc>
+    <lastmod>2022-07-17T17:52:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/watch/2021100101/</loc>
+    <lastmod>2022-07-17T17:52:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/watch/2021070101/</loc>
+    <lastmod>2022-07-17T17:52:00+08:00</lastmod>
   </url>
   
   <url>
