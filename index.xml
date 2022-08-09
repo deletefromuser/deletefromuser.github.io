@@ -396,9 +396,12 @@
 &lt;p&gt;&lt;code&gt;for dir in */; do ( cd &amp;quot;$dir&amp;quot; &amp;amp;&amp;amp; zip -r ../&amp;quot;${dir%/}&amp;quot;.zip . ) done&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;批量解压rar文件&#34;&gt;批量解压rar文件&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;for file in ./*.rar; do ( unrar x &amp;quot;$file&amp;quot; ) done&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;新建子目录&#34;&gt;新建子目录&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;for file in ./*.rar; do ( unrar x &amp;quot;$file&amp;quot; &amp;quot;${file%.rar}/&amp;quot; ) done&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/a/441025&#34;&gt;Zip all subfolders inside a folder to individual zip file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/16623835/remove-a-fixed-prefix-suffix-from-a-string-in-bash&#34;&gt;Remove a fixed prefix/suffix from a string in Bash&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
