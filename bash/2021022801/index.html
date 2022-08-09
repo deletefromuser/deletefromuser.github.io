@@ -6,7 +6,7 @@
 <title>将所有文件夹的内容分别打包到同名的zip文件内 &amp; 批量解压rar文件 – HA</title>
 <meta name="description" content="下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件 以前还写了个sh好像，没想到一行就能搞定 将所有文件夹的内容分别打包到同名的zip文件内 for dir in */; do ( cd &amp;amp;quot;$dir&amp;amp;quot; &amp;amp;amp;&amp;amp;amp; zip -r …">
 <meta name="created" content="2021-02-28T21:02:00+0800">
-<meta name="modified" content="2022-07-13T23:00:00+0800">
+<meta name="modified" content="2022-08-09T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "将所有文件夹的内容分别打包到同名的zip文件内 \u0026 批量解压rar文件",
     "datePublished": "2021-02-28T21:02:00+08:00",
-    "dateModified": "2022-07-13T23:00:00+08:00",
+    "dateModified": "2022-08-09T20:00:00+08:00",
     "url" : "https://deletefromuser.github.io/bash/2021022801/",
     "description": "下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件 以前还写了个sh好像，没想到一行就能搞定 将所有文件夹的内容分别打包到同名的zip文件内 for dir in */; do ( cd \u0026amp;quot;$dir\u0026amp;quot; \u0026amp;amp;\u0026amp;amp; zip -r …",
     "mainEntityOfPage": {
@@ -100,16 +100,19 @@
 <p><code>for dir in */; do ( cd &quot;$dir&quot; &amp;&amp; zip -r ../&quot;${dir%/}&quot;.zip . ) done</code></p>
 <h2 id="批量解压rar文件">批量解压rar文件</h2>
 <p><code>for file in ./*.rar; do ( unrar x &quot;$file&quot; ) done</code></p>
+<h3 id="新建子目录">新建子目录</h3>
+<p><code>for file in ./*.rar; do ( unrar x &quot;$file&quot; &quot;${file%.rar}/&quot; ) done</code></p>
 <p><strong>reference</strong></p>
 <ul>
 <li><a href="https://unix.stackexchange.com/a/441025">Zip all subfolders inside a folder to individual zip file</a></li>
+<li><a href="https://stackoverflow.com/questions/16623835/remove-a-fixed-prefix-suffix-from-a-string-in-bash">Remove a fixed prefix/suffix from a string in Bash</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-07-13 23:00<br>
+Updated: 2022-08-09 20:00<br>
 Created: 2021-02-28 21:02
 </p>
 </div>
