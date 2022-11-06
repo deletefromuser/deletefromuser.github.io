@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>oracle常用命令 – HA</title>
+<meta name="description" content="创建用户 CREATE USER &amp;amp;#39;newuser&amp;amp;#39;@&amp;amp;#39;localhost&amp;amp;#39; IDENTIFIED BY &amp;amp;#39;password&amp;amp;#39;; CREATE USER &amp;amp;#39;newuser&amp;amp;#39;@&amp;amp;#39;%&amp;amp;#39; IDENTIFIED BY &amp;amp;#39;password&amp;amp;#39;; GRANT …">
+<meta name="created" content="2022-11-06T19:00:00+0800">
+<meta name="modified" content="2022-11-06T21:26:30+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="oracle常用命令">
+<meta property="og:url" content="https://deletefromuser.github.io/sql/2022110605/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/sql/2022110605/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "oracle常用命令",
+    "datePublished": "2022-11-06T19:00:00+08:00",
+    "dateModified": "2022-11-06T21:26:30+08:00",
+    "url" : "https://deletefromuser.github.io/sql/2022110605/",
+    "description": "创建用户 CREATE USER \u0026amp;#39;newuser\u0026amp;#39;@\u0026amp;#39;localhost\u0026amp;#39; IDENTIFIED BY \u0026amp;#39;password\u0026amp;#39;; CREATE USER \u0026amp;#39;newuser\u0026amp;#39;@\u0026amp;#39;%\u0026amp;#39; IDENTIFIED BY \u0026amp;#39;password\u0026amp;#39;; GRANT …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/bash/">Bashes</a></li>
+<li><a href="/problem/">Problems</a></li>
+<li><a href="/sql/" class="active" aria-current="page">Sqls</a></li>
+<li><a href="/read/">Reads</a></li>
+<li><a href="/watch/">Watches</a></li>
+<li><a href="/web/">Webs</a></li>
+<li><a href="/git/">Gits</a></li>
+<li><a href="/cloud/">Clouds</a></li>
+<li><a href="/article/">Articles</a></li>
+<li><a href="/java/">Javas</a></li>
+<li><a href="/chickensoup/">Chickensoups</a></li>
+<li><a href="/csharp/">Csharps</a></li>
+<li><a href="/nihongo/">Nihongos</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--sql">
+<header>
+<h1 class="title title-submitted">oracle常用命令</h1>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+</header>
+<div class="content">
+<h3 id="创建用户">创建用户</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span>;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span>;
+<span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ALL</span> <span style="color:#66d9ef">PRIVILEGES</span> <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
+<span style="color:#66d9ef">REVOKE</span> type_of_permission <span style="color:#66d9ef">ON</span> database_name.<span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
+FLUSH <span style="color:#66d9ef">PRIVILEGES</span>;
+<span style="color:#66d9ef">SHOW</span> GRANTS <span style="color:#66d9ef">FOR</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
+<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
+</code></pre></div><h3 id="查看日期">查看日期</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 一年前的日期
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> add_months(sysdate, <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>) <span style="color:#66d9ef">FROM</span> DUAL;
+<span style="color:#75715e">-- 昨天的日期
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> sysdate <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">FROM</span> DUAL;
+<span style="color:#75715e">-- 当天开始时间
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> trunc(sysdate) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 当年第一天
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> trunc(sysdate,<span style="color:#e6db74">&#39;yy&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 当月的第一天
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> trunc(sysdate,<span style="color:#e6db74">&#39;mm&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 本小时的开始时间
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> trunc(sysdate ,<span style="color:#e6db74">&#39;HH24&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 年份
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">extract</span>(<span style="color:#66d9ef">year</span> <span style="color:#66d9ef">from</span> to_date(<span style="color:#e6db74">&#39;20220101&#39;</span>,<span style="color:#e6db74">&#39;YYYYMMDD&#39;</span>)) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 字符串转日期
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> to_date(<span style="color:#e6db74">&#39;20220101&#39;</span>,<span style="color:#e6db74">&#39;YYYYMMDD&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 日期转字符串
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> to_char(sysdate,<span style="color:#e6db74">&#39;YYYYMMDD&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#66d9ef">select</span> to_char(sysdate,<span style="color:#e6db74">&#39;YYYY-MM-DD HH24:MI:SS&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 这个季度最后一天23点
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> trunc(add_months(sysdate,<span style="color:#ae81ff">3</span>), <span style="color:#e6db74">&#39;Q&#39;</span>) <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">24</span> <span style="color:#e6db74">&#34;这个季度最后一天23点&#34;</span> <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 两分钟后时间
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> sysdate <span style="color:#f92672">+</span> INTERVAL <span style="color:#e6db74">&#39;2&#39;</span> <span style="color:#66d9ef">minute</span> <span style="color:#66d9ef">FROM</span> dual;
+</code></pre></div><h3 id="null相关">null相关</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 返回一个非 null 值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> nvl(<span style="color:#66d9ef">null</span>, <span style="color:#e6db74">&#39;25&#39;</span>) <span style="color:#66d9ef">FROM</span> dual;
+<span style="color:#75715e">-- 等于特定值时返回null，可用于被除数为0判断
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">nullif</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">from</span> dual;
+</code></pre></div><h3 id="其他">其他</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 取得行号
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> rownum <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 转大写
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">upper</span>(<span style="color:#e6db74">&#39;abc&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+</code></pre></div><p><strong>reference</strong></p>
+<ul>
+<li><a href="https://www.cnblogs.com/linjiao/p/6394087.html">ORACLE TRUNC()函数</a></li>
+<li><a href="https://www.cnblogs.com/jijm123/p/15763010.html">Oracle：trunc()函数简介</a></li>
+<li><a href="https://www.cnblogs.com/xianz666/p/13073664.html">Oracle中除数为0的两种解决办法（decode与nullif）</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-11-06 21:26<br>
+Created: 2022-11-06 19:00
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

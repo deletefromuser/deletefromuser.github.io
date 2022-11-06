@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>linux下设置定时任务 – HA</title>
+<meta name="description" content="crontab -e A B C D E USERNAME /path/to/command arg1 arg2 Explanation of above cron syntax:  A: Minutes range: 0 – 59 B: Hours range: 0 – 23 C: Days range: 0 – 31 D: …">
+<meta name="created" content="2022-11-06T19:30:00+0800">
+<meta name="modified" content="2022-11-06T21:26:30+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="linux下设置定时任务">
+<meta property="og:url" content="https://deletefromuser.github.io/bash/2022110602/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/bash/2022110602/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "linux下设置定时任务",
+    "datePublished": "2022-11-06T19:30:00+08:00",
+    "dateModified": "2022-11-06T21:26:30+08:00",
+    "url" : "https://deletefromuser.github.io/bash/2022110602/",
+    "description": "crontab -e A B C D E USERNAME /path/to/command arg1 arg2 Explanation of above cron syntax:  A: Minutes range: 0 – 59 B: Hours range: 0 – 23 C: Days range: 0 – 31 D: …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/bash/" class="active" aria-current="page">Bashes</a></li>
+<li><a href="/problem/">Problems</a></li>
+<li><a href="/sql/">Sqls</a></li>
+<li><a href="/read/">Reads</a></li>
+<li><a href="/watch/">Watches</a></li>
+<li><a href="/web/">Webs</a></li>
+<li><a href="/git/">Gits</a></li>
+<li><a href="/cloud/">Clouds</a></li>
+<li><a href="/article/">Articles</a></li>
+<li><a href="/java/">Javas</a></li>
+<li><a href="/chickensoup/">Chickensoups</a></li>
+<li><a href="/csharp/">Csharps</a></li>
+<li><a href="/nihongo/">Nihongos</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--bash">
+<header>
+<h1 class="title title-submitted">linux下设置定时任务</h1>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
+</div>
+</header>
+<div class="content">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">crontab -e
+
+A B C D E USERNAME /path/to/command arg1 arg2
+</code></pre></div><p>Explanation of above cron syntax:</p>
+<ul>
+<li>A: Minutes range: 0 – 59</li>
+<li>B: Hours range: 0 – 23</li>
+<li>C: Days range: 0 – 31</li>
+<li>D: Months range: 0 – 12</li>
+<li>E: Days of the week range: 0 – 7. Starting from Monday, 0 or 7 represents Sunday</li>
+<li>USERNAME: replace this with your username</li>
+<li>/path/to/command – The name of the script or command you want to schedule</li>
+</ul>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://www.tecmint.com/create-and-manage-cron-jobs-on-linux/">How to Create and Manage Cron Jobs on Linux</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-11-06 21:26<br>
+Created: 2022-11-06 19:30
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

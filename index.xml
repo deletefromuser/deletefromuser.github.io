@@ -6,8 +6,155 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Oct 2022 19:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 06 Nov 2022 19:30:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>linux下设置定时任务</title>
+      <link>https://deletefromuser.github.io/bash/2022110602/</link>
+      <pubDate>Sun, 06 Nov 2022 19:30:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/bash/2022110602/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;crontab -e
+
+A B C D E USERNAME /path/to/command arg1 arg2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Explanation of above cron syntax:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A: Minutes range: 0 – 59&lt;/li&gt;
+&lt;li&gt;B: Hours range: 0 – 23&lt;/li&gt;
+&lt;li&gt;C: Days range: 0 – 31&lt;/li&gt;
+&lt;li&gt;D: Months range: 0 – 12&lt;/li&gt;
+&lt;li&gt;E: Days of the week range: 0 – 7. Starting from Monday, 0 or 7 represents Sunday&lt;/li&gt;
+&lt;li&gt;USERNAME: replace this with your username&lt;/li&gt;
+&lt;li&gt;/path/to/command – The name of the script or command you want to schedule&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tecmint.com/create-and-manage-cron-jobs-on-linux/&#34;&gt;How to Create and Manage Cron Jobs on Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>oracle安装后连接问题</title>
+      <link>https://deletefromuser.github.io/problem/2022110603/</link>
+      <pubDate>Sun, 06 Nov 2022 19:30:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/problem/2022110603/</guid>
+      <description>&lt;h2 id=&#34;1-ora-12505-tnslistener-does-not-currently-know-of-sid-given-in-connect-descriptor&#34;&gt;1. ORA-12505: TNS:listener does not currently know of SID given in connect descriptor&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;add to tnsnames.ora file, and run &lt;code&gt;lsnrctl reload&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;ORCL = 
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE = DEDICATED)
+      (SERVICE_NAME = orcl)
+    )
+  )
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;excute &lt;code&gt;alter system set local_listener = &#39;(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))&#39; scope = both;&lt;/code&gt;  in sqlplus.(username sys, &lt;code&gt;password, orcl as sysdba&lt;/code&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-状态-失败--测试失败-io-错误-the-network-adapter-could-not-establish-the-connection&#34;&gt;2. 状态: 失败 -测试失败: IO 错误: The Network Adapter could not establish the connection&lt;/h2&gt;
+&lt;p&gt;admin模式打开cmd，运行 &lt;code&gt;lsnrctl start&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/24524771&#34;&gt;The Network Adapter could not establish the connection in SQL developer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>virtualbox虚拟机启用宿主机摄像头</title>
+      <link>https://deletefromuser.github.io/problem/2022110604/</link>
+      <pubDate>Sun, 06 Nov 2022 19:30:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/problem/2022110604/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;Install ‘Oracle VM VirtualBox Extension Pack’&lt;/li&gt;
+&lt;li&gt;Attaching webcam to guest OS&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;VBoxManage list webcams
+VboxManage controlvm &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Ubuntu 16.04.3&amp;#34;&lt;/span&gt; webcam attach .2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://scribles.net/using-webcam-in-virtualbox-guest-os-on-windows-host/&#34;&gt;Enabling Webcam in VirtualBox Guest OS on Windows Host&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>oracle常用命令</title>
+      <link>https://deletefromuser.github.io/sql/2022110605/</link>
+      <pubDate>Sun, 06 Nov 2022 19:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/sql/2022110605/</guid>
+      <description>&lt;h3 id=&#34;创建用户&#34;&gt;创建用户&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;USER&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;newuser&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; IDENTIFIED &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;password&amp;#39;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;USER&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;newuser&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;%&amp;#39;&lt;/span&gt; IDENTIFIED &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;password&amp;#39;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;GRANT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ALL&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;PRIVILEGES&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;.&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;newuser&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;REVOKE&lt;/span&gt; type_of_permission &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; database_name.&lt;span style=&#34;color:#66d9ef&#34;&gt;table_name&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;newuser&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;;
+FLUSH &lt;span style=&#34;color:#66d9ef&#34;&gt;PRIVILEGES&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;SHOW&lt;/span&gt; GRANTS &lt;span style=&#34;color:#66d9ef&#34;&gt;FOR&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;newuser&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;DROP&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;USER&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;newuser&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看日期&#34;&gt;查看日期&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 一年前的日期
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; add_months(sysdate, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; DUAL;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 昨天的日期
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; sysdate &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; DUAL;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 当天开始时间
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; trunc(sysdate) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 当年第一天
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; trunc(sysdate,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;yy&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 当月的第一天
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; trunc(sysdate,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mm&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 本小时的开始时间
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; trunc(sysdate ,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;HH24&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 年份
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extract&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;year&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; to_date(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;20220101&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;YYYYMMDD&amp;#39;&lt;/span&gt;)) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 字符串转日期
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; to_date(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;20220101&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;YYYYMMDD&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 日期转字符串
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; to_char(sysdate,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;YYYYMMDD&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; to_char(sysdate,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;YYYY-MM-DD HH24:MI:SS&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 这个季度最后一天23点
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; trunc(add_months(sysdate,&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Q&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;24&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;这个季度最后一天23点&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 两分钟后时间
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; sysdate &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; INTERVAL &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;minute&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; dual;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;null相关&#34;&gt;null相关&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 返回一个非 null 值
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; nvl(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;25&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; dual;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 等于特定值时返回null，可用于被除数为0判断
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nullif&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 取得行号
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; rownum &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 转大写
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;upper&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abc&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/linjiao/p/6394087.html&#34;&gt;ORACLE TRUNC()函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/jijm123/p/15763010.html&#34;&gt;Oracle：trunc()函数简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/xianz666/p/13073664.html&#34;&gt;Oracle中除数为0的两种解决办法（decode与nullif）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>缩小oracle数据库内存占用</title>
+      <link>https://deletefromuser.github.io/sql/2022110601/</link>
+      <pubDate>Sun, 06 Nov 2022 19:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/sql/2022110601/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Show&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;parameter&lt;/span&gt; sga;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;Alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;system&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; sga_max_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;M &lt;span style=&#34;color:#66d9ef&#34;&gt;scope&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;spfile;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;system&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; sga_target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;M &lt;span style=&#34;color:#66d9ef&#34;&gt;scope&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;spfile;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;Show&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;parameter&lt;/span&gt; sga;
+Shut &lt;span style=&#34;color:#66d9ef&#34;&gt;immediate&lt;/span&gt;;
+startup;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- restart OracleServiceORCL service in windows
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://dba.stackexchange.com/q/105431&#34;&gt;How do I limit Oracle&amp;rsquo;s memory use?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>岩波日本史</title>

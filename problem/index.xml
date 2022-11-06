@@ -6,8 +6,55 @@
     <description>Recent content in Problems on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Jul 2022 10:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 06 Nov 2022 19:30:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/problem/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>oracle安装后连接问题</title>
+      <link>https://deletefromuser.github.io/problem/2022110603/</link>
+      <pubDate>Sun, 06 Nov 2022 19:30:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/problem/2022110603/</guid>
+      <description>&lt;h2 id=&#34;1-ora-12505-tnslistener-does-not-currently-know-of-sid-given-in-connect-descriptor&#34;&gt;1. ORA-12505: TNS:listener does not currently know of SID given in connect descriptor&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;add to tnsnames.ora file, and run &lt;code&gt;lsnrctl reload&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;ORCL = 
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE = DEDICATED)
+      (SERVICE_NAME = orcl)
+    )
+  )
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;excute &lt;code&gt;alter system set local_listener = &#39;(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))&#39; scope = both;&lt;/code&gt;  in sqlplus.(username sys, &lt;code&gt;password, orcl as sysdba&lt;/code&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-状态-失败--测试失败-io-错误-the-network-adapter-could-not-establish-the-connection&#34;&gt;2. 状态: 失败 -测试失败: IO 错误: The Network Adapter could not establish the connection&lt;/h2&gt;
+&lt;p&gt;admin模式打开cmd，运行 &lt;code&gt;lsnrctl start&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/24524771&#34;&gt;The Network Adapter could not establish the connection in SQL developer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>virtualbox虚拟机启用宿主机摄像头</title>
+      <link>https://deletefromuser.github.io/problem/2022110604/</link>
+      <pubDate>Sun, 06 Nov 2022 19:30:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/problem/2022110604/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;Install ‘Oracle VM VirtualBox Extension Pack’&lt;/li&gt;
+&lt;li&gt;Attaching webcam to guest OS&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;VBoxManage list webcams
+VboxManage controlvm &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Ubuntu 16.04.3&amp;#34;&lt;/span&gt; webcam attach .2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://scribles.net/using-webcam-in-virtualbox-guest-os-on-windows-host/&#34;&gt;Enabling Webcam in VirtualBox Guest OS on Windows Host&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>win10 开始菜单去掉web搜索结果</title>
