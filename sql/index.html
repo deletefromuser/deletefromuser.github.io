@@ -6,8 +6,8 @@
 <title>Sqls – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/sql/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2017-04-26T01:33:58+0800">
-<meta name="modified" content="2020-12-20T11:17:02+0800">
+<meta name="created" content="2022-11-06T19:00:00+0800">
+<meta name="modified" content="2022-11-06T21:26:30+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,16 +66,16 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/bash/">Bashes</a></li>
+<li><a href="/blog/problem/">Problems</a></li>
+<li><a href="/blog/sql/" class="active" aria-current="page">Sqls</a></li>
 <li><a href="/blog/read/">Reads</a></li>
 <li><a href="/blog/watch/">Watches</a></li>
 <li><a href="/blog/web/">Webs</a></li>
 <li><a href="/blog/git/">Gits</a></li>
-<li><a href="/blog/problem/">Problems</a></li>
-<li><a href="/blog/bash/">Bashes</a></li>
 <li><a href="/blog/cloud/">Clouds</a></li>
 <li><a href="/blog/article/">Articles</a></li>
 <li><a href="/blog/java/">Javas</a></li>
-<li><a href="/blog/sql/" class="active" aria-current="page">Sqls</a></li>
 <li><a href="/blog/chickensoup/">Chickensoups</a></li>
 <li><a href="/blog/csharp/">Csharps</a></li>
 <li><a href="/blog/nihongo/">Nihongos</a></li>
@@ -87,6 +87,32 @@
 <h1 class="title">Sqls</h1>
 
 
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2022110605/">oracle常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+
+</header>
+<div class="content">
+创建用户 CREATE USER &#39;newuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;; CREATE USER &#39;newuser&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;; GRANT ALL PRIVILEGES ON *.* TO &#39;newuser&#39;@&#39;localhost&#39;; REVOKE type_of_permission ON database_name.table_name FROM &#39;newuser&#39;@&#39;localhost&#39;; FLUSH PRIVILEGES; SHOW GRANTS FOR &#39;newuser&#39;@&#39;localhost&#39;; DROP USER &#39;newuser&#39;@&#39;localhost&#39;; 查看日期 -- 一年前的日期 SELECT add_months(sysdate, -12) FROM DUAL; -- 昨天的日期 SELECT sysdate - 1 FROM DUAL; -- 当天开
+</div>
+</article>
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2022110601/">缩小oracle数据库内存占用</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+
+</header>
+<div class="content">
+Show parameter sga; Alter system set sga_max_size=1024M scope=spfile; alter system set sga_target = 1024M scope=spfile; Show parameter sga; Shut immediate; startup; -- restart OracleServiceORCL service in windows reference How do I limit Oracle&rsquo;s memory use?
+</div>
+</article>
 
 <article class="list-view list-view--sql">
 <header>
