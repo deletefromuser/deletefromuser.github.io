@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2022-11-06T19:30:00+0800">
-<meta name="modified" content="2022-11-06T21:26:30+0800">
+<meta name="created" content="2022-11-08T12:00:00+0800">
+<meta name="modified" content="2022-11-08T16:47:24+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,8 +66,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/bash/">Bashes</a></li>
 <li><a href="/blog/problem/">Problems</a></li>
+<li><a href="/blog/bash/">Bashes</a></li>
 <li><a href="/blog/sql/">Sqls</a></li>
 <li><a href="/blog/read/">Reads</a></li>
 <li><a href="/blog/watch/">Watches</a></li>
@@ -90,6 +90,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--problem">
+<header>
+<h2 class="title title-submitted"><a href="/blog/problem/2022110801/">weblogic console忘记密码的解决办法</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-08T12:00:00&#43;08:00">2022-11-08 12:00</time>
+</div>
+
+</header>
+<div class="content">
+重置密码太麻烦了，所以用解密 cd /u01/app/oracle/middleware/oracle_common/common/bin ./wlst.sh domain = &#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&#34; service = weblogic.security.internal.SerializedSystemIni.getEncryptionService(domain) encryption = weblogic.security.internal.encryption.ClearOrEncryptedService(service) # find encrptyed username and password in domainnamexxx/servers/AdminServer/security/boot.properties print encryption.decrypt(&#34;{AES}nFIptO4HdY8fxSgLjrS8ZNqsVlcB2zQZzYJQ9o7AbJU=&#34;) reference Quickest way to decrypt passwords in Oracle WebLogic Server 12c
+</div>
+</article>
 
 <article class="list-view list-view--problem">
 <header>
@@ -205,19 +218,6 @@ win10中去掉资源管理器的OneDrive项目\隐藏工具栏 打开注册表�
 </header>
 <div class="content">
 Android连接电脑新增文件无法显示的问题 在调试app时，创建文件，在手机上可以看到文件新建成功，但是在电脑上看不到文件。这个bug不知道
-</div>
-</article>
-
-<article class="list-view list-view--problem">
-<header>
-<h2 class="title title-submitted"><a href="/blog/problem/2017032601/">Android Studio 函数描述弹出很慢的问题</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-26T01:33:58&#43;08:00">2017-03-26 01:33</time>
-</div>
-
-</header>
-<div class="content">
-Android Studio 函数描述弹出很慢的问题 找到版本对应的目录，将在线查询替换为本地查询，需要在SDKmanager中先下载SDK文档 .AndroidStudio2.2\config\options\jdk.table.xml 将该文件中的http:
 </div>
 </article>
 

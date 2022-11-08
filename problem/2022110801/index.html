@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code – HA</title>
-<meta name="description" content="使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code 在Android Studio中加了一个依赖之后，编译出错，解决办法是在项目的属性中设置 sourceCompatibility …">
-<meta name="created" content="2017-03-26T03:33:58+0800">
-<meta name="modified" content="2020-12-20T11:17:02+0800">
+<title>weblogic console忘记密码的解决办法 – HA</title>
+<meta name="description" content="重置密码太麻烦了，所以用解密 cd /u01/app/oracle/middleware/oracle_common/common/bin ./wlst.sh domain = &amp;amp;#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&amp;amp;#34; service = …">
+<meta name="created" content="2022-11-08T12:00:00+0800">
+<meta name="modified" content="2022-11-08T16:47:24+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code">
-<meta property="og:url" content="/blog/problem/2017032603/">
+<meta property="og:title" content="weblogic console忘记密码的解决办法">
+<meta property="og:url" content="/blog/problem/2022110801/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/blog/problem/2017032603/">
+<link rel="canonical" href="/blog/problem/2022110801/">
 <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code",
-    "datePublished": "2017-03-26T03:33:58+08:00",
-    "dateModified": "2020-12-20T11:17:02+08:00",
-    "url" : "/blog/problem/2017032603/",
-    "description": "使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code 在Android Studio中加了一个依赖之后，编译出错，解决办法是在项目的属性中设置 sourceCompatibility …",
+    "headline": "weblogic console忘记密码的解决办法",
+    "datePublished": "2022-11-08T12:00:00+08:00",
+    "dateModified": "2022-11-08T16:47:24+08:00",
+    "url" : "/blog/problem/2022110801/",
+    "description": "重置密码太麻烦了，所以用解密 cd /u01/app/oracle/middleware/oracle_common/common/bin ./wlst.sh domain = \u0026amp;#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain\u0026amp;#34; service = …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -88,42 +88,33 @@
 <main class="main layout__main">
 <article class="single-view single-view--problem">
 <header>
-<h1 class="title title-submitted">使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code</h1>
+<h1 class="title title-submitted">weblogic console忘记密码的解决办法</h1>
 <div class="submitted">
-<time class="created-date" datetime="2017-03-26T03:33:58&#43;08:00">2017-03-26 03:33</time>
+<time class="created-date" datetime="2022-11-08T12:00:00&#43;08:00">2022-11-08 12:00</time>
 </div>
 </header>
 <div class="content">
-<p>使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code</p>
-<p>在Android Studio中加了一个依赖之后，编译出错，解决办法是在项目的属性中设置 sourceCompatibility 和 targetCompatibility 为1.7</p>
-<p>同时在build.gradle中添加jackOptions</p>
-<pre><code>android {
-    defaultConfig {
-        ...
-        jackOptions{
-            enabled true
-        }
-    }
-}
-</code></pre><p><strong>reference</strong></p>
+<p>重置密码太麻烦了，所以用解密</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd /u01/app/oracle/middleware/oracle_common/common/bin
+./wlst.sh
+
+domain <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&#34;</span>
+service <span style="color:#f92672">=</span> weblogic.security.internal.SerializedSystemIni.getEncryptionService<span style="color:#f92672">(</span>domain<span style="color:#f92672">)</span>
+encryption <span style="color:#f92672">=</span> weblogic.security.internal.encryption.ClearOrEncryptedService<span style="color:#f92672">(</span>service<span style="color:#f92672">)</span>
+
+<span style="color:#75715e"># find encrptyed username and password in domainnamexxx/servers/AdminServer/security/boot.properties</span>
+print encryption.decrypt<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{AES}nFIptO4HdY8fxSgLjrS8ZNqsVlcB2zQZzYJQ9o7AbJU=&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><p><strong>reference</strong></p>
 <ul>
-<li>
-<p><a href="https://stackoverflow.com/questions/37020413/android-dex-cannot-parse-version-52-byte-code">Android: Dex cannot parse version 52 byte code</a></p>
-</li>
-<li>
-<p><a href="http://www.jianshu.com/p/a13c6326671d">Android进阶之自定义注解</a></p>
-</li>
-<li>
-<p><a href="http://www.cnblogs.com/ning-blogs/p/5516357.html">《ANDROID 导入第三方源码JAR包遇到的坑》</a></p>
-</li>
+<li><a href="https://chronicler.tech/simplest-way-to-decrypt-passwords-in-oracle-weblogic-server-12c/">Quickest way to decrypt passwords in Oracle WebLogic Server 12c</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2020-12-20 11:17<br>
-Created: 2017-03-26 03:33
+Updated: 2022-11-08 16:47<br>
+Created: 2022-11-08 12:00
 </p>
 </div>
 </article>
