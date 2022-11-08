@@ -6,8 +6,30 @@
     <description>Recent content in Problems on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Nov 2022 19:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Nov 2022 12:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/problem/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>weblogic console忘记密码的解决办法</title>
+      <link>https://deletefromuser.github.io/problem/2022110801/</link>
+      <pubDate>Tue, 08 Nov 2022 12:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/problem/2022110801/</guid>
+      <description>&lt;p&gt;重置密码太麻烦了，所以用解密&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cd /u01/app/oracle/middleware/oracle_common/common/bin
+./wlst.sh
+
+domain &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&amp;#34;&lt;/span&gt;
+service &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; weblogic.security.internal.SerializedSystemIni.getEncryptionService&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;domain&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+encryption &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; weblogic.security.internal.encryption.ClearOrEncryptedService&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;service&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# find encrptyed username and password in domainnamexxx/servers/AdminServer/security/boot.properties&lt;/span&gt;
+print encryption.decrypt&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{AES}nFIptO4HdY8fxSgLjrS8ZNqsVlcB2zQZzYJQ9o7AbJU=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://chronicler.tech/simplest-way-to-decrypt-passwords-in-oracle-weblogic-server-12c/&#34;&gt;Quickest way to decrypt passwords in Oracle WebLogic Server 12c&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>oracle安装后连接问题</title>

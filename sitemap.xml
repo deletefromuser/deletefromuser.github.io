@@ -3,12 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://deletefromuser.github.io/bash/</loc>
-    <lastmod>2022-11-06T21:26:30+08:00</lastmod>
+    <loc>https://deletefromuser.github.io/</loc>
+    <lastmod>2022-11-08T16:47:24+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://deletefromuser.github.io/</loc>
+    <loc>https://deletefromuser.github.io/problem/</loc>
+    <lastmod>2022-11-08T16:47:24+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://deletefromuser.github.io/problem/2022110801/</loc>
+    <lastmod>2022-11-08T16:47:24+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://deletefromuser.github.io/bash/</loc>
     <lastmod>2022-11-06T21:26:30+08:00</lastmod>
   </url>
   
@@ -19,11 +29,6 @@
   
   <url>
     <loc>https://deletefromuser.github.io/problem/2022110603/</loc>
-    <lastmod>2022-11-06T21:26:30+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://deletefromuser.github.io/problem/</loc>
     <lastmod>2022-11-06T21:26:30+08:00</lastmod>
   </url>
   
