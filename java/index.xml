@@ -6,8 +6,23 @@
     <description>Recent content in Javas on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 May 2017 01:33:58 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 10 Nov 2022 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>linux下让Java程序运行在后台</title>
+      <link>https://deletefromuser.github.io/java/2022111002/</link>
+      <pubDate>Thu, 10 Nov 2022 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/java/2022111002/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;nohup java -jar /web/server.jar &amp;gt; log.log 2&amp;gt;&amp;amp;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/12102270/run-java-jar-file-on-a-server-as-background-process&#34;&gt;Run java jar file on a server as background process&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://programmer.ink/think/launch-springboot-project-in-the-background-on-linux.html&#34;&gt;Launch springboot project in the background on Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/chanmufeng/p/16727359.html&#34;&gt;2&amp;gt;&amp;amp;1到底是什么意思？&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>Java 将对象序列化为字符串 读取字符串反序列化为对象</title>
