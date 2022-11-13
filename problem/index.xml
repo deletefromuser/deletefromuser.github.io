@@ -6,8 +6,25 @@
     <description>Recent content in Problems on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Nov 2022 12:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Nov 2022 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/problem/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>利用RSS自动下载Torrent</title>
+      <link>/blog/problem/2022110901/</link>
+      <pubDate>Tue, 08 Nov 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/problem/2022110901/</guid>
+      <description>&lt;p&gt;以前竟然不知道，每周都要上网站手动搜索&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载网站找到rss feed url，比如&lt;code&gt;https://nyaa.si/?page=rss&amp;amp;q=ubuntu&amp;amp;c=0_0&amp;amp;f=0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;粘贴到下载软件里下载即可，比如qBittorrent，还需要使用rss downloader设置下载规则即可自动下载，设置里可以调整rss feed的刷新间隔，十分钟即可，不着急一天一次也可以&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.makeuseof.com/tag/how-to-use-rss-feeds-to-download-torrents-easily-and-automatically/&#34;&gt;How to Use RSS Feeds to Download Torrents Automatically&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>weblogic console忘记密码的解决办法</title>
