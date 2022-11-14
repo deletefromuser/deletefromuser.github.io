@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>linux 命令memo – HA</title>
-<meta name="description" content="uuidgen  生成uuid  reference    ">
-<meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2022-11-13T11:10:57+0800">
+<title>批量下载youtube视频 – HA</title>
+<meta name="description" content=" 获取视频url   F12，打开控制台，运行[...document.querySelectorAll(&amp;#39;[id=thumbnail]&amp;#39;)].map(item =&amp;amp;gt; item.href).join(&amp;amp;quot; &amp;amp;quot;)  下载  # 下载音频 youtube-dl -f …">
+<meta name="created" content="0001-01-01T00:00:00+0000">
+<meta name="modified" content="2022-11-14T20:43:35+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="linux 命令memo">
-<meta property="og:url" content="https://deletefromuser.github.io/bash/2022111001/">
+<meta property="og:title" content="批量下载youtube视频">
+<meta property="og:url" content="https://deletefromuser.github.io/tip/2022111401/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="https://deletefromuser.github.io/bash/2022111001/">
+<link rel="canonical" href="https://deletefromuser.github.io/tip/2022111401/">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "linux 命令memo",
-    "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2022-11-13T11:10:57+08:00",
-    "url" : "https://deletefromuser.github.io/bash/2022111001/",
-    "description": "uuidgen  生成uuid  reference    ",
+    "headline": "批量下载youtube视频",
+    "datePublished": "0001-01-01T00:00:00Z",
+    "dateModified": "2022-11-14T20:43:35+08:00",
+    "url" : "https://deletefromuser.github.io/tip/2022111401/",
+    "description": " 获取视频url   F12，打开控制台，运行[...document.querySelectorAll(\u0026#39;[id=thumbnail]\u0026#39;)].map(item =\u0026amp;gt; item.href).join(\u0026amp;quot; \u0026amp;quot;)  下载  # 下载音频 youtube-dl -f …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://deletefromuser.github.io/"
@@ -69,7 +69,7 @@
 <ul class="navbar">
 <li><a href="/">Home</a></li>
 <li><a href="/web/">Webs</a></li>
-<li><a href="/bash/" class="active" aria-current="page">Bashes</a></li>
+<li><a href="/bash/">Bashes</a></li>
 <li><a href="/java/">Javas</a></li>
 <li><a href="/problem/">Problems</a></li>
 <li><a href="/sql/">Sqls</a></li>
@@ -81,35 +81,43 @@
 <li><a href="/chickensoup/">Chickensoups</a></li>
 <li><a href="/csharp/">Csharps</a></li>
 <li><a href="/nihongo/">Nihongos</a></li>
-<li><a href="/tip/">Tips</a></li>
+<li><a href="/tip/" class="active" aria-current="page">Tips</a></li>
 </ul>
 </nav>
 
 
 <main class="main layout__main">
-<article class="single-view single-view--bash">
+<article class="single-view single-view--tip">
 <header>
-<h1 class="title title-submitted">linux 命令memo</h1>
+<h1 class="title title-submitted">批量下载youtube视频</h1>
 <div class="submitted">
-<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
+
 </div>
 </header>
 <div class="content">
-<h3 id="uuidgen"><code>uuidgen</code></h3>
+<ol>
+<li>获取视频url</li>
+</ol>
 <blockquote>
-<p>生成uuid</p>
+<p>F12，打开控制台，运行<code>[...document.querySelectorAll('[id=thumbnail]')].map(item =&gt; item.href).join(&quot; &quot;)</code></p>
 </blockquote>
-<p><strong>reference</strong></p>
-<ul>
-<li><a href=""></a></li>
-</ul>
+<ol start="2">
+<li>下载</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 下载音频</span>
+youtube-dl -f <span style="color:#e6db74">&#39;bestaudio[ext=m4a]&#39;</span> --verbose --force-ipv4 <span style="color:#f92672">[</span>1.中的url<span style="color:#f92672">]</span>
+<span style="color:#75715e"># 下载视频</span>
+youtube-dl -f <span style="color:#e6db74">&#39;bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best&#39;</span> --verbose --force-ipv4 <span style="color:#f92672">[</span>1.中的url<span style="color:#f92672">]</span>
+</code></pre></div><blockquote>
+<p>PS: 一次下载太多会遇到403，出现的话等一段时间再下载吧</p>
+</blockquote>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-11-13 11:10<br>
-Created: 2022-11-10 20:00
+Updated: 2022-11-14 20:43<br>
+Created: 0001-01-01 00:00
 </p>
 </div>
 </article>

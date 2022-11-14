@@ -6,8 +6,43 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Nov 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Nov 2022 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>JavaScript POST方式打开新窗口</title>
+      <link>https://deletefromuser.github.io/web/2022111402/</link>
+      <pubDate>Mon, 14 Nov 2022 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/web/2022111402/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;openWindowWithPost&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;, {
+		&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+		&lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,
+	});
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;openWindowWithPost&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;form&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UserInfo&amp;#34;&lt;/span&gt;;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;method&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;POST&amp;#34;&lt;/span&gt;;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;action&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;input&amp;#34;&lt;/span&gt;);
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;input&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;input&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt;;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;input&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt;];
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;appendChild&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;input&lt;/span&gt;);
+    }
+    document.&lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;appendChild&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;);
+    window.&lt;span style=&#34;color:#a6e22e&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;UserInfo&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;width=1000,height=550,left=100,top=100&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;submit&lt;/span&gt;();
+    document.&lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;removeChild&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity&#34;&gt;Subresource Integrity - Web 安全 | MDN&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>linux 命令memo</title>
@@ -3214,6 +3249,30 @@ while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;
 &lt;li&gt;&lt;a href=&#34;https://nerdschalk.com/how-to-mute-an-app-on-windows-10/&#34;&gt;How To Mute an App on Windows 10&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://downloads.freemdict.com/&#34;&gt;Dict file download&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>批量下载youtube视频</title>
+      <link>https://deletefromuser.github.io/tip/2022111401/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://deletefromuser.github.io/tip/2022111401/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;获取视频url&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;F12，打开控制台，运行&lt;code&gt;[...document.querySelectorAll(&#39;[id=thumbnail]&#39;)].map(item =&amp;gt; item.href).join(&amp;quot; &amp;quot;)&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;下载&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 下载音频&lt;/span&gt;
+youtube-dl -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bestaudio[ext=m4a]&amp;#39;&lt;/span&gt; --verbose --force-ipv4 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1.中的url&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 下载视频&lt;/span&gt;
+youtube-dl -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best&amp;#39;&lt;/span&gt; --verbose --force-ipv4 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1.中的url&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;PS: 一次下载太多会遇到403，出现的话等一段时间再下载吧&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
