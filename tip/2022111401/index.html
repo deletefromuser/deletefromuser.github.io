@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>常用软件 – HA</title>
-<meta name="description" content="EarTrumpet  windows下单独控制每个应用的音量  GoldenDict  字典应用，支持导入字典文件，选中单词CTRL&#43;C&#43;C可全局唤出查询结果弹窗  Proxifier  设置代理规则，针对一些不提供代理选项的应用，选中exe程序设置规则即可  qBittorrent  bt下载工具，同时支持磁力链，rss feed …">
+<title>批量下载youtube视频 – HA</title>
+<meta name="description" content=" 获取视频url   F12，打开控制台，运行[...document.querySelectorAll(&amp;#39;[id=thumbnail]&amp;#39;)].map(item =&amp;amp;gt; item.href).join(&amp;amp;quot; &amp;amp;quot;)  下载  # 下载音频 youtube-dl -f …">
 <meta name="created" content="0001-01-01T00:00:00+0000">
-<meta name="modified" content="2022-11-13T11:10:57+0800">
+<meta name="modified" content="2022-11-14T20:43:35+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="常用软件">
-<meta property="og:url" content="/blog/tip/2022111103/">
+<meta property="og:title" content="批量下载youtube视频">
+<meta property="og:url" content="/blog/tip/2022111401/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/blog/tip/2022111103/">
+<link rel="canonical" href="/blog/tip/2022111401/">
 <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "常用软件",
+    "headline": "批量下载youtube视频",
     "datePublished": "0001-01-01T00:00:00Z",
-    "dateModified": "2022-11-13T11:10:57+08:00",
-    "url" : "/blog/tip/2022111103/",
-    "description": "EarTrumpet  windows下单独控制每个应用的音量  GoldenDict  字典应用，支持导入字典文件，选中单词CTRL+C+C可全局唤出查询结果弹窗  Proxifier  设置代理规则，针对一些不提供代理选项的应用，选中exe程序设置规则即可  qBittorrent  bt下载工具，同时支持磁力链，rss feed …",
+    "dateModified": "2022-11-14T20:43:35+08:00",
+    "url" : "/blog/tip/2022111401/",
+    "description": " 获取视频url   F12，打开控制台，运行[...document.querySelectorAll(\u0026#39;[id=thumbnail]\u0026#39;)].map(item =\u0026amp;gt; item.href).join(\u0026amp;quot; \u0026amp;quot;)  下载  # 下载音频 youtube-dl -f …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -89,43 +89,34 @@
 <main class="main layout__main">
 <article class="single-view single-view--tip">
 <header>
-<h1 class="title title-submitted">常用软件</h1>
+<h1 class="title title-submitted">批量下载youtube视频</h1>
 <div class="submitted">
 
 </div>
 </header>
 <div class="content">
-<h3 id="eartrumpet">EarTrumpet</h3>
+<ol>
+<li>获取视频url</li>
+</ol>
 <blockquote>
-<p>windows下单独控制每个应用的音量</p>
+<p>F12，打开控制台，运行<code>[...document.querySelectorAll('[id=thumbnail]')].map(item =&gt; item.href).join(&quot; &quot;)</code></p>
 </blockquote>
-<h3 id="goldendict">GoldenDict</h3>
-<blockquote>
-<p>字典应用，支持导入字典文件，选中单词<code>CTRL+C+C</code>可全局唤出查询结果弹窗</p>
+<ol start="2">
+<li>下载</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 下载音频</span>
+youtube-dl -f <span style="color:#e6db74">&#39;bestaudio[ext=m4a]&#39;</span> --verbose --force-ipv4 <span style="color:#f92672">[</span>1.中的url<span style="color:#f92672">]</span>
+<span style="color:#75715e"># 下载视频</span>
+youtube-dl -f <span style="color:#e6db74">&#39;bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best&#39;</span> --verbose --force-ipv4 <span style="color:#f92672">[</span>1.中的url<span style="color:#f92672">]</span>
+</code></pre></div><blockquote>
+<p>PS: 一次下载太多会遇到403，出现的话等一段时间再下载吧</p>
 </blockquote>
-<h3 id="proxifier">Proxifier</h3>
-<blockquote>
-<p>设置代理规则，针对一些不提供代理选项的应用，选中exe程序设置规则即可</p>
-</blockquote>
-<h3 id="qbittorrent">qBittorrent</h3>
-<blockquote>
-<p>bt下载工具，同时支持磁力链，rss feed</p>
-</blockquote>
-<h3 id="shadowsocksv2ray">shadowsocks，v2ray</h3>
-<blockquote>
-<p>fuck gfw</p>
-</blockquote>
-<p><strong>reference</strong></p>
-<ul>
-<li><a href="https://nerdschalk.com/how-to-mute-an-app-on-windows-10/">How To Mute an App on Windows 10</a></li>
-<li><a href="https://downloads.freemdict.com/">Dict file download</a></li>
-</ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-11-13 11:10<br>
+Updated: 2022-11-14 20:43<br>
 Created: 0001-01-01 00:00
 </p>
 </div>

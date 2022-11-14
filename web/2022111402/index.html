@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>JavaScript POST方式打开新窗口 – HA</title>
+<meta name="description" content="openWindowWithPost(url, { a: &amp;amp;#34;1&amp;amp;#34;, b: 2, }); function openWindowWithPost(url, data) { var form = document.createElement(&amp;amp;#34;form&amp;amp;#34;); form.target = …">
+<meta name="created" content="2022-11-14T20:00:00+0800">
+<meta name="modified" content="2022-11-14T20:43:35+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="JavaScript POST方式打开新窗口">
+<meta property="og:url" content="/blog/web/2022111402/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/web/2022111402/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "JavaScript POST方式打开新窗口",
+    "datePublished": "2022-11-14T20:00:00+08:00",
+    "dateModified": "2022-11-14T20:43:35+08:00",
+    "url" : "/blog/web/2022111402/",
+    "description": "openWindowWithPost(url, { a: \u0026amp;#34;1\u0026amp;#34;, b: 2, }); function openWindowWithPost(url, data) { var form = document.createElement(\u0026amp;#34;form\u0026amp;#34;); form.target = …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/web/" class="active" aria-current="page">Webs</a></li>
+<li><a href="/blog/bash/">Bashes</a></li>
+<li><a href="/blog/java/">Javas</a></li>
+<li><a href="/blog/problem/">Problems</a></li>
+<li><a href="/blog/sql/">Sqls</a></li>
+<li><a href="/blog/read/">Reads</a></li>
+<li><a href="/blog/watch/">Watches</a></li>
+<li><a href="/blog/git/">Gits</a></li>
+<li><a href="/blog/cloud/">Clouds</a></li>
+<li><a href="/blog/article/">Articles</a></li>
+<li><a href="/blog/chickensoup/">Chickensoups</a></li>
+<li><a href="/blog/csharp/">Csharps</a></li>
+<li><a href="/blog/nihongo/">Nihongos</a></li>
+<li><a href="/blog/tip/">Tips</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--web">
+<header>
+<h1 class="title title-submitted">JavaScript POST方式打开新窗口</h1>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-14T20:00:00&#43;08:00">2022-11-14 20:00</time>
+</div>
+</header>
+<div class="content">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">openWindowWithPost</span>(<span style="color:#a6e22e">url</span>, {
+		<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1&#34;</span>,
+		<span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+	});
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">openWindowWithPost</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">data</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">form</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;form&#34;</span>);
+    <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">target</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;UserInfo&#34;</span>;
+    <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">method</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;POST&#34;</span>;
+    <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">action</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">url</span>;
+
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">data</span>) {
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;input&#34;</span>);
+        <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hidden&#34;</span>;
+        <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">key</span>;
+        <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">key</span>];
+        <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">input</span>);
+    }
+    document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">form</span>);
+    window.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#e6db74">&#39;UserInfo&#39;</span>,<span style="color:#e6db74">&#34;width=1000,height=550,left=100,top=100&#34;</span>);
+    <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">submit</span>();
+    document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">removeChild</span>(<span style="color:#a6e22e">form</span>);
+}
+</code></pre></div><p><strong>reference</strong></p>
+<ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity">Subresource Integrity - Web 安全 | MDN</a></li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-11-14 20:43<br>
+Created: 2022-11-14 20:00
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
