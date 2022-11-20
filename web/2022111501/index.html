@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>SpringBoot开发memo – HA</title>
+<meta name="description" content="解密Jasypt密文  开发中遇到一些配置的密文，有解密的需要  AES256TextEncryptor encryptor = new AES256TextEncryptor(); encryptor.setPassword(&amp;amp;#34;some_salt&amp;amp;#34;); String plainText = …">
+<meta name="created" content="2022-11-15T20:00:00+0800">
+<meta name="modified" content="2022-11-20T10:51:23+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="SpringBoot开发memo">
+<meta property="og:url" content="https://deletefromuser.github.io/web/2022111501/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/web/2022111501/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "SpringBoot开发memo",
+    "datePublished": "2022-11-15T20:00:00+08:00",
+    "dateModified": "2022-11-20T10:51:23+08:00",
+    "url" : "https://deletefromuser.github.io/web/2022111501/",
+    "description": "解密Jasypt密文  开发中遇到一些配置的密文，有解密的需要  AES256TextEncryptor encryptor = new AES256TextEncryptor(); encryptor.setPassword(\u0026amp;#34;some_salt\u0026amp;#34;); String plainText = …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/web/" class="active" aria-current="page">Webs</a></li>
+<li><a href="/bash/">Bashes</a></li>
+<li><a href="/java/">Javas</a></li>
+<li><a href="/problem/">Problems</a></li>
+<li><a href="/sql/">Sqls</a></li>
+<li><a href="/read/">Reads</a></li>
+<li><a href="/watch/">Watches</a></li>
+<li><a href="/git/">Gits</a></li>
+<li><a href="/cloud/">Clouds</a></li>
+<li><a href="/article/">Articles</a></li>
+<li><a href="/chickensoup/">Chickensoups</a></li>
+<li><a href="/csharp/">Csharps</a></li>
+<li><a href="/nihongo/">Nihongos</a></li>
+<li><a href="/tip/">Tips</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--web">
+<header>
+<h1 class="title title-submitted">SpringBoot开发memo</h1>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-15T20:00:00&#43;08:00">2022-11-15 20:00</time>
+</div>
+</header>
+<div class="content">
+<h3 id="解密jasypt密文">解密Jasypt密文</h3>
+<blockquote>
+<p>开发中遇到一些配置的密文，有解密的需要</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">AES256TextEncryptor encryptor <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AES256TextEncryptor<span style="color:#f92672">();</span>
+encryptor<span style="color:#f92672">.</span><span style="color:#a6e22e">setPassword</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;some_salt&#34;</span><span style="color:#f92672">);</span>
+String plainText <span style="color:#f92672">=</span> encryptor<span style="color:#f92672">.</span><span style="color:#a6e22e">decrypt</span><span style="color:#f92672">(</span>myEncryptedText<span style="color:#f92672">);</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Decrypted: &#34;</span><span style="color:#f92672">+</span>plainText<span style="color:#f92672">);</span>
+</code></pre></div><h3 id="winmerge-除外特定文件或文件夹">winmerge 除外特定文件或文件夹</h3>
+<p>进入 Tools | Filters&hellip; | Filefilters选项，编辑<code>Exclude Source Control</code>(也可以新建，但是编辑这个更方便，内置filter可以除外掉版本管理文件)</p>
+<pre><code class="language-flt" data-lang="flt">## Ignore Java class and jar files
+f: \.class$
+f: \.jar$
+
+## Ignore target directories
+d: \\target$
+</code></pre><p><strong>reference</strong></p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/22067552/decrypt-using-jasypt">Decrypt using Jasypt</a></li>
+<li><a href="https://stackoverflow.com/a/1477287/19120213">How to ignore SVN folders in WinMerge</a></li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-11-20 10:51<br>
+Created: 2022-11-15 20:00
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

@@ -6,8 +6,37 @@
     <description>Recent content in Webs on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 14 Nov 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 15 Nov 2022 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SpringBoot开发memo</title>
+      <link>https://deletefromuser.github.io/web/2022111501/</link>
+      <pubDate>Tue, 15 Nov 2022 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/web/2022111501/</guid>
+      <description>&lt;h3 id=&#34;解密jasypt密文&#34;&gt;解密Jasypt密文&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;开发中遇到一些配置的密文，有解密的需要&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;AES256TextEncryptor encryptor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; AES256TextEncryptor&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+encryptor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setPassword&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;some_salt&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+String plainText &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; encryptor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;decrypt&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;myEncryptedText&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Decrypted: &amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;plainText&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;winmerge-除外特定文件或文件夹&#34;&gt;winmerge 除外特定文件或文件夹&lt;/h3&gt;
+&lt;p&gt;进入 Tools | Filters&amp;hellip; | Filefilters选项，编辑&lt;code&gt;Exclude Source Control&lt;/code&gt;(也可以新建，但是编辑这个更方便，内置filter可以除外掉版本管理文件)&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-flt&#34; data-lang=&#34;flt&#34;&gt;## Ignore Java class and jar files
+f: \.class$
+f: \.jar$
+
+## Ignore target directories
+d: \\target$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/22067552/decrypt-using-jasypt&#34;&gt;Decrypt using Jasypt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/1477287/19120213&#34;&gt;How to ignore SVN folders in WinMerge&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>JavaScript POST方式打开新窗口</title>
