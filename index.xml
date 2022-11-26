@@ -6,8 +6,26 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Nov 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 26 Nov 2022 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>使用命令行上传文件到共享网站file.io</title>
+      <link>https://deletefromuser.github.io/tip/2022112601/</link>
+      <pubDate>Sat, 26 Nov 2022 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/tip/2022112601/</guid>
+      <description>&lt;p&gt;在&lt;code&gt;~/.bashrc&lt;/code&gt;最后添加下面脚本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;upload &lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; $# &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -o $# &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$1&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; $# &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt; curl -F &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;file=@&lt;/span&gt;$1&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; https://file.io/ --no-progress-meter | grep -Eo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http|https://[a-zA-Z0-9./?=_%:-]*&amp;#34;&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[[&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$2&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;~ ^&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1-9&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;wmy&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ &lt;span style=&#34;color:#f92672&#34;&gt;]]&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt; curl -F &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;file=@&lt;/span&gt;$1&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; https://file.io/&lt;span style=&#34;color:#ae81ff&#34;&gt;\?&lt;/span&gt;expires&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$2 --no-progress-meter | grep -Eo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http|https://[a-zA-Z0-9./?=_%:-]*&amp;#34;&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; echo &lt;span style=&#34;color:#e6db74&#34;&gt;$&amp;#39;Wrong expiration format.\neg. 1(w/m/y), etc.&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;file doesn&amp;#39;t exist&amp;#34;&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; echo &lt;span style=&#34;color:#e6db74&#34;&gt;$&amp;#39;usage: upload file_name.ext [expiration]\nexpiration format: 1-9(w/m/y) # (w)eeks, m(onths), (y)ear&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;source ~/.bashrc
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 上传&lt;/span&gt;
+upload testfile.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://amanroy.me/upload-file-from-terminal&#34;&gt;Make terminal upload file using file.io&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>SpringBoot开发memo</title>

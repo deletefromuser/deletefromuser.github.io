@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>使用命令行上传文件到共享网站file.io – HA</title>
+<meta name="description" content="在~/.bashrc最后添加下面脚本 upload () { if [ $# = 1 -o $# = 2 ];then if [ -f &amp;amp;#34;$1&amp;amp;#34; ];then if [ $# = 1 ];then curl -F &amp;amp;#34;file=@$1&amp;amp;#34; https://file.io/ --no-progress-meter …">
+<meta name="created" content="2022-11-26T20:00:00+0800">
+<meta name="modified" content="2022-11-26T20:13:15+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="使用命令行上传文件到共享网站file.io">
+<meta property="og:url" content="https://deletefromuser.github.io/tip/2022112601/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/tip/2022112601/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "使用命令行上传文件到共享网站file.io",
+    "datePublished": "2022-11-26T20:00:00+08:00",
+    "dateModified": "2022-11-26T20:13:15+08:00",
+    "url" : "https://deletefromuser.github.io/tip/2022112601/",
+    "description": "在~/.bashrc最后添加下面脚本 upload () { if [ $# = 1 -o $# = 2 ];then if [ -f \u0026amp;#34;$1\u0026amp;#34; ];then if [ $# = 1 ];then curl -F \u0026amp;#34;file=@$1\u0026amp;#34; https://file.io/ --no-progress-meter …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/tip/" class="active" aria-current="page">Tips</a></li>
+<li><a href="/web/">Webs</a></li>
+<li><a href="/bash/">Bashes</a></li>
+<li><a href="/java/">Javas</a></li>
+<li><a href="/problem/">Problems</a></li>
+<li><a href="/sql/">Sqls</a></li>
+<li><a href="/read/">Reads</a></li>
+<li><a href="/watch/">Watches</a></li>
+<li><a href="/git/">Gits</a></li>
+<li><a href="/cloud/">Clouds</a></li>
+<li><a href="/article/">Articles</a></li>
+<li><a href="/chickensoup/">Chickensoups</a></li>
+<li><a href="/csharp/">Csharps</a></li>
+<li><a href="/nihongo/">Nihongos</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--tip">
+<header>
+<h1 class="title title-submitted">使用命令行上传文件到共享网站file.io</h1>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-26T20:00:00&#43;08:00">2022-11-26 20:00</time>
+</div>
+</header>
+<div class="content">
+<p>在<code>~/.bashrc</code>最后添加下面脚本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">upload <span style="color:#f92672">()</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> -o $# <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">]</span>;<span style="color:#66d9ef">then</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>;<span style="color:#66d9ef">then</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>;<span style="color:#66d9ef">then</span> curl -F <span style="color:#e6db74">&#34;file=@</span>$1<span style="color:#e6db74">&#34;</span> https://file.io/ --no-progress-meter | grep -Eo <span style="color:#e6db74">&#34;http|https://[a-zA-Z0-9./?=_%:-]*&#34;</span>;<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span>~ ^<span style="color:#f92672">[</span>1-9<span style="color:#f92672">]</span>+<span style="color:#f92672">[</span>wmy<span style="color:#f92672">]</span>$ <span style="color:#f92672">]]</span>;<span style="color:#66d9ef">then</span> curl -F <span style="color:#e6db74">&#34;file=@</span>$1<span style="color:#e6db74">&#34;</span> https://file.io/<span style="color:#ae81ff">\?</span>expires<span style="color:#f92672">=</span>$2 --no-progress-meter | grep -Eo <span style="color:#e6db74">&#34;http|https://[a-zA-Z0-9./?=_%:-]*&#34;</span>;<span style="color:#66d9ef">else</span> echo <span style="color:#e6db74">$&#39;Wrong expiration format.\neg. 1(w/m/y), etc.&#39;</span>;<span style="color:#66d9ef">fi</span>;<span style="color:#66d9ef">fi</span>;<span style="color:#66d9ef">else</span> echo <span style="color:#e6db74">&#34;file doesn&#39;t exist&#34;</span>;<span style="color:#66d9ef">fi</span>;<span style="color:#66d9ef">else</span> echo <span style="color:#e6db74">$&#39;usage: upload file_name.ext [expiration]\nexpiration format: 1-9(w/m/y) # (w)eeks, m(onths), (y)ear&#39;</span>;<span style="color:#66d9ef">fi</span> <span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">source ~/.bashrc
+
+<span style="color:#75715e"># 上传</span>
+upload testfile.txt
+</code></pre></div><p><strong>reference</strong></p>
+<ul>
+<li><a href="http://amanroy.me/upload-file-from-terminal">Make terminal upload file using file.io</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-11-26 20:13<br>
+Created: 2022-11-26 20:00
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
