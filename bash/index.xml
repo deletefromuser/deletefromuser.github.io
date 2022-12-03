@@ -6,8 +6,25 @@
     <description>Recent content in Bashes on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Nov 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 03 Dec 2022 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ubuntu中把desktop文件的程序固定到任务栏</title>
+      <link>/blog/bash/2022120301/</link>
+      <pubDate>Sat, 03 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/bash/2022120301/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;复制desktop文件到&lt;code&gt;~/.local/share/applications&lt;/code&gt;下，需要确保文件内的路径复制后仍然正确，改为绝对路径&lt;/li&gt;
+&lt;li&gt;命令行启动desktop&lt;/li&gt;
+&lt;li&gt;任务栏右键add to favorites&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1026528/adding-custom-programs-to-favourites-of-ubuntu-dock&#34;&gt;Adding custom programs to favourites of Ubuntu Dock&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>linux 命令memo</title>
@@ -18,9 +35,16 @@
 &lt;blockquote&gt;
 &lt;p&gt;生成uuid&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;history&#34;&gt;&lt;code&gt;history&lt;/code&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;命令行历史&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;修改history容量，&lt;code&gt;~/.bashrc&lt;/code&gt;最后追加&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;export HISTSIZE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;
+export HISTFILESIZE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

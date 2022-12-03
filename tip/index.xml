@@ -78,9 +78,20 @@ upload testfile.txt
 youtube-dl -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bestaudio[ext=m4a]&amp;#39;&lt;/span&gt; --verbose --force-ipv4 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1.中的url&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 下载视频&lt;/span&gt;
 youtube-dl -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best&amp;#39;&lt;/span&gt; --verbose --force-ipv4 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1.中的url&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 可用字幕列表&lt;/span&gt;
+youtube-dl --list-subs https://www.youtube.com/watch?v&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Ye8mB6VsUHw
+&lt;span style=&#34;color:#75715e&#34;&gt;# 同时下载字幕&lt;/span&gt;
+youtube-dl -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best&amp;#39;&lt;/span&gt; --verbose --force-ipv4 --all-subs &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1.中的url&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 只下载字幕，不下载视频&lt;/span&gt;
+youtube-dl --all-subs --skip-download https://www.youtube.com/watch?v&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Ye8mB6VsUHw
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;PS: 一次下载太多会遇到403，出现的话等一段时间再下载吧&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ytdl-org/youtube-dl#options&#34;&gt;youtube-dl manual&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/927523/how-to-download-only-subtitles-of-videos-using-youtube-dl&#34;&gt;How to download only subtitles of videos using youtube-dl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
