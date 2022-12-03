@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>oracle常用命令 – HA</title>
-<meta name="description" content="创建用户 CREATE USER &amp;amp;#39;newuser&amp;amp;#39;@&amp;amp;#39;localhost&amp;amp;#39; IDENTIFIED BY &amp;amp;#39;password&amp;amp;#39;; CREATE USER &amp;amp;#39;newuser&amp;amp;#39;@&amp;amp;#39;%&amp;amp;#39; IDENTIFIED BY &amp;amp;#39;password&amp;amp;#39;; GRANT …">
+<meta name="description" content="在线执行环境，缺点是需要注册 Oracle live SQL 创建用户 alter session set &amp;amp;#34;_ORACLE_SCRIPT&amp;amp;#34;=true; CREATE USER &amp;amp;#39;newuser&amp;amp;#39;@&amp;amp;#39;localhost&amp;amp;#39; IDENTIFIED BY &amp;amp;#39;password&amp;amp;#39;; …">
 <meta name="created" content="2022-11-06T19:00:00+0800">
-<meta name="modified" content="2022-11-06T21:26:30+0800">
+<meta name="modified" content="2022-12-03T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,9 +31,9 @@
     "@type": "WebPage",
     "headline": "oracle常用命令",
     "datePublished": "2022-11-06T19:00:00+08:00",
-    "dateModified": "2022-11-06T21:26:30+08:00",
+    "dateModified": "2022-12-03T20:00:00+08:00",
     "url" : "https://deletefromuser.github.io/sql/2022110605/",
-    "description": "创建用户 CREATE USER \u0026amp;#39;newuser\u0026amp;#39;@\u0026amp;#39;localhost\u0026amp;#39; IDENTIFIED BY \u0026amp;#39;password\u0026amp;#39;; CREATE USER \u0026amp;#39;newuser\u0026amp;#39;@\u0026amp;#39;%\u0026amp;#39; IDENTIFIED BY \u0026amp;#39;password\u0026amp;#39;; GRANT …",
+    "description": "在线执行环境，缺点是需要注册 Oracle live SQL 创建用户 alter session set \u0026amp;#34;_ORACLE_SCRIPT\u0026amp;#34;=true; CREATE USER \u0026amp;#39;newuser\u0026amp;#39;@\u0026amp;#39;localhost\u0026amp;#39; IDENTIFIED BY \u0026amp;#39;password\u0026amp;#39;; …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://deletefromuser.github.io/"
@@ -68,9 +68,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/">Home</a></li>
+<li><a href="/bash/">Bashes</a></li>
 <li><a href="/tip/">Tips</a></li>
 <li><a href="/web/">Webs</a></li>
-<li><a href="/bash/">Bashes</a></li>
 <li><a href="/java/">Javas</a></li>
 <li><a href="/problem/">Problems</a></li>
 <li><a href="/sql/" class="active" aria-current="page">Sqls</a></li>
@@ -95,14 +95,113 @@
 </div>
 </header>
 <div class="content">
+<h3 id="在线执行环境缺点是需要注册">在线执行环境，缺点是需要注册</h3>
+<p><a href="https://livesql.oracle.com">Oracle live SQL</a></p>
 <h3 id="创建用户">创建用户</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span>;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">set</span> <span style="color:#e6db74">&#34;_ORACLE_SCRIPT&#34;</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span>;
 <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span>;
 <span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ALL</span> <span style="color:#66d9ef">PRIVILEGES</span> <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
 <span style="color:#66d9ef">REVOKE</span> type_of_permission <span style="color:#66d9ef">ON</span> database_name.<span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
 FLUSH <span style="color:#66d9ef">PRIVILEGES</span>;
 <span style="color:#66d9ef">SHOW</span> GRANTS <span style="color:#66d9ef">FOR</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
 <span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
+<span style="color:#75715e">-- 同时删除用户下的所有对象
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span> <span style="color:#66d9ef">CASCADE</span>;
+</code></pre></div><h3 id="修改数据库编码">修改数据库编码</h3>
+<p>重要数据记得备份，我导入的数据转码之后汉字全都乱码了</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 查看oracle数据库的编码
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> nls_database_parameters <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">parameter</span> <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;NLS_CHARACTERSET&#39;</span>;
+<span style="color:#75715e">-- oracle客户端编码
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> nls_instance_parameters <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">parameter</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;NLS_LANGUAGE&#39;</span>;
+<span style="color:#75715e">-- 修改oracle的字符集（-&gt;ZHS16GBK）
+</span><span style="color:#75715e">-- 以sysdba的身份登录
+</span><span style="color:#75715e"></span>conn <span style="color:#f92672">/</span><span style="color:#66d9ef">as</span> sysdba
+<span style="color:#75715e">-- 关闭数据库
+</span><span style="color:#75715e"></span>shutdown <span style="color:#66d9ef">immediate</span>;
+<span style="color:#75715e">-- 以mount打来数据库
+</span><span style="color:#75715e"></span>startup mount
+<span style="color:#75715e">--设置session 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SYSTEM</span> ENABLE RESTRICTED <span style="color:#66d9ef">SESSION</span>;
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SYSTEM</span> <span style="color:#66d9ef">SET</span> JOB_QUEUE_PROCESSES<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SYSTEM</span> <span style="color:#66d9ef">SET</span> AQ_TM_PROCESSES<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+<span style="color:#75715e">-- 启动数据库
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">database</span> <span style="color:#66d9ef">open</span>;
+<span style="color:#75715e">-- 修改字符集
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">DATABASE</span> CHARACTER <span style="color:#66d9ef">SET</span> ZHS16GBK;
+<span style="color:#75715e">-- 可能会报错,可以跳过超集的检查做更改
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">DATABASE</span> character <span style="color:#66d9ef">set</span> INTERNAL_USE ZHS16GBK;
+<span style="color:#75715e">-- 关闭，重新启动
+</span><span style="color:#75715e"></span>shutdown <span style="color:#66d9ef">immediate</span>;
+startup
+</code></pre></div><h3 id="导入数据库">导入数据库</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 导入的时候确定，导出和导入的数据库编码一致
+</span><span style="color:#75715e"></span>imp tom<span style="color:#f92672">/</span>a12345678<span style="color:#f92672">@</span>orcl file<span style="color:#f92672">=/</span>path<span style="color:#f92672">/</span>backup.dmp fromuser<span style="color:#f92672">=</span>tom touser<span style="color:#f92672">=</span>jack <span style="color:#66d9ef">ignore</span>;
+</code></pre></div><h3 id="缩小oracle数据库内存占用">缩小oracle数据库内存占用</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> v$parameter <span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%size%&#39;</span> <span style="color:#66d9ef">OR</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%target%&#39;</span>;
+<span style="color:#66d9ef">show</span> <span style="color:#66d9ef">parameter</span> sga;
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">system</span> <span style="color:#66d9ef">set</span> sga_max_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span>M <span style="color:#66d9ef">scope</span><span style="color:#f92672">=</span>spfile;
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">system</span> <span style="color:#66d9ef">set</span> sga_target <span style="color:#f92672">=</span> <span style="color:#ae81ff">1024</span>M <span style="color:#66d9ef">scope</span><span style="color:#f92672">=</span>spfile;
+<span style="color:#66d9ef">show</span> <span style="color:#66d9ef">parameter</span> sga;
+shut <span style="color:#66d9ef">immediate</span>;
+startup <span style="color:#66d9ef">force</span>;
+<span style="color:#75715e">-- 必须重启服务restart OracleServiceORCL service in windows
+</span></code></pre></div><h3 id="搜索表">搜索表</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">table_name</span>, <span style="color:#66d9ef">owner</span> <span style="color:#66d9ef">FROM</span> all_tables <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%USER%&#39;</span> <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">owner</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TOM&#39;</span> <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">owner</span>, <span style="color:#66d9ef">table_name</span>;
+
+<span style="color:#75715e">-- 查看表属性
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">desc</span> USERINFO;
+</code></pre></div><h3 id="查看正在运行中的会话sql锁表">查看正在运行中的会话，sql，锁表</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> sid,
+      serial<span style="color:#f92672">#</span>,
+      osuser,
+      machine,
+      program,
+      module
+<span style="color:#66d9ef">from</span> v$session;
+
+<span style="color:#66d9ef">SELECT</span> to_char(logon_time,<span style="color:#e6db74">&#39;DD/MM/YYYY HH24:MI:SS&#39;</span>) logontime
+username,terminal,osuser,status,sid,serial<span style="color:#f92672">#</span>,program,floor(last_call_et <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span>) <span style="color:#e6db74">&#34;Minutes since active&#34;</span>
+<span style="color:#66d9ef">FROM</span> v$session
+<span style="color:#66d9ef">WHERE</span> username <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> logon_time <span style="color:#66d9ef">DESC</span>;
+<span style="color:#75715e">-- 正在运行中sql
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> username,terminal,SID,a.module,ELAPSED_TIME,
+SERIAL<span style="color:#f92672">#</span>,SQL_TEXT
+<span style="color:#66d9ef">FROM</span> V$SESSION a, V$SQL b
+<span style="color:#66d9ef">WHERE</span> a.SQL_ADDRESS <span style="color:#f92672">=</span> b.ADDRESS
+<span style="color:#66d9ef">AND</span> a.STATUS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ACTIVE&#39;</span>;
+<span style="color:#75715e">-- 查看锁表信息
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">Select</span> substr(nvl(s.USERNAME,<span style="color:#e6db74">&#39;sys&#39;</span>),<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">9</span>) <span style="color:#e6db74">&#34;用户名&#34;</span>,
+nvl(s.TERMINAL,<span style="color:#e6db74">&#39;None&#39;</span>) <span style="color:#e6db74">&#34;终端&#34;</span>,
+decode(l.LMODE,
+<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;No Lock&#39;</span>,
+<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#39;Row Share&#39;</span>,
+<span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#39;Row Exclusive&#39;</span>,
+<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#39;Share&#39;</span>,
+<span style="color:#ae81ff">5</span>,<span style="color:#e6db74">&#39;Share Row Exclusive&#39;</span>,
+<span style="color:#ae81ff">6</span>,<span style="color:#e6db74">&#39;Exclusive&#39;</span>,
+<span style="color:#66d9ef">null</span>) <span style="color:#e6db74">&#34;持有锁&#34;</span>,
+decode(l.REQUEST,
+<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;No Lock&#39;</span>,
+<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#39;Row Share&#39;</span>,
+<span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#39;Row Exclusive&#39;</span>,
+<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#39;Share&#39;</span>,
+<span style="color:#ae81ff">5</span>,<span style="color:#e6db74">&#39;Share Row Exclusive&#39;</span>,
+<span style="color:#ae81ff">6</span>,<span style="color:#e6db74">&#39;Exclusive&#39;</span>,
+<span style="color:#66d9ef">null</span>) <span style="color:#e6db74">&#34;申请锁&#34;</span>,
+SUBSTR(T1.NAME,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">13</span>) <span style="color:#e6db74">&#34;表名&#34;</span>,
+substr(l.SID<span style="color:#f92672">||</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#f92672">||</span>s.SERIAL<span style="color:#f92672">#</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">10</span>) <span style="color:#e6db74">&#34;SID.SERIAL&#34;</span>
+<span style="color:#66d9ef">FROM</span> V$LOCK L,
+V$SESSION S,
+SYS.<span style="color:#66d9ef">USER</span><span style="color:#960050;background-color:#1e0010">$</span> U1,
+SYS.OBJ$ T1
+<span style="color:#66d9ef">where</span> l.sid<span style="color:#f92672">=</span>s.sid
+<span style="color:#66d9ef">and</span> t1.obj<span style="color:#f92672">#=</span>decode(l.id2,<span style="color:#ae81ff">0</span>,l.id1,l.id2)
+<span style="color:#66d9ef">and</span> u1.<span style="color:#66d9ef">user</span><span style="color:#f92672">#=</span>t1.<span style="color:#66d9ef">owner</span><span style="color:#f92672">#</span>
+<span style="color:#66d9ef">and</span> U1.NAME <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;SYS&#39;</span>
+<span style="color:#66d9ef">and</span> s.<span style="color:#66d9ef">TYPE</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;BACKGROUND&#39;</span>
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">5</span>;
 </code></pre></div><h3 id="查看日期">查看日期</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 一年前的日期
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> add_months(sysdate, <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>) <span style="color:#66d9ef">FROM</span> DUAL;
@@ -123,6 +222,8 @@ FLUSH <span style="color:#66d9ef">PRIVILEGES</span>;
 <span style="color:#75715e">-- 日期转字符串
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> to_char(sysdate,<span style="color:#e6db74">&#39;YYYYMMDD&#39;</span>) <span style="color:#66d9ef">from</span> dual;
 <span style="color:#66d9ef">select</span> to_char(sysdate,<span style="color:#e6db74">&#39;YYYY-MM-DD HH24:MI:SS&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 儒略日数(Julian Day)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> to_char(sysdate,<span style="color:#e6db74">&#39;J&#39;</span>) <span style="color:#66d9ef">from</span> dual;
 <span style="color:#75715e">-- 这个季度最后一天23点
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> trunc(add_months(sysdate,<span style="color:#ae81ff">3</span>), <span style="color:#e6db74">&#39;Q&#39;</span>) <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">24</span> <span style="color:#e6db74">&#34;这个季度最后一天23点&#34;</span> <span style="color:#66d9ef">from</span> dual;
 <span style="color:#75715e">-- 两分钟后时间
@@ -132,23 +233,128 @@ FLUSH <span style="color:#66d9ef">PRIVILEGES</span>;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> nvl(<span style="color:#66d9ef">null</span>, <span style="color:#e6db74">&#39;25&#39;</span>) <span style="color:#66d9ef">FROM</span> dual;
 <span style="color:#75715e">-- 等于特定值时返回null，可用于被除数为0判断
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">nullif</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> bookinfo (
+id number(<span style="color:#ae81ff">20</span>),
+name varchar2(<span style="color:#ae81ff">50</span>)
+);
+<span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> bookinfo <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">0</span>,<span style="color:#e6db74">&#39;&#39;</span>);
+<span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> bookinfo <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">1</span>,<span style="color:#66d9ef">null</span>);
+<span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> bookinfo <span style="color:#66d9ef">values</span>(<span style="color:#66d9ef">null</span>,<span style="color:#66d9ef">null</span>);
+<span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> bookinfo <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#39;1 row(s) inserted.&#39;</span>);
+<span style="color:#75715e">-- 在oracle中，空字符串会被当做null来处理
+</span><span style="color:#75715e">-- null比较时，要用is null，is not null
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> bookinfo <span style="color:#66d9ef">where</span> name <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;1 row(s) inserted.&#39;</span>; <span style="color:#75715e">--搜索不到为null的数据
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> bookinfo <span style="color:#66d9ef">where</span> name <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;1 row(s) inserted.&#39;</span> <span style="color:#66d9ef">or</span> name <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">null</span>; <span style="color:#75715e">--可搜索为null的数据
+</span></code></pre></div><h3 id="修改列属性">修改列属性</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> USERINFO <span style="color:#66d9ef">modify</span> address varchar2(<span style="color:#ae81ff">350</span>);
+<span style="color:#75715e">-- 缩小列长度，改变类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> USERINFO <span style="color:#66d9ef">modify</span> address_temp varchar2(<span style="color:#ae81ff">250</span>);
+<span style="color:#66d9ef">update</span> USERINFO <span style="color:#66d9ef">set</span> address <span style="color:#f92672">=</span> address_temp;
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> USERINFO <span style="color:#66d9ef">drop</span> address;
+<span style="color:#66d9ef">rename</span> <span style="color:#66d9ef">column</span> USERINFO.address_temp <span style="color:#66d9ef">to</span> USERINFO.address;
+<span style="color:#66d9ef">COMMENT</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">COLUMN</span> USERINFO.address <span style="color:#66d9ef">IS</span> <span style="color:#e6db74">&#39;地址&#39;</span>;
+</code></pre></div><h3 id="查看目录">查看目录</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> DIRECTORY MY_DIR <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">&#39;/path/mydata/&#39;</span>;
+<span style="color:#66d9ef">SELECT</span> directory_name, directory_path <span style="color:#66d9ef">FROM</span> dba_directories <span style="color:#66d9ef">WHERE</span> directory_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;MY_DIR&#39;</span>;
+</code></pre></div><h3 id="批量插入行">批量插入行</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 使用循环
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">BEGIN</span>
+<span style="color:#66d9ef">FOR</span> v_LoopCounter <span style="color:#66d9ef">IN</span> <span style="color:#ae81ff">100</span>..<span style="color:#ae81ff">120</span> LOOP
+        <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> BOOKINFO (ID,NAME) 
+            <span style="color:#66d9ef">VALUES</span> (trunc(dbms_random.value(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>e19))<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;test&#39;</span><span style="color:#f92672">||</span>v_LoopCounter);
+<span style="color:#66d9ef">END</span> LOOP;
+<span style="color:#66d9ef">COMMIT</span>;
+<span style="color:#66d9ef">END</span>;
+<span style="color:#75715e">-- 使用row generator（dual connect by）
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> BOOKINFO (ID,NAME)
+<span style="color:#66d9ef">select</span> trunc(dbms_random.value(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>e20))<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, name 
+<span style="color:#66d9ef">from</span> BOOKINFO main
+<span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> (<span style="color:#66d9ef">select</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">from</span> dual <span style="color:#66d9ef">connect</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">level</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">100</span>) sub <span style="color:#66d9ef">on</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><h3 id="获取随机数">获取随机数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 小数( 0 ~ 1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> dbms_random.value <span style="color:#66d9ef">from</span> dual ;
+<span style="color:#75715e">-- 指定范围内的小数 ( 0 ~ 100 )
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> dbms_random.value(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">from</span> dual ;
+<span style="color:#75715e">-- 获取长度为20的随机整型数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> trunc(dbms_random.value(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>e20<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)) <span style="color:#66d9ef">from</span> dual ;
+<span style="color:#75715e">-- 随机字符串 &#39;u&#39;:大写字母，&#39;l&#39;:小写字母， &#39;a&#39;:大、小写字母，&#39;x&#39;:数字、大写字母，&#39;p&#39;:可打印字符
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> dbms_random.string(<span style="color:#e6db74">&#39;p&#39;</span>, <span style="color:#ae81ff">30</span>) <span style="color:#66d9ef">from</span> dual ;
+<span style="color:#75715e">-- 随机日期
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> to_date(to_char(add_months(sysdate, <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>),<span style="color:#e6db74">&#39;J&#39;</span>) <span style="color:#f92672">+</span> TRUNC(DBMS_RANDOM.VALUE(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">365</span>)),<span style="color:#e6db74">&#39;J&#39;</span>) <span style="color:#66d9ef">from</span> dual ;
+<span style="color:#75715e">-- 生成GUID(32位)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> sys_guid() <span style="color:#66d9ef">from</span> dual ;
 </code></pre></div><h3 id="其他">其他</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 取得行号
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> rownum <span style="color:#66d9ef">from</span> dual;
 <span style="color:#75715e">-- 转大写
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">upper</span>(<span style="color:#e6db74">&#39;abc&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+</code></pre></div><h3 id="统计">统计</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 建表
+</span><span style="color:#75715e">-- drop table userinfo;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> userinfo (
+id number(<span style="color:#ae81ff">20</span>),
+name varchar2(<span style="color:#ae81ff">50</span>),
+dept number(<span style="color:#ae81ff">5</span>),
+salary number(<span style="color:#ae81ff">8</span>),
+createtime date
+);
+<span style="color:#75715e">-- 插入数据
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> userinfo 
+<span style="color:#66d9ef">select</span> trunc(dbms_random.value(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>e20))<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, dbms_random.string(<span style="color:#e6db74">&#39;u&#39;</span>, <span style="color:#ae81ff">5</span>), 
+       trunc(dbms_random.value(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">5</span>)),trunc(dbms_random.value(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>e7)),
+       to_date(to_char(add_months(sysdate, <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>),<span style="color:#e6db74">&#39;J&#39;</span>) <span style="color:#f92672">+</span> TRUNC(DBMS_RANDOM.VALUE(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">365</span>)),<span style="color:#e6db74">&#39;J&#39;</span>)
+<span style="color:#66d9ef">from</span> dual <span style="color:#66d9ef">connect</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">level</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">50</span> ;
+<span style="color:#75715e">-- 按工资排序，同时记录工资排名
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,name,dept,salary,createtime,rownum,rowid,row_number() over(<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary <span style="color:#66d9ef">desc</span>) <span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary <span style="color:#66d9ef">desc</span>;
+<span style="color:#75715e">-- 查询每个部门工资最高的员工信息
+</span><span style="color:#75715e">-- rank()/dense_rank() 区别在于排序时遇到相同值时，rank会跳号
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> (<span style="color:#66d9ef">select</span> id,name,dept,salary,createtime,rank() over(partition <span style="color:#66d9ef">by</span> dept <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary <span style="color:#66d9ef">desc</span>) rank <span style="color:#66d9ef">from</span> userinfo) sub <span style="color:#66d9ef">where</span> rank <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> dept;
+<span style="color:#75715e">-- 查询员工信息的同时，查询所在部门最低、最高工资
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,name,dept,salary,createtime,<span style="color:#66d9ef">max</span>(salary) over(partition <span style="color:#66d9ef">by</span> dept) dept_max_salary,<span style="color:#66d9ef">min</span>(salary) over(partition <span style="color:#66d9ef">by</span> dept) dept_min_salary <span style="color:#66d9ef">from</span> userinfo;
+<span style="color:#75715e">-- 查询员工信息，查询工资比自己高一位，低一位的工资
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,name,dept,salary,lead(salary, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">null</span>) over(partition <span style="color:#66d9ef">by</span> dept <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary) higher,lag(salary, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">null</span>) over(partition <span style="color:#66d9ef">by</span> dept <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary) <span style="color:#66d9ef">lower</span> <span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> dept;
+<span style="color:#75715e">-- 排序时，默认是NULLS LAST，如果想null排前面使用nulls first
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,name,dept,salary,lead(salary, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">null</span>) over(partition <span style="color:#66d9ef">by</span> dept <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary) higher,lag(salary, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">null</span>) over(partition <span style="color:#66d9ef">by</span> dept <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary) <span style="color:#66d9ef">lower</span> 
+<span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> higher nulls <span style="color:#66d9ef">first</span>;
+<span style="color:#75715e">-- 查询员工信息，查询部门总工资，最高工资，人数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,name,dept,salary,<span style="color:#66d9ef">sum</span>(salary) over(partition <span style="color:#66d9ef">by</span> dept) dept_salary,<span style="color:#66d9ef">max</span>(salary) over(partition <span style="color:#66d9ef">by</span> dept) dept_max_salary,<span style="color:#66d9ef">count</span>(salary) over(partition <span style="color:#66d9ef">by</span> dept) dept_staff_num <span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> dept;
+<span style="color:#75715e">-- 查询员工信息，查询工资在公司内属于前五分之几，部门内属于前三分之几
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,name,dept,salary,ntile(<span style="color:#ae81ff">5</span>) over(<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary <span style="color:#66d9ef">desc</span>) comp_rank,ntile(<span style="color:#ae81ff">3</span>) over(partition <span style="color:#66d9ef">by</span> dept <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary <span style="color:#66d9ef">desc</span>) dept_rank 
+<span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> dept,comp_rank;
+<span style="color:#75715e">-- 查询部门内最晚入职，工资最高的员工
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> dept,<span style="color:#66d9ef">max</span>(name) keep(dense_rank <span style="color:#66d9ef">last</span> <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> createtime),<span style="color:#66d9ef">max</span>(salary) keep(dense_rank <span style="color:#66d9ef">last</span> <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> createtime),<span style="color:#66d9ef">max</span>(createtime) keep(dense_rank <span style="color:#66d9ef">last</span> <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> createtime)
+<span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> dept;
+</code></pre></div><h3 id="使用临时表查询">使用临时表查询</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 适用于优化sql，复杂sql中有些共通子查询多次重复出现时，可提取出临时表减少查询次数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">with</span> dept1_userinfo <span style="color:#66d9ef">as</span> (<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">where</span> dept <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">fetch</span> <span style="color:#66d9ef">first</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">only</span>)
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> dept1_userinfo <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> (<span style="color:#66d9ef">select</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">from</span> dual <span style="color:#66d9ef">connect</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">level</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">100</span>) sub <span style="color:#66d9ef">on</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://www.cnblogs.com/linjiao/p/6394087.html">ORACLE TRUNC()函数</a></li>
 <li><a href="https://www.cnblogs.com/jijm123/p/15763010.html">Oracle：trunc()函数简介</a></li>
 <li><a href="https://www.cnblogs.com/xianz666/p/13073664.html">Oracle中除数为0的两种解决办法（decode与nullif）</a></li>
+<li><a href="https://docs.oracle.com/javadb/10.6.2.1/ref/rrefsqljrenamecolumnstatement.html">RENAME COLUMN statement</a></li>
+<li><a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_9008.htm">DROP USER</a></li>
+<li><a href="https://www.cnblogs.com/fclbky/p/8191326.html">oracle查看编码以及修改编码</a></li>
+<li><a href="https://dba.stackexchange.com/q/105431">How do I limit Oracle&rsquo;s memory use?</a></li>
+<li><a href="https://smarttechways.com/2013/07/17/what-current-active-session-in-oracle/">Check session status active, inactive, sql query in Oracle</a></li>
+<li><a href="https://www.cnblogs.com/Alanf/p/7490983.html">ORACLE 如何产生一个随机数</a></li>
+<li><a href="https://oracle-base.com/articles/misc/dbms_random">DBMS_RANDOM : Generating Random Data (Numbers, Strings and Dates) in Oracle</a></li>
+<li><a href="https://stackoverflow.com/questions/53538965/how-to-use-for-loop-for-insert-in-oracle">How to use for loop for insert in Oracle?</a></li>
+<li><a href="https://www.cnblogs.com/liaoyu/p/oracle-procedure-batch-insert.html">使用Oracle的存储过程批量插入数据</a></li>
+<li><a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/sql_elements004.htm#i34510">Format Models</a></li>
+<li><a href="https://stackoverflow.com/questions/34282583/what-is-rowid-rownum-rowid-vs-rownum">What is rowID &amp; rowNum (ROWID vs ROWNUM)</a></li>
+<li><a href="https://www.cnblogs.com/chinas/p/7058771.html">Oracle分析函数Over()</a></li>
+<li><a href="https://omachizura.com/2016/08/sql-oracle-null.html">SQL oracleでnullを比較する際の注意点</a></li>
+<li><a href="https://community.oracle.com/tech/developers/discussion/3581149/analytic-functions-first-vs-first-value">Analytic functions: FIRST vs FIRST_VALUE</a></li>
+<li><a href="https://www.cnblogs.com/YuyuanNo1/p/9241754.html">ORACLE WITH AS 用法,创建临时表</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-11-06 21:26<br>
+Updated: 2022-12-03 20:00<br>
 Created: 2022-11-06 19:00
 </p>
 </div>
