@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cron on HA</title>
+    <link>/blog/tags/cron/</link>
+    <description>Recent content in cron on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Nov 2022 19:30:00 +0800</lastBuildDate>
+    <atom:link href="/blog/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>linux下设置定时任务</title>
+      <link>/blog/bash/2022110602/</link>
+      <pubDate>Sun, 06 Nov 2022 19:30:00 +0800</pubDate>
+      <guid>/blog/bash/2022110602/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;crontab -e
+
+A B C D E USERNAME /path/to/command arg1 arg2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Explanation of above cron syntax:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A: Minutes range: 0 – 59&lt;/li&gt;
+&lt;li&gt;B: Hours range: 0 – 23&lt;/li&gt;
+&lt;li&gt;C: Days range: 0 – 31&lt;/li&gt;
+&lt;li&gt;D: Months range: 0 – 12&lt;/li&gt;
+&lt;li&gt;E: Days of the week range: 0 – 7. Starting from Monday, 0 or 7 represents Sunday&lt;/li&gt;
+&lt;li&gt;USERNAME: replace this with your username&lt;/li&gt;
+&lt;li&gt;/path/to/command – The name of the script or command you want to schedule&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tecmint.com/create-and-manage-cron-jobs-on-linux/&#34;&gt;How to Create and Manage Cron Jobs on Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

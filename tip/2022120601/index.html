@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>工作笔记2016-2021 – HA</title>
+<meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
+<meta name="created" content="2022-12-06T20:00:00+0800">
+<meta name="modified" content="2022-12-06T22:57:48+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="工作笔记2016-2021">
+<meta property="og:url" content="/blog/tip/2022120601/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/tip/2022120601/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "工作笔记2016-2021",
+    "datePublished": "2022-12-06T20:00:00+08:00",
+    "dateModified": "2022-12-06T22:57:48+08:00",
+    "url" : "/blog/tip/2022120601/",
+    "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
+    "keywords": ["正则表达式","automation"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/tip/" class="active" aria-current="page">Tips</a></li>
+<li><a href="/blog/bash/">Bashes</a></li>
+<li><a href="/blog/web/">Webs</a></li>
+<li><a href="/blog/java/">Javas</a></li>
+<li><a href="/blog/problem/">Problems</a></li>
+<li><a href="/blog/sql/">Sqls</a></li>
+<li><a href="/blog/read/">Reads</a></li>
+<li><a href="/blog/watch/">Watches</a></li>
+<li><a href="/blog/git/">Gits</a></li>
+<li><a href="/blog/cloud/">Clouds</a></li>
+<li><a href="/blog/article/">Articles</a></li>
+<li><a href="/blog/chickensoup/">Chickensoups</a></li>
+<li><a href="/blog/csharp/">Csharps</a></li>
+<li><a href="/blog/nihongo/">Nihongos</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--tip">
+<header>
+<h1 class="title title-submitted">工作笔记2016-2021</h1>
+<div class="submitted">
+<time class="created-date" datetime="2022-12-06T20:00:00&#43;08:00">2022-12-06 20:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/automation/">automation</a></li>
+<li><a href="/blog/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="停止网页重定向">停止网页重定向</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;beforeunload&#34;</span>, () =&gt; { <span style="color:#66d9ef">debugger</span>; }, <span style="color:#66d9ef">false</span>);
+</code></pre></div><h3 id="js转换字符为unicode">JS转换字符为UNICODE</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">escape</span>(<span style="color:#e6db74">&#34;转换字符&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/%/g</span>, <span style="color:#e6db74">&#34;\\&#34;</span>).<span style="color:#a6e22e">toLowerCase</span>();
+</code></pre></div><h3 id="js获取一组元素取出属性并组合">JS获取一组元素取出属性并组合</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 取得链接url，空格连接
+</span><span style="color:#75715e"></span>[...document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;[id=thumbnail]&#39;</span>)].<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">href</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34; &#34;</span>)
+Array.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">slice</span>.<span style="color:#a6e22e">call</span>(document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;[id=thumbnail]&#39;</span>)).<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">href</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34; &#34;</span>)
+<span style="color:#75715e">// 取得链接url，换行连接
+</span><span style="color:#75715e"></span>[...document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;[id=thumbnail]&#39;</span>)].<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">href</span>).<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; {<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;\n&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;})
+</code></pre></div><h3 id="db2-表异常解决办法">db2 表异常解决办法</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">connect</span> <span style="color:#66d9ef">to</span> dbut <span style="color:#66d9ef">user</span> tom <span style="color:#66d9ef">using</span> password01
+<span style="color:#66d9ef">load</span> query <span style="color:#66d9ef">table</span> ut.userinfo
+reorg <span style="color:#66d9ef">table</span> ut.userinfo
+</code></pre></div><h3 id="db2-导出导入表数据">db2 导出导入表数据</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">export <span style="color:#66d9ef">to</span> <span style="color:#f92672">/</span>path<span style="color:#f92672">/</span>userinfo_data.ixf <span style="color:#66d9ef">of</span> ixf <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> ut.userinfo <span style="color:#66d9ef">fetch</span> <span style="color:#66d9ef">first</span> <span style="color:#ae81ff">50</span> <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">only</span>
+
+import <span style="color:#66d9ef">from</span> <span style="color:#f92672">/</span>path<span style="color:#f92672">/</span>userinfo_data.ixf <span style="color:#66d9ef">of</span> ixf <span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> ut.userinfonew
+</code></pre></div><h3 id="java取得文件行数">java取得文件行数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Files<span style="color:#f92672">.</span><span style="color:#a6e22e">lines</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/path/file&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">count</span><span style="color:#f92672">();</span>
+</code></pre></div><h3 id="根据wsdl文件生成代码">根据wsdl文件生成代码</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wsimport -s /path/result/ file:/path/userinfo.wsdl -wsdllocation file:/serverpath/userinfo.wsdl -encoding utf-8 -Xnocompile
+</code></pre></div><p><strong>reference</strong></p>
+<ul>
+<li><a href="https://wangdoc.com/javascript/stdlib/array">JavaScript 教程 &gt; 标准库 &gt; Array 对象</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-06 22:57<br>
+Created: 2022-12-06 20:00
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

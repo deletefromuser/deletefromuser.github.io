@@ -3,22 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/bash/</loc>
-    <lastmod>2022-12-03T22:45:07+08:00</lastmod>
+    <loc>/blog/tags/automation/</loc>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2022-12-03T22:45:07+08:00</lastmod>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/bash/2022120301/</loc>
-    <lastmod>2022-12-03T22:45:07+08:00</lastmod>
+    <loc>/blog/tags/</loc>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/tip/</loc>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/2022120601/</loc>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/bash/</loc>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/bash/2022120301/</loc>
     <lastmod>2022-12-03T22:45:07+08:00</lastmod>
   </url>
   
@@ -48,8 +68,13 @@
   </url>
   
   <url>
+    <loc>/blog/tags/linux/</loc>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/bash/2022111001/</loc>
-    <lastmod>2022-12-03T22:45:07+08:00</lastmod>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
   </url>
   
   <url>
@@ -73,8 +98,13 @@
   </url>
   
   <url>
+    <loc>/blog/tags/cron/</loc>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/bash/2022110602/</loc>
-    <lastmod>2022-11-06T21:26:30+08:00</lastmod>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
   </url>
   
   <url>
@@ -88,7 +118,17 @@
   </url>
   
   <url>
+    <loc>/blog/tags/oracle/</loc>
+    <lastmod>2022-12-03T20:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/sql/2022110605/</loc>
+    <lastmod>2022-12-03T20:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/sql/</loc>
     <lastmod>2022-12-03T20:00:00+08:00</lastmod>
   </url>
   
@@ -153,8 +193,13 @@
   </url>
   
   <url>
+    <loc>/blog/tags/bash/</loc>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/bash/2022070701/</loc>
-    <lastmod>2022-07-07T16:18:21+08:00</lastmod>
+    <lastmod>2022-12-06T22:57:48+08:00</lastmod>
   </url>
   
   <url>
@@ -539,10 +584,6 @@
   
   <url>
     <loc>/blog/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>/blog/tags/</loc>
   </url>
   
   <url>
