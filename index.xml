@@ -6,8 +6,42 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Dec 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Dec 2022 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>工作笔记2016-2021</title>
+      <link>https://deletefromuser.github.io/tip/2022120601/</link>
+      <pubDate>Tue, 06 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/tip/2022120601/</guid>
+      <description>&lt;h3 id=&#34;停止网页重定向&#34;&gt;停止网页重定向&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;window.&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;beforeunload&amp;#34;&lt;/span&gt;, () =&amp;gt; { &lt;span style=&#34;color:#66d9ef&#34;&gt;debugger&lt;/span&gt;; }, &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;js转换字符为unicode&#34;&gt;JS转换字符为UNICODE&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;escape&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;转换字符&amp;#34;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;replace&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;/%/g&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\\&amp;#34;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;toLowerCase&lt;/span&gt;();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;js获取一组元素取出属性并组合&#34;&gt;JS获取一组元素取出属性并组合&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 取得链接url，空格连接
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;[...document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelectorAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;[id=thumbnail]&amp;#39;&lt;/span&gt;)].&lt;span style=&#34;color:#a6e22e&#34;&gt;map&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;join&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;)
+Array.&lt;span style=&#34;color:#a6e22e&#34;&gt;prototype&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;slice&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;call&lt;/span&gt;(document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelectorAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;[id=thumbnail]&amp;#39;&lt;/span&gt;)).&lt;span style=&#34;color:#a6e22e&#34;&gt;map&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;join&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;// 取得链接url，换行连接
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;[...document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelectorAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;[id=thumbnail]&amp;#39;&lt;/span&gt;)].&lt;span style=&#34;color:#a6e22e&#34;&gt;map&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;reduce&lt;/span&gt;((&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt;) =&amp;gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\n&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt;;})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;db2-表异常解决办法&#34;&gt;db2 表异常解决办法&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;connect&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;to&lt;/span&gt; dbut &lt;span style=&#34;color:#66d9ef&#34;&gt;user&lt;/span&gt; tom &lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; password01
+&lt;span style=&#34;color:#66d9ef&#34;&gt;load&lt;/span&gt; query &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; ut.userinfo
+reorg &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; ut.userinfo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;db2-导出导入表数据&#34;&gt;db2 导出导入表数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;export &lt;span style=&#34;color:#66d9ef&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;userinfo_data.ixf &lt;span style=&#34;color:#66d9ef&#34;&gt;of&lt;/span&gt; ixf &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; ut.userinfo &lt;span style=&#34;color:#66d9ef&#34;&gt;fetch&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;first&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;rows&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;only&lt;/span&gt;
+
+import &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;userinfo_data.ixf &lt;span style=&#34;color:#66d9ef&#34;&gt;of&lt;/span&gt; ixf &lt;span style=&#34;color:#66d9ef&#34;&gt;insert&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; ut.userinfonew
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;java取得文件行数&#34;&gt;java取得文件行数&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;Files&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lines&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Paths&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/path/file&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)).&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;根据wsdl文件生成代码&#34;&gt;根据wsdl文件生成代码&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;wsimport -s /path/result/ file:/path/userinfo.wsdl -wsdllocation file:/serverpath/userinfo.wsdl -encoding utf-8 -Xnocompile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wangdoc.com/javascript/stdlib/array&#34;&gt;JavaScript 教程 &amp;gt; 标准库 &amp;gt; Array 对象&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>ubuntu中把desktop文件的程序固定到任务栏</title>
