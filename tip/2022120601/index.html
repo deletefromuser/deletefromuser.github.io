@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2022-12-06T22:57:48+0800">
+<meta name="modified" content="2022-12-07T23:34:53+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2022-12-06T22:57:48+08:00",
+    "dateModified": "2022-12-07T23:34:53+08:00",
     "url" : "/blog/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
     "keywords": ["正则表达式","automation"],
@@ -125,16 +125,25 @@ import <span style="color:#66d9ef">from</span> <span style="color:#f92672">/</sp
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Files<span style="color:#f92672">.</span><span style="color:#a6e22e">lines</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/path/file&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">count</span><span style="color:#f92672">();</span>
 </code></pre></div><h3 id="根据wsdl文件生成代码">根据wsdl文件生成代码</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wsimport -s /path/result/ file:/path/userinfo.wsdl -wsdllocation file:/serverpath/userinfo.wsdl -encoding utf-8 -Xnocompile
+</code></pre></div><h3 id="linux下查看特定文件的实时内容">linux下查看特定文件的实时内容</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tail -500f /path/result/info.log
+</code></pre></div><h3 id="ihs启动与停止配置规则删除特定cookie">IHS启动与停止，配置规则删除特定cookie</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/IBM/HTTPServer/bin/apachectl -k start -f /usr/IBM/HTTPServer/conf/httpd.conf
+/usr/IBM/HTTPServer/bin/apachectl -k stop -f /usr/IBM/HTTPServer/conf/httpd.conf
+
+<span style="color:#75715e"># /usr/IBM/HTTPServer/conf/httpd.conf</span>
+Header edit Set-Cookie <span style="color:#e6db74">&#34;^(JESSIONID=).*&#34;</span> <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">;Path=/;Expires=Thu, 01 Jan 1970 00:00:00 GMT&#34;</span>
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://wangdoc.com/javascript/stdlib/array">JavaScript 教程 &gt; 标准库 &gt; Array 对象</a></li>
+<li><a href="https://www.cnblogs.com/paul8339/p/9724738.html">深入理解 sudo 与 su 之间的区别</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-06 22:57<br>
+Updated: 2022-12-07 23:34<br>
 Created: 2022-12-06 20:00
 </p>
 </div>
