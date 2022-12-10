@@ -94,6 +94,19 @@
     </item>
     
     <item>
+      <title>編程代碼風格相關文章</title>
+      <link>https://deletefromuser.github.io/java/2017031203/</link>
+      <pubDate>Sun, 12 Mar 2017 12:03:58 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/java/2017031203/</guid>
+      <description>&lt;p&gt;編程代碼風格相關文章&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.hawstein.com/posts/google-java-style.html&#34;&gt;Google Java编程风格指南&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://coderlmn.github.io/frontEndCourse/unmaintainable.html&#34;&gt;如何编写无法维护的代码&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>java 函数返回多个函数值/引用類型認識</title>
       <link>https://deletefromuser.github.io/java/2017021902/</link>
       <pubDate>Sun, 19 Feb 2017 02:33:58 +0800</pubDate>

@@ -177,6 +177,23 @@ ps -ef | grep PID
     </item>
     
     <item>
+      <title>ubuntu中把desktop文件的程序固定到任务栏</title>
+      <link>https://deletefromuser.github.io/bash/2022120301/</link>
+      <pubDate>Sat, 03 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/bash/2022120301/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;复制desktop文件到&lt;code&gt;~/.local/share/applications&lt;/code&gt;下，需要确保文件内的路径复制后仍然正确，改为绝对路径&lt;/li&gt;
+&lt;li&gt;命令行启动desktop&lt;/li&gt;
+&lt;li&gt;任务栏右键add to favorites&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1026528/adding-custom-programs-to-favourites-of-ubuntu-dock&#34;&gt;Adding custom programs to favourites of Ubuntu Dock&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>linux 命令memo</title>
       <link>https://deletefromuser.github.io/bash/2022111001/</link>
       <pubDate>Thu, 10 Nov 2022 20:00:00 +0800</pubDate>

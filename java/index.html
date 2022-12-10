@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/java/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2022-11-13T11:10:57+0800">
+<meta name="modified" content="2022-12-10T17:49:43+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -75,11 +75,9 @@
 <li><a href="/read/">Reads</a></li>
 <li><a href="/watch/">Watches</a></li>
 <li><a href="/git/">Gits</a></li>
-<li><a href="/cloud/">Clouds</a></li>
-<li><a href="/article/">Articles</a></li>
 <li><a href="/chickensoup/">Chickensoups</a></li>
 <li><a href="/csharp/">Csharps</a></li>
-<li><a href="/nihongo/">Nihongos</a></li>
+<li><a href="/japanese/">Japaneses</a></li>
 </ul>
 </nav>
 
@@ -112,6 +110,19 @@ nohup java -jar /web/server.jar &gt; log.log 2&gt;&amp;1 &amp; reference Run jav
 </header>
 <div class="content">
 Java 将对象序列化为字符串 读取字符串反序列化为对象 import java.io.Serializable; class test { public static String object2String(Object obj) { String objBody = null; ByteArrayOutputStream baops = null; ObjectOutputStream oos = null; try { baops = new ByteArrayOutputStream(); oos = new ObjectOutputStream(baops); oos.writeObject(obj); byte[] bytes = baops.toByteArray(); objBody = Base64.encodeToString(bytes, Base64.DEFAULT); } catch(IOException e) { Log.e(tag,
+</div>
+</article>
+
+<article class="list-view list-view--java">
+<header>
+<h2 class="title title-submitted"><a href="/java/2017031203/">編程代碼風格相關文章</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-12T12:03:58&#43;08:00">2017-03-12 12:03</time>
+</div>
+
+</header>
+<div class="content">
+編程代碼風格相關文章 Google Java编程风格指南 如何编写无法维护的代码
 </div>
 </article>
 

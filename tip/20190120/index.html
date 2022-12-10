@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>eclipse中一键全部展开目录树 – HA</title>
+<meta name="description" content="eclipse中一键全部展开目录树  在package explorer中使用*能展开全部的目录树   但是会把引用的包也都全部展开，java文件的成员也会展开，大部分时候这些东西对我没有用，所以下一步就是把不需要的东西隐藏掉  点击package explorer内右上角的小箭头-&amp;amp;gt;Filters&amp;amp;hellip;    选中上方 …">
+<meta name="created" content="2019-01-20T01:33:58+0800">
+<meta name="modified" content="2022-12-10T17:49:43+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="eclipse中一键全部展开目录树">
+<meta property="og:url" content="https://deletefromuser.github.io/tip/20190120/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/tip/20190120/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "eclipse中一键全部展开目录树",
+    "datePublished": "2019-01-20T01:33:58+08:00",
+    "dateModified": "2022-12-10T17:49:43+08:00",
+    "url" : "https://deletefromuser.github.io/tip/20190120/",
+    "description": "eclipse中一键全部展开目录树  在package explorer中使用*能展开全部的目录树   但是会把引用的包也都全部展开，java文件的成员也会展开，大部分时候这些东西对我没有用，所以下一步就是把不需要的东西隐藏掉  点击package explorer内右上角的小箭头-\u0026amp;gt;Filters\u0026amp;hellip;    选中上方 …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/tip/" class="active" aria-current="page">Tips</a></li>
+<li><a href="/bash/">Bashes</a></li>
+<li><a href="/web/">Webs</a></li>
+<li><a href="/java/">Javas</a></li>
+<li><a href="/problem/">Problems</a></li>
+<li><a href="/sql/">Sqls</a></li>
+<li><a href="/read/">Reads</a></li>
+<li><a href="/watch/">Watches</a></li>
+<li><a href="/git/">Gits</a></li>
+<li><a href="/chickensoup/">Chickensoups</a></li>
+<li><a href="/csharp/">Csharps</a></li>
+<li><a href="/japanese/">Japaneses</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--tip">
+<header>
+<h1 class="title title-submitted">eclipse中一键全部展开目录树</h1>
+<div class="submitted">
+<time class="created-date" datetime="2019-01-20T01:33:58&#43;08:00">2019-01-20 01:33</time>
+</div>
+</header>
+<div class="content">
+<h1 id="eclipse中一键全部展开目录树">eclipse中一键全部展开目录树</h1>
+<ol>
+<li>在package explorer中使用<code>*</code>能展开全部的目录树</li>
+</ol>
+<blockquote>
+<p>但是会把引用的包也都全部展开，java文件的成员也会展开，大部分时候这些东西对我没有用，所以下一步就是把不需要的东西隐藏掉</p>
+</blockquote>
+<ol start="2">
+<li>点击package explorer内右上角的小箭头-&gt;Filters&hellip;</li>
+</ol>
+<blockquote>
+<ol>
+<li>选中上方的Name Filter pattern，并在输入框中输入<code>target</code>，这会把目录树中的target文件夹隐藏掉，当然你也可以设置别的目录，用逗号分隔可以设置多个目录</li>
+<li>接着在下方的<code>Select the elements to exclude from the view</code>中选中<code>Java Members</code>、<code>Libraries from external</code>、<code>Libraries in project</code>，隐藏掉java成员和引用的包</li>
+</ol>
+</blockquote>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-10 17:49<br>
+Created: 2019-01-20 01:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
