@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>linux 命令memo – HA</title>
-<meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 reference  How to …">
+<meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2022-12-07T23:34:53+0800">
+<meta name="modified" content="2022-12-10T17:18:38+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,9 +31,9 @@
     "@type": "WebPage",
     "headline": "linux 命令memo",
     "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2022-12-07T23:34:53+08:00",
+    "dateModified": "2022-12-10T17:18:38+08:00",
     "url" : "/blog/bash/2022111001/",
-    "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 reference  How to …",
+    "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …",
     "keywords": ["linux"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -119,6 +119,8 @@ df -h
 
 <span style="color:#75715e"># 查看文件夹大小</span>
 du -h -d <span style="color:#ae81ff">1</span>
+<span style="color:#75715e"># 排序</span>
+du -m -d <span style="color:#ae81ff">1</span> | sort -n
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever">How to change history size for ever?</a></li>
@@ -128,7 +130,7 @@ du -h -d <span style="color:#ae81ff">1</span>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-07 23:34<br>
+Updated: 2022-12-10 17:18<br>
 Created: 2022-11-10 20:00
 </p>
 </div>

@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2022-12-07T23:34:53+0800">
+<meta name="modified" content="2022-12-10T17:03:15+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,10 +31,10 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2022-12-07T23:34:53+08:00",
+    "dateModified": "2022-12-10T17:03:15+08:00",
     "url" : "/blog/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
-    "keywords": ["正则表达式","automation"],
+    "keywords": ["正则表达式","automation","linux","web","js","java"],
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -98,6 +98,10 @@
 Tags:
 <ul>
 <li><a href="/blog/tags/automation/">automation</a></li>
+<li><a href="/blog/tags/java/">java</a></li>
+<li><a href="/blog/tags/js/">js</a></li>
+<li><a href="/blog/tags/linux/">linux</a></li>
+<li><a href="/blog/tags/web/">web</a></li>
 <li><a href="/blog/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></li>
 </ul>
 </div>
@@ -107,6 +111,8 @@ Tags:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;beforeunload&#34;</span>, () =&gt; { <span style="color:#66d9ef">debugger</span>; }, <span style="color:#66d9ef">false</span>);
 </code></pre></div><h3 id="js转换字符为unicode">JS转换字符为UNICODE</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">escape</span>(<span style="color:#e6db74">&#34;转换字符&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/%/g</span>, <span style="color:#e6db74">&#34;\\&#34;</span>).<span style="color:#a6e22e">toLowerCase</span>();
+<span style="color:#75715e">// 十进制unicode字符码转换为字符
+</span><span style="color:#75715e"></span>String.<span style="color:#a6e22e">fromCharCode</span>(<span style="color:#ae81ff">112</span>)
 </code></pre></div><h3 id="js获取一组元素取出属性并组合">JS获取一组元素取出属性并组合</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 取得链接url，空格连接
 </span><span style="color:#75715e"></span>[...document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;[id=thumbnail]&#39;</span>)].<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">href</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34; &#34;</span>)
@@ -133,17 +139,139 @@ import <span style="color:#66d9ef">from</span> <span style="color:#f92672">/</sp
 
 <span style="color:#75715e"># /usr/IBM/HTTPServer/conf/httpd.conf</span>
 Header edit Set-Cookie <span style="color:#e6db74">&#34;^(JESSIONID=).*&#34;</span> <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">;Path=/;Expires=Thu, 01 Jan 1970 00:00:00 GMT&#34;</span>
+</code></pre></div><h3 id="查看linux发行版信息">查看linux发行版信息</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat /proc/version
+<span style="color:#75715e"># Linux version 5.4.0-132-generic (buildd@lcy02-amd64-059) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022</span>
+uname -a
+<span style="color:#75715e"># Linux vu18-VirtualBox 5.4.0-132-generic #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</span>
+lsb_release -a
+<span style="color:#75715e"># No LSB modules are available.</span>
+<span style="color:#75715e"># Distributor ID:	Ubuntu</span>
+<span style="color:#75715e"># Description:	Ubuntu 20.04.5 LTS</span>
+<span style="color:#75715e"># Release:	20.04</span>
+<span style="color:#75715e"># Codename:	focal</span>
+</code></pre></div><h3 id="查看linux发行版信息-1">查看linux发行版信息</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat /proc/version
+<span style="color:#75715e"># Linux version 5.4.0-132-generic (buildd@lcy02-amd64-059) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022</span>
+uname -a
+<span style="color:#75715e"># Linux vu18-VirtualBox 5.4.0-132-generic #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</span>
+lsb_release -a
+<span style="color:#75715e"># No LSB modules are available.</span>
+<span style="color:#75715e"># Distributor ID:	Ubuntu</span>
+<span style="color:#75715e"># Description:	Ubuntu 20.04.5 LTS</span>
+<span style="color:#75715e"># Release:	20.04</span>
+<span style="color:#75715e"># Codename:	focal</span>
+</code></pre></div><h3 id="计算文件hash值">计算文件hash值</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">openssl sha1 /path/file
+</code></pre></div><h3 id="vim操作">vim操作</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 显示行数</span>
+:set nu
+<span style="color:#75715e"># 搜索</span>
+/keyword
+<span style="color:#75715e"># ENTER</span>
+n <span style="color:#75715e">#to next occurrence</span> 
+N <span style="color:#75715e">#to prev occurrence</span> 
+<span style="color:#75715e"># 替换</span>
+:s/article/tutorial/g <span style="color:#75715e"># 在当前行内全部替换</span>
+:%s/article/tutorial/g <span style="color:#75715e"># 在当前文件内全部替换</span>
+:%s/article/tutorial/gi <span style="color:#75715e"># 在当前文件内忽略大小写全部替换</span>
+<span style="color:#75715e"># 删除字符</span>
+x
+<span style="color:#75715e"># 剪切行，也可用作删除</span>
+dd
+<span style="color:#75715e"># 复制行</span>
+yy 或者 Y
+<span style="color:#75715e"># 在当前行前粘贴</span>
+P
+<span style="color:#75715e"># 在当前行后粘贴</span>
+p
+</code></pre></div><h3 id="find命令查找文件">find命令查找文件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 列出所有文件</span>
+find . -type f
+<span style="color:#75715e"># 查找指定名字的文件，文件夹</span>
+find . -name test.md
+<span style="color:#75715e"># 列出所有文件夹，层数1即当前目录</span>
+find . -maxdepth <span style="color:#ae81ff">1</span> -type d
+<span style="color:#75715e"># 列出所有层数大于10的文件夹</span>
+find . -mindepth <span style="color:#ae81ff">10</span> -type d
+<span style="color:#75715e"># 查找文件并替换对应内容</span>
+find . -type f -exec perl -pi -e <span style="color:#e6db74">&#39;s/public/private/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+find . -type f -exec sed -i <span style="color:#e6db74">&#39;s/public/private/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+<span style="color:#75715e"># 查找文件并替换对应内容(包含/)</span>
+find . -type f -exec perl -pi -e <span style="color:#e6db74">&#39;s#public#private#g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+find . -type f -exec sed -i <span style="color:#e6db74">&#39;s#public#private#g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+<span style="color:#75715e"># 查找最近被修改过的三个文件</span>
+find . -type f -exec stat -c <span style="color:#e6db74">&#39;%Y %n&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span> | sort -nr | awk <span style="color:#e6db74">&#39;NR==1,NR==3 {print $2}&#39;</span>
+<span style="color:#75715e"># 查找最近时间段内被修改过的文件</span>
+<span style="color:#75715e"># 180天</span>
+find . -type f -mtime -180
+find . -type f -mtime -180 -exec ls -lrt <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+<span style="color:#75715e"># 120分钟</span>
+find . -type f -mmin -120 -exec ls -lrt <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+<span style="color:#75715e"># 复制目录结构</span>
+find . -type d &gt; dirs.txt
+xargs mkdir -p &lt; dirs.txt
+</code></pre></div><h3 id="每隔一段时间执行一段命令">每隔一段时间执行一段命令</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 每隔五秒钟打印一次磁盘空间信息</span>
+<span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span> date; df -h; sleep 5; <span style="color:#66d9ef">done</span>
+<span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span> date; df -h | grep <span style="color:#e6db74">&#39;/dev/sda1&#39;</span>; sleep 5; <span style="color:#66d9ef">done</span>
+</code></pre></div><h3 id="使用scp复制远程服务器到本地复制本地文件到远程服务器">使用scp复制远程服务器到本地,复制本地文件到远程服务器</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scp -r -P <span style="color:#ae81ff">22</span> tom@ip:/path/file ./
+scp -P <span style="color:#ae81ff">22</span> /local/path/file tom@ip:~/temp
+</code></pre></div><h3 id="复制文件夹保持原来的权限和链接">复制文件夹，保持原来的权限和链接</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cp -rpH /path/ ./
+</code></pre></div><h3 id="curl使用">curl使用</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># -k 忽略证书错误，-c 显示cookie</span>
+curl -k -c - https://www.baeldung.com/linux/vim-search-replace
+<span style="color:#75715e"># 在未安装curl的机器上请求url</span>
+perl -MLWP::Simple -e <span style="color:#e6db74">&#34;getprint &#39;https://www.baeldung.com/linux/vim-search-replace&#39;&#34;</span>
+</code></pre></div><h3 id="检查机器支持的ssl版本">检查机器支持的ssl版本</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">openssl ciphers -v | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> | sort | uniq
+<span style="color:#75715e"># 检查网站的ssl版本</span>
+openssl s_client -connect bing.com:443
+</code></pre></div><h3 id="正则表达式">正则表达式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 大小写转换</span> 
+<span style="color:#75715e"># \U$1 \L$1 全部转换为大写，小写</span>
+<span style="color:#75715e"># \u$1 \l$1 首字母转换为大写，小写</span>
+<span style="color:#75715e"># \p{Lu} \p{Ll} 匹配大写，小写字母</span>
+<span style="color:#75715e"># USER_PET_NAME -&gt; userPetName</span>
+<span style="color:#f92672">([</span>a-zA-Z0-9<span style="color:#f92672">]</span>+<span style="color:#f92672">)</span>_<span style="color:#f92672">([</span>a-zA-Z0-9<span style="color:#f92672">]</span>+<span style="color:#f92672">)</span>_<span style="color:#f92672">([</span>a-zA-Z0-9<span style="color:#f92672">]</span>+<span style="color:#f92672">)</span> -&gt; <span style="color:#ae81ff">\L</span>$1<span style="color:#ae81ff">\u</span>$2<span style="color:#ae81ff">\u</span>$3
+<span style="color:#75715e"># USER_PET_NAME &lt;- userPetName</span>
+<span style="color:#f92672">(</span><span style="color:#ae81ff">\p</span><span style="color:#f92672">{</span>Ll<span style="color:#f92672">}</span>+<span style="color:#f92672">)(</span><span style="color:#ae81ff">\p</span><span style="color:#f92672">{</span>Lu<span style="color:#f92672">}</span><span style="color:#ae81ff">\p</span><span style="color:#f92672">{</span>Ll<span style="color:#f92672">}</span>+<span style="color:#f92672">)(</span><span style="color:#ae81ff">\p</span><span style="color:#f92672">{</span>Lu<span style="color:#f92672">}</span><span style="color:#ae81ff">\p</span><span style="color:#f92672">{</span>Ll<span style="color:#f92672">}</span>+<span style="color:#f92672">)</span> -&gt; <span style="color:#ae81ff">\U</span>$1_$2_$3
+</code></pre></div><h3 id="查看linux命令位置和内容">查看linux命令位置和内容</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">whereis vim
+type -a vim
+</code></pre></div><h3 id="文件中搜索字符串">文件中搜索字符串</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># -i 忽略大小写</span>
+<span style="color:#75715e"># -o 不输出整行，只输出符合搜索样式的部分</span>
+<span style="color:#75715e"># -n 显示行数</span>
+<span style="color:#75715e"># -A 显示检索结果行之后的特定行</span>
+<span style="color:#75715e"># -B 显示检索结果行之前的特定行</span>
+grep -ion <span style="color:#e6db74">&#39;keyword&#39;</span> /path/file -A <span style="color:#ae81ff">50</span> -B <span style="color:#ae81ff">50</span>
+<span style="color:#75715e"># 使用正则表达式搜索</span>
+egrep -i <span style="color:#e6db74">&#39;public|private&#39;</span> /path/file
+</code></pre></div><h3 id="查看linux进程">查看linux进程</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 根据名字查找</span>
+ps -ef | grep java
+<span style="color:#75715e"># 根据监听端口号</span>
+lsof -i :8080
+<span style="color:#75715e"># 查找正在使用某一个文件的进程</span>
+fuser /path/file
+ps -ef | grep PID
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://wangdoc.com/javascript/stdlib/array">JavaScript 教程 &gt; 标准库 &gt; Array 对象</a></li>
 <li><a href="https://www.cnblogs.com/paul8339/p/9724738.html">深入理解 sudo 与 su 之间的区别</a></li>
+<li><a href="https://stackoverflow.com/questions/73319/how-to-duplicate-a-whole-line-in-vim">How to duplicate a whole line in Vim?</a></li>
+<li><a href="https://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line">How to replace a string in multiple files in linux command line</a></li>
+<li><a href="https://www.howtogeek.com/517098/linux-file-timestamps-explained-atime-mtime-and-ctime">Linux File Timestamps Explained: atime, mtime, and ctime</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-07 23:34<br>
+Updated: 2022-12-10 17:03<br>
 Created: 2022-12-06 20:00
 </p>
 </div>
