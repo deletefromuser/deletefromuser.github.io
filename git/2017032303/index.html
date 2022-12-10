@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>git 將文件轉移位置 – HA</title>
-<meta name="description" content="git 將文件轉移位置 git mv 2017032003.md csharp reference  20. Moving files  ">
+<title>git 常用命令 – HA</title>
+<meta name="description" content="常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 git 將文件轉移位置 git mv 2017032003.md csharp 查看某一次提交的文件列表 git show …">
 <meta name="created" content="2017-03-23T03:33:58+0800">
-<meta name="modified" content="2020-12-20T11:17:02+0800">
+<meta name="modified" content="2022-12-10T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="git 將文件轉移位置">
+<meta property="og:title" content="git 常用命令">
 <meta property="og:url" content="https://deletefromuser.github.io/git/2017032303/">
 <meta property="og:type" content="article">
 
@@ -29,11 +29,12 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "git 將文件轉移位置",
+    "headline": "git 常用命令",
     "datePublished": "2017-03-23T03:33:58+08:00",
-    "dateModified": "2020-12-20T11:17:02+08:00",
+    "dateModified": "2022-12-10T20:00:00+08:00",
     "url" : "https://deletefromuser.github.io/git/2017032303/",
-    "description": "git 將文件轉移位置 git mv 2017032003.md csharp reference  20. Moving files  ",
+    "description": "常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 git 將文件轉移位置 git mv 2017032003.md csharp 查看某一次提交的文件列表 git show …",
+    "keywords": ["git"],
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://deletefromuser.github.io/"
@@ -89,24 +90,43 @@
 <main class="main layout__main">
 <article class="single-view single-view--git">
 <header>
-<h1 class="title title-submitted">git 將文件轉移位置</h1>
+<h1 class="title title-submitted">git 常用命令</h1>
 <div class="submitted">
 <time class="created-date" datetime="2017-03-23T03:33:58&#43;08:00">2017-03-23 03:33</time>
 </div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/git/">git</a></li>
+</ul>
+</div>
 </header>
 <div class="content">
-<p>git 將文件轉移位置</p>
+<h3 id="常用命令">常用命令</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 拉取代码</span>
+git pull --all
+<span style="color:#75715e"># 提交dev分支到远程仓库</span>
+git push origin dev
+<span style="color:#75715e"># 将某一个提交的变更应用到代码库</span>
+git cherry-pick -n bd61ad98
+</code></pre></div><h3 id="git-將文件轉移位置">git 將文件轉移位置</h3>
 <p><code>git mv 2017032003.md csharp</code></p>
+<h3 id="查看某一次提交的文件列表">查看某一次提交的文件列表</h3>
+<p><code>git show --pretty=&quot;&quot; --name-only bd61ad98</code></p>
+<h3 id="查看某一个文件的提交历史">查看某一个文件的提交历史</h3>
+<p><code>git log --follow -- filename</code></p>
 <p><strong>reference</strong></p>
 <ol>
 <li><a href="https://githowto.com/moving_files">20. Moving files</a></li>
+<li><a href="https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit">How do I list all the files in a commit?</a></li>
+<li><a href="https://stackoverflow.com/questions/3701404/how-to-list-all-commits-that-changed-a-specific-file">How to list all commits that changed a specific file?</a></li>
 </ol>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2020-12-20 11:17<br>
+Updated: 2022-12-10 20:00<br>
 Created: 2017-03-23 03:33
 </p>
 </div>

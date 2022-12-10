@@ -48,6 +48,8 @@ df -h
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查看文件夹大小&lt;/span&gt;
 du -h -d &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 排序&lt;/span&gt;
+du -m -d &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; | sort -n
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;

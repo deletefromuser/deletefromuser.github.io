@@ -1,31 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gits on HA</title>
-    <link>https://deletefromuser.github.io/git/</link>
-    <description>Recent content in Gits on HA</description>
+    <title>git on HA</title>
+    <link>https://deletefromuser.github.io/tags/git/</link>
+    <description>Recent content in git on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Jul 2022 17:00:00 +0800</lastBuildDate>
-    <atom:link href="https://deletefromuser.github.io/git/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>删除 git 远程仓库中忘记加入 .gitignore 的资源</title>
-      <link>https://deletefromuser.github.io/git/2022071001/</link>
-      <pubDate>Sun, 10 Jul 2022 17:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/git/2022071001/</guid>
-      <description>&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;git rm --cached remove_file&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;add file to gitignore&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git add .gitignore&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git commit -m &amp;quot;Excluding&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/42141656/19120213&#34;&gt;Git: How to remove file from index without deleting files from any repository&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-    </item>
+    <lastBuildDate>Thu, 23 Mar 2017 03:33:58 +0800</lastBuildDate>
+    <atom:link href="https://deletefromuser.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>git 常用命令</title>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tips on HA</title>
-    <link>https://deletefromuser.github.io/tip/</link>
-    <description>Recent content in Tips on HA</description>
+    <title>java on HA</title>
+    <link>https://deletefromuser.github.io/tags/java/</link>
+    <description>Recent content in java on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 06 Dec 2022 20:00:00 +0800</lastBuildDate>
-    <atom:link href="https://deletefromuser.github.io/tip/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://deletefromuser.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>工作笔记2016-2021</title>
@@ -172,95 +172,6 @@ ps -ef | grep PID
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/73319/how-to-duplicate-a-whole-line-in-vim&#34;&gt;How to duplicate a whole line in Vim?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line&#34;&gt;How to replace a string in multiple files in linux command line&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.howtogeek.com/517098/linux-file-timestamps-explained-atime-mtime-and-ctime&#34;&gt;Linux File Timestamps Explained: atime, mtime, and ctime&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>使用命令行上传文件到共享网站file.io</title>
-      <link>https://deletefromuser.github.io/tip/2022112601/</link>
-      <pubDate>Sat, 26 Nov 2022 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/tip/2022112601/</guid>
-      <description>&lt;p&gt;在&lt;code&gt;~/.bashrc&lt;/code&gt;最后添加下面脚本&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;upload &lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; $# &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -o $# &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$1&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; $# &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt; curl -F &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;file=@&lt;/span&gt;$1&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; https://file.io/ --no-progress-meter | grep -Eo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http|https://[a-zA-Z0-9./?=_%:-]*&amp;#34;&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[[&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$2&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;~ ^&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1-9&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;wmy&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ &lt;span style=&#34;color:#f92672&#34;&gt;]]&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt; curl -F &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;file=@&lt;/span&gt;$1&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; https://file.io/&lt;span style=&#34;color:#ae81ff&#34;&gt;\?&lt;/span&gt;expires&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$2 --no-progress-meter | grep -Eo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http|https://[a-zA-Z0-9./?=_%:-]*&amp;#34;&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; echo &lt;span style=&#34;color:#e6db74&#34;&gt;$&amp;#39;Wrong expiration format.\neg. 1(w/m/y), etc.&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;file doesn&amp;#39;t exist&amp;#34;&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; echo &lt;span style=&#34;color:#e6db74&#34;&gt;$&amp;#39;usage: upload file_name.ext [expiration]\nexpiration format: 1-9(w/m/y) # (w)eeks, m(onths), (y)ear&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;source ~/.bashrc
-
-&lt;span style=&#34;color:#75715e&#34;&gt;# 上传&lt;/span&gt;
-upload testfile.txt
-
-&lt;span style=&#34;color:#75715e&#34;&gt;# 下载&lt;/span&gt;
-wget -O dirs.zip https://file.io/lhQ7adehy7xc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://amanroy.me/upload-file-from-terminal&#34;&gt;Make terminal upload file using file.io&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>常用软件</title>
-      <link>https://deletefromuser.github.io/tip/2022111103/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://deletefromuser.github.io/tip/2022111103/</guid>
-      <description>&lt;h3 id=&#34;eartrumpet&#34;&gt;EarTrumpet&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;windows下单独控制每个应用的音量&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;goldendict&#34;&gt;GoldenDict&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;字典应用，支持导入字典文件，选中单词&lt;code&gt;CTRL+C+C&lt;/code&gt;可全局唤出查询结果弹窗&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;proxifier&#34;&gt;Proxifier&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;设置代理规则，针对一些不提供代理选项的应用，选中exe程序设置规则即可&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;qbittorrent&#34;&gt;qBittorrent&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;bt下载工具，同时支持磁力链，rss feed&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;shadowsocksv2ray&#34;&gt;shadowsocks，v2ray&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;fuck gfw&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://nerdschalk.com/how-to-mute-an-app-on-windows-10/&#34;&gt;How To Mute an App on Windows 10&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://downloads.freemdict.com/&#34;&gt;Dict file download&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>批量下载youtube视频</title>
-      <link>https://deletefromuser.github.io/tip/2022111401/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://deletefromuser.github.io/tip/2022111401/</guid>
-      <description>&lt;ol&gt;
-&lt;li&gt;获取视频url&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;F12，打开控制台，运行&lt;code&gt;[...document.querySelectorAll(&#39;[id=thumbnail]&#39;)].map(item =&amp;gt; item.href).join(&amp;quot; &amp;quot;)&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;下载&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 下载音频&lt;/span&gt;
-youtube-dl -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bestaudio[ext=m4a]&amp;#39;&lt;/span&gt; --verbose --force-ipv4 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1.中的url&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# 下载视频&lt;/span&gt;
-youtube-dl -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best&amp;#39;&lt;/span&gt; --verbose --force-ipv4 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1.中的url&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# 可用字幕列表&lt;/span&gt;
-youtube-dl --list-subs https://www.youtube.com/watch?v&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Ye8mB6VsUHw
-&lt;span style=&#34;color:#75715e&#34;&gt;# 同时下载字幕&lt;/span&gt;
-youtube-dl -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best&amp;#39;&lt;/span&gt; --verbose --force-ipv4 --all-subs &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1.中的url&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# 只下载字幕，不下载视频&lt;/span&gt;
-youtube-dl --all-subs --skip-download https://www.youtube.com/watch?v&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Ye8mB6VsUHw
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;PS: 一次下载太多会遇到403，出现的话等一段时间再下载吧&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ytdl-org/youtube-dl#options&#34;&gt;youtube-dl manual&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/927523/how-to-download-only-subtitles-of-videos-using-youtube-dl&#34;&gt;How to download only subtitles of videos using youtube-dl&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -321,7 +321,7 @@ createtime date
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,name,dept,salary,createtime,<span style="color:#66d9ef">max</span>(salary) over(partition <span style="color:#66d9ef">by</span> dept) dept_max_salary,<span style="color:#66d9ef">min</span>(salary) over(partition <span style="color:#66d9ef">by</span> dept) dept_min_salary <span style="color:#66d9ef">from</span> userinfo;
 <span style="color:#75715e">-- 查询员工信息，查询工资比自己高一位，低一位的工资
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,name,dept,salary,lead(salary, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">null</span>) over(partition <span style="color:#66d9ef">by</span> dept <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary) higher,lag(salary, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">null</span>) over(partition <span style="color:#66d9ef">by</span> dept <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary) <span style="color:#66d9ef">lower</span> <span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> dept;
-<span style="color:#75715e">-- 排序时，默认是NULLS LAST，如果想null排前面使用nulls first
+<span style="color:#75715e">-- 升序排序时，默认是NULLS LAST，降序排序时，默认是NULLS FIRST，如果想null排前面使用nulls first
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,name,dept,salary,lead(salary, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">null</span>) over(partition <span style="color:#66d9ef">by</span> dept <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary) higher,lag(salary, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">null</span>) over(partition <span style="color:#66d9ef">by</span> dept <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary) <span style="color:#66d9ef">lower</span> 
 <span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> higher nulls <span style="color:#66d9ef">first</span>;
 <span style="color:#75715e">-- 查询员工信息，查询部门总工资，最高工资，人数
@@ -356,6 +356,7 @@ createtime date
 <li><a href="https://omachizura.com/2016/08/sql-oracle-null.html">SQL oracleでnullを比較する際の注意点</a></li>
 <li><a href="https://community.oracle.com/tech/developers/discussion/3581149/analytic-functions-first-vs-first-value">Analytic functions: FIRST vs FIRST_VALUE</a></li>
 <li><a href="https://www.cnblogs.com/YuyuanNo1/p/9241754.html">ORACLE WITH AS 用法,创建临时表</a></li>
+<li>[NULL Values in ORDER BY - Oracle to MySQL Migration](<a href="http://www.sqlines.com/oracle-to-mysql/null_order_by">http://www.sqlines.com/oracle-to-mysql/null_order_by</a></li>
 </ul>
 
 </div>
