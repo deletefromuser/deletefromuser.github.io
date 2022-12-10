@@ -735,10 +735,15 @@ createtime date
       <guid>/blog/watch/2022100101/</guid>
       <description>&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Fuuto Tantei&lt;/li&gt;
-&lt;li&gt;Berserk：Ougon Jidai-hen&lt;/li&gt;
+&lt;li&gt;風都探偵&lt;/li&gt;
+&lt;li&gt;ベルセルク 黄金時代篇&lt;/li&gt;
 &lt;li&gt;&lt;del&gt;Noumin Kanren&lt;/del&gt;(两话弃)&lt;/li&gt;
-&lt;li&gt;Kage no Jitsuryokusha ni Naritakute!&lt;/li&gt;
+&lt;li&gt;陰の実力者になりたくて!&lt;/li&gt;
+&lt;li&gt;モブサイコ100 S03&lt;/li&gt;
+&lt;li&gt;機動戦士ガンダム 水星の魔女&lt;/li&gt;
+&lt;li&gt;うたわれるもの二人の白皇&lt;/li&gt;
+&lt;li&gt;チェンソーマン&lt;/li&gt;
+&lt;li&gt;異世界おじさん&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -932,9 +937,9 @@ createtime date
     
     <item>
       <title>测试Google Cloud Translation API v2</title>
-      <link>/blog/cloud/20220703/</link>
+      <link>/blog/web/20220703/</link>
       <pubDate>Sun, 03 Jul 2022 10:33:00 +0800</pubDate>
-      <guid>/blog/cloud/20220703/</guid>
+      <guid>/blog/web/20220703/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;事先申请api key，免费额度足够用了(每月50w字符)&lt;/li&gt;
 &lt;li&gt;curl测试&lt;/li&gt;
@@ -1478,9 +1483,9 @@ service tomcat restart
     
     <item>
       <title>eclipse中一键全部展开目录树</title>
-      <link>/blog/article/20190120/</link>
+      <link>/blog/tip/20190120/</link>
       <pubDate>Sun, 20 Jan 2019 01:33:58 +0800</pubDate>
-      <guid>/blog/article/20190120/</guid>
+      <guid>/blog/tip/20190120/</guid>
       <description>&lt;h1 id=&#34;eclipse中一键全部展开目录树&#34;&gt;eclipse中一键全部展开目录树&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;在package explorer中使用&lt;code&gt;*&lt;/code&gt;能展开全部的目录树&lt;/li&gt;
@@ -1502,9 +1507,9 @@ service tomcat restart
     
     <item>
       <title>使用thymeleaf和spring security提供的csrf方法</title>
-      <link>/blog/article/20190113/</link>
+      <link>/blog/web/20190113/</link>
       <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
-      <guid>/blog/article/20190113/</guid>
+      <guid>/blog/web/20190113/</guid>
       <description>&lt;h3 id=&#34;使用thymeleaf和spring-security提供的csrf方法&#34;&gt;使用thymeleaf和spring security提供的csrf方法&lt;/h3&gt;
 &lt;p&gt;只需要在html内的form在设置action时使用thymeleaf属性th:action即可&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;th:action&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@{login}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt;&amp;gt;
@@ -2721,9 +2726,9 @@ QuickHash:
     
     <item>
       <title>如何成為一個快樂的人</title>
-      <link>/blog/article/2017031401/</link>
+      <link>/blog/chickensoup/2017031401/</link>
       <pubDate>Tue, 14 Mar 2017 01:33:58 +0800</pubDate>
-      <guid>/blog/article/2017031401/</guid>
+      <guid>/blog/chickensoup/2017031401/</guid>
       <description>&lt;p&gt;[節選翻譯]如何成為一個快樂的人(11種方法)&lt;/p&gt;
 &lt;h3 id=&#34;1不要太過在意幾乎任何事情&#34;&gt;1.不要太過在意(幾乎任何事情)&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -2819,9 +2824,9 @@ QuickHash:
     
     <item>
       <title>編程代碼風格相關文章</title>
-      <link>/blog/article/2017031203/</link>
+      <link>/blog/java/2017031203/</link>
       <pubDate>Sun, 12 Mar 2017 12:03:58 +0800</pubDate>
-      <guid>/blog/article/2017031203/</guid>
+      <guid>/blog/java/2017031203/</guid>
       <description>&lt;p&gt;編程代碼風格相關文章&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.hawstein.com/posts/google-java-style.html&#34;&gt;Google Java编程风格指南&lt;/a&gt;&lt;/li&gt;
@@ -3622,9 +3627,9 @@ while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;
     
     <item>
       <title>不加班但是也没有其他兴趣的问题</title>
-      <link>/blog/nihongo/2017010901/</link>
+      <link>/blog/japanese/2017010901/</link>
       <pubDate>Mon, 09 Jan 2017 01:33:58 +0800</pubDate>
-      <guid>/blog/nihongo/2017010901/</guid>
+      <guid>/blog/japanese/2017010901/</guid>
       <description>&lt;p&gt;不加班但是也没有其他兴趣的问题&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;从2月24日起，被企业称为「特别星期五」的措施会首次实行，具体内容为在每个月末的星期五将下班时间提前。但是讽刺的是就算下班时间提前，好像还是有很多「没有其他兴趣」的人很困惑「到底要干些什么好呢」。虽然提倡了很久「工作生活平衡」，但是究竟要怎么做才能在工作和私人生活两方都度过充实的生活呢？著有「低学历精英」、「99.9%的人际关系都是不需要的」等书，同时对公司职员的工作经历以及职业生涯问题很熟悉的IT相关公司MCJ的董事安井元康提出了「没有其他兴趣」问题的解决方法&lt;/p&gt;

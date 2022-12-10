@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>测试Google Cloud Translation API v2 – HA</title>
+<meta name="description" content=" 事先申请api key，免费额度足够用了(每月50w字符) curl测试  curl -s -X POST -H &amp;amp;#34;Content-Type: application/json&amp;amp;#34; \ \  --data &amp;amp;#34;{ &amp;amp;#39;q&amp;amp;#39;: &amp;amp;#39;The Great Pyramid of Giza (also …">
+<meta name="created" content="2022-07-03T10:33:00+0800">
+<meta name="modified" content="2022-12-10T17:49:43+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="测试Google Cloud Translation API v2">
+<meta property="og:url" content="/blog/web/20220703/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/web/20220703/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "测试Google Cloud Translation API v2",
+    "datePublished": "2022-07-03T10:33:00+08:00",
+    "dateModified": "2022-12-10T17:49:43+08:00",
+    "url" : "/blog/web/20220703/",
+    "description": " 事先申请api key，免费额度足够用了(每月50w字符) curl测试  curl -s -X POST -H \u0026amp;#34;Content-Type: application/json\u0026amp;#34; \\ \\  --data \u0026amp;#34;{ \u0026amp;#39;q\u0026amp;#39;: \u0026amp;#39;The Great Pyramid of Giza (also …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/tip/">Tips</a></li>
+<li><a href="/blog/bash/">Bashes</a></li>
+<li><a href="/blog/web/" class="active" aria-current="page">Webs</a></li>
+<li><a href="/blog/java/">Javas</a></li>
+<li><a href="/blog/problem/">Problems</a></li>
+<li><a href="/blog/sql/">Sqls</a></li>
+<li><a href="/blog/read/">Reads</a></li>
+<li><a href="/blog/watch/">Watches</a></li>
+<li><a href="/blog/git/">Gits</a></li>
+<li><a href="/blog/chickensoup/">Chickensoups</a></li>
+<li><a href="/blog/csharp/">Csharps</a></li>
+<li><a href="/blog/japanese/">Japaneses</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--web">
+<header>
+<h1 class="title title-submitted">测试Google Cloud Translation API v2</h1>
+<div class="submitted">
+<time class="created-date" datetime="2022-07-03T10:33:00&#43;08:00">2022-07-03 10:33</time>
+</div>
+</header>
+<div class="content">
+<ol>
+<li>事先申请api key，免费额度足够用了(每月50w字符)</li>
+<li>curl测试</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -s -X POST -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\ \
+</span><span style="color:#ae81ff"></span>    --data <span style="color:#e6db74">&#34;{
+</span><span style="color:#e6db74">  &#39;q&#39;: &#39;The Great Pyramid of Giza (also known as the Pyramid of Khufu or the
+</span><span style="color:#e6db74">        Pyramid of Cheops) is the oldest and largest of the three pyramids in
+</span><span style="color:#e6db74">        the Giza pyramid complex.&#39;,
+</span><span style="color:#e6db74">  &#39;source&#39;: &#39;en&#39;,
+</span><span style="color:#e6db74">  &#39;target&#39;: &#39;es&#39;,
+</span><span style="color:#e6db74">  &#39;format&#39;: &#39;text&#39;
+</span><span style="color:#e6db74">}&#34;</span> <span style="color:#e6db74">&#34;https://translation.googleapis.com/language/translate/v2?key=XXXXXXXXXXXXXXXXXXXXXXXXXX&#34;</span>
+</code></pre></div><p><strong>reference</strong></p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/62231731/google-cloud-translation-api-issue">Google cloud translation API issue</a></li>
+<li><a href="https://cloud.google.com/translate/docs/reference/rest/v2/translate">Method: translate | Cloud Translation</a></li>
+<li><a href="https://cloud.google.com/translate/pricing">Pricing | Cloud Translation</a></li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-10 17:49<br>
+Created: 2022-07-03 10:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
