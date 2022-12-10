@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>用網線連接連接兩台電腦進行文件傳輸 – HA</title>
+<meta name="description" content="用網線連接連接兩台電腦進行文件傳輸  修改兩台電腦的本地連接設置，ipv4設置到一個網段下 關閉防火牆 在高級共享設置中啟用網絡發現 連接網線 將要傳輸的文件所在的文件夾設置為共享 done 此時就可以在資源管理器的網絡裡找到對應計算機以及文件進行複製了  ps:找這個主要是為了把steam遊戲搬到新電腦上，比無線局域網快一些，但是比不是 …">
+<meta name="created" content="2017-02-27T01:33:58+0800">
+<meta name="modified" content="2022-12-10T21:21:10+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="用網線連接連接兩台電腦進行文件傳輸">
+<meta property="og:url" content="/blog/prob/2017022701/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/prob/2017022701/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "用網線連接連接兩台電腦進行文件傳輸",
+    "datePublished": "2017-02-27T01:33:58+08:00",
+    "dateModified": "2022-12-10T21:21:10+08:00",
+    "url" : "/blog/prob/2017022701/",
+    "description": "用網線連接連接兩台電腦進行文件傳輸  修改兩台電腦的本地連接設置，ipv4設置到一個網段下 關閉防火牆 在高級共享設置中啟用網絡發現 連接網線 將要傳輸的文件所在的文件夾設置為共享 done 此時就可以在資源管理器的網絡裡找到對應計算機以及文件進行複製了  ps:找這個主要是為了把steam遊戲搬到新電腦上，比無線局域網快一些，但是比不是 …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/prob/" class="active" aria-current="page">Prob</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/git/">Git</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/c#/">C#</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--prob">
+<header>
+<h1 class="title title-submitted">用網線連接連接兩台電腦進行文件傳輸</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-02-27T01:33:58&#43;08:00">2017-02-27 01:33</time>
+</div>
+</header>
+<div class="content">
+<p>用網線連接連接兩台電腦進行文件傳輸</p>
+<ol>
+<li>修改兩台電腦的本地連接設置，ipv4設置到一個網段下</li>
+<li>關閉防火牆</li>
+<li>在高級共享設置中啟用網絡發現</li>
+<li>連接網線</li>
+<li>將要傳輸的文件所在的文件夾設置為共享</li>
+<li>done 此時就可以在資源管理器的網絡裡找到對應計算機以及文件進行複製了</li>
+</ol>
+<p>ps:找這個主要是為了把steam遊戲搬到新電腦上，比無線局域網快一些，但是比不是移動硬盤的速度（才11m，我的移動硬盤不是固態的，速度都能達到50m）</p>
+<p>pps:才11m應該是通過無線局域網的速度，網線可以達到50m速度</p>
+<p>&ndash;2017 03-06 22:35 updated</p>
+<p>才幾天時間，照著上面的都搞了一遍還是不行，找到了通過ip來查看的方法</p>
+<ol>
+<li>輸入<code>\\192.168.3.85</code>在資源管理器中輸入兩個斜桿加目標電腦的ip</li>
+<li>順利的話可以看到該台電腦的共享目錄，點開其中一些可能會發現有些可以點進去查看，有些不可以，提示不可訪問之類的</li>
+<li>這時可以在目標電腦上設置共享目錄的安全屬性，在目錄上右擊菜單在屬性分頁-安全分頁-點擊編輯-添加組或用戶名-在對象名稱中輸入everyone後確定-應用</li>
+<li>此時應該就可以打開該目錄了</li>
+</ol>
+<h4 id="通過遠程桌面訪問">通過遠程桌面訪問</h4>
+<ol>
+<li>在目標電腦中，控制面板-系統與安全-系統-允許遠程訪問-選擇允許任意版本的遠程桌面連接</li>
+<li>在本機上win鍵+R，輸入mstsc</li>
+<li>輸入目標電腦的ip</li>
+<li>點擊連接，會讓你輸入用戶名密碼，輸入即可</li>
+</ol>
+<p>ps:不知道為什麼連上聽音樂看視頻時有雜音，維基上說有聲音轉向功能，不太清楚怎麼設置</p>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="http://hatayikakashi.blog.51cto.com/2145131/1289633">一根网线连接两台计算机组成局域网——数据传输</a></li>
+<li><a href="https://support.microsoft.com/zh-cn/help/17463/windows-7-connect-to-another-computer-remote-desktop-connection">使用“远程桌面连接”连接到另一台计算机</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E9%81%A0%E7%AB%AF%E6%A1%8C%E9%9D%A2%E5%8D%94%E5%AE%9A">遠端桌面協定</a></li>
+<li><a href="https://social.technet.microsoft.com/Forums/windows/en-US/04dd2c48-7c37-4f05-9c38-71e4c1c8c8bf/how-to-enable-audio-redirection-in-remote-desktop?forum=w7itprogeneral">How to enable audio redirection in Remote Desktop</a></li>
+<li><a href="https://support.microsoft.com/en-us/help/2020918/configure-audio-recording-redirection-in-windows-7">Configure Audio Recording Redirection in Windows 7</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-10 21:21<br>
+Created: 2017-02-27 01:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

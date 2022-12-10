@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cook on HA</title>
+    <link>/blog/tags/cook/</link>
+    <description>Recent content in cook on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Dec 2022 20:00:00 +0800</lastBuildDate>
+    <atom:link href="/blog/tags/cook/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>空气炸锅菜谱</title>
+      <link>/blog/life/2022121001/</link>
+      <pubDate>Sat, 10 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/life/2022121001/</guid>
+      <description>&lt;h3 id=&#34;烤红薯&#34;&gt;烤红薯&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;160℃ x 20min&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;半成品鸡块&#34;&gt;半成品鸡块&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;200℃ x 10min&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;烤鸡翅根&#34;&gt;烤鸡翅根&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;刀背拍打后腌制几个小时（一夜也可以），配料如下
+&lt;ul&gt;
+&lt;li&gt;十三香&lt;/li&gt;
+&lt;li&gt;蒜末&lt;/li&gt;
+&lt;li&gt;盐&lt;/li&gt;
+&lt;li&gt;植物油&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;160℃ x 10min&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

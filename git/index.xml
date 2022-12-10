@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gits on HA</title>
+    <title>Git on HA</title>
     <link>/blog/git/</link>
-    <description>Recent content in Gits on HA</description>
+    <description>Recent content in Git on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 10 Jul 2022 17:00:00 +0800</lastBuildDate>

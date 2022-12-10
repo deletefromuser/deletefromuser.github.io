@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>C#重命名文件夹下的文件 – HA</title>
+<meta name="description" content="C#重命名文件夹下的文件 var files = System.IO.Directory.EnumerateFiles(desPath); if(formatStr.Length == 0) { formatStr = &amp;amp;#34;{0}.jpg&amp;amp;#34;; } int count = 1; foreach(String fileName …">
+<meta name="created" content="2017-04-10T01:33:58+0800">
+<meta name="modified" content="2022-12-10T21:21:10+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="C#重命名文件夹下的文件">
+<meta property="og:url" content="/blog/c#/2017041001/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/c#/2017041001/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "C#重命名文件夹下的文件",
+    "datePublished": "2017-04-10T01:33:58+08:00",
+    "dateModified": "2022-12-10T21:21:10+08:00",
+    "url" : "/blog/c#/2017041001/",
+    "description": "C#重命名文件夹下的文件 var files = System.IO.Directory.EnumerateFiles(desPath); if(formatStr.Length == 0) { formatStr = \u0026amp;#34;{0}.jpg\u0026amp;#34;; } int count = 1; foreach(String fileName …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/git/">Git</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/c#/">C#</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--c">
+<header>
+<h1 class="title title-submitted">C#重命名文件夹下的文件</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-04-10T01:33:58&#43;08:00">2017-04-10 01:33</time>
+</div>
+</header>
+<div class="content">
+<p>C#重命名文件夹下的文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#">            <span style="color:#66d9ef">var</span> files = System.IO.Directory.EnumerateFiles(desPath);
+            <span style="color:#66d9ef">if</span>(formatStr.Length == <span style="color:#ae81ff">0</span>) {
+                formatStr = <span style="color:#e6db74">&#34;{0}.jpg&#34;</span>;
+            }
+            <span style="color:#66d9ef">int</span> count = <span style="color:#ae81ff">1</span>;
+            <span style="color:#66d9ef">foreach</span>(String fileName <span style="color:#66d9ef">in</span> files) {
+                <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">new</span> System.IO.FileInfo(fileName).Length &gt; <span style="color:#ae81ff">1024</span> * <span style="color:#ae81ff">75</span>) {
+                    System.IO.File.Move(fileName, System.IO.Path.Combine(desPath, String.Format(formatStr, count)));<span style="color:#75715e">//对文件进行重命名
+</span><span style="color:#75715e"></span>                    count++;
+                }
+            }
+</code></pre></div><p>判断系统是否是win10</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#">        <span style="color:#66d9ef">bool</span> IsWindows10() {
+            <span style="color:#66d9ef">var</span> reg = Registry.LocalMachine.OpenSubKey(<span style="color:#e6db74">@&#34;SOFTWARE\Microsoft\Windows NT\CurrentVersion&#34;</span>);
+            <span style="color:#66d9ef">string</span> productName = (<span style="color:#66d9ef">string</span>)reg.GetValue(<span style="color:#e6db74">&#34;ProductName&#34;</span>);
+            <span style="color:#66d9ef">return</span> productName.StartsWith(<span style="color:#e6db74">&#34;Windows 10&#34;</span>);
+        }
+</code></pre></div><p>获取桌面目录路径</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#">        String GetDesktopDirectory() {
+            <span style="color:#66d9ef">return</span> Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        }
+</code></pre></div><p>创建新文件夹</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#">        <span style="color:#66d9ef">void</span> NewDirectory(String path) {
+            <span style="color:#66d9ef">if</span>(!System.IO.Directory.Exists(path)) {
+                System.IO.Directory.CreateDirectory(path);
+            }
+        }
+</code></pre></div><p>base64编码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#">        String GetBase64String() {
+            <span style="color:#66d9ef">return</span> Convert.ToBase64String(System.Text.Encoding.Default.GetBytes(DateTime.Now.ToString()));
+        }
+</code></pre></div><p>获取win10锁屏壁纸的缓存目录路径</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#">        <span style="color:#66d9ef">public</span> String GetWallPaperDirectory() {
+            String desPath = <span style="color:#e6db74">&#34;&#34;</span>;
+            String doc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            doc = doc.Substring(<span style="color:#ae81ff">0</span>, doc.LastIndexOf(<span style="color:#e6db74">&#34;\\&#34;</span>));
+            String desTemp = System.IO.Path.Combine(doc, <span style="color:#e6db74">&#34;AppData\\Local\\Packages&#34;</span>);
+            <span style="color:#66d9ef">var</span> files = System.IO.Directory.EnumerateDirectories(desTemp);
+            <span style="color:#66d9ef">foreach</span>(String t <span style="color:#66d9ef">in</span> files) {
+                <span style="color:#66d9ef">if</span>(t.Contains(<span style="color:#e6db74">&#34;Microsoft.Windows.ContentDeliveryManager&#34;</span>)) {
+                    desPath = t;
+                    <span style="color:#66d9ef">break</span>;
+                }
+            }
+            <span style="color:#66d9ef">if</span>(desPath.Length &gt; <span style="color:#ae81ff">0</span>) {
+                desPath = System.IO.Path.Combine(desPath, <span style="color:#e6db74">&#34;LocalState\\Assets&#34;</span>);
+                <span style="color:#66d9ef">return</span> desPath;
+            }
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>;
+        }
+</code></pre></div><p>将文件复制并重命名到新路径</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#">System.IO.File.Copy(fileName, System.IO.Path.Combine(newPath, String.Format(formatStr, count)));
+</code></pre></div><p>修改控件字体，可以通过设置窗体的字体实现，因为继承关系，所以子控件的字体也会改变</p>
+<p>ps : 链接10里面的一个评论很搞笑, 说答主用<code>StartsWith(&quot;Windows 10&quot;);</code>不正确, 在Windows 100上判断会出错, 很有道理</p>
+<p>pps : 感觉用C#写Demo比java方便, 主要是拖控件比较方便, 事件方法就在那里, 找一下就行了.</p>
+<p><strong>reference</strong></p>
+<ol>
+<li>
+<p><a href="https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/">Adding an existing project to GitHub using the command line</a></p>
+</li>
+<li>
+<p><a href="https://msdn.microsoft.com/en-us/library/07wt70x2(v=vs.110).aspx">Directory.GetFiles Method (String)</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/7140081/how-to-get-only-filenames-within-a-directory-using-c">How to get only filenames within a directory using c#?</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/22015354/rename-existing-file-name">Rename existing file name</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/19150333/how-to-rename-a-file-in-net">How to rename a file in .NET?</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/1380839/how-do-you-get-the-file-size-in-c">How do you get the file size in C#?</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/yelsea/archive/2007/08/15/856166.html">C#中将字符串转成 BASE64 编码</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/2906581/scrollbar-on-a-label">Scrollbar on a Label</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/34131695/windows-10-will-catched-as-windows-8-windows-8-1">Windows 10 will catched as Windows 8 / Windows 8.1</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/31885302/how-can-i-detect-if-my-app-is-running-on-windows-10">How can I detect if my app is running on Windows 10</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/2819934/detect-windows-version-in-net">Detect Windows version in .net</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/577634/how-to-get-the-friendly-os-version-name">How to get the “friendly” OS Version Name?</a></p>
+</li>
+<li>
+<p>[C#获取Windows系统特殊文件夹的路径<a href="http://www.cnblogs.com/mane/archive/2011/08/13/2137215.html">转]</a></p>
+</li>
+<li>
+<p><a href="https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx">String Class</a></p>
+</li>
+<li>
+<p><a href="https://github.com/rsa2063/SmallTools/tree/master/RenameFiles">code</a></p>
+</li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-10 21:21<br>
+Created: 2017-04-10 01:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

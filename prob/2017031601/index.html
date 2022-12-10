@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>文件Hash校驗Hash軟件 – HA</title>
+<meta name="description" content="文件Hash校驗Hash軟件 下了個eclipse的安裝包，看了下下載鏈接是http的，於是打算校驗一下hash值，沒想到官網上只給了一個SHA512的值，裝的7Zip只支持到SHA256，於是下了幾個hash校驗軟件。 本來打算下以前用過的hashcalc，不過好像不是開源軟件，而且上次下載的遊戲安裝包校驗出錯，文件拖進去點擊校驗之後程 …">
+<meta name="created" content="2017-03-16T01:33:58+0800">
+<meta name="modified" content="2022-12-10T21:21:10+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="文件Hash校驗Hash軟件">
+<meta property="og:url" content="/blog/prob/2017031601/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/prob/2017031601/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "文件Hash校驗Hash軟件",
+    "datePublished": "2017-03-16T01:33:58+08:00",
+    "dateModified": "2022-12-10T21:21:10+08:00",
+    "url" : "/blog/prob/2017031601/",
+    "description": "文件Hash校驗Hash軟件 下了個eclipse的安裝包，看了下下載鏈接是http的，於是打算校驗一下hash值，沒想到官網上只給了一個SHA512的值，裝的7Zip只支持到SHA256，於是下了幾個hash校驗軟件。 本來打算下以前用過的hashcalc，不過好像不是開源軟件，而且上次下載的遊戲安裝包校驗出錯，文件拖進去點擊校驗之後程 …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/prob/" class="active" aria-current="page">Prob</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/git/">Git</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/c#/">C#</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--prob">
+<header>
+<h1 class="title title-submitted">文件Hash校驗Hash軟件</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-16T01:33:58&#43;08:00">2017-03-16 01:33</time>
+</div>
+</header>
+<div class="content">
+<p>文件Hash校驗Hash軟件</p>
+<p>下了個eclipse的安裝包，看了下下載鏈接是http的，於是打算校驗一下hash值，沒想到官網上只給了一個SHA512的值，裝的7Zip只支持到SHA256，於是下了幾個hash校驗軟件。</p>
+<p>本來打算下以前用過的hashcalc，不過好像不是開源軟件，而且上次下載的遊戲安裝包校驗出錯，文件拖進去點擊校驗之後程序就卡死了。就上wiki上找開源的而且最近有更新的校驗軟件，找了幾個試用了一下。</p>
+<ul>
+<li>
+<p><a href="https://github.com/gurnec/HashCheck">HashCheck Shell Extension</a> 安裝需要管理員權限，安裝後會在文件屬性中新增一個分頁，內有文件的CRC-32,SHA-1,SHA256,SHA512的校驗值</p>
+</li>
+<li>
+<p><a href="http://rhash.anz.ru/">RHash</a> 不需要管理員權限，但是win10下打不開(打開閃退)</p>
+</li>
+<li>
+<p><a href="https://sourceforge.net/projects/quickhash/files/">QuickHash</a> 不需要管理員權限，但是校驗值怪怪的，不太懂為什麼，校驗出來的SHA512值很短但是開頭結尾跟官方提供的文件值也不太一樣</p>
+<pre><code>http://mirror.rise.ph/eclipse/oomph/epp/neon/R2a/eclipse-inst-win64.exe
+官方SHA-512:：7344a1ef157382c68ec3c2674e1a5f42b049aa81545f4c24d68e3c209e2933381575ec4663973830410a7247f9c70e776ef74e6616e56b3259f5d00c51c15f3b
+hashcheck:
+7344a1ef157382c68ec3c2674e1a5f42b049aa81545f4c24d68e3c209e2933381575ec4663973830410a7247f9c70e776ef74e6616e56b3259f5d00c51c15f3b
+QuickHash:
+74E6616E56B3259F5D00C51C15F3B
+</code></pre></li>
+</ul>
+<p><strong>reference</strong></p>
+<ul>
+<li>​<a href="https://en.wikipedia.org/wiki/Comparison_of_file_verification_software">Comparison of file verification software</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-10 21:21<br>
+Created: 2017-03-16 01:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

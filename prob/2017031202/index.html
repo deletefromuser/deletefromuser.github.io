@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>使用gcloud source克隆代碼出錯的問題 – HA</title>
+<meta name="description" content="使用gcloud source克隆代碼出錯的問題 gcloud source repos clone java-gae-quickstart --project=mytest-161202 在Google Cloud Platform中創建好代碼庫，並且在本機安裝好Google Cloud SDK之後， …">
+<meta name="created" content="2017-03-12T02:33:58+0800">
+<meta name="modified" content="2022-12-10T21:21:10+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="使用gcloud source克隆代碼出錯的問題">
+<meta property="og:url" content="/blog/prob/2017031202/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/prob/2017031202/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "使用gcloud source克隆代碼出錯的問題",
+    "datePublished": "2017-03-12T02:33:58+08:00",
+    "dateModified": "2022-12-10T21:21:10+08:00",
+    "url" : "/blog/prob/2017031202/",
+    "description": "使用gcloud source克隆代碼出錯的問題 gcloud source repos clone java-gae-quickstart --project=mytest-161202 在Google Cloud Platform中創建好代碼庫，並且在本機安裝好Google Cloud SDK之後， …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/prob/" class="active" aria-current="page">Prob</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/git/">Git</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/c#/">C#</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--prob">
+<header>
+<h1 class="title title-submitted">使用gcloud source克隆代碼出錯的問題</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-12T02:33:58&#43;08:00">2017-03-12 02:33</time>
+</div>
+</header>
+<div class="content">
+<p>使用gcloud source克隆代碼出錯的問題</p>
+<p><code>gcloud source repos clone java-gae-quickstart --project=mytest-161202</code></p>
+<p>在Google Cloud Platform中創建好代碼庫，並且在本機安裝好Google Cloud SDK之後，使用上面的語句克隆代碼庫出錯</p>
+<pre><code>Cloning into 'C:\Users\Me\default'...
+ERROR: (gcloud.auth.git-helper) Invalid input line format: [path=].
+fatal: remote error: Invalid username/password.
+You may need to use your OAuth token password; Note that generated google.com passwords are not compatible with private repositories
+ERROR: (gcloud.source.repos.clone) Command '['git', 'clone', 'https: //source.developers.google.com/p/project-1234/r/default', 'C:\Users\Me\default', '--config', 'credential.helper=&quot;gcloud.cmd&quot;']' returned non-zero exit status 128
+</code></pre><p>此時打開git，輸入<code>git config --list</code>，查看其中的credential.helper屬性是否是manager，如果是，則輸入<code> git config --system --unset credential.helper</code>，之後再次取出應該就可以了</p>
+<h5 id="在gcp和git中設置代理的方法取出時提示time-out-443的情況下">在GCP和git中設置代理的方法(取出時提示time out 443的情況下)</h5>
+<ul>
+<li>
+<p>git  <code>git config --global http.proxy 127.0.0.1:1080</code></p>
+</li>
+<li>
+<p>gcloud</p>
+</li>
+</ul>
+<pre><code>//查看配置信息
+gcloud info
+//設置代理
+gcloud config set proxy/address 127.0.0.1
+gcloud config set proxy/port 1080
+gcloud config set proxy/type http
+</code></pre><p><strong>reference</strong></p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/36528900/gcloud-git-clone-issues-windows-10">gcloud git clone issues - windows 10</a></li>
+<li><a href="https://groups.google.com/forum/#!topic/google-cloud-sdk/8SfiaKEYXTM">Authentication for git google cloud repository</a></li>
+<li><a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8">Git 工具 - 凭证存储</a></li>
+<li><a href="https://vjudge1.github.io/2016/10/04/gae.html">Google App Engine入门（Python）</a></li>
+<li><a href="https://cloud.google.com/sdk/gcloud/reference/config/set">gcloud config set</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-10 21:21<br>
+Created: 2017-03-12 02:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
