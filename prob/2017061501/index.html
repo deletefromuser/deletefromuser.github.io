@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>VirtualBox主机虚拟机共享剪贴板设置之后没用的问题 – HA</title>
+<meta name="description" content="VirtualBox主机虚拟机共享剪贴板设置之后没用的问题 在设置中启用共享剪贴板之后，还要虚拟机本身安装增强功能之后才可以使用。 具体方法为：  在设置-存储-控制器中新增一个虚拟光驱，盘片置空即可， 开启虚拟机，进入之后，点击上方菜单栏设备-安装增强功能 第二步没有任何提示和消息，进入虚拟机文件管理器，找到光驱VirtualBox …">
+<meta name="created" content="2017-06-15T01:33:58+0800">
+<meta name="modified" content="2022-12-10T21:21:10+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="VirtualBox主机虚拟机共享剪贴板设置之后没用的问题">
+<meta property="og:url" content="https://deletefromuser.github.io/prob/2017061501/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/prob/2017061501/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "VirtualBox主机虚拟机共享剪贴板设置之后没用的问题",
+    "datePublished": "2017-06-15T01:33:58+08:00",
+    "dateModified": "2022-12-10T21:21:10+08:00",
+    "url" : "https://deletefromuser.github.io/prob/2017061501/",
+    "description": "VirtualBox主机虚拟机共享剪贴板设置之后没用的问题 在设置中启用共享剪贴板之后，还要虚拟机本身安装增强功能之后才可以使用。 具体方法为：  在设置-存储-控制器中新增一个虚拟光驱，盘片置空即可， 开启虚拟机，进入之后，点击上方菜单栏设备-安装增强功能 第二步没有任何提示和消息，进入虚拟机文件管理器，找到光驱VirtualBox …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/prob/" class="active" aria-current="page">Prob</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/c#/">C#</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--prob">
+<header>
+<h1 class="title title-submitted">VirtualBox主机虚拟机共享剪贴板设置之后没用的问题</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-06-15T01:33:58&#43;08:00">2017-06-15 01:33</time>
+</div>
+</header>
+<div class="content">
+<p>VirtualBox主机虚拟机共享剪贴板设置之后没用的问题</p>
+<p>在设置中启用共享剪贴板之后，还要虚拟机本身安装增强功能之后才可以使用。</p>
+<p>具体方法为：</p>
+<ol>
+<li>在设置-存储-控制器中新增一个虚拟光驱，盘片置空即可，</li>
+<li>开启虚拟机，进入之后，点击上方菜单栏设备-安装增强功能</li>
+<li>第二步没有任何提示和消息，进入虚拟机文件管理器，找到光驱VirtualBox Guest Additions，右键打开后，看到几个exe文件（有平台版本区别），找一个能运行的安装即可，随后重启电脑，end.</li>
+</ol>
+<p><strong>reference:</strong></p>
+<ol>
+<li>
+<p><a href="http://blog.csdn.net/q1302182594/article/details/8720545">VirtualBox安装Windows XP——图解</a></p>
+</li>
+<li>
+<p><a href="http://jingyan.baidu.com/article/574c521917db806c8d9dc18c.html">VirtualBox主机与虚拟机不能复制粘贴的解决办法</a>(这个对我没用，我先设的这个再装的增强功能，不知道这个是不是必须的)</p>
+</li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-10 21:21<br>
+Created: 2017-06-15 01:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

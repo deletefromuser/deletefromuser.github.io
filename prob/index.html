@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Prob – HA</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/prob/index.xml">
+<meta name="description" content="">
+<meta name="created" content="2022-11-08T20:00:00+0800">
+<meta name="modified" content="2022-12-10T21:21:10+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="Prob">
+<meta property="og:url" content="https://deletefromuser.github.io/prob/">
+<meta property="og:type" content="website">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/prob/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url" : "https://deletefromuser.github.io/prob/",
+    "name": "Prob",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="list-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/prob/" class="active" aria-current="page">Prob</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/c#/">C#</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<h1 class="title">Prob</h1>
+
+
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2022110901/">利用RSS自动下载Torrent</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-08T20:00:00&#43;08:00">2022-11-08 20:00</time>
+</div>
+
+</header>
+<div class="content">
+以前竟然不知道，每周都要上网站手动搜索 下载网站找到rss feed url，比如https://nyaa.si/?page=rss&amp;q=ubu
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2022110801/">weblogic console忘记密码的解决办法</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-08T12:00:00&#43;08:00">2022-11-08 12:00</time>
+</div>
+
+</header>
+<div class="content">
+重置密码太麻烦了，所以用解密 cd /u01/app/oracle/middleware/oracle_common/common/bin ./wlst.sh domain = &#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&#34; service = weblogic.security.internal.SerializedSystemIni.getEncryptionService(domain) encryption = weblogic.security.internal.encryption.ClearOrEncryptedService(service) # find encrptyed username and password in domainnamexxx/servers/AdminServer/security/boot.properties print encryption.decrypt(&#34;{AES}nFIptO4HdY8fxSgLjrS8ZNqsVlcB2zQZzYJQ9o7AbJU=&#34;) reference Quickest way to decrypt passwords in Oracle WebLogic Server 12c
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2022110603/">oracle安装后连接问题</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
+</div>
+
+</header>
+<div class="content">
+1. ORA-12505: TNS:listener does not currently know of SID given in connect descriptor add to tnsnames.ora file, and run lsnrctl reload ORCL = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVICE = DEDICATED) (SERVICE_NAME = orcl) ) ) excute alter system set local_listener = '(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))' scope = both; in sqlplus.(username sys, password, orcl as sysdba) 2. 状态: 失败 -测试
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2022110604/">virtualbox虚拟机启用宿主机摄像头</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
+</div>
+
+</header>
+<div class="content">
+Install ‘Oracle VM VirtualBox Extension Pack’ Attaching webcam to guest OS VBoxManage list webcams VboxManage controlvm &#34;Ubuntu 16.04.3&#34; webcam attach .2 reference Enabling Webcam in VirtualBox Guest OS on Windows Host
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2022070801/">win10 开始菜单去掉web搜索结果</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-07-08T10:00:00&#43;08:00">2022-07-08 10:00</time>
+</div>
+
+</header>
+<div class="content">
+针对Windows 10 version 1909 打开注册表编辑器 regedit 进入 计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Window
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2022070401/">virtualbox 虚拟机硬盘扩容</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-07-04T16:00:00&#43;08:00">2022-07-04 16:00</time>
+</div>
+
+</header>
+<div class="content">
+click File &gt; Virtual Media Manager in the main VirtualBox window Select a virtual hard disk in the list and use the “Size” slider at the bottom of the window to change its size. Click “Apply” when you’re done boot ubuntu virtual machine, use GParted to Resize reference How To Enlarge a Virtual M
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2017082701/">windows修改右鍵“發送到”菜單&amp;如何快速打開SendTo文件夾</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-08-27T01:33:58&#43;08:00">2017-08-27 01:33</time>
+</div>
+
+</header>
+<div class="content">
+windows修改右鍵“發送到”菜單&amp;如何快速打開SendTo文件夾 右鍵“發送到”所在的文件夾 C:\Users\UserName\AppData\Roaming\Microsoft\Windows\SendTo 如何快速打開 使用shell:send
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2017061501/">VirtualBox主机虚拟机共享剪贴板设置之后没用的问题</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-06-15T01:33:58&#43;08:00">2017-06-15 01:33</time>
+</div>
+
+</header>
+<div class="content">
+VirtualBox主机虚拟机共享剪贴板设置之后没用的问题 在设置中启用共享剪贴板之后，还要虚拟机本身安装增强功能之后才可以使用。 具体方法为：
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2017040101/">win10中去掉资源管理器的OneDrive项目&amp;隐藏工具栏</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-04-01T01:33:58&#43;08:00">2017-04-01 01:33</time>
+</div>
+
+</header>
+<div class="content">
+win10中去掉资源管理器的OneDrive项目\隐藏工具栏 打开注册表编辑器，修改HKEY_CLASSES_ROOT\CLSID\{018D
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2017032603/">使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-26T03:33:58&#43;08:00">2017-03-26 03:33</time>
+</div>
+
+</header>
+<div class="content">
+使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code 在Android Studio中加了一个依赖之后，编译出错，解决办法是在项目的属性中设置 sourceCompatibility
+</div>
+</article>
+
+<nav class="pager">
+<a href="/prob/page/2/" rel="next" class="pager-item pager-next">Next</a>
+</nav>
+
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

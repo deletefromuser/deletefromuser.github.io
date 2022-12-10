@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Tomcat配置問題匯總 – HA</title>
+<meta name="description" content="Tomcat配置問題匯總 解壓後點擊startup運行閃退 原因可能是沒有配置環境變量，JAVA_HOME，JRE_HOME，CLASSPATH幾個，不想配的話在catalina.bat裡手動設置應該也是可以的，我設置了但是還是不行，但是在eclipse裡面可以運行，於是就沒有深究 Could not resolve XML …">
+<meta name="created" content="2017-03-19T01:33:58+0800">
+<meta name="modified" content="2022-12-10T21:21:10+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="Tomcat配置問題匯總">
+<meta property="og:url" content="https://deletefromuser.github.io/prob/2017031902/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/prob/2017031902/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Tomcat配置問題匯總",
+    "datePublished": "2017-03-19T01:33:58+08:00",
+    "dateModified": "2022-12-10T21:21:10+08:00",
+    "url" : "https://deletefromuser.github.io/prob/2017031902/",
+    "description": "Tomcat配置問題匯總 解壓後點擊startup運行閃退 原因可能是沒有配置環境變量，JAVA_HOME，JRE_HOME，CLASSPATH幾個，不想配的話在catalina.bat裡手動設置應該也是可以的，我設置了但是還是不行，但是在eclipse裡面可以運行，於是就沒有深究 Could not resolve XML …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/prob/" class="active" aria-current="page">Prob</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/c#/">C#</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--prob">
+<header>
+<h1 class="title title-submitted">Tomcat配置問題匯總</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-19T01:33:58&#43;08:00">2017-03-19 01:33</time>
+</div>
+</header>
+<div class="content">
+<p>Tomcat配置問題匯總</p>
+<h4 id="解壓後點擊startup運行閃退">解壓後點擊startup運行閃退</h4>
+<p>原因可能是沒有配置環境變量，JAVA_HOME，JRE_HOME，CLASSPATH幾個，不想配的話在catalina.bat裡手動設置應該也是可以的，我設置了但是還是不行，但是在eclipse裡面可以運行，於是就沒有深究</p>
+<h4 id="could-not-resolve-xml-resource-null-with-public-id">Could not resolve XML resource [null] with public ID</h4>
+<pre><code>java.io.FileNotFoundException: Could not resolve XML resource [null] with public ID [-//Oracle Corporation//DTD Web Application 2.3//EN], system ID [http://java.sun.com/dtd/web-app_2_3.dtd] and base URI [file:/C:/Users/Shin.SHINJI-PC2/Documents/Code/Java/jee_eclipse/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/java-gae-quickstart/WEB-INF/web.xml] to a known, local entity.
+</code></pre><p>解决办法：
+a. 在Servers窗口中双击Tomcat，勾选Serve modules without publishing；
+b. 修改conf/context.xml，如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Context</span> <span style="color:#a6e22e">xmlBlockExternal=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;</span>
+</code></pre></div><h4 id="multiple-contexts-have-a-path-of-xxx">Multiple Contexts have a path of &ldquo;/XXX&rdquo;</h4>
+<p>修改tomcat服務器中conf/server.xml文件，如果發現裡面Context節點有兩個一模一樣的，把其中一個的path改掉，或者把其中一個刪掉應該也可以</p>
+<p><strong>reference</strong></p>
+<ul>
+<li>
+<p><a href="https://webcache.googleusercontent.com/search?q=cache:Yx0UPCjh9aoJ:code.zbc.io/gae,tomcat,eclipse/gae-eclipse.html+&amp;cd=1&amp;hl=zh-CN&amp;ct=clnk&amp;gl=us">用eclipse本地部署GAE的demo时遇到的问题</a></p>
+</li>
+<li>
+<p><a href="https://zh.wikipedia.org/wiki/Apache_Tomcat">Apache Tomcat</a></p>
+</li>
+<li>
+<p><a href="http://www.zhimengzhe.com/bianchengjiaocheng/Javabiancheng/48679.html">直接双击启动tomcat中的startup.bat闪退原因及处理步骤</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/hin24/p/3646815.html">如何解决启动tomcat的startup.bat闪退问题？</a></p>
+</li>
+<li>
+<p><a href="https://my.oschina.net/u/2325881/blog/730005">win10 下tomcat 启动startup.bat闪退解决方法</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/xwdreamer/archive/2010/09/08/2297098.html">classpath、path、JAVA_HOME的作用及JAVA环境变量配置</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/panxuejun/p/5909408.html">java classpath作用</a></p>
+</li>
+<li>
+<p><a href="http://www.jianshu.com/p/74ffa3345bc3">Java中JDK为何要配Path和ClassPath?</a></p>
+</li>
+<li>
+<p><a href="http://shiyousan.com/post/635613454610763481">如何暂停执行中的bat批处理文件？</a></p>
+</li>
+<li>
+<p><a href="http://www.admin10000.com/document/7089.html">Windows批处理(cmd/bat)常用命令小结</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/rwxwsblog/p/4960107.html">tomcat启动是报Multiple Contexts have a path of &ldquo;/XXX&rdquo;</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/7239613/multiple-contexts-with-the-same-path-error-running-web-service-in-eclipse-using">Multiple contexts with the same path error running web service in Eclipse using Tomcat</a></p>
+</li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-10 21:21<br>
+Created: 2017-03-19 01:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

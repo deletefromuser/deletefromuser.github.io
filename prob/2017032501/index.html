@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Chrome Keep扩展运行出错的问题解决 – HA</title>
+<meta name="description" content="Chrome Keep扩展运行出错的问题解决 主要问题还是扩展连接的网址被墙的原因，将其加入代理即可 *.googleapis.com *.googleusercontent.com //跟google翻译的扩展问题一样 //不同在于keep使用了第二个网址 //如果只把第一个加入代理的话，也是可以正常使用的 //只不过每次保存的时候都会 …">
+<meta name="created" content="2017-03-25T01:33:58+0800">
+<meta name="modified" content="2022-12-10T21:21:10+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="Chrome Keep扩展运行出错的问题解决">
+<meta property="og:url" content="https://deletefromuser.github.io/prob/2017032501/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/prob/2017032501/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Chrome Keep扩展运行出错的问题解决",
+    "datePublished": "2017-03-25T01:33:58+08:00",
+    "dateModified": "2022-12-10T21:21:10+08:00",
+    "url" : "https://deletefromuser.github.io/prob/2017032501/",
+    "description": "Chrome Keep扩展运行出错的问题解决 主要问题还是扩展连接的网址被墙的原因，将其加入代理即可 *.googleapis.com *.googleusercontent.com //跟google翻译的扩展问题一样 //不同在于keep使用了第二个网址 //如果只把第一个加入代理的话，也是可以正常使用的 //只不过每次保存的时候都会 …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/prob/" class="active" aria-current="page">Prob</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/c#/">C#</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--prob">
+<header>
+<h1 class="title title-submitted">Chrome Keep扩展运行出错的问题解决</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-25T01:33:58&#43;08:00">2017-03-25 01:33</time>
+</div>
+</header>
+<div class="content">
+<p>Chrome Keep扩展运行出错的问题解决</p>
+<p>主要问题还是扩展连接的网址被墙的原因，将其加入代理即可</p>
+<pre><code>*.googleapis.com
+*.googleusercontent.com
+//跟google翻译的扩展问题一样
+//不同在于keep使用了第二个网址
+//如果只把第一个加入代理的话，也是可以正常使用的
+//只不过每次保存的时候都会出现让你登录的提示
+//必须点击登录之后才能正常保存
+//把第二个网址也加入代理规则就可以正常使用
+</code></pre><p>记录一下找到网址的步骤，主要就是要找到插件调用的js文件，在里面找网址：</p>
+<p>在一个网页内点击检查，打开开发者工具，找到Network分页，然后在网页内点击Save To Keep，观察分页内的网络连接，主要关注红色的(应该是代表连接失败的吧)，看到一个index.html，在新标签页打开，是一个点击插件是出现的窗体的html文件，右键查看网页源代码，找到调用的js文件打开，找其中的网址，发现<code>www.googleapis.com|apps.googleusercontent.com|clients4.google.com</code>几种网址，将其加入代理规则即可</p>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-10 21:21<br>
+Created: 2017-03-25 01:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

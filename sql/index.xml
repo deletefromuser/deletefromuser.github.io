@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sqls on HA</title>
+    <title>Sql on HA</title>
     <link>https://deletefromuser.github.io/sql/</link>
-    <description>Recent content in Sqls on HA</description>
+    <description>Recent content in Sql on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 06 Nov 2022 19:00:00 +0800</lastBuildDate>

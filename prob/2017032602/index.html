@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Android连接电脑新增文件无法显示的问题 – HA</title>
+<meta name="description" content="Android连接电脑新增文件无法显示的问题 在调试app时，创建文件，在手机上可以看到文件新建成功，但是在电脑上看不到文件。这个bug不知道为什么好几年都不修复。 解决办法是在新增文件后 activity.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, …">
+<meta name="created" content="2017-03-26T02:33:58+0800">
+<meta name="modified" content="2022-12-10T21:21:10+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="Android连接电脑新增文件无法显示的问题">
+<meta property="og:url" content="https://deletefromuser.github.io/prob/2017032602/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/prob/2017032602/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Android连接电脑新增文件无法显示的问题",
+    "datePublished": "2017-03-26T02:33:58+08:00",
+    "dateModified": "2022-12-10T21:21:10+08:00",
+    "url" : "https://deletefromuser.github.io/prob/2017032602/",
+    "description": "Android连接电脑新增文件无法显示的问题 在调试app时，创建文件，在手机上可以看到文件新建成功，但是在电脑上看不到文件。这个bug不知道为什么好几年都不修复。 解决办法是在新增文件后 activity.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/prob/" class="active" aria-current="page">Prob</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/c#/">C#</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--prob">
+<header>
+<h1 class="title title-submitted">Android连接电脑新增文件无法显示的问题</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-26T02:33:58&#43;08:00">2017-03-26 02:33</time>
+</div>
+</header>
+<div class="content">
+<p>Android连接电脑新增文件无法显示的问题</p>
+<p>在调试app时，创建文件，在手机上可以看到文件新建成功，但是在电脑上看不到文件。这个bug不知道为什么好几年都不修复。</p>
+<p>解决办法是在新增文件后</p>
+<p><code>activity.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + &quot;/cursor.txt&quot;)</code></p>
+<p><strong>reference</strong></p>
+<ul>
+<li>
+<p><a href="http://blog.csdn.net/saharis/article/details/38818519">手机插上电脑，看不到新增的文件的解决方案</a></p>
+</li>
+<li>
+<p><a href="https://code.google.com/p/android/issues/detail?id=38282">Android MTP support does not show recent files until the device is rebooted</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/13737261/nexus-4-not-showing-files-via-mtp">Nexus 4 not showing files via MTP</a></p>
+</li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2022-12-10 21:21<br>
+Created: 2017-03-26 02:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
