@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2022-12-10T17:03:15+0800">
+<meta name="modified" content="2022-12-11T16:01:08+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2022-12-10T17:03:15+08:00",
+    "dateModified": "2022-12-11T16:01:08+08:00",
     "url" : "https://deletefromuser.github.io/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
     "keywords": ["正则表达式","automation","linux","web","js","java"],
@@ -257,6 +257,26 @@ lsof -i :8080
 <span style="color:#75715e"># 查找正在使用某一个文件的进程</span>
 fuser /path/file
 ps -ef | grep PID
+</code></pre></div><h3 id="excel函数使用">Excel函数使用</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># google表格也支持下面的函数</span>
+<span style="color:#75715e"># 搜索 L2 单元格内的内容在 I4:I15 区域内出现的次数</span>
+<span style="color:#f92672">=</span>SUMPRODUCT<span style="color:#f92672">(</span>len<span style="color:#f92672">(</span>I4:I15<span style="color:#f92672">)</span>-len<span style="color:#f92672">(</span>SUBSTITUTE<span style="color:#f92672">(</span>I4:I15,L2,<span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">)))</span>/len<span style="color:#f92672">(</span>L2<span style="color:#f92672">)</span>
+<span style="color:#75715e"># 获取A2单元格内字符2右边的内容</span>
+<span style="color:#f92672">=</span>RIGHT<span style="color:#f92672">(</span>A4,len<span style="color:#f92672">(</span>A4<span style="color:#f92672">)</span>-find<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2&#34;</span>,A4<span style="color:#f92672">))</span>
+<span style="color:#75715e"># 获取A6单元格内字符2左边的内容</span>
+<span style="color:#f92672">=</span>LEFT<span style="color:#f92672">(</span>A6,find<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2&#34;</span>,A6<span style="color:#f92672">)</span>-1<span style="color:#f92672">)</span>
+<span style="color:#75715e"># 获取文件后缀名</span>
+<span style="color:#f92672">=</span>UPPER<span style="color:#f92672">(</span>RIGHT<span style="color:#f92672">(</span>C10,len<span style="color:#f92672">(</span>C10<span style="color:#f92672">)</span>-find<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;.&#34;</span>,C10<span style="color:#f92672">)))</span>
+<span style="color:#75715e"># 获取所在列(E)所在单元格上面非空的单元格数量（也可从特定行(E1)开始计算）</span>
+<span style="color:#f92672">=</span>counta<span style="color:#f92672">(</span>E1:INDIRECT<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;E&#34;</span> &amp; ROW<span style="color:#f92672">()</span> - 1<span style="color:#f92672">))</span> + <span style="color:#ae81ff">1</span>
+<span style="color:#75715e"># 获取所在列以外特定列(I)中最后一个非空值</span>
+<span style="color:#f92672">=</span>ARRAY_CONSTRAIN<span style="color:#f92672">(</span>ARRAYFORMULA<span style="color:#f92672">(</span>LOOKUP<span style="color:#f92672">(</span>2,1/<span style="color:#f92672">(</span>I:I&lt;&gt;<span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">)</span>,I:I<span style="color:#f92672">))</span>, 1, 1<span style="color:#f92672">)</span>
+<span style="color:#75715e"># 获取特定列(I)中(也适用于所在列)最后一个非空值</span>
+<span style="color:#f92672">=</span>ARRAY_CONSTRAIN<span style="color:#f92672">(</span>ARRAYFORMULA<span style="color:#f92672">(</span>LOOKUP<span style="color:#f92672">(</span>2,1/<span style="color:#f92672">(</span>INDIRECT<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;I1&#34;</span><span style="color:#f92672">)</span>:INDIRECT<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;I&#34;</span> &amp; ROW<span style="color:#f92672">()</span> - 1<span style="color:#f92672">)</span>&lt;&gt;<span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">)</span>,INDIRECT<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;I1&#34;</span><span style="color:#f92672">)</span>:INDIRECT<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;I&#34;</span> &amp; ROW<span style="color:#f92672">()</span> - 1<span style="color:#f92672">)))</span>, 1, 1<span style="color:#f92672">)</span>
+<span style="color:#75715e"># 获取特定单元格(A2)的值，如果为空，取另一个单元格(B1)的值</span>
+<span style="color:#f92672">=</span>IF<span style="color:#f92672">(</span>ISBLANK<span style="color:#f92672">(</span>A2<span style="color:#f92672">)</span>,B1,A2<span style="color:#f92672">)</span>
+<span style="color:#75715e"># 取得两个单元格的值相加</span>
+<span style="color:#f92672">=</span>A1&amp;B2
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://wangdoc.com/javascript/stdlib/array">JavaScript 教程 &gt; 标准库 &gt; Array 对象</a></li>
@@ -264,13 +284,16 @@ ps -ef | grep PID
 <li><a href="https://stackoverflow.com/questions/73319/how-to-duplicate-a-whole-line-in-vim">How to duplicate a whole line in Vim?</a></li>
 <li><a href="https://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line">How to replace a string in multiple files in linux command line</a></li>
 <li><a href="https://www.howtogeek.com/517098/linux-file-timestamps-explained-atime-mtime-and-ctime">Linux File Timestamps Explained: atime, mtime, and ctime</a></li>
+<li><a href="https://exceljet.net/formulas/get-value-of-last-non-empty-cell">Get value of last non-empty cell</a></li>
+<li><a href="https://udemy.benesse.co.jp/business/office/lookup-function.html">【エクセルのLOOKUP関数の使い方】VLOOKUP関数とLOOKUP関数の違いも</a></li>
+<li><a href="https://www.ablebits.com/office-addins-blog/excel-lookup-function/">Excel LOOKUP function with formula examples</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-10 17:03<br>
+Updated: 2022-12-11 16:01<br>
 Created: 2022-12-06 20:00
 </p>
 </div>
