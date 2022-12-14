@@ -6,7 +6,7 @@
 <title>SpringBoot开发memo – HA</title>
 <meta name="description" content="解密Jasypt密文  开发中遇到一些配置的密文，有解密的需要  AES256TextEncryptor encryptor = new AES256TextEncryptor(); encryptor.setPassword(&amp;amp;#34;some_salt&amp;amp;#34;); String plainText = …">
 <meta name="created" content="2022-11-15T20:00:00+0800">
-<meta name="modified" content="2022-11-20T10:51:23+0800">
+<meta name="modified" content="2022-12-14T21:45:16+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "SpringBoot开发memo",
     "datePublished": "2022-11-15T20:00:00+08:00",
-    "dateModified": "2022-11-20T10:51:23+08:00",
+    "dateModified": "2022-12-14T21:45:16+08:00",
     "url" : "/blog/web/2022111501/",
     "description": "解密Jasypt密文  开发中遇到一些配置的密文，有解密的需要  AES256TextEncryptor encryptor = new AES256TextEncryptor(); encryptor.setPassword(\u0026amp;#34;some_salt\u0026amp;#34;); String plainText = …",
     "mainEntityOfPage": {
@@ -68,10 +68,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
-<li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/web/" class="active" aria-current="page">Web</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
@@ -110,17 +110,23 @@ f: \.jar$
 
 ## Ignore target directories
 d: \\target$
-</code></pre><p><strong>reference</strong></p>
+</code></pre><h3 id="maven运行时出现警告-an-illegal-reflective-access-operation-has-occurred">maven运行时出现警告: An illegal reflective access operation has occurred</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">wget https://www.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+sudo update-alternatives --install /usr/bin/mvn mvn /opt/apache-maven-3.6.3/bin/mvn <span style="color:#ae81ff">363</span>
+sudo update-alternatives --config mvn
+</code></pre></div><p><strong>reference</strong></p>
 <ol>
 <li><a href="https://stackoverflow.com/questions/22067552/decrypt-using-jasypt">Decrypt using Jasypt</a></li>
 <li><a href="https://stackoverflow.com/a/1477287/19120213">How to ignore SVN folders in WinMerge</a></li>
+<li><a href="https://stackoverflow.com/a/63876216/19120213">maven: An illegal reflective access operation has occurred</a></li>
 </ol>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-11-20 10:51<br>
+Updated: 2022-12-14 21:45<br>
 Created: 2022-11-15 20:00
 </p>
 </div>

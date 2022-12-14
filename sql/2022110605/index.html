@@ -69,10 +69,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
-<li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sql/" class="active" aria-current="page">Sql</a></li>
@@ -335,6 +335,18 @@ createtime date
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 适用于优化sql，复杂sql中有些共通子查询多次重复出现时，可提取出临时表减少查询次数
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">with</span> dept1_userinfo <span style="color:#66d9ef">as</span> (<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">where</span> dept <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">fetch</span> <span style="color:#66d9ef">first</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">only</span>)
 <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> dept1_userinfo <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> (<span style="color:#66d9ef">select</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">from</span> dual <span style="color:#66d9ef">connect</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">level</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">100</span>) sub <span style="color:#66d9ef">on</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</code></pre></div><h3 id="字符串操作">字符串操作</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;B&#39;</span> <span style="color:#66d9ef">from</span> dual;
+</code></pre></div><h3 id="有则更新无则插入">有则更新，无则插入</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">BEGIN</span>
+   <span style="color:#66d9ef">UPDATE</span> userinfo <span style="color:#66d9ef">SET</span> salary <span style="color:#f92672">=</span> <span style="color:#ae81ff">250</span> <span style="color:#66d9ef">WHERE</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;tom&#39;</span>;
+
+   <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">SQL</span><span style="color:#f92672">%</span>ROWCOUNT <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+   <span style="color:#66d9ef">THEN</span>
+      <span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> userinfo(name,salary) <span style="color:#66d9ef">values</span>(<span style="color:#e6db74">&#39;tom&#39;</span>, <span style="color:#ae81ff">100</span>);
+   <span style="color:#66d9ef">END</span> <span style="color:#66d9ef">IF</span>;
+
+<span style="color:#66d9ef">END</span>;
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://www.cnblogs.com/linjiao/p/6394087.html">ORACLE TRUNC()函数</a></li>
@@ -355,7 +367,8 @@ createtime date
 <li><a href="https://omachizura.com/2016/08/sql-oracle-null.html">SQL oracleでnullを比較する際の注意点</a></li>
 <li><a href="https://community.oracle.com/tech/developers/discussion/3581149/analytic-functions-first-vs-first-value">Analytic functions: FIRST vs FIRST_VALUE</a></li>
 <li><a href="https://www.cnblogs.com/YuyuanNo1/p/9241754.html">ORACLE WITH AS 用法,创建临时表</a></li>
-<li>[NULL Values in ORDER BY - Oracle to MySQL Migration](<a href="http://www.sqlines.com/oracle-to-mysql/null_order_by">http://www.sqlines.com/oracle-to-mysql/null_order_by</a></li>
+<li><a href="http://www.sqlines.com/oracle-to-mysql/null_order_by">NULL Values in ORDER BY - Oracle to MySQL Migration</a></li>
+<li><a href="https://community.oracle.com/tech/developers/discussion/491165/how-to-insert-if-not-exist-update-when-exist-then-returning-the-value">How to : Insert If Not Exist, Update When Exist, Then Returning the Value ?</a></li>
 </ul>
 
 </div>

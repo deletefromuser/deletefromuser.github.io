@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2022-12-11T16:01:08+0800">
+<meta name="modified" content="2022-12-14T21:45:16+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2022-12-11T16:01:08+08:00",
+    "dateModified": "2022-12-14T21:45:16+08:00",
     "url" : "/blog/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
     "keywords": ["正则表达式","automation","linux","web","js","java"],
@@ -69,10 +69,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
-<li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/tip/" class="active" aria-current="page">Tip</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
@@ -214,6 +214,8 @@ xargs mkdir -p &lt; dirs.txt
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 每隔五秒钟打印一次磁盘空间信息</span>
 <span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span> date; df -h; sleep 5; <span style="color:#66d9ef">done</span>
 <span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span> date; df -h | grep <span style="color:#e6db74">&#39;/dev/sda1&#39;</span>; sleep 5; <span style="color:#66d9ef">done</span>
+<span style="color:#75715e"># -d 高亮变化的部分 -d 间隔(单位秒)</span>
+watch -d -n <span style="color:#ae81ff">5</span> df -h
 </code></pre></div><h3 id="使用scp复制远程服务器到本地复制本地文件到远程服务器">使用scp复制远程服务器到本地,复制本地文件到远程服务器</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scp -r -P <span style="color:#ae81ff">22</span> tom@ip:/path/file ./
 scp -P <span style="color:#ae81ff">22</span> /local/path/file tom@ip:~/temp
@@ -287,13 +289,14 @@ ps -ef | grep PID
 <li><a href="https://exceljet.net/formulas/get-value-of-last-non-empty-cell">Get value of last non-empty cell</a></li>
 <li><a href="https://udemy.benesse.co.jp/business/office/lookup-function.html">【エクセルのLOOKUP関数の使い方】VLOOKUP関数とLOOKUP関数の違いも</a></li>
 <li><a href="https://www.ablebits.com/office-addins-blog/excel-lookup-function/">Excel LOOKUP function with formula examples</a></li>
+<li><a href="https://www.linuxshelltips.com/run-linux-command-periodically/">How to Run a Command Periodically in Linux using Watch</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-11 16:01<br>
+Updated: 2022-12-14 21:45<br>
 Created: 2022-12-06 20:00
 </p>
 </div>
