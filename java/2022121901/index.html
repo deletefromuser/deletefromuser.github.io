@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>linux下让Java程序运行在后台 – HA</title>
-<meta name="description" content="nohup java -jar /web/server.jar &amp;amp;gt; log.log 2&amp;amp;gt;&amp;amp;amp;1 &amp;amp;amp; reference  Run java jar file on a server as background process Launch springboot project in the background …">
-<meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2022-11-13T11:10:57+0800">
+<title>java删除文件夹 – HA</title>
+<meta name="description" content="# use spring FileSystemUtils.deleteRecursively(file); # java 8 Files.walk(path) .sorted(Comparator.reverseOrder()) .map(Path::toFile) .forEach(File::delete); reference …">
+<meta name="created" content="2022-12-19T20:00:00+0800">
+<meta name="modified" content="2022-12-19T21:45:30+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="linux下让Java程序运行在后台">
-<meta property="og:url" content="https://deletefromuser.github.io/java/2022111002/">
+<meta property="og:title" content="java删除文件夹">
+<meta property="og:url" content="https://deletefromuser.github.io/java/2022121901/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="https://deletefromuser.github.io/java/2022111002/">
+<link rel="canonical" href="https://deletefromuser.github.io/java/2022121901/">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "linux下让Java程序运行在后台",
-    "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2022-11-13T11:10:57+08:00",
-    "url" : "https://deletefromuser.github.io/java/2022111002/",
-    "description": "nohup java -jar /web/server.jar \u0026amp;gt; log.log 2\u0026amp;gt;\u0026amp;amp;1 \u0026amp;amp; reference  Run java jar file on a server as background process Launch springboot project in the background …",
+    "headline": "java删除文件夹",
+    "datePublished": "2022-12-19T20:00:00+08:00",
+    "dateModified": "2022-12-19T21:45:30+08:00",
+    "url" : "https://deletefromuser.github.io/java/2022121901/",
+    "description": "# use spring FileSystemUtils.deleteRecursively(file); # java 8 Files.walk(path) .sorted(Comparator.reverseOrder()) .map(Path::toFile) .forEach(File::delete); reference …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://deletefromuser.github.io/"
@@ -88,26 +88,30 @@
 <main class="main layout__main">
 <article class="single-view single-view--java">
 <header>
-<h1 class="title title-submitted">linux下让Java程序运行在后台</h1>
+<h1 class="title title-submitted">java删除文件夹</h1>
 <div class="submitted">
-<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
+<time class="created-date" datetime="2022-12-19T20:00:00&#43;08:00">2022-12-19 20:00</time>
 </div>
 </header>
 <div class="content">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nohup java -jar /web/server.jar &gt; log.log 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">#</span> use spring
+FileSystemUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">deleteRecursively</span><span style="color:#f92672">(</span>file<span style="color:#f92672">);</span>
+<span style="color:#960050;background-color:#1e0010">#</span> java 8
+Files<span style="color:#f92672">.</span><span style="color:#a6e22e">walk</span><span style="color:#f92672">(</span>path<span style="color:#f92672">)</span>
+      <span style="color:#f92672">.</span><span style="color:#a6e22e">sorted</span><span style="color:#f92672">(</span>Comparator<span style="color:#f92672">.</span><span style="color:#a6e22e">reverseOrder</span><span style="color:#f92672">())</span>
+      <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>Path<span style="color:#f92672">::</span>toFile<span style="color:#f92672">)</span>
+      <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>File<span style="color:#f92672">::</span>delete<span style="color:#f92672">);</span>
 </code></pre></div><p><strong>reference</strong></p>
 <ol>
-<li><a href="https://stackoverflow.com/questions/12102270/run-java-jar-file-on-a-server-as-background-process">Run java jar file on a server as background process</a></li>
-<li><a href="https://programmer.ink/think/launch-springboot-project-in-the-background-on-linux.html">Launch springboot project in the background on Linux</a></li>
-<li><a href="https://www.cnblogs.com/chanmufeng/p/16727359.html">2&gt;&amp;1到底是什么意思？</a></li>
+<li><a href="https://www.baeldung.com/java-delete-directory">Delete a Directory Recursively in Java | Baeldung</a></li>
 </ol>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-11-13 11:10<br>
-Created: 2022-11-10 20:00
+Updated: 2022-12-19 21:45<br>
+Created: 2022-12-19 20:00
 </p>
 </div>
 </article>

@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2022-12-14T21:45:16+0800">
+<meta name="modified" content="2022-12-19T21:45:30+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2022-12-14T21:45:16+08:00",
+    "dateModified": "2022-12-19T21:45:30+08:00",
     "url" : "https://deletefromuser.github.io/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
     "keywords": ["正则表达式","automation","linux","web","js","java"],
@@ -69,11 +69,11 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/">Home</a></li>
+<li><a href="/java/">Java</a></li>
 <li><a href="/tip/" class="active" aria-current="page">Tip</a></li>
 <li><a href="/web/">Web</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/bash/">Bash</a></li>
-<li><a href="/java/">Java</a></li>
 <li><a href="/prob/">Prob</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
@@ -189,6 +189,8 @@ p
 find . -type f
 <span style="color:#75715e"># 查找指定名字的文件，文件夹</span>
 find . -name test.md
+find . -name *.md
+find . -regex <span style="color:#e6db74">&#39;.*.md&#39;</span>
 <span style="color:#75715e"># 列出所有文件夹，层数1即当前目录</span>
 find . -maxdepth <span style="color:#ae81ff">1</span> -type d
 <span style="color:#75715e"># 列出所有层数大于10的文件夹</span>
@@ -239,6 +241,13 @@ openssl s_client -connect bing.com:443
 <span style="color:#f92672">([</span>a-zA-Z0-9<span style="color:#f92672">]</span>+<span style="color:#f92672">)</span>_<span style="color:#f92672">([</span>a-zA-Z0-9<span style="color:#f92672">]</span>+<span style="color:#f92672">)</span>_<span style="color:#f92672">([</span>a-zA-Z0-9<span style="color:#f92672">]</span>+<span style="color:#f92672">)</span> -&gt; <span style="color:#ae81ff">\L</span>$1<span style="color:#ae81ff">\u</span>$2<span style="color:#ae81ff">\u</span>$3
 <span style="color:#75715e"># USER_PET_NAME &lt;- userPetName</span>
 <span style="color:#f92672">(</span><span style="color:#ae81ff">\p</span><span style="color:#f92672">{</span>Ll<span style="color:#f92672">}</span>+<span style="color:#f92672">)(</span><span style="color:#ae81ff">\p</span><span style="color:#f92672">{</span>Lu<span style="color:#f92672">}</span><span style="color:#ae81ff">\p</span><span style="color:#f92672">{</span>Ll<span style="color:#f92672">}</span>+<span style="color:#f92672">)(</span><span style="color:#ae81ff">\p</span><span style="color:#f92672">{</span>Lu<span style="color:#f92672">}</span><span style="color:#ae81ff">\p</span><span style="color:#f92672">{</span>Ll<span style="color:#f92672">}</span>+<span style="color:#f92672">)</span> -&gt; <span style="color:#ae81ff">\U</span>$1_$2_$3
+<span style="color:#75715e"># 常用表达式</span>
+<span style="color:#ae81ff">\s</span> 空白字符<span style="color:#f92672">[</span> <span style="color:#ae81ff">\f\n\r\t\v</span><span style="color:#f92672">]</span>，会匹配全角空格符
+<span style="color:#ae81ff">\S</span> 非空白字符<span style="color:#f92672">[</span>^ <span style="color:#ae81ff">\f\n\r\t\v</span><span style="color:#f92672">]</span>
+<span style="color:#ae81ff">\d</span> 数字字符<span style="color:#f92672">[</span>0-9<span style="color:#f92672">]</span>，会匹配全角数字字符
+<span style="color:#ae81ff">\D</span> 非数字字符<span style="color:#f92672">[</span>^0-9<span style="color:#f92672">]</span>
+<span style="color:#ae81ff">\w</span> 包括下划线的任何单词字符<span style="color:#f92672">[</span>A-Za-z0-9_<span style="color:#f92672">]</span>，会匹配中文字符
+<span style="color:#ae81ff">\W</span> 非单词字符<span style="color:#f92672">[</span>^A-Za-z0-9_<span style="color:#f92672">]</span>
 </code></pre></div><h3 id="查看linux命令位置和内容">查看linux命令位置和内容</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">whereis vim
 type -a vim
@@ -290,13 +299,14 @@ ps -ef | grep PID
 <li><a href="https://udemy.benesse.co.jp/business/office/lookup-function.html">【エクセルのLOOKUP関数の使い方】VLOOKUP関数とLOOKUP関数の違いも</a></li>
 <li><a href="https://www.ablebits.com/office-addins-blog/excel-lookup-function/">Excel LOOKUP function with formula examples</a></li>
 <li><a href="https://www.linuxshelltips.com/run-linux-command-periodically/">How to Run a Command Periodically in Linux using Watch</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A8%E9%9B%86">正则表达式</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-14 21:45<br>
+Updated: 2022-12-19 21:45<br>
 Created: 2022-12-06 20:00
 </p>
 </div>
