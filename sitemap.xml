@@ -3,12 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/tip/2022121402/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <loc>/blog/</loc>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/</loc>
+    <loc>/blog/java/</loc>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/java/2022121901/</loc>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/2022121402/</loc>
     <lastmod>2022-12-14T21:45:16+08:00</lastmod>
   </url>
   
@@ -19,7 +29,7 @@
   
   <url>
     <loc>/blog/tip/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
@@ -44,7 +54,7 @@
   
   <url>
     <loc>/blog/tags/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
@@ -54,42 +64,42 @@
   
   <url>
     <loc>/blog/tags/automation/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/tags/java/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/tags/js/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/tags/linux/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/tags/web/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/tip/2022120601/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/bash/</loc>
-    <lastmod>2022-12-10T17:49:43+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
@@ -118,13 +128,8 @@
   </url>
   
   <url>
-    <loc>/blog/java/</loc>
-    <lastmod>2022-12-10T17:49:43+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/bash/2022111001/</loc>
-    <lastmod>2022-12-10T17:18:38+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
@@ -134,7 +139,7 @@
   
   <url>
     <loc>/blog/prob/</loc>
-    <lastmod>2022-12-10T21:21:10+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>
@@ -144,7 +149,7 @@
   
   <url>
     <loc>/blog/prob/2022110801/</loc>
-    <lastmod>2022-12-10T21:21:10+08:00</lastmod>
+    <lastmod>2022-12-19T21:45:30+08:00</lastmod>
   </url>
   
   <url>

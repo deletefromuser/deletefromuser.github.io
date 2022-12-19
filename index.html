@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2022-12-14T20:00:00+0800">
-<meta name="modified" content="2022-12-14T21:45:16+0800">
+<meta name="created" content="2022-12-19T20:00:00+0800">
+<meta name="modified" content="2022-12-19T21:45:30+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,11 +66,11 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
@@ -113,7 +113,7 @@
 
 </header>
 <div class="content">
-重置密码太麻烦了，所以用解密 cd /u01/app/oracle/middleware/oracle_common/common/bin ./wlst.sh domain = &#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&#34; service = weblogic.security.internal.SerializedSystemIni.getEncryptionService(domain) encryption = weblogic.security.internal.encryption.ClearOrEncryptedService(service) # find encrptyed username and password in domainnamexxx/servers/AdminServer/security/boot.properties print encryption.decrypt(&#34;{AES}nFIptO4HdY8fxSgLjrS8ZNqsVlcB2zQZzYJQ9o7AbJU=&#34;) reference Quickest way to decrypt passwords in Oracle WebLogic Server 12c
+重置密码太麻烦了，所以用解密 cd /u01/app/oracle/middleware/oracle_common/common/bin ./wlst.sh domain = &#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&#34; service = weblogic.security.internal.SerializedSystemIni.getEncryptionService(domain) encryption = weblogic.security.internal.encryption.ClearOrEncryptedService(service) # 密文中有`\`的话，解密会报错，要去掉 # find encrptyed username and password in domainnamexxx/servers/AdminServer/security/boot.properties print encryption.decrypt(&#34;{AES}nFIptO4HdY8fxSgLjrS8ZNqsVlcB2zQZzYJQ9o7AbJU=&#34;) reference Quickest way to decrypt passwords in Oracle WebLogic Server 12c Decrypt your boot.properties
 </div>
 </article>
 

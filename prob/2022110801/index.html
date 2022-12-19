@@ -6,7 +6,7 @@
 <title>weblogic console忘记密码的解决办法 – HA</title>
 <meta name="description" content="重置密码太麻烦了，所以用解密 cd /u01/app/oracle/middleware/oracle_common/common/bin ./wlst.sh domain = &amp;amp;#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&amp;amp;#34; service = …">
 <meta name="created" content="2022-11-08T12:00:00+0800">
-<meta name="modified" content="2022-12-10T21:21:10+0800">
+<meta name="modified" content="2022-12-19T21:45:30+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "weblogic console忘记密码的解决办法",
     "datePublished": "2022-11-08T12:00:00+08:00",
-    "dateModified": "2022-12-10T21:21:10+08:00",
+    "dateModified": "2022-12-19T21:45:30+08:00",
     "url" : "/blog/prob/2022110801/",
     "description": "重置密码太麻烦了，所以用解密 cd /u01/app/oracle/middleware/oracle_common/common/bin ./wlst.sh domain = \u0026amp;#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain\u0026amp;#34; service = …",
     "mainEntityOfPage": {
@@ -68,11 +68,11 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/prob/" class="active" aria-current="page">Prob</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
@@ -102,18 +102,21 @@ domain <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/u0
 service <span style="color:#f92672">=</span> weblogic.security.internal.SerializedSystemIni.getEncryptionService<span style="color:#f92672">(</span>domain<span style="color:#f92672">)</span>
 encryption <span style="color:#f92672">=</span> weblogic.security.internal.encryption.ClearOrEncryptedService<span style="color:#f92672">(</span>service<span style="color:#f92672">)</span>
 
+<span style="color:#75715e"># 密文中有`\`的话，解密会报错，要去掉</span>
 <span style="color:#75715e"># find encrptyed username and password in domainnamexxx/servers/AdminServer/security/boot.properties</span>
 print encryption.decrypt<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{AES}nFIptO4HdY8fxSgLjrS8ZNqsVlcB2zQZzYJQ9o7AbJU=&#34;</span><span style="color:#f92672">)</span>
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://chronicler.tech/simplest-way-to-decrypt-passwords-in-oracle-weblogic-server-12c/">Quickest way to decrypt passwords in Oracle WebLogic Server 12c</a></li>
+<li><a href="https://syntax213.rssing.com/chan-29978744/article120.html">Decrypt your boot.properties file using the WebLogic Scripting Tool (wlst) on your JD Edwards EnterpriseOne WebLogic Server</a></li>
+<li><a href="https://www.freebuf.com/articles/web/220147.html">一文解密所有WebLogic密文</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-10 21:21<br>
+Updated: 2022-12-19 21:45<br>
 Created: 2022-11-08 12:00
 </p>
 </div>

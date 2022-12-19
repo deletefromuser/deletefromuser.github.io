@@ -50,9 +50,14 @@ df -h
 du -h -d &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 排序&lt;/span&gt;
 du -m -d &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; | sort -n
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;shell文件中的脚本生成的文件名末尾有一个问号&#34;&gt;shell文件中的脚本生成的文件名末尾有一个问号&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;检查换行符是否是\n，如果是\r\n需要替换&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37566064/why-questionmark-comes-in-the-end-of-filename-when-i-create-txt-file-through-sh&#34;&gt;why questionmark comes in the end of filename when i create .txt file through shell script?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -69,11 +69,11 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
@@ -114,11 +114,21 @@ git cherry-pick -n bd61ad98
 <p><code>git show --pretty=&quot;&quot; --name-only bd61ad98</code></p>
 <h3 id="查看某一个文件的提交历史">查看某一个文件的提交历史</h3>
 <p><code>git log --follow -- filename</code></p>
-<p><strong>reference</strong></p>
+<h3 id="同时在多个分支工作">同时在多个分支工作</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git worktree add -b hotfix ../hotfix
+git worktree list
+pushd ../hotfix
+<span style="color:#75715e"># working on hotfix branch</span>
+popd
+git worktree remove ../hotfix
+git worktree prune
+</code></pre></div><p><strong>reference</strong></p>
 <ol>
 <li><a href="https://githowto.com/moving_files">20. Moving files</a></li>
 <li><a href="https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit">How do I list all the files in a commit?</a></li>
 <li><a href="https://stackoverflow.com/questions/3701404/how-to-list-all-commits-that-changed-a-specific-file">How to list all commits that changed a specific file?</a></li>
+<li><a href="https://git-scm.com/docs/git-worktree">Git - git-worktree Documentation</a></li>
+<li><a href="https://www.youtube.com/watch?v=s4BTvj1ZVLM">How to Use Git Worktree | Checkout Multiple Git Branches at Once</a></li>
 </ol>
 
 </div>

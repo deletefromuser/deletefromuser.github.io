@@ -39,11 +39,14 @@ domain &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&
 service &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; weblogic.security.internal.SerializedSystemIni.getEncryptionService&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;domain&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 encryption &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; weblogic.security.internal.encryption.ClearOrEncryptedService&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;service&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 
+&lt;span style=&#34;color:#75715e&#34;&gt;# 密文中有`\`的话，解密会报错，要去掉&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# find encrptyed username and password in domainnamexxx/servers/AdminServer/security/boot.properties&lt;/span&gt;
 print encryption.decrypt&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{AES}nFIptO4HdY8fxSgLjrS8ZNqsVlcB2zQZzYJQ9o7AbJU=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://chronicler.tech/simplest-way-to-decrypt-passwords-in-oracle-weblogic-server-12c/&#34;&gt;Quickest way to decrypt passwords in Oracle WebLogic Server 12c&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://syntax213.rssing.com/chan-29978744/article120.html&#34;&gt;Decrypt your boot.properties file using the WebLogic Scripting Tool (wlst) on your JD Edwards EnterpriseOne WebLogic Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.freebuf.com/articles/web/220147.html&#34;&gt;一文解密所有WebLogic密文&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
