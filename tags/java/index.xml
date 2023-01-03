@@ -106,6 +106,8 @@ find . -mindepth &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; -type
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容&lt;/span&gt;
 find . -type f -exec perl -pi -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/public/private/g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
 find . -type f -exec sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/public/private/g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
+sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/# requirepass foobared/requirepass xxx/&amp;#39;&lt;/span&gt; /etc/redis/redis_6487.conf
+sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/# maxmemory &amp;lt;bytes&amp;gt;/maxmemory 52548800/&amp;#39;&lt;/span&gt; /etc/redis/redis_6487.conf
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容(包含/)&lt;/span&gt;
 find . -type f -exec perl -pi -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s#public#private#g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
 find . -type f -exec sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s#public#private#g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
@@ -136,6 +138,8 @@ scp -P &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; /local/path/fil
 curl -k -c - https://www.baeldung.com/linux/vim-search-replace
 &lt;span style=&#34;color:#75715e&#34;&gt;# 在未安装curl的机器上请求url&lt;/span&gt;
 perl -MLWP::Simple -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;getprint &amp;#39;https://www.baeldung.com/linux/vim-search-replace&amp;#39;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 依次请求多个url&lt;/span&gt;
+curl https://jsonplaceholder.typicode.com/todos/1 https://jsonplaceholder.typicode.com/todos/12
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;检查机器支持的ssl版本&#34;&gt;检查机器支持的ssl版本&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;openssl ciphers -v | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; | sort | uniq
 &lt;span style=&#34;color:#75715e&#34;&gt;# 检查网站的ssl版本&lt;/span&gt;
@@ -168,6 +172,8 @@ type -a vim
 grep -ion &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;keyword&amp;#39;&lt;/span&gt; /path/file -A &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt; -B &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 使用正则表达式搜索&lt;/span&gt;
 egrep -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;public|private&amp;#39;&lt;/span&gt; /path/file
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在文件夹内特定后缀的文件中检索&lt;/span&gt;
+grep -r &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt; --include &lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;.yml /path/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux进程&#34;&gt;查看linux进程&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 根据名字查找&lt;/span&gt;
 ps -ef | grep java
@@ -208,6 +214,7 @@ ps -ef | grep PID
 &lt;li&gt;&lt;a href=&#34;https://www.ablebits.com/office-addins-blog/excel-lookup-function/&#34;&gt;Excel LOOKUP function with formula examples&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.linuxshelltips.com/run-linux-command-periodically/&#34;&gt;How to Run a Command Periodically in Linux using Watch&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A8%E9%9B%86&#34;&gt;正则表达式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions&#34;&gt;How can I grep recursively, but only in files with certain extensions?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -6,18 +6,47 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Dec 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 21 Dec 2022 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ubuntu 20.04下tracker-miner-fs进程占用大量内存和cpu</title>
+      <link>/blog/prob/2022122101/</link>
+      <pubDate>Wed, 21 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/prob/2022122101/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;systemctl --user mask tracker-store.service tracker-miner-fs.service tracker-miner-rss.service tracker-extract.service tracker-miner-apps.service tracker-writeback.service
+tracker reset --hard
+sudo reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1187191/tracker-process-taking-lot-of-cpu&#34;&gt;Tracker process taking lot of CPU&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ubuntu中在新命令行窗口执行命令</title>
+      <link>/blog/bash/2022122101/</link>
+      <pubDate>Wed, 21 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/bash/2022122101/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gnome-terminal -x bash -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;echo &amp;#39;hello&amp;#39;; exec bash
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.delftstack.com/howto/linux/start-a-new-bash-session&#34;&gt;Start a New Terminal Session in Bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened&#34;&gt;How do I open a terminal window and execute a command after the shell has opened?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>java删除文件夹</title>
       <link>/blog/java/2022121901/</link>
       <pubDate>Mon, 19 Dec 2022 20:00:00 +0800</pubDate>
       <guid>/blog/java/2022121901/</guid>
-      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;#&lt;/span&gt; use spring
-FileSystemUtils&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;deleteRecursively&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;file&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;#&lt;/span&gt; java 8
-Files&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;walk&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// use spring
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;FileSystemUtils&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;deleteRecursively&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;file&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// java 8
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;Files&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;walk&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
       &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sorted&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Comparator&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;reverseOrder&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;())&lt;/span&gt;
       &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;map&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Path&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;toFile&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
       &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;forEach&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;File&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;delete&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
@@ -217,6 +246,8 @@ find . -mindepth &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; -type
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容&lt;/span&gt;
 find . -type f -exec perl -pi -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/public/private/g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
 find . -type f -exec sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/public/private/g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
+sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/# requirepass foobared/requirepass xxx/&amp;#39;&lt;/span&gt; /etc/redis/redis_6487.conf
+sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/# maxmemory &amp;lt;bytes&amp;gt;/maxmemory 52548800/&amp;#39;&lt;/span&gt; /etc/redis/redis_6487.conf
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容(包含/)&lt;/span&gt;
 find . -type f -exec perl -pi -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s#public#private#g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
 find . -type f -exec sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s#public#private#g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
@@ -247,6 +278,8 @@ scp -P &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; /local/path/fil
 curl -k -c - https://www.baeldung.com/linux/vim-search-replace
 &lt;span style=&#34;color:#75715e&#34;&gt;# 在未安装curl的机器上请求url&lt;/span&gt;
 perl -MLWP::Simple -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;getprint &amp;#39;https://www.baeldung.com/linux/vim-search-replace&amp;#39;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 依次请求多个url&lt;/span&gt;
+curl https://jsonplaceholder.typicode.com/todos/1 https://jsonplaceholder.typicode.com/todos/12
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;检查机器支持的ssl版本&#34;&gt;检查机器支持的ssl版本&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;openssl ciphers -v | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; | sort | uniq
 &lt;span style=&#34;color:#75715e&#34;&gt;# 检查网站的ssl版本&lt;/span&gt;
@@ -279,6 +312,8 @@ type -a vim
 grep -ion &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;keyword&amp;#39;&lt;/span&gt; /path/file -A &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt; -B &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 使用正则表达式搜索&lt;/span&gt;
 egrep -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;public|private&amp;#39;&lt;/span&gt; /path/file
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在文件夹内特定后缀的文件中检索&lt;/span&gt;
+grep -r &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt; --include &lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;.yml /path/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux进程&#34;&gt;查看linux进程&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 根据名字查找&lt;/span&gt;
 ps -ef | grep java
@@ -319,6 +354,7 @@ ps -ef | grep PID
 &lt;li&gt;&lt;a href=&#34;https://www.ablebits.com/office-addins-blog/excel-lookup-function/&#34;&gt;Excel LOOKUP function with formula examples&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.linuxshelltips.com/run-linux-command-periodically/&#34;&gt;How to Run a Command Periodically in Linux using Watch&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A8%E9%9B%86&#34;&gt;正则表达式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions&#34;&gt;How can I grep recursively, but only in files with certain extensions?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -461,10 +497,15 @@ du -m -d &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; | sort -n
 &lt;blockquote&gt;
 &lt;p&gt;检查换行符是否是\n，如果是\r\n需要替换&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;批量修改文件名&#34;&gt;批量修改文件名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^Pre/Post/&amp;#39;&lt;/span&gt; *
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f in * ; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; mv — &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PRE_&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; ; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37566064/why-questionmark-comes-in-the-end-of-filename-when-i-create-txt-file-through-sh&#34;&gt;why questionmark comes in the end of filename when i create .txt file through shell script?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://suggestcloud.com/add-prefix-suffix-to-all-existing-files-in-linux-directory/&#34;&gt;Add Prefix-Suffix To All Existing Files in Linux Directory&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -890,6 +931,51 @@ createtime date
 &lt;li&gt;うたわれるもの二人の白皇&lt;/li&gt;
 &lt;li&gt;チェンソーマン&lt;/li&gt;
 &lt;li&gt;異世界おじさん&lt;/li&gt;
+&lt;li&gt;不徳のギルド&lt;/li&gt;
+&lt;li&gt;ハイキュー!! S01-S04&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;剧集&#34;&gt;剧集&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Wednesday.S01&lt;/li&gt;
+&lt;li&gt;Inside.No.9.S01-S07&lt;/li&gt;
+&lt;li&gt;Rick.and.Morty.S06&lt;/li&gt;
+&lt;li&gt;Pantheon.S01&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fury.2014&lt;/li&gt;
+&lt;li&gt;Glass.Onion.A.Knives.Out.Mystery.2022&lt;/li&gt;
+&lt;li&gt;Dune.2021&lt;/li&gt;
+&lt;li&gt;The.Banshees.of.Inisherin.2022&lt;/li&gt;
+&lt;li&gt;The.Hunt.2012&lt;/li&gt;
+&lt;li&gt;Scent.of.a.Woman.1992&lt;/li&gt;
+&lt;li&gt;Ford.v.Ferrari.2019&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;今夜は月が綺麗ですが、とりあえず死ね&lt;/li&gt;
+&lt;li&gt;陰の実力者になりたくて！&lt;/li&gt;
+&lt;li&gt;SPY×FAMILY&lt;/li&gt;
+&lt;li&gt;ゴールデンカムイ&lt;/li&gt;
+&lt;li&gt;ここは今から倫理です&lt;/li&gt;
+&lt;li&gt;ミステリと言う勿れ&lt;/li&gt;
+&lt;li&gt;転生貴族、鑑定スキルで成り上がる～弱小領地を受け継いだので、優秀な人材を増やしていたら、最強領地になってた&lt;/li&gt;
+&lt;li&gt;GOSICK -ゴシック&lt;/li&gt;
+&lt;li&gt;元異世界転移者だった課長のおじさん、人生二度目の異世界を駆け廻る&lt;/li&gt;
+&lt;li&gt;終末のハーレム ファンタジア&lt;/li&gt;
+&lt;li&gt;終末のハーレム&lt;/li&gt;
+&lt;li&gt;極主夫道&lt;/li&gt;
+&lt;li&gt;異世界おじさん&lt;/li&gt;
+&lt;li&gt;ハイキュー!!&lt;/li&gt;
+&lt;li&gt;とんでもスキルで異世界放浪メシ&lt;/li&gt;
+&lt;li&gt;ダンジョン飯&lt;/li&gt;
+&lt;li&gt;世界１位のサブキャラ育成日記&lt;/li&gt;
+&lt;li&gt;私の推しは悪役令嬢&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;没落予定の貴族だけど、暇だったから魔法を極めてみた&lt;/del&gt;(流水账)&lt;/li&gt;
+&lt;li&gt;ブルーピリオド&lt;/li&gt;
+&lt;li&gt;Mainichi Shine Shine Itte Kuru&lt;/li&gt;
+&lt;li&gt;ゴブリンスレイヤー&lt;/li&gt;
+&lt;li&gt;All You Need is Kill&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1049,6 +1135,7 @@ createtime date
 &lt;h3 id=&#34;电影&#34;&gt;电影&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Bullet.Train&lt;/li&gt;
+&lt;li&gt;El.Camino.A.Breaking.Bad.Movie.2019&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

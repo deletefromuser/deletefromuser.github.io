@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2022-12-19T21:45:30+0800">
+<meta name="modified" content="2022-12-29T22:02:03+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2022-12-19T21:45:30+08:00",
+    "dateModified": "2022-12-29T22:02:03+08:00",
     "url" : "/blog/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
     "keywords": ["正则表达式","automation","linux","web","js","java"],
@@ -69,12 +69,12 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/" class="active" aria-current="page">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/life/">Life</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/git/">Git</a></li>
@@ -96,10 +96,10 @@
 <div class="tags">
 Tags:
 <ul>
+<li><a href="/blog/tags/linux/">linux</a></li>
 <li><a href="/blog/tags/automation/">automation</a></li>
 <li><a href="/blog/tags/java/">java</a></li>
 <li><a href="/blog/tags/js/">js</a></li>
-<li><a href="/blog/tags/linux/">linux</a></li>
 <li><a href="/blog/tags/web/">web</a></li>
 <li><a href="/blog/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></li>
 </ul>
@@ -198,6 +198,8 @@ find . -mindepth <span style="color:#ae81ff">10</span> -type d
 <span style="color:#75715e"># 查找文件并替换对应内容</span>
 find . -type f -exec perl -pi -e <span style="color:#e6db74">&#39;s/public/private/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
 find . -type f -exec sed -i <span style="color:#e6db74">&#39;s/public/private/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+sed -i <span style="color:#e6db74">&#39;s/# requirepass foobared/requirepass xxx/&#39;</span> /etc/redis/redis_6487.conf
+sed -i <span style="color:#e6db74">&#39;s/# maxmemory &lt;bytes&gt;/maxmemory 52548800/&#39;</span> /etc/redis/redis_6487.conf
 <span style="color:#75715e"># 查找文件并替换对应内容(包含/)</span>
 find . -type f -exec perl -pi -e <span style="color:#e6db74">&#39;s#public#private#g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
 find . -type f -exec sed -i <span style="color:#e6db74">&#39;s#public#private#g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
@@ -228,6 +230,8 @@ scp -P <span style="color:#ae81ff">22</span> /local/path/file tom@ip:~/temp
 curl -k -c - https://www.baeldung.com/linux/vim-search-replace
 <span style="color:#75715e"># 在未安装curl的机器上请求url</span>
 perl -MLWP::Simple -e <span style="color:#e6db74">&#34;getprint &#39;https://www.baeldung.com/linux/vim-search-replace&#39;&#34;</span>
+<span style="color:#75715e"># 依次请求多个url</span>
+curl https://jsonplaceholder.typicode.com/todos/1 https://jsonplaceholder.typicode.com/todos/12
 </code></pre></div><h3 id="检查机器支持的ssl版本">检查机器支持的ssl版本</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">openssl ciphers -v | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> | sort | uniq
 <span style="color:#75715e"># 检查网站的ssl版本</span>
@@ -260,6 +264,8 @@ type -a vim
 grep -ion <span style="color:#e6db74">&#39;keyword&#39;</span> /path/file -A <span style="color:#ae81ff">50</span> -B <span style="color:#ae81ff">50</span>
 <span style="color:#75715e"># 使用正则表达式搜索</span>
 egrep -i <span style="color:#e6db74">&#39;public|private&#39;</span> /path/file
+<span style="color:#75715e"># 在文件夹内特定后缀的文件中检索</span>
+grep -r <span style="color:#e6db74">&#39;cluster&#39;</span> --include <span style="color:#ae81ff">\*</span>.yml /path/
 </code></pre></div><h3 id="查看linux进程">查看linux进程</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 根据名字查找</span>
 ps -ef | grep java
@@ -300,13 +306,14 @@ ps -ef | grep PID
 <li><a href="https://www.ablebits.com/office-addins-blog/excel-lookup-function/">Excel LOOKUP function with formula examples</a></li>
 <li><a href="https://www.linuxshelltips.com/run-linux-command-periodically/">How to Run a Command Periodically in Linux using Watch</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A8%E9%9B%86">正则表达式</a></li>
+<li><a href="https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions">How can I grep recursively, but only in files with certain extensions?</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-19 21:45<br>
+Updated: 2022-12-29 22:02<br>
 Created: 2022-12-06 20:00
 </p>
 </div>

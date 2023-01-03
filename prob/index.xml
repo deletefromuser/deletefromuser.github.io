@@ -6,8 +6,23 @@
     <description>Recent content in Prob on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Nov 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 21 Dec 2022 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/prob/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ubuntu 20.04下tracker-miner-fs进程占用大量内存和cpu</title>
+      <link>/blog/prob/2022122101/</link>
+      <pubDate>Wed, 21 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/prob/2022122101/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;systemctl --user mask tracker-store.service tracker-miner-fs.service tracker-miner-rss.service tracker-extract.service tracker-miner-apps.service tracker-writeback.service
+tracker reset --hard
+sudo reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1187191/tracker-process-taking-lot-of-cpu&#34;&gt;Tracker process taking lot of CPU&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>利用RSS自动下载Torrent</title>

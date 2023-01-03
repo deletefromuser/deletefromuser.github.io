@@ -6,8 +6,22 @@
     <description>Recent content in Bash on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Dec 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 21 Dec 2022 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ubuntu中在新命令行窗口执行命令</title>
+      <link>/blog/bash/2022122101/</link>
+      <pubDate>Wed, 21 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/bash/2022122101/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gnome-terminal -x bash -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;echo &amp;#39;hello&amp;#39;; exec bash
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.delftstack.com/howto/linux/start-a-new-bash-session&#34;&gt;Start a New Terminal Session in Bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened&#34;&gt;How do I open a terminal window and execute a command after the shell has opened?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>ubuntu中把desktop文件的程序固定到任务栏</title>
@@ -54,10 +68,15 @@ du -m -d &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; | sort -n
 &lt;blockquote&gt;
 &lt;p&gt;检查换行符是否是\n，如果是\r\n需要替换&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;批量修改文件名&#34;&gt;批量修改文件名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^Pre/Post/&amp;#39;&lt;/span&gt; *
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f in * ; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; mv — &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PRE_&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; ; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37566064/why-questionmark-comes-in-the-end-of-filename-when-i-create-txt-file-through-sh&#34;&gt;why questionmark comes in the end of filename when i create .txt file through shell script?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://suggestcloud.com/add-prefix-suffix-to-all-existing-files-in-linux-directory/&#34;&gt;Add Prefix-Suffix To All Existing Files in Linux Directory&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
