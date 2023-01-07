@@ -35,13 +35,20 @@ pushd ../hotfix
 popd
 git worktree remove ../hotfix
 git worktree prune
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看stash的文件具体内容&#34;&gt;查看stash的文件具体内容&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;git stash show -p&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;tortoisegit也是很好用的&#34;&gt;TortoiseGit也是很好用的&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;生成patch，应用patch，以及查看diff，blame，gui还是很好用的&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://githowto.com/moving_files&#34;&gt;20. Moving files&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit&#34;&gt;How do I list all the files in a commit?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/3701404/how-to-list-all-commits-that-changed-a-specific-file&#34;&gt;How to list all commits that changed a specific file?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/git-worktree&#34;&gt;Git - git-worktree Documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=s4BTvj1ZVLM&#34;&gt;How to Use Git Worktree | Checkout Multiple Git Branches at Once&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/10725729/see-whats-in-a-stash-without-applying-it&#34;&gt;See what&amp;rsquo;s in a stash without applying it&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

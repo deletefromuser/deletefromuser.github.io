@@ -140,6 +140,8 @@ curl -k -c - https://www.baeldung.com/linux/vim-search-replace
 perl -MLWP::Simple -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;getprint &amp;#39;https://www.baeldung.com/linux/vim-search-replace&amp;#39;&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 依次请求多个url&lt;/span&gt;
 curl https://jsonplaceholder.typicode.com/todos/1 https://jsonplaceholder.typicode.com/todos/12
+&lt;span style=&#34;color:#75715e&#34;&gt;# 请求时使用用户名&lt;/span&gt;
+curl -u username http://example.com
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;检查机器支持的ssl版本&#34;&gt;检查机器支持的ssl版本&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;openssl ciphers -v | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; | sort | uniq
 &lt;span style=&#34;color:#75715e&#34;&gt;# 检查网站的ssl版本&lt;/span&gt;
@@ -182,6 +184,15 @@ lsof -i :8080
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查找正在使用某一个文件的进程&lt;/span&gt;
 fuser /path/file
 ps -ef | grep PID
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;解压缩&#34;&gt;解压缩&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Create archive.tar from files foo and bar.&lt;/span&gt;
+tar -cf archive.tar foo bar --exclude&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;my-base-dir/target&amp;#39;&lt;/span&gt; --exclude&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;my-base-dir/.git&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# List all files in archive.tar verbosely.&lt;/span&gt;
+tar -tvf archive.tar
+&lt;span style=&#34;color:#75715e&#34;&gt;# Extract all files from archive.tar.&lt;/span&gt;
+tar -xf archive.tar
+&lt;span style=&#34;color:#75715e&#34;&gt;# 提取tar包中的特定文件&lt;/span&gt;
+tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;excel函数使用&#34;&gt;Excel函数使用&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# google表格也支持下面的函数&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 搜索 L2 单元格内的内容在 I4:I15 区域内出现的次数&lt;/span&gt;
@@ -215,6 +226,8 @@ ps -ef | grep PID
 &lt;li&gt;&lt;a href=&#34;https://www.linuxshelltips.com/run-linux-command-periodically/&#34;&gt;How to Run a Command Periodically in Linux using Watch&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A8%E9%9B%86&#34;&gt;正则表达式&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions&#34;&gt;How can I grep recursively, but only in files with certain extensions?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/61461/how-to-extract-specific-files-from-tar-gz&#34;&gt;How to extract specific file(s) from tar.gz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/984204/shell-command-to-tar-directory-excluding-certain-files-folders&#34;&gt;Shell command to tar directory excluding certain files/folders&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
