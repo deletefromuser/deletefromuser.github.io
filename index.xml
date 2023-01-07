@@ -6,8 +6,27 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Dec 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Jan 2023 12:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2023年1季度</title>
+      <link>/blog/watch/2023010101/</link>
+      <pubDate>Sat, 07 Jan 2023 12:00:00 +0800</pubDate>
+      <guid>/blog/watch/2023010101/</guid>
+      <description>&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
+&lt;h2 id=&#34;剧集&#34;&gt;剧集&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Magpie.Murders.S01&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
+&lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;宝石の国&lt;/li&gt;
+&lt;li&gt;ベルセルク&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Ubuntu 20.04下tracker-miner-fs进程占用大量内存和cpu</title>
@@ -977,25 +996,6 @@ createtime date
 &lt;li&gt;Mainichi Shine Shine Itte Kuru&lt;/li&gt;
 &lt;li&gt;ゴブリンスレイヤー&lt;/li&gt;
 &lt;li&gt;All You Need is Kill&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2023年1季度</title>
-      <link>/blog/watch/2023010101/</link>
-      <pubDate>Mon, 10 Oct 2022 12:00:00 +0800</pubDate>
-      <guid>/blog/watch/2023010101/</guid>
-      <description>&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
-&lt;h2 id=&#34;剧集&#34;&gt;剧集&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Magpie.Murders.S01&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
-&lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;宝石の国&lt;/li&gt;
-&lt;li&gt;ベルセルク&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
