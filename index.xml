@@ -158,13 +158,14 @@ sudo reboot
     </item>
     
     <item>
-      <title>空气炸锅菜谱</title>
+      <title>菜谱</title>
       <link>/blog/life/2022121001/</link>
       <pubDate>Sat, 10 Dec 2022 20:00:00 +0800</pubDate>
       <guid>/blog/life/2022121001/</guid>
-      <description>&lt;h3 id=&#34;烤红薯&#34;&gt;烤红薯&lt;/h3&gt;
+      <description>&lt;h2 id=&#34;空气炸锅菜谱&#34;&gt;空气炸锅菜谱&lt;/h2&gt;
+&lt;h3 id=&#34;烤红薯&#34;&gt;烤红薯&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;160℃ x 20min&lt;/p&gt;
+&lt;p&gt;160℃ x 45min&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;半成品鸡块&#34;&gt;半成品鸡块&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -182,6 +183,28 @@ sudo reboot
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;160℃ x 10min&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;炒菜&#34;&gt;炒菜&lt;/h2&gt;
+&lt;h3 id=&#34;炒饭&#34;&gt;炒饭&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;加油，一半葱花（大葱切碎也可）稍微炒下后打入鸡蛋&lt;/li&gt;
+&lt;li&gt;鸡蛋快炒至固体时加入米饭（米饭上可以裹上一些蛋液），翻炒同时把米饭块弄散（米饭放入冰箱之前最好戳散，不然炒的时候很费力）&lt;/li&gt;
+&lt;li&gt;米饭翻炒一会后，加入生抽，盐炒匀，再加入另一半葱花，最后加入味精翻炒几下即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;青椒炒蛋&#34;&gt;青椒炒蛋&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;青椒切丝，放入锅中中火炒至断生&lt;/li&gt;
+&lt;li&gt;调小火，鸡蛋打到锅中青椒上炒熟，炒匀后加入盐，味精即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;虾仁炒蛋&#34;&gt;虾仁炒蛋&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;虾仁焯水后，放入碗中，加入鸡蛋，葱花，盐，搅匀，炒熟即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 </description>
@@ -359,6 +382,8 @@ grep -r &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/
 ps -ef | grep java
 &lt;span style=&#34;color:#75715e&#34;&gt;# 根据监听端口号&lt;/span&gt;
 lsof -i :8080
+&lt;span style=&#34;color:#75715e&#34;&gt;# 杀掉监听指定端口好的程序&lt;/span&gt;
+kill -9 &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;lsof -t -i:8080&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查找正在使用某一个文件的进程&lt;/span&gt;
 fuser /path/file
 ps -ef | grep PID
@@ -406,6 +431,7 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions&#34;&gt;How can I grep recursively, but only in files with certain extensions?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/61461/how-to-extract-specific-files-from-tar-gz&#34;&gt;How to extract specific file(s) from tar.gz&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/984204/shell-command-to-tar-directory-excluding-certain-files-folders&#34;&gt;Shell command to tar directory excluding certain files/folders&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://appuals.com/how-to-kill-process-on-port/&#34;&gt;How to Kill Process on Port?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

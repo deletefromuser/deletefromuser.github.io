@@ -194,6 +194,8 @@ grep -r &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/
 ps -ef | grep java
 &lt;span style=&#34;color:#75715e&#34;&gt;# 根据监听端口号&lt;/span&gt;
 lsof -i :8080
+&lt;span style=&#34;color:#75715e&#34;&gt;# 杀掉监听指定端口好的程序&lt;/span&gt;
+kill -9 &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;lsof -t -i:8080&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查找正在使用某一个文件的进程&lt;/span&gt;
 fuser /path/file
 ps -ef | grep PID
@@ -241,6 +243,7 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions&#34;&gt;How can I grep recursively, but only in files with certain extensions?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/61461/how-to-extract-specific-files-from-tar-gz&#34;&gt;How to extract specific file(s) from tar.gz&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/984204/shell-command-to-tar-directory-excluding-certain-files-folders&#34;&gt;Shell command to tar directory excluding certain files/folders&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://appuals.com/how-to-kill-process-on-port/&#34;&gt;How to Kill Process on Port?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
