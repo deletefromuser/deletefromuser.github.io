@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2023-01-07T19:02:03+0800">
+<meta name="modified" content="2023-01-15T16:39:08+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2023-01-07T19:02:03+08:00",
+    "dateModified": "2023-01-15T16:39:08+08:00",
     "url" : "https://deletefromuser.github.io/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
     "keywords": ["正则表达式","automation","linux","web","js","java","bash"],
@@ -274,6 +274,8 @@ grep -r <span style="color:#e6db74">&#39;cluster&#39;</span> --include <span sty
 ps -ef | grep java
 <span style="color:#75715e"># 根据监听端口号</span>
 lsof -i :8080
+<span style="color:#75715e"># 杀掉监听指定端口好的程序</span>
+kill -9 <span style="color:#66d9ef">$(</span>lsof -t -i:8080<span style="color:#66d9ef">)</span>
 <span style="color:#75715e"># 查找正在使用某一个文件的进程</span>
 fuser /path/file
 ps -ef | grep PID
@@ -321,13 +323,14 @@ tar -zxvf &lt;tar filename&gt; &lt;file you want to extract&gt;
 <li><a href="https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions">How can I grep recursively, but only in files with certain extensions?</a></li>
 <li><a href="https://unix.stackexchange.com/questions/61461/how-to-extract-specific-files-from-tar-gz">How to extract specific file(s) from tar.gz</a></li>
 <li><a href="https://stackoverflow.com/questions/984204/shell-command-to-tar-directory-excluding-certain-files-folders">Shell command to tar directory excluding certain files/folders</a></li>
+<li><a href="https://appuals.com/how-to-kill-process-on-port/">How to Kill Process on Port?</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-01-07 19:02<br>
+Updated: 2023-01-15 16:39<br>
 Created: 2022-12-06 20:00
 </p>
 </div>
