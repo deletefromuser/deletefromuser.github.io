@@ -3,18 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/read/2023012901/</loc>
-    <lastmod>2023-01-29T20:07:36+08:00</lastmod>
+    <loc>/blog/</loc>
+    <lastmod>2023-02-05T23:50:38+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/</loc>
-    <lastmod>2023-01-29T20:07:36+08:00</lastmod>
+    <loc>/blog/web/</loc>
+    <lastmod>2023-02-05T23:50:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/web/2023020501/</loc>
+    <lastmod>2023-02-05T23:50:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/read/2023012901/</loc>
+    <lastmod>2023-02-05T23:50:38+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/read/</loc>
-    <lastmod>2023-01-29T20:07:36+08:00</lastmod>
+    <lastmod>2023-02-05T23:50:38+08:00</lastmod>
   </url>
   
   <url>
@@ -110,11 +120,6 @@
   <url>
     <loc>/blog/tip/</loc>
     <lastmod>2023-01-15T16:39:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/web/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
   </url>
   
   <url>

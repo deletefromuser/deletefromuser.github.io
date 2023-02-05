@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>将SpringBoot应用部署到docker – HA</title>
+<meta name="description" content=" 在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&amp;amp;#34;mvn&amp;amp;#34;, &amp;amp;#34;spring-boot:run&amp;amp;#34;, &amp;amp;#34;-Dspring-boot.run.profiles=docker&amp;amp;#34;]# ENTRYPOINT …">
+<meta name="created" content="2023-02-05T20:00:00+0800">
+<meta name="modified" content="2023-02-05T23:50:38+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="将SpringBoot应用部署到docker">
+<meta property="og:url" content="/blog/web/2023020501/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/web/2023020501/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "将SpringBoot应用部署到docker",
+    "datePublished": "2023-02-05T20:00:00+08:00",
+    "dateModified": "2023-02-05T23:50:38+08:00",
+    "url" : "/blog/web/2023020501/",
+    "description": " 在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [\u0026amp;#34;mvn\u0026amp;#34;, \u0026amp;#34;spring-boot:run\u0026amp;#34;, \u0026amp;#34;-Dspring-boot.run.profiles=docker\u0026amp;#34;]# ENTRYPOINT …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/web/" class="active" aria-current="page">Web</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/git/">Git</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/c#/">C#</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--web">
+<header>
+<h1 class="title title-submitted">将SpringBoot应用部署到docker</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-05T20:00:00&#43;08:00">2023-02-05 20:00</time>
+</div>
+</header>
+<div class="content">
+<ol>
+<li>在项目内创建Dockerfile</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> maven:3.8.7-eclipse-temurin-11-focal</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;mvn&#34;</span>, <span style="color:#e6db74">&#34;spring-boot:run&#34;</span>, <span style="color:#e6db74">&#34;-Dspring-boot.run.profiles=docker&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># ENTRYPOINT [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=docker&#34;]</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><ol start="2">
+<li>创建Docker Image</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># build过程中下载经常卡住(不知道是不是gfw，因为每次卡住的资源都不一样)，</span>
+<span style="color:#75715e"># 前面加DOCKER_BUILDKIT=1，使缓存生效，这样重试的时候已经下载过的资源就不会重新下载</span>
+sudo DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> docker build -t spring-cloud-config-server .
+</code></pre></div><ol start="3">
+<li>运行docker实例</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># -d --name spring-cloud-config-server_1 指定实例名</span>
+<span style="color:#75715e"># -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载</span>
+<span style="color:#75715e"># -p8888:8888 主机端口：docker实例端口映射</span>
+sudo docker run -d --name spring-cloud-config-server_1 -v <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.m2:/root/.m2 -v <span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>/logs:/logs -p8888:8888 spring-cloud-config-server
+</code></pre></div><h3 id="其他">其他</h3>
+<p>使用docker实例命令行</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker exec -it spring-cloud-config-server_1 bash
+</code></pre></div><p>网络配置，使不同的docker实例互相联通</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 连接mysql的docker实例</span>
+docker network create mysql_network
+docker network connect mysql_network mysql_instance
+docker network connect mysql_network spring-cloud-config-server_1
+<span style="color:#75715e"># 查看网络列表</span>
+docker network list
+<span style="color:#75715e"># 查看网络详细，找到gateway地址，加上3306即可访问mysql</span>
+docker network inspect mysql_network
+</code></pre></div><p>查看实例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker ps
+</code></pre></div><p>查看image</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker image list
+</code></pre></div><p><strong>reference</strong></p>
+<ul>
+<li><a href="https://www.baeldung.com/dockerizing-spring-boot-application">Dockerizing a Spring Boot Application</a></li>
+<li><a href="https://docs.docker.com/get-started/02_our_app/">Containerize an application</a></li>
+<li><a href="https://docs.docker.com/build/buildkit/">BuildKit</a></li>
+<li><a href="https://www.cnblogs.com/LucasSong/p/12701357.html">CMD和ENTRYPOINT的区别</a></li>
+<li><a href="https://stackoverflow.com/questions/36234088/how-do-i-point-a-docker-image-to-my-m2-directory-for-running-maven-in-docker-on">How do I point a docker image to my .m2 directory for running maven in docker on a mac?</a></li>
+<li><a href="https://stackoverflow.com/a/58764482/19120213">accessing a docker container from another container</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-02-05 23:50<br>
+Created: 2023-02-05 20:00
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

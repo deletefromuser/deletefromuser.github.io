@@ -6,8 +6,61 @@
     <description>Recent content in Web on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 14 Dec 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 05 Feb 2023 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>将SpringBoot应用部署到docker</title>
+      <link>/blog/web/2023020501/</link>
+      <pubDate>Sun, 05 Feb 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/web/2023020501/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;在项目内创建Dockerfile&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; maven:3.8.7-eclipse-temurin-11-focal&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;COPY&lt;/span&gt; . .&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CMD&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mvn&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;spring-boot:run&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Dspring-boot.run.profiles=docker&amp;#34;&lt;/span&gt;]&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# ENTRYPOINT [&amp;#34;mvn&amp;#34;, &amp;#34;spring-boot:run&amp;#34;, &amp;#34;-Dspring-boot.run.profiles=docker&amp;#34;]&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;创建Docker Image&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# build过程中下载经常卡住(不知道是不是gfw，因为每次卡住的资源都不一样)，&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 前面加DOCKER_BUILDKIT=1，使缓存生效，这样重试的时候已经下载过的资源就不会重新下载&lt;/span&gt;
+sudo DOCKER_BUILDKIT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; docker build -t spring-cloud-config-server .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;运行docker实例&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# -d --name spring-cloud-config-server_1 指定实例名&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -p8888:8888 主机端口：docker实例端口映射&lt;/span&gt;
+sudo docker run -d --name spring-cloud-config-server_1 -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;HOME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/.m2:/root/.m2 -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PWD&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/logs:/logs -p8888:8888 spring-cloud-config-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
+&lt;p&gt;使用docker实例命令行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker exec -it spring-cloud-config-server_1 bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;网络配置，使不同的docker实例互相联通&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 连接mysql的docker实例&lt;/span&gt;
+docker network create mysql_network
+docker network connect mysql_network mysql_instance
+docker network connect mysql_network spring-cloud-config-server_1
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络列表&lt;/span&gt;
+docker network list
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络详细，找到gateway地址，加上3306即可访问mysql&lt;/span&gt;
+docker network inspect mysql_network
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看实例&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker ps
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看image&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker image list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/dockerizing-spring-boot-application&#34;&gt;Dockerizing a Spring Boot Application&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/get-started/02_our_app/&#34;&gt;Containerize an application&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/build/buildkit/&#34;&gt;BuildKit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/LucasSong/p/12701357.html&#34;&gt;CMD和ENTRYPOINT的区别&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/36234088/how-do-i-point-a-docker-image-to-my-m2-directory-for-running-maven-in-docker-on&#34;&gt;How do I point a docker image to my .m2 directory for running maven in docker on a mac?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/58764482/19120213&#34;&gt;accessing a docker container from another container&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>JS库使用问题汇总</title>
