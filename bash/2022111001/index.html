@@ -6,7 +6,7 @@
 <title>linux 命令memo – HA</title>
 <meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2022-12-29T22:02:03+0800">
+<meta name="modified" content="2023-02-07T21:40:38+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "linux 命令memo",
     "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2022-12-29T22:02:03+08:00",
+    "dateModified": "2023-02-07T21:40:38+08:00",
     "url" : "/blog/bash/2022111001/",
     "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …",
     "keywords": ["linux"],
@@ -113,13 +113,16 @@ Tags:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export HISTSIZE<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span>
 export HISTFILESIZE<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span>
 </code></pre></div><h3 id="df-du"><code>df du</code></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 查看磁盘占用</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查看磁盘占用</span>
 df -h
 
 <span style="color:#75715e"># 查看文件夹大小</span>
 du -h -d <span style="color:#ae81ff">1</span>
 <span style="color:#75715e"># 排序</span>
 du -m -d <span style="color:#ae81ff">1</span> | sort -n
+
+<span style="color:#75715e"># ping服务器的特定端口</span>
+nc -vz 192.168.0.1 <span style="color:#ae81ff">22</span>
 </code></pre></div><h3 id="shell文件中的脚本生成的文件名末尾有一个问号">shell文件中的脚本生成的文件名末尾有一个问号</h3>
 <blockquote>
 <p>检查换行符是否是\n，如果是\r\n需要替换</p>
@@ -133,13 +136,14 @@ du -m -d <span style="color:#ae81ff">1</span> | sort -n
 <li><a href="https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever">How to change history size for ever?</a></li>
 <li><a href="https://stackoverflow.com/questions/37566064/why-questionmark-comes-in-the-end-of-filename-when-i-create-txt-file-through-sh">why questionmark comes in the end of filename when i create .txt file through shell script?</a></li>
 <li><a href="https://suggestcloud.com/add-prefix-suffix-to-all-existing-files-in-linux-directory/">Add Prefix-Suffix To All Existing Files in Linux Directory</a></li>
+<li><a href="https://linuxhint.com/ping-specific-port-netcat-nmap/">How do I Ping a Specific Port?</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-29 22:02<br>
+Updated: 2023-02-07 21:40<br>
 Created: 2022-11-10 20:00
 </p>
 </div>
