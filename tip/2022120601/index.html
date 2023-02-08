@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2023-01-15T16:39:08+0800">
+<meta name="modified" content="2023-02-08T20:13:34+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2023-01-15T16:39:08+08:00",
+    "dateModified": "2023-02-08T20:13:34+08:00",
     "url" : "https://deletefromuser.github.io/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
     "keywords": ["正则表达式","automation","linux","web","js","java","bash"],
@@ -269,6 +269,8 @@ grep -ion <span style="color:#e6db74">&#39;keyword&#39;</span> /path/file -A <sp
 egrep -i <span style="color:#e6db74">&#39;public|private&#39;</span> /path/file
 <span style="color:#75715e"># 在文件夹内特定后缀的文件中检索</span>
 grep -r <span style="color:#e6db74">&#39;cluster&#39;</span> --include <span style="color:#ae81ff">\*</span>.yml /path/
+<span style="color:#75715e"># 在压缩文件中检索（过去的log有时会被备份为gz）</span>
+zgrep <span style="color:#e6db74">&#39;cluster&#39;</span> /path/*
 </code></pre></div><h3 id="查看linux进程">查看linux进程</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 根据名字查找</span>
 ps -ef | grep java
@@ -330,7 +332,7 @@ tar -zxvf &lt;tar filename&gt; &lt;file you want to extract&gt;
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-01-15 16:39<br>
+Updated: 2023-02-08 20:13<br>
 Created: 2022-12-06 20:00
 </p>
 </div>
