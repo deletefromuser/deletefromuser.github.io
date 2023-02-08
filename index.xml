@@ -117,6 +117,29 @@ docker network inspect mysql_network
     </item>
     
     <item>
+      <title>一加手机使用问题</title>
+      <link>/blog/life/2023020801/</link>
+      <pubDate>Sat, 07 Jan 2023 19:00:00 +0800</pubDate>
+      <guid>/blog/life/2023020801/</guid>
+      <description>&lt;h3 id=&#34;网络异常信号总显示e不连接4g&#34;&gt;网络异常，信号总显示E，不连接4G&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;重启&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;解锁界面输入法界面无法弹出&#34;&gt;解锁界面输入法界面无法弹出&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;因为个人是用的普通用户，所以可以进去主用户，在设置-》应用中找到Gboard，强行停止，再登录就好了&lt;/p&gt;
+&lt;p&gt;如果是主用户遇到这种情况就gameover了&lt;/p&gt;
+&lt;p&gt;n5x我用了好几年从来没遇到这种情况，这一加的系统还是不行呀&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://oneplusbbs.com/thread-4576245-1.html&#34;&gt;重启后 无法弹出输入法界面 卡解锁屏幕&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://community.oneplus.com/thread/874511&#34;&gt;Can&amp;rsquo;t unlock ater reboot - missing keyboard and can&amp;rsquo;t type password&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>2023年1季度</title>
       <link>/blog/watch/2023010101/</link>
       <pubDate>Sat, 07 Jan 2023 12:00:00 +0800</pubDate>
@@ -488,6 +511,8 @@ grep -ion &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;keyword&amp;#39;&lt
 egrep -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;public|private&amp;#39;&lt;/span&gt; /path/file
 &lt;span style=&#34;color:#75715e&#34;&gt;# 在文件夹内特定后缀的文件中检索&lt;/span&gt;
 grep -r &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt; --include &lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;.yml /path/
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在压缩文件中检索（过去的log有时会被备份为gz）&lt;/span&gt;
+zgrep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt; /path/*
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux进程&#34;&gt;查看linux进程&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 根据名字查找&lt;/span&gt;
 ps -ef | grep java
