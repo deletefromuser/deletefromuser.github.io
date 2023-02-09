@@ -316,6 +316,8 @@ nc -vz 192.168.0.1 &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;批量修改文件名&#34;&gt;批量修改文件名&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^Pre/Post/&amp;#39;&lt;/span&gt; *
+rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^\D+(\d+)\D+/$1/&amp;#39;&lt;/span&gt; *
+rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^\D+([cp]\d+.+)/$1/&amp;#39;&lt;/span&gt; *
 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f in * ; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; mv — &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PRE_&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; ; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;

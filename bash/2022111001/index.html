@@ -6,7 +6,7 @@
 <title>linux 命令memo – HA</title>
 <meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2023-02-07T21:40:38+0800">
+<meta name="modified" content="2023-02-09T20:54:26+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "linux 命令memo",
     "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2023-02-07T21:40:38+08:00",
+    "dateModified": "2023-02-09T20:54:26+08:00",
     "url" : "/blog/bash/2022111001/",
     "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …",
     "keywords": ["linux"],
@@ -129,6 +129,8 @@ nc -vz 192.168.0.1 <span style="color:#ae81ff">22</span>
 </blockquote>
 <h3 id="批量修改文件名">批量修改文件名</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">rename <span style="color:#e6db74">&#39;s/^Pre/Post/&#39;</span> *
+rename <span style="color:#e6db74">&#39;s/^\D+(\d+)\D+/$1/&#39;</span> *
+rename <span style="color:#e6db74">&#39;s/^\D+([cp]\d+.+)/$1/&#39;</span> *
 
 <span style="color:#66d9ef">for</span> f in * ; <span style="color:#66d9ef">do</span> mv — <span style="color:#e6db74">&#34;</span>$f<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;PRE_</span>$f<span style="color:#e6db74">&#34;</span> ; <span style="color:#66d9ef">done</span>
 </code></pre></div><p><strong>reference</strong></p>
@@ -143,7 +145,7 @@ nc -vz 192.168.0.1 <span style="color:#ae81ff">22</span>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-02-07 21:40<br>
+Updated: 2023-02-09 20:54<br>
 Created: 2022-11-10 20:00
 </p>
 </div>

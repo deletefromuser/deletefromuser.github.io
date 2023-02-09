@@ -285,5 +285,29 @@ createtime date
 </description>
     </item>
     
+    <item>
+      <title>sqlserver常用命令</title>
+      <link>/blog/sql/2023020901/</link>
+      <pubDate>Sun, 06 Nov 2022 19:00:00 +0800</pubDate>
+      <guid>/blog/sql/2023020901/</guid>
+      <description>&lt;h3 id=&#34;查找lock&#34;&gt;查找lock&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; master.dbo.sysprocesses 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; DB_NAME(dbid)&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;’&lt;/span&gt;test&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;’&lt;/span&gt; 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; spid&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;@@&lt;/span&gt;SPID;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;exec&lt;/span&gt; sp_lock
+&lt;span style=&#34;color:#66d9ef&#34;&gt;exec&lt;/span&gt; sp_who2 SPID;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; sys.dm_tran_locks;
+
+kill SPID;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/lvdongjie/p/7327006.html&#34;&gt;sqlserver 查询当前阻塞进程 并杀掉&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

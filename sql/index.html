@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/sql/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2022-11-06T19:00:00+0800">
-<meta name="modified" content="2022-12-03T20:00:00+0800">
+<meta name="modified" content="2023-02-09T20:54:26+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -98,6 +98,19 @@
 </header>
 <div class="content">
 在线执行环境，缺点是需要注册 Oracle live SQL 创建用户 alter session set &#34;_ORACLE_SCRIPT&#34;=true; CREATE USER &#39;newuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;; CREATE USER &#39;newuser&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;; GRANT ALL PRIVILEGES ON *.* TO &#39;newuser&#39;@&#39;localhost&#39;; REVOKE type_of_permission ON database_name.table_name FROM &#39;newuser&#39;@&#39;localhost&#39;; FLUSH PRIVILEGES; SHOW GRANTS FOR &#39;newuser&#39;@&#39;localhost&#39;; DROP USER &#39;newuser&#39;@&#39;localhost&#39;; -- 同时删除用户下的所有
+</div>
+</article>
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2023020901/">sqlserver常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+
+</header>
+<div class="content">
+查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; reference sqlserver 查询当前阻塞进程 并杀掉
 </div>
 </article>
 
