@@ -47,7 +47,7 @@ sudo reboot
       <pubDate>Tue, 08 Nov 2022 12:00:00 +0800</pubDate>
       <guid>https://deletefromuser.github.io/prob/2022110801/</guid>
       <description>&lt;p&gt;重置密码太麻烦了，所以用解密&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cd /u01/app/oracle/middleware/oracle_common/common/bin
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cd /u01/app/oracle/middleware/oracle_common/common/bin
 ./wlst.sh
 
 domain &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&amp;#34;&lt;/span&gt;
@@ -104,7 +104,7 @@ print encryption.decrypt&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;
 &lt;li&gt;Install ‘Oracle VM VirtualBox Extension Pack’&lt;/li&gt;
 &lt;li&gt;Attaching webcam to guest OS&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;VBoxManage list webcams
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;VBoxManage list webcams
 VboxManage controlvm &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Ubuntu 16.04.3&amp;#34;&lt;/span&gt; webcam attach .2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;

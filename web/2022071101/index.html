@@ -6,7 +6,7 @@
 <title>引用cdn静态资源时添加哈希值验证防篡改 – HA</title>
 <meta name="description" content="例子： &amp;amp;lt;script src=&amp;amp;#34;https://example.com/example-framework.js&amp;amp;#34; integrity=&amp;amp;#34;sha384-oqVuAfXRKap7fdgcCY5uykM6&#43;R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&amp;amp;#34; …">
 <meta name="created" content="2022-07-11T17:00:00+0800">
-<meta name="modified" content="2022-07-11T22:35:16+0800">
+<meta name="modified" content="2023-02-11T16:37:54+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "引用cdn静态资源时添加哈希值验证防篡改",
     "datePublished": "2022-07-11T17:00:00+08:00",
-    "dateModified": "2022-07-11T22:35:16+08:00",
+    "dateModified": "2023-02-11T16:37:54+08:00",
     "url" : "https://deletefromuser.github.io/web/2022071101/",
     "description": "例子： \u0026amp;lt;script src=\u0026amp;#34;https://example.com/example-framework.js\u0026amp;#34; integrity=\u0026amp;#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC\u0026amp;#34; …",
     "mainEntityOfPage": {
@@ -99,7 +99,7 @@
         <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&#34;</span>
         <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
 </code></pre></div><h3 id="生成-sri-哈希的工具">生成 SRI 哈希的工具</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">shasum -b -a <span style="color:#ae81ff">384</span> example-framework.js | xxd -r -p | base64
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">shasum -b -a <span style="color:#ae81ff">384</span> example-framework.js | xxd -r -p | base64
 </code></pre></div><p><strong>reference</strong></p>
 <ol>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity">Subresource Integrity - Web 安全 | MDN</a></li>
@@ -109,7 +109,7 @@
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-07-11 22:35<br>
+Updated: 2023-02-11 16:37<br>
 Created: 2022-07-11 17:00
 </p>
 </div>

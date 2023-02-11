@@ -6,7 +6,7 @@
 <title>批量下载youtube视频 – HA</title>
 <meta name="description" content=" 获取视频url   F12，打开控制台，运行[...document.querySelectorAll(&amp;#39;[id=thumbnail]&amp;#39;)].map(item =&amp;amp;gt; item.href).join(&amp;amp;quot; &amp;amp;quot;)  下载  # 下载音频 youtube-dl -f …">
 <meta name="created" content="0001-01-01T00:00:00+0000">
-<meta name="modified" content="2022-12-03T22:45:07+0800">
+<meta name="modified" content="2023-02-11T16:37:54+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "批量下载youtube视频",
     "datePublished": "0001-01-01T00:00:00Z",
-    "dateModified": "2022-12-03T22:45:07+08:00",
+    "dateModified": "2023-02-11T16:37:54+08:00",
     "url" : "https://deletefromuser.github.io/tip/2022111401/",
     "description": " 获取视频url   F12，打开控制台，运行[...document.querySelectorAll(\u0026#39;[id=thumbnail]\u0026#39;)].map(item =\u0026amp;gt; item.href).join(\u0026amp;quot; \u0026amp;quot;)  下载  # 下载音频 youtube-dl -f …",
     "mainEntityOfPage": {
@@ -103,7 +103,7 @@
 <ol start="2">
 <li>下载</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 下载音频</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 下载音频</span>
 youtube-dl -f <span style="color:#e6db74">&#39;bestaudio[ext=m4a]&#39;</span> --verbose --force-ipv4 <span style="color:#f92672">[</span>1.中的url<span style="color:#f92672">]</span>
 <span style="color:#75715e"># 下载视频</span>
 youtube-dl -f <span style="color:#e6db74">&#39;bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best&#39;</span> --verbose --force-ipv4 <span style="color:#f92672">[</span>1.中的url<span style="color:#f92672">]</span>
@@ -126,7 +126,7 @@ youtube-dl --all-subs --skip-download https://www.youtube.com/watch?v<span style
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-03 22:45<br>
+Updated: 2023-02-11 16:37<br>
 Created: 0001-01-01 00:00
 </p>
 </div>

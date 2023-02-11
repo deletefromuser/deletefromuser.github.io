@@ -54,7 +54,7 @@
 &lt;p&gt;命令行历史&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;修改history容量，&lt;code&gt;~/.bashrc&lt;/code&gt;最后追加&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;export HISTSIZE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;export HISTSIZE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;
 export HISTFILESIZE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;df-du&#34;&gt;&lt;code&gt;df du&lt;/code&gt;&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看磁盘占用&lt;/span&gt;
@@ -77,12 +77,25 @@ rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^\D+(\d+)\D+/$1/&amp
 rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^\D+([cp]\d+.+)/$1/&amp;#39;&lt;/span&gt; *
 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f in * ; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; mv — &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PRE_&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; ; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;简单加密文件名&#34;&gt;简单加密文件名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; file in *; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;
+  mv -- &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file%.*&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; | base32&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file##*.&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 解密&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; file in *; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;
+  mv -- &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file%.*&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; | base32 -d&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file##*.&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37566064/why-questionmark-comes-in-the-end-of-filename-when-i-create-txt-file-through-sh&#34;&gt;why questionmark comes in the end of filename when i create .txt file through shell script?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://suggestcloud.com/add-prefix-suffix-to-all-existing-files-in-linux-directory/&#34;&gt;Add Prefix-Suffix To All Existing Files in Linux Directory&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://linuxhint.com/ping-specific-port-netcat-nmap/&#34;&gt;How do I Ping a Specific Port?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37445732/bash-rename-files-to-base64-value-of-the-filenames&#34;&gt;Bash - Rename files to base64 value of the filenames&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/3945541/base64-encoding-safe-for-filenames&#34;&gt;Base64 Encoding safe for filenames?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -92,7 +105,7 @@ rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^\D+([cp]\d+.+)/$1/&
       <link>https://deletefromuser.github.io/bash/2022110602/</link>
       <pubDate>Sun, 06 Nov 2022 19:30:00 +0800</pubDate>
       <guid>https://deletefromuser.github.io/bash/2022110602/</guid>
-      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;crontab -e
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;crontab -e
 
 A B C D E USERNAME /path/to/command arg1 arg2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Explanation of above cron syntax:&lt;/p&gt;

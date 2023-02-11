@@ -66,17 +66,17 @@ import &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; &lt;span styl
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;java取得文件行数&#34;&gt;java取得文件行数&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;Files&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lines&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Paths&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/path/file&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)).&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;根据wsdl文件生成代码&#34;&gt;根据wsdl文件生成代码&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;wsimport -s /path/result/ file:/path/userinfo.wsdl -wsdllocation file:/serverpath/userinfo.wsdl -encoding utf-8 -Xnocompile
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;wsimport -s /path/result/ file:/path/userinfo.wsdl -wsdllocation file:/serverpath/userinfo.wsdl -encoding utf-8 -Xnocompile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;linux下查看特定文件的实时内容&#34;&gt;linux下查看特定文件的实时内容&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;tail -500f /path/result/info.log
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;tail -500f /path/result/info.log
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ihs启动与停止配置规则删除特定cookie&#34;&gt;IHS启动与停止，配置规则删除特定cookie&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;/usr/IBM/HTTPServer/bin/apachectl -k start -f /usr/IBM/HTTPServer/conf/httpd.conf
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;/usr/IBM/HTTPServer/bin/apachectl -k start -f /usr/IBM/HTTPServer/conf/httpd.conf
 /usr/IBM/HTTPServer/bin/apachectl -k stop -f /usr/IBM/HTTPServer/conf/httpd.conf
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# /usr/IBM/HTTPServer/conf/httpd.conf&lt;/span&gt;
 Header edit Set-Cookie &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^(JESSIONID=).*&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$1&lt;span style=&#34;color:#e6db74&#34;&gt;;Path=/;Expires=Thu, 01 Jan 1970 00:00:00 GMT&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux发行版信息&#34;&gt;查看linux发行版信息&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat /proc/version
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cat /proc/version
 &lt;span style=&#34;color:#75715e&#34;&gt;# Linux version 5.4.0-132-generic (buildd@lcy02-amd64-059) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022&lt;/span&gt;
 uname -a
 &lt;span style=&#34;color:#75715e&#34;&gt;# Linux vu18-VirtualBox 5.4.0-132-generic #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux&lt;/span&gt;
@@ -87,7 +87,7 @@ lsb_release -a
 &lt;span style=&#34;color:#75715e&#34;&gt;# Release:	20.04&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# Codename:	focal&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux发行版信息-1&#34;&gt;查看linux发行版信息&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat /proc/version
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cat /proc/version
 &lt;span style=&#34;color:#75715e&#34;&gt;# Linux version 5.4.0-132-generic (buildd@lcy02-amd64-059) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022&lt;/span&gt;
 uname -a
 &lt;span style=&#34;color:#75715e&#34;&gt;# Linux vu18-VirtualBox 5.4.0-132-generic #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux&lt;/span&gt;
@@ -98,9 +98,9 @@ lsb_release -a
 &lt;span style=&#34;color:#75715e&#34;&gt;# Release:	20.04&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# Codename:	focal&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;计算文件hash值&#34;&gt;计算文件hash值&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;openssl sha1 /path/file
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;openssl sha1 /path/file
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vim操作&#34;&gt;vim操作&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 显示行数&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 显示行数&lt;/span&gt;
 :set nu
 &lt;span style=&#34;color:#75715e&#34;&gt;# 搜索&lt;/span&gt;
 /keyword
@@ -122,7 +122,7 @@ P
 &lt;span style=&#34;color:#75715e&#34;&gt;# 在当前行后粘贴&lt;/span&gt;
 p
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;find命令查找文件&#34;&gt;find命令查找文件&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 列出所有文件&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 列出所有文件&lt;/span&gt;
 find . -type f
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查找指定名字的文件，文件夹&lt;/span&gt;
 find . -name test.md
@@ -152,18 +152,18 @@ find . -type f -mmin -120 -exec ls -lrt &lt;span style=&#34;color:#f92672&#34;&g
 find . -type d &amp;gt; dirs.txt
 xargs mkdir -p &amp;lt; dirs.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;每隔一段时间执行一段命令&#34;&gt;每隔一段时间执行一段命令&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 每隔五秒钟打印一次磁盘空间信息&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 每隔五秒钟打印一次磁盘空间信息&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; true; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; date; df -h; sleep 5; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; true; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; date; df -h | grep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/dev/sda1&amp;#39;&lt;/span&gt;; sleep 5; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# -d 高亮变化的部分 -d 间隔(单位秒)&lt;/span&gt;
 watch -d -n &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt; df -h
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用scp复制远程服务器到本地复制本地文件到远程服务器&#34;&gt;使用scp复制远程服务器到本地,复制本地文件到远程服务器&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;scp -r -P &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; tom@ip:/path/file ./
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;scp -r -P &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; tom@ip:/path/file ./
 scp -P &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; /local/path/file tom@ip:~/temp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制文件夹保持原来的权限和链接&#34;&gt;复制文件夹，保持原来的权限和链接&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cp -rpH /path/ ./
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cp -rpH /path/ ./
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;curl使用&#34;&gt;curl使用&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# -k 忽略证书错误，-c 显示cookie&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# -k 忽略证书错误，-c 显示cookie&lt;/span&gt;
 curl -k -c - https://www.baeldung.com/linux/vim-search-replace
 &lt;span style=&#34;color:#75715e&#34;&gt;# 在未安装curl的机器上请求url&lt;/span&gt;
 perl -MLWP::Simple -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;getprint &amp;#39;https://www.baeldung.com/linux/vim-search-replace&amp;#39;&amp;#34;&lt;/span&gt;
@@ -172,7 +172,7 @@ curl https://jsonplaceholder.typicode.com/todos/1 https://jsonplaceholder.typico
 &lt;span style=&#34;color:#75715e&#34;&gt;# 请求时使用用户名&lt;/span&gt;
 curl -u username http://example.com
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;检查机器支持的ssl版本&#34;&gt;检查机器支持的ssl版本&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;openssl ciphers -v | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; | sort | uniq
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;openssl ciphers -v | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; | sort | uniq
 &lt;span style=&#34;color:#75715e&#34;&gt;# 检查网站的ssl版本&lt;/span&gt;
 openssl s_client -connect bing.com:443
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;正则表达式&#34;&gt;正则表达式&lt;/h3&gt;
@@ -297,7 +297,7 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;p&gt;命令行历史&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;修改history容量，&lt;code&gt;~/.bashrc&lt;/code&gt;最后追加&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;export HISTSIZE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;export HISTSIZE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;
 export HISTFILESIZE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;df-du&#34;&gt;&lt;code&gt;df du&lt;/code&gt;&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看磁盘占用&lt;/span&gt;
@@ -320,12 +320,25 @@ rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^\D+(\d+)\D+/$1/&amp
 rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^\D+([cp]\d+.+)/$1/&amp;#39;&lt;/span&gt; *
 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f in * ; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; mv — &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PRE_&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; ; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;简单加密文件名&#34;&gt;简单加密文件名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; file in *; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;
+  mv -- &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file%.*&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; | base32&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file##*.&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 解密&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; file in *; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;
+  mv -- &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file%.*&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; | base32 -d&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file##*.&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37566064/why-questionmark-comes-in-the-end-of-filename-when-i-create-txt-file-through-sh&#34;&gt;why questionmark comes in the end of filename when i create .txt file through shell script?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://suggestcloud.com/add-prefix-suffix-to-all-existing-files-in-linux-directory/&#34;&gt;Add Prefix-Suffix To All Existing Files in Linux Directory&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://linuxhint.com/ping-specific-port-netcat-nmap/&#34;&gt;How do I Ping a Specific Port?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37445732/bash-rename-files-to-base64-value-of-the-filenames&#34;&gt;Bash - Rename files to base64 value of the filenames&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/3945541/base64-encoding-safe-for-filenames&#34;&gt;Base64 Encoding safe for filenames?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -335,7 +348,7 @@ rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^\D+([cp]\d+.+)/$1/&
       <link>https://deletefromuser.github.io/bash/2022110602/</link>
       <pubDate>Sun, 06 Nov 2022 19:30:00 +0800</pubDate>
       <guid>https://deletefromuser.github.io/bash/2022110602/</guid>
-      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;crontab -e
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;crontab -e
 
 A B C D E USERNAME /path/to/command arg1 arg2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Explanation of above cron syntax:&lt;/p&gt;

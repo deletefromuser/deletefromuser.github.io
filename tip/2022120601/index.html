@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2023-02-08T20:13:34+0800">
+<meta name="modified" content="2023-02-11T16:37:54+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2023-02-08T20:13:34+08:00",
+    "dateModified": "2023-02-11T16:37:54+08:00",
     "url" : "https://deletefromuser.github.io/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
     "keywords": ["正则表达式","automation","linux","web","js","java","bash"],
@@ -130,17 +130,17 @@ import <span style="color:#66d9ef">from</span> <span style="color:#f92672">/</sp
 </code></pre></div><h3 id="java取得文件行数">java取得文件行数</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Files<span style="color:#f92672">.</span><span style="color:#a6e22e">lines</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/path/file&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">count</span><span style="color:#f92672">();</span>
 </code></pre></div><h3 id="根据wsdl文件生成代码">根据wsdl文件生成代码</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wsimport -s /path/result/ file:/path/userinfo.wsdl -wsdllocation file:/serverpath/userinfo.wsdl -encoding utf-8 -Xnocompile
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">wsimport -s /path/result/ file:/path/userinfo.wsdl -wsdllocation file:/serverpath/userinfo.wsdl -encoding utf-8 -Xnocompile
 </code></pre></div><h3 id="linux下查看特定文件的实时内容">linux下查看特定文件的实时内容</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tail -500f /path/result/info.log
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">tail -500f /path/result/info.log
 </code></pre></div><h3 id="ihs启动与停止配置规则删除特定cookie">IHS启动与停止，配置规则删除特定cookie</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/IBM/HTTPServer/bin/apachectl -k start -f /usr/IBM/HTTPServer/conf/httpd.conf
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">/usr/IBM/HTTPServer/bin/apachectl -k start -f /usr/IBM/HTTPServer/conf/httpd.conf
 /usr/IBM/HTTPServer/bin/apachectl -k stop -f /usr/IBM/HTTPServer/conf/httpd.conf
 
 <span style="color:#75715e"># /usr/IBM/HTTPServer/conf/httpd.conf</span>
 Header edit Set-Cookie <span style="color:#e6db74">&#34;^(JESSIONID=).*&#34;</span> <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">;Path=/;Expires=Thu, 01 Jan 1970 00:00:00 GMT&#34;</span>
 </code></pre></div><h3 id="查看linux发行版信息">查看linux发行版信息</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat /proc/version
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat /proc/version
 <span style="color:#75715e"># Linux version 5.4.0-132-generic (buildd@lcy02-amd64-059) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022</span>
 uname -a
 <span style="color:#75715e"># Linux vu18-VirtualBox 5.4.0-132-generic #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</span>
@@ -151,7 +151,7 @@ lsb_release -a
 <span style="color:#75715e"># Release:	20.04</span>
 <span style="color:#75715e"># Codename:	focal</span>
 </code></pre></div><h3 id="查看linux发行版信息-1">查看linux发行版信息</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat /proc/version
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat /proc/version
 <span style="color:#75715e"># Linux version 5.4.0-132-generic (buildd@lcy02-amd64-059) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022</span>
 uname -a
 <span style="color:#75715e"># Linux vu18-VirtualBox 5.4.0-132-generic #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</span>
@@ -162,9 +162,9 @@ lsb_release -a
 <span style="color:#75715e"># Release:	20.04</span>
 <span style="color:#75715e"># Codename:	focal</span>
 </code></pre></div><h3 id="计算文件hash值">计算文件hash值</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">openssl sha1 /path/file
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">openssl sha1 /path/file
 </code></pre></div><h3 id="vim操作">vim操作</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 显示行数</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 显示行数</span>
 :set nu
 <span style="color:#75715e"># 搜索</span>
 /keyword
@@ -186,7 +186,7 @@ P
 <span style="color:#75715e"># 在当前行后粘贴</span>
 p
 </code></pre></div><h3 id="find命令查找文件">find命令查找文件</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 列出所有文件</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 列出所有文件</span>
 find . -type f
 <span style="color:#75715e"># 查找指定名字的文件，文件夹</span>
 find . -name test.md
@@ -216,18 +216,18 @@ find . -type f -mmin -120 -exec ls -lrt <span style="color:#f92672">{}</span> <s
 find . -type d &gt; dirs.txt
 xargs mkdir -p &lt; dirs.txt
 </code></pre></div><h3 id="每隔一段时间执行一段命令">每隔一段时间执行一段命令</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 每隔五秒钟打印一次磁盘空间信息</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 每隔五秒钟打印一次磁盘空间信息</span>
 <span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span> date; df -h; sleep 5; <span style="color:#66d9ef">done</span>
 <span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span> date; df -h | grep <span style="color:#e6db74">&#39;/dev/sda1&#39;</span>; sleep 5; <span style="color:#66d9ef">done</span>
 <span style="color:#75715e"># -d 高亮变化的部分 -d 间隔(单位秒)</span>
 watch -d -n <span style="color:#ae81ff">5</span> df -h
 </code></pre></div><h3 id="使用scp复制远程服务器到本地复制本地文件到远程服务器">使用scp复制远程服务器到本地,复制本地文件到远程服务器</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scp -r -P <span style="color:#ae81ff">22</span> tom@ip:/path/file ./
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">scp -r -P <span style="color:#ae81ff">22</span> tom@ip:/path/file ./
 scp -P <span style="color:#ae81ff">22</span> /local/path/file tom@ip:~/temp
 </code></pre></div><h3 id="复制文件夹保持原来的权限和链接">复制文件夹，保持原来的权限和链接</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cp -rpH /path/ ./
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cp -rpH /path/ ./
 </code></pre></div><h3 id="curl使用">curl使用</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># -k 忽略证书错误，-c 显示cookie</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># -k 忽略证书错误，-c 显示cookie</span>
 curl -k -c - https://www.baeldung.com/linux/vim-search-replace
 <span style="color:#75715e"># 在未安装curl的机器上请求url</span>
 perl -MLWP::Simple -e <span style="color:#e6db74">&#34;getprint &#39;https://www.baeldung.com/linux/vim-search-replace&#39;&#34;</span>
@@ -236,7 +236,7 @@ curl https://jsonplaceholder.typicode.com/todos/1 https://jsonplaceholder.typico
 <span style="color:#75715e"># 请求时使用用户名</span>
 curl -u username http://example.com
 </code></pre></div><h3 id="检查机器支持的ssl版本">检查机器支持的ssl版本</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">openssl ciphers -v | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> | sort | uniq
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">openssl ciphers -v | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> | sort | uniq
 <span style="color:#75715e"># 检查网站的ssl版本</span>
 openssl s_client -connect bing.com:443
 </code></pre></div><h3 id="正则表达式">正则表达式</h3>
@@ -332,7 +332,7 @@ tar -zxvf &lt;tar filename&gt; &lt;file you want to extract&gt;
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-02-08 20:13<br>
+Updated: 2023-02-11 16:37<br>
 Created: 2022-12-06 20:00
 </p>
 </div>
