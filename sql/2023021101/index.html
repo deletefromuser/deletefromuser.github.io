@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>使用mybatis的Batch Insert批量插入记录 – HA</title>
+<meta name="description" content="不使用Batch Insert -- 使用mybatis时，下面的做法当一次插入数量太多时会报错（ORA-00913: too many values），这时需要用batch insert -- 1 Use a SELECT Query INSERT INTO Products (ProductId, ProductName, …">
+<meta name="created" content="2022-11-06T19:00:00+0800">
+<meta name="modified" content="2023-02-11T17:58:29+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="使用mybatis的Batch Insert批量插入记录">
+<meta property="og:url" content="https://deletefromuser.github.io/sql/2023021101/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/sql/2023021101/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "使用mybatis的Batch Insert批量插入记录",
+    "datePublished": "2022-11-06T19:00:00+08:00",
+    "dateModified": "2023-02-11T17:58:29+08:00",
+    "url" : "https://deletefromuser.github.io/sql/2023021101/",
+    "description": "不使用Batch Insert -- 使用mybatis时，下面的做法当一次插入数量太多时会报错（ORA-00913: too many values），这时需要用batch insert -- 1 Use a SELECT Query INSERT INTO Products (ProductId, ProductName, …",
+    "keywords": ["sql","oracle"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/sql/" class="active" aria-current="page">Sql</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/c#/">C#</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--sql">
+<header>
+<h1 class="title title-submitted">使用mybatis的Batch Insert批量插入记录</h1>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/oracle/">oracle</a></li>
+<li><a href="https://deletefromuser.github.io/tags/sql/">sql</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="不使用batch-insert">不使用Batch Insert</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 使用mybatis时，下面的做法当一次插入数量太多时会报错（ORA-00913: too many values），这时需要用batch insert
+</span><span style="color:#75715e">-- 1 Use a SELECT Query
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> Products (ProductId, ProductName, Price) 
+    <span style="color:#66d9ef">WITH</span> p <span style="color:#66d9ef">AS</span> ( 
+        <span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;Left Handed Screwdriver&#39;</span>, <span style="color:#ae81ff">10</span>.<span style="color:#ae81ff">50</span> <span style="color:#66d9ef">FROM</span> dual <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">ALL</span> 
+        <span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;Right Handed Screwdriver&#39;</span>, <span style="color:#ae81ff">22</span>.<span style="color:#ae81ff">75</span> <span style="color:#66d9ef">FROM</span> dual <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">ALL</span> 
+        <span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;Bottomless Coffee Cup (4 pack)&#39;</span>, <span style="color:#ae81ff">15</span>.<span style="color:#ae81ff">00</span> <span style="color:#66d9ef">FROM</span> dual <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">ALL</span> 
+        <span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;Urban Dictionary Version 2.3&#39;</span>, <span style="color:#ae81ff">75</span> <span style="color:#66d9ef">FROM</span> dual <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">ALL</span>
+        <span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;Beer Water&#39;</span>, <span style="color:#ae81ff">15</span> <span style="color:#66d9ef">FROM</span> dual
+  )
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> p;
+<span style="color:#75715e">-- 2 Use INSERT ALL
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">ALL</span> 
+    <span style="color:#66d9ef">INTO</span> Products ( ProductId, ProductName, Price ) <span style="color:#66d9ef">VALUES</span> ( <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;Left Handed Screwdriver&#39;</span>, <span style="color:#ae81ff">10</span>.<span style="color:#ae81ff">50</span> )
+    <span style="color:#66d9ef">INTO</span> Products ( ProductId, ProductName, Price ) <span style="color:#66d9ef">VALUES</span> ( <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;Right Handed Screwdriver&#39;</span>, <span style="color:#ae81ff">22</span>.<span style="color:#ae81ff">75</span> )
+    <span style="color:#66d9ef">INTO</span> Products ( ProductId, ProductName, Price ) <span style="color:#66d9ef">VALUES</span> ( <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;Bottomless Coffee Cup (4 pack)&#39;</span>, <span style="color:#ae81ff">15</span>.<span style="color:#ae81ff">00</span> )
+    <span style="color:#66d9ef">INTO</span> Products ( ProductId, ProductName, Price ) <span style="color:#66d9ef">VALUES</span> ( <span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;Urban Dictionary Version 2.3&#39;</span>, <span style="color:#ae81ff">75</span> )
+    <span style="color:#66d9ef">INTO</span> Products ( ProductId, ProductName, Price ) <span style="color:#66d9ef">VALUES</span> ( <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;Beer Water&#39;</span>, <span style="color:#ae81ff">15</span> )
+<span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">FROM</span> dual;
+</code></pre></div><h3 id="使用batch-insert">使用Batch Insert</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#a6e22e">@Transactional</span><span style="color:#f92672">(</span>readOnly <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testBatch</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">int</span> batchSize <span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
+        <span style="color:#75715e">// openSession默认关闭自动提交，不需再加false参数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>SqlSession sqlSession <span style="color:#f92672">=</span> sqlSessionFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">openSession</span><span style="color:#f92672">(</span>ExecutorType<span style="color:#f92672">.</span><span style="color:#a6e22e">BATCH</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            CountriesMapper cmapper <span style="color:#f92672">=</span> sqlSession<span style="color:#f92672">.</span><span style="color:#a6e22e">getMapper</span><span style="color:#f92672">(</span>CountriesMapper<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+            IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">range</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 55<span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>item <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+                cmapper<span style="color:#f92672">.</span><span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Countries<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">+</span> item<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;230211-&#34;</span> <span style="color:#f92672">+</span> item <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-name&#34;</span><span style="color:#f92672">,</span>
+                        <span style="color:#f92672">(</span><span style="color:#66d9ef">short</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>RandomUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">()</span> <span style="color:#f92672">%</span> 4 <span style="color:#f92672">+</span> 1<span style="color:#f92672">)));</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>item <span style="color:#f92672">%</span> batchSize <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    sqlSession<span style="color:#f92672">.</span><span style="color:#a6e22e">flushStatements</span><span style="color:#f92672">();</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">});</span>
+            sqlSession<span style="color:#f92672">.</span><span style="color:#a6e22e">flushStatements</span><span style="color:#f92672">();</span>
+            sqlSession<span style="color:#f92672">.</span><span style="color:#a6e22e">commit</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span>
+
+        assertTrue<span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p><strong>reference</strong></p>
+<ul>
+<li><a href="https://database.guide/4-ways-to-insert-multiple-rows-in-oracle/">4 Ways to Insert Multiple Rows in Oracle</a></li>
+<li><a href="https://blogj.harawata.net/2016/04/jdbc-mybatis-multi-row-vs-batch.html">JDBC と MyBatis でバルク・インサート（multi-row vs batch）</a></li>
+<li><a href="https://mybatis.org/mybatis-dynamic-sql/docs/insert.html#batch-insert-support">Batch Insert Support</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-02-11 17:58<br>
+Created: 2022-11-06 19:00
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
