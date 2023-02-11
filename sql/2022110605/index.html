@@ -158,6 +158,11 @@ startup <span style="color:#66d9ef">force</span>;
 
 <span style="color:#75715e">-- 查看表属性
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">desc</span> USERINFO;
+</code></pre></div><h3 id="复制表">复制表</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 同时复制数据
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> New_Table_name <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> Existing_table_Name; 
+<span style="color:#75715e">-- 只复制表结构，不包含索引
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> New_Table_name <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> Existing_table_Name; 
 </code></pre></div><h3 id="查看正在运行中的会话sql锁表">查看正在运行中的会话，sql，锁表</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> sid,
       serial<span style="color:#f92672">#</span>,
@@ -260,7 +265,9 @@ name varchar2(<span style="color:#ae81ff">50</span>)
 <span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> USERINFO <span style="color:#66d9ef">drop</span> address;
 <span style="color:#66d9ef">rename</span> <span style="color:#66d9ef">column</span> USERINFO.address_temp <span style="color:#66d9ef">to</span> USERINFO.address;
 <span style="color:#66d9ef">COMMENT</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">COLUMN</span> USERINFO.address <span style="color:#66d9ef">IS</span> <span style="color:#e6db74">&#39;地址&#39;</span>;
-</code></pre></div><h3 id="查看目录">查看目录</h3>
+<span style="color:#75715e">-- 查看一个复杂查询语句的结果列属性和长度
+</span><span style="color:#75715e">-- 使用查询语句创建view，然后使用desc即可
+</span></code></pre></div><h3 id="查看目录">查看目录</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> DIRECTORY MY_DIR <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">&#39;/path/mydata/&#39;</span>;
 <span style="color:#66d9ef">SELECT</span> directory_name, directory_path <span style="color:#66d9ef">FROM</span> dba_directories <span style="color:#66d9ef">WHERE</span> directory_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;MY_DIR&#39;</span>;
 </code></pre></div><h3 id="批量插入行">批量插入行</h3>

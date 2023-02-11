@@ -70,6 +70,11 @@ startup &lt;span style=&#34;color:#66d9ef&#34;&gt;force&lt;/span&gt;;
 
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 查看表属性
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt; USERINFO;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 同时复制数据
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; New_Table_name &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Existing_table_Name; 
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 只复制表结构，不包含索引
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; New_Table_name &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Existing_table_Name; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看正在运行中的会话sql锁表&#34;&gt;查看正在运行中的会话，sql，锁表&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; sid,
       serial&lt;span style=&#34;color:#f92672&#34;&gt;#&lt;/span&gt;,
@@ -172,7 +177,9 @@ name varchar2(&lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;)
 &lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; USERINFO &lt;span style=&#34;color:#66d9ef&#34;&gt;drop&lt;/span&gt; address;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;rename&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;column&lt;/span&gt; USERINFO.address_temp &lt;span style=&#34;color:#66d9ef&#34;&gt;to&lt;/span&gt; USERINFO.address;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMENT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COLUMN&lt;/span&gt; USERINFO.address &lt;span style=&#34;color:#66d9ef&#34;&gt;IS&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;地址&amp;#39;&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看目录&#34;&gt;查看目录&lt;/h3&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 查看一个复杂查询语句的结果列属性和长度
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 使用查询语句创建view，然后使用desc即可
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看目录&#34;&gt;查看目录&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; DIRECTORY MY_DIR &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/path/mydata/&amp;#39;&lt;/span&gt;;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; directory_name, directory_path &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; dba_directories &lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; directory_name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;MY_DIR&amp;#39;&lt;/span&gt;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;批量插入行&#34;&gt;批量插入行&lt;/h3&gt;

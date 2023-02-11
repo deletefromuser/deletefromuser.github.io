@@ -46,7 +46,7 @@ git cherry-pick -n bd61ad98
 &lt;h3 id=&#34;查看某一个文件的提交历史&#34;&gt;查看某一个文件的提交历史&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;git log --follow -- filename&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;同时在多个分支工作&#34;&gt;同时在多个分支工作&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git worktree add -b hotfix ../hotfix
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git worktree add -b hotfix ../hotfix
 git worktree list
 pushd ../hotfix
 &lt;span style=&#34;color:#75715e&#34;&gt;# working on hotfix branch&lt;/span&gt;

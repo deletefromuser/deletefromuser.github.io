@@ -194,7 +194,7 @@ sudo update-alternatives --config mvn
         &lt;span style=&#34;color:#a6e22e&#34;&gt;integrity&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&amp;#34;&lt;/span&gt;
         &lt;span style=&#34;color:#a6e22e&#34;&gt;crossorigin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;/script&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;生成-sri-哈希的工具&#34;&gt;生成 SRI 哈希的工具&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;shasum -b -a &lt;span style=&#34;color:#ae81ff&#34;&gt;384&lt;/span&gt; example-framework.js | xxd -r -p | base64
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;shasum -b -a &lt;span style=&#34;color:#ae81ff&#34;&gt;384&lt;/span&gt; example-framework.js | xxd -r -p | base64
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity&#34;&gt;Subresource Integrity - Web 安全 | MDN&lt;/a&gt;&lt;/li&gt;
