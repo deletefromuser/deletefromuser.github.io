@@ -6,7 +6,7 @@
 <title>将SpringBoot应用部署到docker – HA</title>
 <meta name="description" content=" 在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&amp;amp;#34;mvn&amp;amp;#34;, &amp;amp;#34;spring-boot:run&amp;amp;#34;, &amp;amp;#34;-Dspring-boot.run.profiles=docker&amp;amp;#34;]# ENTRYPOINT …">
 <meta name="created" content="2023-02-05T20:00:00+0800">
-<meta name="modified" content="2023-02-12T19:11:32+0800">
+<meta name="modified" content="2023-02-12T22:28:23+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "将SpringBoot应用部署到docker",
     "datePublished": "2023-02-05T20:00:00+08:00",
-    "dateModified": "2023-02-12T19:11:32+08:00",
+    "dateModified": "2023-02-12T22:28:23+08:00",
     "url" : "/blog/web/2023020501/",
     "description": " 在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [\u0026amp;#34;mvn\u0026amp;#34;, \u0026amp;#34;spring-boot:run\u0026amp;#34;, \u0026amp;#34;-Dspring-boot.run.profiles=docker\u0026amp;#34;]# ENTRYPOINT …",
     "mainEntityOfPage": {
@@ -110,7 +110,7 @@ sudo DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81
 </code></pre></div><ol start="3">
 <li>运行docker实例</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># -e 设置实例的时区</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># -e 设置环境变量（TZ：实例的时区）</span>
 <span style="color:#75715e"># -d --name spring-cloud-config-server_1 指定实例名</span>
 <span style="color:#75715e"># -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载</span>
 <span style="color:#75715e"># -p8888:8888 主机端口：docker实例端口映射</span>
@@ -146,7 +146,7 @@ docker network inspect mysql_network
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-02-12 19:11<br>
+Updated: 2023-02-12 22:28<br>
 Created: 2023-02-05 20:00
 </p>
 </div>
