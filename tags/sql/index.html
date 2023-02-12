@@ -6,8 +6,8 @@
 <title>sql – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/tags/sql/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2022-11-06T19:00:00+0800">
-<meta name="modified" content="2023-02-11T17:58:29+0800">
+<meta name="created" content="2023-02-11T19:00:00+0800">
+<meta name="modified" content="2023-02-12T16:34:53+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -67,6 +67,7 @@
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
 <li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
@@ -74,7 +75,6 @@
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
-<li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/git/">Git</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/c#/">C#</a></li>
@@ -87,6 +87,19 @@
 <h1 class="title">sql</h1>
 
 
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2023021101/">使用mybatis的Batch Insert批量插入记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-11T19:00:00&#43;08:00">2023-02-11 19:00</time>
+</div>
+
+</header>
+<div class="content">
+不使用Batch Insert -- 使用mybatis时，下面的做法当一次插入数量太多时会报错（ORA-00913: too many values），这时需要用batch
+</div>
+</article>
 
 <article class="list-view list-view--sql">
 <header>
@@ -111,19 +124,6 @@
 </header>
 <div class="content">
 查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; reference sqlserver 查询当前阻塞进程 并杀掉
-</div>
-</article>
-
-<article class="list-view list-view--sql">
-<header>
-<h2 class="title title-submitted"><a href="/blog/sql/2023021101/">使用mybatis的Batch Insert批量插入记录</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
-</div>
-
-</header>
-<div class="content">
-不使用Batch Insert -- 使用mybatis时，下面的做法当一次插入数量太多时会报错（ORA-00913: too many values），这时需要用batch
 </div>
 </article>
 
