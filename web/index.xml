@@ -49,7 +49,7 @@ sudo DOCKER_BUILDKIT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;运行docker实例&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# -e 设置实例的时区&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# -e 设置环境变量（TZ：实例的时区）&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# -d --name spring-cloud-config-server_1 指定实例名&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# -p8888:8888 主机端口：docker实例端口映射&lt;/span&gt;
