@@ -6,8 +6,27 @@
     <description>Recent content in Web on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Feb 2023 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 Feb 2023 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>使用OBS虚拟摄像头</title>
+      <link>https://deletefromuser.github.io/web/2023021101/</link>
+      <pubDate>Sat, 11 Feb 2023 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/web/2023021101/</guid>
+      <description>&lt;p&gt;工作中要测试网页的视频录制功能，但是是在客户的虚拟机上，没有摄像头，这时候可以使用OBS模拟摄像头来测试&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装OBS，及FireFox（CHROME无法选择虚拟摄像头）&lt;/li&gt;
+&lt;li&gt;启动OBS，在下方来源中添加视频文件，然后点击【启动虚拟摄像机】右边的设置，选择输出类型为来源，选择视频文件，点击【启动虚拟摄像机】&lt;/li&gt;
+&lt;li&gt;在Firefox中测试，录制时会弹窗选择摄像头，选择【OBS Virtual Camera】即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://obsproject.com/kb/virtual-camera-guide&#34;&gt;Virtual Camera Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.onlinemictest.com/webcam-test/&#34;&gt;Webcam Test&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>将SpringBoot应用部署到docker</title>

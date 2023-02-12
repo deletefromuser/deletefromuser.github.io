@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>C# using 用法 – HA</title>
-<meta name="description" content="C# using 用法  引入命名空間using System.Threading; 定義命名空間的別名using Thread = System.Threading; using(define class A,B;){use A;}的形式效果和java中帶資源的try語句很相似  using中聲明的對象必須實現IDisposable，且 …">
-<meta name="created" content="2017-03-01T01:33:58+0800">
-<meta name="modified" content="2022-12-10T21:21:10+0800">
+<title>使用OBS虚拟摄像头 – HA</title>
+<meta name="description" content="工作中要测试网页的视频录制功能，但是是在客户的虚拟机上，没有摄像头，这时候可以使用OBS模拟摄像头来测试  安装OBS，及FireFox（CHROME无法选择虚拟摄像头） 启动OBS，在下方来源中添加视频文件，然后点击【启动虚拟摄像机】右边的设置，选择输出类型为来源，选择视频文件，点击【启动虚拟摄像机】 在Firefox中测试，录制时会弹 …">
+<meta name="created" content="2023-02-11T20:00:00+0800">
+<meta name="modified" content="2023-02-11T17:58:29+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="C# using 用法">
-<meta property="og:url" content="https://deletefromuser.github.io/c#/2017030101/">
+<meta property="og:title" content="使用OBS虚拟摄像头">
+<meta property="og:url" content="https://deletefromuser.github.io/web/2023021101/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="https://deletefromuser.github.io/c#/2017030101/">
+<link rel="canonical" href="https://deletefromuser.github.io/web/2023021101/">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "C# using 用法",
-    "datePublished": "2017-03-01T01:33:58+08:00",
-    "dateModified": "2022-12-10T21:21:10+08:00",
-    "url" : "https://deletefromuser.github.io/c#/2017030101/",
-    "description": "C# using 用法  引入命名空間using System.Threading; 定義命名空間的別名using Thread = System.Threading; using(define class A,B;){use A;}的形式效果和java中帶資源的try語句很相似  using中聲明的對象必須實現IDisposable，且 …",
+    "headline": "使用OBS虚拟摄像头",
+    "datePublished": "2023-02-11T20:00:00+08:00",
+    "dateModified": "2023-02-11T17:58:29+08:00",
+    "url" : "https://deletefromuser.github.io/web/2023021101/",
+    "description": "工作中要测试网页的视频录制功能，但是是在客户的虚拟机上，没有摄像头，这时候可以使用OBS模拟摄像头来测试  安装OBS，及FireFox（CHROME无法选择虚拟摄像头） 启动OBS，在下方来源中添加视频文件，然后点击【启动虚拟摄像机】右边的设置，选择输出类型为来源，选择视频文件，点击【启动虚拟摄像机】 在Firefox中测试，录制时会弹 …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://deletefromuser.github.io/"
@@ -68,7 +68,7 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/">Home</a></li>
-<li><a href="/web/">Web</a></li>
+<li><a href="/web/" class="active" aria-current="page">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
@@ -86,40 +86,32 @@
 
 
 <main class="main layout__main">
-<article class="single-view single-view--c">
+<article class="single-view single-view--web">
 <header>
-<h1 class="title title-submitted">C# using 用法</h1>
+<h1 class="title title-submitted">使用OBS虚拟摄像头</h1>
 <div class="submitted">
-<time class="created-date" datetime="2017-03-01T01:33:58&#43;08:00">2017-03-01 01:33</time>
+<time class="created-date" datetime="2023-02-11T20:00:00&#43;08:00">2023-02-11 20:00</time>
 </div>
 </header>
 <div class="content">
-<p>C# using 用法</p>
+<p>工作中要测试网页的视频录制功能，但是是在客户的虚拟机上，没有摄像头，这时候可以使用OBS模拟摄像头来测试</p>
 <ol>
-<li>引入命名空間<code>using System.Threading;</code></li>
-<li>定義命名空間的別名<code>using Thread = System.Threading;</code></li>
-<li><code>using(define class A,B;){use A;}</code>的形式效果和java中帶資源的try語句很相似
-<ul>
-<li>using中聲明的對象必須實現IDisposable，且聲明多個對象時類型要一致(也可以直接用IDisposable接口對象來定義對象來規避)；而java中帶資源的try語句也類似，<code>try(define A,B){use A,B}catch(){]</code>中的對象也必須實現AutoCloseable或者Closeable接口，但是不要求類型一致</li>
-</ul>
-</li>
+<li>安装OBS，及FireFox（CHROME无法选择虚拟摄像头）</li>
+<li>启动OBS，在下方来源中添加视频文件，然后点击【启动虚拟摄像机】右边的设置，选择输出类型为来源，选择视频文件，点击【启动虚拟摄像机】</li>
+<li>在Firefox中测试，录制时会弹窗选择摄像头，选择【OBS Virtual Camera】即可</li>
 </ol>
 <p><strong>reference</strong></p>
-<ol>
-<li><a href="http://blog.csdn.net/wanderocn/article/details/6659811">C#-using用法详解</a></li>
-<li><a href="https://www.cnblogs.com/prince1988/archive/2009/03/29/1424479.html">c# using 关键字的用法</a></li>
-<li><a href="http://www.csharp-examples.net/using/">C# Using Statement Examples</a></li>
-<li><a href="https://msdn.microsoft.com/zh-cn/library/yh598w02.aspx">using 语句（C# 参考）</a></li>
-<li><a href="http://blog.csdn.net/u012421846/article/details/46129237">带资源的try语句</a></li>
-<li>Java核心技術 11.2.4 帶資源的try語句</li>
-</ol>
+<ul>
+<li><a href="https://obsproject.com/kb/virtual-camera-guide">Virtual Camera Guide</a></li>
+<li><a href="https://www.onlinemictest.com/webcam-test/">Webcam Test</a></li>
+</ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-10 21:21<br>
-Created: 2017-03-01 01:33
+Updated: 2023-02-11 17:58<br>
+Created: 2023-02-11 20:00
 </p>
 </div>
 </article>
