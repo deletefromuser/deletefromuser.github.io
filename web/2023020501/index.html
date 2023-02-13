@@ -6,7 +6,7 @@
 <title>将SpringBoot应用部署到docker – HA</title>
 <meta name="description" content=" 在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&amp;amp;#34;mvn&amp;amp;#34;, &amp;amp;#34;spring-boot:run&amp;amp;#34;, &amp;amp;#34;-Dspring-boot.run.profiles=docker&amp;amp;#34;]# ENTRYPOINT …">
 <meta name="created" content="2023-02-05T20:00:00+0800">
-<meta name="modified" content="2023-02-12T22:28:23+0800">
+<meta name="modified" content="2023-02-13T23:41:55+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "将SpringBoot应用部署到docker",
     "datePublished": "2023-02-05T20:00:00+08:00",
-    "dateModified": "2023-02-12T22:28:23+08:00",
+    "dateModified": "2023-02-13T23:41:55+08:00",
     "url" : "https://deletefromuser.github.io/web/2023020501/",
     "description": " 在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [\u0026amp;#34;mvn\u0026amp;#34;, \u0026amp;#34;spring-boot:run\u0026amp;#34;, \u0026amp;#34;-Dspring-boot.run.profiles=docker\u0026amp;#34;]# ENTRYPOINT …",
     "mainEntityOfPage": {
@@ -128,7 +128,10 @@ docker network list
 <span style="color:#75715e"># 查看网络详细，找到gateway地址，加上3306即可访问mysql</span>
 docker network inspect mysql_network
 </code></pre></div><p>查看实例</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker ps
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 正在运行中的</span>
+docker ps
+<span style="color:#75715e"># 全部</span>
+docker ps -a
 </code></pre></div><p>查看image</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker image list
 </code></pre></div><p><strong>reference</strong></p>
@@ -146,7 +149,7 @@ docker network inspect mysql_network
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-02-12 22:28<br>
+Updated: 2023-02-13 23:41<br>
 Created: 2023-02-05 20:00
 </p>
 </div>
