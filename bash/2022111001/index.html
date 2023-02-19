@@ -6,7 +6,7 @@
 <title>linux 命令memo – HA</title>
 <meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2023-02-11T16:37:54+0800">
+<meta name="modified" content="2023-02-19T23:29:28+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "linux 命令memo",
     "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2023-02-11T16:37:54+08:00",
+    "dateModified": "2023-02-19T23:29:28+08:00",
     "url" : "/blog/bash/2022111001/",
     "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …",
     "keywords": ["linux"],
@@ -69,6 +69,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/read/">Read</a></li>
@@ -76,8 +78,6 @@
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/bash/" class="active" aria-current="page">Bash</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
-<li><a href="/blog/java/">Java</a></li>
-<li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/git/">Git</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/c#/">C#</a></li>
@@ -134,7 +134,8 @@ rename <span style="color:#e6db74">&#39;s/^\D+([cp]\d+.+)/$1/&#39;</span> *
 
 <span style="color:#66d9ef">for</span> f in * ; <span style="color:#66d9ef">do</span> mv — <span style="color:#e6db74">&#34;</span>$f<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;PRE_</span>$f<span style="color:#e6db74">&#34;</span> ; <span style="color:#66d9ef">done</span>
 </code></pre></div><h3 id="简单加密文件名">简单加密文件名</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">for</span> file in *; <span style="color:#66d9ef">do</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 不加密后缀</span>
+<span style="color:#66d9ef">for</span> file in *; <span style="color:#66d9ef">do</span>
   <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">continue</span>
   mv -- <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>printf <span style="color:#e6db74">&#34;%s&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>file%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | base32<span style="color:#66d9ef">)</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>file##*.<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 <span style="color:#66d9ef">done</span>
@@ -144,6 +145,33 @@ rename <span style="color:#e6db74">&#39;s/^\D+([cp]\d+.+)/$1/&#39;</span> *
   <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">continue</span>
   mv -- <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>printf <span style="color:#e6db74">&#34;%s&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>file%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | base32 -d<span style="color:#66d9ef">)</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>file##*.<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 <span style="color:#66d9ef">done</span>
+
+<span style="color:#75715e"># 加密后缀</span>
+<span style="color:#66d9ef">for</span> file in *; <span style="color:#66d9ef">do</span>
+  <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">continue</span>
+  mv -- <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>printf <span style="color:#e6db74">&#34;%s&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>file<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | base32<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">done</span>
+<span style="color:#75715e"># 解密</span>
+<span style="color:#66d9ef">for</span> file in *; <span style="color:#66d9ef">do</span>
+  <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">continue</span>
+  mv -- <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>printf <span style="color:#e6db74">&#34;%s&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>file<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | base32 -d<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div><h3 id="创建软连接">创建软连接</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 磁盘满的时候，使用软连接把老数据转移到别的硬盘上个人觉得也是个办法，</span>
+<span style="color:#75715e"># 就是不知道客户为什么说不稳定</span>
+ln -s <span style="color:#f92672">[</span>真实磁盘路径<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>连接所在位置<span style="color:#f92672">]</span>
+</code></pre></div><h3 id="命令行内容输出到剪贴板">命令行内容输出到剪贴板</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># git bash（windows）</span>
+find . -typf f | clip
+
+<span style="color:#75715e"># linux</span>
+find . -typf f | | xclip -selection clipboard
+<span style="color:#75715e"># or</span>
+alias clip<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;xclip -selection clipboard&#39;</span>
+find . -typf f | clip
+</code></pre></div><h3 id="查看linux用户所在组">查看linux用户所在组</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">groups
+groups tom
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever">How to change history size for ever?</a></li>
@@ -152,13 +180,16 @@ rename <span style="color:#e6db74">&#39;s/^\D+([cp]\d+.+)/$1/&#39;</span> *
 <li><a href="https://linuxhint.com/ping-specific-port-netcat-nmap/">How do I Ping a Specific Port?</a></li>
 <li><a href="https://stackoverflow.com/questions/37445732/bash-rename-files-to-base64-value-of-the-filenames">Bash - Rename files to base64 value of the filenames</a></li>
 <li><a href="https://stackoverflow.com/questions/3945541/base64-encoding-safe-for-filenames">Base64 Encoding safe for filenames?</a></li>
+<li><a href="https://www.cnblogs.com/flyingeagle/articles/9219047.html">Linux运用软链接解决目录空间不足</a></li>
+<li><a href="https://www.geeksforgeeks.org/how-to-copy-command-output-to-linux-clipboard-directly/">How To Copy Command Output To Linux Clipboard Directly</a></li>
+<li><a href="https://www.cyberciti.biz/faq/linux-show-groups-for-user/">Linux Show The Groups a User Is In</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-02-11 16:37<br>
+Updated: 2023-02-19 23:29<br>
 Created: 2022-11-10 20:00
 </p>
 </div>
