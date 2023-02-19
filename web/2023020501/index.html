@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>将SpringBoot应用部署到docker – HA</title>
-<meta name="description" content=" 在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&amp;amp;#34;mvn&amp;amp;#34;, &amp;amp;#34;spring-boot:run&amp;amp;#34;, &amp;amp;#34;-Dspring-boot.run.profiles=docker&amp;amp;#34;]# ENTRYPOINT …">
+<meta name="description" content="手动创建image  在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&amp;amp;#34;mvn&amp;amp;#34;, &amp;amp;#34;spring-boot:run&amp;amp;#34;, &amp;amp;#34;-Dspring-boot.run.profiles=docker&amp;amp;#34;]# …">
 <meta name="created" content="2023-02-05T20:00:00+0800">
-<meta name="modified" content="2023-02-13T23:41:55+0800">
+<meta name="modified" content="2023-02-19T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,9 +31,9 @@
     "@type": "WebPage",
     "headline": "将SpringBoot应用部署到docker",
     "datePublished": "2023-02-05T20:00:00+08:00",
-    "dateModified": "2023-02-13T23:41:55+08:00",
+    "dateModified": "2023-02-19T20:00:00+08:00",
     "url" : "https://deletefromuser.github.io/web/2023020501/",
-    "description": " 在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [\u0026amp;#34;mvn\u0026amp;#34;, \u0026amp;#34;spring-boot:run\u0026amp;#34;, \u0026amp;#34;-Dspring-boot.run.profiles=docker\u0026amp;#34;]# ENTRYPOINT …",
+    "description": "手动创建image  在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [\u0026amp;#34;mvn\u0026amp;#34;, \u0026amp;#34;spring-boot:run\u0026amp;#34;, \u0026amp;#34;-Dspring-boot.run.profiles=docker\u0026amp;#34;]# …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://deletefromuser.github.io/"
@@ -68,6 +68,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/">Home</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/tip/">Tip</a></li>
 <li><a href="/web/" class="active" aria-current="page">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/read/">Read</a></li>
@@ -75,8 +77,6 @@
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/prob/">Prob</a></li>
-<li><a href="/java/">Java</a></li>
-<li><a href="/tip/">Tip</a></li>
 <li><a href="/git/">Git</a></li>
 <li><a href="/sh/">SH</a></li>
 <li><a href="/c#/">C#</a></li>
@@ -94,6 +94,7 @@
 </div>
 </header>
 <div class="content">
+<h3 id="手动创建image">手动创建image</h3>
 <ol>
 <li>在项目内创建Dockerfile</li>
 </ol>
@@ -115,7 +116,44 @@ sudo DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81
 <span style="color:#75715e"># -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载</span>
 <span style="color:#75715e"># -p8888:8888 主机端口：docker实例端口映射</span>
 sudo docker run -e TZ<span style="color:#f92672">=</span>Etc/GMT-8 -d --name spring-cloud-config-server_1 -v <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.m2:/root/.m2 -v <span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>/logs:/logs -p8888:8888 spring-cloud-config-server
-</code></pre></div><h3 id="其他">其他</h3>
+</code></pre></div><h3 id="使用spring-boot-maven-plugin创建image">使用spring-boot-maven-plugin创建image</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mvn spring-boot:build-image
+sudo docker run -e TZ<span style="color:#f92672">=</span>Etc/GMT-8 -d --name config-server_1 -e <span style="color:#e6db74">&#34;SPRING_PROFILES_ACTIVE=docker&#34;</span> -v <span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>/logs:/logs -p8888:8888 config-server:0.0.1-SNAPSHOT
+</code></pre></div><h4 id="注意事项">注意事项</h4>
+<p>第一个命令到最后会从github下载jre包，因为gfw会报错，需要在pom.xml中配置代理，而且代理只支持http代理，且不能使用localhost或者127.0.0.1作为ip，而应使用本机的网卡ip地址。（http代理尝试用shadowsocks-rust配了一下没成功，可能哪里配错了，用v2ray配置成功了）</p>
+<p><code>pom.xml</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;project&gt;</span>
+    <span style="color:#f92672">&lt;build&gt;</span>
+        <span style="color:#f92672">&lt;plugins&gt;</span>
+            <span style="color:#f92672">&lt;plugin&gt;</span>
+                <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+                <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+                <span style="color:#f92672">&lt;configuration&gt;</span>
+                    <span style="color:#f92672">&lt;image&gt;</span>
+                        <span style="color:#f92672">&lt;env&gt;</span>
+                            <span style="color:#f92672">&lt;HTTP_PROXY&gt;</span>http://proxy.example.com<span style="color:#f92672">&lt;/HTTP_PROXY&gt;</span>
+                            <span style="color:#f92672">&lt;HTTPS_PROXY&gt;</span>https://proxy.example.com<span style="color:#f92672">&lt;/HTTPS_PROXY&gt;</span>
+                        <span style="color:#f92672">&lt;/env&gt;</span>
+                    <span style="color:#f92672">&lt;/image&gt;</span>
+                <span style="color:#f92672">&lt;/configuration&gt;</span>
+            <span style="color:#f92672">&lt;/plugin&gt;</span>
+        <span style="color:#f92672">&lt;/plugins&gt;</span>
+    <span style="color:#f92672">&lt;/build&gt;</span>
+<span style="color:#f92672">&lt;/project&gt;</span>
+</code></pre></div><p><code>v2ray-config.json</code></p>
+<pre><code class="language-jsonc" data-lang="jsonc">&quot;inbounds&quot;: [
+    {
+        {
+            &quot;port&quot;: 1086,
+            &quot;listen&quot;: &quot;0.0.0.0&quot;,
+            &quot;protocol&quot;: &quot;http&quot;,
+            &quot;settings&quot;: {
+                &quot;udp&quot;: false
+            }
+        }
+    }
+]
+</code></pre><h3 id="其他">其他</h3>
 <p>使用docker实例命令行</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker exec -it spring-cloud-config-server_1 bash
 </code></pre></div><p>网络配置，使不同的docker实例互相联通</p>
@@ -132,8 +170,18 @@ docker network inspect mysql_network
 docker ps
 <span style="color:#75715e"># 全部</span>
 docker ps -a
+<span style="color:#75715e"># 查看实例运行log</span>
+docker logs containerName
 </code></pre></div><p>查看image</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker image list
+</code></pre></div><h3 id="非root用户下运行docker">非root用户下运行docker</h3>
+<blockquote>
+<p>使用spring的maven插件build image的时候，需要当前用户有docker的运行权限</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker ps
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://www.baeldung.com/dockerizing-spring-boot-application">Dockerizing a Spring Boot Application</a></li>
@@ -143,13 +191,15 @@ docker ps -a
 <li><a href="https://stackoverflow.com/questions/36234088/how-do-i-point-a-docker-image-to-my-m2-directory-for-running-maven-in-docker-on">How do I point a docker image to my .m2 directory for running maven in docker on a mac?</a></li>
 <li><a href="https://stackoverflow.com/a/58764482/19120213">accessing a docker container from another container</a></li>
 <li><a href="https://stackoverflow.com/questions/18861834/mounting-multiple-volumes-on-a-docker-container">Mounting multiple volumes on a docker container?</a></li>
+<li><a href="https://docs.docker.com/engine/install/linux-postinstall/">Manage Docker as a non-root user</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/htmlsingle/#build-image.examples.builder-configuration">Spring Boot Maven Plugin Documentation - Builder Configuration</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-02-13 23:41<br>
+Updated: 2023-02-19 20:00<br>
 Created: 2023-02-05 20:00
 </p>
 </div>
