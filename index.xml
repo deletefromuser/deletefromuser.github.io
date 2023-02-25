@@ -214,6 +214,8 @@ docker ps
 docker ps -a
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例运行log&lt;/span&gt;
 docker logs containerName
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例占用内存等&lt;/span&gt;
+docker stats
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看image&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker image list
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;非root用户下运行docker&#34;&gt;非root用户下运行docker&lt;/h3&gt;
@@ -235,6 +237,7 @@ docker ps
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/18861834/mounting-multiple-volumes-on-a-docker-container&#34;&gt;Mounting multiple volumes on a docker container?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/install/linux-postinstall/&#34;&gt;Manage Docker as a non-root user&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/htmlsingle/#build-image.examples.builder-configuration&#34;&gt;Spring Boot Maven Plugin Documentation - Builder Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/spring-boot-docker-start-with-profile&#34;&gt;Starting Spring Boot Application in Docker With Profile&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -515,6 +518,27 @@ sudo reboot
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;虾仁焯水后，放入碗中，加入鸡蛋，葱花，盐，搅匀，炒熟即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;面食&#34;&gt;面食&lt;/h2&gt;
+&lt;h3 id=&#34;蒸馒头&#34;&gt;蒸馒头&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;适量酵母，白糖，加300克温水搅匀&lt;/li&gt;
+&lt;li&gt;600克面粉加水和面后，揉一会&lt;/li&gt;
+&lt;li&gt;醒面&lt;/li&gt;
+&lt;li&gt;醒好后揉面，没有气孔后，面团分成几份，揉成长条状，切成四个馒头剂子&lt;/li&gt;
+&lt;li&gt;馒头剂子醒20min后，上锅蒸20min即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;发面饼&#34;&gt;发面饼&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;适量酵母，白糖，加400克温水搅匀&lt;/li&gt;
+&lt;li&gt;600克面粉加水，小葱花，盐，和面后，揉一会&lt;/li&gt;
+&lt;li&gt;醒面&lt;/li&gt;
+&lt;li&gt;醒好后揉面，没有气孔后，面团分成几份，擀成饼状&lt;/li&gt;
+&lt;li&gt;醒20min后，上电饼铛烙熟即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 </description>
