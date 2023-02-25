@@ -111,6 +111,8 @@ docker ps
 docker ps -a
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例运行log&lt;/span&gt;
 docker logs containerName
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例占用内存等&lt;/span&gt;
+docker stats
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看image&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker image list
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;非root用户下运行docker&#34;&gt;非root用户下运行docker&lt;/h3&gt;
@@ -132,6 +134,7 @@ docker ps
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/18861834/mounting-multiple-volumes-on-a-docker-container&#34;&gt;Mounting multiple volumes on a docker container?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/install/linux-postinstall/&#34;&gt;Manage Docker as a non-root user&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/htmlsingle/#build-image.examples.builder-configuration&#34;&gt;Spring Boot Maven Plugin Documentation - Builder Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/spring-boot-docker-start-with-profile&#34;&gt;Starting Spring Boot Application in Docker With Profile&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
