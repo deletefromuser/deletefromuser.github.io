@@ -21,6 +21,14 @@ git pull --all
 git push origin dev
 &lt;span style=&#34;color:#75715e&#34;&gt;# 将某一个提交的变更应用到代码库&lt;/span&gt;
 git cherry-pick -n bd61ad98
+&lt;span style=&#34;color:#75715e&#34;&gt;# 将某区间提交的变更应用到代码库&lt;/span&gt;
+git cherry-pick -n bd61ad98^..ade56rq1
+&lt;span style=&#34;color:#75715e&#34;&gt;# 强制回退到上一个commit(未push)&lt;/span&gt;
+git reset --hard HEAD^
+&lt;span style=&#34;color:#75715e&#34;&gt;# 强制回退到上上个commit(未push)&lt;/span&gt;
+reset --hard HEAD~2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 取消某个版本的修改&lt;/span&gt;
+git revert &amp;lt;commit hash&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-將文件轉移位置&#34;&gt;git 將文件轉移位置&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;git mv 2017032003.md csharp&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;查看某一次提交的文件列表&#34;&gt;查看某一次提交的文件列表&lt;/h3&gt;
@@ -49,6 +57,7 @@ git worktree prune
 &lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/git-worktree&#34;&gt;Git - git-worktree Documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=s4BTvj1ZVLM&#34;&gt;How to Use Git Worktree | Checkout Multiple Git Branches at Once&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/10725729/see-whats-in-a-stash-without-applying-it&#34;&gt;See what&amp;rsquo;s in a stash without applying it&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1670970/how-to-cherry-pick-multiple-commits&#34;&gt;How to cherry-pick multiple commits&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
