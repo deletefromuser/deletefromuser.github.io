@@ -112,7 +112,8 @@ sudo DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81
 <li>运行docker实例</li>
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># -e 设置环境变量（TZ：实例的时区）</span>
-<span style="color:#75715e"># -d --name spring-cloud-config-server_1 指定实例名</span>
+<span style="color:#75715e"># -d 运行在后台</span>
+<span style="color:#75715e"># --name spring-cloud-config-server_1 指定实例名</span>
 <span style="color:#75715e"># -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载</span>
 <span style="color:#75715e"># -p8888:8888 主机端口：docker实例端口映射</span>
 sudo docker run -e TZ<span style="color:#f92672">=</span>Etc/GMT-8 -d --name spring-cloud-config-server_1 -v <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.m2:/root/.m2 -v <span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>/logs:/logs -p8888:8888 spring-cloud-config-server
@@ -134,6 +135,8 @@ sudo docker run -e TZ<span style="color:#f92672">=</span>Etc/GMT-8 -d --name con
                             <span style="color:#f92672">&lt;HTTP_PROXY&gt;</span>http://proxy.example.com<span style="color:#f92672">&lt;/HTTP_PROXY&gt;</span>
                             <span style="color:#f92672">&lt;HTTPS_PROXY&gt;</span>https://proxy.example.com<span style="color:#f92672">&lt;/HTTPS_PROXY&gt;</span>
                         <span style="color:#f92672">&lt;/env&gt;</span>
+                        <span style="color:#75715e">&lt;!-- 防止重复下载buildpack --&gt;</span>
+                        <span style="color:#f92672">&lt;pullPolicy&gt;</span>IF_NOT_PRESENT<span style="color:#f92672">&lt;/pullPolicy&gt;</span>
                     <span style="color:#f92672">&lt;/image&gt;</span>
                 <span style="color:#f92672">&lt;/configuration&gt;</span>
             <span style="color:#f92672">&lt;/plugin&gt;</span>
@@ -174,8 +177,22 @@ docker ps -a
 docker logs containerName
 <span style="color:#75715e"># 查看实例占用内存等</span>
 docker stats
+<span style="color:#75715e"># 查看创建实例时的命令</span>
+docker inspect <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --format <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -s https://gist.githubusercontent.com/ictus4u/e28b47dc826644412629093d5c9185be/raw/run.tpl<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> containerName
 </code></pre></div><p>查看image</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker image list
+</code></pre></div><p>docker compose</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 创建</span>
+docker compose up
+<span style="color:#75715e"># 销毁</span>
+docker compose down
+<span style="color:#75715e"># 启动</span>
+docker compose start
+<span style="color:#75715e"># 停止</span>
+docker compose stop
+
 </code></pre></div><h3 id="非root用户下运行docker">非root用户下运行docker</h3>
 <blockquote>
 <p>使用spring的maven插件build image的时候，需要当前用户有docker的运行权限</p>
@@ -196,6 +213,10 @@ docker ps
 <li><a href="https://docs.docker.com/engine/install/linux-postinstall/">Manage Docker as a non-root user</a></li>
 <li><a href="https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/htmlsingle/#build-image.examples.builder-configuration">Spring Boot Maven Plugin Documentation - Builder Configuration</a></li>
 <li><a href="https://www.baeldung.com/spring-boot-docker-start-with-profile">Starting Spring Boot Application in Docker With Profile</a></li>
+<li><a href="https://www.baeldung.com/ops/docker-compose">Introduction to Docker Compose | Baeldung</a></li>
+<li><a href="https://reflectoring.io/spring-boot-docker/">Creating Optimized Docker Images for a Spring Boot Application</a></li>
+<li><a href="https://stackoverflow.com/questions/68023763/spring-boot-buildpack-always-downloads-latest-packeto-images-from-git">spring boot buildpack always downloads latest packeto images from git</a></li>
+<li><a href="https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container">How to show the run command of a docker container</a></li>
 </ul>
 
 </div>
