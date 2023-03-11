@@ -91,138 +91,139 @@
 </article>
 
 
-<article class="list-view list-view--prob">
+<article class="list-view list-view--bash">
 <header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017031201/">MS-Windows下Emacs显示中文卡頓</a></h2>
+<h2 class="title title-submitted"><a href="/blog/bash/2022111001/">linux 命令memo</a></h2>
 <div class="submitted">
-<time class="created-date" datetime="2017-03-12T01:33:58&#43;08:00">2017-03-12 01:33</time>
+<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
 </div>
 
 </header>
 <div class="content">
-MS-Windows下Emacs显示中文卡頓 emacs顯示中文有bug，更換一下默認字體就好了 Options-&gt;Set Default Font ps:看wiki的時候發現很多搞笑的話，
+uuidgen 生成uuid history 命令行历史 修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m
+</div>
+</article>
+
+<article class="list-view list-view--java">
+<header>
+<h2 class="title title-submitted"><a href="/blog/java/2022111002/">linux下让Java程序运行在后台</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
+</div>
+
+</header>
+<div class="content">
+nohup java -jar /web/server.jar &gt; log.log 2&gt;&amp;1 &amp; reference Run java jar file on a server as background process Launch springboot project in the background on Linux 2&gt;&amp;1到底是什么意思？
 </div>
 </article>
 
 <article class="list-view list-view--prob">
 <header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017030901/">解壓大文件提示存儲空間不足</a></h2>
+<h2 class="title title-submitted"><a href="/blog/prob/2022110901/">利用RSS自动下载Torrent</a></h2>
 <div class="submitted">
-<time class="created-date" datetime="2017-03-09T01:33:58&#43;08:00">2017-03-09 01:33</time>
+<time class="created-date" datetime="2022-11-08T20:00:00&#43;08:00">2022-11-08 20:00</time>
 </div>
 
 </header>
 <div class="content">
-解壓大文件提示存儲空間不足 下載一個8G大的文件，解壓的時候提示存儲空間不足，一看E盤明明還有20G空間啊，試試解壓到D盤，還是不行，最後不一
+以前竟然不知道，每周都要上网站手动搜索 下载网站找到rss feed url，比如https://nyaa.si/?page=rss&amp;q=ubu
 </div>
 </article>
 
 <article class="list-view list-view--prob">
 <header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017030801/">windows遠程桌面設置全屏快捷鍵</a></h2>
+<h2 class="title title-submitted"><a href="/blog/prob/2022110801/">weblogic console忘记密码的解决办法</a></h2>
 <div class="submitted">
-<time class="created-date" datetime="2017-03-08T01:33:58&#43;08:00">2017-03-08 01:33</time>
+<time class="created-date" datetime="2022-11-08T12:00:00&#43;08:00">2022-11-08 12:00</time>
 </div>
 
 </header>
 <div class="content">
-windows遠程桌面設置全屏快捷鍵 在開啟遠程桌面的時候，上方有一個連接欄顯示很煩人，可以通過設置去掉，但是去掉之後就需要使用快捷鍵來返回主
+重置密码太麻烦了，所以用解密 cd /u01/app/oracle/middleware/oracle_common/common/bin ./wlst.sh domain = &#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&#34; service = weblogic.security.internal.SerializedSystemIni.getEncryptionService(domain) encryption = weblogic.security.internal.encryption.ClearOrEncryptedService(service) # 密文中有`\`的话，解密会报错，要去掉 # find encrptyed username and password in domainnamexxx/servers/AdminServer/security/boot.properties print encryption.decrypt(&#34;{AES}nFIptO4HdY8fxSgLjrS8ZNqsVlcB2zQZzYJQ9o7AbJU=&#34;) reference Quickest way to decrypt passwords in Oracle WebLogic Server 12c Decrypt your boot.properties
+</div>
+</article>
+
+<article class="list-view list-view--bash">
+<header>
+<h2 class="title title-submitted"><a href="/blog/bash/2022110602/">linux下设置定时任务</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
+</div>
+
+</header>
+<div class="content">
+crontab -e A B C D E USERNAME /path/to/command arg1 arg2 Explanation of above cron syntax: A: Minutes range: 0 – 59 B: Hours range: 0 – 23 C: Days range: 0 – 31 D: Months range: 0 – 12 E: Days of the week range: 0 – 7. Starting from Monday, 0 or 7 represents Sunday USERNAME: replace this with your username /path/to/command – The name of the script
 </div>
 </article>
 
 <article class="list-view list-view--prob">
 <header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017030402/">Git的配置和初级使用</a></h2>
+<h2 class="title title-submitted"><a href="/blog/prob/2022110603/">oracle安装后连接问题</a></h2>
 <div class="submitted">
-<time class="created-date" datetime="2017-03-04T02:33:58&#43;08:00">2017-03-04 02:33</time>
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
 </div>
 
 </header>
 <div class="content">
-Git的配置和初级使用 下载安装Git之后，先把仓库下载下来 git clone https://github.com/rsa2063/rsa2063.github.io 在下载下来的文件夹中右键Git Bash Here，当然也有一个Git GUI Here，但是
+1. ORA-12505: TNS:listener does not currently know of SID given in connect descriptor add to tnsnames.ora file, and run lsnrctl reload ORCL = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVICE = DEDICATED) (SERVICE_NAME = orcl) ) ) excute alter system set local_listener = '(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))' scope = both; in sqlplus.(username sys, password, orcl as sysdba) 2. 状态: 失败 -测试
 </div>
 </article>
 
 <article class="list-view list-view--prob">
 <header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017030401/">如何不翻墙访问维基百科</a></h2>
+<h2 class="title title-submitted"><a href="/blog/prob/2022110604/">virtualbox虚拟机启用宿主机摄像头</a></h2>
 <div class="submitted">
-<time class="created-date" datetime="2017-03-04T01:33:58&#43;08:00">2017-03-04 01:33</time>
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
 </div>
 
 </header>
 <div class="content">
-如何不翻墙访问维基百科 政府好像没有下定决心要封维基百科，只用了dns污染，其实不用翻墙就可以访问了。办法自然是换一个dns解析服务器，并且使
+Install ‘Oracle VM VirtualBox Extension Pack’ Attaching webcam to guest OS VBoxManage list webcams VboxManage controlvm &#34;Ubuntu 16.04.3&#34; webcam attach .2 reference Enabling Webcam in VirtualBox Guest OS on Windows Host
 </div>
 </article>
 
-<article class="list-view list-view--prob">
+<article class="list-view list-view--sql">
 <header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017030201/">在ubuntu中安裝shadowsocks，美化桌面gdm3</a></h2>
+<h2 class="title title-submitted"><a href="/blog/sql/2022110605/">oracle常用命令</a></h2>
 <div class="submitted">
-<time class="created-date" datetime="2017-03-02T01:33:58&#43;08:00">2017-03-02 01:33</time>
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
 </div>
 
 </header>
 <div class="content">
-在ubuntu中安裝shadowsocks，美化桌面gdm3 安裝shadowsocks sudo add-apt-repository ppa:hzwhuang/ss-qt5 sudo apt-get update sudo apt-get install shadowsocks-qt5 gdm3（相對原生的來說簡潔一些）
+在线执行环境，缺点是需要注册 Oracle live SQL 创建用户 alter session set &#34;_ORACLE_SCRIPT&#34;=true; CREATE USER &#39;newuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;; CREATE USER &#39;newuser&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;; GRANT ALL PRIVILEGES ON *.* TO &#39;newuser&#39;@&#39;localhost&#39;; REVOKE type_of_permission ON database_name.table_name FROM &#39;newuser&#39;@&#39;localhost&#39;; FLUSH PRIVILEGES; SHOW GRANTS FOR &#39;newuser&#39;@&#39;localhost&#39;; DROP USER &#39;newuser&#39;@&#39;localhost&#39;; -- 同时删除用户下的所有
 </div>
 </article>
 
-<article class="list-view list-view--prob">
+<article class="list-view list-view--sql">
 <header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017022704/">在windows中添加自啟動</a></h2>
+<h2 class="title title-submitted"><a href="/blog/sql/2023020901/">sqlserver常用命令</a></h2>
 <div class="submitted">
-<time class="created-date" datetime="2017-02-27T04:33:58&#43;08:00">2017-02-27 04:33</time>
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
 </div>
 
 </header>
 <div class="content">
-在windows中添加自啟動 在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Sta
+查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; reference sqlserver 查询当前阻塞进程 并杀掉
 </div>
 </article>
 
-<article class="list-view list-view--prob">
+<article class="list-view list-view--watch">
 <header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017022703/">ubuntu系統安裝</a></h2>
+<h2 class="title title-submitted"><a href="/blog/watch/2022100101/">2022年4季度</a></h2>
 <div class="submitted">
-<time class="created-date" datetime="2017-02-27T03:33:58&#43;08:00">2017-02-27 03:33</time>
+<time class="created-date" datetime="2022-10-10T12:00:00&#43;08:00">2022-10-10 12:00</time>
 </div>
 
 </header>
 <div class="content">
-ubuntu系統安裝 下載系統鏡像並製作U盘啟動盤 插入，按下開機鍵後連按esc鍵，選擇U盘啟動 第一步選擇語言（不知道為什麼選擇漢語之後看不到下
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017022702/">如何用U盘製作啟動盤</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-02-27T02:33:58&#43;08:00">2017-02-27 02:33</time>
-</div>
-
-</header>
-<div class="content">
-如何用U盘製作啟動盤 備份U盘中的文件 下載Rufus 插入U盘並打開程序 選擇分區方案（先選的mbr分區方案用於bios或uefi的計算機，結果啟
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017022701/">用網線連接連接兩台電腦進行文件傳輸</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-02-27T01:33:58&#43;08:00">2017-02-27 01:33</time>
-</div>
-
-</header>
-<div class="content">
-用網線連接連接兩台電腦進行文件傳輸 修改兩台電腦的本地連接設置，ipv4設置到一個網段下 關閉防火牆 在高級共享設置中啟用網絡發現 連接網線 將要傳輸
+动画 風都探偵 ベルセルク 黄金時代篇 Noumin Kanren(两话弃) 陰の実力者になりたくて! モブサイコ100 S03 機動戦士ガンダム 水星の魔女 うたわれるもの二
 </div>
 </article>
 
 <nav class="pager">
 <a href="/blog/page/2/" rel="prev" class="pager-item pager-prev">Prev</a>
+<a href="/blog/page/4/" rel="next" class="pager-item pager-next">Next</a>
 </nav>
 
 </main>
