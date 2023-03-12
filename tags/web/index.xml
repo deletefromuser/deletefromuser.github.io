@@ -122,6 +122,8 @@ find . -type f -mmin -120 -exec ls -lrt &lt;span style=&#34;color:#f92672&#34;&g
 &lt;span style=&#34;color:#75715e&#34;&gt;# 复制目录结构&lt;/span&gt;
 find . -type d &amp;gt; dirs.txt
 xargs mkdir -p &amp;lt; dirs.txt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找大于100m的文件&lt;/span&gt;
+find . -type f -size +100M
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;每隔一段时间执行一段命令&#34;&gt;每隔一段时间执行一段命令&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 每隔五秒钟打印一次磁盘空间信息&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; true; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; date; df -h; sleep 5; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
