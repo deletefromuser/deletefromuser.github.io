@@ -133,7 +133,11 @@ docker compose down
 docker compose start
 &lt;span style=&#34;color:#75715e&#34;&gt;# 停止&lt;/span&gt;
 docker compose stop
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在离线电脑上安装image&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 从有网络的机器上下载image包&lt;/span&gt;
+docker save couchbase &amp;gt; couchbase.tar
+&lt;span style=&#34;color:#75715e&#34;&gt;# 放到离线机器上安装&lt;/span&gt;
+docker load &amp;lt; couchbase.tar.xz
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;非root用户下运行docker&#34;&gt;非root用户下运行docker&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;使用spring的maven插件build image的时候，需要当前用户有docker的运行权限&lt;/p&gt;
@@ -160,6 +164,7 @@ docker ps
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container&#34;&gt;How to show the run command of a docker container&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container&#34;&gt;Root password inside a Docker container - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found&#34;&gt;Docker - Ubuntu - bash: ping: command not found - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37905763/how-do-i-download-docker-images-without-using-the-pull-command&#34;&gt;How do I download Docker images without using the pull command?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

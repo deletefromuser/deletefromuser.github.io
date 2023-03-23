@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-02-18T20:00:00+0800">
-<meta name="modified" content="2023-03-12T22:45:38+0800">
+<meta name="modified" content="2023-03-23T20:33:58+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/watch/">Watch</a></li>
-<li><a href="/bash/">Bash</a></li>
 <li><a href="/prob/">Prob</a></li>
+<li><a href="/bash/">Bash</a></li>
 <li><a href="/git/">Git</a></li>
 <li><a href="/sh/">SH</a></li>
 <li><a href="/c#/">C#</a></li>
@@ -90,19 +90,6 @@
 </div>
 </article>
 
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/web/20190620/">tomcat安装&amp;let&#39;s encrypt配置</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2019-06-20T01:33:58&#43;08:00">2019-06-20 01:33</time>
-</div>
-
-</header>
-<div class="content">
-tomcat安装&amp;let&rsquo;s encrypt配置 ###安装java cd /home tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz // temp export PATH=$PWD/jdk8u212-b04/bin:$PATH java -version //final vi /etc/profile ` JAVA_HOME=/home/jdk8u212-b04 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin export JAVA_HOME export PATH ` log out and log in wget
-</div>
-</article>
 
 <article class="list-view list-view--watch">
 <header>
@@ -171,7 +158,7 @@ windows修改右鍵“發送到”菜單&amp;如何快速打開SendTo文件夾 �
 
 <article class="list-view list-view--prob">
 <header>
-<h2 class="title title-submitted"><a href="/prob/2017061501/">VirtualBox主机虚拟机共享剪贴板设置之后没用的问题</a></h2>
+<h2 class="title title-submitted"><a href="/prob/2017061501/">VirtualBox使用问题汇总</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2017-06-15T01:33:58&#43;08:00">2017-06-15 01:33</time>
 </div>
@@ -218,6 +205,19 @@ Java 将对象序列化为字符串 读取字符串反序列化为对象 import 
 </header>
 <div class="content">
 让你的每一天更有意义的十种方法 by Dan Pedersen 早起 享受日出，享受宁静，使用这段时间去沉思、祈祷、写作、锻炼等等 为要做的事设定优先级 记住做那些对你和你的
+</div>
+</article>
+
+<article class="list-view list-view--c">
+<header>
+<h2 class="title title-submitted"><a href="/c#/2017041001/">C#重命名文件夹下的文件</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-04-10T01:33:58&#43;08:00">2017-04-10 01:33</time>
+</div>
+
+</header>
+<div class="content">
+C#重命名文件夹下的文件 var files = System.IO.Directory.EnumerateFiles(desPath); if(formatStr.Length == 0) { formatStr = &#34;{0}.jpg&#34;; } int count = 1; foreach(String fileName in files) { if (new System.IO.FileInfo(fileName).Length &gt; 1024 * 75) { System.IO.File.Move(fileName, System.IO.Path.Combine(desPath, String.Format(formatStr, count)));//对文件进行重命名 count++; } } 判断系统
 </div>
 </article>
 

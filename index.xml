@@ -236,7 +236,11 @@ docker compose down
 docker compose start
 &lt;span style=&#34;color:#75715e&#34;&gt;# 停止&lt;/span&gt;
 docker compose stop
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在离线电脑上安装image&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 从有网络的机器上下载image包&lt;/span&gt;
+docker save couchbase &amp;gt; couchbase.tar
+&lt;span style=&#34;color:#75715e&#34;&gt;# 放到离线机器上安装&lt;/span&gt;
+docker load &amp;lt; couchbase.tar.xz
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;非root用户下运行docker&#34;&gt;非root用户下运行docker&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;使用spring的maven插件build image的时候，需要当前用户有docker的运行权限&lt;/p&gt;
@@ -263,6 +267,7 @@ docker ps
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container&#34;&gt;How to show the run command of a docker container&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container&#34;&gt;Root password inside a Docker container - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found&#34;&gt;Docker - Ubuntu - bash: ping: command not found - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37905763/how-do-i-download-docker-images-without-using-the-pull-command&#34;&gt;How do I download Docker images without using the pull command?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -418,20 +423,6 @@ sudo reboot
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1187191/tracker-process-taking-lot-of-cpu&#34;&gt;Tracker process taking lot of CPU&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ubuntu中在新命令行窗口执行命令</title>
-      <link>https://deletefromuser.github.io/bash/2022122101/</link>
-      <pubDate>Wed, 21 Dec 2022 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/bash/2022122101/</guid>
-      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gnome-terminal -x bash -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;echo &amp;#39;hello&amp;#39;; exec bash
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.delftstack.com/howto/linux/start-a-new-bash-session&#34;&gt;Start a New Terminal Session in Bash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened&#34;&gt;How do I open a terminal window and execute a command after the shell has opened?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -822,18 +813,27 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
     </item>
     
     <item>
-      <title>ubuntu中把desktop文件的程序固定到任务栏</title>
+      <title>ubuntu使用技巧</title>
       <link>https://deletefromuser.github.io/bash/2022120301/</link>
       <pubDate>Sat, 03 Dec 2022 20:00:00 +0800</pubDate>
       <guid>https://deletefromuser.github.io/bash/2022120301/</guid>
-      <description>&lt;ol&gt;
+      <description>&lt;h3 id=&#34;把desktop文件的程序固定到任务栏&#34;&gt;把desktop文件的程序固定到任务栏&lt;/h3&gt;
+&lt;ol&gt;
 &lt;li&gt;复制desktop文件到&lt;code&gt;~/.local/share/applications&lt;/code&gt;下，需要确保文件内的路径复制后仍然正确，改为绝对路径&lt;/li&gt;
 &lt;li&gt;命令行启动desktop&lt;/li&gt;
 &lt;li&gt;任务栏右键add to favorites&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;在新命令行窗口执行命令&#34;&gt;在新命令行窗口执行命令&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gnome-terminal -x bash -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;echo &amp;#39;hello&amp;#39;; exec bash&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;自动安装安全更新&#34;&gt;自动安装安全更新&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo apt-get install unattended-upgrades
+sudo dpkg-reconfigure --priority&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;low unattended-upgrades
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1026528/adding-custom-programs-to-favourites-of-ubuntu-dock&#34;&gt;Adding custom programs to favourites of Ubuntu Dock&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.delftstack.com/howto/linux/start-a-new-bash-session&#34;&gt;Start a New Terminal Session in Bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened&#34;&gt;How do I open a terminal window and execute a command after the shell has opened?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/AutomaticSecurityUpdates&#34;&gt;AutomaticSecurityUpdates&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1451,9 +1451,37 @@ createtime date
 &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; sys.dm_tran_locks;
 
 kill SPID;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;日期&#34;&gt;日期&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 当前时间
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; getdate();
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 当前日期
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CAST&lt;/span&gt;( GETDATE() &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; Date ) ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; ABC_1
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; ABC
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 只复制表结构
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- where 1 = 2;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;批量插入&#34;&gt;批量插入&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; table2
+   &lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
+   &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; table1 t1
+   &lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;EXISTS&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; table2 t2 &lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; t2.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; t1.id);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;在更新的时候使用join&#34;&gt;在更新的时候使用join&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;UPDATE&lt;/span&gt; R 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; R.status &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt; 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; dbo.ProductReviews &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; R
+&lt;span style=&#34;color:#66d9ef&#34;&gt;INNER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;JOIN&lt;/span&gt; dbo.products &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; P 
+       &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; R.pid &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; P.id 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; R.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;17190&amp;#39;&lt;/span&gt; 
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;AND&lt;/span&gt; P.shopkeeper &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;89137&amp;#39;&lt;/span&gt;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/lvdongjie/p/7327006.html&#34;&gt;sqlserver 查询当前阻塞进程 并杀掉&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/59899979/how-to-batch-insert-sql-server&#34;&gt;How to Batch INSERT SQL Server?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learnsql.com/cookbook/how-to-get-the-current-date-without-time-in-t-sql/&#34;&gt;How to Get the Current Date (Without Time) in T-SQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://popsql.com/learn-sql/sql-server/how-to-duplicate-a-table-in-sql-server&#34;&gt;How to Duplicate a Table in SQL Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/9588423/sql-server-inner-join-when-updating&#34;&gt;SQL Server - inner join when updating&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -2345,11 +2373,11 @@ service tomcat restart
     </item>
     
     <item>
-      <title>VirtualBox主机虚拟机共享剪贴板设置之后没用的问题</title>
+      <title>VirtualBox使用问题汇总</title>
       <link>https://deletefromuser.github.io/prob/2017061501/</link>
       <pubDate>Thu, 15 Jun 2017 01:33:58 +0800</pubDate>
       <guid>https://deletefromuser.github.io/prob/2017061501/</guid>
-      <description>&lt;p&gt;VirtualBox主机虚拟机共享剪贴板设置之后没用的问题&lt;/p&gt;
+      <description>&lt;h3 id=&#34;virtualbox主机虚拟机共享剪贴板设置之后没用的问题&#34;&gt;VirtualBox主机虚拟机共享剪贴板设置之后没用的问题&lt;/h3&gt;
 &lt;p&gt;在设置中启用共享剪贴板之后，还要虚拟机本身安装增强功能之后才可以使用。&lt;/p&gt;
 &lt;p&gt;具体方法为：&lt;/p&gt;
 &lt;ol&gt;
@@ -2357,14 +2385,15 @@ service tomcat restart
 &lt;li&gt;开启虚拟机，进入之后，点击上方菜单栏设备-安装增强功能&lt;/li&gt;
 &lt;li&gt;第二步没有任何提示和消息，进入虚拟机文件管理器，找到光驱VirtualBox Guest Additions，右键打开后，看到几个exe文件（有平台版本区别），找一个能运行的安装即可，随后重启电脑，end.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;reference:&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;在ubuntu上安装virtualbox-guest-additions&#34;&gt;在ubuntu上安装VirtualBox Guest Additions&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cd /mnt
+./VBoxLinuxAdditions.run
+reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://blog.csdn.net/q1302182594/article/details/8720545&#34;&gt;VirtualBox安装Windows XP——图解&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://jingyan.baidu.com/article/574c521917db806c8d9dc18c.html&#34;&gt;VirtualBox主机与虚拟机不能复制粘贴的解决办法&lt;/a&gt;(这个对我没用，我先设的这个再装的增强功能，不知道这个是不是必须的)&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/q1302182594/article/details/8720545&#34;&gt;VirtualBox安装Windows XP——图解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jingyan.baidu.com/article/574c521917db806c8d9dc18c.html&#34;&gt;VirtualBox主机与虚拟机不能复制粘贴的解决办法&lt;/a&gt;(这个对我没用，我先设的这个再装的增强功能，不知道这个是不是必须的)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/22743/how-do-i-install-guest-additions-in-a-virtualbox-vm&#34;&gt;VirtualBox主机与虚拟机不能复制粘贴的解决办法&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

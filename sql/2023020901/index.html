@@ -6,7 +6,7 @@
 <title>sqlserver常用命令 – HA</title>
 <meta name="description" content="查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&amp;amp;lt;&amp;amp;gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, …">
 <meta name="created" content="2022-11-06T19:00:00+0800">
-<meta name="modified" content="2023-02-09T20:54:26+0800">
+<meta name="modified" content="2023-03-23T19:53:04+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "sqlserver常用命令",
     "datePublished": "2022-11-06T19:00:00+08:00",
-    "dateModified": "2023-02-09T20:54:26+08:00",
+    "dateModified": "2023-03-23T19:53:04+08:00",
     "url" : "https://deletefromuser.github.io/sql/2023020901/",
     "description": "查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid\u0026amp;lt;\u0026amp;gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, …",
     "keywords": ["sql","sqlserver"],
@@ -76,8 +76,8 @@
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/watch/">Watch</a></li>
-<li><a href="/bash/">Bash</a></li>
 <li><a href="/prob/">Prob</a></li>
+<li><a href="/bash/">Bash</a></li>
 <li><a href="/git/">Git</a></li>
 <li><a href="/sh/">SH</a></li>
 <li><a href="/c#/">C#</a></li>
@@ -114,16 +114,44 @@ Tags:
 <span style="color:#66d9ef">from</span> sys.dm_tran_locks;
 
 kill SPID;
+</code></pre></div><h3 id="日期">日期</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 当前时间
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> getdate();
+<span style="color:#75715e">-- 当前日期
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">CAST</span>( GETDATE() <span style="color:#66d9ef">AS</span> Date ) ;
+</code></pre></div><h3 id="复制表">复制表</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">INTO</span> ABC_1
+<span style="color:#66d9ef">FROM</span> ABC
+<span style="color:#75715e">-- 只复制表结构
+</span><span style="color:#75715e">-- where 1 = 2;
+</span></code></pre></div><h3 id="批量插入">批量插入</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">into</span> table2
+   <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+   <span style="color:#66d9ef">FROM</span> table1 t1
+   <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> (<span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">FROM</span> table2 t2 <span style="color:#66d9ef">WHERE</span> t2.id <span style="color:#f92672">=</span> t1.id);
+</code></pre></div><h3 id="在更新的时候使用join">在更新的时候使用join</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> R 
+<span style="color:#66d9ef">SET</span> R.status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span> 
+<span style="color:#66d9ef">FROM</span> dbo.ProductReviews <span style="color:#66d9ef">AS</span> R
+<span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> dbo.products <span style="color:#66d9ef">AS</span> P 
+       <span style="color:#66d9ef">ON</span> R.pid <span style="color:#f92672">=</span> P.id 
+<span style="color:#66d9ef">WHERE</span> R.id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;17190&#39;</span> 
+  <span style="color:#66d9ef">AND</span> P.shopkeeper <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;89137&#39;</span>;
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://www.cnblogs.com/lvdongjie/p/7327006.html">sqlserver 查询当前阻塞进程 并杀掉</a></li>
+<li><a href="https://stackoverflow.com/questions/59899979/how-to-batch-insert-sql-server">How to Batch INSERT SQL Server?</a></li>
+<li><a href="https://learnsql.com/cookbook/how-to-get-the-current-date-without-time-in-t-sql/">How to Get the Current Date (Without Time) in T-SQL</a></li>
+<li><a href="https://popsql.com/learn-sql/sql-server/how-to-duplicate-a-table-in-sql-server">How to Duplicate a Table in SQL Server</a></li>
+<li><a href="https://stackoverflow.com/questions/9588423/sql-server-inner-join-when-updating">SQL Server - inner join when updating</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-02-09 20:54<br>
+Updated: 2023-03-23 19:53<br>
 Created: 2022-11-06 19:00
 </p>
 </div>

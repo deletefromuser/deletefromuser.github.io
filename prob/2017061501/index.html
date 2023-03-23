@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>VirtualBox主机虚拟机共享剪贴板设置之后没用的问题 – HA</title>
+<title>VirtualBox使用问题汇总 – HA</title>
 <meta name="description" content="VirtualBox主机虚拟机共享剪贴板设置之后没用的问题 在设置中启用共享剪贴板之后，还要虚拟机本身安装增强功能之后才可以使用。 具体方法为：  在设置-存储-控制器中新增一个虚拟光驱，盘片置空即可， 开启虚拟机，进入之后，点击上方菜单栏设备-安装增强功能 第二步没有任何提示和消息，进入虚拟机文件管理器，找到光驱VirtualBox …">
 <meta name="created" content="2017-06-15T01:33:58+0800">
-<meta name="modified" content="2022-12-10T21:21:10+0800">
+<meta name="modified" content="2023-03-23T20:33:58+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="VirtualBox主机虚拟机共享剪贴板设置之后没用的问题">
+<meta property="og:title" content="VirtualBox使用问题汇总">
 <meta property="og:url" content="https://deletefromuser.github.io/prob/2017061501/">
 <meta property="og:type" content="article">
 
@@ -29,9 +29,9 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "VirtualBox主机虚拟机共享剪贴板设置之后没用的问题",
+    "headline": "VirtualBox使用问题汇总",
     "datePublished": "2017-06-15T01:33:58+08:00",
-    "dateModified": "2022-12-10T21:21:10+08:00",
+    "dateModified": "2023-03-23T20:33:58+08:00",
     "url" : "https://deletefromuser.github.io/prob/2017061501/",
     "description": "VirtualBox主机虚拟机共享剪贴板设置之后没用的问题 在设置中启用共享剪贴板之后，还要虚拟机本身安装增强功能之后才可以使用。 具体方法为：  在设置-存储-控制器中新增一个虚拟光驱，盘片置空即可， 开启虚拟机，进入之后，点击上方菜单栏设备-安装增强功能 第二步没有任何提示和消息，进入虚拟机文件管理器，找到光驱VirtualBox …",
     "mainEntityOfPage": {
@@ -75,8 +75,8 @@
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/watch/">Watch</a></li>
-<li><a href="/bash/">Bash</a></li>
 <li><a href="/prob/" class="active" aria-current="page">Prob</a></li>
+<li><a href="/bash/">Bash</a></li>
 <li><a href="/git/">Git</a></li>
 <li><a href="/sh/">SH</a></li>
 <li><a href="/c#/">C#</a></li>
@@ -88,13 +88,13 @@
 <main class="main layout__main">
 <article class="single-view single-view--prob">
 <header>
-<h1 class="title title-submitted">VirtualBox主机虚拟机共享剪贴板设置之后没用的问题</h1>
+<h1 class="title title-submitted">VirtualBox使用问题汇总</h1>
 <div class="submitted">
 <time class="created-date" datetime="2017-06-15T01:33:58&#43;08:00">2017-06-15 01:33</time>
 </div>
 </header>
 <div class="content">
-<p>VirtualBox主机虚拟机共享剪贴板设置之后没用的问题</p>
+<h3 id="virtualbox主机虚拟机共享剪贴板设置之后没用的问题">VirtualBox主机虚拟机共享剪贴板设置之后没用的问题</h3>
 <p>在设置中启用共享剪贴板之后，还要虚拟机本身安装增强功能之后才可以使用。</p>
 <p>具体方法为：</p>
 <ol>
@@ -102,21 +102,22 @@
 <li>开启虚拟机，进入之后，点击上方菜单栏设备-安装增强功能</li>
 <li>第二步没有任何提示和消息，进入虚拟机文件管理器，找到光驱VirtualBox Guest Additions，右键打开后，看到几个exe文件（有平台版本区别），找一个能运行的安装即可，随后重启电脑，end.</li>
 </ol>
-<p><strong>reference:</strong></p>
+<h3 id="在ubuntu上安装virtualbox-guest-additions">在ubuntu上安装VirtualBox Guest Additions</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd /mnt
+./VBoxLinuxAdditions.run
+reboot
+</code></pre></div><p><strong>reference:</strong></p>
 <ol>
-<li>
-<p><a href="http://blog.csdn.net/q1302182594/article/details/8720545">VirtualBox安装Windows XP——图解</a></p>
-</li>
-<li>
-<p><a href="http://jingyan.baidu.com/article/574c521917db806c8d9dc18c.html">VirtualBox主机与虚拟机不能复制粘贴的解决办法</a>(这个对我没用，我先设的这个再装的增强功能，不知道这个是不是必须的)</p>
-</li>
+<li><a href="http://blog.csdn.net/q1302182594/article/details/8720545">VirtualBox安装Windows XP——图解</a></li>
+<li><a href="http://jingyan.baidu.com/article/574c521917db806c8d9dc18c.html">VirtualBox主机与虚拟机不能复制粘贴的解决办法</a>(这个对我没用，我先设的这个再装的增强功能，不知道这个是不是必须的)</li>
+<li><a href="https://askubuntu.com/questions/22743/how-do-i-install-guest-additions-in-a-virtualbox-vm">VirtualBox主机与虚拟机不能复制粘贴的解决办法</a></li>
 </ol>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-10 21:21<br>
+Updated: 2023-03-23 20:33<br>
 Created: 2017-06-15 01:33
 </p>
 </div>

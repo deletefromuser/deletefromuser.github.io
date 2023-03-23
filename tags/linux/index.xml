@@ -25,20 +25,6 @@ sudo reboot
     </item>
     
     <item>
-      <title>ubuntu中在新命令行窗口执行命令</title>
-      <link>https://deletefromuser.github.io/bash/2022122101/</link>
-      <pubDate>Wed, 21 Dec 2022 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/bash/2022122101/</guid>
-      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gnome-terminal -x bash -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;echo &amp;#39;hello&amp;#39;; exec bash
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.delftstack.com/howto/linux/start-a-new-bash-session&#34;&gt;Start a New Terminal Session in Bash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened&#34;&gt;How do I open a terminal window and execute a command after the shell has opened?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
       <title>工作笔记2016-2021</title>
       <link>https://deletefromuser.github.io/tip/2022120601/</link>
       <pubDate>Tue, 06 Dec 2022 20:00:00 +0800</pubDate>
@@ -269,18 +255,27 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
     </item>
     
     <item>
-      <title>ubuntu中把desktop文件的程序固定到任务栏</title>
+      <title>ubuntu使用技巧</title>
       <link>https://deletefromuser.github.io/bash/2022120301/</link>
       <pubDate>Sat, 03 Dec 2022 20:00:00 +0800</pubDate>
       <guid>https://deletefromuser.github.io/bash/2022120301/</guid>
-      <description>&lt;ol&gt;
+      <description>&lt;h3 id=&#34;把desktop文件的程序固定到任务栏&#34;&gt;把desktop文件的程序固定到任务栏&lt;/h3&gt;
+&lt;ol&gt;
 &lt;li&gt;复制desktop文件到&lt;code&gt;~/.local/share/applications&lt;/code&gt;下，需要确保文件内的路径复制后仍然正确，改为绝对路径&lt;/li&gt;
 &lt;li&gt;命令行启动desktop&lt;/li&gt;
 &lt;li&gt;任务栏右键add to favorites&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;在新命令行窗口执行命令&#34;&gt;在新命令行窗口执行命令&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gnome-terminal -x bash -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;echo &amp;#39;hello&amp;#39;; exec bash&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;自动安装安全更新&#34;&gt;自动安装安全更新&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo apt-get install unattended-upgrades
+sudo dpkg-reconfigure --priority&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;low unattended-upgrades
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1026528/adding-custom-programs-to-favourites-of-ubuntu-dock&#34;&gt;Adding custom programs to favourites of Ubuntu Dock&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.delftstack.com/howto/linux/start-a-new-bash-session&#34;&gt;Start a New Terminal Session in Bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened&#34;&gt;How do I open a terminal window and execute a command after the shell has opened?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/AutomaticSecurityUpdates&#34;&gt;AutomaticSecurityUpdates&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -364,9 +364,37 @@ createtime date
 &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; sys.dm_tran_locks;
 
 kill SPID;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;日期&#34;&gt;日期&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 当前时间
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; getdate();
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 当前日期
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CAST&lt;/span&gt;( GETDATE() &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; Date ) ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; ABC_1
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; ABC
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 只复制表结构
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- where 1 = 2;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;批量插入&#34;&gt;批量插入&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; table2
+   &lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
+   &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; table1 t1
+   &lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;EXISTS&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; table2 t2 &lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; t2.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; t1.id);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;在更新的时候使用join&#34;&gt;在更新的时候使用join&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;UPDATE&lt;/span&gt; R 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; R.status &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt; 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; dbo.ProductReviews &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; R
+&lt;span style=&#34;color:#66d9ef&#34;&gt;INNER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;JOIN&lt;/span&gt; dbo.products &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; P 
+       &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; R.pid &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; P.id 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; R.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;17190&amp;#39;&lt;/span&gt; 
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;AND&lt;/span&gt; P.shopkeeper &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;89137&amp;#39;&lt;/span&gt;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/lvdongjie/p/7327006.html&#34;&gt;sqlserver 查询当前阻塞进程 并杀掉&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/59899979/how-to-batch-insert-sql-server&#34;&gt;How to Batch INSERT SQL Server?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learnsql.com/cookbook/how-to-get-the-current-date-without-time-in-t-sql/&#34;&gt;How to Get the Current Date (Without Time) in T-SQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://popsql.com/learn-sql/sql-server/how-to-duplicate-a-table-in-sql-server&#34;&gt;How to Duplicate a Table in SQL Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/9588423/sql-server-inner-join-when-updating&#34;&gt;SQL Server - inner join when updating&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
