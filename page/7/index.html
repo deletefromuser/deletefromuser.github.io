@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-02-18T20:00:00+0800">
-<meta name="modified" content="2023-03-12T22:45:38+0800">
+<meta name="modified" content="2023-03-23T20:33:58+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/git/">Git</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/c#/">C#</a></li>
@@ -90,19 +90,6 @@
 </div>
 </article>
 
-
-<article class="list-view list-view--c">
-<header>
-<h2 class="title title-submitted"><a href="/blog/c#/2017041001/">C#重命名文件夹下的文件</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-04-10T01:33:58&#43;08:00">2017-04-10 01:33</time>
-</div>
-
-</header>
-<div class="content">
-C#重命名文件夹下的文件 var files = System.IO.Directory.EnumerateFiles(desPath); if(formatStr.Length == 0) { formatStr = &#34;{0}.jpg&#34;; } int count = 1; foreach(String fileName in files) { if (new System.IO.FileInfo(fileName).Length &gt; 1024 * 75) { System.IO.File.Move(fileName, System.IO.Path.Combine(desPath, String.Format(formatStr, count)));//对文件进行重命名 count++; } } 判断系统
-</div>
-</article>
 
 <article class="list-view list-view--sql">
 <header>
@@ -218,6 +205,19 @@ Android Studio 函数描述弹出很慢的问题 找到版本对应的目录，�
 </header>
 <div class="content">
 Chrome Keep扩展运行出错的问题解决 主要问题还是扩展连接的网址被墙的原因，将其加入代理即可 *.googleapis.com *.googleusercontent.com //跟google翻译的扩展问题一样 //不同在于k
+</div>
+</article>
+
+<article class="list-view list-view--git">
+<header>
+<h2 class="title title-submitted"><a href="/blog/git/2017032303/">git 常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-23T03:33:58&#43;08:00">2017-03-23 03:33</time>
+</div>
+
+</header>
+<div class="content">
+常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 # 将某区间提交的变更应用到代码库 git cherry-pick -n bd61ad98^..ade56rq1 #
 </div>
 </article>
 

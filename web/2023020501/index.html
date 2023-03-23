@@ -75,8 +75,8 @@
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/git/">Git</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/c#/">C#</a></li>
@@ -194,7 +194,11 @@ docker compose down
 docker compose start
 <span style="color:#75715e"># 停止</span>
 docker compose stop
-
+</code></pre></div><p>在离线电脑上安装image</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 从有网络的机器上下载image包</span>
+docker save couchbase &gt; couchbase.tar
+<span style="color:#75715e"># 放到离线机器上安装</span>
+docker load &lt; couchbase.tar.xz
 </code></pre></div><h3 id="非root用户下运行docker">非root用户下运行docker</h3>
 <blockquote>
 <p>使用spring的maven插件build image的时候，需要当前用户有docker的运行权限</p>
@@ -221,6 +225,7 @@ docker ps
 <li><a href="https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container">How to show the run command of a docker container</a></li>
 <li><a href="https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container">Root password inside a Docker container - Stack Overflow</a></li>
 <li><a href="https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found">Docker - Ubuntu - bash: ping: command not found - Stack Overflow</a></li>
+<li><a href="https://stackoverflow.com/questions/37905763/how-do-i-download-docker-images-without-using-the-pull-command">How do I download Docker images without using the pull command?</a></li>
 </ul>
 
 </div>

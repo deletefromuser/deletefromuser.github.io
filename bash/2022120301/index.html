@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>ubuntu中把desktop文件的程序固定到任务栏 – HA</title>
-<meta name="description" content=" 复制desktop文件到~/.local/share/applications下，需要确保文件内的路径复制后仍然正确，改为绝对路径 命令行启动desktop 任务栏右键add to favorites  reference  Adding custom programs to favourites of Ubuntu Dock  ">
+<title>ubuntu使用技巧 – HA</title>
+<meta name="description" content="把desktop文件的程序固定到任务栏  复制desktop文件到~/.local/share/applications下，需要确保文件内的路径复制后仍然正确，改为绝对路径 命令行启动desktop 任务栏右键add to favorites  在新命令行窗口执行命令 gnome-terminal -x bash -c &amp;amp;#34;echo …">
 <meta name="created" content="2022-12-03T20:00:00+0800">
-<meta name="modified" content="2022-12-10T17:49:43+0800">
+<meta name="modified" content="2023-03-23T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="ubuntu中把desktop文件的程序固定到任务栏">
+<meta property="og:title" content="ubuntu使用技巧">
 <meta property="og:url" content="/blog/bash/2022120301/">
 <meta property="og:type" content="article">
 
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "ubuntu中把desktop文件的程序固定到任务栏",
+    "headline": "ubuntu使用技巧",
     "datePublished": "2022-12-03T20:00:00+08:00",
-    "dateModified": "2022-12-10T17:49:43+08:00",
+    "dateModified": "2023-03-23T20:00:00+08:00",
     "url" : "/blog/bash/2022120301/",
-    "description": " 复制desktop文件到~/.local/share/applications下，需要确保文件内的路径复制后仍然正确，改为绝对路径 命令行启动desktop 任务栏右键add to favorites  reference  Adding custom programs to favourites of Ubuntu Dock  ",
+    "description": "把desktop文件的程序固定到任务栏  复制desktop文件到~/.local/share/applications下，需要确保文件内的路径复制后仍然正确，改为绝对路径 命令行启动desktop 任务栏右键add to favorites  在新命令行窗口执行命令 gnome-terminal -x bash -c \u0026amp;#34;echo …",
     "keywords": ["linux","ubuntu"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -76,8 +76,8 @@
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
-<li><a href="/blog/bash/" class="active" aria-current="page">Bash</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/bash/" class="active" aria-current="page">Bash</a></li>
 <li><a href="/blog/git/">Git</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/c#/">C#</a></li>
@@ -89,7 +89,7 @@
 <main class="main layout__main">
 <article class="single-view single-view--bash">
 <header>
-<h1 class="title title-submitted">ubuntu中把desktop文件的程序固定到任务栏</h1>
+<h1 class="title title-submitted">ubuntu使用技巧</h1>
 <div class="submitted">
 <time class="created-date" datetime="2022-12-03T20:00:00&#43;08:00">2022-12-03 20:00</time>
 </div>
@@ -102,21 +102,30 @@ Tags:
 </div>
 </header>
 <div class="content">
+<h3 id="把desktop文件的程序固定到任务栏">把desktop文件的程序固定到任务栏</h3>
 <ol>
 <li>复制desktop文件到<code>~/.local/share/applications</code>下，需要确保文件内的路径复制后仍然正确，改为绝对路径</li>
 <li>命令行启动desktop</li>
 <li>任务栏右键add to favorites</li>
 </ol>
-<p><strong>reference</strong></p>
+<h3 id="在新命令行窗口执行命令">在新命令行窗口执行命令</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">gnome-terminal -x bash -c <span style="color:#e6db74">&#34;echo &#39;hello&#39;; exec bash&#34;</span>
+</code></pre></div><h3 id="自动安装安全更新">自动安装安全更新</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt-get install unattended-upgrades
+sudo dpkg-reconfigure --priority<span style="color:#f92672">=</span>low unattended-upgrades
+</code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://askubuntu.com/questions/1026528/adding-custom-programs-to-favourites-of-ubuntu-dock">Adding custom programs to favourites of Ubuntu Dock</a></li>
+<li><a href="https://www.delftstack.com/howto/linux/start-a-new-bash-session">Start a New Terminal Session in Bash</a></li>
+<li><a href="https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened">How do I open a terminal window and execute a command after the shell has opened?</a></li>
+<li><a href="https://help.ubuntu.com/community/AutomaticSecurityUpdates">AutomaticSecurityUpdates</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-10 17:49<br>
+Updated: 2023-03-23 20:00<br>
 Created: 2022-12-03 20:00
 </p>
 </div>

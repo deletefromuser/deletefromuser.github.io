@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/sql/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-02-11T19:00:00+0800">
-<meta name="modified" content="2023-02-12T16:34:53+0800">
+<meta name="modified" content="2023-03-23T19:53:04+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/git/">Git</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/c#/">C#</a></li>
@@ -123,7 +123,7 @@
 
 </header>
 <div class="content">
-查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; reference sqlserver 查询当前阻塞进程 并杀掉
+查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; 日期 -- 当前时间 select getdate(); -- 当前日期 SELECT CAST( GETDATE() AS Date ) ;
 </div>
 </article>
 
