@@ -327,6 +327,12 @@ docker ps
 &lt;td align=&#34;left&#34;&gt;本店招牌菜&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;斯坦利·艾林&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;20230327&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20230401&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;异类:不一样的成功启示录&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;马尔科姆•格拉德威尔&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20230403&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;ing&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1234,6 +1240,8 @@ startup &lt;span style=&#34;color:#66d9ef&#34;&gt;force&lt;/span&gt;;
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; New_Table_name &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Existing_table_Name; 
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 只复制表结构，不包含索引
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; New_Table_name &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Existing_table_Name; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;重命名表&#34;&gt;重命名表&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table_name&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;RENAME&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; new_table_name;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看正在运行中的会话sql锁表&#34;&gt;查看正在运行中的会话，sql，锁表&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; sid,
       serial&lt;span style=&#34;color:#f92672&#34;&gt;#&lt;/span&gt;,
@@ -1425,6 +1433,12 @@ createtime date
    &lt;span style=&#34;color:#66d9ef&#34;&gt;END&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;IF&lt;/span&gt;;
 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;END&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;在更新的时候使用join&#34;&gt;在更新的时候使用join&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;update&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; bonus 
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; employee_bonus b 
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;inner&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; employees e &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; b.employee_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; e.employee_id 
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; e.bonus_eligible &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;N&amp;#39;&lt;/span&gt;) t
+&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; t.bonus &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/linjiao/p/6394087.html&#34;&gt;ORACLE TRUNC()函数&lt;/a&gt;&lt;/li&gt;
@@ -1447,6 +1461,7 @@ createtime date
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/YuyuanNo1/p/9241754.html&#34;&gt;ORACLE WITH AS 用法,创建临时表&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.sqlines.com/oracle-to-mysql/null_order_by&#34;&gt;NULL Values in ORDER BY - Oracle to MySQL Migration&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://community.oracle.com/tech/developers/discussion/491165/how-to-insert-if-not-exist-update-when-exist-then-returning-the-value&#34;&gt;How to : Insert If Not Exist, Update When Exist, Then Returning the Value ?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2446764/update-statement-with-inner-join-on-oracle&#34;&gt;Update statement with inner join on Oracle&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
