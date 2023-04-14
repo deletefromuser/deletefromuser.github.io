@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2023-03-12T16:35:06+0800">
+<meta name="modified" content="2023-04-14T20:30:40+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2023-03-12T16:35:06+08:00",
+    "dateModified": "2023-04-14T20:30:40+08:00",
     "url" : "/blog/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
     "keywords": ["正则表达式","automation","linux","web","js","java","bash"],
@@ -185,6 +185,18 @@ yy 或者 Y
 P
 <span style="color:#75715e"># 在当前行后粘贴</span>
 p
+
+<span style="color:#75715e"># 注释多行代码</span>
+Ctrl + V
+使用箭头选择多行
+Shift + i
+输入# 
+ESC + ESC
+
+<span style="color:#75715e"># 去掉注释</span>
+Ctrl + V
+使用箭头选择多行
+x
 </code></pre></div><h3 id="find命令查找文件">find命令查找文件</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 列出所有文件</span>
 find . -type f
@@ -334,7 +346,7 @@ tar -zxvf &lt;tar filename&gt; &lt;file you want to extract&gt;
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-03-12 16:35<br>
+Updated: 2023-04-14 20:30<br>
 Created: 2022-12-06 20:00
 </p>
 </div>

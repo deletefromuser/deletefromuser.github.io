@@ -107,6 +107,18 @@ yy 或者 Y
 P
 &lt;span style=&#34;color:#75715e&#34;&gt;# 在当前行后粘贴&lt;/span&gt;
 p
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 注释多行代码&lt;/span&gt;
+Ctrl + V
+使用箭头选择多行
+Shift + i
+输入# 
+ESC + ESC
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 去掉注释&lt;/span&gt;
+Ctrl + V
+使用箭头选择多行
+x
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;find命令查找文件&#34;&gt;find命令查找文件&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 列出所有文件&lt;/span&gt;
 find . -type f
