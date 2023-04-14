@@ -117,12 +117,12 @@ reset --hard HEAD~2
 <span style="color:#75715e"># 取消某个版本的修改</span>
 git revert &lt;commit hash&gt;
 </code></pre></div><h3 id="git-將文件轉移位置">git 將文件轉移位置</h3>
-<p><code>git mv 2017032003.md csharp</code></p>
-<h3 id="查看某一次提交的文件列表">查看某一次提交的文件列表</h3>
-<p><code>git show --pretty=&quot;&quot; --name-only bd61ad98</code></p>
-<h3 id="查看某一个文件的提交历史">查看某一个文件的提交历史</h3>
-<p><code>git log --follow -- filename</code></p>
-<h3 id="同时在多个分支工作">同时在多个分支工作</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git mv 2017032003.md csharp
+</code></pre></div><h3 id="查看某一次提交的文件列表">查看某一次提交的文件列表</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git show --pretty<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> --name-only bd61ad98
+</code></pre></div><h3 id="查看某一个文件的提交历史">查看某一个文件的提交历史</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git log --follow -- filename
+</code></pre></div><h3 id="同时在多个分支工作">同时在多个分支工作</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git worktree add -b hotfix ../hotfix
 git worktree list
 pushd ../hotfix
@@ -131,8 +131,10 @@ popd
 git worktree remove ../hotfix
 git worktree prune
 </code></pre></div><h3 id="查看stash的文件具体内容">查看stash的文件具体内容</h3>
-<p><code>git stash show -p</code></p>
-<h3 id="tortoisegit也是很好用的">TortoiseGit也是很好用的</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git stash show -p
+</code></pre></div><h3 id="stash单个文件">stash单个文件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git stash -- filename.ext
+</code></pre></div><h3 id="tortoisegit也是很好用的">TortoiseGit也是很好用的</h3>
 <blockquote>
 <p>生成patch，应用patch，以及查看diff，blame，gui还是很好用的</p>
 </blockquote>
@@ -145,6 +147,7 @@ git worktree prune
 <li><a href="https://www.youtube.com/watch?v=s4BTvj1ZVLM">How to Use Git Worktree | Checkout Multiple Git Branches at Once</a></li>
 <li><a href="https://stackoverflow.com/questions/10725729/see-whats-in-a-stash-without-applying-it">See what&rsquo;s in a stash without applying it</a></li>
 <li><a href="https://stackoverflow.com/questions/1670970/how-to-cherry-pick-multiple-commits">How to cherry-pick multiple commits</a></li>
+<li><a href="https://stackoverflow.com/questions/12420924/stash-just-a-single-file">Stash just a single file</a></li>
 </ol>
 
 </div>
