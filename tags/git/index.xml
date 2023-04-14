@@ -30,12 +30,12 @@ reset --hard HEAD~2
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取消某个版本的修改&lt;/span&gt;
 git revert &amp;lt;commit hash&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-將文件轉移位置&#34;&gt;git 將文件轉移位置&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;git mv 2017032003.md csharp&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;查看某一次提交的文件列表&#34;&gt;查看某一次提交的文件列表&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;git show --pretty=&amp;quot;&amp;quot; --name-only bd61ad98&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;查看某一个文件的提交历史&#34;&gt;查看某一个文件的提交历史&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;git log --follow -- filename&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;同时在多个分支工作&#34;&gt;同时在多个分支工作&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git mv 2017032003.md csharp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看某一次提交的文件列表&#34;&gt;查看某一次提交的文件列表&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git show --pretty&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; --name-only bd61ad98
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看某一个文件的提交历史&#34;&gt;查看某一个文件的提交历史&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git log --follow -- filename
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;同时在多个分支工作&#34;&gt;同时在多个分支工作&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git worktree add -b hotfix ../hotfix
 git worktree list
 pushd ../hotfix
@@ -44,8 +44,10 @@ popd
 git worktree remove ../hotfix
 git worktree prune
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看stash的文件具体内容&#34;&gt;查看stash的文件具体内容&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;git stash show -p&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;tortoisegit也是很好用的&#34;&gt;TortoiseGit也是很好用的&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git stash show -p
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;stash单个文件&#34;&gt;stash单个文件&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git stash -- filename.ext
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;tortoisegit也是很好用的&#34;&gt;TortoiseGit也是很好用的&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;生成patch，应用patch，以及查看diff，blame，gui还是很好用的&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -58,6 +60,7 @@ git worktree prune
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=s4BTvj1ZVLM&#34;&gt;How to Use Git Worktree | Checkout Multiple Git Branches at Once&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/10725729/see-whats-in-a-stash-without-applying-it&#34;&gt;See what&amp;rsquo;s in a stash without applying it&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1670970/how-to-cherry-pick-multiple-commits&#34;&gt;How to cherry-pick multiple commits&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/12420924/stash-just-a-single-file&#34;&gt;Stash just a single file&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
