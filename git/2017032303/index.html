@@ -6,7 +6,7 @@
 <title>git 常用命令 – HA</title>
 <meta name="description" content="常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 # 将某区间提交的变更应用到代码库 git cherry-pick -n bd61ad98^..ade56rq1 # 强制回 …">
 <meta name="created" content="2017-03-23T03:33:58+0800">
-<meta name="modified" content="2022-12-10T20:00:00+0800">
+<meta name="modified" content="2023-04-20T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "git 常用命令",
     "datePublished": "2017-03-23T03:33:58+08:00",
-    "dateModified": "2022-12-10T20:00:00+08:00",
+    "dateModified": "2023-04-20T20:00:00+08:00",
     "url" : "/blog/git/2017032303/",
     "description": "常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 # 将某区间提交的变更应用到代码库 git cherry-pick -n bd61ad98^..ade56rq1 # 强制回 …",
     "keywords": ["git"],
@@ -78,9 +78,9 @@
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/git/" class="active" aria-current="page">Git</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/c#/">C#</a></li>
+<li><a href="/blog/git/" class="active" aria-current="page">Git</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
 </ul>
 </nav>
@@ -138,7 +138,17 @@ git worktree prune
 <blockquote>
 <p>生成patch，应用patch，以及查看diff，blame，gui还是很好用的</p>
 </blockquote>
-<p><strong>reference</strong></p>
+<h3 id="删除-git-远程仓库中忘记加入-gitignore-的资源">删除 git 远程仓库中忘记加入 .gitignore 的资源</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git rm --cached remove_file
+<span style="color:#75715e"># add file to gitignore`</span>
+git add .gitignore<span style="color:#e6db74">`</span>
+git commit -m <span style="color:#e6db74">&#34;Excluding&#34;</span><span style="color:#e6db74">`</span>
+</code></pre></div><h3 id="clone时指定用户名">clone时指定用户名</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://username@github.com/username/repository.git
+
+<span style="color:#75715e"># 使用token进行clone(其实跟上面没有本质区别，token本来就是用来代替密码的)</span>
+git clone https://username:token@github.com/username/repository.git
+</code></pre></div><p><strong>reference</strong></p>
 <ol>
 <li><a href="https://githowto.com/moving_files">20. Moving files</a></li>
 <li><a href="https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit">How do I list all the files in a commit?</a></li>
@@ -148,13 +158,16 @@ git worktree prune
 <li><a href="https://stackoverflow.com/questions/10725729/see-whats-in-a-stash-without-applying-it">See what&rsquo;s in a stash without applying it</a></li>
 <li><a href="https://stackoverflow.com/questions/1670970/how-to-cherry-pick-multiple-commits">How to cherry-pick multiple commits</a></li>
 <li><a href="https://stackoverflow.com/questions/12420924/stash-just-a-single-file">Stash just a single file</a></li>
+<li><a href="https://stackoverflow.com/a/42141656/19120213">Git: How to remove file from index without deleting files from any repository</a></li>
+<li><a href="https://stackoverflow.com/a/10054470/19120213">How do I provide a username and password when running &ldquo;git clone git@remote.git&rdquo;?</a></li>
+<li><a href="https://username:token@github.com/username/repository.git">How do I provide a username and password when running &ldquo;git clone git@remote.git&rdquo;?</a></li>
 </ol>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-10 20:00<br>
+Updated: 2023-04-20 20:00<br>
 Created: 2017-03-23 03:33
 </p>
 </div>

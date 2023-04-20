@@ -4,7 +4,7 @@
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2023-04-15T21:12:29+08:00</lastmod>
+    <lastmod>2023-04-20T20:00:00+08:00</lastmod>
   </url>
   
   <url>
@@ -54,7 +54,7 @@
   
   <url>
     <loc>/blog/tags/</loc>
-    <lastmod>2023-04-14T20:34:44+08:00</lastmod>
+    <lastmod>2023-04-20T20:00:00+08:00</lastmod>
   </url>
   
   <url>
@@ -288,16 +288,6 @@
   </url>
   
   <url>
-    <loc>/blog/git/</loc>
-    <lastmod>2022-12-10T20:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/git/2022071001/</loc>
-    <lastmod>2022-07-10T17:03:07+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/prob/2022070801/</loc>
     <lastmod>2022-12-10T21:21:10+08:00</lastmod>
   </url>
@@ -508,13 +498,18 @@
   </url>
   
   <url>
+    <loc>/blog/git/</loc>
+    <lastmod>2023-04-20T20:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/tags/git/</loc>
-    <lastmod>2022-12-10T20:00:00+08:00</lastmod>
+    <lastmod>2023-04-20T20:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/git/2017032303/</loc>
-    <lastmod>2022-12-10T20:00:00+08:00</lastmod>
+    <lastmod>2023-04-20T20:00:00+08:00</lastmod>
   </url>
   
   <url>

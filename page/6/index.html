@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-02-18T20:00:00+0800">
-<meta name="modified" content="2023-04-15T21:12:29+0800">
+<meta name="modified" content="2023-04-20T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -75,9 +75,9 @@
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/git/">Git</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/c#/">C#</a></li>
+<li><a href="/blog/git/">Git</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
 </ul>
 </nav>
@@ -90,19 +90,6 @@
 </div>
 </article>
 
-
-<article class="list-view list-view--watch">
-<header>
-<h2 class="title title-submitted"><a href="/blog/watch/2019040101/">2019年2季度</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2019-04-01T12:00:00&#43;08:00">2019-04-01 12:00</time>
-</div>
-
-</header>
-<div class="content">
-动画 ワンパンマン 第2期 鬼滅の刃 剧集 Counterpart
-</div>
-</article>
 
 <article class="list-view list-view--tip">
 <header>
@@ -218,6 +205,19 @@ Java 将对象序列化为字符串 读取字符串反序列化为对象 import 
 </header>
 <div class="content">
 C#重命名文件夹下的文件 var files = System.IO.Directory.EnumerateFiles(desPath); if(formatStr.Length == 0) { formatStr = &#34;{0}.jpg&#34;; } int count = 1; foreach(String fileName in files) { if (new System.IO.FileInfo(fileName).Length &gt; 1024 * 75) { System.IO.File.Move(fileName, System.IO.Path.Combine(desPath, String.Format(formatStr, count)));//对文件进行重命名 count++; } } 判断系统
+</div>
+</article>
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2017040501/">sqlserver 修改主键约束</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-04-05T01:33:58&#43;08:00">2017-04-05 01:33</time>
+</div>
+
+</header>
+<div class="content">
+sqlserver 修改主键约束 sp_help book if exists (select 1 from sysobjects where name = &#39;PK__book__AFEBF550AD55A29F&#39;) begin print &#39;pk exists&#39; alter table book drop constraint PK__book__AFEBF550AD55A29F end alter table book add constraint PK__book primary key clustered ( book_name asc, id asc ) reference SQL Server 创建表 添加主键 添加列常用SQL语句
 </div>
 </article>
 
