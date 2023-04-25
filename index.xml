@@ -36,7 +36,7 @@
       <description>&lt;h3 id=&#34;前提&#34;&gt;前提&lt;/h3&gt;
 &lt;p&gt;视频文件内容必须统一，一般是剧集类的&lt;/p&gt;
 &lt;h3 id=&#34;打开mkvtoolnix选择某一个视频文件找到不要的字幕轨道取消选择导出optionsjson到视频所在文件夹&#34;&gt;打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出options.json到视频所在文件夹&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://deletefromuser.github.io/images/2023042503_01.jpg&#34; alt=&#34;导出options.json&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/2023042503_01.jpg&#34; alt=&#34;导出options.json&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;编辑optionsjson&#34;&gt;编辑options.json&lt;/h3&gt;
 &lt;p&gt;删除跟刚才导入文件有关的参数&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;  &amp;quot;--track-name&amp;quot;,
