@@ -329,7 +329,12 @@ createtime date
         &lt;span style=&#34;color:#66d9ef&#34;&gt;inner&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; employees e &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; b.employee_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; e.employee_id 
         &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; e.bonus_eligible &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;N&amp;#39;&lt;/span&gt;) t
 &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; t.bonus &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;sql-developer使用&#34;&gt;sql developer使用&lt;/h3&gt;
+&lt;h4 id=&#34;快捷键&#34;&gt;快捷键&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ctrl+shift+D 复制行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/linjiao/p/6394087.html&#34;&gt;ORACLE TRUNC()函数&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/jijm123/p/15763010.html&#34;&gt;Oracle：trunc()函数简介&lt;/a&gt;&lt;/li&gt;
@@ -352,6 +357,7 @@ createtime date
 &lt;li&gt;&lt;a href=&#34;http://www.sqlines.com/oracle-to-mysql/null_order_by&#34;&gt;NULL Values in ORDER BY - Oracle to MySQL Migration&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://community.oracle.com/tech/developers/discussion/491165/how-to-insert-if-not-exist-update-when-exist-then-returning-the-value&#34;&gt;How to : Insert If Not Exist, Update When Exist, Then Returning the Value ?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2446764/update-statement-with-inner-join-on-oracle&#34;&gt;Update statement with inner join on Oracle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/74189667/sql-developer-shortcut-of-duplicate-line&#34;&gt;SQL developer shortcut of duplicate line&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

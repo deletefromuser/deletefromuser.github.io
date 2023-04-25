@@ -212,6 +212,14 @@ docker network connect mysql_network spring-cloud-config-server_1
 docker network list
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络详细，找到gateway地址，加上3306即可访问mysql&lt;/span&gt;
 docker network inspect mysql_network
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在docker实例中访问host&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 创建实例时添加下面的参数，即可在实例内通过host.docker.internal访问host&lt;/span&gt;
+--add-host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;host.docker.internal:host-gateway
+&lt;span style=&#34;color:#75715e&#34;&gt;# 使用docker compose的时候&lt;/span&gt;
+  servicename:
+    extra_hosts:
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host.docker.internal:host-gateway&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看实例&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 正在运行中的&lt;/span&gt;
 docker ps
@@ -1458,7 +1466,12 @@ createtime date
         &lt;span style=&#34;color:#66d9ef&#34;&gt;inner&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; employees e &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; b.employee_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; e.employee_id 
         &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; e.bonus_eligible &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;N&amp;#39;&lt;/span&gt;) t
 &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; t.bonus &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;sql-developer使用&#34;&gt;sql developer使用&lt;/h3&gt;
+&lt;h4 id=&#34;快捷键&#34;&gt;快捷键&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ctrl+shift+D 复制行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/linjiao/p/6394087.html&#34;&gt;ORACLE TRUNC()函数&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/jijm123/p/15763010.html&#34;&gt;Oracle：trunc()函数简介&lt;/a&gt;&lt;/li&gt;
@@ -1481,6 +1494,7 @@ createtime date
 &lt;li&gt;&lt;a href=&#34;http://www.sqlines.com/oracle-to-mysql/null_order_by&#34;&gt;NULL Values in ORDER BY - Oracle to MySQL Migration&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://community.oracle.com/tech/developers/discussion/491165/how-to-insert-if-not-exist-update-when-exist-then-returning-the-value&#34;&gt;How to : Insert If Not Exist, Update When Exist, Then Returning the Value ?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2446764/update-statement-with-inner-join-on-oracle&#34;&gt;Update statement with inner join on Oracle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/74189667/sql-developer-shortcut-of-duplicate-line&#34;&gt;SQL developer shortcut of duplicate line&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1965,6 +1979,48 @@ kill SPID;
     </item>
     
     <item>
+      <title>比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</title>
+      <link>https://deletefromuser.github.io/bash/2023041801/</link>
+      <pubDate>Fri, 24 Apr 2020 21:02:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/bash/2023041801/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;chatgpt确实好用，比自己吭哧吭哧google快多了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#脚本所在目录&lt;/span&gt;
+rootDir&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;cd &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;dirname &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;BASH_SOURCE[0]&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; pwd&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 输出服务器ip&lt;/span&gt;
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--- &lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;hostname -i&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;: &lt;/span&gt;$rootDir&lt;span style=&#34;color:#e6db74&#34;&gt; ---&amp;#34;&lt;/span&gt;
+
+dir1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$rootDir/old
+dir2&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$rootDir/new
+
+find $dir1 -type f | &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; read file; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+    filename&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file#$dir1&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -e $dir2/$filename &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+        count1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;grep -cve &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;^\s*$&amp;#39;&lt;/span&gt; $file&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+        count2&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;grep -cve &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;^\s*$&amp;#39;&lt;/span&gt; $dir2/$filename&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; $count1 -ne $count2 &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+            echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;NG &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;filename&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; 非空行数不一致 old-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;count1&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; : new-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;count2&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
+            echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;OK &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;filename&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ssh执行远程服务器上的脚本&#34;&gt;ssh执行远程服务器上的脚本&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 生成ssh密钥&lt;/span&gt;
+ssh-keygen
+&lt;span style=&#34;color:#75715e&#34;&gt;# 连接目标服务器&lt;/span&gt;
+ssh-copy-id userid@hostname
+&lt;span style=&#34;color:#75715e&#34;&gt;# 上一步登陆成功后即可执行&lt;/span&gt;
+ssh user@remote-server /path/to/script.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/241588/how-to-automate-ssh-login-with-password&#34;&gt;How to automate SSH login with password?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>2020年2季度</title>
       <link>https://deletefromuser.github.io/watch/2020040101/</link>
       <pubDate>Wed, 01 Apr 2020 12:00:00 +0800</pubDate>
@@ -2168,9 +2224,9 @@ service tomcat restart
     
     <item>
       <title>eclipse中一键全部展开目录树</title>
-      <link>https://deletefromuser.github.io/tip/20190120/</link>
+      <link>https://deletefromuser.github.io/tip/2019012001/</link>
       <pubDate>Sun, 20 Jan 2019 01:33:58 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/tip/20190120/</guid>
+      <guid>https://deletefromuser.github.io/tip/2019012001/</guid>
       <description>&lt;h1 id=&#34;eclipse中一键全部展开目录树&#34;&gt;eclipse中一键全部展开目录树&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;在package explorer中使用&lt;code&gt;*&lt;/code&gt;能展开全部的目录树&lt;/li&gt;

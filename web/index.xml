@@ -109,6 +109,14 @@ docker network connect mysql_network spring-cloud-config-server_1
 docker network list
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络详细，找到gateway地址，加上3306即可访问mysql&lt;/span&gt;
 docker network inspect mysql_network
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在docker实例中访问host&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 创建实例时添加下面的参数，即可在实例内通过host.docker.internal访问host&lt;/span&gt;
+--add-host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;host.docker.internal:host-gateway
+&lt;span style=&#34;color:#75715e&#34;&gt;# 使用docker compose的时候&lt;/span&gt;
+  servicename:
+    extra_hosts:
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host.docker.internal:host-gateway&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看实例&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 正在运行中的&lt;/span&gt;
 docker ps

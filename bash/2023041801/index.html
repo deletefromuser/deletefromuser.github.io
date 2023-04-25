@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致 – HA</title>
+<meta name="description" content=" chatgpt确实好用，比自己吭哧吭哧google快多了  #脚本所在目录 rootDir=$(cd &amp;amp;#34;$(dirname &amp;amp;#34;${BASH_SOURCE[0]}&amp;amp;#34;)&amp;amp;#34; &amp;amp;amp;&amp;amp;amp; pwd) # 输出服务器ip echo &amp;amp;#34;--- $(hostname -i): …">
+<meta name="created" content="2020-04-24T21:02:00+0800">
+<meta name="modified" content="2023-04-25T19:46:45+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致">
+<meta property="og:url" content="https://deletefromuser.github.io/bash/2023041801/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/bash/2023041801/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致",
+    "datePublished": "2020-04-24T21:02:00+08:00",
+    "dateModified": "2023-04-25T19:46:45+08:00",
+    "url" : "https://deletefromuser.github.io/bash/2023041801/",
+    "description": " chatgpt确实好用，比自己吭哧吭哧google快多了  #脚本所在目录 rootDir=$(cd \u0026amp;#34;$(dirname \u0026amp;#34;${BASH_SOURCE[0]}\u0026amp;#34;)\u0026amp;#34; \u0026amp;amp;\u0026amp;amp; pwd) # 输出服务器ip echo \u0026amp;#34;--- $(hostname -i): …",
+    "keywords": ["bash","automation"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/bash/" class="active" aria-current="page">Bash</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/c#/">C#</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--bash">
+<header>
+<h1 class="title title-submitted">比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</h1>
+<div class="submitted">
+<time class="created-date" datetime="2020-04-24T21:02:00&#43;08:00">2020-04-24 21:02</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/automation/">automation</a></li>
+<li><a href="https://deletefromuser.github.io/tags/bash/">bash</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<blockquote>
+<p>chatgpt确实好用，比自己吭哧吭哧google快多了</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#脚本所在目录</span>
+rootDir<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cd <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>dirname <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASH_SOURCE[0]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;&amp;</span> pwd<span style="color:#66d9ef">)</span>
+
+<span style="color:#75715e"># 输出服务器ip</span>
+echo <span style="color:#e6db74">&#34;--- </span><span style="color:#66d9ef">$(</span>hostname -i<span style="color:#66d9ef">)</span><span style="color:#e6db74">: </span>$rootDir<span style="color:#e6db74"> ---&#34;</span>
+
+dir1<span style="color:#f92672">=</span>$rootDir/old
+dir2<span style="color:#f92672">=</span>$rootDir/new
+
+find $dir1 -type f | <span style="color:#66d9ef">while</span> read file; <span style="color:#66d9ef">do</span>
+    filename<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>file#$dir1<span style="color:#e6db74">}</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -e $dir2/$filename <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+        count1<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>grep -cve <span style="color:#e6db74">&#39;^\s*$&#39;</span> $file<span style="color:#66d9ef">)</span>
+        count2<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>grep -cve <span style="color:#e6db74">&#39;^\s*$&#39;</span> $dir2/$filename<span style="color:#66d9ef">)</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $count1 -ne $count2 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+            echo <span style="color:#e6db74">&#34;NG </span><span style="color:#e6db74">${</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74"> 非空行数不一致 old-</span><span style="color:#e6db74">${</span>count1<span style="color:#e6db74">}</span><span style="color:#e6db74"> : new-</span><span style="color:#e6db74">${</span>count2<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+        <span style="color:#66d9ef">else</span>
+            echo <span style="color:#e6db74">&#34;OK </span><span style="color:#e6db74">${</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+        <span style="color:#66d9ef">fi</span>
+    <span style="color:#66d9ef">fi</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div><h3 id="ssh执行远程服务器上的脚本">ssh执行远程服务器上的脚本</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 生成ssh密钥</span>
+ssh-keygen
+<span style="color:#75715e"># 连接目标服务器</span>
+ssh-copy-id userid@hostname
+<span style="color:#75715e"># 上一步登陆成功后即可执行</span>
+ssh user@remote-server /path/to/script.sh
+</code></pre></div><ul>
+<li><a href="https://serverfault.com/questions/241588/how-to-automate-ssh-login-with-password">How to automate SSH login with password?</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-04-25 19:46<br>
+Created: 2020-04-24 21:02
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
