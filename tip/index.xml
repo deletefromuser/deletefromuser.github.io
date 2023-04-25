@@ -314,9 +314,9 @@ wget -O dirs.zip https://file.io/lhQ7adehy7xc
     
     <item>
       <title>eclipse中一键全部展开目录树</title>
-      <link>/blog/tip/20190120/</link>
+      <link>/blog/tip/2019012001/</link>
       <pubDate>Sun, 20 Jan 2019 01:33:58 +0800</pubDate>
-      <guid>/blog/tip/20190120/</guid>
+      <guid>/blog/tip/2019012001/</guid>
       <description>&lt;h1 id=&#34;eclipse中一键全部展开目录树&#34;&gt;eclipse中一键全部展开目录树&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;在package explorer中使用&lt;code&gt;*&lt;/code&gt;能展开全部的目录树&lt;/li&gt;

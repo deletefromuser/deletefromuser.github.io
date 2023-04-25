@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-02-18T20:00:00+0800">
-<meta name="modified" content="2023-04-20T20:00:00+0800">
+<meta name="modified" content="2023-04-25T19:46:45+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -90,6 +90,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2017040501/">sqlserver 修改主键约束</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-04-05T01:33:58&#43;08:00">2017-04-05 01:33</time>
+</div>
+
+</header>
+<div class="content">
+sqlserver 修改主键约束 sp_help book if exists (select 1 from sysobjects where name = &#39;PK__book__AFEBF550AD55A29F&#39;) begin print &#39;pk exists&#39; alter table book drop constraint PK__book__AFEBF550AD55A29F end alter table book add constraint PK__book primary key clustered ( book_name asc, id asc ) reference SQL Server 创建表 添加主键 添加列常用SQL语句
+</div>
+</article>
 
 <article class="list-view list-view--watch">
 <header>
@@ -205,19 +218,6 @@ Chrome Keep扩展运行出错的问题解决 主要问题还是扩展连接的�
 </header>
 <div class="content">
 常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 # 将某区间提交的变更应用到代码库 git cherry-pick -n bd61ad98^..ade56rq1 #
-</div>
-</article>
-
-<article class="list-view list-view--c">
-<header>
-<h2 class="title title-submitted"><a href="/blog/c#/2017032302/">C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-23T02:33:58&#43;08:00">2017-03-23 02:33</time>
-</div>
-
-</header>
-<div class="content">
-C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋 static class StringExtension { /// &lt;summary&gt; /// 將字符串包裝成數據庫查詢時需要的樣式 /// 一定程度上防止SQL注入？(我覺得可以達到這個
 </div>
 </article>
 
