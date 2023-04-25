@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>使用nginx和ssh tunneling实现通过公网ip访问本地计算机 – HA</title>
+<meta name="description" content="假设本地计算机上，已开发的应用可通过http://localhost:19080来访问 在有公网ip的服务器上添加下列配置后部署nginx（监听19001端口，收到请求后发送到19000端口） server { listen 19001; location / { proxy_pass http://localhost:19000; } …">
+<meta name="created" content="2023-04-25T20:00:00+0800">
+<meta name="modified" content="2023-04-25T19:46:45+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="使用nginx和ssh tunneling实现通过公网ip访问本地计算机">
+<meta property="og:url" content="https://deletefromuser.github.io/web/2023042502/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/web/2023042502/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "使用nginx和ssh tunneling实现通过公网ip访问本地计算机",
+    "datePublished": "2023-04-25T20:00:00+08:00",
+    "dateModified": "2023-04-25T19:46:45+08:00",
+    "url" : "https://deletefromuser.github.io/web/2023042502/",
+    "description": "假设本地计算机上，已开发的应用可通过http://localhost:19080来访问 在有公网ip的服务器上添加下列配置后部署nginx（监听19001端口，收到请求后发送到19000端口） server { listen 19001; location / { proxy_pass http://localhost:19000; } …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/web/" class="active" aria-current="page">Web</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/c#/">C#</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--web">
+<header>
+<h1 class="title title-submitted">使用nginx和ssh tunneling实现通过公网ip访问本地计算机</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-04-25T20:00:00&#43;08:00">2023-04-25 20:00</time>
+</div>
+</header>
+<div class="content">
+<h4 id="假设本地计算机上已开发的应用可通过httplocalhost19080来访问">假设本地计算机上，已开发的应用可通过http://localhost:19080来访问</h4>
+<h4 id="在有公网ip的服务器上添加下列配置后部署nginx监听19001端口收到请求后发送到19000端口">在有公网ip的服务器上添加下列配置后部署nginx（监听19001端口，收到请求后发送到19000端口）</h4>
+<pre><code class="language-nginxconf" data-lang="nginxconf">server {
+    listen       19001;
+    location / {
+        proxy_pass http://localhost:19000;
+    }
+}
+</code></pre><h4 id="在本地计算机上设置ssh-tunneling">在本地计算机上设置SSH tunneling</h4>
+<h4 id="与远程服务器的19000端口建立连接本地在19080端口响应">与远程服务器的19000端口建立连接，本地在19080端口响应</h4>
+<p>ssh -f -N -T -R 19000:localhost:19080 -p &lsquo;22&rsquo; &lsquo;username@remote&rsquo;</p>
+<h4 id="配置完成后即可访问">配置完成后即可访问</h4>
+<p><code>http://远程服务器ip:19001/</code></p>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://medium.com/the-software-reliever/expose-localhost-to-the-public-www-with-a-vps-nginx-and-ssh-tunneling-daefc0275757">Expose localhost to the public WWW with a VPS, nginx and SSH tunneling</a></li>
+<li><a href="https://dev.to/elwin013/how-to-expose-local-service-using-nginx-and-ssh-1jmj">How to expose local service using nginx and SSH</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-04-25 19:46<br>
+Created: 2023-04-25 20:00
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
