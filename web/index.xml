@@ -6,8 +6,53 @@
     <description>Recent content in Web on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Feb 2023 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Apr 2023 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>spring boot开发记录</title>
+      <link>/blog/web/2023042501/</link>
+      <pubDate>Tue, 25 Apr 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/web/2023042501/</guid>
+      <description>&lt;h3 id=&#34;热部署&#34;&gt;热部署&lt;/h3&gt;
+&lt;p&gt;maven中添加下面的依赖&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-devtools&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;optional&amp;gt;&lt;/span&gt;true&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/optional&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/46144346/hot-swapping-in-spring-boot-in-visual-studio-code&#34;&gt;Hot swapping in Spring Boot in Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用nginx和ssh tunneling实现通过公网ip访问本地计算机</title>
+      <link>/blog/web/2023042502/</link>
+      <pubDate>Tue, 25 Apr 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/web/2023042502/</guid>
+      <description>&lt;h4 id=&#34;假设本地计算机上已开发的应用可通过httplocalhost19080来访问&#34;&gt;假设本地计算机上，已开发的应用可通过http://localhost:19080来访问&lt;/h4&gt;
+&lt;h4 id=&#34;在有公网ip的服务器上添加下列配置后部署nginx监听19001端口收到请求后发送到19000端口&#34;&gt;在有公网ip的服务器上添加下列配置后部署nginx（监听19001端口，收到请求后发送到19000端口）&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-nginxconf&#34; data-lang=&#34;nginxconf&#34;&gt;server {
+    listen       19001;
+    location / {
+        proxy_pass http://localhost:19000;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;在本地计算机上设置ssh-tunneling&#34;&gt;在本地计算机上设置SSH tunneling&lt;/h4&gt;
+&lt;h4 id=&#34;与远程服务器的19000端口建立连接本地在19080端口响应&#34;&gt;与远程服务器的19000端口建立连接，本地在19080端口响应&lt;/h4&gt;
+&lt;p&gt;ssh -f -N -T -R 19000:localhost:19080 -p &amp;lsquo;22&amp;rsquo; &amp;lsquo;username@remote&amp;rsquo;&lt;/p&gt;
+&lt;h4 id=&#34;配置完成后即可访问&#34;&gt;配置完成后即可访问&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;http://远程服务器ip:19001/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/the-software-reliever/expose-localhost-to-the-public-www-with-a-vps-nginx-and-ssh-tunneling-daefc0275757&#34;&gt;Expose localhost to the public WWW with a VPS, nginx and SSH tunneling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dev.to/elwin013/how-to-expose-local-service-using-nginx-and-ssh-1jmj&#34;&gt;How to expose local service using nginx and SSH&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>使用OBS虚拟摄像头</title>

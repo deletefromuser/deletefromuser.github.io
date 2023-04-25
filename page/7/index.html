@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-02-18T20:00:00+0800">
-<meta name="modified" content="2023-04-25T19:46:45+0800">
+<meta name="created" content="2023-04-25T20:00:00+0800">
+<meta name="modified" content="2023-04-25T22:52:29+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,9 +66,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
@@ -90,6 +90,45 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2017042601/">判断日期是否是工作日(sqlserver)，判断一个月中有多少工作日(C#)</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-04-26T01:33:58&#43;08:00">2017-04-26 01:33</time>
+</div>
+
+</header>
+<div class="content">
+判断日期是否是工作日(sqlserver)，判断一个月中有多少工作日(C#) print (datepart(weekday, &#39;2017-04-24&#39;) + 5) % 7 print (datepart(weekday, &#39;2017-04-26&#39;) + 5) % 7 print (datepart(weekday, &#39;2017-04-30&#39;) + 5) % 7 --周一到周日 0-6 public static int
+</div>
+</article>
+
+<article class="list-view list-view--sh">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sh/2017041101/">让你的每一天更有意义的十种方法</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-04-11T01:33:58&#43;08:00">2017-04-11 01:33</time>
+</div>
+
+</header>
+<div class="content">
+让你的每一天更有意义的十种方法 by Dan Pedersen 早起 享受日出，享受宁静，使用这段时间去沉思、祈祷、写作、锻炼等等 为要做的事设定优先级 记住做那些对你和你的
+</div>
+</article>
+
+<article class="list-view list-view--c">
+<header>
+<h2 class="title title-submitted"><a href="/blog/c#/2017041001/">C#重命名文件夹下的文件</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-04-10T01:33:58&#43;08:00">2017-04-10 01:33</time>
+</div>
+
+</header>
+<div class="content">
+C#重命名文件夹下的文件 var files = System.IO.Directory.EnumerateFiles(desPath); if(formatStr.Length == 0) { formatStr = &#34;{0}.jpg&#34;; } int count = 1; foreach(String fileName in files) { if (new System.IO.FileInfo(fileName).Length &gt; 1024 * 75) { System.IO.File.Move(fileName, System.IO.Path.Combine(desPath, String.Format(formatStr, count)));//对文件进行重命名 count++; } } 判断系统
+</div>
+</article>
 
 <article class="list-view list-view--sql">
 <header>
@@ -179,45 +218,6 @@ sqlserver 事务简单使用 今天第一次在工作中用到事务，在找一
 </header>
 <div class="content">
 Android连接电脑新增文件无法显示的问题 在调试app时，创建文件，在手机上可以看到文件新建成功，但是在电脑上看不到文件。这个bug不知道
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017032601/">Android Studio 函数描述弹出很慢的问题</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-26T01:33:58&#43;08:00">2017-03-26 01:33</time>
-</div>
-
-</header>
-<div class="content">
-Android Studio 函数描述弹出很慢的问题 找到版本对应的目录，将在线查询替换为本地查询，需要在SDKmanager中先下载SDK文档 .AndroidStudio2.2\config\options\jdk.table.xml 将该文件中的http:
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017032501/">Chrome Keep扩展运行出错的问题解决</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-25T01:33:58&#43;08:00">2017-03-25 01:33</time>
-</div>
-
-</header>
-<div class="content">
-Chrome Keep扩展运行出错的问题解决 主要问题还是扩展连接的网址被墙的原因，将其加入代理即可 *.googleapis.com *.googleusercontent.com //跟google翻译的扩展问题一样 //不同在于k
-</div>
-</article>
-
-<article class="list-view list-view--git">
-<header>
-<h2 class="title title-submitted"><a href="/blog/git/2017032303/">git 常用命令</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-23T03:33:58&#43;08:00">2017-03-23 03:33</time>
-</div>
-
-</header>
-<div class="content">
-常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 # 将某区间提交的变更应用到代码库 git cherry-pick -n bd61ad98^..ade56rq1 #
 </div>
 </article>
 

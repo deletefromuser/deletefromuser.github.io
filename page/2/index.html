@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-02-18T20:00:00+0800">
-<meta name="modified" content="2023-04-25T19:46:45+0800">
+<meta name="created" content="2023-04-25T20:00:00+0800">
+<meta name="modified" content="2023-04-25T22:52:29+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,9 +66,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
@@ -90,6 +90,45 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--life">
+<header>
+<h2 class="title title-submitted"><a href="/blog/life/2023020801/">硬件使用问题</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-01-07T19:00:00&#43;08:00">2023-01-07 19:00</time>
+</div>
+
+</header>
+<div class="content">
+一加手机7TPRO 网络异常，信号总显示E，不连接4G 重启 解锁界面输入法界面无法弹出 因为个人是用的普通用户，所以可以进去主用户，在设置-》应用
+</div>
+</article>
+
+<article class="list-view list-view--watch">
+<header>
+<h2 class="title title-submitted"><a href="/blog/watch/2023010101/">2023年1季度</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-01-07T12:00:00&#43;08:00">2023-01-07 12:00</time>
+</div>
+
+</header>
+<div class="content">
+动画 ブルーロック ぼっち・ざ・ろっく！ 月とライカと吸血姫 虚構推理 Season2 異世界のんびり農家(又是流水账，可惜了声优阵容) 便利屋斎藤さん、異世界に行く
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/blog/prob/2022122101/">Ubuntu 20.04下tracker-miner-fs进程占用大量内存和cpu</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-12-21T20:00:00&#43;08:00">2022-12-21 20:00</time>
+</div>
+
+</header>
+<div class="content">
+systemctl --user mask tracker-store.service tracker-miner-fs.service tracker-miner-rss.service tracker-extract.service tracker-miner-apps.service tracker-writeback.service tracker reset --hard sudo reboot reference Tracker process taking lot of CPU
+</div>
+</article>
 
 <article class="list-view list-view--java">
 <header>
@@ -179,45 +218,6 @@ html2canvas 使html2canvas 在ie11中工作 &lt;script src=&#34;https://cdn.jsde
 </header>
 <div class="content">
 在~/.bashrc最后添加下面脚本 upload () { if [ $# = 1 -o $# = 2 ];then if [ -f &#34;$1&#34; ];then if [ $# = 1 ];then curl -F &#34;file=@$1&#34; https://file.io/ --no-progress-meter | grep -Eo &#34;http|https://[a-zA-Z0-9./?=_%:-]*&#34;;else if [[ &#34;$2&#34; =~ ^[1-9]+[wmy]$ ]];then curl -F &#34;file=@$1&#34; https://file.io/\?expires=$2 --no-progress-meter | grep -Eo &#34;http|https://[a-zA-Z0-9./?=_%:-]*&#34;;else echo $&#39;Wrong expiration format.\neg.
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/blog/web/2022111501/">SpringBoot开发memo</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-15T20:00:00&#43;08:00">2022-11-15 20:00</time>
-</div>
-
-</header>
-<div class="content">
-解密Jasypt密文 开发中遇到一些配置的密文，有解密的需要 AES256TextEncryptor encryptor = new AES256TextEncryptor(); encryptor.setPassword(&#34;some_salt&#34;); String plainText = encryptor.decrypt(myEncryptedText); System.out.println(&#34;Decrypted: &#34;+plainText); winmerge 除外特定文件或文件夹 进入 Tools | Filters&hellip; | Filefilters选
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/blog/web/2022111402/">JavaScript POST方式打开新窗口</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-14T20:00:00&#43;08:00">2022-11-14 20:00</time>
-</div>
-
-</header>
-<div class="content">
-openWindowWithPost(url, { a: &#34;1&#34;, b: 2, }); function openWindowWithPost(url, data) { var form = document.createElement(&#34;form&#34;); form.target = &#34;UserInfo&#34;; form.method = &#34;POST&#34;; form.action = url; for (var key in data) { var input = document.createElement(&#34;input&#34;); input.type = &#34;hidden&#34;; input.name = key; input.value = data[key]; form.appendChild(input); } document.body.appendChild(form); window.open(&#39;&#39;, &#39;UserInfo&#39;,&#34;width=1000,height=550,left=100,top=100&#34;); form.submit(); document.body.removeChild(form); } reference javascript-open-new-window-posting-parameters Window.open and pass parameters by post method How to Filter or Map Nodelists with JavaScript?
-</div>
-</article>
-
-<article class="list-view list-view--bash">
-<header>
-<h2 class="title title-submitted"><a href="/blog/bash/2022111001/">linux 命令memo</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
-</div>
-
-</header>
-<div class="content">
-uuidgen 生成uuid history 命令行历史 修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m
 </div>
 </article>
 

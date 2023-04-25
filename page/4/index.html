@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-02-18T20:00:00+0800">
-<meta name="modified" content="2023-04-25T19:46:45+0800">
+<meta name="created" content="2023-04-25T20:00:00+0800">
+<meta name="modified" content="2023-04-25T22:52:29+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,9 +66,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
@@ -90,6 +90,45 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2023020901/">sqlserver常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+
+</header>
+<div class="content">
+查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; 日期 -- 当前时间 select getdate(); -- 当前日期 SELECT CAST( GETDATE() AS Date ) ;
+</div>
+</article>
+
+<article class="list-view list-view--watch">
+<header>
+<h2 class="title title-submitted"><a href="/blog/watch/2022100101/">2022年4季度</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-10-10T12:00:00&#43;08:00">2022-10-10 12:00</time>
+</div>
+
+</header>
+<div class="content">
+动画 風都探偵 ベルセルク 黄金時代篇 Noumin Kanren(两话弃) 陰の実力者になりたくて! モブサイコ100 S03 機動戦士ガンダム 水星の魔女 うたわれるもの二
+</div>
+</article>
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/blog/web/2022071101/">引用cdn静态资源时添加哈希值验证防篡改</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-07-11T17:00:00&#43;08:00">2022-07-11 17:00</time>
+</div>
+
+</header>
+<div class="content">
+例子： &lt;script src=&#34;https://example.com/example-framework.js&#34; integrity=&#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt; 生成 SRI 哈希的工具 shasum -b -a 384 example-framework.js | xxd -r -p | base64 reference Subresource Integrity - Web 安全 | MDN
+</div>
+</article>
 
 <article class="list-view list-view--prob">
 <header>
@@ -179,45 +218,6 @@ click File &gt; Virtual Media Manager in the main VirtualBox window Select a vir
 </header>
 <div class="content">
 name start end 圈外编辑 20220201 20220307 最好的决定 20220308 20220526 我能有什么坏心思呢 20220523 20220714 东京贫困女子 * 20220527 20220821 互联网与中国后现代性呓语 20220711 20220720 人生十二法则 20220824 ing 那些古怪又让人忧心的问题
-</div>
-</article>
-
-<article class="list-view list-view--watch">
-<header>
-<h2 class="title title-submitted"><a href="/blog/watch/2022010101/">2022年1季度</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-01-01T12:00:00&#43;08:00">2022-01-01 12:00</time>
-</div>
-
-</header>
-<div class="content">
-动画 ハコヅメ〜交番女子の逆襲〜 怪人開発部の黒井津さん 天才王子の赤字国家再生術 电影 The Nice Guys Dont Look Up The Worlds End Hot Fuzz
-</div>
-</article>
-
-<article class="list-view list-view--watch">
-<header>
-<h2 class="title title-submitted"><a href="/blog/watch/2021100101/">2021年4季度</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2021-10-01T12:00:00&#43;08:00">2021-10-01 12:00</time>
-</div>
-
-</header>
-<div class="content">
-动画 無職転生 ～異世界行ったら本気だす～ 第2クール 剧集 ARCANE Squid Game Mare of Easttown
-</div>
-</article>
-
-<article class="list-view list-view--watch">
-<header>
-<h2 class="title title-submitted"><a href="/blog/watch/2021070101/">2021年3季度</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2021-07-01T12:00:00&#43;08:00">2021-07-01 12:00</time>
-</div>
-
-</header>
-<div class="content">
-动画 平穏世代の韋駄天達 迷宮ブラックカンパニー 現実主義勇者の王国再建記
 </div>
 </article>
 

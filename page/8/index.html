@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-02-18T20:00:00+0800">
-<meta name="modified" content="2023-04-25T19:46:45+0800">
+<meta name="created" content="2023-04-25T20:00:00+0800">
+<meta name="modified" content="2023-04-25T22:52:29+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,9 +66,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
@@ -90,6 +90,45 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/blog/prob/2017032601/">Android Studio 函数描述弹出很慢的问题</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-26T01:33:58&#43;08:00">2017-03-26 01:33</time>
+</div>
+
+</header>
+<div class="content">
+Android Studio 函数描述弹出很慢的问题 找到版本对应的目录，将在线查询替换为本地查询，需要在SDKmanager中先下载SDK文档 .AndroidStudio2.2\config\options\jdk.table.xml 将该文件中的http:
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/blog/prob/2017032501/">Chrome Keep扩展运行出错的问题解决</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-25T01:33:58&#43;08:00">2017-03-25 01:33</time>
+</div>
+
+</header>
+<div class="content">
+Chrome Keep扩展运行出错的问题解决 主要问题还是扩展连接的网址被墙的原因，将其加入代理即可 *.googleapis.com *.googleusercontent.com //跟google翻译的扩展问题一样 //不同在于k
+</div>
+</article>
+
+<article class="list-view list-view--git">
+<header>
+<h2 class="title title-submitted"><a href="/blog/git/2017032303/">git 常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-23T03:33:58&#43;08:00">2017-03-23 03:33</time>
+</div>
+
+</header>
+<div class="content">
+常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 # 将某区间提交的变更应用到代码库 git cherry-pick -n bd61ad98^..ade56rq1 #
+</div>
+</article>
 
 <article class="list-view list-view--c">
 <header>
@@ -179,45 +218,6 @@ Chrome谷歌翻譯擴展沒有網絡連接的問題 提取翻译时出错，请�
 </header>
 <div class="content">
 JSONP跨域獲取JSON數據 客戶端請求數據 &lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;App Engine Demo&lt;/title&gt; &lt;script src=&#34;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&#34;&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;result&#34;&gt;Loading...&lt;/div&gt; &lt;br /&gt; &lt;p&gt;add p&lt;/p&gt; &lt;br /&gt; &lt;script&gt; $(document).ready(function() { $.ajax({ async : false, url : &#34;https://hanotfun.appspot.com/demo&#34;, type : &#34;GET&#34;, dataType : &#39;jsonp&#39;, jsonp : &#39;callback&#39;, success : function(data) { $(&#39;#result&#39;).html(&#34;Hello, &#34; + data.name); } });
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017031902/">Tomcat配置問題匯總</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-19T01:33:58&#43;08:00">2017-03-19 01:33</time>
-</div>
-
-</header>
-<div class="content">
-Tomcat配置問題匯總 解壓後點擊startup運行閃退 原因可能是沒有配置環境變量，JAVA_HOME，JRE_HOME，CLASSPATH
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017031602/">使用Android Studio中遇到的錯誤</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-16T02:33:58&#43;08:00">2017-03-16 02:33</time>
-</div>
-
-</header>
-<div class="content">
-使用Android Studio中遇到的錯誤 Error:Failed to open zip file. Gradle's dependency cache may be corrupt (this sometimes occurs after a network connection timeout.) &lt;a href=&quot;syncProject&quot;&gt;Re-download dependencies and sync project (requires network)&lt;/a&gt; &lt;a href=&quot;syncProject&quot;&gt;Re-download dependencies and sync project (requires network)&lt;/a&gt; solved: 1) Manually download Gradle 3.3 binary (direct link: https://services.gradle.org/distributions/gradle-3.3-bin.zip) 2) Open your android
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017031601/">文件Hash校驗Hash軟件</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-16T01:33:58&#43;08:00">2017-03-16 01:33</time>
-</div>
-
-</header>
-<div class="content">
-文件Hash校驗Hash軟件 下了個eclipse的安裝包，看了下下載鏈接是http的，於是打算校驗一下hash值，沒想到官網上只給了一個SH
 </div>
 </article>
 
