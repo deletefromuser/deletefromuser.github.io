@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>C#判斷DataColumn的字段類型 – HA</title>
+<meta name="description" content="C#判斷DataColumn的字段類型  今天做的一個要把表格型數據導入一個 DataTable 中，讀取都是字符串，table 中有字段是數值類型，讀取時Int32也當作Double解析，因為導入字符串可能為空，所以需要在導入時當前列是否是數值列，如果是進行 Double.TryParse 操作，解析失敗的賦值為0  DataTable …">
+<meta name="created" content="2017-03-21T01:33:58+0800">
+<meta name="modified" content="2023-04-26T09:26:30+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="C#判斷DataColumn的字段類型">
+<meta property="og:url" content="/blog/cs/2017032101/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/cs/2017032101/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "C#判斷DataColumn的字段類型",
+    "datePublished": "2017-03-21T01:33:58+08:00",
+    "dateModified": "2023-04-26T09:26:30+08:00",
+    "url" : "/blog/cs/2017032101/",
+    "description": "C#判斷DataColumn的字段類型  今天做的一個要把表格型數據導入一個 DataTable 中，讀取都是字符串，table 中有字段是數值類型，讀取時Int32也當作Double解析，因為導入字符串可能為空，所以需要在導入時當前列是否是數值列，如果是進行 Double.TryParse 操作，解析失敗的賦值為0  DataTable …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/cs/">CS</a></li>
+<li><a href="/blog/git/">Git</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--cs">
+<header>
+<h1 class="title title-submitted">C#判斷DataColumn的字段類型</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-21T01:33:58&#43;08:00">2017-03-21 01:33</time>
+</div>
+</header>
+<div class="content">
+<p>C#判斷DataColumn的字段類型</p>
+<blockquote>
+<p>今天做的一個要把表格型數據導入一個 DataTable 中，讀取都是字符串，table 中有字段是數值類型，讀取時Int32也當作Double解析，因為導入字符串可能為空，所以需要在導入時當前列是否是數值列，如果是進行 Double.TryParse 操作，解析失敗的賦值為0</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#">            DataTable tb = <span style="color:#66d9ef">new</span> DataTable();
+            tb.Columns.Add(<span style="color:#66d9ef">new</span> DataColumn(<span style="color:#e6db74">&#34;id&#34;</span>, Type.GetType(<span style="color:#e6db74">&#34;System.Double&#34;</span>)));
+
+            <span style="color:#66d9ef">foreach</span>(DataColumn d <span style="color:#66d9ef">in</span> tb.Columns) {
+                log((d.DataType <span style="color:#66d9ef">is</span> System.Double).ToString());<span style="color:#75715e">// 一個是Type，一個是struct
+</span><span style="color:#75715e"></span>                log(d.DataType.ToString());
+                log((d.DataType.ToString() == <span style="color:#e6db74">&#34;System.Int32&#34;</span>).ToString());<span style="color:#75715e">//這樣可以判斷
+</span><span style="color:#75715e"></span>            }
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">False
+</span><span style="color:#75715e">System.Double
+</span><span style="color:#75715e">True
+</span><span style="color:#75715e">*/</span>
+</code></pre></div><p><strong>reference</strong></p>
+<ul>
+<li>
+<p><a href="https://msdn.microsoft.com/en-us/library/system.data.datacolumn(v=vs.110).aspx">DataColumn Class</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/Mysterious/p/3423232.html">C# DataTable和DataRelation</a></p>
+</li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-04-26 09:26<br>
+Created: 2017-03-21 01:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

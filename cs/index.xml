@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CS on HA</title>
+    <link>/blog/cs/</link>
+    <description>Recent content in CS on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Apr 2017 01:33:58 +0800</lastBuildDate>
+    <atom:link href="/blog/cs/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>C#重命名文件夹下的文件</title>
+      <link>/blog/cs/2017041001/</link>
+      <pubDate>Mon, 10 Apr 2017 01:33:58 +0800</pubDate>
+      <guid>/blog/cs/2017041001/</guid>
+      <description>&lt;p&gt;C#重命名文件夹下的文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; files = System.IO.Directory.EnumerateFiles(desPath);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(formatStr.Length == &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) {
+                formatStr = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{0}.jpg&amp;#34;&lt;/span&gt;;
+            }
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; count = &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;foreach&lt;/span&gt;(String fileName &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; files) {
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; System.IO.FileInfo(fileName).Length &amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt; * &lt;span style=&#34;color:#ae81ff&#34;&gt;75&lt;/span&gt;) {
+                    System.IO.File.Move(fileName, System.IO.Path.Combine(desPath, String.Format(formatStr, count)));&lt;span style=&#34;color:#75715e&#34;&gt;//对文件进行重命名
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    count++;
+                }
+            }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;判断系统是否是win10&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; IsWindows10() {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; reg = Registry.LocalMachine.OpenSubKey(&lt;span style=&#34;color:#e6db74&#34;&gt;@&amp;#34;SOFTWARE\Microsoft\Windows NT\CurrentVersion&amp;#34;&lt;/span&gt;);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; productName = (&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;)reg.GetValue(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ProductName&amp;#34;&lt;/span&gt;);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; productName.StartsWith(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Windows 10&amp;#34;&lt;/span&gt;);
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;获取桌面目录路径&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;        String GetDesktopDirectory() {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建新文件夹&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; NewDirectory(String path) {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(!System.IO.Directory.Exists(path)) {
+                System.IO.Directory.CreateDirectory(path);
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;base64编码&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;        String GetBase64String() {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; Convert.ToBase64String(System.Text.Encoding.Default.GetBytes(DateTime.Now.ToString()));
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;获取win10锁屏壁纸的缓存目录路径&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; String GetWallPaperDirectory() {
+            String desPath = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;;
+            String doc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            doc = doc.Substring(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, doc.LastIndexOf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\\&amp;#34;&lt;/span&gt;));
+            String desTemp = System.IO.Path.Combine(doc, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AppData\\Local\\Packages&amp;#34;&lt;/span&gt;);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; files = System.IO.Directory.EnumerateDirectories(desTemp);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;foreach&lt;/span&gt;(String t &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; files) {
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(t.Contains(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Microsoft.Windows.ContentDeliveryManager&amp;#34;&lt;/span&gt;)) {
+                    desPath = t;
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;;
+                }
+            }
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(desPath.Length &amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) {
+                desPath = System.IO.Path.Combine(desPath, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;LocalState\\Assets&amp;#34;&lt;/span&gt;);
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; desPath;
+            }
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;;
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将文件复制并重命名到新路径&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;System.IO.File.Copy(fileName, System.IO.Path.Combine(newPath, String.Format(formatStr, count)));
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改控件字体，可以通过设置窗体的字体实现，因为继承关系，所以子控件的字体也会改变&lt;/p&gt;
+&lt;p&gt;ps : 链接10里面的一个评论很搞笑, 说答主用&lt;code&gt;StartsWith(&amp;quot;Windows 10&amp;quot;);&lt;/code&gt;不正确, 在Windows 100上判断会出错, 很有道理&lt;/p&gt;
+&lt;p&gt;pps : 感觉用C#写Demo比java方便, 主要是拖控件比较方便, 事件方法就在那里, 找一下就行了.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/&#34;&gt;Adding an existing project to GitHub using the command line&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/07wt70x2(v=vs.110).aspx&#34;&gt;Directory.GetFiles Method (String)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/7140081/how-to-get-only-filenames-within-a-directory-using-c&#34;&gt;How to get only filenames within a directory using c#?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/22015354/rename-existing-file-name&#34;&gt;Rename existing file name&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/19150333/how-to-rename-a-file-in-net&#34;&gt;How to rename a file in .NET?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1380839/how-do-you-get-the-file-size-in-c&#34;&gt;How do you get the file size in C#?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/yelsea/archive/2007/08/15/856166.html&#34;&gt;C#中将字符串转成 BASE64 编码&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2906581/scrollbar-on-a-label&#34;&gt;Scrollbar on a Label&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/34131695/windows-10-will-catched-as-windows-8-windows-8-1&#34;&gt;Windows 10 will catched as Windows 8 / Windows 8.1&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/31885302/how-can-i-detect-if-my-app-is-running-on-windows-10&#34;&gt;How can I detect if my app is running on Windows 10&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2819934/detect-windows-version-in-net&#34;&gt;Detect Windows version in .net&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/577634/how-to-get-the-friendly-os-version-name&#34;&gt;How to get the “friendly” OS Version Name?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[C#获取Windows系统特殊文件夹的路径&lt;a href=&#34;http://www.cnblogs.com/mane/archive/2011/08/13/2137215.html&#34;&gt;转]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx&#34;&gt;String Class&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsa2063/SmallTools/tree/master/RenameFiles&#34;&gt;code&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>在C#项目中使用sqlite</title>
+      <link>/blog/cs/2017033101/</link>
+      <pubDate>Fri, 31 Mar 2017 01:33:58 +0800</pubDate>
+      <guid>/blog/cs/2017033101/</guid>
+      <description>&lt;p&gt;在C#项目中使用sqlite&lt;/p&gt;
+&lt;h3 id=&#34;引入文件&#34;&gt;引入文件&lt;/h3&gt;
+&lt;p&gt;从官网下载了几个dll文件都有问题之后，最终放弃，使用VS自带的NuGet包管理工具，搜索安装即可，没有杂七杂八的问题&lt;/p&gt;
+&lt;p&gt;列一下关键步骤&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;String sql = &lt;span style=&#34;color:#e6db74&#34;&gt;@&amp;#34;create table if not exists user(
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;username varchar(40),
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;passward varchar(40)
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;);
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;insert into user(username, passward) values({0}, {1});
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;select * from user;&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; datasource = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;test.db&amp;#34;&lt;/span&gt;;
+SQLiteConnection connection = &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
+&lt;span style=&#34;color:#75715e&#34;&gt;//#1
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;Connection = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; SQLiteConnection(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data source = &amp;#34;&lt;/span&gt; + &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.Datasource);
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (System.IO.File.Exists(Datasource)) {
+  SQLiteConnection.CreateFile(datasource);
+}
+Connection.Open();
+&lt;span style=&#34;color:#75715e&#34;&gt;//#2
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; tb = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; System.Data.DataTable();
+SQLiteCommand command = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; SQLiteCommand(s.Connection);
+SQLiteDataAdapter adapter = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; SQLiteDataAdapter(command);
+command.CommandText = String.Format(sql, username.Quote(), password.Quote());
+adapter.Fill(tb);
+SharpLearn.Program.ShowTable(tb);
+&lt;span style=&#34;color:#75715e&#34;&gt;//...
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//utils
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; ShowTable(DataTable tb) {
+    System.IO.StreamWriter sw = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; System.IO.StreamWriter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data.txt&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;foreach&lt;/span&gt; (DataColumn col &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; tb.Columns) {
+        sw.Write(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{0,-20}&amp;#34;&lt;/span&gt;, col.ColumnName);
+    }
+    sw.WriteLine();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;foreach&lt;/span&gt; (DataRow dr &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; tb.Rows) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;object&lt;/span&gt; o &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; dr.ItemArray) {
+            sw.Write(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{0,-20}&amp;#34;&lt;/span&gt;, o.ToString());
+        }
+        sw.WriteLine();
+    }
+    sw.Close();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;reference__&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/robertzml/archive/2009/08/27/1554874.html&#34;&gt;在.NET C#中使用SQLite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/helloandroid/articles/2150272.html&#34;&gt;Sqlite语法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/SQLite&#34;&gt;https://zh.wikipedia.org/wiki/SQLite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[How can I create a new SQLite database, with all tables, on the fly? &lt;a href=&#34;https://stackoverflow.com/questions/3647868/how-can-i-create-a-new-sqlite-database-with-all-tables-on-the-fly&#34;&gt;duplicate]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[Create SQLite Database and table &lt;a href=&#34;https://stackoverflow.com/questions/15292880/create-sqlite-database-and-table&#34;&gt;closed]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aasukaa.blogspot.com/2017/02/c.html&#34;&gt;C# 格式化字符串(没几天又忘了)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/NuGet&#34;&gt;https://en.wikipedia.org/wiki/NuGet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋</title>
+      <link>/blog/cs/2017032302/</link>
+      <pubDate>Thu, 23 Mar 2017 02:33:58 +0800</pubDate>
+      <guid>/blog/cs/2017032302/</guid>
+      <description>&lt;p&gt;C# 對一個類進行方法上的擴展 &amp;amp; 為方法添加註釋&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;StringExtension&lt;/span&gt; {
+        &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;/// 將字符串包裝成數據庫查詢時需要的樣式
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;/// 一定程度上防止SQL注入？(我覺得可以達到這個效果)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;param name=&amp;#34;str&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;/// 需要包裝的字符串
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/param&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;returns&amp;gt;包裝後的字符串&amp;lt;/returns&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; String Quote(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt; String str) {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt; + str.Replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;) + &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt;;
+        }
+}
+&lt;span style=&#34;color:#75715e&#34;&gt;//對String類進行擴展，添加一個方法用於組合sql語句
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//方法必須在一個靜態類中定義
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;String str = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tom&amp;#39; or (1=1) --&amp;#34;&lt;/span&gt;;
+Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;select 1 from user where user = {0} and psd = {1}&amp;#34;&lt;/span&gt;, str, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;));
+Program.log(String.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;select 1 from user where user = {0} and psd = {1}&amp;#34;&lt;/span&gt;, str.Quote(), &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;));
+&lt;span style=&#34;color:#75715e&#34;&gt;/*
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;select 1 from user where user = tom&amp;#39; or (1=1) -- and psd = 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;select 1 from user where user = &amp;#39;tom&amp;#39;&amp;#39; or (1=1) --&amp;#39; and psd = 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>C#獲取窗體寬度、獲取兩個日期的時間差</title>
+      <link>/blog/cs/2017032201/</link>
+      <pubDate>Wed, 22 Mar 2017 01:33:58 +0800</pubDate>
+      <guid>/blog/cs/2017032201/</guid>
+      <description>&lt;p&gt;C#獲取窗體寬度、獲取兩個日期的時間差&lt;/p&gt;
+&lt;h4 id=&#34;在窗體改變時改變控件的寬度&#34;&gt;在窗體改變時改變控件的寬度&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; FormTemp_Resize(&lt;span style=&#34;color:#66d9ef&#34;&gt;object&lt;/span&gt; sender, EventArgs e) {
+            Program.log(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Width of form is &amp;#34;&lt;/span&gt; + &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.Width.ToString());
+            &lt;span style=&#34;color:#75715e&#34;&gt;//this.Bounds.Width
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;//下面這個不太清楚得到的是什麼寬度
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;//System.Windows.Forms.Screen.FromControl(this).Bounds.Width
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;獲取兩個日期間的時間差&#34;&gt;獲取兩個日期間的時間差&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DateTime().Subtract(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DateTime().AddDays(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)).TotalMinutes;&lt;span style=&#34;color:#75715e&#34;&gt;//-1440
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;获取字符串的显示宽度&#34;&gt;获取字符串的显示宽度&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;            Program.log(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this.Font is &amp;#34;&lt;/span&gt; + &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.Font.ToString()
+                + &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\r\n 勉強&amp;#39;s width is &amp;#34;&lt;/span&gt;
+                + System.Windows.Forms.TextRenderer.MeasureText(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;勉強&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.Font).Width.ToString());
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.Font = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; System.Drawing.Font(
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Noto Sans CJK JP Bold&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9F&lt;/span&gt;
+                , System.Drawing.FontStyle.Bold
+                , System.Drawing.GraphicsUnit.Point, ((&lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;)(&lt;span style=&#34;color:#ae81ff&#34;&gt;134&lt;/span&gt;)));
+            Program.log(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this.Font is &amp;#34;&lt;/span&gt; + &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.Font.ToString()
+                + &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\r\n 勉強&amp;#39;s width is &amp;#34;&lt;/span&gt;
+                + System.Windows.Forms.TextRenderer.MeasureText(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;勉強&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.Font).Width.ToString());
+&lt;span style=&#34;color:#75715e&#34;&gt;/*
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;this.Font is [Font: Name=宋体, Size=9, Units=3, GdiCharSet=134, GdiVerticalFont=False]
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; 勉強&amp;#39;s width is 29
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;this.Font is [Font: Name=Noto Sans CJK JP Bold, Size=9, Units=3, GdiCharSet=134, GdiVerticalFont=False]
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; 勉強&amp;#39;s width is 32
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ps:vs快捷键 格式化选定内容Ctrl+K,Ctrl+F，格式化文档Ctrl+K,Ctrl+D&lt;/p&gt;
+&lt;p&gt;自定义快捷键：工具-&amp;gt;选项-&amp;gt;环境-&amp;gt;键盘&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/254197/how-can-i-get-the-active-screen-dimensions&#34;&gt;How can I get the active screen dimensions?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-tw/library/system.datetime(v=vs.110).aspx&#34;&gt;DateTime 結構&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-tw/library/system.timespan(v=vs.110).aspx&#34;&gt;TimeSpan 結構&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-tw/library/bb384267(v=vs.110).aspx&#34;&gt;在 DateTime、DateTimeOffset、 TimeSpan 和 TimeZoneInfo 之間選擇&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/y4xdbe66(v=vs.110).aspx&#34;&gt;TextRenderer.MeasureText Method (String, Font)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/9706908/visual-studio-ctrl-k-d-code-formatting-not-working&#34;&gt;Visual Studio Ctrl K + D (code formatting) not working&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>C#判斷DataColumn的字段類型</title>
+      <link>/blog/cs/2017032101/</link>
+      <pubDate>Tue, 21 Mar 2017 01:33:58 +0800</pubDate>
+      <guid>/blog/cs/2017032101/</guid>
+      <description>&lt;p&gt;C#判斷DataColumn的字段類型&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;今天做的一個要把表格型數據導入一個 DataTable 中，讀取都是字符串，table 中有字段是數值類型，讀取時Int32也當作Double解析，因為導入字符串可能為空，所以需要在導入時當前列是否是數值列，如果是進行 Double.TryParse 操作，解析失敗的賦值為0&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;            DataTable tb = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DataTable();
+            tb.Columns.Add(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DataColumn(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;, Type.GetType(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;System.Double&amp;#34;&lt;/span&gt;)));
+
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;foreach&lt;/span&gt;(DataColumn d &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; tb.Columns) {
+                log((d.DataType &lt;span style=&#34;color:#66d9ef&#34;&gt;is&lt;/span&gt; System.Double).ToString());&lt;span style=&#34;color:#75715e&#34;&gt;// 一個是Type，一個是struct
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                log(d.DataType.ToString());
+                log((d.DataType.ToString() == &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;System.Int32&amp;#34;&lt;/span&gt;).ToString());&lt;span style=&#34;color:#75715e&#34;&gt;//這樣可以判斷
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            }
+&lt;span style=&#34;color:#75715e&#34;&gt;/*
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;False
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;System.Double
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;True
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/system.data.datacolumn(v=vs.110).aspx&#34;&gt;DataColumn Class&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/Mysterious/p/3423232.html&#34;&gt;C# DataTable和DataRelation&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>聽說Linq</title>
+      <link>/blog/cs/2017032003/</link>
+      <pubDate>Mon, 20 Mar 2017 03:33:58 +0800</pubDate>
+      <guid>/blog/cs/2017032003/</guid>
+      <description>&lt;p&gt;聽說Linq&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; System.Linq;
+...
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; LinqTest() {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[] array = { &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt; };
+            &lt;span style=&#34;color:#75715e&#34;&gt;// Select squares of all odd numbers in the array sorted in descending order
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; results = &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; x &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; array
+                          &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; x % &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; == &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+                          &lt;span style=&#34;color:#66d9ef&#34;&gt;orderby&lt;/span&gt; x &lt;span style=&#34;color:#66d9ef&#34;&gt;descending&lt;/span&gt;
+                          &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; x * x;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; result &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; results) {
+                log(result.ToString());
+            }
+        }
+&lt;span style=&#34;color:#75715e&#34;&gt;//49 25 1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E8%AF%AD%E8%A8%80%E9%9B%86%E6%88%90%E6%9F%A5%E8%AF%A2&#34;&gt;语言集成查询&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.jobbole.com/110626/&#34;&gt;为什么说 LINQ 要胜过 SQL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>在C#和sqlserver中獲取字符串的真實大小</title>
+      <link>/blog/cs/2017031402/</link>
+      <pubDate>Tue, 14 Mar 2017 02:33:58 +0800</pubDate>
+      <guid>/blog/cs/2017031402/</guid>
+      <description>&lt;p&gt;在C#和sqlserver中獲取字符串的真實大小(要睡覺了沒驗證)&lt;/p&gt;
+&lt;p&gt;C#&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; len1 = System.Text.Encoding.Default.GetBytes(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aaa&amp;#34;&lt;/span&gt;).Length; &lt;span style=&#34;color:#75715e&#34;&gt;//结果为 3
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; len2 = System.Text.Encoding.Default.GetBytes(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;张三丰&amp;#34;&lt;/span&gt;).Length; &lt;span style=&#34;color:#75715e&#34;&gt;//结果为 6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;sqlserver&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; len(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aaa&amp;#39;&lt;/span&gt;)          &lt;span style=&#34;color:#75715e&#34;&gt;--结果为 3
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; len(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;张三丰&amp;#39;&lt;/span&gt;)        &lt;span style=&#34;color:#75715e&#34;&gt;-- 结果依然为 3
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; datalength(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aaa&amp;#39;&lt;/span&gt;)   &lt;span style=&#34;color:#75715e&#34;&gt;--结果为 3
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; datalength(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;张三丰&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;--结果为 6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>C# using 用法</title>
+      <link>/blog/cs/2017030101/</link>
+      <pubDate>Wed, 01 Mar 2017 01:33:58 +0800</pubDate>
+      <guid>/blog/cs/2017030101/</guid>
+      <description>&lt;p&gt;C# using 用法&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;引入命名空間&lt;code&gt;using System.Threading;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;定義命名空間的別名&lt;code&gt;using Thread = System.Threading;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;using(define class A,B;){use A;}&lt;/code&gt;的形式效果和java中帶資源的try語句很相似
+&lt;ul&gt;
+&lt;li&gt;using中聲明的對象必須實現IDisposable，且聲明多個對象時類型要一致(也可以直接用IDisposable接口對象來定義對象來規避)；而java中帶資源的try語句也類似，&lt;code&gt;try(define A,B){use A,B}catch(){]&lt;/code&gt;中的對象也必須實現AutoCloseable或者Closeable接口，但是不要求類型一致&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/wanderocn/article/details/6659811&#34;&gt;C#-using用法详解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/prince1988/archive/2009/03/29/1424479.html&#34;&gt;c# using 关键字的用法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.csharp-examples.net/using/&#34;&gt;C# Using Statement Examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/yh598w02.aspx&#34;&gt;using 语句（C# 参考）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/u012421846/article/details/46129237&#34;&gt;带资源的try语句&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Java核心技術 11.2.4 帶資源的try語句&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
