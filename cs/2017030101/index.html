@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>C# using 用法 – HA</title>
+<meta name="description" content="C# using 用法  引入命名空間using System.Threading; 定義命名空間的別名using Thread = System.Threading; using(define class A,B;){use A;}的形式效果和java中帶資源的try語句很相似  using中聲明的對象必須實現IDisposable，且 …">
+<meta name="created" content="2017-03-01T01:33:58+0800">
+<meta name="modified" content="2023-04-26T09:26:30+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="C# using 用法">
+<meta property="og:url" content="https://deletefromuser.github.io/cs/2017030101/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/cs/2017030101/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "C# using 用法",
+    "datePublished": "2017-03-01T01:33:58+08:00",
+    "dateModified": "2023-04-26T09:26:30+08:00",
+    "url" : "https://deletefromuser.github.io/cs/2017030101/",
+    "description": "C# using 用法  引入命名空間using System.Threading; 定義命名空間的別名using Thread = System.Threading; using(define class A,B;){use A;}的形式效果和java中帶資源的try語句很相似  using中聲明的對象必須實現IDisposable，且 …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/cs/">CS</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--cs">
+<header>
+<h1 class="title title-submitted">C# using 用法</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-01T01:33:58&#43;08:00">2017-03-01 01:33</time>
+</div>
+</header>
+<div class="content">
+<p>C# using 用法</p>
+<ol>
+<li>引入命名空間<code>using System.Threading;</code></li>
+<li>定義命名空間的別名<code>using Thread = System.Threading;</code></li>
+<li><code>using(define class A,B;){use A;}</code>的形式效果和java中帶資源的try語句很相似
+<ul>
+<li>using中聲明的對象必須實現IDisposable，且聲明多個對象時類型要一致(也可以直接用IDisposable接口對象來定義對象來規避)；而java中帶資源的try語句也類似，<code>try(define A,B){use A,B}catch(){]</code>中的對象也必須實現AutoCloseable或者Closeable接口，但是不要求類型一致</li>
+</ul>
+</li>
+</ol>
+<p><strong>reference</strong></p>
+<ol>
+<li><a href="http://blog.csdn.net/wanderocn/article/details/6659811">C#-using用法详解</a></li>
+<li><a href="https://www.cnblogs.com/prince1988/archive/2009/03/29/1424479.html">c# using 关键字的用法</a></li>
+<li><a href="http://www.csharp-examples.net/using/">C# Using Statement Examples</a></li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/yh598w02.aspx">using 语句（C# 参考）</a></li>
+<li><a href="http://blog.csdn.net/u012421846/article/details/46129237">带资源的try语句</a></li>
+<li>Java核心技術 11.2.4 帶資源的try語句</li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-04-26 09:26<br>
+Created: 2017-03-01 01:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

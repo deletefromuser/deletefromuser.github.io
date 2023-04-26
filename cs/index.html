@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>CS – HA</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/cs/index.xml">
+<meta name="description" content="">
+<meta name="created" content="2017-04-10T01:33:58+0800">
+<meta name="modified" content="2023-04-26T09:26:30+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="CS">
+<meta property="og:url" content="https://deletefromuser.github.io/cs/">
+<meta property="og:type" content="website">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/cs/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url" : "https://deletefromuser.github.io/cs/",
+    "name": "CS",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="list-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/cs/" class="active" aria-current="page">CS</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<h1 class="title">CS</h1>
+
+
+
+<article class="list-view list-view--cs">
+<header>
+<h2 class="title title-submitted"><a href="/cs/2017041001/">C#重命名文件夹下的文件</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-04-10T01:33:58&#43;08:00">2017-04-10 01:33</time>
+</div>
+
+</header>
+<div class="content">
+C#重命名文件夹下的文件 var files = System.IO.Directory.EnumerateFiles(desPath); if(formatStr.Length == 0) { formatStr = &#34;{0}.jpg&#34;; } int count = 1; foreach(String fileName in files) { if (new System.IO.FileInfo(fileName).Length &gt; 1024 * 75) { System.IO.File.Move(fileName, System.IO.Path.Combine(desPath, String.Format(formatStr, count)));//对文件进行重命名 count++; } } 判断系统
+</div>
+</article>
+
+<article class="list-view list-view--cs">
+<header>
+<h2 class="title title-submitted"><a href="/cs/2017033101/">在C#项目中使用sqlite</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-31T01:33:58&#43;08:00">2017-03-31 01:33</time>
+</div>
+
+</header>
+<div class="content">
+在C#项目中使用sqlite 引入文件 从官网下载了几个dll文件都有问题之后，最终放弃，使用VS自带的NuGet包管理工具，搜索安装即可，没有
+</div>
+</article>
+
+<article class="list-view list-view--cs">
+<header>
+<h2 class="title title-submitted"><a href="/cs/2017032302/">C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-23T02:33:58&#43;08:00">2017-03-23 02:33</time>
+</div>
+
+</header>
+<div class="content">
+C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋 static class StringExtension { /// &lt;summary&gt; /// 將字符串包裝成數據庫查詢時需要的樣式 /// 一定程度上防止SQL注入？(我覺得可以達到這個
+</div>
+</article>
+
+<article class="list-view list-view--cs">
+<header>
+<h2 class="title title-submitted"><a href="/cs/2017032201/">C#獲取窗體寬度、獲取兩個日期的時間差</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-22T01:33:58&#43;08:00">2017-03-22 01:33</time>
+</div>
+
+</header>
+<div class="content">
+C#獲取窗體寬度、獲取兩個日期的時間差 在窗體改變時改變控件的寬度 private void FormTemp_Resize(object sender, EventArgs e) { Program.log(&#34;Width of form is &#34; + this.Width.ToString()); //this.Bounds.Width //下面這個不太清楚得到的是什麼寬度 //System.Windows.Forms.Screen.FromControl(this).Bounds.Width } 獲取兩
+</div>
+</article>
+
+<article class="list-view list-view--cs">
+<header>
+<h2 class="title title-submitted"><a href="/cs/2017032101/">C#判斷DataColumn的字段類型</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-21T01:33:58&#43;08:00">2017-03-21 01:33</time>
+</div>
+
+</header>
+<div class="content">
+C#判斷DataColumn的字段類型 今天做的一個要把表格型數據導入一個 DataTable 中，讀取都是字符串，table 中有字段是數值類型，讀取時Int32
+</div>
+</article>
+
+<article class="list-view list-view--cs">
+<header>
+<h2 class="title title-submitted"><a href="/cs/2017032003/">聽說Linq</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-20T03:33:58&#43;08:00">2017-03-20 03:33</time>
+</div>
+
+</header>
+<div class="content">
+聽說Linq using System.Linq; ... public static void LinqTest() { int[] array = { 1, 5, 2, 10, 7 }; // Select squares of all odd numbers in the array sorted in descending order var results = from x in array where x % 2 == 1 orderby x descending select x * x; foreach (var result in results) { log(result.ToString()); } } //49 25 1
+</div>
+</article>
+
+<article class="list-view list-view--cs">
+<header>
+<h2 class="title title-submitted"><a href="/cs/2017031402/">在C#和sqlserver中獲取字符串的真實大小</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-14T02:33:58&#43;08:00">2017-03-14 02:33</time>
+</div>
+
+</header>
+<div class="content">
+在C#和sqlserver中獲取字符串的真實大小(要睡覺了沒驗證) C# int len1 = System.Text.Encoding.Default.GetBytes(&#34;aaa&#34;).Length; //结果为 3 int len2 = System.Text.Encoding.De
+</div>
+</article>
+
+<article class="list-view list-view--cs">
+<header>
+<h2 class="title title-submitted"><a href="/cs/2017030101/">C# using 用法</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-01T01:33:58&#43;08:00">2017-03-01 01:33</time>
+</div>
+
+</header>
+<div class="content">
+C# using 用法 引入命名空間using System.Threading; 定義命名空間的別名using Thread = System.Threading; using(define class A,B;){use A;}的形式效果和java中帶資源的try語句很相似 using中聲明
+</div>
+</article>
+
+
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

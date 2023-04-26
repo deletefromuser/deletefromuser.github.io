@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋 – HA</title>
+<meta name="description" content="C# 對一個類進行方法上的擴展 &amp;amp;amp; 為方法添加註釋 static class StringExtension { /// &amp;amp;lt;summary&amp;amp;gt;  /// 將字符串包裝成數據庫查詢時需要的樣式  /// 一定程度上防止SQL注入？(我覺得可以達到這個效果)  /// &amp;amp;lt;/summary&amp;amp;gt;  /// …">
+<meta name="created" content="2017-03-23T02:33:58+0800">
+<meta name="modified" content="2023-04-26T09:26:30+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋">
+<meta property="og:url" content="https://deletefromuser.github.io/cs/2017032302/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/cs/2017032302/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "C# 對一個類進行方法上的擴展 \u0026 為方法添加註釋",
+    "datePublished": "2017-03-23T02:33:58+08:00",
+    "dateModified": "2023-04-26T09:26:30+08:00",
+    "url" : "https://deletefromuser.github.io/cs/2017032302/",
+    "description": "C# 對一個類進行方法上的擴展 \u0026amp;amp; 為方法添加註釋 static class StringExtension { /// \u0026amp;lt;summary\u0026amp;gt;  /// 將字符串包裝成數據庫查詢時需要的樣式  /// 一定程度上防止SQL注入？(我覺得可以達到這個效果)  /// \u0026amp;lt;/summary\u0026amp;gt;  /// …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/cs/">CS</a></li>
+<li><a href="/git/">Git</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--cs">
+<header>
+<h1 class="title title-submitted">C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-23T02:33:58&#43;08:00">2017-03-23 02:33</time>
+</div>
+</header>
+<div class="content">
+<p>C# 對一個類進行方法上的擴展 &amp; 為方法添加註釋</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C#" data-lang="C#"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringExtension</span> {
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 將字符串包裝成數據庫查詢時需要的樣式
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 一定程度上防止SQL注入？(我覺得可以達到這個效果)
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;param name=&#34;str&#34;&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 需要包裝的字符串
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/param&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;returns&gt;包裝後的字符串&lt;/returns&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String Quote(<span style="color:#66d9ef">this</span> String str) {
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> + str.Replace(<span style="color:#e6db74">&#34;&#39;&#34;</span>, <span style="color:#e6db74">&#34;&#39;&#39;&#34;</span>) + <span style="color:#e6db74">&#34;&#39;&#34;</span>;
+        }
+}
+<span style="color:#75715e">//對String類進行擴展，添加一個方法用於組合sql語句
+</span><span style="color:#75715e">//方法必須在一個靜態類中定義
+</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C#" data-lang="C#">String str = <span style="color:#e6db74">&#34;tom&#39; or (1=1) --&#34;</span>;
+Program.log(String.Format(<span style="color:#e6db74">&#34;select 1 from user where user = {0} and psd = {1}&#34;</span>, str, <span style="color:#e6db74">&#34;&#34;</span>));
+Program.log(String.Format(<span style="color:#e6db74">&#34;select 1 from user where user = {0} and psd = {1}&#34;</span>, str.Quote(), <span style="color:#e6db74">&#34;&#34;</span>));
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">select 1 from user where user = tom&#39; or (1=1) -- and psd = 
+</span><span style="color:#75715e">select 1 from user where user = &#39;tom&#39;&#39; or (1=1) --&#39; and psd = 
+</span><span style="color:#75715e">*/</span>
+</code></pre></div>
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-04-26 09:26<br>
+Created: 2017-03-23 02:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
