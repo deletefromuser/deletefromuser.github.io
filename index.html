@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-04-25T20:00:00+0800">
-<meta name="modified" content="2023-04-26T09:26:30+0800">
+<meta name="created" content="2023-04-27T20:00:00+0800">
+<meta name="modified" content="2023-04-29T23:41:07+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -68,13 +68,13 @@
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/cs/">CS</a></li>
 <li><a href="/blog/git/">Git</a></li>
@@ -91,6 +91,19 @@
 </article>
 
 
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/blog/tip/2023042702/">使用scrcpy在pc上控制android手机</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-04-27T20:00:00&#43;08:00">2023-04-27 20:00</time>
+</div>
+
+</header>
+<div class="content">
+下载scrcpy，解压 手机开启USB debuging 手机连接电脑，手机会弹出确认窗口，点确认 在解压后的scrcpy目录，打开命令行，输入scrcpy -S https://github.com/Genymobile/scrcpy/blob/master/FAQ.md
+</div>
+</article>
+
 <article class="list-view list-view--web">
 <header>
 <h2 class="title title-submitted"><a href="/blog/web/2023042501/">spring boot开发记录</a></h2>
@@ -106,14 +119,14 @@
 
 <article class="list-view list-view--tip">
 <header>
-<h2 class="title title-submitted"><a href="/blog/tip/2023042503/">使用mkvtoolnix批量去除视频外挂字幕</a></h2>
+<h2 class="title title-submitted"><a href="/blog/tip/2023042503/">使用mkvtoolnix批量去除mkv格式视频外挂字幕</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2023-04-25T20:00:00&#43;08:00">2023-04-25 20:00</time>
 </div>
 
 </header>
 <div class="content">
-前提 视频文件内容必须统一，一般是剧集类的 打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出options.jso
+前提 视频文件内容必须统一，一般是剧集类的，并且要是mkv格式的 打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出
 </div>
 </article>
 
@@ -127,6 +140,19 @@
 </header>
 <div class="content">
 假设本地计算机上，已开发的应用可通过http://localhost:19080来访问 在有公网ip的服务器上添加下列配置后部署nginx（监
+</div>
+</article>
+
+<article class="list-view list-view--bash">
+<header>
+<h2 class="title title-submitted"><a href="/blog/bash/2023041801/">比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-04-24T21:02:00&#43;08:00">2023-04-24 21:02</time>
+</div>
+
+</header>
+<div class="content">
+chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 rootDir=$(cd &#34;$(dirname &#34;${BASH_SOURCE[0]}&#34;)&#34; &amp;&amp; pwd) # 输出服务器ip echo &#34;--- $(hostname -i): $rootDir---&#34; dir1=$rootDir/old dir2=$rootDir/new find $dir1 -type f | while read file; do filename=${file#$dir1} if [ -e $dir2/$filename ];
 </div>
 </article>
 
@@ -192,32 +218,6 @@
 </header>
 <div class="content">
 手动创建image 在项目内创建Dockerfile FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=docker&#34;]# ENTRYPOINT [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=dock
-</div>
-</article>
-
-<article class="list-view list-view--read">
-<header>
-<h2 class="title title-submitted"><a href="/blog/read/2023012901/">2023年读书记录</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-01-29T20:00:00&#43;08:00">2023-01-29 20:00</time>
-</div>
-
-</header>
-<div class="content">
-name auther start end 技术陷阱：从工业革命到AI时代，技术创新下的资本、劳动与权力 * 卡尔•贝内迪克特•弗雷 20230128 20230301 从零开始的女性主义 上野千鹤子 20230301 20230306 满愿 米泽穗信
-</div>
-</article>
-
-<article class="list-view list-view--life">
-<header>
-<h2 class="title title-submitted"><a href="/blog/life/2023010101/">life hack</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-01-07T19:00:00&#43;08:00">2023-01-07 19:00</time>
-</div>
-
-</header>
-<div class="content">
-七号电池替代五号电池 铝箔纸团成球，塞到电池槽一侧，再塞入七号电池即可 只能作为临时方案，容易松动，浪费时间 用保鲜袋和矿泉水瓶制作密封袋 reference How to Use
 </div>
 </article>
 

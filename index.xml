@@ -6,8 +6,23 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Apr 2023 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 27 Apr 2023 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>使用scrcpy在pc上控制android手机</title>
+      <link>/blog/tip/2023042702/</link>
+      <pubDate>Thu, 27 Apr 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/tip/2023042702/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;下载scrcpy，解压&lt;/li&gt;
+&lt;li&gt;手机开启USB debuging&lt;/li&gt;
+&lt;li&gt;手机连接电脑，手机会弹出确认窗口，点确认&lt;/li&gt;
+&lt;li&gt;在解压后的scrcpy目录，打开命令行，输入&lt;code&gt;scrcpy -S&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Genymobile/scrcpy/blob/master/FAQ.md&#34;&gt;https://github.com/Genymobile/scrcpy/blob/master/FAQ.md&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>spring boot开发记录</title>
@@ -29,12 +44,12 @@
     </item>
     
     <item>
-      <title>使用mkvtoolnix批量去除视频外挂字幕</title>
+      <title>使用mkvtoolnix批量去除mkv格式视频外挂字幕</title>
       <link>/blog/tip/2023042503/</link>
       <pubDate>Tue, 25 Apr 2023 20:00:00 +0800</pubDate>
       <guid>/blog/tip/2023042503/</guid>
       <description>&lt;h3 id=&#34;前提&#34;&gt;前提&lt;/h3&gt;
-&lt;p&gt;视频文件内容必须统一，一般是剧集类的&lt;/p&gt;
+&lt;p&gt;视频文件内容必须统一，一般是剧集类的，并且要是mkv格式的&lt;/p&gt;
 &lt;h3 id=&#34;打开mkvtoolnix选择某一个视频文件找到不要的字幕轨道取消选择导出optionsjson到视频所在文件夹&#34;&gt;打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出options.json到视频所在文件夹&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;../../images/2023042503_01.jpg&#34; alt=&#34;导出options.json&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;编辑optionsjson&#34;&gt;编辑options.json&lt;/h3&gt;
@@ -71,6 +86,48 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/the-software-reliever/expose-localhost-to-the-public-www-with-a-vps-nginx-and-ssh-tunneling-daefc0275757&#34;&gt;Expose localhost to the public WWW with a VPS, nginx and SSH tunneling&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://dev.to/elwin013/how-to-expose-local-service-using-nginx-and-ssh-1jmj&#34;&gt;How to expose local service using nginx and SSH&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</title>
+      <link>/blog/bash/2023041801/</link>
+      <pubDate>Mon, 24 Apr 2023 21:02:00 +0800</pubDate>
+      <guid>/blog/bash/2023041801/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;chatgpt确实好用，比自己吭哧吭哧google快多了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#脚本所在目录&lt;/span&gt;
+rootDir&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;cd &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;dirname &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;BASH_SOURCE[0]&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; pwd&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 输出服务器ip&lt;/span&gt;
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--- &lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;hostname -i&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;: &lt;/span&gt;$rootDir&lt;span style=&#34;color:#e6db74&#34;&gt; ---&amp;#34;&lt;/span&gt;
+
+dir1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$rootDir/old
+dir2&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$rootDir/new
+
+find $dir1 -type f | &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; read file; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+    filename&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file#$dir1&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -e $dir2/$filename &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+        count1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;grep -cve &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;^\s*$&amp;#39;&lt;/span&gt; $file&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+        count2&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;grep -cve &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;^\s*$&amp;#39;&lt;/span&gt; $dir2/$filename&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; $count1 -ne $count2 &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+            echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;NG &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;filename&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; 非空行数不一致 old-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;count1&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; : new-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;count2&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
+            echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;OK &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;filename&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ssh执行远程服务器上的脚本&#34;&gt;ssh执行远程服务器上的脚本&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 生成ssh密钥&lt;/span&gt;
+ssh-keygen
+&lt;span style=&#34;color:#75715e&#34;&gt;# 连接目标服务器&lt;/span&gt;
+ssh-copy-id userid@hostname
+&lt;span style=&#34;color:#75715e&#34;&gt;# 上一步登陆成功后即可执行&lt;/span&gt;
+ssh user@remote-server /path/to/script.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/241588/how-to-automate-ssh-login-with-password&#34;&gt;How to automate SSH login with password?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -413,6 +470,12 @@ docker ps
 &lt;td align=&#34;left&#34;&gt;也许你该找个人聊聊&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;洛莉·戈特利布&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;20230414&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20230425&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;第一本经济学&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;罗伯特·墨菲&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20230427&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;ing&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -2040,48 +2103,6 @@ kill SPID;
 &lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Soul&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</title>
-      <link>/blog/bash/2023041801/</link>
-      <pubDate>Fri, 24 Apr 2020 21:02:00 +0800</pubDate>
-      <guid>/blog/bash/2023041801/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;chatgpt确实好用，比自己吭哧吭哧google快多了&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#脚本所在目录&lt;/span&gt;
-rootDir&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;cd &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;dirname &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;BASH_SOURCE[0]&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; pwd&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-
-&lt;span style=&#34;color:#75715e&#34;&gt;# 输出服务器ip&lt;/span&gt;
-echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--- &lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;hostname -i&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;: &lt;/span&gt;$rootDir&lt;span style=&#34;color:#e6db74&#34;&gt; ---&amp;#34;&lt;/span&gt;
-
-dir1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$rootDir/old
-dir2&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$rootDir/new
-
-find $dir1 -type f | &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; read file; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
-    filename&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file#$dir1&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -e $dir2/$filename &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
-        count1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;grep -cve &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;^\s*$&amp;#39;&lt;/span&gt; $file&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-        count2&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;grep -cve &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;^\s*$&amp;#39;&lt;/span&gt; $dir2/$filename&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; $count1 -ne $count2 &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
-            echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;NG &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;filename&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; 非空行数不一致 old-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;count1&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; : new-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;count2&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
-            echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;OK &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;filename&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ssh执行远程服务器上的脚本&#34;&gt;ssh执行远程服务器上的脚本&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 生成ssh密钥&lt;/span&gt;
-ssh-keygen
-&lt;span style=&#34;color:#75715e&#34;&gt;# 连接目标服务器&lt;/span&gt;
-ssh-copy-id userid@hostname
-&lt;span style=&#34;color:#75715e&#34;&gt;# 上一步登陆成功后即可执行&lt;/span&gt;
-ssh user@remote-server /path/to/script.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/241588/how-to-automate-ssh-login-with-password&#34;&gt;How to automate SSH login with password?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-04-25T20:00:00+0800">
-<meta name="modified" content="2023-04-26T09:26:30+0800">
+<meta name="created" content="2023-04-27T20:00:00+0800">
+<meta name="modified" content="2023-04-29T23:41:07+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -68,13 +68,13 @@
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/cs/">CS</a></li>
 <li><a href="/blog/git/">Git</a></li>
@@ -90,6 +90,32 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/blog/prob/2022110604/">virtualbox虚拟机启用宿主机摄像头</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
+</div>
+
+</header>
+<div class="content">
+Install ‘Oracle VM VirtualBox Extension Pack’ Attaching webcam to guest OS VBoxManage list webcams VboxManage controlvm &#34;Ubuntu 16.04.3&#34; webcam attach .2 reference Enabling Webcam in VirtualBox Guest OS on Windows Host
+</div>
+</article>
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2022110605/">oracle常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+
+</header>
+<div class="content">
+在线执行环境，缺点是需要注册 Oracle live SQL 创建用户 alter session set &#34;_ORACLE_SCRIPT&#34;=true; CREATE USER &#39;newuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;; CREATE USER &#39;newuser&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;; GRANT ALL PRIVILEGES ON *.* TO &#39;newuser&#39;@&#39;localhost&#39;; REVOKE type_of_permission ON database_name.table_name FROM &#39;newuser&#39;@&#39;localhost&#39;; FLUSH PRIVILEGES; SHOW GRANTS FOR &#39;newuser&#39;@&#39;localhost&#39;; DROP USER &#39;newuser&#39;@&#39;localhost&#39;; -- 同时删除用户下的所有
+</div>
+</article>
 
 <article class="list-view list-view--sql">
 <header>
@@ -192,32 +218,6 @@ click File &gt; Virtual Media Manager in the main VirtualBox window Select a vir
 </header>
 <div class="content">
 动画 Overlord IV Lycoris Recoil メイドインアビス 烈日の黄金郷 リコリス・リコイル うたわれるもの 二人の白皇 異世界薬局 異世界おじさん サマータイムレンダ 剧集 Better.Call.Saul S01-S06 Breaking.Bad S01-S05 Cyberpunk: EdgeRunner
-</div>
-</article>
-
-<article class="list-view list-view--watch">
-<header>
-<h2 class="title title-submitted"><a href="/blog/watch/2022040101/">2022年2季度</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-04-01T12:00:00&#43;08:00">2022-04-01 12:00</time>
-</div>
-
-</header>
-<div class="content">
-动画 処刑少女の生きる道 盾の勇者の成り上がり Season2 勇者、辞めます 剧集 Severance Love, Death &amp; Robots Volume 3 电影 Drive My Car
-</div>
-</article>
-
-<article class="list-view list-view--read">
-<header>
-<h2 class="title title-submitted"><a href="/blog/read/2022030701/">2022年读书记录</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-02-01T12:00:00&#43;08:00">2022-02-01 12:00</time>
-</div>
-
-</header>
-<div class="content">
-name start end 圈外编辑 20220201 20220307 最好的决定 20220308 20220526 我能有什么坏心思呢 20220523 20220714 东京贫困女子 * 20220527 20220821 互联网与中国后现代性呓语 20220711 20220720 人生十二法则 20220824 ing 那些古怪又让人忧心的问题
 </div>
 </article>
 

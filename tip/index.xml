@@ -6,16 +6,31 @@
     <description>Recent content in Tip on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Apr 2023 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 27 Apr 2023 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/tip/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>使用mkvtoolnix批量去除视频外挂字幕</title>
+      <title>使用scrcpy在pc上控制android手机</title>
+      <link>/blog/tip/2023042702/</link>
+      <pubDate>Thu, 27 Apr 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/tip/2023042702/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;下载scrcpy，解压&lt;/li&gt;
+&lt;li&gt;手机开启USB debuging&lt;/li&gt;
+&lt;li&gt;手机连接电脑，手机会弹出确认窗口，点确认&lt;/li&gt;
+&lt;li&gt;在解压后的scrcpy目录，打开命令行，输入&lt;code&gt;scrcpy -S&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Genymobile/scrcpy/blob/master/FAQ.md&#34;&gt;https://github.com/Genymobile/scrcpy/blob/master/FAQ.md&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用mkvtoolnix批量去除mkv格式视频外挂字幕</title>
       <link>/blog/tip/2023042503/</link>
       <pubDate>Tue, 25 Apr 2023 20:00:00 +0800</pubDate>
       <guid>/blog/tip/2023042503/</guid>
       <description>&lt;h3 id=&#34;前提&#34;&gt;前提&lt;/h3&gt;
-&lt;p&gt;视频文件内容必须统一，一般是剧集类的&lt;/p&gt;
+&lt;p&gt;视频文件内容必须统一，一般是剧集类的，并且要是mkv格式的&lt;/p&gt;
 &lt;h3 id=&#34;打开mkvtoolnix选择某一个视频文件找到不要的字幕轨道取消选择导出optionsjson到视频所在文件夹&#34;&gt;打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出options.json到视频所在文件夹&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;../../images/2023042503_01.jpg&#34; alt=&#34;导出options.json&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;编辑optionsjson&#34;&gt;编辑options.json&lt;/h3&gt;
