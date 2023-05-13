@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gpg on HA</title>
+    <link>https://deletefromuser.github.io/tags/gpg/</link>
+    <description>Recent content in gpg on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Apr 2023 20:00:00 +0800</lastBuildDate>
+    <atom:link href="https://deletefromuser.github.io/tags/gpg/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>使用gpg加密文件</title>
+      <link>https://deletefromuser.github.io/tip/2023051302/</link>
+      <pubDate>Thu, 27 Apr 2023 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/tip/2023051302/</guid>
+      <description>&lt;h4 id=&#34;生成gpg密钥&#34;&gt;生成gpg密钥&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --gen-key
+&lt;span style=&#34;color:#75715e&#34;&gt;# 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用）&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;导出公钥&#34;&gt;导出公钥&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --armor --output mypubkey.gpg --export your.name@youreamil.com
+&lt;span style=&#34;color:#75715e&#34;&gt;# 复制公钥内容&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# cat mypubkey.gpg | clip&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;导入公钥假设加密另一个机器上的文件发送给自己&#34;&gt;导入公钥（假设加密另一个机器上的文件，发送给自己）&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;-----BEGIN PGP PUBLIC KEY BLOCK-----
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;...
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;-----END PGP PUBLIC KEY BLOCK-----
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt; &amp;gt; mypubkey.gpg
+gpg --import mypubkey.gpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;加密文件&#34;&gt;加密文件&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --output myfile.txt.gpg --encrypt --recipient your.name@youreamil.com  myfile.txt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 完成后可以通过https://www.file.io/之类的网站共享文件&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;解密文件&#34;&gt;解密文件&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --output myfile.txt --decrypt myfile.txt.gpg
+&lt;span style=&#34;color:#75715e&#34;&gt;# 需要输入passphase&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;上传公钥到公共服务器&#34;&gt;上传公钥到公共服务器&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --list-secret-keys
+&lt;span style=&#34;color:#75715e&#34;&gt;# sec   rsa3072 2023-05-13 [SC] [expires: 2025-05-12]&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#       B54A68A0F2AB41B5B9DED944ECE08FA2&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 找到sec部分里的一串代码&lt;/span&gt;
+gpg --send-keys B54A68A0F2AB41B5B9DED944ECE08FA2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;搜索公共服务器&#34;&gt;搜索公共服务器&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 默认https://keys.openpgp.org，可修改&lt;/span&gt;
+gpg --search-key your.name@youreamil.com
+gpg --keyserver keys.gnupg.net --search-key your.name@youreamil.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://yanhan.github.io/posts/2017-09-27-how-to-use-gpg-to-encrypt-stuff/&#34;&gt;How to use GPG to encrypt stuff&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

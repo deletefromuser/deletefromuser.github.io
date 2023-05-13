@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-04-27T20:00:00+0800">
-<meta name="modified" content="2023-05-05T23:24:53+0800">
+<meta name="created" content="2023-05-13T19:00:00+0800">
+<meta name="modified" content="2023-05-13T23:46:31+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,11 +66,11 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/sql/">Sql</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/web/">Web</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/java/">Java</a></li>
-<li><a href="/sql/">Sql</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/watch/">Watch</a></li>
@@ -90,6 +90,32 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/sql/2023021101/">使用mybatis的Batch Insert批量插入记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-11T19:00:00&#43;08:00">2023-02-11 19:00</time>
+</div>
+
+</header>
+<div class="content">
+不使用Batch Insert -- 使用mybatis时，下面的做法当一次插入数量太多时会报错（ORA-00913: too many values），这时需要用batch
+</div>
+</article>
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/web/2023020501/">将SpringBoot应用部署到docker</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-05T20:00:00&#43;08:00">2023-02-05 20:00</time>
+</div>
+
+</header>
+<div class="content">
+手动创建image 在项目内创建Dockerfile FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=docker&#34;]# ENTRYPOINT [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=dock
+</div>
+</article>
 
 <article class="list-view list-view--read">
 <header>
@@ -192,32 +218,6 @@ F12 -&gt; Sources -&gt; Snippets -&gt; new snippet可新建代码片段，创建
 </header>
 <div class="content">
 html2canvas 使html2canvas 在ie11中工作 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js&#34;&gt;&lt;/script&gt; html2canvas 在ie11中渲染出不明色块 html2canvas(document.querySelector(&#39;#preview_modal&#39;), { allowTaint: false, useCORS: true, scale: 2, }) 使用 html2canvas 生成图片在新tab打开 var image = new Image(); image.src = canvas.toDataURL(); var wImage
-</div>
-</article>
-
-<article class="list-view list-view--life">
-<header>
-<h2 class="title title-submitted"><a href="/life/2022121001/">菜谱</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-12-10T20:00:00&#43;08:00">2022-12-10 20:00</time>
-</div>
-
-</header>
-<div class="content">
-空气炸锅菜谱 烤红薯 160℃ x 45min 半成品鸡块 200℃ x 10min 烤鸡翅根 刀背拍打后腌制几个小时（一夜也可以），配料如下 十三香 蒜末 盐 植物油 160℃ x 10min 炒菜
-</div>
-</article>
-
-<article class="list-view list-view--tip">
-<header>
-<h2 class="title title-submitted"><a href="/tip/2022120601/">工作笔记2016-2021</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-12-06T20:00:00&#43;08:00">2022-12-06 20:00</time>
-</div>
-
-</header>
-<div class="content">
-停止网页重定向 window.addEventListener(&#34;beforeunload&#34;, () =&gt; { debugger; }, false); JS转换字符为UNICODE escape(&#34;转换字符&#34;).replace(/%/g, &#34;\\&#34;).toLowerCase(); // 十进制u
 </div>
 </article>
 

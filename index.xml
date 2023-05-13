@@ -6,8 +6,62 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Apr 2023 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 13 May 2023 19:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mariadb(mysql)使用</title>
+      <link>https://deletefromuser.github.io/sql/2023051301/</link>
+      <pubDate>Sat, 13 May 2023 19:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/sql/2023051301/</guid>
+      <description>&lt;h3 id=&#34;导出数据&#34;&gt;导出数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mysqldump -u username -p database_name &amp;gt; data-dump.sql
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-import-and-export-databases-in-mysql-or-mariadb&#34;&gt;4 Ways to Insert Multiple Rows in Oracle&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用gpg加密文件</title>
+      <link>https://deletefromuser.github.io/tip/2023051302/</link>
+      <pubDate>Thu, 27 Apr 2023 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/tip/2023051302/</guid>
+      <description>&lt;h4 id=&#34;生成gpg密钥&#34;&gt;生成gpg密钥&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --gen-key
+&lt;span style=&#34;color:#75715e&#34;&gt;# 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用）&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;导出公钥&#34;&gt;导出公钥&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --armor --output mypubkey.gpg --export your.name@youreamil.com
+&lt;span style=&#34;color:#75715e&#34;&gt;# 复制公钥内容&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# cat mypubkey.gpg | clip&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;导入公钥假设加密另一个机器上的文件发送给自己&#34;&gt;导入公钥（假设加密另一个机器上的文件，发送给自己）&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;-----BEGIN PGP PUBLIC KEY BLOCK-----
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;...
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;-----END PGP PUBLIC KEY BLOCK-----
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt; &amp;gt; mypubkey.gpg
+gpg --import mypubkey.gpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;加密文件&#34;&gt;加密文件&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --output myfile.txt.gpg --encrypt --recipient your.name@youreamil.com  myfile.txt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 完成后可以通过https://www.file.io/之类的网站共享文件&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;解密文件&#34;&gt;解密文件&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --output myfile.txt --decrypt myfile.txt.gpg
+&lt;span style=&#34;color:#75715e&#34;&gt;# 需要输入passphase&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;上传公钥到公共服务器&#34;&gt;上传公钥到公共服务器&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --list-secret-keys
+&lt;span style=&#34;color:#75715e&#34;&gt;# sec   rsa3072 2023-05-13 [SC] [expires: 2025-05-12]&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#       B54A68A0F2AB41B5B9DED944ECE08FA2&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 找到sec部分里的一串代码&lt;/span&gt;
+gpg --send-keys B54A68A0F2AB41B5B9DED944ECE08FA2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;搜索公共服务器&#34;&gt;搜索公共服务器&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 默认https://keys.openpgp.org，可修改&lt;/span&gt;
+gpg --search-key your.name@youreamil.com
+gpg --keyserver keys.gnupg.net --search-key your.name@youreamil.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://yanhan.github.io/posts/2017-09-27-how-to-use-gpg-to-encrypt-stuff/&#34;&gt;How to use GPG to encrypt stuff&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>使用scrcpy在pc上控制android手机</title>
@@ -730,6 +784,15 @@ sudo reboot
 &lt;li&gt;虾仁焯水后，放入碗中，加入鸡蛋，葱花，盐，搅匀，炒熟即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;番茄鸡蛋汤&#34;&gt;番茄鸡蛋汤&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;番茄切丁，切葱花，鸡蛋打散&lt;/li&gt;
+&lt;li&gt;加一半葱花爆香，加番茄炒至糊状&lt;/li&gt;
+&lt;li&gt;加水烧开后，一边打入鸡蛋液，一边搅拌（不要太快，不然鸡蛋会很散）&lt;/li&gt;
+&lt;li&gt;关火后，加入适量生抽，香油，盐即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;面食&#34;&gt;面食&lt;/h2&gt;
 &lt;h3 id=&#34;蒸馒头&#34;&gt;蒸馒头&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -751,6 +814,10 @@ sudo reboot
 &lt;li&gt;醒20min后，上电饼铛烙熟即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.xiachufang.com/recipe/106087260/&#34;&gt;简单又好喝的西红柿鸡蛋&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -936,7 +1003,7 @@ egrep -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;public|private&amp;#
 &lt;span style=&#34;color:#75715e&#34;&gt;# 在文件夹内特定后缀的文件中检索&lt;/span&gt;
 grep -r &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt; --include &lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;.yml /path/
 &lt;span style=&#34;color:#75715e&#34;&gt;# 在压缩文件中检索（过去的log有时会被备份为gz）&lt;/span&gt;
-zgrep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt; /path/*
+zgrep -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt; -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;another pattern&amp;#39;&lt;/span&gt; /path/*
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux进程&#34;&gt;查看linux进程&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 根据名字查找&lt;/span&gt;
 ps -ef | grep java
