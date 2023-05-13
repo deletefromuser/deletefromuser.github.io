@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>使用gpg加密文件 – HA</title>
+<meta name="description" content="生成gpg密钥 gpg --gen-key # 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用） 导出公钥 gpg --armor --output mypubkey.gpg --export your.name@youreamil.com # 复制公钥内容 # cat mypubkey.gpg | …">
+<meta name="created" content="2023-04-27T20:00:00+0800">
+<meta name="modified" content="2023-05-13T23:46:31+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="使用gpg加密文件">
+<meta property="og:url" content="/blog/tip/2023051302/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/tip/2023051302/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "使用gpg加密文件",
+    "datePublished": "2023-04-27T20:00:00+08:00",
+    "dateModified": "2023-05-13T23:46:31+08:00",
+    "url" : "/blog/tip/2023051302/",
+    "description": "生成gpg密钥 gpg --gen-key # 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用） 导出公钥 gpg --armor --output mypubkey.gpg --export your.name@youreamil.com # 复制公钥内容 # cat mypubkey.gpg | …",
+    "keywords": ["encryption","gpg"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/tip/" class="active" aria-current="page">Tip</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/cs/">CS</a></li>
+<li><a href="/blog/git/">Git</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--tip">
+<header>
+<h1 class="title title-submitted">使用gpg加密文件</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-04-27T20:00:00&#43;08:00">2023-04-27 20:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/encryption/">encryption</a></li>
+<li><a href="/blog/tags/gpg/">gpg</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h4 id="生成gpg密钥">生成gpg密钥</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gpg --gen-key
+<span style="color:#75715e"># 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用）</span>
+</code></pre></div><h4 id="导出公钥">导出公钥</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gpg --armor --output mypubkey.gpg --export your.name@youreamil.com
+<span style="color:#75715e"># 复制公钥内容</span>
+<span style="color:#75715e"># cat mypubkey.gpg | clip</span>
+</code></pre></div><h4 id="导入公钥假设加密另一个机器上的文件发送给自己">导入公钥（假设加密另一个机器上的文件，发送给自己）</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#39;-----BEGIN PGP PUBLIC KEY BLOCK-----
+</span><span style="color:#e6db74">...
+</span><span style="color:#e6db74">-----END PGP PUBLIC KEY BLOCK-----
+</span><span style="color:#e6db74">&#39;</span> &gt; mypubkey.gpg
+gpg --import mypubkey.gpg
+</code></pre></div><h4 id="加密文件">加密文件</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gpg --output myfile.txt.gpg --encrypt --recipient your.name@youreamil.com  myfile.txt
+<span style="color:#75715e"># 完成后可以通过https://www.file.io/之类的网站共享文件</span>
+</code></pre></div><h4 id="解密文件">解密文件</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gpg --output myfile.txt --decrypt myfile.txt.gpg
+<span style="color:#75715e"># 需要输入passphase</span>
+</code></pre></div><h4 id="上传公钥到公共服务器">上传公钥到公共服务器</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gpg --list-secret-keys
+<span style="color:#75715e"># sec   rsa3072 2023-05-13 [SC] [expires: 2025-05-12]</span>
+<span style="color:#75715e">#       B54A68A0F2AB41B5B9DED944ECE08FA2</span>
+<span style="color:#75715e"># 找到sec部分里的一串代码</span>
+gpg --send-keys B54A68A0F2AB41B5B9DED944ECE08FA2
+</code></pre></div><h4 id="搜索公共服务器">搜索公共服务器</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 默认https://keys.openpgp.org，可修改</span>
+gpg --search-key your.name@youreamil.com
+gpg --keyserver keys.gnupg.net --search-key your.name@youreamil.com
+</code></pre></div><ul>
+<li><a href="https://yanhan.github.io/posts/2017-09-27-how-to-use-gpg-to-encrypt-stuff/">How to use GPG to encrypt stuff</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-05-13 23:46<br>
+Created: 2023-04-27 20:00
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

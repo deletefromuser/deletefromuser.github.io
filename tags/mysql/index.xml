@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on HA</title>
+    <link>/blog/tags/mysql/</link>
+    <description>Recent content in mysql on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 13 May 2023 19:00:00 +0800</lastBuildDate>
+    <atom:link href="/blog/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mariadb(mysql)使用</title>
+      <link>/blog/sql/2023051301/</link>
+      <pubDate>Sat, 13 May 2023 19:00:00 +0800</pubDate>
+      <guid>/blog/sql/2023051301/</guid>
+      <description>&lt;h3 id=&#34;导出数据&#34;&gt;导出数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mysqldump -u username -p database_name &amp;gt; data-dump.sql
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-import-and-export-databases-in-mysql-or-mariadb&#34;&gt;4 Ways to Insert Multiple Rows in Oracle&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
