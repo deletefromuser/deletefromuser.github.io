@@ -125,7 +125,7 @@ sudo DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81
 <span style="color:#75715e"># -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载</span>
 <span style="color:#75715e"># -p8888:8888 主机端口：docker实例端口映射</span>
 sudo docker run -e TZ<span style="color:#f92672">=</span>Etc/GMT-8 -d --name spring-cloud-config-server_1 -v <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.m2:/root/.m2 -v <span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>/logs:/logs -p8888:8888 spring-cloud-config-server
-</code></pre></div><h3 id="使用spring-boot-maven-plugin创建image需要当前用户有执行docker的权限web2023020501非root用户下运行docker">使用spring-boot-maven-plugin创建image(<a href="../../web/2023020501/#%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E4%B8%8B%E8%BF%90%E8%A1%8Cdocker">需要当前用户有执行docker的权限</a>)</h3>
+</code></pre></div><h3 id="使用spring-boot-maven-plugin创建image需要当前用户有执行docker的权限web2023052001非root用户下运行docker">使用spring-boot-maven-plugin创建image(<a href="../../web/2023052001/#%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E4%B8%8B%E8%BF%90%E8%A1%8Cdocker">需要当前用户有执行docker的权限</a>)</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mvn spring-boot:build-image
 sudo docker run -e TZ<span style="color:#f92672">=</span>Etc/GMT-8 -d --name config-server_1 -e <span style="color:#e6db74">&#34;SPRING_PROFILES_ACTIVE=docker&#34;</span> -v <span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>/logs:/logs -p8888:8888 config-server:0.0.1-SNAPSHOT
 </code></pre></div><h4 id="注意事项">注意事项</h4>
