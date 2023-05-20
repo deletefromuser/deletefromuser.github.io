@@ -133,13 +133,16 @@ gpg --keyserver keys.gnupg.net --search-key your.name@youreamil.com
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;在本地计算机上设置ssh-tunneling&#34;&gt;在本地计算机上设置SSH tunneling&lt;/h4&gt;
 &lt;h4 id=&#34;与远程服务器的19000端口建立连接本地在19080端口响应&#34;&gt;与远程服务器的19000端口建立连接，本地在19080端口响应&lt;/h4&gt;
-&lt;p&gt;ssh -f -N -T -R 19000:localhost:19080 -p &amp;lsquo;22&amp;rsquo; &amp;lsquo;username@remote&amp;rsquo;&lt;/p&gt;
-&lt;h4 id=&#34;配置完成后即可访问&#34;&gt;配置完成后即可访问&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ssh -f -N -T -R 19000:localhost:19080 -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;22&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;username@remote&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 直连不行的话（thanks to GFW），可设置代理&lt;/span&gt;
+ssh -f -N -T -R 19000:localhost:19080 -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;22&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;username@remote&amp;#39;&lt;/span&gt; -o &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ProxyCommand=nc -X connect -x PROXYHOST:PROXYPORT %h %p&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;配置完成后即可访问&#34;&gt;配置完成后即可访问&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;http://远程服务器ip:19001/&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/the-software-reliever/expose-localhost-to-the-public-www-with-a-vps-nginx-and-ssh-tunneling-daefc0275757&#34;&gt;Expose localhost to the public WWW with a VPS, nginx and SSH tunneling&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://dev.to/elwin013/how-to-expose-local-service-using-nginx-and-ssh-1jmj&#34;&gt;How to expose local service using nginx and SSH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/19161960/connect-with-ssh-through-a-proxy&#34;&gt;Connect with SSH through a proxy&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -336,7 +339,7 @@ sudo DOCKER_BUILDKIT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# -p8888:8888 主机端口：docker实例端口映射&lt;/span&gt;
 sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc/GMT-8 -d --name spring-cloud-config-server_1 -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;HOME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/.m2:/root/.m2 -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PWD&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/logs:/logs -p8888:8888 spring-cloud-config-server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用spring-boot-maven-plugin创建image&#34;&gt;使用spring-boot-maven-plugin创建image&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用spring-boot-maven-plugin创建image需要当前用户有执行docker的权限web2023020501非root用户下运行docker&#34;&gt;使用spring-boot-maven-plugin创建image(&lt;a href=&#34;../web/2023020501/#%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E4%B8%8B%E8%BF%90%E8%A1%8Cdocker&#34;&gt;需要当前用户有执行docker的权限&lt;/a&gt;)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mvn spring-boot:build-image
 sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc/GMT-8 -d --name config-server_1 -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SPRING_PROFILES_ACTIVE=docker&amp;#34;&lt;/span&gt; -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PWD&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/logs:/logs -p8888:8888 config-server:0.0.1-SNAPSHOT
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;注意事项&#34;&gt;注意事项&lt;/h4&gt;
@@ -375,66 +378,7 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
         }
     }
 ]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
-&lt;p&gt;使用docker实例命令行&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker exec -it spring-cloud-config-server_1 bash
-&lt;span style=&#34;color:#75715e&#34;&gt;# 以root实行&lt;/span&gt;
-docker exec -u &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; -it mycontainer bash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;网络配置，使不同的docker实例互相联通&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 连接mysql的docker实例&lt;/span&gt;
-docker network create mysql_network
-docker network connect mysql_network mysql_instance
-docker network connect mysql_network spring-cloud-config-server_1
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络列表&lt;/span&gt;
-docker network list
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络详细，找到gateway地址，加上3306即可访问mysql&lt;/span&gt;
-docker network inspect mysql_network
-
-&lt;span style=&#34;color:#75715e&#34;&gt;# 在docker实例中访问host&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# 创建实例时添加下面的参数，即可在实例内通过host.docker.internal访问host&lt;/span&gt;
---add-host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;host.docker.internal:host-gateway
-&lt;span style=&#34;color:#75715e&#34;&gt;# 使用docker compose的时候&lt;/span&gt;
-  servicename:
-    extra_hosts:
-      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host.docker.internal:host-gateway&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看实例&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 正在运行中的&lt;/span&gt;
-docker ps
-&lt;span style=&#34;color:#75715e&#34;&gt;# 全部&lt;/span&gt;
-docker ps -a
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例运行log&lt;/span&gt;
-docker logs containerName
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例占用内存等&lt;/span&gt;
-docker stats
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查看创建实例时的命令&lt;/span&gt;
-docker inspect &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt; --format &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;curl -s https://gist.githubusercontent.com/ictus4u/e28b47dc826644412629093d5c9185be/raw/run.tpl&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt; containerName
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看image&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker image list
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;docker compose&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 创建&lt;/span&gt;
-docker compose up
-&lt;span style=&#34;color:#75715e&#34;&gt;# 销毁&lt;/span&gt;
-docker compose down
-&lt;span style=&#34;color:#75715e&#34;&gt;# 启动&lt;/span&gt;
-docker compose start
-&lt;span style=&#34;color:#75715e&#34;&gt;# 停止&lt;/span&gt;
-docker compose stop
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在离线电脑上安装image&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 从有网络的机器上下载image包&lt;/span&gt;
-docker save couchbase &amp;gt; couchbase.tar
-&lt;span style=&#34;color:#75715e&#34;&gt;# 放到离线机器上安装&lt;/span&gt;
-docker load &amp;lt; couchbase.tar.xz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;非root用户下运行docker&#34;&gt;非root用户下运行docker&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;使用spring的maven插件build image的时候，需要当前用户有docker的运行权限&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
-docker ps
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/dockerizing-spring-boot-application&#34;&gt;Dockerizing a Spring Boot Application&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/get-started/02_our_app/&#34;&gt;Containerize an application&lt;/a&gt;&lt;/li&gt;
@@ -443,16 +387,6 @@ docker ps
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/36234088/how-do-i-point-a-docker-image-to-my-m2-directory-for-running-maven-in-docker-on&#34;&gt;How do I point a docker image to my .m2 directory for running maven in docker on a mac?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/58764482/19120213&#34;&gt;accessing a docker container from another container&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/18861834/mounting-multiple-volumes-on-a-docker-container&#34;&gt;Mounting multiple volumes on a docker container?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/install/linux-postinstall/&#34;&gt;Manage Docker as a non-root user&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/htmlsingle/#build-image.examples.builder-configuration&#34;&gt;Spring Boot Maven Plugin Documentation - Builder Configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/spring-boot-docker-start-with-profile&#34;&gt;Starting Spring Boot Application in Docker With Profile&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/ops/docker-compose&#34;&gt;Introduction to Docker Compose | Baeldung&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://reflectoring.io/spring-boot-docker/&#34;&gt;Creating Optimized Docker Images for a Spring Boot Application&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/68023763/spring-boot-buildpack-always-downloads-latest-packeto-images-from-git&#34;&gt;spring boot buildpack always downloads latest packeto images from git&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container&#34;&gt;How to show the run command of a docker container&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container&#34;&gt;Root password inside a Docker container - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found&#34;&gt;Docker - Ubuntu - bash: ping: command not found - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37905763/how-do-i-download-docker-images-without-using-the-pull-command&#34;&gt;How do I download Docker images without using the pull command?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1080,12 +1014,18 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;自动安装安全更新&#34;&gt;自动安装安全更新&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo apt-get install unattended-upgrades
 sudo dpkg-reconfigure --priority&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;low unattended-upgrades
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;列出命令行所有可用命令&#34;&gt;列出命令行所有可用命令&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# No 1&lt;/span&gt;
+ls &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PATH//:/ &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# No 2&lt;/span&gt;
+compgen -c | sort -u &amp;gt; commands &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; less commands
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1026528/adding-custom-programs-to-favourites-of-ubuntu-dock&#34;&gt;Adding custom programs to favourites of Ubuntu Dock&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.delftstack.com/howto/linux/start-a-new-bash-session&#34;&gt;Start a New Terminal Session in Bash&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened&#34;&gt;How do I open a terminal window and execute a command after the shell has opened?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/AutomaticSecurityUpdates&#34;&gt;AutomaticSecurityUpdates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/403435/how-to-get-a-list-of-all-the-commands-available-for-ubuntu&#34;&gt;How to get a list of all the commands available for Ubuntu?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1464,7 +1404,12 @@ startup &lt;span style=&#34;color:#66d9ef&#34;&gt;force&lt;/span&gt;;
 
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 查看表属性
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt; USERINFO;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 表名的最大长度
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- version &amp;lt;= 12.1, 30 bytes
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- version &amp;gt;= 12.2, 128 bytes
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 可使用describe all_tab_columns查看
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 同时复制数据
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; New_Table_name &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Existing_table_Name; 
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 只复制表结构，不包含索引
@@ -1565,6 +1510,10 @@ name varchar2(&lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;)
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- null比较时，要用is null，is not null
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; bookinfo &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1 row(s) inserted.&amp;#39;&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;--搜索不到为null的数据
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; bookinfo &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1 row(s) inserted.&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;or&lt;/span&gt; name &lt;span style=&#34;color:#66d9ef&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;--可搜索为null的数据
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 排序时null的位置
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 可通过NULLS FIRST，NULLS LAST控制
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; t1 &lt;span style=&#34;color:#66d9ef&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; c1 &lt;span style=&#34;color:#66d9ef&#34;&gt;DESC&lt;/span&gt; NULLS &lt;span style=&#34;color:#66d9ef&#34;&gt;LAST&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 不指定时，升序为NULLS LAST，降序NULLS FIRST（可简易将null视为最大值）
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改列属性&#34;&gt;修改列属性&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; USERINFO &lt;span style=&#34;color:#66d9ef&#34;&gt;modify&lt;/span&gt; address varchar2(&lt;span style=&#34;color:#ae81ff&#34;&gt;350&lt;/span&gt;);
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 缩小列长度，改变类型
@@ -1620,12 +1569,17 @@ dept number(&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;),
 salary number(&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;),
 createtime date
 );
-&lt;span style=&#34;color:#75715e&#34;&gt;-- 插入数据
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 插入批量数据
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 构造50条数据
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;insert&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; userinfo 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; trunc(dbms_random.value(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;e20))&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, dbms_random.string(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;u&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;), 
        trunc(dbms_random.value(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;)),trunc(dbms_random.value(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;e7)),
        to_date(to_char(add_months(sysdate, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;),&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;J&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; TRUNC(DBMS_RANDOM.VALUE(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;365&lt;/span&gt;)),&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;J&amp;#39;&lt;/span&gt;)
 &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual &lt;span style=&#34;color:#66d9ef&#34;&gt;connect&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;level&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt; ;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 根据user表数据为每条记录生成3条userorg表记录插入
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; userorg (id, user_id, org_id) 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; rownum, user_id, &lt;span style=&#34;color:#66d9ef&#34;&gt;level&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;user&lt;/span&gt; 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;CONNECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;LEVEL&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;;
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 按工资排序，同时记录工资排名
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; id,name,dept,salary,createtime,rownum,rowid,row_number() over(&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; salary &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; userinfo &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; salary &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;;
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 查询每个部门工资最高的员工信息
@@ -1697,6 +1651,8 @@ createtime date
 &lt;li&gt;&lt;a href=&#34;https://community.oracle.com/tech/developers/discussion/491165/how-to-insert-if-not-exist-update-when-exist-then-returning-the-value&#34;&gt;How to : Insert If Not Exist, Update When Exist, Then Returning the Value ?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2446764/update-statement-with-inner-join-on-oracle&#34;&gt;Update statement with inner join on Oracle&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/74189667/sql-developer-shortcut-of-duplicate-line&#34;&gt;SQL developer shortcut of duplicate line&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/74189667/sql-developer-shortcut-of-duplicate-line&#34;&gt;ORDER BY clause&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/756558/what-is-the-maximum-length-of-a-table-name-in-oracle&#34;&gt;What is the maximum length of a table name in Oracle?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -3187,7 +3143,9 @@ git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Excluding&amp;#
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# 使用token进行clone(其实跟上面没有本质区别，token本来就是用来代替密码的)&lt;/span&gt;
 git clone https://username:token@github.com/username/repository.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-bash中使用sh命令时出现警告__git_ps1-command-not-found&#34;&gt;git bash中使用sh命令时出现警告&amp;rdquo;__git_ps1: command not found&amp;rdquo;&lt;/h3&gt;
+&lt;p&gt;找到completion/git-prompt.sh，在~/.bash_profile或者内部引用的配置文件中添加&lt;code&gt;source /path/git-prompt.sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://githowto.com/moving_files&#34;&gt;20. Moving files&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit&#34;&gt;How do I list all the files in a commit?&lt;/a&gt;&lt;/li&gt;
@@ -3199,7 +3157,7 @@ git clone https://username:token@github.com/username/repository.git
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/12420924/stash-just-a-single-file&#34;&gt;Stash just a single file&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/42141656/19120213&#34;&gt;Git: How to remove file from index without deleting files from any repository&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/10054470/19120213&#34;&gt;How do I provide a username and password when running &amp;ldquo;git clone git@remote.git&amp;rdquo;?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://username:token@github.com/username/repository.git&#34;&gt;How do I provide a username and password when running &amp;ldquo;git clone git@remote.git&amp;rdquo;?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://anotheruiguy.gitbooks.io/gitforeveryone/content/auto/README.html#:~:text=If%20you%20are%20seeing%20this,and%20install%20a%20new%20one.&#34;&gt;-bash: __git_ps1: command not found&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

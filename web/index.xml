@@ -43,13 +43,16 @@
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;在本地计算机上设置ssh-tunneling&#34;&gt;在本地计算机上设置SSH tunneling&lt;/h4&gt;
 &lt;h4 id=&#34;与远程服务器的19000端口建立连接本地在19080端口响应&#34;&gt;与远程服务器的19000端口建立连接，本地在19080端口响应&lt;/h4&gt;
-&lt;p&gt;ssh -f -N -T -R 19000:localhost:19080 -p &amp;lsquo;22&amp;rsquo; &amp;lsquo;username@remote&amp;rsquo;&lt;/p&gt;
-&lt;h4 id=&#34;配置完成后即可访问&#34;&gt;配置完成后即可访问&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ssh -f -N -T -R 19000:localhost:19080 -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;22&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;username@remote&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 直连不行的话（thanks to GFW），可设置代理&lt;/span&gt;
+ssh -f -N -T -R 19000:localhost:19080 -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;22&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;username@remote&amp;#39;&lt;/span&gt; -o &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ProxyCommand=nc -X connect -x PROXYHOST:PROXYPORT %h %p&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;配置完成后即可访问&#34;&gt;配置完成后即可访问&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;http://远程服务器ip:19001/&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/the-software-reliever/expose-localhost-to-the-public-www-with-a-vps-nginx-and-ssh-tunneling-daefc0275757&#34;&gt;Expose localhost to the public WWW with a VPS, nginx and SSH tunneling&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://dev.to/elwin013/how-to-expose-local-service-using-nginx-and-ssh-1jmj&#34;&gt;How to expose local service using nginx and SSH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/19161960/connect-with-ssh-through-a-proxy&#34;&gt;Connect with SSH through a proxy&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -101,7 +104,7 @@ sudo DOCKER_BUILDKIT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# -p8888:8888 主机端口：docker实例端口映射&lt;/span&gt;
 sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc/GMT-8 -d --name spring-cloud-config-server_1 -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;HOME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/.m2:/root/.m2 -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PWD&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/logs:/logs -p8888:8888 spring-cloud-config-server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用spring-boot-maven-plugin创建image&#34;&gt;使用spring-boot-maven-plugin创建image&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用spring-boot-maven-plugin创建image需要当前用户有执行docker的权限web2023020501非root用户下运行docker&#34;&gt;使用spring-boot-maven-plugin创建image(&lt;a href=&#34;../web/2023020501/#%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E4%B8%8B%E8%BF%90%E8%A1%8Cdocker&#34;&gt;需要当前用户有执行docker的权限&lt;/a&gt;)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mvn spring-boot:build-image
 sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc/GMT-8 -d --name config-server_1 -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SPRING_PROFILES_ACTIVE=docker&amp;#34;&lt;/span&gt; -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PWD&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/logs:/logs -p8888:8888 config-server:0.0.1-SNAPSHOT
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;注意事项&#34;&gt;注意事项&lt;/h4&gt;
@@ -140,66 +143,7 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
         }
     }
 ]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
-&lt;p&gt;使用docker实例命令行&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker exec -it spring-cloud-config-server_1 bash
-&lt;span style=&#34;color:#75715e&#34;&gt;# 以root实行&lt;/span&gt;
-docker exec -u &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; -it mycontainer bash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;网络配置，使不同的docker实例互相联通&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 连接mysql的docker实例&lt;/span&gt;
-docker network create mysql_network
-docker network connect mysql_network mysql_instance
-docker network connect mysql_network spring-cloud-config-server_1
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络列表&lt;/span&gt;
-docker network list
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络详细，找到gateway地址，加上3306即可访问mysql&lt;/span&gt;
-docker network inspect mysql_network
-
-&lt;span style=&#34;color:#75715e&#34;&gt;# 在docker实例中访问host&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# 创建实例时添加下面的参数，即可在实例内通过host.docker.internal访问host&lt;/span&gt;
---add-host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;host.docker.internal:host-gateway
-&lt;span style=&#34;color:#75715e&#34;&gt;# 使用docker compose的时候&lt;/span&gt;
-  servicename:
-    extra_hosts:
-      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host.docker.internal:host-gateway&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看实例&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 正在运行中的&lt;/span&gt;
-docker ps
-&lt;span style=&#34;color:#75715e&#34;&gt;# 全部&lt;/span&gt;
-docker ps -a
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例运行log&lt;/span&gt;
-docker logs containerName
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例占用内存等&lt;/span&gt;
-docker stats
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查看创建实例时的命令&lt;/span&gt;
-docker inspect &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt; --format &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;curl -s https://gist.githubusercontent.com/ictus4u/e28b47dc826644412629093d5c9185be/raw/run.tpl&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt; containerName
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看image&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker image list
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;docker compose&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 创建&lt;/span&gt;
-docker compose up
-&lt;span style=&#34;color:#75715e&#34;&gt;# 销毁&lt;/span&gt;
-docker compose down
-&lt;span style=&#34;color:#75715e&#34;&gt;# 启动&lt;/span&gt;
-docker compose start
-&lt;span style=&#34;color:#75715e&#34;&gt;# 停止&lt;/span&gt;
-docker compose stop
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在离线电脑上安装image&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 从有网络的机器上下载image包&lt;/span&gt;
-docker save couchbase &amp;gt; couchbase.tar
-&lt;span style=&#34;color:#75715e&#34;&gt;# 放到离线机器上安装&lt;/span&gt;
-docker load &amp;lt; couchbase.tar.xz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;非root用户下运行docker&#34;&gt;非root用户下运行docker&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;使用spring的maven插件build image的时候，需要当前用户有docker的运行权限&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
-docker ps
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/dockerizing-spring-boot-application&#34;&gt;Dockerizing a Spring Boot Application&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/get-started/02_our_app/&#34;&gt;Containerize an application&lt;/a&gt;&lt;/li&gt;
@@ -208,16 +152,6 @@ docker ps
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/36234088/how-do-i-point-a-docker-image-to-my-m2-directory-for-running-maven-in-docker-on&#34;&gt;How do I point a docker image to my .m2 directory for running maven in docker on a mac?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/58764482/19120213&#34;&gt;accessing a docker container from another container&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/18861834/mounting-multiple-volumes-on-a-docker-container&#34;&gt;Mounting multiple volumes on a docker container?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/install/linux-postinstall/&#34;&gt;Manage Docker as a non-root user&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/htmlsingle/#build-image.examples.builder-configuration&#34;&gt;Spring Boot Maven Plugin Documentation - Builder Configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/spring-boot-docker-start-with-profile&#34;&gt;Starting Spring Boot Application in Docker With Profile&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/ops/docker-compose&#34;&gt;Introduction to Docker Compose | Baeldung&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://reflectoring.io/spring-boot-docker/&#34;&gt;Creating Optimized Docker Images for a Spring Boot Application&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/68023763/spring-boot-buildpack-always-downloads-latest-packeto-images-from-git&#34;&gt;spring boot buildpack always downloads latest packeto images from git&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container&#34;&gt;How to show the run command of a docker container&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container&#34;&gt;Root password inside a Docker container - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found&#34;&gt;Docker - Ubuntu - bash: ping: command not found - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37905763/how-do-i-download-docker-images-without-using-the-pull-command&#34;&gt;How do I download Docker images without using the pull command?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

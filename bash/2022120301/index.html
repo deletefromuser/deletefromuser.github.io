@@ -113,12 +113,18 @@ Tags:
 </code></pre></div><h3 id="自动安装安全更新">自动安装安全更新</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt-get install unattended-upgrades
 sudo dpkg-reconfigure --priority<span style="color:#f92672">=</span>low unattended-upgrades
+</code></pre></div><h3 id="列出命令行所有可用命令">列出命令行所有可用命令</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># No 1</span>
+ls <span style="color:#e6db74">${</span>PATH//:/ <span style="color:#e6db74">}</span>
+<span style="color:#75715e"># No 2</span>
+compgen -c | sort -u &gt; commands <span style="color:#f92672">&amp;&amp;</span> less commands
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://askubuntu.com/questions/1026528/adding-custom-programs-to-favourites-of-ubuntu-dock">Adding custom programs to favourites of Ubuntu Dock</a></li>
 <li><a href="https://www.delftstack.com/howto/linux/start-a-new-bash-session">Start a New Terminal Session in Bash</a></li>
 <li><a href="https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened">How do I open a terminal window and execute a command after the shell has opened?</a></li>
 <li><a href="https://help.ubuntu.com/community/AutomaticSecurityUpdates">AutomaticSecurityUpdates</a></li>
+<li><a href="https://askubuntu.com/questions/403435/how-to-get-a-list-of-all-the-commands-available-for-ubuntu">How to get a list of all the commands available for Ubuntu?</a></li>
 </ul>
 
 </div>

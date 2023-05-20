@@ -34,6 +34,7 @@
     "dateModified": "2023-02-19T20:00:00+08:00",
     "url" : "/blog/web/2023020501/",
     "description": "手动创建image  在项目内创建Dockerfile  FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [\u0026amp;#34;mvn\u0026amp;#34;, \u0026amp;#34;spring-boot:run\u0026amp;#34;, \u0026amp;#34;-Dspring-boot.run.profiles=docker\u0026amp;#34;]# …",
+    "keywords": ["docker","spring"],
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -92,6 +93,13 @@
 <div class="submitted">
 <time class="created-date" datetime="2023-02-05T20:00:00&#43;08:00">2023-02-05 20:00</time>
 </div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/docker/">docker</a></li>
+<li><a href="/blog/tags/spring/">spring</a></li>
+</ul>
+</div>
 </header>
 <div class="content">
 <h3 id="手动创建image">手动创建image</h3>
@@ -117,7 +125,7 @@ sudo DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81
 <span style="color:#75715e"># -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载</span>
 <span style="color:#75715e"># -p8888:8888 主机端口：docker实例端口映射</span>
 sudo docker run -e TZ<span style="color:#f92672">=</span>Etc/GMT-8 -d --name spring-cloud-config-server_1 -v <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.m2:/root/.m2 -v <span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>/logs:/logs -p8888:8888 spring-cloud-config-server
-</code></pre></div><h3 id="使用spring-boot-maven-plugin创建image">使用spring-boot-maven-plugin创建image</h3>
+</code></pre></div><h3 id="使用spring-boot-maven-plugin创建image需要当前用户有执行docker的权限web2023020501非root用户下运行docker">使用spring-boot-maven-plugin创建image(<a href="../web/2023020501/#%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E4%B8%8B%E8%BF%90%E8%A1%8Cdocker">需要当前用户有执行docker的权限</a>)</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mvn spring-boot:build-image
 sudo docker run -e TZ<span style="color:#f92672">=</span>Etc/GMT-8 -d --name config-server_1 -e <span style="color:#e6db74">&#34;SPRING_PROFILES_ACTIVE=docker&#34;</span> -v <span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>/logs:/logs -p8888:8888 config-server:0.0.1-SNAPSHOT
 </code></pre></div><h4 id="注意事项">注意事项</h4>
@@ -156,66 +164,7 @@ sudo docker run -e TZ<span style="color:#f92672">=</span>Etc/GMT-8 -d --name con
         }
     }
 ]
-</code></pre><h3 id="其他">其他</h3>
-<p>使用docker实例命令行</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker exec -it spring-cloud-config-server_1 bash
-<span style="color:#75715e"># 以root实行</span>
-docker exec -u <span style="color:#ae81ff">0</span> -it mycontainer bash
-</code></pre></div><p>网络配置，使不同的docker实例互相联通</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 连接mysql的docker实例</span>
-docker network create mysql_network
-docker network connect mysql_network mysql_instance
-docker network connect mysql_network spring-cloud-config-server_1
-<span style="color:#75715e"># 查看网络列表</span>
-docker network list
-<span style="color:#75715e"># 查看网络详细，找到gateway地址，加上3306即可访问mysql</span>
-docker network inspect mysql_network
-
-<span style="color:#75715e"># 在docker实例中访问host</span>
-<span style="color:#75715e"># 创建实例时添加下面的参数，即可在实例内通过host.docker.internal访问host</span>
---add-host<span style="color:#f92672">=</span>host.docker.internal:host-gateway
-<span style="color:#75715e"># 使用docker compose的时候</span>
-  servicename:
-    extra_hosts:
-      - <span style="color:#e6db74">&#34;host.docker.internal:host-gateway&#34;</span>
-</code></pre></div><p>查看实例</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 正在运行中的</span>
-docker ps
-<span style="color:#75715e"># 全部</span>
-docker ps -a
-<span style="color:#75715e"># 查看实例运行log</span>
-docker logs containerName
-<span style="color:#75715e"># 查看实例占用内存等</span>
-docker stats
-<span style="color:#75715e"># 查看创建实例时的命令</span>
-docker inspect <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --format <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -s https://gist.githubusercontent.com/ictus4u/e28b47dc826644412629093d5c9185be/raw/run.tpl<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> containerName
-</code></pre></div><p>查看image</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker image list
-</code></pre></div><p>docker compose</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 创建</span>
-docker compose up
-<span style="color:#75715e"># 销毁</span>
-docker compose down
-<span style="color:#75715e"># 启动</span>
-docker compose start
-<span style="color:#75715e"># 停止</span>
-docker compose stop
-</code></pre></div><p>在离线电脑上安装image</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 从有网络的机器上下载image包</span>
-docker save couchbase &gt; couchbase.tar
-<span style="color:#75715e"># 放到离线机器上安装</span>
-docker load &lt; couchbase.tar.xz
-</code></pre></div><h3 id="非root用户下运行docker">非root用户下运行docker</h3>
-<blockquote>
-<p>使用spring的maven插件build image的时候，需要当前用户有docker的运行权限</p>
-</blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
-docker ps
-</code></pre></div><p><strong>reference</strong></p>
+</code></pre><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://www.baeldung.com/dockerizing-spring-boot-application">Dockerizing a Spring Boot Application</a></li>
 <li><a href="https://docs.docker.com/get-started/02_our_app/">Containerize an application</a></li>
@@ -224,16 +173,6 @@ docker ps
 <li><a href="https://stackoverflow.com/questions/36234088/how-do-i-point-a-docker-image-to-my-m2-directory-for-running-maven-in-docker-on">How do I point a docker image to my .m2 directory for running maven in docker on a mac?</a></li>
 <li><a href="https://stackoverflow.com/a/58764482/19120213">accessing a docker container from another container</a></li>
 <li><a href="https://stackoverflow.com/questions/18861834/mounting-multiple-volumes-on-a-docker-container">Mounting multiple volumes on a docker container?</a></li>
-<li><a href="https://docs.docker.com/engine/install/linux-postinstall/">Manage Docker as a non-root user</a></li>
-<li><a href="https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/htmlsingle/#build-image.examples.builder-configuration">Spring Boot Maven Plugin Documentation - Builder Configuration</a></li>
-<li><a href="https://www.baeldung.com/spring-boot-docker-start-with-profile">Starting Spring Boot Application in Docker With Profile</a></li>
-<li><a href="https://www.baeldung.com/ops/docker-compose">Introduction to Docker Compose | Baeldung</a></li>
-<li><a href="https://reflectoring.io/spring-boot-docker/">Creating Optimized Docker Images for a Spring Boot Application</a></li>
-<li><a href="https://stackoverflow.com/questions/68023763/spring-boot-buildpack-always-downloads-latest-packeto-images-from-git">spring boot buildpack always downloads latest packeto images from git</a></li>
-<li><a href="https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container">How to show the run command of a docker container</a></li>
-<li><a href="https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container">Root password inside a Docker container - Stack Overflow</a></li>
-<li><a href="https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found">Docker - Ubuntu - bash: ping: command not found - Stack Overflow</a></li>
-<li><a href="https://stackoverflow.com/questions/37905763/how-do-i-download-docker-images-without-using-the-pull-command">How do I download Docker images without using the pull command?</a></li>
 </ul>
 
 </div>

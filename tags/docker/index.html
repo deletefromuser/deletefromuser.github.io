@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Web – HA</title>
-<link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/web/index.xml">
+<title>docker – HA</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/tags/docker/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-04-25T20:00:00+0800">
-<meta name="modified" content="2023-05-20T18:15:56+0800">
+<meta name="created" content="2023-02-05T20:00:00+0800">
+<meta name="modified" content="2023-02-19T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="Web">
-<meta property="og:url" content="/blog/web/">
+<meta property="og:title" content="docker">
+<meta property="og:url" content="/blog/tags/docker/">
 <meta property="og:type" content="website">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/blog/web/">
+<link rel="canonical" href="/blog/tags/docker/">
 <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
@@ -30,8 +30,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "url" : "/blog/web/",
-    "name": "Web",
+    "url" : "/blog/tags/docker/",
+    "name": "docker",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -68,7 +68,7 @@
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
-<li><a href="/blog/web/" class="active" aria-current="page">Web</a></li>
+<li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/read/">Read</a></li>
@@ -84,39 +84,23 @@
 
 
 <main class="main layout__main">
-<h1 class="title">Web</h1>
+<h1 class="title">docker</h1>
 
 
 
 <article class="list-view list-view--web">
 <header>
-<h2 class="title title-submitted"><a href="/blog/web/20190113/">使用thymeleaf和spring security提供的csrf方法</a></h2>
+<h2 class="title title-submitted"><a href="/blog/web/2023020501/">将SpringBoot应用部署到docker</a></h2>
 <div class="submitted">
-<time class="created-date" datetime="2019-01-13T01:33:58&#43;08:00">2019-01-13 01:33</time>
+<time class="created-date" datetime="2023-02-05T20:00:00&#43;08:00">2023-02-05 20:00</time>
 </div>
 
 </header>
 <div class="content">
-使用thymeleaf和spring security提供的csrf方法 只需要在html内的form在设置action时使用thymeleaf
+手动创建image 在项目内创建Dockerfile FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=docker&#34;]# ENTRYPOINT [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=dock
 </div>
 </article>
 
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/blog/web/2017031901/">JSONP跨域獲取JSON數據</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-19T01:33:58&#43;08:00">2017-03-19 01:33</time>
-</div>
-
-</header>
-<div class="content">
-JSONP跨域獲取JSON數據 客戶端請求數據 &lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;App Engine Demo&lt;/title&gt; &lt;script src=&#34;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&#34;&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;result&#34;&gt;Loading...&lt;/div&gt; &lt;br /&gt; &lt;p&gt;add p&lt;/p&gt; &lt;br /&gt; &lt;script&gt; $(document).ready(function() { $.ajax({ async : false, url : &#34;https://hanotfun.appspot.com/demo&#34;, type : &#34;GET&#34;, dataType : &#39;jsonp&#39;, jsonp : &#39;callback&#39;, success : function(data) { $(&#39;#result&#39;).html(&#34;Hello, &#34; + data.name); } });
-</div>
-</article>
-
-<nav class="pager">
-<a href="/blog/web/" rel="prev" class="pager-item pager-prev">Prev</a>
-</nav>
 
 </main>
 

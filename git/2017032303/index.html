@@ -148,7 +148,9 @@ git commit -m <span style="color:#e6db74">&#34;Excluding&#34;</span><span style=
 
 <span style="color:#75715e"># 使用token进行clone(其实跟上面没有本质区别，token本来就是用来代替密码的)</span>
 git clone https://username:token@github.com/username/repository.git
-</code></pre></div><p><strong>reference</strong></p>
+</code></pre></div><h3 id="git-bash中使用sh命令时出现警告__git_ps1-command-not-found">git bash中使用sh命令时出现警告&rdquo;__git_ps1: command not found&rdquo;</h3>
+<p>找到completion/git-prompt.sh，在~/.bash_profile或者内部引用的配置文件中添加<code>source /path/git-prompt.sh</code></p>
+<p><strong>reference</strong></p>
 <ol>
 <li><a href="https://githowto.com/moving_files">20. Moving files</a></li>
 <li><a href="https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit">How do I list all the files in a commit?</a></li>
@@ -160,7 +162,7 @@ git clone https://username:token@github.com/username/repository.git
 <li><a href="https://stackoverflow.com/questions/12420924/stash-just-a-single-file">Stash just a single file</a></li>
 <li><a href="https://stackoverflow.com/a/42141656/19120213">Git: How to remove file from index without deleting files from any repository</a></li>
 <li><a href="https://stackoverflow.com/a/10054470/19120213">How do I provide a username and password when running &ldquo;git clone git@remote.git&rdquo;?</a></li>
-<li><a href="https://username:token@github.com/username/repository.git">How do I provide a username and password when running &ldquo;git clone git@remote.git&rdquo;?</a></li>
+<li><a href="https://anotheruiguy.gitbooks.io/gitforeveryone/content/auto/README.html#:~:text=If%20you%20are%20seeing%20this,and%20install%20a%20new%20one.">-bash: __git_ps1: command not found</a></li>
 </ol>
 
 </div>
