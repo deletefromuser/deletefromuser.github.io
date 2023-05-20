@@ -6,8 +6,87 @@
     <description>Recent content in docker on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Feb 2023 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 20 May 2023 18:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>docker使用记录</title>
+      <link>https://deletefromuser.github.io/web/2023052001/</link>
+      <pubDate>Sat, 20 May 2023 18:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/web/2023052001/</guid>
+      <description>&lt;p&gt;使用docker实例命令行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker exec -it spring-cloud-config-server_1 bash
+&lt;span style=&#34;color:#75715e&#34;&gt;# 以root实行&lt;/span&gt;
+docker exec -u &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; -it mycontainer bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;网络配置，使不同的docker实例互相联通&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 连接mysql的docker实例&lt;/span&gt;
+docker network create mysql_network
+docker network connect mysql_network mysql_instance
+docker network connect mysql_network spring-cloud-config-server_1
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络列表&lt;/span&gt;
+docker network list
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络详细，找到gateway地址，加上3306即可访问mysql&lt;/span&gt;
+docker network inspect mysql_network
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在docker实例中访问host&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 创建实例时添加下面的参数，即可在实例内通过host.docker.internal访问host&lt;/span&gt;
+--add-host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;host.docker.internal:host-gateway
+&lt;span style=&#34;color:#75715e&#34;&gt;# 使用docker compose的时候&lt;/span&gt;
+  servicename:
+    extra_hosts:
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host.docker.internal:host-gateway&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看实例&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 正在运行中的&lt;/span&gt;
+docker ps
+&lt;span style=&#34;color:#75715e&#34;&gt;# 全部&lt;/span&gt;
+docker ps -a
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例运行log&lt;/span&gt;
+docker logs containerName
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例占用内存等&lt;/span&gt;
+docker stats
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看创建实例时的命令&lt;/span&gt;
+docker inspect &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt; --format &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;curl -s https://gist.githubusercontent.com/ictus4u/e28b47dc826644412629093d5c9185be/raw/run.tpl&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt; containerName
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看image&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker image list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;docker compose&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 创建&lt;/span&gt;
+docker compose up
+&lt;span style=&#34;color:#75715e&#34;&gt;# 销毁&lt;/span&gt;
+docker compose down
+&lt;span style=&#34;color:#75715e&#34;&gt;# 启动&lt;/span&gt;
+docker compose start
+&lt;span style=&#34;color:#75715e&#34;&gt;# 停止&lt;/span&gt;
+docker compose stop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在离线电脑上安装image&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 从有网络的机器上下载image包&lt;/span&gt;
+docker save couchbase &amp;gt; couchbase.tar
+&lt;span style=&#34;color:#75715e&#34;&gt;# 放到离线机器上安装&lt;/span&gt;
+docker load &amp;lt; couchbase.tar.xz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;非root用户下运行docker&#34;&gt;非root用户下运行docker&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用spring的maven插件build image的时候，需要当前用户有docker的运行权限&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker ps
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/install/linux-postinstall/&#34;&gt;Manage Docker as a non-root user&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/htmlsingle/#build-image.examples.builder-configuration&#34;&gt;Spring Boot Maven Plugin Documentation - Builder Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/spring-boot-docker-start-with-profile&#34;&gt;Starting Spring Boot Application in Docker With Profile&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/ops/docker-compose&#34;&gt;Introduction to Docker Compose | Baeldung&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reflectoring.io/spring-boot-docker/&#34;&gt;Creating Optimized Docker Images for a Spring Boot Application&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/68023763/spring-boot-buildpack-always-downloads-latest-packeto-images-from-git&#34;&gt;spring boot buildpack always downloads latest packeto images from git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container&#34;&gt;How to show the run command of a docker container&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container&#34;&gt;Root password inside a Docker container - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found&#34;&gt;Docker - Ubuntu - bash: ping: command not found - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37905763/how-do-i-download-docker-images-without-using-the-pull-command&#34;&gt;How do I download Docker images without using the pull command?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>将SpringBoot应用部署到docker</title>

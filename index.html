@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-05-13T19:00:00+0800">
-<meta name="modified" content="2023-05-20T18:15:56+0800">
+<meta name="created" content="2023-05-20T18:00:00+0800">
+<meta name="modified" content="2023-05-20T18:32:27+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,9 +66,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/web/">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/tip/">Tip</a></li>
-<li><a href="/web/">Web</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/java/">Java</a></li>
 <li><a href="/read/">Read</a></li>
@@ -90,6 +90,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/web/2023052001/">docker使用记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-05-20T18:00:00&#43;08:00">2023-05-20 18:00</time>
+</div>
+
+</header>
+<div class="content">
+使用docker实例命令行 docker exec -it spring-cloud-config-server_1 bash # 以root实行 docker exec -u 0 -it mycontainer bash 网络配置，使不同的docker实例互相联通 # 连接mysql的docker实
+</div>
+</article>
 
 <article class="list-view list-view--sql">
 <header>
@@ -205,19 +218,6 @@ chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 r
 </header>
 <div class="content">
 (async () =&gt; { const rawResponse = await fetch(&#39;https://httpbin.org/post&#39;, { method: &#39;POST&#39;, headers: { &#39;Accept&#39;: &#39;application/json&#39;, &#39;Content-Type&#39;: &#39;application/json&#39; }, body: JSON.stringify({a: 1, b: &#39;Textual content&#39;}) }); // const content = await rawResponse.json(); const content = await rawResponse.text(); console.log(content); })(); reference Fetch: POST JSON data
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/web/2023021101/">使用OBS虚拟摄像头</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-02-11T20:00:00&#43;08:00">2023-02-11 20:00</time>
-</div>
-
-</header>
-<div class="content">
-工作中要测试网页的视频录制功能，但是是在客户的虚拟机上，没有摄像头，这时候可以使用OBS模拟摄像头来测试 安装OBS，及FireFox（CHR
 </div>
 </article>
 
