@@ -6,7 +6,7 @@
 <title>使用nginx和ssh tunneling实现通过公网ip访问本地计算机 – HA</title>
 <meta name="description" content="假设本地计算机上，已开发的应用可通过http://localhost:19080来访问 在有公网ip的服务器上添加下列配置后部署nginx（监听19001端口，收到请求后发送到19000端口） server { listen 19001; location / { proxy_pass http://localhost:19000; } …">
 <meta name="created" content="2023-04-25T20:00:00+0800">
-<meta name="modified" content="2023-04-25T19:46:45+0800">
+<meta name="modified" content="2023-05-20T18:15:56+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "使用nginx和ssh tunneling实现通过公网ip访问本地计算机",
     "datePublished": "2023-04-25T20:00:00+08:00",
-    "dateModified": "2023-04-25T19:46:45+08:00",
+    "dateModified": "2023-05-20T18:15:56+08:00",
     "url" : "https://deletefromuser.github.io/web/2023042502/",
     "description": "假设本地计算机上，已开发的应用可通过http://localhost:19080来访问 在有公网ip的服务器上添加下列配置后部署nginx（监听19001端口，收到请求后发送到19000端口） server { listen 19001; location / { proxy_pass http://localhost:19000; } …",
     "mainEntityOfPage": {
@@ -104,20 +104,23 @@
 }
 </code></pre><h4 id="在本地计算机上设置ssh-tunneling">在本地计算机上设置SSH tunneling</h4>
 <h4 id="与远程服务器的19000端口建立连接本地在19080端口响应">与远程服务器的19000端口建立连接，本地在19080端口响应</h4>
-<p>ssh -f -N -T -R 19000:localhost:19080 -p &lsquo;22&rsquo; &lsquo;username@remote&rsquo;</p>
-<h4 id="配置完成后即可访问">配置完成后即可访问</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -f -N -T -R 19000:localhost:19080 -p <span style="color:#e6db74">&#39;22&#39;</span> <span style="color:#e6db74">&#39;username@remote&#39;</span>
+<span style="color:#75715e"># 直连不行的话（thanks to GFW），可设置代理</span>
+ssh -f -N -T -R 19000:localhost:19080 -p <span style="color:#e6db74">&#39;22&#39;</span> <span style="color:#e6db74">&#39;username@remote&#39;</span> -o <span style="color:#e6db74">&#34;ProxyCommand=nc -X connect -x PROXYHOST:PROXYPORT %h %p&#34;</span>
+</code></pre></div><h4 id="配置完成后即可访问">配置完成后即可访问</h4>
 <p><code>http://远程服务器ip:19001/</code></p>
 <p><strong>reference</strong></p>
 <ul>
 <li><a href="https://medium.com/the-software-reliever/expose-localhost-to-the-public-www-with-a-vps-nginx-and-ssh-tunneling-daefc0275757">Expose localhost to the public WWW with a VPS, nginx and SSH tunneling</a></li>
 <li><a href="https://dev.to/elwin013/how-to-expose-local-service-using-nginx-and-ssh-1jmj">How to expose local service using nginx and SSH</a></li>
+<li><a href="https://stackoverflow.com/questions/19161960/connect-with-ssh-through-a-proxy">Connect with SSH through a proxy</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-04-25 19:46<br>
+Updated: 2023-05-20 18:15<br>
 Created: 2023-04-25 20:00
 </p>
 </div>

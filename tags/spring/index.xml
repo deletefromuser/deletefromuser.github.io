@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spring on HA</title>
+    <link>https://deletefromuser.github.io/tags/spring/</link>
+    <description>Recent content in spring on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Feb 2023 20:00:00 +0800</lastBuildDate>
+    <atom:link href="https://deletefromuser.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>将SpringBoot应用部署到docker</title>
+      <link>https://deletefromuser.github.io/web/2023020501/</link>
+      <pubDate>Sun, 05 Feb 2023 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/web/2023020501/</guid>
+      <description>&lt;h3 id=&#34;手动创建image&#34;&gt;手动创建image&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;在项目内创建Dockerfile&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; maven:3.8.7-eclipse-temurin-11-focal&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;COPY&lt;/span&gt; . .&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CMD&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mvn&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;spring-boot:run&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Dspring-boot.run.profiles=docker&amp;#34;&lt;/span&gt;]&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# ENTRYPOINT [&amp;#34;mvn&amp;#34;, &amp;#34;spring-boot:run&amp;#34;, &amp;#34;-Dspring-boot.run.profiles=docker&amp;#34;]&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;创建Docker Image&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# build过程中下载经常卡住(不知道是不是gfw，因为每次卡住的资源都不一样)，&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 前面加DOCKER_BUILDKIT=1，使缓存生效，这样重试的时候已经下载过的资源就不会重新下载&lt;/span&gt;
+sudo DOCKER_BUILDKIT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; docker build -t spring-cloud-config-server .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;运行docker实例&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# -e 设置环境变量（TZ：实例的时区）&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -d 运行在后台&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# --name spring-cloud-config-server_1 指定实例名&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -p8888:8888 主机端口：docker实例端口映射&lt;/span&gt;
+sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc/GMT-8 -d --name spring-cloud-config-server_1 -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;HOME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/.m2:/root/.m2 -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PWD&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/logs:/logs -p8888:8888 spring-cloud-config-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用spring-boot-maven-plugin创建image需要当前用户有执行docker的权限web2023020501非root用户下运行docker&#34;&gt;使用spring-boot-maven-plugin创建image(&lt;a href=&#34;../web/2023020501/#%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E4%B8%8B%E8%BF%90%E8%A1%8Cdocker&#34;&gt;需要当前用户有执行docker的权限&lt;/a&gt;)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mvn spring-boot:build-image
+sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc/GMT-8 -d --name config-server_1 -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SPRING_PROFILES_ACTIVE=docker&amp;#34;&lt;/span&gt; -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PWD&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/logs:/logs -p8888:8888 config-server:0.0.1-SNAPSHOT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;注意事项&#34;&gt;注意事项&lt;/h4&gt;
+&lt;p&gt;第一个命令到最后会从github下载jre包，因为gfw会报错，需要在pom.xml中配置代理，而且代理只支持http代理，且不能使用localhost或者127.0.0.1作为ip，而应使用本机的网卡ip地址。（http代理尝试用shadowsocks-rust配了一下没成功，可能哪里配错了，用v2ray配置成功了）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pom.xml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;project&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-maven-plugin&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;image&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;env&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;HTTP_PROXY&amp;gt;&lt;/span&gt;http://proxy.example.com&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/HTTP_PROXY&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;HTTPS_PROXY&amp;gt;&lt;/span&gt;https://proxy.example.com&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/HTTPS_PROXY&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/env&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 防止重复下载buildpack --&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;pullPolicy&amp;gt;&lt;/span&gt;IF_NOT_PRESENT&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/pullPolicy&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/image&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;v2ray-config.json&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsonc&#34; data-lang=&#34;jsonc&#34;&gt;&amp;quot;inbounds&amp;quot;: [
+    {
+        {
+            &amp;quot;port&amp;quot;: 1086,
+            &amp;quot;listen&amp;quot;: &amp;quot;0.0.0.0&amp;quot;,
+            &amp;quot;protocol&amp;quot;: &amp;quot;http&amp;quot;,
+            &amp;quot;settings&amp;quot;: {
+                &amp;quot;udp&amp;quot;: false
+            }
+        }
+    }
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/dockerizing-spring-boot-application&#34;&gt;Dockerizing a Spring Boot Application&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/get-started/02_our_app/&#34;&gt;Containerize an application&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/build/buildkit/&#34;&gt;BuildKit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/LucasSong/p/12701357.html&#34;&gt;CMD和ENTRYPOINT的区别&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/36234088/how-do-i-point-a-docker-image-to-my-m2-directory-for-running-maven-in-docker-on&#34;&gt;How do I point a docker image to my .m2 directory for running maven in docker on a mac?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/58764482/19120213&#34;&gt;accessing a docker container from another container&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/18861834/mounting-multiple-volumes-on-a-docker-container&#34;&gt;Mounting multiple volumes on a docker container?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

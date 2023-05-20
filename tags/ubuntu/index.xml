@@ -40,12 +40,18 @@ sudo reboot
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;自动安装安全更新&#34;&gt;自动安装安全更新&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo apt-get install unattended-upgrades
 sudo dpkg-reconfigure --priority&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;low unattended-upgrades
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;列出命令行所有可用命令&#34;&gt;列出命令行所有可用命令&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# No 1&lt;/span&gt;
+ls &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PATH//:/ &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# No 2&lt;/span&gt;
+compgen -c | sort -u &amp;gt; commands &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; less commands
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1026528/adding-custom-programs-to-favourites-of-ubuntu-dock&#34;&gt;Adding custom programs to favourites of Ubuntu Dock&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.delftstack.com/howto/linux/start-a-new-bash-session&#34;&gt;Start a New Terminal Session in Bash&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened&#34;&gt;How do I open a terminal window and execute a command after the shell has opened?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/AutomaticSecurityUpdates&#34;&gt;AutomaticSecurityUpdates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/403435/how-to-get-a-list-of-all-the-commands-available-for-ubuntu&#34;&gt;How to get a list of all the commands available for Ubuntu?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

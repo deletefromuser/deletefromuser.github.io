@@ -125,7 +125,12 @@ startup &lt;span style=&#34;color:#66d9ef&#34;&gt;force&lt;/span&gt;;
 
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 查看表属性
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt; USERINFO;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 表名的最大长度
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- version &amp;lt;= 12.1, 30 bytes
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- version &amp;gt;= 12.2, 128 bytes
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 可使用describe all_tab_columns查看
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 同时复制数据
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; New_Table_name &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Existing_table_Name; 
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 只复制表结构，不包含索引
@@ -226,6 +231,10 @@ name varchar2(&lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;)
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- null比较时，要用is null，is not null
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; bookinfo &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1 row(s) inserted.&amp;#39;&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;--搜索不到为null的数据
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; bookinfo &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1 row(s) inserted.&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;or&lt;/span&gt; name &lt;span style=&#34;color:#66d9ef&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;--可搜索为null的数据
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 排序时null的位置
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 可通过NULLS FIRST，NULLS LAST控制
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; t1 &lt;span style=&#34;color:#66d9ef&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; c1 &lt;span style=&#34;color:#66d9ef&#34;&gt;DESC&lt;/span&gt; NULLS &lt;span style=&#34;color:#66d9ef&#34;&gt;LAST&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 不指定时，升序为NULLS LAST，降序NULLS FIRST（可简易将null视为最大值）
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改列属性&#34;&gt;修改列属性&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; USERINFO &lt;span style=&#34;color:#66d9ef&#34;&gt;modify&lt;/span&gt; address varchar2(&lt;span style=&#34;color:#ae81ff&#34;&gt;350&lt;/span&gt;);
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 缩小列长度，改变类型
@@ -281,12 +290,17 @@ dept number(&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;),
 salary number(&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;),
 createtime date
 );
-&lt;span style=&#34;color:#75715e&#34;&gt;-- 插入数据
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 插入批量数据
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 构造50条数据
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;insert&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; userinfo 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; trunc(dbms_random.value(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;e20))&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, dbms_random.string(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;u&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;), 
        trunc(dbms_random.value(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;)),trunc(dbms_random.value(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;e7)),
        to_date(to_char(add_months(sysdate, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;),&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;J&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; TRUNC(DBMS_RANDOM.VALUE(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;365&lt;/span&gt;)),&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;J&amp;#39;&lt;/span&gt;)
 &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual &lt;span style=&#34;color:#66d9ef&#34;&gt;connect&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;level&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt; ;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 根据user表数据为每条记录生成3条userorg表记录插入
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; userorg (id, user_id, org_id) 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; rownum, user_id, &lt;span style=&#34;color:#66d9ef&#34;&gt;level&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;user&lt;/span&gt; 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;CONNECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;LEVEL&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;;
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 按工资排序，同时记录工资排名
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; id,name,dept,salary,createtime,rownum,rowid,row_number() over(&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; salary &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; userinfo &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; salary &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;;
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 查询每个部门工资最高的员工信息
@@ -358,6 +372,8 @@ createtime date
 &lt;li&gt;&lt;a href=&#34;https://community.oracle.com/tech/developers/discussion/491165/how-to-insert-if-not-exist-update-when-exist-then-returning-the-value&#34;&gt;How to : Insert If Not Exist, Update When Exist, Then Returning the Value ?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2446764/update-statement-with-inner-join-on-oracle&#34;&gt;Update statement with inner join on Oracle&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/74189667/sql-developer-shortcut-of-duplicate-line&#34;&gt;SQL developer shortcut of duplicate line&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/74189667/sql-developer-shortcut-of-duplicate-line&#34;&gt;ORDER BY clause&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/756558/what-is-the-maximum-length-of-a-table-name-in-oracle&#34;&gt;What is the maximum length of a table name in Oracle?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
