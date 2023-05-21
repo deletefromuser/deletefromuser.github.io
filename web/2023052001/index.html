@@ -6,7 +6,7 @@
 <title>docker使用记录 – HA</title>
 <meta name="description" content="使用docker实例命令行 docker exec -it spring-cloud-config-server_1 bash # 以root实行 docker exec -u 0 -it mycontainer bash 网络配置，使不同的docker实例互相联通 # 连接mysql的docker实例 docker network …">
 <meta name="created" content="2023-05-20T18:00:00+0800">
-<meta name="modified" content="2023-05-20T18:32:27+0800">
+<meta name="modified" content="2023-05-21T19:15:37+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "docker使用记录",
     "datePublished": "2023-05-20T18:00:00+08:00",
-    "dateModified": "2023-05-20T18:32:27+08:00",
+    "dateModified": "2023-05-21T19:15:37+08:00",
     "url" : "/blog/web/2023052001/",
     "description": "使用docker实例命令行 docker exec -it spring-cloud-config-server_1 bash # 以root实行 docker exec -u 0 -it mycontainer bash 网络配置，使不同的docker实例互相联通 # 连接mysql的docker实例 docker network …",
     "keywords": ["docker","linux"],
@@ -96,8 +96,8 @@
 <div class="tags">
 Tags:
 <ul>
-<li><a href="/blog/tags/docker/">docker</a></li>
 <li><a href="/blog/tags/linux/">linux</a></li>
+<li><a href="/blog/tags/docker/">docker</a></li>
 </ul>
 </div>
 </header>
@@ -160,6 +160,45 @@ docker load &lt; couchbase.tar.xz
 sudo usermod -aG docker $USER
 newgrp docker
 docker ps
+</code></pre></div><h3 id="自建docker注册中心">自建docker注册中心</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 生成一个自签名证书</span>
+curl -sS https://raw.githubusercontent.com/antelle/generate-ip-cert/master/generate-ip-cert.sh | bash -s 127.0.0.1
+<span style="color:#75715e"># 不放心的话可以把脚本下载下来</span>
+sh generate-ip-cert.sh 127.0.0.1
+<span style="color:#75715e"># 配置证书，把证书放到certs文件夹里</span>
+mkdir -p certs
+<span style="color:#75715e"># 启动注册中心</span>
+docker run -d <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --restart<span style="color:#f92672">=</span>always <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --name registry <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -v <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>/certs:/certs <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -e REGISTRY_HTTP_ADDR<span style="color:#f92672">=</span>0.0.0.0:443 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -e REGISTRY_HTTP_TLS_CERTIFICATE<span style="color:#f92672">=</span>/certs/domain.crt <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -e REGISTRY_HTTP_TLS_KEY<span style="color:#f92672">=</span>/certs/domain.key <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -p 443:443 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  registry:2
+<span style="color:#75715e"># 查看是否启动成功（-k 忽略证书错误）</span>
+curl -k https://127.0.0.1/v2/_catalog
+<span style="color:#75715e"># 虽然部署成功了，但是在往里面push image的时候，会报证书错误</span>
+<span style="color:#75715e"># 添加证书到信任列表</span>
+sudo cp domian.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates
+<span style="color:#75715e"># 重启docker</span>
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+<span style="color:#75715e"># 查看是否添加成功</span>
+curl https://127.0.0.1/v2/_catalog
+<span style="color:#75715e"># 当使用jenkins的时候，用到了docker:dind，</span>
+<span style="color:#75715e"># 这时候在docker:dind的实例里添加证书到信任列表</span>
+docker exec -it -u <span style="color:#ae81ff">0</span> jenkins-docker sh
+cat /certs/ca.crt &gt;&gt; /etc/ssl/certs/ca-certificates.crt
+<span style="color:#75715e"># 当无法把文件传到实例里的时候，可以把证书内容复制出来</span>
+echo <span style="color:#e6db74">&#34;-----BEGIN CERTIFICATE-----
+</span><span style="color:#e6db74">...
+</span><span style="color:#e6db74">-----END CERTIFICATE-----
+</span><span style="color:#e6db74">&#34;</span> &gt;&gt; /etc/ssl/certs/ca-certificates.crt
+<span style="color:#75715e"># 之后重启实例</span>
+docker restart jenkins-docker
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://docs.docker.com/engine/install/linux-postinstall/">Manage Docker as a non-root user</a></li>
@@ -172,13 +211,19 @@ docker ps
 <li><a href="https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container">Root password inside a Docker container - Stack Overflow</a></li>
 <li><a href="https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found">Docker - Ubuntu - bash: ping: command not found - Stack Overflow</a></li>
 <li><a href="https://stackoverflow.com/questions/37905763/how-do-i-download-docker-images-without-using-the-pull-command">How do I download Docker images without using the pull command?</a></li>
+<li><a href="https://docs.docker.com/registry/deploying/">Deploy a registry server | Docker Documentation</a></li>
+<li><a href="https://medium.com/@antelle/how-to-generate-a-self-signed-ssl-certificate-for-an-ip-address-f0dd8dddf754">How to generate a self-signed SSL certificate for an IP address | by Dimitri Witkowski | Medium</a></li>
+<li><a href="https://stackoverflow.com/questions/23733678/how-to-search-images-from-private-1-0-registry-in-docker">How to search images from private 1.0 registry in docker?</a></li>
+<li><a href="https://unix.stackexchange.com/questions/90450/adding-a-self-signed-certificate-to-the-trusted-list/132163#132163">curl - Adding a self-signed certificate to the &ldquo;trusted list&rdquo; - Unix &amp; Linux Stack Exchange</a></li>
+<li><a href="https://stackoverflow.com/questions/50768317/docker-pull-certificate-signed-by-unknown-authority/50768414#50768414">ssl - &ldquo;docker pull&rdquo; certificate signed by unknown authority - Stack Overflow</a></li>
+<li><a href="https://gitlab.com/gitlab-org/gitlab-runner/-/issues/1842">Problem building with docker-in-docker using gitlab Registry Container with self-signed certificate</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-05-20 18:32<br>
+Updated: 2023-05-21 19:15<br>
 Created: 2023-05-20 18:00
 </p>
 </div>

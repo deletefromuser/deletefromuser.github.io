@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>jenkins使用记录 – HA</title>
+<meta name="description" content="使用docker部署jenkins # 1 docker network create jenkins # 2 为了能在docker的jenkins实例中运行docker命令 docker run \  --name jenkins-docker \  --rm \  --detach \  --privileged \ …">
+<meta name="created" content="2023-05-21T18:00:00+0800">
+<meta name="modified" content="2023-05-21T19:15:37+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="jenkins使用记录">
+<meta property="og:url" content="/blog/web/2023052101/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/web/2023052101/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "jenkins使用记录",
+    "datePublished": "2023-05-21T18:00:00+08:00",
+    "dateModified": "2023-05-21T19:15:37+08:00",
+    "url" : "/blog/web/2023052101/",
+    "description": "使用docker部署jenkins # 1 docker network create jenkins # 2 为了能在docker的jenkins实例中运行docker命令 docker run \\  --name jenkins-docker \\  --rm \\  --detach \\  --privileged \\ …",
+    "keywords": ["jenkins","linux"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/web/" class="active" aria-current="page">Web</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/cs/">CS</a></li>
+<li><a href="/blog/git/">Git</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--web">
+<header>
+<h1 class="title title-submitted">jenkins使用记录</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-05-21T18:00:00&#43;08:00">2023-05-21 18:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/jenkins/">jenkins</a></li>
+<li><a href="/blog/tags/linux/">linux</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="使用docker部署jenkins">使用docker部署jenkins</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 1</span>
+docker network create jenkins
+<span style="color:#75715e"># 2 为了能在docker的jenkins实例中运行docker命令</span>
+docker run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --name jenkins-docker <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --detach <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --privileged <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --network jenkins <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --network-alias docker <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --env DOCKER_TLS_CERTDIR<span style="color:#f92672">=</span>/certs <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --volume jenkins-docker-certs:/certs/client <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --volume jenkins-data:/var/jenkins_home <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --publish 2376:2376 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  docker:dind <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --storage-driver overlay2
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#75715e"># 创建dockerfile</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> jenkins/jenkins:lts-jdk11</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> root</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> TZ<span style="color:#f92672">=</span>Etc/GMT-8<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ln -snf /usr/share/zoneinfo/$TZ /etc/localtime <span style="color:#f92672">&amp;&amp;</span> echo $TZ &gt; /etc/timezone<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y lsb-release<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  https://download.docker.com/linux/debian/gpg<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;deb [arch=</span><span style="color:#66d9ef">$(</span>dpkg --print-architecture<span style="color:#66d9ef">)</span><span style="color:#e6db74"> \
+</span><span style="color:#e6db74">  signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+</span><span style="color:#e6db74">  https://download.docker.com/linux/debian \
+</span><span style="color:#e6db74">  </span><span style="color:#66d9ef">$(</span>lsb_release -cs<span style="color:#66d9ef">)</span><span style="color:#e6db74"> stable&#34;</span> &gt; /etc/apt/sources.list.d/docker.list<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y docker-ce-cli<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> jenkins</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> jenkins-plugin-cli --plugins <span style="color:#e6db74">&#34;blueocean docker-workflow&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 3 创建自定义Jenkins Docker image</span>
+docker build -t myjenkins-blueocean:lts-jdk11 .
+<span style="color:#75715e"># 4 创建Jenkins Docker实例</span>
+docker run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --name jenkins-blueocean <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --restart<span style="color:#f92672">=</span>on-failure <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --detach <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --network jenkins <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --env DOCKER_HOST<span style="color:#f92672">=</span>tcp://docker:2376 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --env DOCKER_CERT_PATH<span style="color:#f92672">=</span>/certs/client <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --env DOCKER_TLS_VERIFY<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --publish 19080:8080 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --publish 49000:50000 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --volume jenkins-data:/var/jenkins_home <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --volume jenkins-docker-certs:/certs/client:ro <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  myjenkins-blueocean:lts-jdk11
+</code></pre></div><h3 id="启动报错-an-error-occurred-during-installation-no-such-plugin-cloudbees-folder">启动报错 <code>An error occurred during installation: No such plugin: cloudbees-folder</code></h3>
+<blockquote>
+<p>重启即可</p>
+</blockquote>
+<h3 id="设置代理以访问githubgfw-again">设置代理以访问github（GFW again）</h3>
+<blockquote>
+<p>Manage Jenkins &gt; Manage Plugins &gt; Advanced &gt; HTTP Proxy Configuration</p>
+</blockquote>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/53822806/how-to-configure-proxy-in-jenkins-to-access-git-repository">How to configure proxy in Jenkins to access Git Repository?</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-05-21 19:15<br>
+Created: 2023-05-21 18:00
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
