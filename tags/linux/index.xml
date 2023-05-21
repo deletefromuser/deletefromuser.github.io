@@ -6,8 +6,76 @@
     <description>Recent content in linux on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 May 2023 18:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 21 May 2023 18:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>jenkins使用记录</title>
+      <link>https://deletefromuser.github.io/web/2023052101/</link>
+      <pubDate>Sun, 21 May 2023 18:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/web/2023052101/</guid>
+      <description>&lt;h3 id=&#34;使用docker部署jenkins&#34;&gt;使用docker部署jenkins&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 1&lt;/span&gt;
+docker network create jenkins
+&lt;span style=&#34;color:#75715e&#34;&gt;# 2 为了能在docker的jenkins实例中运行docker命令&lt;/span&gt;
+docker run &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --name jenkins-docker &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --rm &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --detach &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --privileged &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --network jenkins &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --network-alias docker &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --env DOCKER_TLS_CERTDIR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/certs &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --volume jenkins-docker-certs:/certs/client &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --volume jenkins-data:/var/jenkins_home &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --publish 2376:2376 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  docker:dind &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --storage-driver overlay2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Dockerfile&#34; data-lang=&#34;Dockerfile&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 创建dockerfile&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; jenkins/jenkins:lts-jdk11&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;USER&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; root&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;ENV&lt;/span&gt; TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc/GMT-8&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; echo $TZ &amp;gt; /etc/timezone&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; apt-get update &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y lsb-release&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  https://download.docker.com/linux/debian/gpg&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;deb [arch=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;dpkg --print-architecture&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  https://download.docker.com/linux/debian \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;lsb_release -cs&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; stable&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/docker.list&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; apt-get update &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y docker-ce-cli&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;USER&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; jenkins&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; jenkins-plugin-cli --plugins &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blueocean docker-workflow&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 3 创建自定义Jenkins Docker image&lt;/span&gt;
+docker build -t myjenkins-blueocean:lts-jdk11 .
+&lt;span style=&#34;color:#75715e&#34;&gt;# 4 创建Jenkins Docker实例&lt;/span&gt;
+docker run &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --name jenkins-blueocean &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --restart&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;on-failure &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --detach &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --network jenkins &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --env DOCKER_HOST&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tcp://docker:2376 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --env DOCKER_CERT_PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/certs/client &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --env DOCKER_TLS_VERIFY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --publish 19080:8080 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --publish 49000:50000 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --volume jenkins-data:/var/jenkins_home &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --volume jenkins-docker-certs:/certs/client:ro &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  myjenkins-blueocean:lts-jdk11
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;启动报错-an-error-occurred-during-installation-no-such-plugin-cloudbees-folder&#34;&gt;启动报错 &lt;code&gt;An error occurred during installation: No such plugin: cloudbees-folder&lt;/code&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;重启即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;设置代理以访问githubgfw-again&#34;&gt;设置代理以访问github（GFW again）&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Manage Jenkins &amp;gt; Manage Plugins &amp;gt; Advanced &amp;gt; HTTP Proxy Configuration&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/53822806/how-to-configure-proxy-in-jenkins-to-access-git-repository&#34;&gt;How to configure proxy in Jenkins to access Git Repository?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>docker使用记录</title>
@@ -72,6 +140,45 @@ docker load &amp;lt; couchbase.tar.xz
 sudo usermod -aG docker $USER
 newgrp docker
 docker ps
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;自建docker注册中心&#34;&gt;自建docker注册中心&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 生成一个自签名证书&lt;/span&gt;
+curl -sS https://raw.githubusercontent.com/antelle/generate-ip-cert/master/generate-ip-cert.sh | bash -s 127.0.0.1
+&lt;span style=&#34;color:#75715e&#34;&gt;# 不放心的话可以把脚本下载下来&lt;/span&gt;
+sh generate-ip-cert.sh 127.0.0.1
+&lt;span style=&#34;color:#75715e&#34;&gt;# 配置证书，把证书放到certs文件夹里&lt;/span&gt;
+mkdir -p certs
+&lt;span style=&#34;color:#75715e&#34;&gt;# 启动注册中心&lt;/span&gt;
+docker run -d &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --restart&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;always &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --name registry &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -v &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;pwd&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;/certs:/certs &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -e REGISTRY_HTTP_ADDR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0.0.0.0:443 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -e REGISTRY_HTTP_TLS_CERTIFICATE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/certs/domain.crt &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -e REGISTRY_HTTP_TLS_KEY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/certs/domain.key &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -p 443:443 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  registry:2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看是否启动成功（-k 忽略证书错误）&lt;/span&gt;
+curl -k https://127.0.0.1/v2/_catalog
+&lt;span style=&#34;color:#75715e&#34;&gt;# 虽然部署成功了，但是在往里面push image的时候，会报证书错误&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 添加证书到信任列表&lt;/span&gt;
+sudo cp domian.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates
+&lt;span style=&#34;color:#75715e&#34;&gt;# 重启docker&lt;/span&gt;
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看是否添加成功&lt;/span&gt;
+curl https://127.0.0.1/v2/_catalog
+&lt;span style=&#34;color:#75715e&#34;&gt;# 当使用jenkins的时候，用到了docker:dind，&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 这时候在docker:dind的实例里添加证书到信任列表&lt;/span&gt;
+docker exec -it -u &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; jenkins-docker sh
+cat /certs/ca.crt &amp;gt;&amp;gt; /etc/ssl/certs/ca-certificates.crt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 当无法把文件传到实例里的时候，可以把证书内容复制出来&lt;/span&gt;
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-----BEGIN CERTIFICATE-----
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;...
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;-----END CERTIFICATE-----
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/ssl/certs/ca-certificates.crt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 之后重启实例&lt;/span&gt;
+docker restart jenkins-docker
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/install/linux-postinstall/&#34;&gt;Manage Docker as a non-root user&lt;/a&gt;&lt;/li&gt;
@@ -84,6 +191,12 @@ docker ps
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container&#34;&gt;Root password inside a Docker container - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found&#34;&gt;Docker - Ubuntu - bash: ping: command not found - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37905763/how-do-i-download-docker-images-without-using-the-pull-command&#34;&gt;How do I download Docker images without using the pull command?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/registry/deploying/&#34;&gt;Deploy a registry server | Docker Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@antelle/how-to-generate-a-self-signed-ssl-certificate-for-an-ip-address-f0dd8dddf754&#34;&gt;How to generate a self-signed SSL certificate for an IP address | by Dimitri Witkowski | Medium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/23733678/how-to-search-images-from-private-1-0-registry-in-docker&#34;&gt;How to search images from private 1.0 registry in docker?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/90450/adding-a-self-signed-certificate-to-the-trusted-list/132163#132163&#34;&gt;curl - Adding a self-signed certificate to the &amp;ldquo;trusted list&amp;rdquo; - Unix &amp;amp; Linux Stack Exchange&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/50768317/docker-pull-certificate-signed-by-unknown-authority/50768414#50768414&#34;&gt;ssl - &amp;ldquo;docker pull&amp;rdquo; certificate signed by unknown authority - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitlab.com/gitlab-org/gitlab-runner/-/issues/1842&#34;&gt;Problem building with docker-in-docker using gitlab Registry Container with self-signed certificate&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
