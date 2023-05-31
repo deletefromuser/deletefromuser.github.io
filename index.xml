@@ -6,8 +6,38 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 May 2023 18:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 31 May 2023 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2023年2季度</title>
+      <link>/blog/watch/2023040101/</link>
+      <pubDate>Wed, 31 May 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/watch/2023040101/</guid>
+      <description>&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ヴィンランド・サガ SEASON 2&lt;/li&gt;
+&lt;li&gt;Mobile Suit Gundam：The Witch from Mercury S02&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;剧集&#34;&gt;剧集&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;BEEF.S01&lt;/li&gt;
+&lt;li&gt;The.Killing.S01-S04&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Game.Night.2018&lt;/li&gt;
+&lt;li&gt;Dungeons.and.Dragons.Honor.Among.Thieves.2023&lt;/li&gt;
+&lt;li&gt;Top.Gun.1986&lt;/li&gt;
+&lt;li&gt;The.Bad.Guys.2022&lt;/li&gt;
+&lt;li&gt;Isle.Of.Dogs.2018&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;不徳のギルド&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>jenkins使用记录</title>
@@ -743,7 +773,10 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
 &lt;ul&gt;
 &lt;li&gt;Magpie.Murders.S01&lt;/li&gt;
 &lt;li&gt;Slow.Horses.S01-S02&lt;/li&gt;
-&lt;li&gt;The.Wire.S01~S02&lt;/li&gt;
+&lt;li&gt;The.Wire.S01~S05&lt;/li&gt;
+&lt;li&gt;BRUSH UP LIFE&lt;/li&gt;
+&lt;li&gt;Pepsi.Wheres.My.Jet&lt;/li&gt;
+&lt;li&gt;Poker.Face.2023.S01&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
 &lt;ul&gt;
@@ -760,6 +793,12 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
 &lt;li&gt;異世界迷宮でハーレムを&lt;/li&gt;
 &lt;li&gt;化物語&lt;/li&gt;
 &lt;li&gt;回復術士のやり直し&lt;/li&gt;
+&lt;li&gt;ダンジョンに出会いを求めるのは間違っているだろうか&lt;/li&gt;
+&lt;li&gt;勇者が死んだ!&lt;/li&gt;
+&lt;li&gt;プレイバック&lt;/li&gt;
+&lt;li&gt;乙女ゲー世界はモブに厳しい世界です&lt;/li&gt;
+&lt;li&gt;化物語&lt;/li&gt;
+&lt;li&gt;生徒会役員共&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
