@@ -6,8 +6,23 @@
     <description>Recent content in Tip on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Apr 2023 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 03 Jun 2023 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/tip/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>office使用记录</title>
+      <link>/blog/tip/2023060301/</link>
+      <pubDate>Sat, 03 Jun 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/tip/2023060301/</guid>
+      <description>&lt;h4 id=&#34;word中快速粘贴无格式文本&#34;&gt;word中快速粘贴无格式文本&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Ctrl+Alt+V&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1376470/what-is-the-keyboard-shortcut-for-pasting-without-formatting-in-ms-word&#34;&gt;What is the keyboard shortcut for pasting without formatting in MS Word?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>使用gpg加密文件</title>

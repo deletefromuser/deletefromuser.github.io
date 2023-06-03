@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-05-31T20:00:00+0800">
-<meta name="modified" content="2023-06-03T16:03:42+0800">
+<meta name="created" content="2023-06-03T20:00:00+0800">
+<meta name="modified" content="2023-06-03T21:58:38+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,10 +66,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/web/">Web</a></li>
-<li><a href="/blog/sql/">Sql</a></li>
-<li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/read/">Read</a></li>
@@ -89,6 +89,32 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/blog/tip/2023060301/">office使用记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-06-03T20:00:00&#43;08:00">2023-06-03 20:00</time>
+</div>
+
+</header>
+<div class="content">
+word中快速粘贴无格式文本 Ctrl+Alt+V What is the keyboard shortcut for pasting without formatting in MS Word?
+</div>
+</article>
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2023060301/">sqlserver使用</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-06-03T19:00:00&#43;08:00">2023-06-03 19:00</time>
+</div>
+
+</header>
+<div class="content">
+比较两个表的数据 -- EXCEPT 相当于oracle里的 minus SELECT CustId, CustName, CustAddress, CustPhone FROM Original EXCEPT SELECT CustId, CustName, CustAddress, CustPhone FROM Revised reference 4 Ways to Insert Multiple Rows in Oracle
+</div>
+</article>
 
 <article class="list-view list-view--watch">
 <header>
@@ -191,32 +217,6 @@
 </header>
 <div class="content">
 前提 视频文件内容必须统一，一般是剧集类的，并且要是mkv格式的 打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/blog/web/2023042502/">使用nginx和ssh tunneling实现通过公网ip访问本地计算机</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-04-25T20:00:00&#43;08:00">2023-04-25 20:00</time>
-</div>
-
-</header>
-<div class="content">
-假设本地计算机上，已开发的应用可通过http://localhost:19080来访问 在有公网ip的服务器上添加下列配置后部署nginx（监
-</div>
-</article>
-
-<article class="list-view list-view--bash">
-<header>
-<h2 class="title title-submitted"><a href="/blog/bash/2023041801/">比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-04-24T21:02:00&#43;08:00">2023-04-24 21:02</time>
-</div>
-
-</header>
-<div class="content">
-chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 rootDir=$(cd &#34;$(dirname &#34;${BASH_SOURCE[0]}&#34;)&#34; &amp;&amp; pwd) # 输出服务器ip echo &#34;--- $(hostname -i): $rootDir---&#34; dir1=$rootDir/old dir2=$rootDir/new find $dir1 -type f | while read file; do filename=${file#$dir1} if [ -e $dir2/$filename ];
 </div>
 </article>
 

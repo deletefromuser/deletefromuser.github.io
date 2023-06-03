@@ -6,8 +6,25 @@
     <description>Recent content in sqlserver on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Nov 2022 19:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 03 Jun 2023 19:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/tags/sqlserver/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>sqlserver使用</title>
+      <link>/blog/sql/2023060301/</link>
+      <pubDate>Sat, 03 Jun 2023 19:00:00 +0800</pubDate>
+      <guid>/blog/sql/2023060301/</guid>
+      <description>&lt;h3 id=&#34;比较两个表的数据&#34;&gt;比较两个表的数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- EXCEPT 相当于oracle里的 minus
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; CustId, CustName, CustAddress, CustPhone &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Original
+&lt;span style=&#34;color:#66d9ef&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; CustId, CustName, CustAddress, CustPhone &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Revised
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sqlshack.com/compare-tables-sql-server/&#34;&gt;4 Ways to Insert Multiple Rows in Oracle&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>sqlserver常用命令</title>
