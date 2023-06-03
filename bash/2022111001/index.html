@@ -6,7 +6,7 @@
 <title>linux 命令memo – HA</title>
 <meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2023-05-20T18:15:56+0800">
+<meta name="modified" content="2023-06-03T16:03:42+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "linux 命令memo",
     "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2023-05-20T18:15:56+08:00",
+    "dateModified": "2023-06-03T16:03:42+08:00",
     "url" : "/blog/bash/2022111001/",
     "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …",
     "keywords": ["linux"],
@@ -80,7 +80,6 @@
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/cs/">CS</a></li>
-<li><a href="/blog/git/">Git</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
 </ul>
 </nav>
@@ -172,6 +171,20 @@ find . -typf f | clip
 </code></pre></div><h3 id="查看linux用户所在组">查看linux用户所在组</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">groups
 groups tom
+</code></pre></div><h3 id="修改系统时区">修改系统时区</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 检查当前时区</span>
+timedatectl
+<span style="color:#75715e"># or</span>
+ls -l /etc/localtime
+<span style="color:#75715e"># 检查时区列表</span>
+timedatectl list-timezones
+<span style="color:#75715e"># 修改时区</span>
+sudo timedatectl set-timezone America/New_York
+
+<span style="color:#75715e"># 没有timedatectl组件时（比如docker）</span>
+sudo rm -rf /etc/localtime
+sudo ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+sudo echo <span style="color:#e6db74">&#39;America/New_York&#39;</span> &gt; /etc/timezone
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever">How to change history size for ever?</a></li>
@@ -183,13 +196,15 @@ groups tom
 <li><a href="https://www.cnblogs.com/flyingeagle/articles/9219047.html">Linux运用软链接解决目录空间不足</a></li>
 <li><a href="https://www.geeksforgeeks.org/how-to-copy-command-output-to-linux-clipboard-directly/">How To Copy Command Output To Linux Clipboard Directly</a></li>
 <li><a href="https://www.cyberciti.biz/faq/linux-show-groups-for-user/">Linux Show The Groups a User Is In</a></li>
+<li><a href="https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/">How to Set or Change the Time Zone in Linux | Linuxize</a></li>
+<li><a href="https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes">date - Docker Container time &amp; timezone (will not reflect changes) - Server Fault</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-05-20 18:15<br>
+Updated: 2023-06-03 16:03<br>
 Created: 2022-11-10 20:00
 </p>
 </div>

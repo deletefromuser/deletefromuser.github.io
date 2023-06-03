@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>git 常用命令 – HA</title>
+<meta name="description" content="常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 # 将某区间提交的变更应用到代码库 git cherry-pick -n bd61ad98^..ade56rq1 # 强制回 …">
+<meta name="created" content="2017-03-23T03:33:58+0800">
+<meta name="modified" content="2023-04-20T20:00:00+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="git 常用命令">
+<meta property="og:url" content="/blog/tip/2017032303/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/tip/2017032303/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "git 常用命令",
+    "datePublished": "2017-03-23T03:33:58+08:00",
+    "dateModified": "2023-04-20T20:00:00+08:00",
+    "url" : "/blog/tip/2017032303/",
+    "description": "常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 # 将某区间提交的变更应用到代码库 git cherry-pick -n bd61ad98^..ade56rq1 # 强制回 …",
+    "keywords": ["git"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/tip/" class="active" aria-current="page">Tip</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/cs/">CS</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--tip">
+<header>
+<h1 class="title title-submitted">git 常用命令</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-23T03:33:58&#43;08:00">2017-03-23 03:33</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/git/">git</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="常用命令">常用命令</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 拉取代码</span>
+git pull --all
+<span style="color:#75715e"># 提交dev分支到远程仓库</span>
+git push origin dev
+<span style="color:#75715e"># 将某一个提交的变更应用到代码库</span>
+git cherry-pick -n bd61ad98
+<span style="color:#75715e"># 将某区间提交的变更应用到代码库</span>
+git cherry-pick -n bd61ad98^..ade56rq1
+<span style="color:#75715e"># 强制回退到上一个commit(未push)</span>
+git reset --hard HEAD^
+<span style="color:#75715e"># 强制回退到上上个commit(未push)</span>
+reset --hard HEAD~2
+<span style="color:#75715e"># 取消某个版本的修改</span>
+git revert &lt;commit hash&gt;
+</code></pre></div><h3 id="使用ssh连接git">使用ssh连接git</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 生成ssh key</span>
+ssh-keygen -t ed25519 -C <span style="color:#e6db74">&#34;your_email@example.com&#34;</span>
+<span style="color:#75715e"># 把ssh公钥(pub后缀的文件)加入到git账户</span>
+<span style="color:#75715e"># 把ssh key加入到ssh-agent</span>
+eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ssh-agent -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+ssh-add ~/.ssh/id_ed25519
+<span style="color:#75715e"># 测试</span>
+ssh -T git@github.com
+</code></pre></div><h3 id="git-將文件轉移位置">git 將文件轉移位置</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git mv 2017032003.md csharp
+</code></pre></div><h3 id="查看某一次提交的文件列表">查看某一次提交的文件列表</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git show --pretty<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> --name-only bd61ad98
+</code></pre></div><h3 id="查看某一个文件的提交历史">查看某一个文件的提交历史</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git log --follow -- filename
+</code></pre></div><h3 id="同时在多个分支工作">同时在多个分支工作</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git worktree add -b hotfix ../hotfix
+git worktree list
+pushd ../hotfix
+<span style="color:#75715e"># working on hotfix branch</span>
+popd
+git worktree remove ../hotfix
+git worktree prune
+</code></pre></div><h3 id="查看stash的文件具体内容">查看stash的文件具体内容</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git stash show -p
+</code></pre></div><h3 id="stash单个文件">stash单个文件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git stash -- filename.ext
+</code></pre></div><h3 id="tortoisegit也是很好用的">TortoiseGit也是很好用的</h3>
+<blockquote>
+<p>生成patch，应用patch，以及查看diff，blame，gui还是很好用的</p>
+</blockquote>
+<h3 id="删除-git-远程仓库中忘记加入-gitignore-的资源">删除 git 远程仓库中忘记加入 .gitignore 的资源</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git rm --cached remove_file
+<span style="color:#75715e"># add file to gitignore`</span>
+git add .gitignore<span style="color:#e6db74">`</span>
+git commit -m <span style="color:#e6db74">&#34;Excluding&#34;</span><span style="color:#e6db74">`</span>
+</code></pre></div><h3 id="clone时指定用户名">clone时指定用户名</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://username@github.com/username/repository.git
+
+<span style="color:#75715e"># 使用token进行clone(其实跟上面没有本质区别，token本来就是用来代替密码的)</span>
+git clone https://username:token@github.com/username/repository.git
+</code></pre></div><h3 id="git-bash中使用sh命令时出现警告__git_ps1-command-not-found">git bash中使用sh命令时出现警告&rdquo;__git_ps1: command not found&rdquo;</h3>
+<p>找到completion/git-prompt.sh，在~/.bash_profile或者内部引用的配置文件中添加<code>source /path/git-prompt.sh</code></p>
+<h3 id="导出svn-patch">导出svn patch</h3>
+<pre><code>git diff --no-prefix &gt; ~/some-feature.diff
+</code></pre><p><strong>reference</strong></p>
+<ol>
+<li><a href="https://githowto.com/moving_files">20. Moving files</a></li>
+<li><a href="https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit">How do I list all the files in a commit?</a></li>
+<li><a href="https://stackoverflow.com/questions/3701404/how-to-list-all-commits-that-changed-a-specific-file">How to list all commits that changed a specific file?</a></li>
+<li><a href="https://git-scm.com/docs/git-worktree">Git - git-worktree Documentation</a></li>
+<li><a href="https://www.youtube.com/watch?v=s4BTvj1ZVLM">How to Use Git Worktree | Checkout Multiple Git Branches at Once</a></li>
+<li><a href="https://stackoverflow.com/questions/10725729/see-whats-in-a-stash-without-applying-it">See what&rsquo;s in a stash without applying it</a></li>
+<li><a href="https://stackoverflow.com/questions/1670970/how-to-cherry-pick-multiple-commits">How to cherry-pick multiple commits</a></li>
+<li><a href="https://stackoverflow.com/questions/12420924/stash-just-a-single-file">Stash just a single file</a></li>
+<li><a href="https://stackoverflow.com/a/42141656/19120213">Git: How to remove file from index without deleting files from any repository</a></li>
+<li><a href="https://stackoverflow.com/a/10054470/19120213">How do I provide a username and password when running &ldquo;git clone git@remote.git&rdquo;?</a></li>
+<li><a href="https://anotheruiguy.gitbooks.io/gitforeveryone/content/auto/README.html#:~:text=If%20you%20are%20seeing%20this,and%20install%20a%20new%20one.">-bash: __git_ps1: command not found</a></li>
+<li><a href="https://scribu.net/wordpress/svn-patches-from-git.html">svn patches from git</a></li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-04-20 20:00<br>
+Created: 2017-03-23 03:33
+</p>
+</div>
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
