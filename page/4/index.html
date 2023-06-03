@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-05-31T20:00:00+0800">
-<meta name="modified" content="2023-06-03T16:03:42+0800">
+<meta name="created" content="2023-06-03T20:00:00+0800">
+<meta name="modified" content="2023-06-03T21:58:38+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,10 +66,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/web/">Web</a></li>
-<li><a href="/sql/">Sql</a></li>
-<li><a href="/tip/">Tip</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/java/">Java</a></li>
 <li><a href="/read/">Read</a></li>
@@ -89,6 +89,32 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/web/2022111402/">JavaScript POST方式打开新窗口</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-14T20:00:00&#43;08:00">2022-11-14 20:00</time>
+</div>
+
+</header>
+<div class="content">
+openWindowWithPost(url, { a: &#34;1&#34;, b: 2, }); function openWindowWithPost(url, data) { var form = document.createElement(&#34;form&#34;); form.target = &#34;UserInfo&#34;; form.method = &#34;POST&#34;; form.action = url; for (var key in data) { var input = document.createElement(&#34;input&#34;); input.type = &#34;hidden&#34;; input.name = key; input.value = data[key]; form.appendChild(input); } document.body.appendChild(form); window.open(&#39;&#39;, &#39;UserInfo&#39;,&#34;width=1000,height=550,left=100,top=100&#34;); form.submit(); document.body.removeChild(form); } reference javascript-open-new-window-posting-parameters Window.open and pass parameters by post method How to Filter or Map Nodelists with JavaScript?
+</div>
+</article>
+
+<article class="list-view list-view--bash">
+<header>
+<h2 class="title title-submitted"><a href="/bash/2022111001/">linux 命令memo</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
+</div>
+
+</header>
+<div class="content">
+uuidgen 生成uuid history 命令行历史 修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m
+</div>
+</article>
 
 <article class="list-view list-view--java">
 <header>
@@ -191,32 +217,6 @@ Install ‘Oracle VM VirtualBox Extension Pack’ Attaching webcam to guest OS V
 </header>
 <div class="content">
 查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; 日期 -- 当前时间 select getdate(); -- 当前日期 SELECT CAST( GETDATE() AS Date ) ;
-</div>
-</article>
-
-<article class="list-view list-view--watch">
-<header>
-<h2 class="title title-submitted"><a href="/watch/2022100101/">2022年4季度</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-10-10T12:00:00&#43;08:00">2022-10-10 12:00</time>
-</div>
-
-</header>
-<div class="content">
-动画 風都探偵 ベルセルク 黄金時代篇 Noumin Kanren(两话弃) 陰の実力者になりたくて! モブサイコ100 S03 機動戦士ガンダム 水星の魔女 うたわれるもの二
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/web/2022071101/">引用cdn静态资源时添加哈希值验证防篡改</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-07-11T17:00:00&#43;08:00">2022-07-11 17:00</time>
-</div>
-
-</header>
-<div class="content">
-例子： &lt;script src=&#34;https://example.com/example-framework.js&#34; integrity=&#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt; 生成 SRI 哈希的工具 shasum -b -a 384 example-framework.js | xxd -r -p | base64 reference Subresource Integrity - Web 安全 | MDN
 </div>
 </article>
 
