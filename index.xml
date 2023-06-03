@@ -31,6 +31,7 @@
 &lt;li&gt;Top.Gun.1986&lt;/li&gt;
 &lt;li&gt;The.Bad.Guys.2022&lt;/li&gt;
 &lt;li&gt;Isle.Of.Dogs.2018&lt;/li&gt;
+&lt;li&gt;Shazam.Fury.of.the.Gods.2023&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
 &lt;ul&gt;
@@ -1430,6 +1431,20 @@ find . -typf f | clip
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux用户所在组&#34;&gt;查看linux用户所在组&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;groups
 groups tom
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改系统时区&#34;&gt;修改系统时区&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 检查当前时区&lt;/span&gt;
+timedatectl
+&lt;span style=&#34;color:#75715e&#34;&gt;# or&lt;/span&gt;
+ls -l /etc/localtime
+&lt;span style=&#34;color:#75715e&#34;&gt;# 检查时区列表&lt;/span&gt;
+timedatectl list-timezones
+&lt;span style=&#34;color:#75715e&#34;&gt;# 修改时区&lt;/span&gt;
+sudo timedatectl set-timezone America/New_York
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 没有timedatectl组件时（比如docker）&lt;/span&gt;
+sudo rm -rf /etc/localtime
+sudo ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+sudo echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;America/New_York&amp;#39;&lt;/span&gt; &amp;gt; /etc/timezone
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
@@ -1441,6 +1456,8 @@ groups tom
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/flyingeagle/articles/9219047.html&#34;&gt;Linux运用软链接解决目录空间不足&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/how-to-copy-command-output-to-linux-clipboard-directly/&#34;&gt;How To Copy Command Output To Linux Clipboard Directly&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cyberciti.biz/faq/linux-show-groups-for-user/&#34;&gt;Linux Show The Groups a User Is In&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/&#34;&gt;How to Set or Change the Time Zone in Linux | Linuxize&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes&#34;&gt;date - Docker Container time &amp;amp; timezone (will not reflect changes) - Server Fault&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1808,9 +1825,11 @@ createtime date
        to_date(to_char(add_months(sysdate, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;),&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;J&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; TRUNC(DBMS_RANDOM.VALUE(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;365&lt;/span&gt;)),&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;J&amp;#39;&lt;/span&gt;)
 &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual &lt;span style=&#34;color:#66d9ef&#34;&gt;connect&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;level&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt; ;
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 根据user表数据为每条记录生成3条userorg表记录插入
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; userorg (id, user_id, org_id) 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; rownum, user_id, &lt;span style=&#34;color:#66d9ef&#34;&gt;level&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;user&lt;/span&gt; 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;CONNECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;LEVEL&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; userorg (id, user_id, org_id,createdate) 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; trunc((sysdate &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; date &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1970-01-01&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;864000000&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; rownum, user_id, du.abc,
+      CREATEDATE &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;  numtodsinterval (rownum ,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;second&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;user&lt;/span&gt; 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;inner&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;level&lt;/span&gt; abc &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; dual &lt;span style=&#34;color:#66d9ef&#34;&gt;connect&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;level&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;) du &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 按工资排序，同时记录工资排名
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; id,name,dept,salary,createtime,rownum,rowid,row_number() over(&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; salary &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; userinfo &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; salary &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;;
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 查询每个部门工资最高的员工信息
@@ -1853,6 +1872,16 @@ createtime date
         &lt;span style=&#34;color:#66d9ef&#34;&gt;inner&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; employees e &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; b.employee_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; e.employee_id 
         &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; e.bonus_eligible &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;N&amp;#39;&lt;/span&gt;) t
 &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; t.bonus &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;比较两个表的数据&#34;&gt;比较两个表的数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; T1 minus &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; T2) &lt;span style=&#34;color:#75715e&#34;&gt;-- all rows that are in T1 but not in T2
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;union&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;all&lt;/span&gt;
+(&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; T2 minus &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; T1)  &lt;span style=&#34;color:#75715e&#34;&gt;-- all rows that are in T2 but not in T1
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用connect-by抽出层级数据&#34;&gt;使用connect by抽出层级数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; lpad(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;),&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;-&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt;ename ename,rownum,&lt;span style=&#34;color:#66d9ef&#34;&gt;level&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; emp
+&lt;span style=&#34;color:#66d9ef&#34;&gt;start&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; mgr &lt;span style=&#34;color:#66d9ef&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;connect&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; mgr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;prior&lt;/span&gt; empno;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;sql-developer使用&#34;&gt;sql developer使用&lt;/h3&gt;
 &lt;h4 id=&#34;快捷键&#34;&gt;快捷键&lt;/h4&gt;
 &lt;blockquote&gt;
@@ -1884,6 +1913,12 @@ createtime date
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/74189667/sql-developer-shortcut-of-duplicate-line&#34;&gt;SQL developer shortcut of duplicate line&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/74189667/sql-developer-shortcut-of-duplicate-line&#34;&gt;ORDER BY clause&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/756558/what-is-the-maximum-length-of-a-table-name-in-oracle&#34;&gt;What is the maximum length of a table name in Oracle?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/24883153/pass-time-interval-via-variable-in-oracle-sql&#34;&gt;Pass time interval via variable in Oracle SQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tanelpoder.com/2008/06/08/generating-lots-of-rows-using-connect-by-safely/&#34;&gt;Generating lots of rows using connect by – safely!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/688537/oracle-diff-how-to-compare-two-tables&#34;&gt;oracle diff: how to compare two tables?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://forums.oracle.com/ords/apexds/post/diffrence-between-rownum-an-d-level-8440&#34;&gt;diffrence between ROWNUM an d LEVEL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/jepson6669/p/9437081.html&#34;&gt;Oracle中的层次查询详解 - Jepson6669 - 博客园&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/king-xg/p/6794562.html&#34;&gt;oracle进阶之connect by笔记 - 追逐繁星 - 博客园&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -3324,9 +3359,9 @@ file://C:/DevelopTool/Android/sdk/docs/reference/
     
     <item>
       <title>git 常用命令</title>
-      <link>https://deletefromuser.github.io/git/2017032303/</link>
+      <link>https://deletefromuser.github.io/tip/2017032303/</link>
       <pubDate>Thu, 23 Mar 2017 03:33:58 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/git/2017032303/</guid>
+      <guid>https://deletefromuser.github.io/tip/2017032303/</guid>
       <description>&lt;h3 id=&#34;常用命令&#34;&gt;常用命令&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 拉取代码&lt;/span&gt;
 git pull --all
@@ -3342,6 +3377,15 @@ git reset --hard HEAD^
 reset --hard HEAD~2
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取消某个版本的修改&lt;/span&gt;
 git revert &amp;lt;commit hash&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用ssh连接git&#34;&gt;使用ssh连接git&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 生成ssh key&lt;/span&gt;
+ssh-keygen -t ed25519 -C &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your_email@example.com&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 把ssh公钥(pub后缀的文件)加入到git账户&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 把ssh key加入到ssh-agent&lt;/span&gt;
+eval &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;ssh-agent -s&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+ssh-add ~/.ssh/id_ed25519
+&lt;span style=&#34;color:#75715e&#34;&gt;# 测试&lt;/span&gt;
+ssh -T git@github.com
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-將文件轉移位置&#34;&gt;git 將文件轉移位置&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git mv 2017032003.md csharp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看某一次提交的文件列表&#34;&gt;查看某一次提交的文件列表&lt;/h3&gt;
@@ -3376,7 +3420,9 @@ git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Excluding&amp;#
 git clone https://username:token@github.com/username/repository.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-bash中使用sh命令时出现警告__git_ps1-command-not-found&#34;&gt;git bash中使用sh命令时出现警告&amp;rdquo;__git_ps1: command not found&amp;rdquo;&lt;/h3&gt;
 &lt;p&gt;找到completion/git-prompt.sh，在~/.bash_profile或者内部引用的配置文件中添加&lt;code&gt;source /path/git-prompt.sh&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;导出svn-patch&#34;&gt;导出svn patch&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git diff --no-prefix &amp;gt; ~/some-feature.diff
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://githowto.com/moving_files&#34;&gt;20. Moving files&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit&#34;&gt;How do I list all the files in a commit?&lt;/a&gt;&lt;/li&gt;
@@ -3389,6 +3435,7 @@ git clone https://username:token@github.com/username/repository.git
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/42141656/19120213&#34;&gt;Git: How to remove file from index without deleting files from any repository&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/10054470/19120213&#34;&gt;How do I provide a username and password when running &amp;ldquo;git clone git@remote.git&amp;rdquo;?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://anotheruiguy.gitbooks.io/gitforeveryone/content/auto/README.html#:~:text=If%20you%20are%20seeing%20this,and%20install%20a%20new%20one.&#34;&gt;-bash: __git_ps1: command not found&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://scribu.net/wordpress/svn-patches-from-git.html&#34;&gt;svn patches from git&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

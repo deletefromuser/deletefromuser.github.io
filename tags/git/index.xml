@@ -11,9 +11,9 @@
     
     <item>
       <title>git 常用命令</title>
-      <link>https://deletefromuser.github.io/git/2017032303/</link>
+      <link>https://deletefromuser.github.io/tip/2017032303/</link>
       <pubDate>Thu, 23 Mar 2017 03:33:58 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/git/2017032303/</guid>
+      <guid>https://deletefromuser.github.io/tip/2017032303/</guid>
       <description>&lt;h3 id=&#34;常用命令&#34;&gt;常用命令&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 拉取代码&lt;/span&gt;
 git pull --all
@@ -29,6 +29,15 @@ git reset --hard HEAD^
 reset --hard HEAD~2
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取消某个版本的修改&lt;/span&gt;
 git revert &amp;lt;commit hash&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用ssh连接git&#34;&gt;使用ssh连接git&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 生成ssh key&lt;/span&gt;
+ssh-keygen -t ed25519 -C &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your_email@example.com&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 把ssh公钥(pub后缀的文件)加入到git账户&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 把ssh key加入到ssh-agent&lt;/span&gt;
+eval &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;ssh-agent -s&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+ssh-add ~/.ssh/id_ed25519
+&lt;span style=&#34;color:#75715e&#34;&gt;# 测试&lt;/span&gt;
+ssh -T git@github.com
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-將文件轉移位置&#34;&gt;git 將文件轉移位置&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git mv 2017032003.md csharp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看某一次提交的文件列表&#34;&gt;查看某一次提交的文件列表&lt;/h3&gt;
@@ -63,7 +72,9 @@ git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Excluding&amp;#
 git clone https://username:token@github.com/username/repository.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-bash中使用sh命令时出现警告__git_ps1-command-not-found&#34;&gt;git bash中使用sh命令时出现警告&amp;rdquo;__git_ps1: command not found&amp;rdquo;&lt;/h3&gt;
 &lt;p&gt;找到completion/git-prompt.sh，在~/.bash_profile或者内部引用的配置文件中添加&lt;code&gt;source /path/git-prompt.sh&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;导出svn-patch&#34;&gt;导出svn patch&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git diff --no-prefix &amp;gt; ~/some-feature.diff
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://githowto.com/moving_files&#34;&gt;20. Moving files&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit&#34;&gt;How do I list all the files in a commit?&lt;/a&gt;&lt;/li&gt;
@@ -76,6 +87,7 @@ git clone https://username:token@github.com/username/repository.git
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/42141656/19120213&#34;&gt;Git: How to remove file from index without deleting files from any repository&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/10054470/19120213&#34;&gt;How do I provide a username and password when running &amp;ldquo;git clone git@remote.git&amp;rdquo;?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://anotheruiguy.gitbooks.io/gitforeveryone/content/auto/README.html#:~:text=If%20you%20are%20seeing%20this,and%20install%20a%20new%20one.&#34;&gt;-bash: __git_ps1: command not found&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://scribu.net/wordpress/svn-patches-from-git.html&#34;&gt;svn patches from git&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

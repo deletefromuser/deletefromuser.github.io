@@ -159,6 +159,20 @@ find . -typf f | clip
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux用户所在组&#34;&gt;查看linux用户所在组&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;groups
 groups tom
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改系统时区&#34;&gt;修改系统时区&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 检查当前时区&lt;/span&gt;
+timedatectl
+&lt;span style=&#34;color:#75715e&#34;&gt;# or&lt;/span&gt;
+ls -l /etc/localtime
+&lt;span style=&#34;color:#75715e&#34;&gt;# 检查时区列表&lt;/span&gt;
+timedatectl list-timezones
+&lt;span style=&#34;color:#75715e&#34;&gt;# 修改时区&lt;/span&gt;
+sudo timedatectl set-timezone America/New_York
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 没有timedatectl组件时（比如docker）&lt;/span&gt;
+sudo rm -rf /etc/localtime
+sudo ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+sudo echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;America/New_York&amp;#39;&lt;/span&gt; &amp;gt; /etc/timezone
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
@@ -170,6 +184,8 @@ groups tom
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/flyingeagle/articles/9219047.html&#34;&gt;Linux运用软链接解决目录空间不足&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/how-to-copy-command-output-to-linux-clipboard-directly/&#34;&gt;How To Copy Command Output To Linux Clipboard Directly&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cyberciti.biz/faq/linux-show-groups-for-user/&#34;&gt;Linux Show The Groups a User Is In&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/&#34;&gt;How to Set or Change the Time Zone in Linux | Linuxize&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes&#34;&gt;date - Docker Container time &amp;amp; timezone (will not reflect changes) - Server Fault&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
