@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>ubuntu使用技巧 – HA</title>
-<meta name="description" content="把desktop文件的程序固定到任务栏  复制desktop文件到~/.local/share/applications下，需要确保文件内的路径复制后仍然正确，改为绝对路径 命令行启动desktop 任务栏右键add to favorites  在新命令行窗口执行命令 gnome-terminal -x bash -c &amp;amp;#34;echo …">
+<meta name="description" content="为命令行配置代理 # 注意代理要是http代理，sock代理是不行的 export HTTP_PROXY=&amp;#39;127.0.0.1:1086&amp;#39; export HTTPS_PROXY=&amp;#39;127.0.0.1:1086&amp;#39; 把desktop文件的程序固定到任务栏  复制desktop文件到~/.local/share/applications下，需要 …">
 <meta name="created" content="2022-12-03T20:00:00+0800">
 <meta name="modified" content="2023-03-23T20:00:00+0800">
 
@@ -33,7 +33,7 @@
     "datePublished": "2022-12-03T20:00:00+08:00",
     "dateModified": "2023-03-23T20:00:00+08:00",
     "url" : "https://deletefromuser.github.io/bash/2022120301/",
-    "description": "把desktop文件的程序固定到任务栏  复制desktop文件到~/.local/share/applications下，需要确保文件内的路径复制后仍然正确，改为绝对路径 命令行启动desktop 任务栏右键add to favorites  在新命令行窗口执行命令 gnome-terminal -x bash -c \u0026amp;#34;echo …",
+    "description": "为命令行配置代理 # 注意代理要是http代理，sock代理是不行的 export HTTP_PROXY=\u0026#39;127.0.0.1:1086\u0026#39; export HTTPS_PROXY=\u0026#39;127.0.0.1:1086\u0026#39; 把desktop文件的程序固定到任务栏  复制desktop文件到~/.local/share/applications下，需要 …",
     "keywords": ["linux","ubuntu"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -101,7 +101,11 @@ Tags:
 </div>
 </header>
 <div class="content">
-<h3 id="把desktop文件的程序固定到任务栏">把desktop文件的程序固定到任务栏</h3>
+<h3 id="为命令行配置代理">为命令行配置代理</h3>
+<pre><code># 注意代理要是http代理，sock代理是不行的
+export HTTP_PROXY='127.0.0.1:1086'
+export HTTPS_PROXY='127.0.0.1:1086'
+</code></pre><h3 id="把desktop文件的程序固定到任务栏">把desktop文件的程序固定到任务栏</h3>
 <ol>
 <li>复制desktop文件到<code>~/.local/share/applications</code>下，需要确保文件内的路径复制后仍然正确，改为绝对路径</li>
 <li>命令行启动desktop</li>
