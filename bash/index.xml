@@ -56,7 +56,11 @@ ssh user@remote-server /path/to/script.sh
       <link>/blog/bash/2022120301/</link>
       <pubDate>Sat, 03 Dec 2022 20:00:00 +0800</pubDate>
       <guid>/blog/bash/2022120301/</guid>
-      <description>&lt;h3 id=&#34;把desktop文件的程序固定到任务栏&#34;&gt;把desktop文件的程序固定到任务栏&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;为命令行配置代理&#34;&gt;为命令行配置代理&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 注意代理要是http代理，sock代理是不行的
+export HTTP_PROXY=&#39;127.0.0.1:1086&#39;
+export HTTPS_PROXY=&#39;127.0.0.1:1086&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;把desktop文件的程序固定到任务栏&#34;&gt;把desktop文件的程序固定到任务栏&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;复制desktop文件到&lt;code&gt;~/.local/share/applications&lt;/code&gt;下，需要确保文件内的路径复制后仍然正确，改为绝对路径&lt;/li&gt;
 &lt;li&gt;命令行启动desktop&lt;/li&gt;
