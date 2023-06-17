@@ -155,6 +155,9 @@ startup <span style="color:#66d9ef">force</span>;
 </span></code></pre></div><h3 id="搜索表">搜索表</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">table_name</span>, <span style="color:#66d9ef">owner</span> <span style="color:#66d9ef">FROM</span> all_tables <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%USER%&#39;</span> <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">owner</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TOM&#39;</span> <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">owner</span>, <span style="color:#66d9ef">table_name</span>;
 
+<span style="color:#75715e">--- 查找列
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">owner</span>, <span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">from</span> all_tab_columns <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">column_name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ID&#39;</span>;
+
 <span style="color:#75715e">-- 查看表属性
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">desc</span> USERINFO;
 
@@ -424,6 +427,7 @@ createtime date
 <li><a href="https://forums.oracle.com/ords/apexds/post/diffrence-between-rownum-an-d-level-8440">diffrence between ROWNUM an d LEVEL</a></li>
 <li><a href="https://www.cnblogs.com/jepson6669/p/9437081.html">Oracle中的层次查询详解 - Jepson6669 - 博客园</a></li>
 <li><a href="https://www.cnblogs.com/king-xg/p/6794562.html">oracle进阶之connect by笔记 - 追逐繁星 - 博客园</a></li>
+<li><a href="https://stackoverflow.com/questions/1953239/search-an-oracle-database-for-tables-with-specific-column-names">Search an Oracle database for tables with specific column names?</a></li>
 </ul>
 
 </div>
