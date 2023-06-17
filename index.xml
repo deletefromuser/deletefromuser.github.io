@@ -1697,6 +1697,9 @@ startup &lt;span style=&#34;color:#66d9ef&#34;&gt;force&lt;/span&gt;;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;搜索表&#34;&gt;搜索表&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table_name&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;owner&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; all_tables &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table_name&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;like&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;%USER%&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;owner&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;TOM&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;owner&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;table_name&lt;/span&gt;;
 
+&lt;span style=&#34;color:#75715e&#34;&gt;--- 查找列
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;owner&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;table_name&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; all_tab_columns &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;column_name&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ID&amp;#39;&lt;/span&gt;;
+
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 查看表属性
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt; USERINFO;
 
@@ -1966,6 +1969,7 @@ createtime date
 &lt;li&gt;&lt;a href=&#34;https://forums.oracle.com/ords/apexds/post/diffrence-between-rownum-an-d-level-8440&#34;&gt;diffrence between ROWNUM an d LEVEL&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/jepson6669/p/9437081.html&#34;&gt;Oracle中的层次查询详解 - Jepson6669 - 博客园&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/king-xg/p/6794562.html&#34;&gt;oracle进阶之connect by笔记 - 追逐繁星 - 博客园&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1953239/search-an-oracle-database-for-tables-with-specific-column-names&#34;&gt;Search an Oracle database for tables with specific column names?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
