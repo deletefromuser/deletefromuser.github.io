@@ -140,6 +140,13 @@ FLUSH <span style="color:#66d9ef">PRIVILEGES</span>;
 <span style="color:#75715e">-- 关闭，重新启动
 </span><span style="color:#75715e"></span>shutdown <span style="color:#66d9ef">immediate</span>;
 startup
+</code></pre></div><h3 id="故障排查">故障排查</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 查看数据库连接数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">FROM</span> v$session;
+<span style="color:#75715e">-- 查看允许的最大连接数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> name, value <span style="color:#66d9ef">FROM</span> v$parameter <span style="color:#66d9ef">WHERE</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sessions&#39;</span>;
+
+<span style="color:#66d9ef">select</span> current_utilization, limit_value <span style="color:#66d9ef">from</span> v$resource_limit <span style="color:#66d9ef">where</span> resource_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sessions&#39;</span>;
 </code></pre></div><h3 id="导入数据库">导入数据库</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 导入的时候确定，导出和导入的数据库编码一致
 </span><span style="color:#75715e"></span>imp tom<span style="color:#f92672">/</span>a12345678<span style="color:#f92672">@</span>orcl file<span style="color:#f92672">=/</span>path<span style="color:#f92672">/</span>backup.dmp fromuser<span style="color:#f92672">=</span>tom touser<span style="color:#f92672">=</span>jack <span style="color:#66d9ef">ignore</span>;
@@ -428,6 +435,8 @@ createtime date
 <li><a href="https://www.cnblogs.com/jepson6669/p/9437081.html">Oracle中的层次查询详解 - Jepson6669 - 博客园</a></li>
 <li><a href="https://www.cnblogs.com/king-xg/p/6794562.html">oracle进阶之connect by笔记 - 追逐繁星 - 博客园</a></li>
 <li><a href="https://stackoverflow.com/questions/1953239/search-an-oracle-database-for-tables-with-specific-column-names">Search an Oracle database for tables with specific column names?</a></li>
+<li><a href="https://stackoverflow.com/questions/162255/how-to-check-the-maximum-number-of-allowed-connections-to-an-oracle-database">How to check the maximum number of allowed connections to an Oracle database?</a></li>
+<li><a href="http://dba-oracle.com/t_maximum_sessions_allowed.htm">Oracle maximum sessions allowed</a></li>
 </ul>
 
 </div>

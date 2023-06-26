@@ -315,6 +315,10 @@ type -a vim
 &lt;span style=&#34;color:#75715e&#34;&gt;# -n 显示行数&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# -A 显示检索结果行之后的特定行&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# -B 显示检索结果行之前的特定行&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -e 指定检索字符串，可设置复数个&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -E 使用正则表达式&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -R 检索子目录&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -h 不显示文件名&lt;/span&gt;
 grep -ion &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;keyword&amp;#39;&lt;/span&gt; /path/file -A &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt; -B &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 使用正则表达式搜索&lt;/span&gt;
 egrep -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;public|private&amp;#39;&lt;/span&gt; /path/file
