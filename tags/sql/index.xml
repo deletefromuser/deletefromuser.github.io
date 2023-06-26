@@ -139,6 +139,13 @@ FLUSH &lt;span style=&#34;color:#66d9ef&#34;&gt;PRIVILEGES&lt;/span&gt;;
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 关闭，重新启动
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;shutdown &lt;span style=&#34;color:#66d9ef&#34;&gt;immediate&lt;/span&gt;;
 startup
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;故障排查&#34;&gt;故障排查&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 查看数据库连接数
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; v$session;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 查看允许的最大连接数
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; name, value &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; v$parameter &lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sessions&amp;#39;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; current_utilization, limit_value &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; v$resource_limit &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; resource_name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sessions&amp;#39;&lt;/span&gt;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;导入数据库&#34;&gt;导入数据库&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 导入的时候确定，导出和导入的数据库编码一致
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;imp tom&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;a12345678&lt;span style=&#34;color:#f92672&#34;&gt;@&lt;/span&gt;orcl file&lt;span style=&#34;color:#f92672&#34;&gt;=/&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;backup.dmp fromuser&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tom touser&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;jack &lt;span style=&#34;color:#66d9ef&#34;&gt;ignore&lt;/span&gt;;
@@ -427,6 +434,8 @@ createtime date
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/jepson6669/p/9437081.html&#34;&gt;Oracle中的层次查询详解 - Jepson6669 - 博客园&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/king-xg/p/6794562.html&#34;&gt;oracle进阶之connect by笔记 - 追逐繁星 - 博客园&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1953239/search-an-oracle-database-for-tables-with-specific-column-names&#34;&gt;Search an Oracle database for tables with specific column names?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/162255/how-to-check-the-maximum-number-of-allowed-connections-to-an-oracle-database&#34;&gt;How to check the maximum number of allowed connections to an Oracle database?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dba-oracle.com/t_maximum_sessions_allowed.htm&#34;&gt;Oracle maximum sessions allowed&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
