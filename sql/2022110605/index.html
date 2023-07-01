@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>oracle常用命令 – HA</title>
-<meta name="description" content="在线执行环境，缺点是需要注册 Oracle live SQL 创建用户 alter session set &amp;amp;#34;_ORACLE_SCRIPT&amp;amp;#34;=true; CREATE USER &amp;amp;#39;newuser&amp;amp;#39;@&amp;amp;#39;localhost&amp;amp;#39; IDENTIFIED BY &amp;amp;#39;password&amp;amp;#39;; …">
+<meta name="description" content="在线执行环境，缺点是需要注册  Oracle live SQL http://sqlfiddle.com/  创建用户 alter session set &amp;amp;#34;_ORACLE_SCRIPT&amp;amp;#34;=true; CREATE USER TOM IDENTIFIED BY a12345678; GRANT CONNECT, …">
 <meta name="created" content="2022-11-06T19:00:00+0800">
-<meta name="modified" content="2022-12-03T20:00:00+0800">
+<meta name="modified" content="2023-07-01T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,9 +31,9 @@
     "@type": "WebPage",
     "headline": "oracle常用命令",
     "datePublished": "2022-11-06T19:00:00+08:00",
-    "dateModified": "2022-12-03T20:00:00+08:00",
+    "dateModified": "2023-07-01T20:00:00+08:00",
     "url" : "https://deletefromuser.github.io/sql/2022110605/",
-    "description": "在线执行环境，缺点是需要注册 Oracle live SQL 创建用户 alter session set \u0026amp;#34;_ORACLE_SCRIPT\u0026amp;#34;=true; CREATE USER \u0026amp;#39;newuser\u0026amp;#39;@\u0026amp;#39;localhost\u0026amp;#39; IDENTIFIED BY \u0026amp;#39;password\u0026amp;#39;; …",
+    "description": "在线执行环境，缺点是需要注册  Oracle live SQL http://sqlfiddle.com/  创建用户 alter session set \u0026amp;#34;_ORACLE_SCRIPT\u0026amp;#34;=true; CREATE USER TOM IDENTIFIED BY a12345678; GRANT CONNECT, …",
     "keywords": ["sql","oracle"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -102,18 +102,25 @@ Tags:
 </header>
 <div class="content">
 <h3 id="在线执行环境缺点是需要注册">在线执行环境，缺点是需要注册</h3>
-<p><a href="https://livesql.oracle.com">Oracle live SQL</a></p>
+<ul>
+<li><a href="https://livesql.oracle.com">Oracle live SQL</a></li>
+<li><a href="http://sqlfiddle.com/">http://sqlfiddle.com/</a></li>
+</ul>
 <h3 id="创建用户">创建用户</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">set</span> <span style="color:#e6db74">&#34;_ORACLE_SCRIPT&#34;</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
-<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span>;
-<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span>;
-<span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ALL</span> <span style="color:#66d9ef">PRIVILEGES</span> <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
-<span style="color:#66d9ef">REVOKE</span> type_of_permission <span style="color:#66d9ef">ON</span> database_name.<span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
-FLUSH <span style="color:#66d9ef">PRIVILEGES</span>;
-<span style="color:#66d9ef">SHOW</span> GRANTS <span style="color:#66d9ef">FOR</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
-<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> TOM IDENTIFIED <span style="color:#66d9ef">BY</span> a12345678;
+<span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CONNECT</span>, RESOURCE, DBA <span style="color:#66d9ef">TO</span> TOM;
+<span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">on</span> tom.contacts <span style="color:#66d9ef">TO</span> TOM;
+<span style="color:#66d9ef">REVOKE</span> DBA <span style="color:#66d9ef">FROM</span> TOM;
+<span style="color:#66d9ef">REVOKE</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">on</span> tom.contacts <span style="color:#66d9ef">FROM</span> TOM;
+<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">USER</span> TOM;
 <span style="color:#75715e">-- 同时删除用户下的所有对象
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;newuser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span> <span style="color:#66d9ef">CASCADE</span>;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">USER</span> TOM <span style="color:#66d9ef">CASCADE</span>;
+<span style="color:#75715e">-- 查看权限
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> DBA_ROLE_PRIVS <span style="color:#66d9ef">WHERE</span> GRANTEE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TOM&#39;</span>;
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> USER_SYS_PRIVS; 
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> USER_TAB_PRIVS; 
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> USER_ROLE_PRIVS;
 </code></pre></div><h3 id="修改数据库编码">修改数据库编码</h3>
 <p>重要数据记得备份，我导入的数据转码之后汉字全都乱码了</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 查看oracle数据库的编码
@@ -159,7 +166,43 @@ startup
 shut <span style="color:#66d9ef">immediate</span>;
 startup <span style="color:#66d9ef">force</span>;
 <span style="color:#75715e">-- 必须重启服务restart OracleServiceORCL service in windows
-</span></code></pre></div><h3 id="搜索表">搜索表</h3>
+</span></code></pre></div><h3 id="缩小oracle数据库磁盘占用">缩小oracle数据库磁盘占用</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 运行下列查询，并复制结果执行即可
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">set</span> linesize <span style="color:#ae81ff">1000</span> pagesize <span style="color:#ae81ff">0</span> feedback <span style="color:#66d9ef">off</span> trimspool <span style="color:#66d9ef">on</span>
+<span style="color:#66d9ef">with</span>
+ hwm <span style="color:#66d9ef">as</span> (
+  <span style="color:#75715e">-- get highest block id from each datafiles ( from x$ktfbue as we don&#39;t need all joins from dba_extents )
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">select</span> <span style="color:#75715e">/*+ materialize */</span> ktfbuesegtsn ts<span style="color:#f92672">#</span>,ktfbuefno relative_fno,<span style="color:#66d9ef">max</span>(ktfbuebno<span style="color:#f92672">+</span>ktfbueblks<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) hwm_blocks
+  <span style="color:#66d9ef">from</span> sys.x$ktfbue <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> ktfbuefno,ktfbuesegtsn
+ ),
+ hwmts <span style="color:#66d9ef">as</span> (
+  <span style="color:#75715e">-- join ts# with tablespace_name
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">select</span> name tablespace_name,relative_fno,hwm_blocks
+  <span style="color:#66d9ef">from</span> hwm <span style="color:#66d9ef">join</span> v$tablespace <span style="color:#66d9ef">using</span>(ts<span style="color:#f92672">#</span>)
+ ),
+ hwmdf <span style="color:#66d9ef">as</span> (
+  <span style="color:#75715e">-- join with datafiles, put 5M minimum for datafiles with no extents
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">select</span> file_name,nvl(hwm_blocks<span style="color:#f92672">*</span>(bytes<span style="color:#f92672">/</span>blocks),<span style="color:#ae81ff">5</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span>) hwm_bytes,bytes,autoextensible,maxbytes
+  <span style="color:#66d9ef">from</span> hwmts <span style="color:#66d9ef">right</span> <span style="color:#66d9ef">join</span> dba_data_files <span style="color:#66d9ef">using</span>(tablespace_name,relative_fno)
+ )
+<span style="color:#66d9ef">select</span>
+ <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">when</span> autoextensible<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;YES&#39;</span> <span style="color:#66d9ef">and</span> maxbytes<span style="color:#f92672">&gt;=</span>bytes
+ <span style="color:#66d9ef">then</span> <span style="color:#75715e">-- we generate resize statements only if autoextensible can grow back to current size
+</span><span style="color:#75715e"></span>  <span style="color:#e6db74">&#39;/* reclaim &#39;</span><span style="color:#f92672">||</span>to_char(ceil((bytes<span style="color:#f92672">-</span>hwm_bytes)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>),<span style="color:#ae81ff">999999</span>)
+   <span style="color:#f92672">||</span><span style="color:#e6db74">&#39;M from &#39;</span><span style="color:#f92672">||</span>to_char(ceil(bytes<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>),<span style="color:#ae81ff">999999</span>)<span style="color:#f92672">||</span><span style="color:#e6db74">&#39;M */ &#39;</span>
+   <span style="color:#f92672">||</span><span style="color:#e6db74">&#39;alter database datafile &#39;&#39;&#39;</span><span style="color:#f92672">||</span>file_name<span style="color:#f92672">||</span><span style="color:#e6db74">&#39;&#39;&#39; resize &#39;</span><span style="color:#f92672">||</span>ceil(hwm_bytes<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>)<span style="color:#f92672">||</span><span style="color:#e6db74">&#39;M;&#39;</span>
+ <span style="color:#66d9ef">else</span> <span style="color:#75715e">-- generate only a comment when autoextensible is off
+</span><span style="color:#75715e"></span>  <span style="color:#e6db74">&#39;/* reclaim &#39;</span><span style="color:#f92672">||</span>to_char(ceil((bytes<span style="color:#f92672">-</span>hwm_bytes)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>),<span style="color:#ae81ff">999999</span>)
+   <span style="color:#f92672">||</span><span style="color:#e6db74">&#39;M from &#39;</span><span style="color:#f92672">||</span>to_char(ceil(bytes<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>),<span style="color:#ae81ff">999999</span>)
+   <span style="color:#f92672">||</span><span style="color:#e6db74">&#39;M after setting autoextensible maxsize higher than current size for file &#39;</span>
+   <span style="color:#f92672">||</span> file_name<span style="color:#f92672">||</span><span style="color:#e6db74">&#39; */&#39;</span>
+ <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">SQL</span>
+<span style="color:#66d9ef">from</span> hwmdf
+<span style="color:#66d9ef">where</span>
+ bytes<span style="color:#f92672">-</span>hwm_bytes<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span> <span style="color:#75715e">-- resize only if at least 1MB can be reclaimed
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> bytes<span style="color:#f92672">-</span>hwm_bytes <span style="color:#66d9ef">desc</span>
+<span style="color:#f92672">/</span>
+</code></pre></div><h3 id="搜索表">搜索表</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">table_name</span>, <span style="color:#66d9ef">owner</span> <span style="color:#66d9ef">FROM</span> all_tables <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%USER%&#39;</span> <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">owner</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TOM&#39;</span> <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">owner</span>, <span style="color:#66d9ef">table_name</span>;
 
 <span style="color:#75715e">--- 查找列
@@ -404,6 +447,8 @@ createtime date
 </blockquote>
 <p><strong>reference</strong></p>
 <ul>
+<li><a href="https://chartio.com/resources/tutorials/how-to-create-a-user-and-grant-permissions-in-oracle/">How to Create a User and Grant Permissions in Oracle</a></li>
+<li><a href="https://stackoverflow.com/questions/15066408/how-to-find-the-privileges-and-roles-granted-to-a-user-in-oracle">How to Create a User and Grant Permissions in Oracle</a></li>
 <li><a href="https://www.cnblogs.com/linjiao/p/6394087.html">ORACLE TRUNC()函数</a></li>
 <li><a href="https://www.cnblogs.com/jijm123/p/15763010.html">Oracle：trunc()函数简介</a></li>
 <li><a href="https://www.cnblogs.com/xianz666/p/13073664.html">Oracle中除数为0的两种解决办法（decode与nullif）</a></li>
@@ -437,13 +482,16 @@ createtime date
 <li><a href="https://stackoverflow.com/questions/1953239/search-an-oracle-database-for-tables-with-specific-column-names">Search an Oracle database for tables with specific column names?</a></li>
 <li><a href="https://stackoverflow.com/questions/162255/how-to-check-the-maximum-number-of-allowed-connections-to-an-oracle-database">How to check the maximum number of allowed connections to an Oracle database?</a></li>
 <li><a href="http://dba-oracle.com/t_maximum_sessions_allowed.htm">Oracle maximum sessions allowed</a></li>
+<li><a href="https://dba.stackexchange.com/questions/192625/oracle-shrinking-reclaiming-free-tablespace-space">Oracle shrinking / reclaiming free tablespace space</a></li>
+<li><a href="https://www.dbi-services.com/blog/resize-your-oracle-datafiles-down-to-the-minimum-without-ora-03297/">Resize your Oracle datafiles down to the minimum without ORA-03297</a></li>
+<li><a href="https://www.support.dbagenesis.com/post/reclaim-unused-space-in-oracle">Reclaim Unused Space in Oracle</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-03 20:00<br>
+Updated: 2023-07-01 20:00<br>
 Created: 2022-11-06 19:00
 </p>
 </div>

@@ -6,7 +6,7 @@
 <title>JS库使用问题汇总 – HA</title>
 <meta name="description" content="html2canvas 使html2canvas 在ie11中工作 &amp;amp;lt;script src=&amp;amp;#34;https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js&amp;amp;#34;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt; html2canvas 在ie11中渲染出不明 …">
 <meta name="created" content="2022-12-14T20:00:00+0800">
-<meta name="modified" content="2022-12-14T21:45:16+0800">
+<meta name="modified" content="2023-07-02T00:28:12+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "JS库使用问题汇总",
     "datePublished": "2022-12-14T20:00:00+08:00",
-    "dateModified": "2022-12-14T21:45:16+08:00",
+    "dateModified": "2023-07-02T00:28:12+08:00",
     "url" : "https://deletefromuser.github.io/web/2022121401/",
     "description": "html2canvas 使html2canvas 在ie11中工作 \u0026amp;lt;script src=\u0026amp;#34;https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js\u0026amp;#34;\u0026amp;gt;\u0026amp;lt;/script\u0026amp;gt; html2canvas 在ie11中渲染出不明 …",
     "mainEntityOfPage": {
@@ -127,19 +127,22 @@
         <span style="color:#a6e22e">link</span>.<span style="color:#a6e22e">click</span>();
     }
 });
+</code></pre></div><h2 id="获取frame内的元素">获取frame内的元素</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">window.<span style="color:#a6e22e">frames</span>[<span style="color:#ae81ff">1</span>].document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;someElementId&#39;</span>);
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://stackoverflow.com/questions/57992901/html2canvas-not-rendering-properly-overlapping-color">html2canvas not rendering properly (overlapping color)</a></li>
 <li><a href="https://html2canvas.hertzen.com/documentation.html#browser-compatibility">About html2canvas</a></li>
 <li><a href="https://github.com/taylorhakes/promise-polyfill">Promise Polyfill</a></li>
 <li><a href="https://stackoverflow.com/questions/21860633/download-canvas-to-image-in-ie-using-javascript">Download canvas to Image in IE using Javascript</a></li>
+<li><a href="https://stackoverflow.com/questions/2509934/how-can-i-get-an-element-from-within-a-frameset-frame-using-javascript">How can I get an element from within a frameset frame using JavaScript?</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-14 21:45<br>
+Updated: 2023-07-02 00:28<br>
 Created: 2022-12-14 20:00
 </p>
 </div>
