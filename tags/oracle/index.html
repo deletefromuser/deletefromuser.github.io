@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/tags/oracle/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-02-11T19:00:00+0800">
-<meta name="modified" content="2023-02-12T16:34:53+0800">
+<meta name="modified" content="2023-07-01T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -109,7 +109,7 @@
 
 </header>
 <div class="content">
-在线执行环境，缺点是需要注册 Oracle live SQL 创建用户 alter session set &#34;_ORACLE_SCRIPT&#34;=true; CREATE USER &#39;newuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;; CREATE USER &#39;newuser&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;; GRANT ALL PRIVILEGES ON *.* TO &#39;newuser&#39;@&#39;localhost&#39;; REVOKE type_of_permission ON database_name.table_name FROM &#39;newuser&#39;@&#39;localhost&#39;; FLUSH PRIVILEGES; SHOW GRANTS FOR &#39;newuser&#39;@&#39;localhost&#39;; DROP USER &#39;newuser&#39;@&#39;localhost&#39;; -- 同时删除用户下的所有
+在线执行环境，缺点是需要注册 Oracle live SQL http://sqlfiddle.com/ 创建用户 alter session set &#34;_ORACLE_SCRIPT&#34;=true; CREATE USER TOM IDENTIFIED BY a12345678; GRANT CONNECT, RESOURCE, DBA TO TOM; GRANT select on tom.contacts TO TOM; REVOKE DBA FROM TOM; REVOKE select on tom.contacts FROM TOM; DROP USER TOM; -- 同时删除用户下的所有对象
 </div>
 </article>
 
