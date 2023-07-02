@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-06-03T20:00:00+0800">
-<meta name="modified" content="2023-07-02T00:28:12+0800">
+<meta name="created" content="2023-07-02T18:00:00+0800">
+<meta name="modified" content="2023-07-02T21:54:08+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,10 +66,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
-<li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/read/">Read</a></li>
@@ -89,6 +89,45 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/blog/prob/2022110604/">virtualbox虚拟机启用宿主机摄像头</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
+</div>
+
+</header>
+<div class="content">
+Install ‘Oracle VM VirtualBox Extension Pack’ Attaching webcam to guest OS VBoxManage list webcams VboxManage controlvm &#34;Ubuntu 16.04.3&#34; webcam attach .2 reference Enabling Webcam in VirtualBox Guest OS on Windows Host
+</div>
+</article>
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2022110605/">oracle常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+
+</header>
+<div class="content">
+在线执行环境，缺点是需要注册 Oracle live SQL http://sqlfiddle.com/ 创建用户 alter session set &#34;_ORACLE_SCRIPT&#34;=true; CREATE USER TOM IDENTIFIED BY a12345678; GRANT CONNECT, RESOURCE, DBA TO TOM; GRANT select on tom.contacts TO TOM; REVOKE DBA FROM TOM; REVOKE select on tom.contacts FROM TOM; DROP USER TOM; -- 同时删除用户下的所有对象
+</div>
+</article>
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2023020901/">sqlserver常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+
+</header>
+<div class="content">
+查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; 日期 -- 当前时间 select getdate(); -- 当前日期 SELECT CAST( GETDATE() AS Date ) ;
+</div>
+</article>
 
 <article class="list-view list-view--watch">
 <header>
@@ -178,45 +217,6 @@ click File &gt; Virtual Media Manager in the main VirtualBox window Select a vir
 </header>
 <div class="content">
 动画 Overlord IV Lycoris Recoil メイドインアビス 烈日の黄金郷 リコリス・リコイル うたわれるもの 二人の白皇 異世界薬局 異世界おじさん サマータイムレンダ 剧集 Better.Call.Saul S01-S06 Breaking.Bad S01-S05 Cyberpunk: EdgeRunner
-</div>
-</article>
-
-<article class="list-view list-view--watch">
-<header>
-<h2 class="title title-submitted"><a href="/blog/watch/2022040101/">2022年2季度</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-04-01T12:00:00&#43;08:00">2022-04-01 12:00</time>
-</div>
-
-</header>
-<div class="content">
-动画 処刑少女の生きる道 盾の勇者の成り上がり Season2 勇者、辞めます 剧集 Severance Love, Death &amp; Robots Volume 3 电影 Drive My Car
-</div>
-</article>
-
-<article class="list-view list-view--read">
-<header>
-<h2 class="title title-submitted"><a href="/blog/read/2022030701/">2022年读书记录</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-02-01T12:00:00&#43;08:00">2022-02-01 12:00</time>
-</div>
-
-</header>
-<div class="content">
-name start end 圈外编辑 20220201 20220307 最好的决定 20220308 20220526 我能有什么坏心思呢 20220523 20220714 东京贫困女子 * 20220527 20220821 互联网与中国后现代性呓语 20220711 20220720 人生十二法则 20220824 ing 那些古怪又让人忧心的问题
-</div>
-</article>
-
-<article class="list-view list-view--watch">
-<header>
-<h2 class="title title-submitted"><a href="/blog/watch/2022010101/">2022年1季度</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-01-01T12:00:00&#43;08:00">2022-01-01 12:00</time>
-</div>
-
-</header>
-<div class="content">
-动画 ハコヅメ〜交番女子の逆襲〜 怪人開発部の黒井津さん 天才王子の赤字国家再生術 电影 The Nice Guys Dont Look Up The Worlds End Hot Fuzz
 </div>
 </article>
 

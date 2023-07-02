@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>password cracker on HA</title>
+    <link>/blog/tags/password-cracker/</link>
+    <description>Recent content in password cracker on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Jul 2023 12:00:00 +0800</lastBuildDate>
+    <atom:link href="/blog/tags/password-cracker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>暴力破解7z加密文件</title>
+      <link>/blog/tip/2023070201/</link>
+      <pubDate>Sun, 02 Jul 2023 12:00:00 +0800</pubDate>
+      <guid>/blog/tip/2023070201/</guid>
+      <description>&lt;h3 id=&#34;前置准备&#34;&gt;前置准备&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/philsmd/7z2hashcat&#34;&gt;7z2hashcat&lt;/a&gt; -&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/hashcat/hashcat&#34;&gt;hashcat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;使用7z2hashcat获取给hashcat解密用的hash&#34;&gt;使用7z2hashcat获取给hashcat解密用的hash&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;perl 7z2hashcat.pl file.7z &amp;gt; hash.txt&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;使用hashcat暴力破解&#34;&gt;使用hashcat暴力破解&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;hashcat -a 3 -m 11600 hash.txt&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/2023070201_01.jpg&#34; alt=&#34;结果&#34;&gt;&lt;/p&gt;
+&lt;p&gt;密码较长的话，花费时间就会很长。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://infinitelogins.com/2020/04/29/how-to-crack-encrypted-7z-archives/&#34;&gt;How to Crack Encrypted 7z Archives&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hashcat.net/forum/thread-6291.html&#34;&gt;Help with cracking 7zip hash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hashcat.net/wiki/doku.php?id=frequently_asked_questions#why_should_i_use_a_mask_attack_i_just_want_to_brute_these_hashes&#34;&gt;Why should I use a mask attack? I just want to &amp;ldquo;brute&amp;rdquo; these hashes!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>记一次多线程异常 – HA</title>
+<meta name="description" content="问题描述 有一个抽数据库数据写入文件的定时任务，发现有些文件数据不全，导入一半就结束了。 实现说明 service是共用的同一个，在Quartz类中定义多个@Scheduled注解的方法，并分别调用service方法 问题代码 // FileService.java @Service public class FileService { …">
+<meta name="created" content="2023-02-18T20:00:00+0800">
+<meta name="modified" content="2023-07-02T19:58:45+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="记一次多线程异常">
+<meta property="og:url" content="/blog/java/2023070202/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/java/2023070202/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "记一次多线程异常",
+    "datePublished": "2023-02-18T20:00:00+08:00",
+    "dateModified": "2023-07-02T19:58:45+08:00",
+    "url" : "/blog/java/2023070202/",
+    "description": "问题描述 有一个抽数据库数据写入文件的定时任务，发现有些文件数据不全，导入一半就结束了。 实现说明 service是共用的同一个，在Quartz类中定义多个@Scheduled注解的方法，并分别调用service方法 问题代码 // FileService.java @Service public class FileService { …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/java/" class="active" aria-current="page">Java</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/cs/">CS</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--java">
+<header>
+<h1 class="title title-submitted">记一次多线程异常</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-18T20:00:00&#43;08:00">2023-02-18 20:00</time>
+</div>
+</header>
+<div class="content">
+<h3 id="问题描述">问题描述</h3>
+<p>有一个抽数据库数据写入文件的定时任务，发现有些文件数据不全，导入一半就结束了。</p>
+<h3 id="实现说明">实现说明</h3>
+<p>service是共用的同一个，在Quartz类中定义多个@Scheduled注解的方法，并分别调用service方法</p>
+<h3 id="问题代码">问题代码</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// FileService.java
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@Service</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FileService</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> FileInfo fileInfo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInfo<span style="color:#f92672">();</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> batchSize <span style="color:#f92672">=</span> 500<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">export2File</span><span style="color:#f92672">(</span>Integer type<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        fileInfo <span style="color:#f92672">=</span> dao<span style="color:#f92672">.</span><span style="color:#a6e22e">getList</span><span style="color:#f92672">(</span>type<span style="color:#f92672">);</span> 
+
+        batchSize <span style="color:#f92672">=</span> fileInfo<span style="color:#f92672">.</span><span style="color:#a6e22e">getPageNum</span><span style="color:#f92672">();</span>
+        push<span style="color:#f92672">(</span>fileInfo<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span>
+
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>Integer fileName<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// create file with name fileName
+</span><span style="color:#75715e"></span>        
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> pageNo <span style="color:#f92672">=</span> 1<span style="color:#f92672">;;</span>i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            List<span style="color:#f92672">&lt;</span>Row<span style="color:#f92672">&gt;</span> data <span style="color:#f92672">=</span> getPageData<span style="color:#f92672">(</span>pageNo<span style="color:#f92672">,</span> fileName<span style="color:#f92672">);</span>
+            <span style="color:#75715e">// write to file with data
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>data <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> data<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;</span> batchSize<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> List<span style="color:#f92672">&lt;</span>Row<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getPageData</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> pageNo<span style="color:#f92672">,</span> String fileName<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        IPage<span style="color:#f92672">&lt;</span>LinkedHashMap<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;&gt;</span> page <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Page<span style="color:#f92672">&lt;&gt;(</span>pageNo<span style="color:#f92672">,</span> pageSize<span style="color:#f92672">);</span>
+
+        list <span style="color:#f92672">=</span> dataDao<span style="color:#f92672">.</span><span style="color:#a6e22e">select</span><span style="color:#f92672">(</span>page<span style="color:#f92672">,</span> fileInfo<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> list<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">// FileQuartz.java
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@Component</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FileQuartz</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@Autowired</span>
+    <span style="color:#66d9ef">private</span> FileService fileService<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Scheduled</span><span style="color:#f92672">(</span>cron <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0 0 5 * * ?&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">executeType1</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> execute<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Scheduled</span><span style="color:#f92672">(</span>cron <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;5 0 5 * * ?&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">executeType2</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> execute<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Scheduled</span><span style="color:#f92672">(</span>cron <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10 0 5 * * ?&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">executeType3</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> execute<span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">execute</span><span style="color:#f92672">(</span>Integer type<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> fileService<span style="color:#f92672">.</span><span style="color:#a6e22e">export2File</span><span style="color:#f92672">(</span>type<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="问题分析">问题分析</h3>
+<p>问题出在FileService是单例的，运行时里面的成员变量fileInfo和batchSize会被三个线程同时操作，最后启动的线程中赋值的就会起作用，导致导出错误数据，push方法里的for循环的break条件也会很快跳出</p>
+<h3 id="问题解决">问题解决</h3>
+<p>使用ThreadLocal包装fileInfo和batchSize</p>
+<p><strong>reference</strong></p>
+<ol>
+<li><a href="https://www.baeldung.com/java-double-brace-initialization">Java Double Brace Initialization</a></li>
+<li><a href="https://segmentfault.com/a/1190000022717457">永远不要使用双花括号初始化实例，否则就会OOM！</a></li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-07-02 19:58<br>
+Created: 2023-02-18 20:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

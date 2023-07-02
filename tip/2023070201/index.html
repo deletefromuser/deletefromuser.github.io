@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>暴力破解7z加密文件 – HA</title>
+<meta name="description" content="前置准备  7z2hashcat - hashcat  使用7z2hashcat获取给hashcat解密用的hash  perl 7z2hashcat.pl file.7z &amp;amp;gt; hash.txt  使用hashcat暴力破解  hashcat -a 3 -m 11600 hash.txt  密码较长的话，花费时间就会很长。 …">
+<meta name="created" content="2023-07-02T12:00:00+0800">
+<meta name="modified" content="2023-07-02T21:54:08+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="暴力破解7z加密文件">
+<meta property="og:url" content="/blog/tip/2023070201/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/tip/2023070201/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "暴力破解7z加密文件",
+    "datePublished": "2023-07-02T12:00:00+08:00",
+    "dateModified": "2023-07-02T21:54:08+08:00",
+    "url" : "/blog/tip/2023070201/",
+    "description": "前置准备  7z2hashcat - hashcat  使用7z2hashcat获取给hashcat解密用的hash  perl 7z2hashcat.pl file.7z \u0026amp;gt; hash.txt  使用hashcat暴力破解  hashcat -a 3 -m 11600 hash.txt  密码较长的话，花费时间就会很长。 …",
+    "keywords": ["7z","encrypt","decrypt","password cracker"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/tip/" class="active" aria-current="page">Tip</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/cs/">CS</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--tip">
+<header>
+<h1 class="title title-submitted">暴力破解7z加密文件</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-07-02T12:00:00&#43;08:00">2023-07-02 12:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/7z/">7z</a></li>
+<li><a href="/blog/tags/decrypt/">decrypt</a></li>
+<li><a href="/blog/tags/encrypt/">encrypt</a></li>
+<li><a href="/blog/tags/password-cracker/">password cracker</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="前置准备">前置准备</h3>
+<ul>
+<li><a href="https://github.com/philsmd/7z2hashcat">7z2hashcat</a> -</li>
+<li><a href="https://github.com/hashcat/hashcat">hashcat</a></li>
+</ul>
+<h4 id="使用7z2hashcat获取给hashcat解密用的hash">使用7z2hashcat获取给hashcat解密用的hash</h4>
+<blockquote>
+<p><code>perl 7z2hashcat.pl file.7z &gt; hash.txt</code></p>
+</blockquote>
+<h4 id="使用hashcat暴力破解">使用hashcat暴力破解</h4>
+<blockquote>
+<p><code>hashcat -a 3 -m 11600 hash.txt</code></p>
+</blockquote>
+<p><img src="../../images/2023070201_01.jpg" alt="结果"></p>
+<p>密码较长的话，花费时间就会很长。</p>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://infinitelogins.com/2020/04/29/how-to-crack-encrypted-7z-archives/">How to Crack Encrypted 7z Archives</a></li>
+<li><a href="https://hashcat.net/forum/thread-6291.html">Help with cracking 7zip hash</a></li>
+<li><a href="https://hashcat.net/wiki/doku.php?id=frequently_asked_questions#why_should_i_use_a_mask_attack_i_just_want_to_brute_these_hashes">Why should I use a mask attack? I just want to &ldquo;brute&rdquo; these hashes!</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-07-02 21:54<br>
+Created: 2023-07-02 12:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

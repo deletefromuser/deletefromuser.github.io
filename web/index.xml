@@ -6,8 +6,53 @@
     <description>Recent content in Web on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 May 2023 18:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jul 2023 18:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>使用Utterances为Hugo添加评论</title>
+      <link>/blog/web/2023070203/</link>
+      <pubDate>Sun, 02 Jul 2023 18:00:00 +0800</pubDate>
+      <guid>/blog/web/2023070203/</guid>
+      <description>&lt;h3 id=&#34;在github中添加uterances&#34;&gt;在github中添加Uterances&lt;/h3&gt;
+&lt;p&gt;因为评论是存储在仓库的issue中，所以要给Uterances权限，添加时只需要给一个公有仓库的权限即可（通常是github pages）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/apps/utterances&#34;&gt;utterances&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;生成产生评论的js脚本&#34;&gt;生成产生评论的js脚本&lt;/h3&gt;
+&lt;p&gt;输入repo，theme，点击copy即可&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://utteranc.es/&#34;&gt;utterances&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;设置hugo-theme&#34;&gt;设置hugo theme&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;layouts/partials/comments.html （没有则创建）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;{{- /* Comments area start */ -}}
+
+&amp;lt;!-- 上一步复制的东西 --&amp;gt;
+
+{{- /* Comments area end */ -}}
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;修改layouts/_default/single.html
+在&lt;!-- raw HTML omitted --&gt;之前添加下列内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;{{- if (.Param &amp;quot;comments&amp;quot;) }}
+  {{- partial &amp;quot;comments.html&amp;quot; . }}
+{{- end }}
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;修改config.yml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;[Params]
+  ...
+  comments = true
+  ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.pugillum.com/posts/2021_11_28_github_issues_as_comments/&#34;&gt;Add comments to your Hugo blog linked to Github issues with utterances&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>jenkins使用记录</title>

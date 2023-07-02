@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-06-03T20:00:00+0800">
-<meta name="modified" content="2023-07-02T00:28:12+0800">
+<meta name="created" content="2023-07-02T18:00:00+0800">
+<meta name="modified" content="2023-07-02T21:54:08+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,10 +66,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
-<li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/read/">Read</a></li>
@@ -89,6 +89,45 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--read">
+<header>
+<h2 class="title title-submitted"><a href="/blog/read/2023012901/">2023年读书记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-01-29T20:00:00&#43;08:00">2023-01-29 20:00</time>
+</div>
+
+</header>
+<div class="content">
+name auther start end 技术陷阱：从工业革命到AI时代，技术创新下的资本、劳动与权力 * 卡尔•贝内迪克特•弗雷 20230128 20230301 从零开始的女性主义 上野千鹤子 20230301 20230306 满愿 米泽穗信
+</div>
+</article>
+
+<article class="list-view list-view--life">
+<header>
+<h2 class="title title-submitted"><a href="/blog/life/2023010101/">life hack</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-01-07T19:00:00&#43;08:00">2023-01-07 19:00</time>
+</div>
+
+</header>
+<div class="content">
+七号电池替代五号电池 铝箔纸团成球，塞到电池槽一侧，再塞入七号电池即可 只能作为临时方案，容易松动，浪费时间 用保鲜袋和矿泉水瓶制作密封袋 reference How to Use
+</div>
+</article>
+
+<article class="list-view list-view--life">
+<header>
+<h2 class="title title-submitted"><a href="/blog/life/2023020801/">硬件使用问题</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-01-07T19:00:00&#43;08:00">2023-01-07 19:00</time>
+</div>
+
+</header>
+<div class="content">
+一加手机7TPRO 网络异常，信号总显示E，不连接4G 重启 解锁界面输入法界面无法弹出 因为个人是用的普通用户，所以可以进去主用户，在设置-》应用
+</div>
+</article>
 
 <article class="list-view list-view--watch">
 <header>
@@ -178,45 +217,6 @@ html2canvas 使html2canvas 在ie11中工作 &lt;script src=&#34;https://cdn.jsde
 </header>
 <div class="content">
 停止网页重定向 window.addEventListener(&#34;beforeunload&#34;, () =&gt; { debugger; }, false); JS转换字符为UNICODE escape(&#34;转换字符&#34;).replace(/%/g, &#34;\\&#34;).toLowerCase(); // 十进制u
-</div>
-</article>
-
-<article class="list-view list-view--bash">
-<header>
-<h2 class="title title-submitted"><a href="/blog/bash/2022120301/">ubuntu使用技巧</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-12-03T20:00:00&#43;08:00">2022-12-03 20:00</time>
-</div>
-
-</header>
-<div class="content">
-为命令行配置代理 # 注意代理要是http代理，sock代理是不行的 export HTTP_PROXY='127.0.0.1:1086' export HTTPS_PROXY='127.0.0.1:1086' 把desktop文件的程序固定到任务栏 复制desktop文件到~/.
-</div>
-</article>
-
-<article class="list-view list-view--tip">
-<header>
-<h2 class="title title-submitted"><a href="/blog/tip/2022112601/">使用命令行上传文件到共享网站file.io</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-26T20:00:00&#43;08:00">2022-11-26 20:00</time>
-</div>
-
-</header>
-<div class="content">
-在~/.bashrc最后添加下面脚本 upload () { if [ $# = 1 -o $# = 2 ];then if [ -f &#34;$1&#34; ];then if [ $# = 1 ];then curl -F &#34;file=@$1&#34; https://file.io/ --no-progress-meter | grep -Eo &#34;http|https://[a-zA-Z0-9./?=_%:-]*&#34;;else if [[ &#34;$2&#34; =~ ^[1-9]+[wmy]$ ]];then curl -F &#34;file=@$1&#34; https://file.io/\?expires=$2 --no-progress-meter | grep -Eo &#34;http|https://[a-zA-Z0-9./?=_%:-]*&#34;;else echo $&#39;Wrong expiration format.\neg.
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/blog/web/2022111501/">SpringBoot开发memo</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-15T20:00:00&#43;08:00">2022-11-15 20:00</time>
-</div>
-
-</header>
-<div class="content">
-解密Jasypt密文 开发中遇到一些配置的密文，有解密的需要 AES256TextEncryptor encryptor = new AES256TextEncryptor(); encryptor.setPassword(&#34;some_salt&#34;); String plainText = encryptor.decrypt(myEncryptedText); System.out.println(&#34;Decrypted: &#34;+plainText); winmerge 除外特定文件或文件夹 进入 Tools | Filters&hellip; | Filefilters选
 </div>
 </article>
 
