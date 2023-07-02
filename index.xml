@@ -10,7 +10,7 @@
     <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>使用Utterances为Hugo添加评论</title>
+      <title>使用Utterances为Hugo添加评论功能</title>
       <link>/blog/web/2023070203/</link>
       <pubDate>Sun, 02 Jul 2023 18:00:00 +0800</pubDate>
       <guid>/blog/web/2023070203/</guid>
@@ -623,10 +623,45 @@ ssh user@remote-server /path/to/script.sh
 &lt;p&gt;问题出在FileService是单例的，运行时里面的成员变量fileInfo和batchSize会被三个线程同时操作，最后启动的线程中赋值的就会起作用，导致导出错误数据，push方法里的for循环的break条件也会很快跳出&lt;/p&gt;
 &lt;h3 id=&#34;问题解决&#34;&gt;问题解决&lt;/h3&gt;
 &lt;p&gt;使用ThreadLocal包装fileInfo和batchSize&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用线程池时的threadlocal复用问题&#34;&gt;使用线程池时的ThreadLocal复用问题&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;可以线程处理结束时手动清理&lt;/li&gt;
+&lt;li&gt;重载ThreadPoolExecutor的afterExecute方法执行清理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Bing AI生成的示例代码&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;MyTask&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; Runnable &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;final&lt;/span&gt; ThreadLocal&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; local &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ThreadLocal&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;run&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        local&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;set&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;some value&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;// do something
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// method 1 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// local.remove();
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        local&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;remove&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;MyThreadPoolExecutor&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; ThreadPoolExecutor &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;MyThreadPoolExecutor&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; corePoolSize&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; maximumPoolSize&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;long&lt;/span&gt; keepAliveTime&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; TimeUnit unit&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+                                 BlockingQueue&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Runnable&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; workQueue&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;corePoolSize&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; maximumPoolSize&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; keepAliveTime&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; unit&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; workQueue&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;protected&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;afterExecute&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Runnable r&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; Throwable t&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;afterExecute&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; t&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;r &lt;span style=&#34;color:#66d9ef&#34;&gt;instanceof&lt;/span&gt; MyTask&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;((&lt;/span&gt;MyTask&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; r&lt;span style=&#34;color:#f92672&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/java-double-brace-initialization&#34;&gt;Java Double Brace Initialization&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000022717457&#34;&gt;永远不要使用双花括号初始化实例，否则就会OOM！&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/java-threadlocal&#34;&gt;An Introduction to ThreadLocal in Java&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -3653,7 +3688,7 @@ git cherry-pick -n bd61ad98^..ade56rq1
 &lt;span style=&#34;color:#75715e&#34;&gt;# 强制回退到上一个commit(未push)&lt;/span&gt;
 git reset --hard HEAD^
 &lt;span style=&#34;color:#75715e&#34;&gt;# 强制回退到上上个commit(未push)&lt;/span&gt;
-reset --hard HEAD~2
+git reset --hard HEAD~2
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取消某个版本的修改&lt;/span&gt;
 git revert &amp;lt;commit hash&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用ssh连接git&#34;&gt;使用ssh连接git&lt;/h3&gt;
@@ -3665,6 +3700,10 @@ eval &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span st
 ssh-add ~/.ssh/id_ed25519
 &lt;span style=&#34;color:#75715e&#34;&gt;# 测试&lt;/span&gt;
 ssh -T git@github.com
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 杀掉所有ssh-agent进程&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 因为每开一个terminal就要跑这些命令，开始一个ssh-agent，运行一段时间之后，后台就会有很多进程&lt;/span&gt;
+ps -ef | grep ssh-agent | grep -v grep | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; | xargs kill -9
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-將文件轉移位置&#34;&gt;git 將文件轉移位置&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git mv 2017032003.md csharp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看某一次提交的文件列表&#34;&gt;查看某一次提交的文件列表&lt;/h3&gt;

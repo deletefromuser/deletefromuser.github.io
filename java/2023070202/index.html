@@ -6,7 +6,7 @@
 <title>记一次多线程异常 – HA</title>
 <meta name="description" content="问题描述 有一个抽数据库数据写入文件的定时任务，发现有些文件数据不全，导入一半就结束了。 实现说明 service是共用的同一个，在Quartz类中定义多个@Scheduled注解的方法，并分别调用service方法 问题代码 // FileService.java @Service public class FileService { …">
 <meta name="created" content="2023-02-18T20:00:00+0800">
-<meta name="modified" content="2023-07-02T19:58:45+0800">
+<meta name="modified" content="2023-07-02T23:20:41+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,9 +31,10 @@
     "@type": "WebPage",
     "headline": "记一次多线程异常",
     "datePublished": "2023-02-18T20:00:00+08:00",
-    "dateModified": "2023-07-02T19:58:45+08:00",
+    "dateModified": "2023-07-02T23:20:41+08:00",
     "url" : "/blog/java/2023070202/",
     "description": "问题描述 有一个抽数据库数据写入文件的定时任务，发现有些文件数据不全，导入一半就结束了。 实现说明 service是共用的同一个，在Quartz类中定义多个@Scheduled注解的方法，并分别调用service方法 问题代码 // FileService.java @Service public class FileService { …",
+    "keywords": ["java","multithreading"],
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -90,6 +91,13 @@
 <h1 class="title title-submitted">记一次多线程异常</h1>
 <div class="submitted">
 <time class="created-date" datetime="2023-02-18T20:00:00&#43;08:00">2023-02-18 20:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/java/">java</a></li>
+<li><a href="/blog/tags/multithreading/">multithreading</a></li>
+</ul>
 </div>
 </header>
 <div class="content">
@@ -169,17 +177,52 @@
 <p>问题出在FileService是单例的，运行时里面的成员变量fileInfo和batchSize会被三个线程同时操作，最后启动的线程中赋值的就会起作用，导致导出错误数据，push方法里的for循环的break条件也会很快跳出</p>
 <h3 id="问题解决">问题解决</h3>
 <p>使用ThreadLocal包装fileInfo和batchSize</p>
-<p><strong>reference</strong></p>
+<h3 id="使用线程池时的threadlocal复用问题">使用线程池时的ThreadLocal复用问题</h3>
+<ul>
+<li>可以线程处理结束时手动清理</li>
+<li>重载ThreadPoolExecutor的afterExecute方法执行清理</li>
+</ul>
+<p><strong>Bing AI生成的示例代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyTask</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> ThreadLocal<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> local <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadLocal<span style="color:#f92672">&lt;&gt;();</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        local<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;some value&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">// do something
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// method 1 
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// local.remove();
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clean</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        local<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyThreadPoolExecutor</span> <span style="color:#66d9ef">extends</span> ThreadPoolExecutor <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MyThreadPoolExecutor</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> corePoolSize<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> maximumPoolSize<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> keepAliveTime<span style="color:#f92672">,</span> TimeUnit unit<span style="color:#f92672">,</span>
+                                 BlockingQueue<span style="color:#f92672">&lt;</span>Runnable<span style="color:#f92672">&gt;</span> workQueue<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>corePoolSize<span style="color:#f92672">,</span> maximumPoolSize<span style="color:#f92672">,</span> keepAliveTime<span style="color:#f92672">,</span> unit<span style="color:#f92672">,</span> workQueue<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">afterExecute</span><span style="color:#f92672">(</span>Runnable r<span style="color:#f92672">,</span> Throwable t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">afterExecute</span><span style="color:#f92672">(</span>r<span style="color:#f92672">,</span> t<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>r <span style="color:#66d9ef">instanceof</span> MyTask<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#f92672">((</span>MyTask<span style="color:#f92672">)</span> r<span style="color:#f92672">).</span><span style="color:#a6e22e">clean</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><strong>reference</strong></p>
 <ol>
-<li><a href="https://www.baeldung.com/java-double-brace-initialization">Java Double Brace Initialization</a></li>
-<li><a href="https://segmentfault.com/a/1190000022717457">永远不要使用双花括号初始化实例，否则就会OOM！</a></li>
+<li><a href="https://www.baeldung.com/java-threadlocal">An Introduction to ThreadLocal in Java</a></li>
 </ol>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-07-02 19:58<br>
+Updated: 2023-07-02 23:20<br>
 Created: 2023-02-18 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
@@ -188,6 +231,7 @@ Created: 2023-02-18 20:00
         label="blog"
         theme="github-light"
         crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
         async>
 </script>
 

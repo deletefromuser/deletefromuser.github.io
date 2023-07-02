@@ -10,7 +10,7 @@
     <atom:link href="/blog/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>使用Utterances为Hugo添加评论</title>
+      <title>使用Utterances为Hugo添加评论功能</title>
       <link>/blog/web/2023070203/</link>
       <pubDate>Sun, 02 Jul 2023 18:00:00 +0800</pubDate>
       <guid>/blog/web/2023070203/</guid>

@@ -26,7 +26,7 @@ git cherry-pick -n bd61ad98^..ade56rq1
 &lt;span style=&#34;color:#75715e&#34;&gt;# 强制回退到上一个commit(未push)&lt;/span&gt;
 git reset --hard HEAD^
 &lt;span style=&#34;color:#75715e&#34;&gt;# 强制回退到上上个commit(未push)&lt;/span&gt;
-reset --hard HEAD~2
+git reset --hard HEAD~2
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取消某个版本的修改&lt;/span&gt;
 git revert &amp;lt;commit hash&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用ssh连接git&#34;&gt;使用ssh连接git&lt;/h3&gt;
@@ -38,6 +38,10 @@ eval &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span st
 ssh-add ~/.ssh/id_ed25519
 &lt;span style=&#34;color:#75715e&#34;&gt;# 测试&lt;/span&gt;
 ssh -T git@github.com
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 杀掉所有ssh-agent进程&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 因为每开一个terminal就要跑这些命令，开始一个ssh-agent，运行一段时间之后，后台就会有很多进程&lt;/span&gt;
+ps -ef | grep ssh-agent | grep -v grep | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; | xargs kill -9
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-將文件轉移位置&#34;&gt;git 將文件轉移位置&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git mv 2017032003.md csharp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看某一次提交的文件列表&#34;&gt;查看某一次提交的文件列表&lt;/h3&gt;
