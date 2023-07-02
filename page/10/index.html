@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-06-03T20:00:00+0800">
-<meta name="modified" content="2023-07-02T00:28:12+0800">
+<meta name="created" content="2023-07-02T18:00:00+0800">
+<meta name="modified" content="2023-07-02T21:54:08+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,10 +66,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/web/">Web</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
-<li><a href="/web/">Web</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/java/">Java</a></li>
 <li><a href="/read/">Read</a></li>
@@ -89,6 +89,45 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2017031202/">使用gcloud source克隆代碼出錯的問題</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-12T02:33:58&#43;08:00">2017-03-12 02:33</time>
+</div>
+
+</header>
+<div class="content">
+使用gcloud source克隆代碼出錯的問題 gcloud source repos clone java-gae-quickstart --project=mytest-161202 在Google Cloud Platform中創建好代碼庫，並且在本機安裝好Google Cloud SD
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2017031201/">MS-Windows下Emacs显示中文卡頓</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-12T01:33:58&#43;08:00">2017-03-12 01:33</time>
+</div>
+
+</header>
+<div class="content">
+MS-Windows下Emacs显示中文卡頓 emacs顯示中文有bug，更換一下默認字體就好了 Options-&gt;Set Default Font ps:看wiki的時候發現很多搞笑的話，
+</div>
+</article>
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/prob/2017030901/">解壓大文件提示存儲空間不足</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-09T01:33:58&#43;08:00">2017-03-09 01:33</time>
+</div>
+
+</header>
+<div class="content">
+解壓大文件提示存儲空間不足 下載一個8G大的文件，解壓的時候提示存儲空間不足，一看E盤明明還有20G空間啊，試試解壓到D盤，還是不行，最後不一
+</div>
+</article>
 
 <article class="list-view list-view--prob">
 <header>
@@ -178,45 +217,6 @@ ubuntu系統安裝 下載系統鏡像並製作U盘啟動盤 插入，按下開�
 </header>
 <div class="content">
 如何用U盘製作啟動盤 備份U盘中的文件 下載Rufus 插入U盘並打開程序 選擇分區方案（先選的mbr分區方案用於bios或uefi的計算機，結果啟
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/prob/2017022701/">用網線連接連接兩台電腦進行文件傳輸</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-02-27T01:33:58&#43;08:00">2017-02-27 01:33</time>
-</div>
-
-</header>
-<div class="content">
-用網線連接連接兩台電腦進行文件傳輸 修改兩台電腦的本地連接設置，ipv4設置到一個網段下 關閉防火牆 在高級共享設置中啟用網絡發現 連接網線 將要傳輸
-</div>
-</article>
-
-<article class="list-view list-view--sql">
-<header>
-<h2 class="title title-submitted"><a href="/sql/2017022301/">sqlserver row_number() 函數的用法</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-02-23T01:33:58&#43;08:00">2017-02-23 01:33</time>
-</div>
-
-</header>
-<div class="content">
-sqlserver row_number() 函數的用法 select * from fruit_month_price; select * , row_number() over (partition by name order by year, month) as sn from fruit_month_price order by name,year,month 上面代碼中意為以字段name分組，每組內部以字段year、month（默認升序）
-</div>
-</article>
-
-<article class="list-view list-view--sql">
-<header>
-<h2 class="title title-submitted"><a href="/sql/2017022001/">outer apply 和 left join 再辨析</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-02-20T01:33:58&#43;08:00">2017-02-20 01:33</time>
-</div>
-
-</header>
-<div class="content">
-outer apply 和 left join 再辨析 過濾條件位置不同（看下面例子可以看出來） outer apply可以較方便地實現控制參照表參照記錄的個數，left join稍微麻煩一些 下
 </div>
 </article>
 

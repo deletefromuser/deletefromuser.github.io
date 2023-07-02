@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-06-03T20:00:00+0800">
-<meta name="modified" content="2023-07-02T00:28:12+0800">
+<meta name="created" content="2023-07-02T18:00:00+0800">
+<meta name="modified" content="2023-07-02T21:54:08+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,10 +66,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/web/">Web</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
-<li><a href="/web/">Web</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/java/">Java</a></li>
 <li><a href="/read/">Read</a></li>
@@ -89,6 +89,45 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--bash">
+<header>
+<h2 class="title title-submitted"><a href="/bash/2022120301/">ubuntu使用技巧</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-12-03T20:00:00&#43;08:00">2022-12-03 20:00</time>
+</div>
+
+</header>
+<div class="content">
+为命令行配置代理 # 注意代理要是http代理，sock代理是不行的 export HTTP_PROXY='127.0.0.1:1086' export HTTPS_PROXY='127.0.0.1:1086' 把desktop文件的程序固定到任务栏 复制desktop文件到~/.
+</div>
+</article>
+
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/tip/2022112601/">使用命令行上传文件到共享网站file.io</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-26T20:00:00&#43;08:00">2022-11-26 20:00</time>
+</div>
+
+</header>
+<div class="content">
+在~/.bashrc最后添加下面脚本 upload () { if [ $# = 1 -o $# = 2 ];then if [ -f &#34;$1&#34; ];then if [ $# = 1 ];then curl -F &#34;file=@$1&#34; https://file.io/ --no-progress-meter | grep -Eo &#34;http|https://[a-zA-Z0-9./?=_%:-]*&#34;;else if [[ &#34;$2&#34; =~ ^[1-9]+[wmy]$ ]];then curl -F &#34;file=@$1&#34; https://file.io/\?expires=$2 --no-progress-meter | grep -Eo &#34;http|https://[a-zA-Z0-9./?=_%:-]*&#34;;else echo $&#39;Wrong expiration format.\neg.
+</div>
+</article>
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/web/2022111501/">SpringBoot开发memo</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-15T20:00:00&#43;08:00">2022-11-15 20:00</time>
+</div>
+
+</header>
+<div class="content">
+解密Jasypt密文 开发中遇到一些配置的密文，有解密的需要 AES256TextEncryptor encryptor = new AES256TextEncryptor(); encryptor.setPassword(&#34;some_salt&#34;); String plainText = encryptor.decrypt(myEncryptedText); System.out.println(&#34;Decrypted: &#34;+plainText); winmerge 除外特定文件或文件夹 进入 Tools | Filters&hellip; | Filefilters选
+</div>
+</article>
 
 <article class="list-view list-view--web">
 <header>
@@ -178,45 +217,6 @@ crontab -e A B C D E USERNAME /path/to/command arg1 arg2 Explanation of above cr
 </header>
 <div class="content">
 1. ORA-12505: TNS:listener does not currently know of SID given in connect descriptor add to tnsnames.ora file, and run lsnrctl reload ORCL = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVICE = DEDICATED) (SERVICE_NAME = orcl) ) ) excute alter system set local_listener = '(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))' scope = both; in sqlplus.(username sys, password, orcl as sysdba) 2. 状态: 失败 -测试
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/prob/2022110604/">virtualbox虚拟机启用宿主机摄像头</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
-</div>
-
-</header>
-<div class="content">
-Install ‘Oracle VM VirtualBox Extension Pack’ Attaching webcam to guest OS VBoxManage list webcams VboxManage controlvm &#34;Ubuntu 16.04.3&#34; webcam attach .2 reference Enabling Webcam in VirtualBox Guest OS on Windows Host
-</div>
-</article>
-
-<article class="list-view list-view--sql">
-<header>
-<h2 class="title title-submitted"><a href="/sql/2022110605/">oracle常用命令</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
-</div>
-
-</header>
-<div class="content">
-在线执行环境，缺点是需要注册 Oracle live SQL http://sqlfiddle.com/ 创建用户 alter session set &#34;_ORACLE_SCRIPT&#34;=true; CREATE USER TOM IDENTIFIED BY a12345678; GRANT CONNECT, RESOURCE, DBA TO TOM; GRANT select on tom.contacts TO TOM; REVOKE DBA FROM TOM; REVOKE select on tom.contacts FROM TOM; DROP USER TOM; -- 同时删除用户下的所有对象
-</div>
-</article>
-
-<article class="list-view list-view--sql">
-<header>
-<h2 class="title title-submitted"><a href="/sql/2023020901/">sqlserver常用命令</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
-</div>
-
-</header>
-<div class="content">
-查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; 日期 -- 当前时间 select getdate(); -- 当前日期 SELECT CAST( GETDATE() AS Date ) ;
 </div>
 </article>
 

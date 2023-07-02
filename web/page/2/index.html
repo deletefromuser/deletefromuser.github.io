@@ -6,8 +6,8 @@
 <title>Web – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/web/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-05-21T18:00:00+0800">
-<meta name="modified" content="2023-07-02T00:28:12+0800">
+<meta name="created" content="2023-07-02T18:00:00+0800">
+<meta name="modified" content="2023-07-02T19:58:45+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,10 +66,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/web/" class="active" aria-current="page">Web</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
-<li><a href="/web/" class="active" aria-current="page">Web</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/java/">Java</a></li>
 <li><a href="/read/">Read</a></li>
@@ -86,6 +86,19 @@
 <h1 class="title">Web</h1>
 
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/web/2022071101/">引用cdn静态资源时添加哈希值验证防篡改</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-07-11T17:00:00&#43;08:00">2022-07-11 17:00</time>
+</div>
+
+</header>
+<div class="content">
+例子： &lt;script src=&#34;https://example.com/example-framework.js&#34; integrity=&#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt; 生成 SRI 哈希的工具 shasum -b -a 384 example-framework.js | xxd -r -p | base64 reference Subresource Integrity - Web 安全 | MDN
+</div>
+</article>
 
 <article class="list-view list-view--web">
 <header>

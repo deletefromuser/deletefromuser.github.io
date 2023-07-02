@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-06-03T20:00:00+0800">
-<meta name="modified" content="2023-07-02T00:28:12+0800">
+<meta name="created" content="2023-07-02T18:00:00+0800">
+<meta name="modified" content="2023-07-02T21:54:08+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -66,10 +66,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/web/">Web</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
-<li><a href="/web/">Web</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/java/">Java</a></li>
 <li><a href="/read/">Read</a></li>
@@ -89,6 +89,32 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/web/2023042501/">spring boot开发记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-04-25T20:00:00&#43;08:00">2023-04-25 20:00</time>
+</div>
+
+</header>
+<div class="content">
+热部署 maven中添加下面的依赖 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt; &lt;optional&gt;true&lt;/optional&gt; &lt;/dependency&gt; reference Hot swapping in Spring Boot in Visual Studio Code
+</div>
+</article>
+
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/tip/2023042503/">使用mkvtoolnix批量去除mkv格式视频外挂字幕</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-04-25T20:00:00&#43;08:00">2023-04-25 20:00</time>
+</div>
+
+</header>
+<div class="content">
+前提 视频文件内容必须统一，一般是剧集类的，并且要是mkv格式的 打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出
+</div>
+</article>
 
 <article class="list-view list-view--web">
 <header>
@@ -126,6 +152,19 @@ chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 r
 </header>
 <div class="content">
 双花括号初始化 有时候写测试代码，需要新建hashmap或者list并赋值的时候，可以用双花括号初始化简化代码，但是据说有内存泄漏的风险，所以
+</div>
+</article>
+
+<article class="list-view list-view--java">
+<header>
+<h2 class="title title-submitted"><a href="/java/2023070202/">记一次多线程异常</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-18T20:00:00&#43;08:00">2023-02-18 20:00</time>
+</div>
+
+</header>
+<div class="content">
+问题描述 有一个抽数据库数据写入文件的定时任务，发现有些文件数据不全，导入一半就结束了。 实现说明 service是共用的同一个，在Quartz类
 </div>
 </article>
 
@@ -178,45 +217,6 @@ chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 r
 </header>
 <div class="content">
 手动创建image 在项目内创建Dockerfile FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=docker&#34;]# ENTRYPOINT [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=dock
-</div>
-</article>
-
-<article class="list-view list-view--read">
-<header>
-<h2 class="title title-submitted"><a href="/read/2023012901/">2023年读书记录</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-01-29T20:00:00&#43;08:00">2023-01-29 20:00</time>
-</div>
-
-</header>
-<div class="content">
-name auther start end 技术陷阱：从工业革命到AI时代，技术创新下的资本、劳动与权力 * 卡尔•贝内迪克特•弗雷 20230128 20230301 从零开始的女性主义 上野千鹤子 20230301 20230306 满愿 米泽穗信
-</div>
-</article>
-
-<article class="list-view list-view--life">
-<header>
-<h2 class="title title-submitted"><a href="/life/2023010101/">life hack</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-01-07T19:00:00&#43;08:00">2023-01-07 19:00</time>
-</div>
-
-</header>
-<div class="content">
-七号电池替代五号电池 铝箔纸团成球，塞到电池槽一侧，再塞入七号电池即可 只能作为临时方案，容易松动，浪费时间 用保鲜袋和矿泉水瓶制作密封袋 reference How to Use
-</div>
-</article>
-
-<article class="list-view list-view--life">
-<header>
-<h2 class="title title-submitted"><a href="/life/2023020801/">硬件使用问题</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-01-07T19:00:00&#43;08:00">2023-01-07 19:00</time>
-</div>
-
-</header>
-<div class="content">
-一加手机7TPRO 网络异常，信号总显示E，不连接4G 重启 解锁界面输入法界面无法弹出 因为个人是用的普通用户，所以可以进去主用户，在设置-》应用
 </div>
 </article>
 
