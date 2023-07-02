@@ -112,7 +112,7 @@ git cherry-pick -n bd61ad98^..ade56rq1
 <span style="color:#75715e"># 强制回退到上一个commit(未push)</span>
 git reset --hard HEAD^
 <span style="color:#75715e"># 强制回退到上上个commit(未push)</span>
-reset --hard HEAD~2
+git reset --hard HEAD~2
 <span style="color:#75715e"># 取消某个版本的修改</span>
 git revert &lt;commit hash&gt;
 </code></pre></div><h3 id="使用ssh连接git">使用ssh连接git</h3>
@@ -124,6 +124,10 @@ eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</spa
 ssh-add ~/.ssh/id_ed25519
 <span style="color:#75715e"># 测试</span>
 ssh -T git@github.com
+
+<span style="color:#75715e"># 杀掉所有ssh-agent进程</span>
+<span style="color:#75715e"># 因为每开一个terminal就要跑这些命令，开始一个ssh-agent，运行一段时间之后，后台就会有很多进程</span>
+ps -ef | grep ssh-agent | grep -v grep | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> | xargs kill -9
 </code></pre></div><h3 id="git-將文件轉移位置">git 將文件轉移位置</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git mv 2017032003.md csharp
 </code></pre></div><h3 id="查看某一次提交的文件列表">查看某一次提交的文件列表</h3>
@@ -189,6 +193,7 @@ Created: 2017-03-23 03:33
         label="blog"
         theme="github-light"
         crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
         async>
 </script>
 
