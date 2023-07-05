@@ -34,9 +34,9 @@
 
 {{- /* Comments area end */ -}}
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;修改layouts/_default/single.html
-在&lt;!-- raw HTML omitted --&gt;之前添加下列内容&lt;/li&gt;
+&lt;li&gt;修改layouts/_default/single.html&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;在&lt;code&gt;&amp;lt;/article&amp;gt;&lt;/code&gt;之前添加下列内容&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;{{- if (.Param &amp;quot;comments&amp;quot;) }}
   {{- partial &amp;quot;comments.html&amp;quot; . }}
 {{- end }}
