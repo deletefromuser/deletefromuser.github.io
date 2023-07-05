@@ -6,7 +6,7 @@
 <title>记一次多线程异常 – HA</title>
 <meta name="description" content="问题描述 有一个抽数据库数据写入文件的定时任务，发现有些文件数据不全，导入一半就结束了。 实现说明 service是共用的同一个，在Quartz类中定义多个@Scheduled注解的方法，并分别调用service方法 问题代码 // FileService.java @Service public class FileService { …">
 <meta name="created" content="2023-02-18T20:00:00+0800">
-<meta name="modified" content="2023-07-02T23:20:41+0800">
+<meta name="modified" content="2023-07-05T23:48:56+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "记一次多线程异常",
     "datePublished": "2023-02-18T20:00:00+08:00",
-    "dateModified": "2023-07-02T23:20:41+08:00",
+    "dateModified": "2023-07-05T23:48:56+08:00",
     "url" : "/blog/java/2023070202/",
     "description": "问题描述 有一个抽数据库数据写入文件的定时任务，发现有些文件数据不全，导入一半就结束了。 实现说明 service是共用的同一个，在Quartz类中定义多个@Scheduled注解的方法，并分别调用service方法 问题代码 // FileService.java @Service public class FileService { …",
     "keywords": ["java","multithreading"],
@@ -177,7 +177,15 @@ Tags:
 <p>问题出在FileService是单例的，运行时里面的成员变量fileInfo和batchSize会被三个线程同时操作，最后启动的线程中赋值的就会起作用，导致导出错误数据，push方法里的for循环的break条件也会很快跳出</p>
 <h3 id="问题解决">问题解决</h3>
 <p>使用ThreadLocal包装fileInfo和batchSize</p>
-<h3 id="使用线程池时的threadlocal复用问题">使用线程池时的ThreadLocal复用问题</h3>
+<h3 id="threadlocal的内存泄漏问题">ThreadLocal的内存泄漏问题</h3>
+<p>最佳实践是每次使用完后都调用remove()方法清除对象</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+    threadlocal<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>value<span style="color:#f92672">);</span>
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+    threadlocal<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="使用线程池时的threadlocal复用问题">使用线程池时的ThreadLocal复用问题</h3>
 <ul>
 <li>可以线程处理结束时手动清理</li>
 <li>重载ThreadPoolExecutor的afterExecute方法执行清理</li>
@@ -216,13 +224,17 @@ Tags:
 </code></pre></div><p><strong>reference</strong></p>
 <ol>
 <li><a href="https://www.baeldung.com/java-threadlocal">An Introduction to ThreadLocal in Java</a></li>
+<li><a href="https://javarevisited.blogspot.com/2012/05/how-to-use-threadlocal-in-java-benefits.html">ThreadLocal in Java - Example Program and Tutorial</a></li>
+<li><a href="https://javarevisited.blogspot.com/2013/01/threadlocal-memory-leak-in-java-web.html">ThreadLocal Memory Leak in Java web application - Tomcat</a></li>
+<li><a href="https://java.jiderhamn.se/2012/01/29/classloader-leaks-iv-threadlocal-dangers-and-why-threadglobal-may-have-been-a-more-appropriate-name/">Classloader leaks IV – ThreadLocal dangers and why ThreadGlobal may have been a more appropriate name</a></li>
+<li><a href="https://plumbr.io/blog/locked-threads/how-to-shoot-yourself-in-foot-with-threadlocals">How to shoot yourself in foot with ThreadLocals</a></li>
 </ol>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-07-02 23:20<br>
+Updated: 2023-07-05 23:48<br>
 Created: 2023-02-18 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"

@@ -623,7 +623,15 @@ ssh user@remote-server /path/to/script.sh
 &lt;p&gt;问题出在FileService是单例的，运行时里面的成员变量fileInfo和batchSize会被三个线程同时操作，最后启动的线程中赋值的就会起作用，导致导出错误数据，push方法里的for循环的break条件也会很快跳出&lt;/p&gt;
 &lt;h3 id=&#34;问题解决&#34;&gt;问题解决&lt;/h3&gt;
 &lt;p&gt;使用ThreadLocal包装fileInfo和batchSize&lt;/p&gt;
-&lt;h3 id=&#34;使用线程池时的threadlocal复用问题&#34;&gt;使用线程池时的ThreadLocal复用问题&lt;/h3&gt;
+&lt;h3 id=&#34;threadlocal的内存泄漏问题&#34;&gt;ThreadLocal的内存泄漏问题&lt;/h3&gt;
+&lt;p&gt;最佳实践是每次使用完后都调用remove()方法清除对象&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    threadlocal&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;set&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;value&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;...&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;finally&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    threadlocal&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;remove&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用线程池时的threadlocal复用问题&#34;&gt;使用线程池时的ThreadLocal复用问题&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;可以线程处理结束时手动清理&lt;/li&gt;
 &lt;li&gt;重载ThreadPoolExecutor的afterExecute方法执行清理&lt;/li&gt;
@@ -662,6 +670,10 @@ ssh user@remote-server /path/to/script.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/java-threadlocal&#34;&gt;An Introduction to ThreadLocal in Java&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://javarevisited.blogspot.com/2012/05/how-to-use-threadlocal-in-java-benefits.html&#34;&gt;ThreadLocal in Java - Example Program and Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://javarevisited.blogspot.com/2013/01/threadlocal-memory-leak-in-java-web.html&#34;&gt;ThreadLocal Memory Leak in Java web application - Tomcat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://java.jiderhamn.se/2012/01/29/classloader-leaks-iv-threadlocal-dangers-and-why-threadglobal-may-have-been-a-more-appropriate-name/&#34;&gt;Classloader leaks IV – ThreadLocal dangers and why ThreadGlobal may have been a more appropriate name&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://plumbr.io/blog/locked-threads/how-to-shoot-yourself-in-foot-with-threadlocals&#34;&gt;How to shoot yourself in foot with ThreadLocals&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -2254,11 +2266,33 @@ createtime date
 &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; sys.dm_tran_locks;
 
 kill SPID;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看表结构&#34;&gt;查看表结构&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COLUMN_NAME&lt;/span&gt;, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; INFORMATION_SCHEMA.COLUMNS 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE_NAME&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;yourTableName&amp;#39;&lt;/span&gt;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;日期&#34;&gt;日期&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 当前时间
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; getdate();
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 当前日期
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CAST&lt;/span&gt;( GETDATE() &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; Date ) ;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 日期增减计算
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;DATEADD(&lt;span style=&#34;color:#66d9ef&#34;&gt;DAY&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt;, GETDATE());
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 字符串转日期
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Convert&lt;/span&gt;(DATETIME, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;19990101&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;112&lt;/span&gt;)&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;；&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- datetime2和datetime的区别
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- datetime2支持的日期范围更广，00010101-99991231
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- datetime的年支持范围为1753-9999
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 如果遇到datetime2往datetime里插入的要特别注意
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 有小于1753年的数据则会报错  The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;字符串&#34;&gt;字符串&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 查看字符串长度
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; LEN(FirstName) &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Length&lt;/span&gt;, FirstName, LastName   
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Sales.vIndividualCustomer  
+&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; CountryRegionName &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Australia&amp;#39;&lt;/span&gt;; 
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 查看字节长度
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; DATALENGTH(EnglishProductName), EnglishProductName  
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; dbo.DimProduct  
+&lt;span style=&#34;color:#66d9ef&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; EnglishProductName;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; ABC_1
@@ -2285,6 +2319,11 @@ kill SPID;
 &lt;li&gt;&lt;a href=&#34;https://learnsql.com/cookbook/how-to-get-the-current-date-without-time-in-t-sql/&#34;&gt;How to Get the Current Date (Without Time) in T-SQL&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://popsql.com/learn-sql/sql-server/how-to-duplicate-a-table-in-sql-server&#34;&gt;How to Duplicate a Table in SQL Server&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/9588423/sql-server-inner-join-when-updating&#34;&gt;SQL Server - inner join when updating&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/27247770/how-to-subtract-30-days-from-the-current-date-using-sql-server&#34;&gt;How to subtract 30 days from the current date using SQL Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1334143/datetime2-vs-datetime-in-sql-server&#34;&gt;DateTime2 vs DateTime in SQL Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/207190/sql-server-string-to-date-conversion&#34;&gt;Sql Server string to date conversion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/sql/t-sql/functions/len-transact-sql?view=sql-server-ver16&#34;&gt;LEN (Transact-SQL)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/13405572/sql-statement-to-get-column-type&#34;&gt;SQL statement to get column type&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -3722,6 +3761,10 @@ git worktree prune
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git stash show -p
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;stash单个文件&#34;&gt;stash单个文件&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git stash -- filename.ext
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;恢复在以前某个版本被删除的文件&#34;&gt;恢复在以前某个版本被删除的文件&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;### 先找到被删除时的commit&lt;/span&gt;
+git log -- &amp;lt;filename&amp;gt;
+git checkout &amp;lt;deletion commit hash&amp;gt;~1 -- &amp;lt;filename&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;tortoisegit也是很好用的&#34;&gt;TortoiseGit也是很好用的&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;生成patch，应用patch，以及查看diff，blame，gui还是很好用的&lt;/p&gt;
@@ -3754,6 +3797,7 @@ git clone https://username:token@github.com/username/repository.git
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/10054470/19120213&#34;&gt;How do I provide a username and password when running &amp;ldquo;git clone git@remote.git&amp;rdquo;?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://anotheruiguy.gitbooks.io/gitforeveryone/content/auto/README.html#:~:text=If%20you%20are%20seeing%20this,and%20install%20a%20new%20one.&#34;&gt;-bash: __git_ps1: command not found&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://scribu.net/wordpress/svn-patches-from-git.html&#34;&gt;svn patches from git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.git-tower.com/learn/git/faq/restoring-deleted-files&#34;&gt;Restoring deleted files in Git&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
