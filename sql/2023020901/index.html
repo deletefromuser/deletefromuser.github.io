@@ -6,7 +6,7 @@
 <title>sqlserver常用命令 – HA</title>
 <meta name="description" content="查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&amp;amp;lt;&amp;amp;gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, …">
 <meta name="created" content="2022-11-06T19:00:00+0800">
-<meta name="modified" content="2023-03-23T19:53:04+0800">
+<meta name="modified" content="2023-07-05T23:48:56+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "sqlserver常用命令",
     "datePublished": "2022-11-06T19:00:00+08:00",
-    "dateModified": "2023-03-23T19:53:04+08:00",
+    "dateModified": "2023-07-05T23:48:56+08:00",
     "url" : "https://deletefromuser.github.io/sql/2023020901/",
     "description": "查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid\u0026amp;lt;\u0026amp;gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, …",
     "keywords": ["sql","sqlserver"],
@@ -113,11 +113,33 @@ Tags:
 <span style="color:#66d9ef">from</span> sys.dm_tran_locks;
 
 kill SPID;
+</code></pre></div><h3 id="查看表结构">查看表结构</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COLUMN_NAME</span>, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
+<span style="color:#66d9ef">FROM</span> INFORMATION_SCHEMA.COLUMNS 
+<span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;yourTableName&#39;</span>;
 </code></pre></div><h3 id="日期">日期</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 当前时间
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> getdate();
 <span style="color:#75715e">-- 当前日期
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">CAST</span>( GETDATE() <span style="color:#66d9ef">AS</span> Date ) ;
+<span style="color:#75715e">-- 日期增减计算
+</span><span style="color:#75715e"></span>DATEADD(<span style="color:#66d9ef">DAY</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">30</span>, GETDATE());
+<span style="color:#75715e">-- 字符串转日期
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">Convert</span>(DATETIME, <span style="color:#e6db74">&#39;19990101&#39;</span>, <span style="color:#ae81ff">112</span>)<span style="color:#960050;background-color:#1e0010">；</span>
+<span style="color:#75715e">-- datetime2和datetime的区别
+</span><span style="color:#75715e">-- datetime2支持的日期范围更广，00010101-99991231
+</span><span style="color:#75715e">-- datetime的年支持范围为1753-9999
+</span><span style="color:#75715e">-- 如果遇到datetime2往datetime里插入的要特别注意
+</span><span style="color:#75715e">-- 有小于1753年的数据则会报错  The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range
+</span></code></pre></div><h3 id="字符串">字符串</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 查看字符串长度
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> LEN(FirstName) <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">Length</span>, FirstName, LastName   
+<span style="color:#66d9ef">FROM</span> Sales.vIndividualCustomer  
+<span style="color:#66d9ef">WHERE</span> CountryRegionName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Australia&#39;</span>; 
+<span style="color:#75715e">-- 查看字节长度
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">length</span> <span style="color:#f92672">=</span> DATALENGTH(EnglishProductName), EnglishProductName  
+<span style="color:#66d9ef">FROM</span> dbo.DimProduct  
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> EnglishProductName;  
 </code></pre></div><h3 id="复制表">复制表</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
 <span style="color:#66d9ef">INTO</span> ABC_1
@@ -144,13 +166,18 @@ kill SPID;
 <li><a href="https://learnsql.com/cookbook/how-to-get-the-current-date-without-time-in-t-sql/">How to Get the Current Date (Without Time) in T-SQL</a></li>
 <li><a href="https://popsql.com/learn-sql/sql-server/how-to-duplicate-a-table-in-sql-server">How to Duplicate a Table in SQL Server</a></li>
 <li><a href="https://stackoverflow.com/questions/9588423/sql-server-inner-join-when-updating">SQL Server - inner join when updating</a></li>
+<li><a href="https://stackoverflow.com/questions/27247770/how-to-subtract-30-days-from-the-current-date-using-sql-server">How to subtract 30 days from the current date using SQL Server</a></li>
+<li><a href="https://stackoverflow.com/questions/1334143/datetime2-vs-datetime-in-sql-server">DateTime2 vs DateTime in SQL Server</a></li>
+<li><a href="https://stackoverflow.com/questions/207190/sql-server-string-to-date-conversion">Sql Server string to date conversion</a></li>
+<li><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/len-transact-sql?view=sql-server-ver16">LEN (Transact-SQL)</a></li>
+<li><a href="https://stackoverflow.com/questions/13405572/sql-statement-to-get-column-type">SQL statement to get column type</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-03-23 19:53<br>
+Updated: 2023-07-05 23:48<br>
 Created: 2022-11-06 19:00
 </p>
 </div><script src="https://utteranc.es/client.js"

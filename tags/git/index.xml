@@ -60,6 +60,10 @@ git worktree prune
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git stash show -p
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;stash单个文件&#34;&gt;stash单个文件&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git stash -- filename.ext
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;恢复在以前某个版本被删除的文件&#34;&gt;恢复在以前某个版本被删除的文件&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;### 先找到被删除时的commit&lt;/span&gt;
+git log -- &amp;lt;filename&amp;gt;
+git checkout &amp;lt;deletion commit hash&amp;gt;~1 -- &amp;lt;filename&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;tortoisegit也是很好用的&#34;&gt;TortoiseGit也是很好用的&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;生成patch，应用patch，以及查看diff，blame，gui还是很好用的&lt;/p&gt;
@@ -92,6 +96,7 @@ git clone https://username:token@github.com/username/repository.git
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/10054470/19120213&#34;&gt;How do I provide a username and password when running &amp;ldquo;git clone git@remote.git&amp;rdquo;?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://anotheruiguy.gitbooks.io/gitforeveryone/content/auto/README.html#:~:text=If%20you%20are%20seeing%20this,and%20install%20a%20new%20one.&#34;&gt;-bash: __git_ps1: command not found&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://scribu.net/wordpress/svn-patches-from-git.html&#34;&gt;svn patches from git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.git-tower.com/learn/git/faq/restoring-deleted-files&#34;&gt;Restoring deleted files in Git&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

@@ -43,11 +43,33 @@
 &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; sys.dm_tran_locks;
 
 kill SPID;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看表结构&#34;&gt;查看表结构&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COLUMN_NAME&lt;/span&gt;, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; INFORMATION_SCHEMA.COLUMNS 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE_NAME&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;yourTableName&amp;#39;&lt;/span&gt;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;日期&#34;&gt;日期&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 当前时间
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; getdate();
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 当前日期
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CAST&lt;/span&gt;( GETDATE() &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; Date ) ;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 日期增减计算
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;DATEADD(&lt;span style=&#34;color:#66d9ef&#34;&gt;DAY&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt;, GETDATE());
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 字符串转日期
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Convert&lt;/span&gt;(DATETIME, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;19990101&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;112&lt;/span&gt;)&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;；&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- datetime2和datetime的区别
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- datetime2支持的日期范围更广，00010101-99991231
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- datetime的年支持范围为1753-9999
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 如果遇到datetime2往datetime里插入的要特别注意
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 有小于1753年的数据则会报错  The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;字符串&#34;&gt;字符串&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 查看字符串长度
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; LEN(FirstName) &lt;span style=&#34;color:#66d9ef&#34;&gt;AS&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Length&lt;/span&gt;, FirstName, LastName   
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Sales.vIndividualCustomer  
+&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; CountryRegionName &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Australia&amp;#39;&lt;/span&gt;; 
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 查看字节长度
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; DATALENGTH(EnglishProductName), EnglishProductName  
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; dbo.DimProduct  
+&lt;span style=&#34;color:#66d9ef&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; EnglishProductName;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; ABC_1
@@ -74,6 +96,11 @@ kill SPID;
 &lt;li&gt;&lt;a href=&#34;https://learnsql.com/cookbook/how-to-get-the-current-date-without-time-in-t-sql/&#34;&gt;How to Get the Current Date (Without Time) in T-SQL&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://popsql.com/learn-sql/sql-server/how-to-duplicate-a-table-in-sql-server&#34;&gt;How to Duplicate a Table in SQL Server&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/9588423/sql-server-inner-join-when-updating&#34;&gt;SQL Server - inner join when updating&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/27247770/how-to-subtract-30-days-from-the-current-date-using-sql-server&#34;&gt;How to subtract 30 days from the current date using SQL Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1334143/datetime2-vs-datetime-in-sql-server&#34;&gt;DateTime2 vs DateTime in SQL Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/207190/sql-server-string-to-date-conversion&#34;&gt;Sql Server string to date conversion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/sql/t-sql/functions/len-transact-sql?view=sql-server-ver16&#34;&gt;LEN (Transact-SQL)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/13405572/sql-statement-to-get-column-type&#34;&gt;SQL statement to get column type&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

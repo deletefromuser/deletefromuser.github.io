@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/sql/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-06-03T19:00:00+0800">
-<meta name="modified" content="2023-07-01T20:00:00+0800">
+<meta name="modified" content="2023-07-05T23:48:56+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -148,7 +148,7 @@
 
 </header>
 <div class="content">
-查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; 日期 -- 当前时间 select getdate(); -- 当前日期 SELECT CAST( GETDATE() AS Date ) ;
+查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; 查看表结构 SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = &#39;yourTableName&#39;; 日期 -- 当前时
 </div>
 </article>
 

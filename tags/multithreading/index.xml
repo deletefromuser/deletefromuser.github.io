@@ -90,7 +90,15 @@
 &lt;p&gt;问题出在FileService是单例的，运行时里面的成员变量fileInfo和batchSize会被三个线程同时操作，最后启动的线程中赋值的就会起作用，导致导出错误数据，push方法里的for循环的break条件也会很快跳出&lt;/p&gt;
 &lt;h3 id=&#34;问题解决&#34;&gt;问题解决&lt;/h3&gt;
 &lt;p&gt;使用ThreadLocal包装fileInfo和batchSize&lt;/p&gt;
-&lt;h3 id=&#34;使用线程池时的threadlocal复用问题&#34;&gt;使用线程池时的ThreadLocal复用问题&lt;/h3&gt;
+&lt;h3 id=&#34;threadlocal的内存泄漏问题&#34;&gt;ThreadLocal的内存泄漏问题&lt;/h3&gt;
+&lt;p&gt;最佳实践是每次使用完后都调用remove()方法清除对象&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    threadlocal&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;set&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;value&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;...&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;finally&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    threadlocal&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;remove&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用线程池时的threadlocal复用问题&#34;&gt;使用线程池时的ThreadLocal复用问题&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;可以线程处理结束时手动清理&lt;/li&gt;
 &lt;li&gt;重载ThreadPoolExecutor的afterExecute方法执行清理&lt;/li&gt;
@@ -129,6 +137,10 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/java-threadlocal&#34;&gt;An Introduction to ThreadLocal in Java&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://javarevisited.blogspot.com/2012/05/how-to-use-threadlocal-in-java-benefits.html&#34;&gt;ThreadLocal in Java - Example Program and Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://javarevisited.blogspot.com/2013/01/threadlocal-memory-leak-in-java-web.html&#34;&gt;ThreadLocal Memory Leak in Java web application - Tomcat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://java.jiderhamn.se/2012/01/29/classloader-leaks-iv-threadlocal-dangers-and-why-threadglobal-may-have-been-a-more-appropriate-name/&#34;&gt;Classloader leaks IV – ThreadLocal dangers and why ThreadGlobal may have been a more appropriate name&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://plumbr.io/blog/locked-threads/how-to-shoot-yourself-in-foot-with-threadlocals&#34;&gt;How to shoot yourself in foot with ThreadLocals&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
