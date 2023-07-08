@@ -368,22 +368,31 @@ curl -u username http://example.com
 &lt;span style=&#34;color:#75715e&#34;&gt;# 检查网站的ssl版本&lt;/span&gt;
 openssl s_client -connect bing.com:443
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;正则表达式&#34;&gt;正则表达式&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 大小写转换&lt;/span&gt; 
-&lt;span style=&#34;color:#75715e&#34;&gt;# \U$1 \L$1 全部转换为大写，小写&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# \u$1 \l$1 首字母转换为大写，小写&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# \p{Lu} \p{Ll} 匹配大写，小写字母&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# USER_PET_NAME -&amp;gt; userPetName&lt;/span&gt;
-&lt;span style=&#34;color:#f92672&#34;&gt;([&lt;/span&gt;a-zA-Z0-9&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;+&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;_&lt;span style=&#34;color:#f92672&#34;&gt;([&lt;/span&gt;a-zA-Z0-9&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;+&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;_&lt;span style=&#34;color:#f92672&#34;&gt;([&lt;/span&gt;a-zA-Z0-9&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;+&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; -&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\L&lt;/span&gt;$1&lt;span style=&#34;color:#ae81ff&#34;&gt;\u&lt;/span&gt;$2&lt;span style=&#34;color:#ae81ff&#34;&gt;\u&lt;/span&gt;$3
-&lt;span style=&#34;color:#75715e&#34;&gt;# USER_PET_NAME &amp;lt;- userPetName&lt;/span&gt;
-&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\p&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;Ll&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;+&lt;span style=&#34;color:#f92672&#34;&gt;)(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\p&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;Lu&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\p&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;Ll&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;+&lt;span style=&#34;color:#f92672&#34;&gt;)(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\p&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;Lu&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\p&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;Ll&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;+&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; -&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\U&lt;/span&gt;$1_$2_$3
-&lt;span style=&#34;color:#75715e&#34;&gt;# 常用表达式&lt;/span&gt;
-&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt; 空白字符&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\f\n\r\t\v&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;，会匹配全角空格符
-&lt;span style=&#34;color:#ae81ff&#34;&gt;\S&lt;/span&gt; 非空白字符&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;^ &lt;span style=&#34;color:#ae81ff&#34;&gt;\f\n\r\t\v&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;span style=&#34;color:#ae81ff&#34;&gt;\d&lt;/span&gt; 数字字符&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0-9&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;，会匹配全角数字字符
-&lt;span style=&#34;color:#ae81ff&#34;&gt;\D&lt;/span&gt; 非数字字符&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;^0-9&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;span style=&#34;color:#ae81ff&#34;&gt;\w&lt;/span&gt; 包括下划线的任何单词字符&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;A-Za-z0-9_&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;，会匹配中文字符
-&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt; 非单词字符&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;^A-Za-z0-9_&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux命令位置和内容&#34;&gt;查看linux命令位置和内容&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 大小写转换 
+# \U$1 \L$1 全部转换为大写，小写
+# \u$1 \l$1 首字母转换为大写，小写
+# \p{Lu} \p{Ll} 匹配大写，小写字母
+# USER_PET_NAME -&amp;gt; userPetName
+([a-zA-Z0-9]+)_([a-zA-Z0-9]+)_([a-zA-Z0-9]+) -&amp;gt; \L$1\u$2\u$3
+# USER_PET_NAME &amp;lt;- userPetName
+(\p{Ll}+)(\p{Lu}\p{Ll}+)(\p{Lu}\p{Ll}+) -&amp;gt; \U$1_$2_$3
+# 常用表达式
+\s 空白字符[ \f\n\r\t\v]，会匹配全角空格符
+\S 非空白字符[^ \f\n\r\t\v]
+\d 数字字符[0-9]，会匹配全角数字字符
+\D 非数字字符[^0-9]
+\w 包括下划线的任何单词字符[A-Za-z0-9_]，会匹配中文字符
+\W 非单词字符[^A-Za-z0-9_]
+# 正向肯定预查
+(?=pattern)
+(?:pattern)
+# 正向否定预查
+(?!pattern)
+# 反向肯定预查
+(?&amp;lt;=pattern)
+# 反向否定预查
+(?&amp;lt;!pattern)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;查看linux命令位置和内容&#34;&gt;查看linux命令位置和内容&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;whereis vim
 type -a vim
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;文件中搜索字符串&#34;&gt;文件中搜索字符串&lt;/h3&gt;

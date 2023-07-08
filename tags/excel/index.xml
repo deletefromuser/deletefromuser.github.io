@@ -18,8 +18,22 @@
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;Ctrl+Alt+V&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h4 id=&#34;excel中查找重复记录&#34;&gt;excel中查找重复记录&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Home -&amp;gt; Conditional Formatting -&amp;gt; Highlight Cells Rules, Duplicate Values&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;excel中查找相同记录个数为3的&#34;&gt;excel中查找相同记录个数为3的&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Home -&amp;gt; Conditional Formatting -&amp;gt; New Rule -&amp;gt; Use a formula to determine which cells to format -&amp;gt; COUNTIF($A$1:$C$10,A1)=3&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;libreoffice-calc中查找重复记录&#34;&gt;LibreOffice Calc中查找重复记录&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Format -&amp;gt; Conditional -&amp;gt; Condition -&amp;gt; Cell value is duplicate -&amp;gt; Apply Style&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1376470/what-is-the-keyboard-shortcut-for-pasting-without-formatting-in-ms-word&#34;&gt;What is the keyboard shortcut for pasting without formatting in MS Word?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.excel-easy.com/examples/find-duplicates.html&#34;&gt;How to Find Duplicates in Excel (In Easy Steps)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ask.libreoffice.org/t/auto-highlight-duplicate-entries-in-calc/46110&#34;&gt;Auto highlight duplicate entries in calc - English - Ask LibreOffice&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
