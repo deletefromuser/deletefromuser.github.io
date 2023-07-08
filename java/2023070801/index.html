@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>记一次OOM异常解决 – HA</title>
+<meta name="description" content="问题描述 一台服务器出现OOM（为本应用分配了4G内存），挂掉了  java.lang.OutOfMemoryError: GC overhead limit exceeded  问题排查 拿到dump文件，使用jvisualvm打开查看后，发现下面两个对象实例数， …">
+<meta name="created" content="2023-06-04T20:00:00+0800">
+<meta name="modified" content="2023-07-08T20:33:10+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="记一次OOM异常解决">
+<meta property="og:url" content="/blog/java/2023070801/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/java/2023070801/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "记一次OOM异常解决",
+    "datePublished": "2023-06-04T20:00:00+08:00",
+    "dateModified": "2023-07-08T20:33:10+08:00",
+    "url" : "/blog/java/2023070801/",
+    "description": "问题描述 一台服务器出现OOM（为本应用分配了4G内存），挂掉了  java.lang.OutOfMemoryError: GC overhead limit exceeded  问题排查 拿到dump文件，使用jvisualvm打开查看后，发现下面两个对象实例数， …",
+    "keywords": ["java","programming"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/java/" class="active" aria-current="page">Java</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/cs/">CS</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--java">
+<header>
+<h1 class="title title-submitted">记一次OOM异常解决</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-06-04T20:00:00&#43;08:00">2023-06-04 20:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/java/">java</a></li>
+<li><a href="/blog/tags/programming/">programming</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="问题描述">问题描述</h3>
+<p>一台服务器出现OOM（为本应用分配了4G内存），挂掉了</p>
+<blockquote>
+<p>java.lang.OutOfMemoryError: GC overhead limit exceeded</p>
+</blockquote>
+<h3 id="问题排查">问题排查</h3>
+<p>拿到dump文件，使用jvisualvm打开查看后，发现下面两个对象实例数，占用空间过高</p>
+
+
+
+
+
+
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+<th align="left">类名</th>
+<th align="center">实例数百分比</th>
+<th align="center">实例数</th>
+<th align="center">大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">org.apache.xmlbeans.impl.store.Xobj$AttrXobj</td>
+<td align="center">40%</td>
+<td align="center">1500w</td>
+<td align="center">2G</td>
+</tr>
+<tr>
+<td align="left">org.apache.xmlbeans.impl.store.Xobj$ElementXobj</td>
+<td align="center">12%</td>
+<td align="center">450w</td>
+<td align="center">700M</td>
+</tr>
+</tbody>
+</table>
+<h3 id="问题分析">问题分析</h3>
+<p>查代码发现疑似是使用poi解析excel文件时解析文件占用过多内存，解析文件的时候会解析整个文件，解析excel其实就是在解析xml，非常的消耗内存</p>
+<h3 id="问题解决">问题解决</h3>
+<p>调查发现可以使用流式读取一次只读取特定的行数，降低内存占用</p>
+<p>测试验证，未修改前，设置jvm内存为500M，解析1M以上的excel文件就会报OOM，修改后，问题未出现</p>
+<h3 id="解决方案">解决方案</h3>
+<p>使用这位仁兄写成的<a href="https://github.com/monitorjbl/excel-streaming-reader">包装库</a>,因为不想升级项目poi的版本，影响太大，同时又想用到原来的Workbook里面的一些api，所以选择了1.0.2版本，这版的poi依赖版本依然高于我们项目中的poi，于是只好把fork一份之后降低poi版本后重新编译一个包出来用</p>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/11891851/how-to-load-a-large-xlsx-file-with-apache-poi">java - How to load a large xlsx file with Apache POI? - Stack Overflow</a></li>
+<li><a href="https://www.baeldung.com/java-heap-dump-capture">Different Ways to Capture Java Heap Dumps | Baeldung</a></li>
+<li><a href="https://www.viralpatel.net/setting-tomcat-heap-size-jvm-heap-eclipse/">Setting Tomcat Heap Size (JVM Heap) in Eclipse. Heap Size Tomcat Eclipse</a></li>
+<li><a href="https://reflectoring.io/create-analyze-heapdump/">Creating and Analyzing Java Heap Dumps</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-07-08 20:33<br>
+Created: 2023-06-04 20:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

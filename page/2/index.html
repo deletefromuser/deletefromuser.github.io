@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-07-02T18:00:00+0800">
-<meta name="modified" content="2023-07-05T23:48:56+0800">
+<meta name="modified" content="2023-07-08T20:33:10+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -68,10 +68,10 @@
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
@@ -89,6 +89,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/blog/tip/2023042702/">使用scrcpy在pc上控制android手机</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-04-27T20:00:00&#43;08:00">2023-04-27 20:00</time>
+</div>
+
+</header>
+<div class="content">
+下载scrcpy，解压 手机开启USB debuging 手机连接电脑，手机会弹出确认窗口，点确认 在解压后的scrcpy目录，打开命令行，输入scrcpy -S https://github.com/Genymobile/scrcpy/blob/master/FAQ.md
+</div>
+</article>
 
 <article class="list-view list-view--web">
 <header>
@@ -204,19 +217,6 @@ chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 r
 </header>
 <div class="content">
 不使用Batch Insert -- 使用mybatis时，下面的做法当一次插入数量太多时会报错（ORA-00913: too many values），这时需要用batch
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/blog/web/2023020501/">将SpringBoot应用部署到docker</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-02-05T20:00:00&#43;08:00">2023-02-05 20:00</time>
-</div>
-
-</header>
-<div class="content">
-手动创建image 在项目内创建Dockerfile FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=docker&#34;]# ENTRYPOINT [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=dock
 </div>
 </article>
 

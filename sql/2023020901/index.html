@@ -6,7 +6,7 @@
 <title>sqlserver常用命令 – HA</title>
 <meta name="description" content="查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&amp;amp;lt;&amp;amp;gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, …">
 <meta name="created" content="2022-11-06T19:00:00+0800">
-<meta name="modified" content="2023-07-05T23:48:56+0800">
+<meta name="modified" content="2023-07-05T20:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "sqlserver常用命令",
     "datePublished": "2022-11-06T19:00:00+08:00",
-    "dateModified": "2023-07-05T23:48:56+08:00",
+    "dateModified": "2023-07-05T20:00:00+08:00",
     "url" : "/blog/sql/2023020901/",
     "description": "查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid\u0026amp;lt;\u0026amp;gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, …",
     "keywords": ["sql","sqlserver"],
@@ -71,10 +71,10 @@
 <li><a href="/blog/">Home</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/" class="active" aria-current="page">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
@@ -141,12 +141,12 @@ kill SPID;
 <span style="color:#66d9ef">FROM</span> dbo.DimProduct  
 <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> EnglishProductName;  
 </code></pre></div><h3 id="复制表">复制表</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">INTO</span> ABC_1
-<span style="color:#66d9ef">FROM</span> ABC
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> ABC_1 <span style="color:#66d9ef">FROM</span> ABC
 <span style="color:#75715e">-- 只复制表结构
 </span><span style="color:#75715e">-- where 1 = 2;
-</span></code></pre></div><h3 id="批量插入">批量插入</h3>
+</span></code></pre></div><h3 id="修改字段类型">修改字段类型</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> dbo.doc_exy <span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">COLUMN</span> column_a DECIMAL (<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">2</span>);  
+</code></pre></div><h3 id="批量插入">批量插入</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">into</span> table2
    <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
    <span style="color:#66d9ef">FROM</span> table1 t1
@@ -171,13 +171,14 @@ kill SPID;
 <li><a href="https://stackoverflow.com/questions/207190/sql-server-string-to-date-conversion">Sql Server string to date conversion</a></li>
 <li><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/len-transact-sql?view=sql-server-ver16">LEN (Transact-SQL)</a></li>
 <li><a href="https://stackoverflow.com/questions/13405572/sql-statement-to-get-column-type">SQL statement to get column type</a></li>
+<li><a href="https://learn.microsoft.com/en-us/sql/relational-databases/tables/modify-columns-database-engine?view=sql-server-ver16">Modify Columns (Database Engine) - SQL Server | Microsoft Learn</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-07-05 23:48<br>
+Updated: 2023-07-05 20:00<br>
 Created: 2022-11-06 19:00
 </p>
 </div><script src="https://utteranc.es/client.js"

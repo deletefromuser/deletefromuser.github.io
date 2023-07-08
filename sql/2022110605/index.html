@@ -71,10 +71,10 @@
 <li><a href="/blog/">Home</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/" class="active" aria-current="page">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
@@ -413,8 +413,67 @@ createtime date
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">with</span> dept1_userinfo <span style="color:#66d9ef">as</span> (<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">where</span> dept <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">fetch</span> <span style="color:#66d9ef">first</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">only</span>)
 <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> dept1_userinfo <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> (<span style="color:#66d9ef">select</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">from</span> dual <span style="color:#66d9ef">connect</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">level</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">100</span>) sub <span style="color:#66d9ef">on</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
 </code></pre></div><h3 id="字符串操作">字符串操作</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;B&#39;</span> <span style="color:#66d9ef">from</span> dual;
-</code></pre></div><h3 id="有则更新无则插入">有则更新，无则插入</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 字符串连接
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;B&#39;</span> <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 换行符
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">||</span> chr(<span style="color:#ae81ff">10</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;B&#39;</span> <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- A
+</span><span style="color:#75715e">-- B
+</span><span style="color:#75715e">-- 字符串截取
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> substr(<span style="color:#e6db74">&#39;ABCDEFG&#39;</span>,<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- BCDEF
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> substr(<span style="color:#e6db74">&#39;ABCDEFG&#39;</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- CD
+</span><span style="color:#75715e">-- 查看字符串长度
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">length</span>(<span style="color:#e6db74">&#39;ABCDEFG号码&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 9
+</span><span style="color:#75715e">-- 查看字符串字节长度
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> lengthb(<span style="color:#e6db74">&#39;ABCDEFG号码&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 11
+</span><span style="color:#75715e">-- 查找字符串
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> instr( <span style="color:#e6db74">&#39;oracle pl/sql cheatsheet&#39;</span>, <span style="color:#e6db74">&#39;l&#39;</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- 13 - 从六位开始查找，第二次出现的位置，找不到则返回0
+</span><span style="color:#75715e">-- 替换字符串
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">replace</span>(<span style="color:#e6db74">&#39;i am here&#39;</span>,<span style="color:#e6db74">&#39;am&#39;</span>,<span style="color:#e6db74">&#39;am not&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- i am not here --第三个参数可省略，与设为空字符串等效
+</span><span style="color:#75715e">-- trim字符串
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">trim</span> (<span style="color:#e6db74">&#39;   removing spaces at both sides     &#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- removing spaces at both sides
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">trim</span> (<span style="color:#e6db74">&#39;　   removing spaces at both sides     　&#39;</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- |　   removing spaces at both sides     　| -- 无法trim全角空格
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">trim</span> (<span style="color:#66d9ef">LEADING</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39;   removing spaces at both sides     &#39;</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#66d9ef">from</span> dual;
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#f92672">||</span> ltrim (<span style="color:#e6db74">&#39;   removing spaces at both sides     &#39;</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- |removing spaces at both sides     |
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">trim</span> (<span style="color:#66d9ef">TRAILING</span>  <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39;   removing spaces at both sides     &#39;</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#66d9ef">from</span> dual;
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#f92672">||</span> rtrim (<span style="color:#e6db74">&#39;   removing spaces at both sides     &#39;</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- |   removing spaces at both sides|
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">trim</span> (<span style="color:#66d9ef">both</span>  <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39;---   removing spaces at both sides     ---&#39;</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#66d9ef">from</span> dual;
+<span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">trim</span> (<span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;   removing spaces at both sides     &#39;</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- |   removing spaces at both sides     |
+</span><span style="color:#75715e">-- 大小写转换
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">upper</span>(<span style="color:#e6db74">&#39;removing spaces at both sides&#39;</span>) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- REMOVING SPACES AT BOTH SIDES
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">lower</span>(<span style="color:#66d9ef">upper</span>(<span style="color:#e6db74">&#39;removing spaces at both sides&#39;</span>)) <span style="color:#66d9ef">from</span> dual;
+<span style="color:#75715e">-- removing spaces at both sides
+</span><span style="color:#75715e">-- 忽略大小写搜索字符串
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> my_table <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">upper</span>(column_1) <span style="color:#f92672">=</span> <span style="color:#66d9ef">upper</span>(<span style="color:#e6db74">&#39;my_string&#39;</span>);
+<span style="color:#75715e">-- 想优化搜索速度的话，可以加索引
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> my_table_idx <span style="color:#66d9ef">ON</span> my_table (<span style="color:#66d9ef">UPPER</span>(column_1));
+<span style="color:#75715e">-- 注意点是搜索时要确保字段数据中没有null值，索引才能生效
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> my_table <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">upper</span>(column_1) <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">upper</span>(column_1) <span style="color:#f92672">=</span> <span style="color:#66d9ef">upper</span>(<span style="color:#e6db74">&#39;my_string&#39;</span>);
+<span style="color:#75715e">-- 正则表达式搜索
+</span><span style="color:#75715e">-- Search for strings that have the word &#34;焼肉&#34; anywhere except at the beginning or the end
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> sample_table <span style="color:#66d9ef">WHERE</span> REGEXP_LIKE(text, <span style="color:#e6db74">&#39;.焼肉.&#39;</span>);
+<span style="color:#75715e">-- 今日は焼肉を食べたい
+</span><span style="color:#75715e">-- 忽略大小写
+</span><span style="color:#75715e">-- Search for strings that have the word &#34;yakiniku&#34; in any case
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> sample_table
+<span style="color:#66d9ef">WHERE</span> REGEXP_LIKE(text, <span style="color:#e6db74">&#39;yakiniku&#39;</span>, <span style="color:#e6db74">&#39;i&#39;</span>);
+<span style="color:#75715e">-- I love YAKINIKU
+</span></code></pre></div><h3 id="count函数">count函数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- count(1)和count(*)是相同的
+</span><span style="color:#75715e">-- COUNT (&lt;expression&gt;) 统计非空值个数
+</span></code></pre></div><h3 id="有则更新无则插入">有则更新，无则插入</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">BEGIN</span>
    <span style="color:#66d9ef">UPDATE</span> userinfo <span style="color:#66d9ef">SET</span> salary <span style="color:#f92672">=</span> <span style="color:#ae81ff">250</span> <span style="color:#66d9ef">WHERE</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;tom&#39;</span>;
 
@@ -485,6 +544,8 @@ createtime date
 <li><a href="https://dba.stackexchange.com/questions/192625/oracle-shrinking-reclaiming-free-tablespace-space">Oracle shrinking / reclaiming free tablespace space</a></li>
 <li><a href="https://www.dbi-services.com/blog/resize-your-oracle-datafiles-down-to-the-minimum-without-ora-03297/">Resize your Oracle datafiles down to the minimum without ORA-03297</a></li>
 <li><a href="https://www.support.dbagenesis.com/post/reclaim-unused-space-in-oracle">Reclaim Unused Space in Oracle</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Oracle_Database/SQL_Cheatsheet">Oracle Database/SQL Cheatsheet - Wikibooks, open books for an open world</a></li>
+<li><a href="https://gist.github.com/deletefromuser/68bfabfa43e266a52b65d1eafaced87f">test oracle REGEXP_LIKE</a></li>
 </ul>
 
 </div>

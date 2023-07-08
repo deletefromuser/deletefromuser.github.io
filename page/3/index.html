@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-07-02T18:00:00+0800">
-<meta name="modified" content="2023-07-05T23:48:56+0800">
+<meta name="modified" content="2023-07-08T20:33:10+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -68,10 +68,10 @@
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
@@ -89,6 +89,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/blog/web/2023020501/">将SpringBoot应用部署到docker</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-05T20:00:00&#43;08:00">2023-02-05 20:00</time>
+</div>
+
+</header>
+<div class="content">
+手动创建image 在项目内创建Dockerfile FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=docker&#34;]# ENTRYPOINT [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=dock
+</div>
+</article>
 
 <article class="list-view list-view--read">
 <header>
@@ -204,19 +217,6 @@ html2canvas 使html2canvas 在ie11中工作 &lt;script src=&#34;https://cdn.jsde
 </header>
 <div class="content">
 空气炸锅菜谱 烤红薯 160℃ x 45min 半成品鸡块 200℃ x 10min 烤鸡翅根 刀背拍打后腌制几个小时（一夜也可以），配料如下 十三香 蒜末 盐 植物油 160℃ x 10min 炒菜
-</div>
-</article>
-
-<article class="list-view list-view--tip">
-<header>
-<h2 class="title title-submitted"><a href="/blog/tip/2022120601/">工作笔记2016-2021</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-12-06T20:00:00&#43;08:00">2022-12-06 20:00</time>
-</div>
-
-</header>
-<div class="content">
-停止网页重定向 window.addEventListener(&#34;beforeunload&#34;, () =&gt; { debugger; }, false); JS转换字符为UNICODE escape(&#34;转换字符&#34;).replace(/%/g, &#34;\\&#34;).toLowerCase(); // 十进制u
 </div>
 </article>
 

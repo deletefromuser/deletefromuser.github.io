@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>programming on HA</title>
+    <link>/blog/tags/programming/</link>
+    <description>Recent content in programming on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Jun 2023 20:00:00 +0800</lastBuildDate>
+    <atom:link href="/blog/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>记一次OOM异常解决</title>
+      <link>/blog/java/2023070801/</link>
+      <pubDate>Sun, 04 Jun 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/java/2023070801/</guid>
+      <description>&lt;h3 id=&#34;问题描述&#34;&gt;问题描述&lt;/h3&gt;
+&lt;p&gt;一台服务器出现OOM（为本应用分配了4G内存），挂掉了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;java.lang.OutOfMemoryError: GC overhead limit exceeded&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;问题排查&#34;&gt;问题排查&lt;/h3&gt;
+&lt;p&gt;拿到dump文件，使用jvisualvm打开查看后，发现下面两个对象实例数，占用空间过高&lt;/p&gt;
+
+
+
+
+
+
+&lt;table class=&#34;table table-striped table-bordered&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;类名&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;实例数百分比&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;实例数&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;大小&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;org.apache.xmlbeans.impl.store.Xobj$AttrXobj&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;40%&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1500w&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;2G&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;org.apache.xmlbeans.impl.store.Xobj$ElementXobj&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;12%&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;450w&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;700M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;问题分析&#34;&gt;问题分析&lt;/h3&gt;
+&lt;p&gt;查代码发现疑似是使用poi解析excel文件时解析文件占用过多内存，解析文件的时候会解析整个文件，解析excel其实就是在解析xml，非常的消耗内存&lt;/p&gt;
+&lt;h3 id=&#34;问题解决&#34;&gt;问题解决&lt;/h3&gt;
+&lt;p&gt;调查发现可以使用流式读取一次只读取特定的行数，降低内存占用&lt;/p&gt;
+&lt;p&gt;测试验证，未修改前，设置jvm内存为500M，解析1M以上的excel文件就会报OOM，修改后，问题未出现&lt;/p&gt;
+&lt;h3 id=&#34;解决方案&#34;&gt;解决方案&lt;/h3&gt;
+&lt;p&gt;使用这位仁兄写成的&lt;a href=&#34;https://github.com/monitorjbl/excel-streaming-reader&#34;&gt;包装库&lt;/a&gt;,因为不想升级项目poi的版本，影响太大，同时又想用到原来的Workbook里面的一些api，所以选择了1.0.2版本，这版的poi依赖版本依然高于我们项目中的poi，于是只好把fork一份之后降低poi版本后重新编译一个包出来用&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11891851/how-to-load-a-large-xlsx-file-with-apache-poi&#34;&gt;java - How to load a large xlsx file with Apache POI? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/java-heap-dump-capture&#34;&gt;Different Ways to Capture Java Heap Dumps | Baeldung&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.viralpatel.net/setting-tomcat-heap-size-jvm-heap-eclipse/&#34;&gt;Setting Tomcat Heap Size (JVM Heap) in Eclipse. Heap Size Tomcat Eclipse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reflectoring.io/create-analyze-heapdump/&#34;&gt;Creating and Analyzing Java Heap Dumps&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
