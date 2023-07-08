@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-07-02T18:00:00+0800">
-<meta name="modified" content="2023-07-05T23:48:56+0800">
+<meta name="modified" content="2023-07-08T20:33:10+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -68,10 +68,10 @@
 <li><a href="/" class="active" aria-current="page">Home</a></li>
 <li><a href="/web/">Web</a></li>
 <li><a href="/tip/">Tip</a></li>
+<li><a href="/java/">Java</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/bash/">Bash</a></li>
-<li><a href="/java/">Java</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/prob/">Prob</a></li>
@@ -113,6 +113,19 @@
 </header>
 <div class="content">
 前置准备 7z2hashcat - hashcat 使用7z2hashcat获取给hashcat解密用的hash perl 7z2hashcat.pl file.7z &gt; hash.txt 使用hashcat暴力破解 hashcat -a 3 -m 11600 hash.txt 密码较长的话，花费
+</div>
+</article>
+
+<article class="list-view list-view--java">
+<header>
+<h2 class="title title-submitted"><a href="/java/2023070801/">记一次OOM异常解决</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-06-04T20:00:00&#43;08:00">2023-06-04 20:00</time>
+</div>
+
+</header>
+<div class="content">
+问题描述 一台服务器出现OOM（为本应用分配了4G内存），挂掉了 java.lang.OutOfMemoryError: GC overhead limit exceeded 问题排查 拿到dump文件，使用jvisualvm打开查看后，发现下面
 </div>
 </article>
 
@@ -204,19 +217,6 @@ word中快速粘贴无格式文本 Ctrl+Alt+V What is the keyboard shortcut for 
 </header>
 <div class="content">
 生成gpg密钥 gpg --gen-key # 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用） 导出公钥 gpg --armor --output mypubkey.gpg --export your.name@youreamil.com # 复制公钥内容 # cat
-</div>
-</article>
-
-<article class="list-view list-view--tip">
-<header>
-<h2 class="title title-submitted"><a href="/tip/2023042702/">使用scrcpy在pc上控制android手机</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-04-27T20:00:00&#43;08:00">2023-04-27 20:00</time>
-</div>
-
-</header>
-<div class="content">
-下载scrcpy，解压 手机开启USB debuging 手机连接电脑，手机会弹出确认窗口，点确认 在解压后的scrcpy目录，打开命令行，输入scrcpy -S https://github.com/Genymobile/scrcpy/blob/master/FAQ.md
 </div>
 </article>
 

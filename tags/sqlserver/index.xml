@@ -71,12 +71,12 @@ kill SPID;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; dbo.DimProduct  
 &lt;span style=&#34;color:#66d9ef&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; EnglishProductName;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; ABC_1
-&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; ABC
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; ABC_1 &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; ABC
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 只复制表结构
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- where 1 = 2;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;批量插入&#34;&gt;批量插入&lt;/h3&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改字段类型&#34;&gt;修改字段类型&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; dbo.doc_exy &lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COLUMN&lt;/span&gt; column_a DECIMAL (&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;);  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;批量插入&#34;&gt;批量插入&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; table2
    &lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
    &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; table1 t1
@@ -101,6 +101,7 @@ kill SPID;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/207190/sql-server-string-to-date-conversion&#34;&gt;Sql Server string to date conversion&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/sql/t-sql/functions/len-transact-sql?view=sql-server-ver16&#34;&gt;LEN (Transact-SQL)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/13405572/sql-statement-to-get-column-type&#34;&gt;SQL statement to get column type&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/sql/relational-databases/tables/modify-columns-database-engine?view=sql-server-ver16&#34;&gt;Modify Columns (Database Engine) - SQL Server | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
