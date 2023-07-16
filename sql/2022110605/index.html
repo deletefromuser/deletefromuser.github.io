@@ -388,6 +388,8 @@ createtime date
       CREATEDATE <span style="color:#f92672">+</span>  numtodsinterval (rownum ,<span style="color:#e6db74">&#39;second&#39;</span>)
 <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">user</span> 
 <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> (<span style="color:#66d9ef">select</span> <span style="color:#66d9ef">level</span> abc <span style="color:#66d9ef">from</span> dual <span style="color:#66d9ef">connect</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">level</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>) du <span style="color:#66d9ef">on</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+<span style="color:#75715e">-- 查询员工id和员工总数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,<span style="color:#66d9ef">count</span>(<span style="color:#f92672">*</span>) over() cnt <span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary <span style="color:#66d9ef">desc</span>;
 <span style="color:#75715e">-- 按工资排序，同时记录工资排名
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id,name,dept,salary,createtime,rownum,rowid,row_number() over(<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary <span style="color:#66d9ef">desc</span>) <span style="color:#66d9ef">from</span> userinfo <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> salary <span style="color:#66d9ef">desc</span>;
 <span style="color:#75715e">-- 查询每个部门工资最高的员工信息
@@ -415,7 +417,7 @@ createtime date
 </code></pre></div><h3 id="字符串操作">字符串操作</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 字符串连接
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;B&#39;</span> <span style="color:#66d9ef">from</span> dual;
-<span style="color:#75715e">-- 换行符
+<span style="color:#75715e">-- 换行符 CHR(13) \r, CHR(10) \n
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">||</span> chr(<span style="color:#ae81ff">10</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;B&#39;</span> <span style="color:#66d9ef">from</span> dual;
 <span style="color:#75715e">-- A
 </span><span style="color:#75715e">-- B
@@ -484,10 +486,16 @@ createtime date
 
 <span style="color:#66d9ef">END</span>;
 </code></pre></div><h3 id="在更新的时候使用join">在更新的时候使用join</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">update</span> (<span style="color:#66d9ef">select</span> bonus 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">update</span> (<span style="color:#66d9ef">select</span> b.bonus 
         <span style="color:#66d9ef">from</span> employee_bonus b 
         <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> employees e <span style="color:#66d9ef">on</span> b.employee_id <span style="color:#f92672">=</span> e.employee_id 
         <span style="color:#66d9ef">where</span> e.bonus_eligible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;N&#39;</span>) t
+<span style="color:#66d9ef">set</span> t.bonus <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#75715e">-- 更新第一条(fetch first会报错)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">update</span> (<span style="color:#66d9ef">select</span> b.bonus 
+        <span style="color:#66d9ef">from</span> employee_bonus b 
+        <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> employees e <span style="color:#66d9ef">on</span> b.employee_id <span style="color:#f92672">=</span> e.employee_id 
+        <span style="color:#66d9ef">where</span> e.bonus_eligible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;N&#39;</span> <span style="color:#66d9ef">and</span> rownum <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) t
 <span style="color:#66d9ef">set</span> t.bonus <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </code></pre></div><h3 id="比较两个表的数据">比较两个表的数据</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">(<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> T1 minus <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> T2) <span style="color:#75715e">-- all rows that are in T1 but not in T2
@@ -499,7 +507,20 @@ createtime date
 <span style="color:#66d9ef">from</span> emp
 <span style="color:#66d9ef">start</span> <span style="color:#66d9ef">with</span> mgr <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">null</span>
 <span style="color:#66d9ef">connect</span> <span style="color:#66d9ef">by</span> mgr <span style="color:#f92672">=</span> <span style="color:#66d9ef">prior</span> empno;
-</code></pre></div><h3 id="sql-developer使用">sql developer使用</h3>
+</code></pre></div><h3 id="fetch-first-和-rownum比较">fetch first 和 rownum比较</h3>
+<blockquote>
+<p>oracle中对rownum有优化，所以优先使用rownum</p>
+</blockquote>
+<h3 id="查看执行计划">查看执行计划</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">set</span> serveroutput <span style="color:#66d9ef">off</span>;
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">set</span> statistics_level <span style="color:#f92672">=</span> <span style="color:#66d9ef">all</span>;
+<span style="color:#75715e">-- 执行SQL
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> tableA <span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">table</span>(dbms_xplan.display_cursor(<span style="color:#66d9ef">null</span>,<span style="color:#66d9ef">null</span>,<span style="color:#e6db74">&#39;allstats last cost&#39;</span>));
+<span style="color:#75715e">-- 出来表格里E-Rows代表预测值，A-Rows代表实际值
+</span></code></pre></div><h3 id="数字类型长度">数字类型长度</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- NUMERIC(6, 2) 表示范围 -9999.99-9999.99
+</span></code></pre></div><h3 id="sql-developer使用">sql developer使用</h3>
 <h4 id="快捷键">快捷键</h4>
 <blockquote>
 <p>ctrl+shift+D 复制行</p>
@@ -546,6 +567,16 @@ createtime date
 <li><a href="https://www.support.dbagenesis.com/post/reclaim-unused-space-in-oracle">Reclaim Unused Space in Oracle</a></li>
 <li><a href="https://en.wikibooks.org/wiki/Oracle_Database/SQL_Cheatsheet">Oracle Database/SQL Cheatsheet - Wikibooks, open books for an open world</a></li>
 <li><a href="https://gist.github.com/deletefromuser/68bfabfa43e266a52b65d1eafaced87f">test oracle REGEXP_LIKE</a></li>
+<li><a href="https://jonathanlewis.wordpress.com/2020/07/15/fetch-first-vs-rownum/">Fetch First vs. Rownum | Oracle Scratchpad</a></li>
+<li><a href="https://cosol.jp/techdb/2020/04/how_to_read_oracle_sql_execution_plan/">Oracle SQL実行計画の読み方 | コーソルDatabaseエンジニアのBlog</a></li>
+<li><a href="https://qiita.com/mkyz08/items/9dfa4a5ea636238afc3e">Oracleのヒント句を使いこなす - Qiita</a></li>
+<li><a href="https://zenn.dev/captain_blue/articles/three-types-of-join-algorithms">[SQL]JOINの3種類のアルゴリズムについて</a></li>
+<li><a href="https://www.cybertec-postgresql.com/en/postgresql-limit-vs-fetch-first-rows-with-ties/">PostgreSQL: LIMIT vs FETCH FIRST ROWS &hellip; WITH TIES - CYBERTEC</a></li>
+<li><a href="https://zukucode.com/2017/08/sql-over-partition-by.html">SQL PARTITION BYの基本と効率的に集計する便利な方法</a></li>
+<li><a href="https://zenn.dev/captain_blue/articles/three-types-of-join-algorithms">[SQL]JOINの3種類のアルゴリズムについて</a></li>
+<li><a href="https://www.cnblogs.com/zwl715/p/3788070.html">NESTED LOOPS &amp; HASH JOIN &amp; SORT MERGE JOIN - 凡轩之 - 博客园</a></li>
+<li><a href="https://arkgame.com/2020/09/15/post-117916/">「Oracle」改行コード(CHR(13)、CHR(10))を取得、更新、置換する方法 - 最新IT技術情報_arkgame.com</a></li>
+<li><a href="https://www.oracletutorial.com/oracle-basics/oracle-number-data-type/">Oracle NUMBER Data Type By Practical Examples</a></li>
 </ul>
 
 </div>
