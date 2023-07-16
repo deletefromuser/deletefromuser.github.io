@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>sqlserver 修改主键约束 – HA</title>
-<meta name="description" content="sqlserver 修改主键约束 sp_help book if exists (select 1 from sysobjects where name = &amp;amp;#39;PK__book__AFEBF550AD55A29F&amp;amp;#39;) begin print &amp;amp;#39;pk exists&amp;amp;#39; alter table book drop …">
-<meta name="created" content="2017-04-05T01:33:58+0800">
-<meta name="modified" content="2020-12-20T11:17:02+0800">
+<title>2023年3季度 – HA</title>
+<meta name="description" content="动画  この素晴らしい世界に爆焔を！  剧集 电影  Mission: Impossible – Dead Reckoning Part One  漫画  変態王子と笑わない猫 魔法科高校の劣等生  ">
+<meta name="created" content="2023-07-16T20:00:00+0800">
+<meta name="modified" content="2023-07-16T22:57:36+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="sqlserver 修改主键约束">
-<meta property="og:url" content="/blog/sql/2017040501/">
+<meta property="og:title" content="2023年3季度">
+<meta property="og:url" content="/blog/watch/2023070101/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/blog/sql/2017040501/">
+<link rel="canonical" href="/blog/watch/2023070101/">
 <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "sqlserver 修改主键约束",
-    "datePublished": "2017-04-05T01:33:58+08:00",
-    "dateModified": "2020-12-20T11:17:02+08:00",
-    "url" : "/blog/sql/2017040501/",
-    "description": "sqlserver 修改主键约束 sp_help book if exists (select 1 from sysobjects where name = \u0026amp;#39;PK__book__AFEBF550AD55A29F\u0026amp;#39;) begin print \u0026amp;#39;pk exists\u0026amp;#39; alter table book drop …",
+    "headline": "2023年3季度",
+    "datePublished": "2023-07-16T20:00:00+08:00",
+    "dateModified": "2023-07-16T22:57:36+08:00",
+    "url" : "/blog/watch/2023070101/",
+    "description": "动画  この素晴らしい世界に爆焔を！  剧集 电影  Mission: Impossible – Dead Reckoning Part One  漫画  変態王子と笑わない猫 魔法科高校の劣等生  ",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -68,11 +68,11 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
-<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/watch/" class="active" aria-current="page">Watch</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/java/">Java</a></li>
-<li><a href="/blog/sql/" class="active" aria-current="page">Sql</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
@@ -85,39 +85,35 @@
 
 
 <main class="main layout__main">
-<article class="single-view single-view--sql">
+<article class="single-view single-view--watch">
 <header>
-<h1 class="title title-submitted">sqlserver 修改主键约束</h1>
+<h1 class="title title-submitted">2023年3季度</h1>
 <div class="submitted">
-<time class="created-date" datetime="2017-04-05T01:33:58&#43;08:00">2017-04-05 01:33</time>
+<time class="created-date" datetime="2023-07-16T20:00:00&#43;08:00">2023-07-16 20:00</time>
 </div>
 </header>
 <div class="content">
-<p>sqlserver 修改主键约束</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">sp_help book
-
-<span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> (<span style="color:#66d9ef">select</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">from</span> sysobjects <span style="color:#66d9ef">where</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PK__book__AFEBF550AD55A29F&#39;</span>)
-<span style="color:#66d9ef">begin</span>
-	print <span style="color:#e6db74">&#39;pk exists&#39;</span>
-	<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> book <span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">constraint</span> PK__book__AFEBF550AD55A29F
-<span style="color:#66d9ef">end</span>
-
-<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> book <span style="color:#66d9ef">add</span> <span style="color:#66d9ef">constraint</span> PK__book <span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span> clustered
-(
-book_name <span style="color:#66d9ef">asc</span>,
-id <span style="color:#66d9ef">asc</span>
-)
-</code></pre></div><p><strong>reference</strong></p>
-<ol>
-<li><a href="http://www.cnblogs.com/sunxuchu/p/5578057.html">SQL Server 创建表 添加主键 添加列常用SQL语句</a></li>
-</ol>
+<h2 id="动画">动画</h2>
+<ul>
+<li>この素晴らしい世界に爆焔を！</li>
+</ul>
+<h2 id="剧集">剧集</h2>
+<h2 id="电影">电影</h2>
+<ul>
+<li>Mission: Impossible – Dead Reckoning Part One</li>
+</ul>
+<h2 id="漫画">漫画</h2>
+<ul>
+<li>変態王子と笑わない猫</li>
+<li>魔法科高校の劣等生</li>
+</ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2020-12-20 11:17<br>
-Created: 2017-04-05 01:33
+Updated: 2023-07-16 22:57<br>
+Created: 2023-07-16 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
         repo="deletefromuser/deletefromuser.github.io"
