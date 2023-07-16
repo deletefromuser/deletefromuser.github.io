@@ -140,6 +140,9 @@ kill SPID;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">length</span> <span style="color:#f92672">=</span> DATALENGTH(EnglishProductName), EnglishProductName  
 <span style="color:#66d9ef">FROM</span> dbo.DimProduct  
 <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> EnglishProductName;  
+<span style="color:#75715e">-- 字符串转换为数字类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">cast</span>(<span style="color:#e6db74">&#39;123&#39;</span> <span style="color:#66d9ef">as</span> int);
+<span style="color:#66d9ef">select</span> <span style="color:#66d9ef">convert</span>(int, <span style="color:#e6db74">&#39;123&#39;</span>);
 </code></pre></div><h3 id="复制表">复制表</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> ABC_1 <span style="color:#66d9ef">FROM</span> ABC
 <span style="color:#75715e">-- 只复制表结构
@@ -172,6 +175,8 @@ kill SPID;
 <li><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/len-transact-sql?view=sql-server-ver16">LEN (Transact-SQL)</a></li>
 <li><a href="https://stackoverflow.com/questions/13405572/sql-statement-to-get-column-type">SQL statement to get column type</a></li>
 <li><a href="https://learn.microsoft.com/en-us/sql/relational-databases/tables/modify-columns-database-engine?view=sql-server-ver16">Modify Columns (Database Engine) - SQL Server | Microsoft Learn</a></li>
+<li><a href="https://stackoverflow.com/questions/707335/t-sql-cast-versus-convert">sql server - T-SQL Cast versus Convert - Stack Overflow</a></li>
+<li><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql?view=sql-server-ver16">CAST and CONVERT (Transact-SQL) - SQL Server | Microsoft Learn</a></li>
 </ul>
 
 </div>

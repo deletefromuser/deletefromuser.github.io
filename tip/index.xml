@@ -10,6 +10,68 @@
     <atom:link href="/blog/tip/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>AI提示词记录</title>
+      <link>/blog/tip/2023071101/</link>
+      <pubDate>Sun, 02 Jul 2023 12:00:00 +0800</pubDate>
+      <guid>/blog/tip/2023071101/</guid>
+      <description>&lt;h2 id=&#34;bing-ai&#34;&gt;Bing AI&lt;/h2&gt;
+&lt;h3 id=&#34;根据汉字描述生成数据库表字段名&#34;&gt;根据汉字描述，生成数据库表字段名&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;书籍名称&lt;/p&gt;
+&lt;p&gt;根据上面的描述，生成oracle数据库表中可用的表字段id，不需要类型，小于25个字符，每行一个给我&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;根据数据库表定义生成测试数据插入sql&#34;&gt;根据数据库表定义，生成测试数据插入SQL&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[建表语句]&lt;/p&gt;
+&lt;p&gt;这是一个数据库建表语句，给我生成一个往这个表里插入一条数据的sql&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;OR&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this is a oracle table create sql, make a sql script to insert data to this table , i need 20 rows&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;给出一段有规律的数据生成后续&#34;&gt;给出一段有规律的数据，生成后续&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SELECT 1, 1, 1, 1, &amp;lsquo;&#39;, &amp;lsquo;&#39;, &amp;lsquo;TEST&amp;rsquo;, &amp;lsquo;TEST&amp;rsquo;, 0, &amp;lsquo;&#39;, sysdate, 222, NULL, NULL&lt;/p&gt;
+&lt;p&gt;UNION ALL&lt;/p&gt;
+&lt;p&gt;SELECT 2, 1, 2, 2, &amp;lsquo;&#39;, &amp;lsquo;&#39;, &amp;lsquo;TEST2&amp;rsquo;, &amp;lsquo;TEST2&amp;rsquo;, 1, &amp;lsquo;&#39;, sysdate, 222, NULL, NULL&lt;/p&gt;
+&lt;p&gt;UNION ALL&lt;/p&gt;
+&lt;p&gt;续写上面的语句，重复20次&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;google-bard&#34;&gt;Google Bard&lt;/h2&gt;
+&lt;h3 id=&#34;生成文章重点摘要&#34;&gt;生成文章重点摘要&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://cn.nytimes.com/china/20230711/china-marriage-rate/&#34;&gt;https://cn.nytimes.com/china/20230711/china-marriage-rate/&lt;/a&gt; 给我整理下这篇文章的重点内容&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;chatgpt&#34;&gt;ChatGPT&lt;/h2&gt;
+&lt;h3 id=&#34;生成技术文章内的测试代码&#34;&gt;生成技术文章内的测试代码&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/mojihige/items/2cbf9b3ff1d6b743ab17&#34;&gt;https://qiita.com/mojihige/items/2cbf9b3ff1d6b743ab17&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;给我生成这篇文章里的测试用sql&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;中文翻译&#34;&gt;中文翻译&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I want you to act as an chinese translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it and answer in the corrected and improved version of my text, in chinese.I want you to only reply the translation and nothing else, do not write explanations. My first sentence is &amp;ldquo;ランダムで取り巻きが発生&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;英文翻译&#34;&gt;英文翻译&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it and answer in the corrected and improved version of my text, in English.I want you to only reply the translation and nothing else, do not write explanations. My first sentence is &amp;ldquo;istanbulu cok seviyom burada olmak cok guzel&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;日文翻译&#34;&gt;日文翻译&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I want you to act as an japanese translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it and answer in the corrected and improved version of my text, in japanese.I want you to only reply the translation and nothing else, do not write explanations. My first sentence is &amp;ldquo;good morning&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;java工程师&#34;&gt;JAVA工程师&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I want you to act as a java software engineer. I will write some programing questions and it will be your job to explain them in easy-to-understand terms. This could contain providing step-by-step instructions for writing code with visuals, or suggesting online resources for further study. My first suggestion request is &amp;ldquo;in java can threadlocal cause memory leak, explain to me with code&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;重置对话&#34;&gt;重置对话&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ignore all i said above, blah blah&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
       <title>暴力破解7z加密文件</title>
       <link>/blog/tip/2023070201/</link>
       <pubDate>Sun, 02 Jul 2023 12:00:00 +0800</pubDate>

@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-07-02T18:00:00+0800">
-<meta name="modified" content="2023-07-09T00:18:06+0800">
+<meta name="modified" content="2023-07-16T16:42:39+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -92,6 +92,19 @@
 
 <article class="list-view list-view--tip">
 <header>
+<h2 class="title title-submitted"><a href="/blog/tip/2023051302/">使用gpg加密文件</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-04-27T20:00:00&#43;08:00">2023-04-27 20:00</time>
+</div>
+
+</header>
+<div class="content">
+生成gpg密钥 gpg --gen-key # 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用） 导出公钥 gpg --armor --output mypubkey.gpg --export your.name@youreamil.com # 复制公钥内容 # cat
+</div>
+</article>
+
+<article class="list-view list-view--tip">
+<header>
 <h2 class="title title-submitted"><a href="/blog/tip/2023042702/">使用scrcpy在pc上控制android手机</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2023-04-27T20:00:00&#43;08:00">2023-04-27 20:00</time>
@@ -112,7 +125,7 @@
 
 </header>
 <div class="content">
-热部署 maven中添加下面的依赖 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt; &lt;optional&gt;true&lt;/optional&gt; &lt;/dependency&gt; reference Hot swapping in Spring Boot in Visual Studio Code
+热部署 maven中添加下面的依赖 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt; &lt;optional&gt;true&lt;/optional&gt; &lt;/dependency&gt; 启动jar时，修改log级别 java -jar myapp.jar --debug 切换命令行maven的JDK版本 # 重点在于修改JAVA_HOM
 </div>
 </article>
 
@@ -204,19 +217,6 @@ chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 r
 </header>
 <div class="content">
 工作中要测试网页的视频录制功能，但是是在客户的虚拟机上，没有摄像头，这时候可以使用OBS模拟摄像头来测试 安装OBS，及FireFox（CHR
-</div>
-</article>
-
-<article class="list-view list-view--sql">
-<header>
-<h2 class="title title-submitted"><a href="/blog/sql/2023021101/">使用mybatis的Batch Insert批量插入记录</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-02-11T19:00:00&#43;08:00">2023-02-11 19:00</time>
-</div>
-
-</header>
-<div class="content">
-不使用Batch Insert -- 使用mybatis时，下面的做法当一次插入数量太多时会报错（ORA-00913: too many values），这时需要用batch
 </div>
 </article>
 
