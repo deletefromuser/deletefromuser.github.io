@@ -3,12 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/watch/2023070101/</loc>
-    <lastmod>2023-07-16T22:57:36+08:00</lastmod>
+    <loc>/blog/</loc>
+    <lastmod>2023-07-17T23:41:24+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/</loc>
+    <loc>/blog/tags/</loc>
+    <lastmod>2023-07-17T23:41:24+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/</loc>
+    <lastmod>2023-07-17T23:41:24+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/vscoode/</loc>
+    <lastmod>2023-07-17T23:41:24+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/2023071701/</loc>
+    <lastmod>2023-07-17T23:41:24+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/watch/2023070101/</loc>
     <lastmod>2023-07-16T22:57:36+08:00</lastmod>
   </url>
   
@@ -28,13 +48,8 @@
   </url>
   
   <url>
-    <loc>/blog/tags/</loc>
-    <lastmod>2023-07-16T16:42:39+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/web/</loc>
-    <lastmod>2023-07-16T16:42:39+08:00</lastmod>
+    <lastmod>2023-07-17T23:41:24+08:00</lastmod>
   </url>
   
   <url>
@@ -75,11 +90,6 @@
   <url>
     <loc>/blog/tags/password-cracker/</loc>
     <lastmod>2023-07-02T21:54:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/tip/</loc>
-    <lastmod>2023-07-16T16:42:39+08:00</lastmod>
   </url>
   
   <url>
@@ -424,7 +434,7 @@
   
   <url>
     <loc>/blog/web/2022111501/</loc>
-    <lastmod>2022-12-14T21:45:16+08:00</lastmod>
+    <lastmod>2023-07-17T23:41:24+08:00</lastmod>
   </url>
   
   <url>

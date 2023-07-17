@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>SpringBoot开发memo – HA</title>
+<title>Spring开发memo – HA</title>
 <meta name="description" content="解密Jasypt密文  开发中遇到一些配置的密文，有解密的需要  AES256TextEncryptor encryptor = new AES256TextEncryptor(); encryptor.setPassword(&amp;amp;#34;some_salt&amp;amp;#34;); String plainText = …">
 <meta name="created" content="2022-11-15T20:00:00+0800">
-<meta name="modified" content="2022-12-14T21:45:16+0800">
+<meta name="modified" content="2023-07-17T23:41:24+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="SpringBoot开发memo">
+<meta property="og:title" content="Spring开发memo">
 <meta property="og:url" content="/blog/web/2022111501/">
 <meta property="og:type" content="article">
 
@@ -29,9 +29,9 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "SpringBoot开发memo",
+    "headline": "Spring开发memo",
     "datePublished": "2022-11-15T20:00:00+08:00",
-    "dateModified": "2022-12-14T21:45:16+08:00",
+    "dateModified": "2023-07-17T23:41:24+08:00",
     "url" : "/blog/web/2022111501/",
     "description": "解密Jasypt密文  开发中遇到一些配置的密文，有解密的需要  AES256TextEncryptor encryptor = new AES256TextEncryptor(); encryptor.setPassword(\u0026amp;#34;some_salt\u0026amp;#34;); String plainText = …",
     "mainEntityOfPage": {
@@ -68,9 +68,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/web/" class="active" aria-current="page">Web</a></li>
-<li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
@@ -87,7 +87,7 @@
 <main class="main layout__main">
 <article class="single-view single-view--web">
 <header>
-<h1 class="title title-submitted">SpringBoot开发memo</h1>
+<h1 class="title title-submitted">Spring开发memo</h1>
 <div class="submitted">
 <time class="created-date" datetime="2022-11-15T20:00:00&#43;08:00">2022-11-15 20:00</time>
 </div>
@@ -114,18 +114,30 @@ d: \\target$
 sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
 sudo update-alternatives --install /usr/bin/mvn mvn /opt/apache-maven-3.6.3/bin/mvn <span style="color:#ae81ff">363</span>
 sudo update-alternatives --config mvn
+</code></pre></div><h3 id="手动调用spring组数据校验">手动调用spring组数据校验</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">// 定义SmartValidator
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@Bean</span>
+    <span style="color:#a6e22e">@Primary</span>
+    <span style="color:#66d9ef">public</span> Validator <span style="color:#a6e22e">myValidator</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> LocalValidatorFactoryBean<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 使用的时候注入SmartValidator, validationHints可以指定group
+</span><span style="color:#75715e"></span>    smartValidator<span style="color:#f92672">.</span><span style="color:#a6e22e">validate</span><span style="color:#f92672">(</span>target<span style="color:#f92672">,</span> errors<span style="color:#f92672">,</span> validationHints<span style="color:#f92672">);</span>
 </code></pre></div><p><strong>reference</strong></p>
 <ol>
 <li><a href="https://stackoverflow.com/questions/22067552/decrypt-using-jasypt">Decrypt using Jasypt</a></li>
 <li><a href="https://stackoverflow.com/a/1477287/19120213">How to ignore SVN folders in WinMerge</a></li>
 <li><a href="https://stackoverflow.com/a/63876216/19120213">maven: An illegal reflective access operation has occurred</a></li>
+<li><a href="https://www.baeldung.com/javax-validation-groups">Grouping Javax Validation Constraints | Baeldung</a></li>
+<li><a href="https://github.com/spring-projects/spring-boot/issues/8495">Multiple &lsquo;org.springframework.validation.Validator&rsquo; beans are exposed as of Spring Boot 1.5 · Issue #8495 · spring-projects/spring-boot</a></li>
 </ol>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-14 21:45<br>
+Updated: 2023-07-17 23:41<br>
 Created: 2022-11-15 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
