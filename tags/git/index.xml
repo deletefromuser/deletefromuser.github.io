@@ -41,7 +41,10 @@ ssh -T git@github.com
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# 杀掉所有ssh-agent进程&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 因为每开一个terminal就要跑这些命令，开始一个ssh-agent，运行一段时间之后，后台就会有很多进程&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# bash&lt;/span&gt;
 ps -ef | grep ssh-agent | grep -v grep | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; | xargs kill -9
+&lt;span style=&#34;color:#75715e&#34;&gt;# windows&lt;/span&gt;
+taskkill /F /IM ssh-agent.exe /T
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-將文件轉移位置&#34;&gt;git 將文件轉移位置&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git mv 2017032003.md csharp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看某一次提交的文件列表&#34;&gt;查看某一次提交的文件列表&lt;/h3&gt;
@@ -97,6 +100,7 @@ git clone https://username:token@github.com/username/repository.git
 &lt;li&gt;&lt;a href=&#34;https://anotheruiguy.gitbooks.io/gitforeveryone/content/auto/README.html#:~:text=If%20you%20are%20seeing%20this,and%20install%20a%20new%20one.&#34;&gt;-bash: __git_ps1: command not found&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://scribu.net/wordpress/svn-patches-from-git.html&#34;&gt;svn patches from git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.git-tower.com/learn/git/faq/restoring-deleted-files&#34;&gt;Restoring deleted files in Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/How-do-I-kill-all-processes-with-the-same-name-in-Windows&#34;&gt;How to kill all processes with the same name in Windows - Quora&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
