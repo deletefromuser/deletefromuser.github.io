@@ -127,7 +127,10 @@ ssh -T git@github.com
 
 <span style="color:#75715e"># 杀掉所有ssh-agent进程</span>
 <span style="color:#75715e"># 因为每开一个terminal就要跑这些命令，开始一个ssh-agent，运行一段时间之后，后台就会有很多进程</span>
+<span style="color:#75715e"># bash</span>
 ps -ef | grep ssh-agent | grep -v grep | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> | xargs kill -9
+<span style="color:#75715e"># windows</span>
+taskkill /F /IM ssh-agent.exe /T
 </code></pre></div><h3 id="git-將文件轉移位置">git 將文件轉移位置</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git mv 2017032003.md csharp
 </code></pre></div><h3 id="查看某一次提交的文件列表">查看某一次提交的文件列表</h3>
@@ -183,6 +186,7 @@ git clone https://username:token@github.com/username/repository.git
 <li><a href="https://anotheruiguy.gitbooks.io/gitforeveryone/content/auto/README.html#:~:text=If%20you%20are%20seeing%20this,and%20install%20a%20new%20one.">-bash: __git_ps1: command not found</a></li>
 <li><a href="https://scribu.net/wordpress/svn-patches-from-git.html">svn patches from git</a></li>
 <li><a href="https://www.git-tower.com/learn/git/faq/restoring-deleted-files">Restoring deleted files in Git</a></li>
+<li><a href="https://www.quora.com/How-do-I-kill-all-processes-with-the-same-name-in-Windows">How to kill all processes with the same name in Windows - Quora</a></li>
 </ol>
 
 </div>
