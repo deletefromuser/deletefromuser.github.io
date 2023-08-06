@@ -6,8 +6,61 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Jul 2023 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 06 Aug 2023 14:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>sql使用memo</title>
+      <link>https://deletefromuser.github.io/sql/2023060301/</link>
+      <pubDate>Sun, 06 Aug 2023 14:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/sql/2023060301/</guid>
+      <description>&lt;h3 id=&#34;count1-count-countcolumn区别&#34;&gt;count(1), count(*), count(column)区别&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;count(1)和count(&lt;em&gt;)是相同的, 但count(&lt;/em&gt;)代表的语义更明确&lt;/p&gt;
+&lt;p&gt;COUNT (&lt;!-- raw HTML omitted --&gt;) 统计非空值个数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;使用in时是否需要先distinct&#34;&gt;使用IN时是否需要先distinct&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不需要, distinct反而会降低性能&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;exists-vs-in&#34;&gt;EXISTS vs IN&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于目前的数据库优化, 对于可以替代的情况下, 性能没有区别&lt;/p&gt;
+&lt;p&gt;EXISTS 可以用来进行多列的比较, IN则不行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;多线程-乐观锁-悲观锁&#34;&gt;多线程, 乐观锁, 悲观锁&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当存在一条记录可能被很多人同时修改的时候, 需要考虑同步操作的问题,
+当不加锁无法达成目标时, 可以使用锁, 悲观锁由于需要锁定记录, 太影响性能, 优先考虑使用乐观锁&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;考虑同步更新库存的情况&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不加锁方案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;将库存数量放入更新条件中, 如果库存不足, 则更新结果数量为0, 再做相应处理&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Update&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; Stock &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; quantity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; quantity &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; ItemId&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;01&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; quantity &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;乐观锁方案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在处理的最开始先查询记录, 将更新时间(或者版本号)(即事先约定每次更新都要更新的字段)放入更新条件中, 如果更新结果数量为0, 则说明记录已被其他人修改过, 再做相应处理&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;UPDATE&lt;/span&gt; Stock &lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; quantity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;15&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;version&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;version&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; itemId &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;01&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;version&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;悲观锁方案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;处理的最开始先把记录锁住(SELECT FOR UPDATE), 处理完成后再放开&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/Should-I-use-DISTINCT-in-a-subquery-when-using-IN&#34;&gt;Should I use &amp;lsquo;DISTINCT&amp;rsquo; in a subquery when using &amp;lsquo;IN&amp;rsquo;? - Quora&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pretius.com/blog/difference-between-count-vs-count1-oracle/&#34;&gt;Count(*) vs Count(1) in Oracle: The ultimate comparison - Pretius&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/7124546/sql-best-practice-count1-or-count&#34;&gt;SQL Best Practice: count(1) or count(*) - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sqlinthewild.co.za/index.php/2009/04/14/on-counts/&#34;&gt;On Counts | SQL in the Wild&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sqlinthewild.co.za/index.php/2009/08/17/exists-vs-in/&#34;&gt;EXISTS vs IN | SQL in the Wild&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2065329/sql-server-in-vs-exists-performance&#34;&gt;SQL Server IN vs. EXISTS Performance - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/129329/optimistic-vs-pessimistic-locking&#34;&gt;Optimistic vs. Pessimistic locking - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.couchbase.com/blog/optimistic-or-pessimistic-locking-which-one-should-you-pick/&#34;&gt;Optimistic or Pessimistic Locking: Which One Should You Pick? | Couchbase Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@manjulapiyumal/effective-usage-oracle-row-locking-with-spring-jdbc-for-concurrent-data-processing-without-having-9ae55e4331a6&#34;&gt;Effective usage Oracle Row Locking with Spring JDBC for concurrent data processing without having… | by Manjula Piyumal | Medium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dba.stackexchange.com/questions/35812/why-is-optimistic-locking-faster-than-pessimistic-locking&#34;&gt;Why is optimistic locking faster than pessimistic locking? - Database Administrators Stack Exchange&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.techonthenet.com/oracle/select_for_update.php&#34;&gt;Oracle / PLSQL: FOR UPDATE Clause - TechOnTheNet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dba-oracle.com/t_select_update_skip_locked.htm&#34;&gt;SELECT FOR UPDATE SKIP LOCKED Tips (Oracle PL/SQL)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://terasolunaorg.github.io/guideline/public_review/ArchitectureInDetail/ExclusionControl.html&#34;&gt;Exclusion Control | Tutorials | Guidelines | Terasoluna Development Architecture 5.x&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium-company.com/mybatis-%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF/&#34;&gt;MyBatis 楽観ロック - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>开发软件使用记录</title>
@@ -17,11 +70,18 @@
       <description>&lt;h2 id=&#34;vscode&#34;&gt;VSCODE&lt;/h2&gt;
 &lt;h3 id=&#34;切换命令行posershell-git-bash&#34;&gt;切换命令行(PoserShell-&amp;gt;Git Bash)&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;CTRL + SHIFT + P后，输入Select Default Profile，选择bash即可&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;CTRL + SHIFT + P&lt;/code&gt;后，输入&lt;code&gt;Select Default Profile&lt;/code&gt;，选择bash即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;大小写转换&#34;&gt;大小写转换&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;CTRL + SHIFT + P&lt;/code&gt;后，输入upper, 选择&lt;code&gt;Transform to Uppercase&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;OR&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;CTRL + SHIFT + X&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://neutrondev.com/vs-code-integrate-git-bash-default-terminal/&#34;&gt;VS Code Integrate Git Bash as Default Terminal - Neutron Dev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/35184509/make-selected-block-of-text-uppercase&#34;&gt;visual studio code - Make selected block of text uppercase - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -121,6 +181,14 @@
 &lt;p&gt;SELECT 2, 1, 2, 2, &amp;lsquo;&#39;, &amp;lsquo;&#39;, &amp;lsquo;TEST2&amp;rsquo;, &amp;lsquo;TEST2&amp;rsquo;, 1, &amp;lsquo;&#39;, sysdate, 222, NULL, NULL&lt;/p&gt;
 &lt;p&gt;UNION ALL&lt;/p&gt;
 &lt;p&gt;续写上面的语句，重复20次&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;把url转换成markdown链接&#34;&gt;把url转换成markdown链接&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/huangjiandong2012/p/4040030.html&#34;&gt;https://www.cnblogs.com/huangjiandong2012/p/4040030.html&lt;/a&gt;
+&lt;a href=&#34;https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html#session-mgmt&#34;&gt;https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html#session-mgmt&lt;/a&gt;
+&lt;a href=&#34;https://mtyurt.net/post/spring-expiring-all-sessions-of-a-user.html&#34;&gt;https://mtyurt.net/post/spring-expiring-all-sessions-of-a-user.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;访问这些网址, 获取title, 给我输出成下面这样的形式, 每个一行&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;1. [title](url)&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;google-bard&#34;&gt;Google Bard&lt;/h2&gt;
 &lt;h3 id=&#34;生成文章重点摘要&#34;&gt;生成文章重点摘要&lt;/h3&gt;
@@ -269,23 +337,6 @@
 &lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1376470/what-is-the-keyboard-shortcut-for-pasting-without-formatting-in-ms-word&#34;&gt;What is the keyboard shortcut for pasting without formatting in MS Word?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.excel-easy.com/examples/find-duplicates.html&#34;&gt;How to Find Duplicates in Excel (In Easy Steps)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://ask.libreoffice.org/t/auto-highlight-duplicate-entries-in-calc/46110&#34;&gt;Auto highlight duplicate entries in calc - English - Ask LibreOffice&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>sqlserver使用</title>
-      <link>https://deletefromuser.github.io/sql/2023060301/</link>
-      <pubDate>Sat, 03 Jun 2023 19:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/sql/2023060301/</guid>
-      <description>&lt;h3 id=&#34;比较两个表的数据&#34;&gt;比较两个表的数据&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- EXCEPT 相当于oracle里的 minus
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; CustId, CustName, CustAddress, CustPhone &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Original
-&lt;span style=&#34;color:#66d9ef&#34;&gt;EXCEPT&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; CustId, CustName, CustAddress, CustPhone &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Revised
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.sqlshack.com/compare-tables-sql-server/&#34;&gt;4 Ways to Insert Multiple Rows in Oracle&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -609,12 +660,35 @@ JAVA_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/opt/jdk8u265-b
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;切换命令行java的jdk版本&#34;&gt;切换命令行java的JDK版本&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 重点在于修改PATH环境变量&lt;/span&gt;
 export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/c/Program Files/Eclipse Adoptium/jdk-17.0.4.8-hotspot/bin:&lt;/span&gt;$PATH&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;序列化对象时的jackson设置&#34;&gt;序列化对象时的jackson设置&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 不输出该字段
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@com.fasterxml.jackson.annotation.JsonIgnore&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; intValue&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// 设置日期的输出格式
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@com.fasterxml.jackson.annotation.JsonFormat&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;shape &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; JsonFormat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Shape&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;STRING&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; pattern &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yyyy-MM-dd&amp;#39;T&amp;#39;HH:mm:ss.SSS&amp;#39;Z&amp;#39;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; timezone &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UTC&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; Date date&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// 忽略为null的字段
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@com.fasterxml.jackson.annotation.JsonInclude&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Include&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;NON_NULL&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Foo&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  String bar&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// 解析日期格式输入
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@org.springframework.format.annotation.DateTimeFormat&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;pattern &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yyyy-MM-dd HH:mm:ss&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; Date date&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;输入中包含文件&#34;&gt;输入中包含文件&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 不使用json形式提交+@RequestBody, 改用传统form
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/46144346/hot-swapping-in-spring-boot-in-visual-studio-code&#34;&gt;Hot swapping in Spring Boot in Visual Studio Code&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/1.5.22.RELEASE/reference/html/boot-features-logging.html&#34;&gt;26. Logging&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2503658/specify-jdk-for-maven-to-use&#34;&gt;settings - Specify JDK for Maven to use - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/821094/what-is-the-difference-between-set-env-declare-and-export-when-setting-a-varia&#34;&gt;bash - What is the difference between set, env, declare and export when setting a variable in a Linux shell? - Super User&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.w3docs.com/snippets/java/date-format-mapping-to-json-jackson.html#:~:text=You%20can%20use%20the%20%40JsonFormat,serializing%20or%20deserializing%20using%20Jackson.&amp;amp;text=This%20will%20format%20the%20date,&#39;HH%3Amm%3Ass.&#34;&gt;Date format Mapping to JSON Jackson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/jackson-ignore-properties-on-serialization&#34;&gt;Jackson Ignore Properties on Marshalling | Baeldung&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11757487/how-to-tell-jackson-to-ignore-a-field-during-serialization-if-its-value-is-null&#34;&gt;java - How to tell Jackson to ignore a field during serialization if its value is null? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reflectoring.io/jackson/&#34;&gt;All You Need To Know About JSON Parsing With Jackson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/48051177/content-type-multipart-form-databoundary-charset-utf-8-not-supported&#34;&gt;java - Content type &amp;lsquo;multipart/form-data;boundary=&amp;mdash;-&amp;hellip;;charset=UTF-8&amp;rsquo; not supported - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1199,6 +1273,10 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
 &lt;li&gt;还不行, 开始菜单输入regedit, 管理员身份打开注册表, 先备份全部注册表, 关键词搜索软件名, 删除所有有关条目&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;win10拼音输入法无法使用&#34;&gt;win10拼音输入法无法使用&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;打开任务管理器, 杀掉ChsIME.exe, 切换语言再切换回中文（alt+shift）即可&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;西数移动硬盘&#34;&gt;西数移动硬盘&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;先后买了2T，4T的西数移动硬盘，最近两年使用的时候忘记拔掉的时候先弹出了，2T的因为满了前段时间都是用的4T的，慢慢开始卡顿，等意识到是坏道太多，已经来不及了，完全无法读取了，几百块钱+3t多数据买个教训&lt;/p&gt;
@@ -1207,6 +1285,7 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://oneplusbbs.com/thread-4576245-1.html&#34;&gt;重启后 无法弹出输入法界面 卡解锁屏幕&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://community.oneplus.com/thread/874511&#34;&gt;Can&amp;rsquo;t unlock ater reboot - missing keyboard and can&amp;rsquo;t type password&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1127395/how-can-i-reset-or-restart-the-windows-10-simplified-chinese-ime-when-the-%E8%8B%B1&#34;&gt;How can I “reset” or “restart” the Windows 10 Simplified Chinese IME when the 英/中 stops responding?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1551,6 +1630,18 @@ sudo reboot
 &lt;li&gt;用到切开, 内部涂上烧烤酱, 夹上生菜, 荷包蛋, 煎好的鸡肉或猪肉即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;三明治&#34;&gt;三明治&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;吐司, 烧烤酱&lt;/li&gt;
+&lt;li&gt;可选配菜&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;生菜, 荷包蛋, 烤火腿肠切片, 西红柿切片, 酸黄瓜切片, 烤鸡肉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.xiachufang.com/recipe/106087260/&#34;&gt;简单又好喝的西红柿鸡蛋&lt;/a&gt;&lt;/li&gt;
@@ -1798,6 +1889,8 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;IF&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ISBLANK&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;,B1,A2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取得两个单元格的值相加&lt;/span&gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;A1&amp;amp;B2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 比较四列数据, 如果A1中的值在C列中存在(CX),且B1=DX则为1, 在C列存在但B1!=DX否则为0, 在C列不存在则为#N/A&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;IF&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;AND&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ISNUMBER&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;MATCH&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A1,C:C,0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;,B1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;VLOOKUP&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A1,C:D,2,0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;,1,0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://wangdoc.com/javascript/stdlib/array&#34;&gt;JavaScript 教程 &amp;gt; 标准库 &amp;gt; Array 对象&lt;/a&gt;&lt;/li&gt;
@@ -1912,6 +2005,24 @@ sudo update-alternatives --config mvn
 
     &lt;span style=&#34;color:#75715e&#34;&gt;// 使用的时候注入SmartValidator, validationHints可以指定group
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    smartValidator&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;validate&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;target&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; errors&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; validationHints&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// 默认校验只能单层, 如果自定义对象成员变量时, 就需要给成员变量加@Valid, 才能校验自定义对象里的内容
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;并发控制&#34;&gt;并发控制&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 1. 定义HttpSessionEventPublisher
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Bean&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; HttpSessionEventPublisher &lt;span style=&#34;color:#a6e22e&#34;&gt;httpSessionEventPublisher&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HttpSessionEventPublisher&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// 2. 设置maximumSessions
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Bean&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; SecurityFilterChain &lt;span style=&#34;color:#a6e22e&#34;&gt;filterChain&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpSecurity http&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    http
+        &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sessionManagement&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;session &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; session
+            &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;maximumSessions&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; http&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;build&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/22067552/decrypt-using-jasypt&#34;&gt;Decrypt using Jasypt&lt;/a&gt;&lt;/li&gt;
@@ -1919,6 +2030,12 @@ sudo update-alternatives --config mvn
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/63876216/19120213&#34;&gt;maven: An illegal reflective access operation has occurred&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/javax-validation-groups&#34;&gt;Grouping Javax Validation Constraints | Baeldung&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/spring-projects/spring-boot/issues/8495&#34;&gt;Multiple &amp;lsquo;org.springframework.validation.Validator&amp;rsquo; beans are exposed as of Spring Boot 1.5 · Issue #8495 · spring-projects/spring-boot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28150405/validation-of-a-list-of-objects-in-spring&#34;&gt;java - Validation of a list of objects in Spring - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28702809/how-to-manually-trigger-spring-validation&#34;&gt;java - How to manually trigger Spring validation? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/35766872/what-type-of-exception-to-throw-in-spring-restcontroller-when-validation-fails&#34;&gt;java - What type of exception to throw in Spring RestController when validation fails? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/huangjiandong2012/p/4040030.html&#34;&gt;Spring Security Session管理 - 黄建东 - 博客园&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html#session-mgmt&#34;&gt;Session Management - Spring Security Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mtyurt.net/post/spring-expiring-all-sessions-of-a-user.html&#34;&gt;Spring: Expiring all sessions of a user | Mert Yürtbilir&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -2728,6 +2845,17 @@ kill SPID;
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 字符串转换为数字类型
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;cast&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;123&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; int);
 &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;convert&lt;/span&gt;(int, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;123&amp;#39;&lt;/span&gt;);
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 翻转字符串
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; reverse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 查找特定字符串位置, 从1开始计数
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; charindex(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cri&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;-- 4
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; charindex(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;i&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;-- 9
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 区分大小写
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; charindex(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;crI&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COLLATE&lt;/span&gt; Latin1_General_CS_AS); &lt;span style=&#34;color:#75715e&#34;&gt;-- 0
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 截取字符串
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;substring&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;-- rip
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 截取最后一个单词
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;substring&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Robust LDAP server for Java&amp;#39;&lt;/span&gt;, len(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Robust LDAP server for Java&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; charindex(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;, reverse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Robust LDAP server for Java&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, charindex(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;, reverse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Robust LDAP server for Java&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;))
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; ABC_1 &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; ABC
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 只复制表结构
@@ -2747,6 +2875,14 @@ kill SPID;
        &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; R.pid &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; P.id 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; R.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;17190&amp;#39;&lt;/span&gt; 
   &lt;span style=&#34;color:#66d9ef&#34;&gt;AND&lt;/span&gt; P.shopkeeper &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;89137&amp;#39;&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;比较两个表的数据&#34;&gt;比较两个表的数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- EXCEPT 相当于oracle里的 minus
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; CustId, CustName, CustAddress, CustPhone &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Original
+&lt;span style=&#34;color:#66d9ef&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; CustId, CustName, CustAddress, CustPhone &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Revised
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;生成随机数字&#34;&gt;生成随机数字&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 时间戳+7位随机数
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; DATEDIFF(s, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1970-01-01&amp;#39;&lt;/span&gt;, GETUTCDATE()) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;e7  &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;ABS&lt;/span&gt;(CHECKSUM(NEWID()))&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10000000&lt;/span&gt;)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/lvdongjie/p/7327006.html&#34;&gt;sqlserver 查询当前阻塞进程 并杀掉&lt;/a&gt;&lt;/li&gt;
@@ -2762,6 +2898,14 @@ kill SPID;
 &lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/sql/relational-databases/tables/modify-columns-database-engine?view=sql-server-ver16&#34;&gt;Modify Columns (Database Engine) - SQL Server | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/707335/t-sql-cast-versus-convert&#34;&gt;sql server - T-SQL Cast versus Convert - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql?view=sql-server-ver16&#34;&gt;CAST and CONVERT (Transact-SQL) - SQL Server | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sqlshack.com/compare-tables-sql-server/&#34;&gt;4 Ways to Insert Multiple Rows in Oracle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2847092/how-to-get-numeric-random-uniqueid-in-sql-server&#34;&gt;How to get numeric random uniqueid in SQL Server - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/8837225/unix-timestamp-in-sql-server&#34;&gt;UNIX_TIMESTAMP in SQL Server - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/xuelixue/p/8961418.html&#34;&gt;sql server 获取字符串中某字符最后一次出现的位置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/dlw4656/article/details/101989333&#34;&gt;Sql server中从字符串最后一个特殊字符截取到结尾_dlw4656的博客-CSDN博客&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/zh-cn/sql/t-sql/functions/charindex-transact-sql?view=sql-server-ver16&#34;&gt;CHARINDEX (Transact-SQL) - SQL Server | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -4166,6 +4310,8 @@ git cherry-pick -n bd61ad98^..ade56rq1
 git reset --hard HEAD^
 &lt;span style=&#34;color:#75715e&#34;&gt;# 强制回退到上上个commit(未push)&lt;/span&gt;
 git reset --hard HEAD~2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 回退到上一个commit, 但保留变更后的文件&lt;/span&gt;
+git reset HEAD^
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取消某个版本的修改&lt;/span&gt;
 git revert &amp;lt;commit hash&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用ssh连接git&#34;&gt;使用ssh连接git&lt;/h3&gt;
@@ -4215,6 +4361,14 @@ git checkout &amp;lt;deletion commit hash&amp;gt;~1 -- &amp;lt;filename&amp;gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# add file to gitignore`&lt;/span&gt;
 git add .gitignore&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
 git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Excluding&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改分支和远程分支名&#34;&gt;修改分支和远程分支名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git branch -m &amp;lt;old_name&amp;gt; &amp;lt;new_name&amp;gt;
+git push &amp;lt;remote&amp;gt; --delete &amp;lt;old_name&amp;gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# OR shorter&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# git push &amp;lt;remote&amp;gt; :&amp;lt;old_name&amp;gt;&lt;/span&gt;
+git branch --unset-upstream &amp;lt;new_name&amp;gt;
+git push &amp;lt;remote&amp;gt; &amp;lt;new_name&amp;gt;
+git push &amp;lt;remote&amp;gt; -u &amp;lt;new_name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;clone时指定用户名&#34;&gt;clone时指定用户名&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://username@github.com/username/repository.git
 
@@ -4240,6 +4394,8 @@ git clone https://username:token@github.com/username/repository.git
 &lt;li&gt;&lt;a href=&#34;https://scribu.net/wordpress/svn-patches-from-git.html&#34;&gt;svn patches from git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.git-tower.com/learn/git/faq/restoring-deleted-files&#34;&gt;Restoring deleted files in Git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.quora.com/How-do-I-kill-all-processes-with-the-same-name-in-Windows&#34;&gt;How to kill all processes with the same name in Windows - Quora&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git&#34;&gt;version control - How do I undo the most recent local commits in Git? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name&#34;&gt;repository - How do I rename both a Git local and remote branch name? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

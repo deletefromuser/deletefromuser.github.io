@@ -76,11 +76,11 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/">Home</a></li>
+<li><a href="/sql/">Sql</a></li>
 <li><a href="/tip/" class="active" aria-current="page">Tip</a></li>
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/web/">Web</a></li>
 <li><a href="/java/">Java</a></li>
-<li><a href="/sql/">Sql</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
@@ -120,6 +120,8 @@ git cherry-pick -n bd61ad98^..ade56rq1
 git reset --hard HEAD^
 <span style="color:#75715e"># 强制回退到上上个commit(未push)</span>
 git reset --hard HEAD~2
+<span style="color:#75715e"># 回退到上一个commit, 但保留变更后的文件</span>
+git reset HEAD^
 <span style="color:#75715e"># 取消某个版本的修改</span>
 git revert &lt;commit hash&gt;
 </code></pre></div><h3 id="使用ssh连接git">使用ssh连接git</h3>
@@ -169,6 +171,14 @@ git checkout &lt;deletion commit hash&gt;~1 -- &lt;filename&gt;
 <span style="color:#75715e"># add file to gitignore`</span>
 git add .gitignore<span style="color:#e6db74">`</span>
 git commit -m <span style="color:#e6db74">&#34;Excluding&#34;</span><span style="color:#e6db74">`</span>
+</code></pre></div><h3 id="修改分支和远程分支名">修改分支和远程分支名</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git branch -m &lt;old_name&gt; &lt;new_name&gt;
+git push &lt;remote&gt; --delete &lt;old_name&gt;
+<span style="color:#75715e"># OR shorter</span>
+<span style="color:#75715e"># git push &lt;remote&gt; :&lt;old_name&gt;</span>
+git branch --unset-upstream &lt;new_name&gt;
+git push &lt;remote&gt; &lt;new_name&gt;
+git push &lt;remote&gt; -u &lt;new_name&gt;
 </code></pre></div><h3 id="clone时指定用户名">clone时指定用户名</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://username@github.com/username/repository.git
 
@@ -194,6 +204,8 @@ git clone https://username:token@github.com/username/repository.git
 <li><a href="https://scribu.net/wordpress/svn-patches-from-git.html">svn patches from git</a></li>
 <li><a href="https://www.git-tower.com/learn/git/faq/restoring-deleted-files">Restoring deleted files in Git</a></li>
 <li><a href="https://www.quora.com/How-do-I-kill-all-processes-with-the-same-name-in-Windows">How to kill all processes with the same name in Windows - Quora</a></li>
+<li><a href="https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git">version control - How do I undo the most recent local commits in Git? - Stack Overflow</a></li>
+<li><a href="https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name">repository - How do I rename both a Git local and remote branch name? - Stack Overflow</a></li>
 </ol>
 
 </div>

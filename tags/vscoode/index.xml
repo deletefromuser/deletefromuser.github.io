@@ -17,11 +17,18 @@
       <description>&lt;h2 id=&#34;vscode&#34;&gt;VSCODE&lt;/h2&gt;
 &lt;h3 id=&#34;切换命令行posershell-git-bash&#34;&gt;切换命令行(PoserShell-&amp;gt;Git Bash)&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;CTRL + SHIFT + P后，输入Select Default Profile，选择bash即可&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;CTRL + SHIFT + P&lt;/code&gt;后，输入&lt;code&gt;Select Default Profile&lt;/code&gt;，选择bash即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;大小写转换&#34;&gt;大小写转换&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;CTRL + SHIFT + P&lt;/code&gt;后，输入upper, 选择&lt;code&gt;Transform to Uppercase&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;OR&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;CTRL + SHIFT + X&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://neutrondev.com/vs-code-integrate-git-bash-default-terminal/&#34;&gt;VS Code Integrate Git Bash as Default Terminal - Neutron Dev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/35184509/make-selected-block-of-text-uppercase&#34;&gt;visual studio code - Make selected block of text uppercase - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

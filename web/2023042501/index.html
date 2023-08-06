@@ -6,7 +6,7 @@
 <title>spring boot开发记录 – HA</title>
 <meta name="description" content="热部署 maven中添加下面的依赖 &amp;amp;lt;dependency&amp;amp;gt; &amp;amp;lt;groupId&amp;amp;gt;org.springframework.boot&amp;amp;lt;/groupId&amp;amp;gt; &amp;amp;lt;artifactId&amp;amp;gt;spring-boot-devtools&amp;amp;lt;/artifactId&amp;amp;gt; …">
 <meta name="created" content="2023-04-25T20:00:00+0800">
-<meta name="modified" content="2023-07-16T16:42:39+0800">
+<meta name="modified" content="2023-08-06T17:14:34+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "spring boot开发记录",
     "datePublished": "2023-04-25T20:00:00+08:00",
-    "dateModified": "2023-07-16T16:42:39+08:00",
+    "dateModified": "2023-08-06T17:14:34+08:00",
     "url" : "https://deletefromuser.github.io/web/2023042501/",
     "description": "热部署 maven中添加下面的依赖 \u0026amp;lt;dependency\u0026amp;gt; \u0026amp;lt;groupId\u0026amp;gt;org.springframework.boot\u0026amp;lt;/groupId\u0026amp;gt; \u0026amp;lt;artifactId\u0026amp;gt;spring-boot-devtools\u0026amp;lt;/artifactId\u0026amp;gt; …",
     "mainEntityOfPage": {
@@ -75,11 +75,11 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/">Home</a></li>
+<li><a href="/sql/">Sql</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/web/" class="active" aria-current="page">Web</a></li>
 <li><a href="/java/">Java</a></li>
-<li><a href="/sql/">Sql</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
@@ -120,19 +120,42 @@ JAVA_HOME<span style="color:#f92672">=</span>/opt/jdk8u265-b01
 </code></pre></div><h3 id="切换命令行java的jdk版本">切换命令行java的JDK版本</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 重点在于修改PATH环境变量</span>
 export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/c/Program Files/Eclipse Adoptium/jdk-17.0.4.8-hotspot/bin:</span>$PATH<span style="color:#e6db74">&#34;</span>
-</code></pre></div><p><strong>reference</strong></p>
+</code></pre></div><h3 id="序列化对象时的jackson设置">序列化对象时的jackson设置</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 不输出该字段
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@com.fasterxml.jackson.annotation.JsonIgnore</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> intValue<span style="color:#f92672">;</span>
+<span style="color:#75715e">// 设置日期的输出格式
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@com.fasterxml.jackson.annotation.JsonFormat</span><span style="color:#f92672">(</span>shape <span style="color:#f92672">=</span> JsonFormat<span style="color:#f92672">.</span><span style="color:#a6e22e">Shape</span><span style="color:#f92672">.</span><span style="color:#a6e22e">STRING</span><span style="color:#f92672">,</span> pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS&#39;Z&#39;&#34;</span><span style="color:#f92672">,</span> timezone <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;UTC&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">private</span> Date date<span style="color:#f92672">;</span>
+<span style="color:#75715e">// 忽略为null的字段
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@com.fasterxml.jackson.annotation.JsonInclude</span><span style="color:#f92672">(</span>Include<span style="color:#f92672">.</span><span style="color:#a6e22e">NON_NULL</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span>
+<span style="color:#f92672">{</span>
+  String bar<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+<span style="color:#75715e">// 解析日期格式输入
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@org.springframework.format.annotation.DateTimeFormat</span><span style="color:#f92672">(</span>pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">private</span> Date date<span style="color:#f92672">;</span>
+</code></pre></div><h3 id="输入中包含文件">输入中包含文件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 不使用json形式提交+@RequestBody, 改用传统form
+</span></code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://stackoverflow.com/questions/46144346/hot-swapping-in-spring-boot-in-visual-studio-code">Hot swapping in Spring Boot in Visual Studio Code</a></li>
 <li><a href="https://docs.spring.io/spring-boot/docs/1.5.22.RELEASE/reference/html/boot-features-logging.html">26. Logging</a></li>
 <li><a href="https://stackoverflow.com/questions/2503658/specify-jdk-for-maven-to-use">settings - Specify JDK for Maven to use - Stack Overflow</a></li>
 <li><a href="https://superuser.com/questions/821094/what-is-the-difference-between-set-env-declare-and-export-when-setting-a-varia">bash - What is the difference between set, env, declare and export when setting a variable in a Linux shell? - Super User</a></li>
+<li><a href="https://www.w3docs.com/snippets/java/date-format-mapping-to-json-jackson.html#:~:text=You%20can%20use%20the%20%40JsonFormat,serializing%20or%20deserializing%20using%20Jackson.&amp;text=This%20will%20format%20the%20date,'HH%3Amm%3Ass.">Date format Mapping to JSON Jackson</a></li>
+<li><a href="https://www.baeldung.com/jackson-ignore-properties-on-serialization">Jackson Ignore Properties on Marshalling | Baeldung</a></li>
+<li><a href="https://stackoverflow.com/questions/11757487/how-to-tell-jackson-to-ignore-a-field-during-serialization-if-its-value-is-null">java - How to tell Jackson to ignore a field during serialization if its value is null? - Stack Overflow</a></li>
+<li><a href="https://reflectoring.io/jackson/">All You Need To Know About JSON Parsing With Jackson</a></li>
+<li><a href="https://stackoverflow.com/questions/48051177/content-type-multipart-form-databoundary-charset-utf-8-not-supported">java - Content type &lsquo;multipart/form-data;boundary=&mdash;-&hellip;;charset=UTF-8&rsquo; not supported - Stack Overflow</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-07-16 16:42<br>
+Updated: 2023-08-06 17:14<br>
 Created: 2023-04-25 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"

@@ -439,6 +439,8 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;IF&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ISBLANK&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;,B1,A2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取得两个单元格的值相加&lt;/span&gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;A1&amp;amp;B2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 比较四列数据, 如果A1中的值在C列中存在(CX),且B1=DX则为1, 在C列存在但B1!=DX否则为0, 在C列不存在则为#N/A&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;IF&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;AND&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ISNUMBER&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;MATCH&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A1,C:C,0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;,B1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;VLOOKUP&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A1,C:D,2,0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;,1,0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://wangdoc.com/javascript/stdlib/array&#34;&gt;JavaScript 教程 &amp;gt; 标准库 &amp;gt; Array 对象&lt;/a&gt;&lt;/li&gt;
