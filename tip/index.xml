@@ -17,11 +17,18 @@
       <description>&lt;h2 id=&#34;vscode&#34;&gt;VSCODE&lt;/h2&gt;
 &lt;h3 id=&#34;切换命令行posershell-git-bash&#34;&gt;切换命令行(PoserShell-&amp;gt;Git Bash)&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;CTRL + SHIFT + P后，输入Select Default Profile，选择bash即可&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;CTRL + SHIFT + P&lt;/code&gt;后，输入&lt;code&gt;Select Default Profile&lt;/code&gt;，选择bash即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;大小写转换&#34;&gt;大小写转换&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;CTRL + SHIFT + P&lt;/code&gt;后，输入upper, 选择&lt;code&gt;Transform to Uppercase&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;OR&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;CTRL + SHIFT + X&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://neutrondev.com/vs-code-integrate-git-bash-default-terminal/&#34;&gt;VS Code Integrate Git Bash as Default Terminal - Neutron Dev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/35184509/make-selected-block-of-text-uppercase&#34;&gt;visual studio code - Make selected block of text uppercase - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -53,6 +60,14 @@
 &lt;p&gt;SELECT 2, 1, 2, 2, &amp;lsquo;&#39;, &amp;lsquo;&#39;, &amp;lsquo;TEST2&amp;rsquo;, &amp;lsquo;TEST2&amp;rsquo;, 1, &amp;lsquo;&#39;, sysdate, 222, NULL, NULL&lt;/p&gt;
 &lt;p&gt;UNION ALL&lt;/p&gt;
 &lt;p&gt;续写上面的语句，重复20次&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;把url转换成markdown链接&#34;&gt;把url转换成markdown链接&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/huangjiandong2012/p/4040030.html&#34;&gt;https://www.cnblogs.com/huangjiandong2012/p/4040030.html&lt;/a&gt;
+&lt;a href=&#34;https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html#session-mgmt&#34;&gt;https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html#session-mgmt&lt;/a&gt;
+&lt;a href=&#34;https://mtyurt.net/post/spring-expiring-all-sessions-of-a-user.html&#34;&gt;https://mtyurt.net/post/spring-expiring-all-sessions-of-a-user.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;访问这些网址, 获取title, 给我输出成下面这样的形式, 每个一行&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;1. [title](url)&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;google-bard&#34;&gt;Google Bard&lt;/h2&gt;
 &lt;h3 id=&#34;生成文章重点摘要&#34;&gt;生成文章重点摘要&lt;/h3&gt;
@@ -496,6 +511,8 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;IF&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ISBLANK&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;,B1,A2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取得两个单元格的值相加&lt;/span&gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;A1&amp;amp;B2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 比较四列数据, 如果A1中的值在C列中存在(CX),且B1=DX则为1, 在C列存在但B1!=DX否则为0, 在C列不存在则为#N/A&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;IF&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;AND&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ISNUMBER&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;MATCH&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A1,C:C,0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;,B1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;VLOOKUP&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A1,C:D,2,0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;,1,0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://wangdoc.com/javascript/stdlib/array&#34;&gt;JavaScript 教程 &amp;gt; 标准库 &amp;gt; Array 对象&lt;/a&gt;&lt;/li&gt;
@@ -580,6 +597,8 @@ git cherry-pick -n bd61ad98^..ade56rq1
 git reset --hard HEAD^
 &lt;span style=&#34;color:#75715e&#34;&gt;# 强制回退到上上个commit(未push)&lt;/span&gt;
 git reset --hard HEAD~2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 回退到上一个commit, 但保留变更后的文件&lt;/span&gt;
+git reset HEAD^
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取消某个版本的修改&lt;/span&gt;
 git revert &amp;lt;commit hash&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用ssh连接git&#34;&gt;使用ssh连接git&lt;/h3&gt;
@@ -629,6 +648,14 @@ git checkout &amp;lt;deletion commit hash&amp;gt;~1 -- &amp;lt;filename&amp;gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# add file to gitignore`&lt;/span&gt;
 git add .gitignore&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
 git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Excluding&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改分支和远程分支名&#34;&gt;修改分支和远程分支名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git branch -m &amp;lt;old_name&amp;gt; &amp;lt;new_name&amp;gt;
+git push &amp;lt;remote&amp;gt; --delete &amp;lt;old_name&amp;gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# OR shorter&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# git push &amp;lt;remote&amp;gt; :&amp;lt;old_name&amp;gt;&lt;/span&gt;
+git branch --unset-upstream &amp;lt;new_name&amp;gt;
+git push &amp;lt;remote&amp;gt; &amp;lt;new_name&amp;gt;
+git push &amp;lt;remote&amp;gt; -u &amp;lt;new_name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;clone时指定用户名&#34;&gt;clone时指定用户名&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://username@github.com/username/repository.git
 
@@ -654,6 +681,8 @@ git clone https://username:token@github.com/username/repository.git
 &lt;li&gt;&lt;a href=&#34;https://scribu.net/wordpress/svn-patches-from-git.html&#34;&gt;svn patches from git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.git-tower.com/learn/git/faq/restoring-deleted-files&#34;&gt;Restoring deleted files in Git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.quora.com/How-do-I-kill-all-processes-with-the-same-name-in-Windows&#34;&gt;How to kill all processes with the same name in Windows - Quora&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git&#34;&gt;version control - How do I undo the most recent local commits in Git? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name&#34;&gt;repository - How do I rename both a Git local and remote branch name? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

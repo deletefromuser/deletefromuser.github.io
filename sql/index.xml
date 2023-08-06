@@ -6,23 +6,59 @@
     <description>Recent content in Sql on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Jun 2023 19:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 06 Aug 2023 14:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/sql/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>sqlserver使用</title>
+      <title>sql使用memo</title>
       <link>/blog/sql/2023060301/</link>
-      <pubDate>Sat, 03 Jun 2023 19:00:00 +0800</pubDate>
+      <pubDate>Sun, 06 Aug 2023 14:00:00 +0800</pubDate>
       <guid>/blog/sql/2023060301/</guid>
-      <description>&lt;h3 id=&#34;比较两个表的数据&#34;&gt;比较两个表的数据&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- EXCEPT 相当于oracle里的 minus
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; CustId, CustName, CustAddress, CustPhone &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Original
-&lt;span style=&#34;color:#66d9ef&#34;&gt;EXCEPT&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; CustId, CustName, CustAddress, CustPhone &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Revised
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.sqlshack.com/compare-tables-sql-server/&#34;&gt;4 Ways to Insert Multiple Rows in Oracle&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+      <description>&lt;h3 id=&#34;count1-count-countcolumn区别&#34;&gt;count(1), count(*), count(column)区别&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;count(1)和count(&lt;em&gt;)是相同的, 但count(&lt;/em&gt;)代表的语义更明确&lt;/p&gt;
+&lt;p&gt;COUNT (&lt;!-- raw HTML omitted --&gt;) 统计非空值个数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;使用in时是否需要先distinct&#34;&gt;使用IN时是否需要先distinct&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不需要, distinct反而会降低性能&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;exists-vs-in&#34;&gt;EXISTS vs IN&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于目前的数据库优化, 对于可以替代的情况下, 性能没有区别&lt;/p&gt;
+&lt;p&gt;EXISTS 可以用来进行多列的比较, IN则不行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;多线程-乐观锁-悲观锁&#34;&gt;多线程, 乐观锁, 悲观锁&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当存在一条记录可能被很多人同时修改的时候, 需要考虑同步操作的问题,
+当不加锁无法达成目标时, 可以使用锁, 悲观锁由于需要锁定记录, 太影响性能, 优先考虑使用乐观锁&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;考虑同步更新库存的情况&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不加锁方案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;将库存数量放入更新条件中, 如果库存不足, 则更新结果数量为0, 再做相应处理&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Update&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; Stock &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; quantity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; quantity &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; ItemId&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;01&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; quantity &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;乐观锁方案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在处理的最开始先查询记录, 将更新时间(或者版本号)(即事先约定每次更新都要更新的字段)放入更新条件中, 如果更新结果数量为0, 则说明记录已被其他人修改过, 再做相应处理&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;UPDATE&lt;/span&gt; Stock &lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; quantity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;15&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;version&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;version&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; itemId &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;01&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;version&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;悲观锁方案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;处理的最开始先把记录锁住(SELECT FOR UPDATE), 处理完成后再放开&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/Should-I-use-DISTINCT-in-a-subquery-when-using-IN&#34;&gt;Should I use &amp;lsquo;DISTINCT&amp;rsquo; in a subquery when using &amp;lsquo;IN&amp;rsquo;? - Quora&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pretius.com/blog/difference-between-count-vs-count1-oracle/&#34;&gt;Count(*) vs Count(1) in Oracle: The ultimate comparison - Pretius&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/7124546/sql-best-practice-count1-or-count&#34;&gt;SQL Best Practice: count(1) or count(*) - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sqlinthewild.co.za/index.php/2009/04/14/on-counts/&#34;&gt;On Counts | SQL in the Wild&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sqlinthewild.co.za/index.php/2009/08/17/exists-vs-in/&#34;&gt;EXISTS vs IN | SQL in the Wild&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2065329/sql-server-in-vs-exists-performance&#34;&gt;SQL Server IN vs. EXISTS Performance - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/129329/optimistic-vs-pessimistic-locking&#34;&gt;Optimistic vs. Pessimistic locking - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.couchbase.com/blog/optimistic-or-pessimistic-locking-which-one-should-you-pick/&#34;&gt;Optimistic or Pessimistic Locking: Which One Should You Pick? | Couchbase Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@manjulapiyumal/effective-usage-oracle-row-locking-with-spring-jdbc-for-concurrent-data-processing-without-having-9ae55e4331a6&#34;&gt;Effective usage Oracle Row Locking with Spring JDBC for concurrent data processing without having… | by Manjula Piyumal | Medium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dba.stackexchange.com/questions/35812/why-is-optimistic-locking-faster-than-pessimistic-locking&#34;&gt;Why is optimistic locking faster than pessimistic locking? - Database Administrators Stack Exchange&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.techonthenet.com/oracle/select_for_update.php&#34;&gt;Oracle / PLSQL: FOR UPDATE Clause - TechOnTheNet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dba-oracle.com/t_select_update_skip_locked.htm&#34;&gt;SELECT FOR UPDATE SKIP LOCKED Tips (Oracle PL/SQL)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://terasolunaorg.github.io/guideline/public_review/ArchitectureInDetail/ExclusionControl.html&#34;&gt;Exclusion Control | Tutorials | Guidelines | Terasoluna Development Architecture 5.x&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium-company.com/mybatis-%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF/&#34;&gt;MyBatis 楽観ロック - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
     </item>
     
@@ -627,6 +663,17 @@ kill SPID;
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 字符串转换为数字类型
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;cast&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;123&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; int);
 &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;convert&lt;/span&gt;(int, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;123&amp;#39;&lt;/span&gt;);
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 翻转字符串
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; reverse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 查找特定字符串位置, 从1开始计数
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; charindex(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cri&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;-- 4
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; charindex(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;i&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;-- 9
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 区分大小写
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; charindex(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;crI&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COLLATE&lt;/span&gt; Latin1_General_CS_AS); &lt;span style=&#34;color:#75715e&#34;&gt;-- 0
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 截取字符串
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;substring&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;-- rip
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 截取最后一个单词
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;substring&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Robust LDAP server for Java&amp;#39;&lt;/span&gt;, len(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Robust LDAP server for Java&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; charindex(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;, reverse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Robust LDAP server for Java&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, charindex(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;, reverse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Robust LDAP server for Java&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;))
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制表&#34;&gt;复制表&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; ABC_1 &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; ABC
 &lt;span style=&#34;color:#75715e&#34;&gt;-- 只复制表结构
@@ -646,6 +693,14 @@ kill SPID;
        &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; R.pid &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; P.id 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; R.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;17190&amp;#39;&lt;/span&gt; 
   &lt;span style=&#34;color:#66d9ef&#34;&gt;AND&lt;/span&gt; P.shopkeeper &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;89137&amp;#39;&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;比较两个表的数据&#34;&gt;比较两个表的数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- EXCEPT 相当于oracle里的 minus
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; CustId, CustName, CustAddress, CustPhone &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Original
+&lt;span style=&#34;color:#66d9ef&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; CustId, CustName, CustAddress, CustPhone &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; Revised
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;生成随机数字&#34;&gt;生成随机数字&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 时间戳+7位随机数
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; DATEDIFF(s, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1970-01-01&amp;#39;&lt;/span&gt;, GETUTCDATE()) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;e7  &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;ABS&lt;/span&gt;(CHECKSUM(NEWID()))&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10000000&lt;/span&gt;)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/lvdongjie/p/7327006.html&#34;&gt;sqlserver 查询当前阻塞进程 并杀掉&lt;/a&gt;&lt;/li&gt;
@@ -661,6 +716,14 @@ kill SPID;
 &lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/sql/relational-databases/tables/modify-columns-database-engine?view=sql-server-ver16&#34;&gt;Modify Columns (Database Engine) - SQL Server | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/707335/t-sql-cast-versus-convert&#34;&gt;sql server - T-SQL Cast versus Convert - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql?view=sql-server-ver16&#34;&gt;CAST and CONVERT (Transact-SQL) - SQL Server | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sqlshack.com/compare-tables-sql-server/&#34;&gt;4 Ways to Insert Multiple Rows in Oracle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2847092/how-to-get-numeric-random-uniqueid-in-sql-server&#34;&gt;How to get numeric random uniqueid in SQL Server - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/8837225/unix-timestamp-in-sql-server&#34;&gt;UNIX_TIMESTAMP in SQL Server - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/xuelixue/p/8961418.html&#34;&gt;sql server 获取字符串中某字符最后一次出现的位置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/dlw4656/article/details/101989333&#34;&gt;Sql server中从字符串最后一个特殊字符截取到结尾_dlw4656的博客-CSDN博客&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/zh-cn/sql/t-sql/functions/charindex-transact-sql?view=sql-server-ver16&#34;&gt;CHARINDEX (Transact-SQL) - SQL Server | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

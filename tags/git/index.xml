@@ -27,6 +27,8 @@ git cherry-pick -n bd61ad98^..ade56rq1
 git reset --hard HEAD^
 &lt;span style=&#34;color:#75715e&#34;&gt;# 强制回退到上上个commit(未push)&lt;/span&gt;
 git reset --hard HEAD~2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 回退到上一个commit, 但保留变更后的文件&lt;/span&gt;
+git reset HEAD^
 &lt;span style=&#34;color:#75715e&#34;&gt;# 取消某个版本的修改&lt;/span&gt;
 git revert &amp;lt;commit hash&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用ssh连接git&#34;&gt;使用ssh连接git&lt;/h3&gt;
@@ -76,6 +78,14 @@ git checkout &amp;lt;deletion commit hash&amp;gt;~1 -- &amp;lt;filename&amp;gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# add file to gitignore`&lt;/span&gt;
 git add .gitignore&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
 git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Excluding&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改分支和远程分支名&#34;&gt;修改分支和远程分支名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git branch -m &amp;lt;old_name&amp;gt; &amp;lt;new_name&amp;gt;
+git push &amp;lt;remote&amp;gt; --delete &amp;lt;old_name&amp;gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# OR shorter&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# git push &amp;lt;remote&amp;gt; :&amp;lt;old_name&amp;gt;&lt;/span&gt;
+git branch --unset-upstream &amp;lt;new_name&amp;gt;
+git push &amp;lt;remote&amp;gt; &amp;lt;new_name&amp;gt;
+git push &amp;lt;remote&amp;gt; -u &amp;lt;new_name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;clone时指定用户名&#34;&gt;clone时指定用户名&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://username@github.com/username/repository.git
 
@@ -101,6 +111,8 @@ git clone https://username:token@github.com/username/repository.git
 &lt;li&gt;&lt;a href=&#34;https://scribu.net/wordpress/svn-patches-from-git.html&#34;&gt;svn patches from git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.git-tower.com/learn/git/faq/restoring-deleted-files&#34;&gt;Restoring deleted files in Git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.quora.com/How-do-I-kill-all-processes-with-the-same-name-in-Windows&#34;&gt;How to kill all processes with the same name in Windows - Quora&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git&#34;&gt;version control - How do I undo the most recent local commits in Git? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name&#34;&gt;repository - How do I rename both a Git local and remote branch name? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

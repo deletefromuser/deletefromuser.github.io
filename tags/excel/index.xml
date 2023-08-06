@@ -38,5 +38,263 @@
 </description>
     </item>
     
+    <item>
+      <title>工作笔记2016-2021</title>
+      <link>/blog/tip/2022120601/</link>
+      <pubDate>Tue, 06 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/tip/2022120601/</guid>
+      <description>&lt;h3 id=&#34;停止网页重定向&#34;&gt;停止网页重定向&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;window.&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;beforeunload&amp;#34;&lt;/span&gt;, () =&amp;gt; { &lt;span style=&#34;color:#66d9ef&#34;&gt;debugger&lt;/span&gt;; }, &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;js转换字符为unicode&#34;&gt;JS转换字符为UNICODE&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;escape&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;转换字符&amp;#34;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;replace&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;/%/g&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\\&amp;#34;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;toLowerCase&lt;/span&gt;();
+&lt;span style=&#34;color:#75715e&#34;&gt;// 十进制unicode字符码转换为字符
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;String.&lt;span style=&#34;color:#a6e22e&#34;&gt;fromCharCode&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;112&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;js获取一组元素取出属性并组合&#34;&gt;JS获取一组元素取出属性并组合&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 取得链接url，空格连接
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;[...document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelectorAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;[id=thumbnail]&amp;#39;&lt;/span&gt;)].&lt;span style=&#34;color:#a6e22e&#34;&gt;map&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;join&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;)
+Array.&lt;span style=&#34;color:#a6e22e&#34;&gt;prototype&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;slice&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;call&lt;/span&gt;(document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelectorAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;[id=thumbnail]&amp;#39;&lt;/span&gt;)).&lt;span style=&#34;color:#a6e22e&#34;&gt;map&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;join&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;// 取得链接url，换行连接
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;[...document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelectorAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;[id=thumbnail]&amp;#39;&lt;/span&gt;)].&lt;span style=&#34;color:#a6e22e&#34;&gt;map&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;reduce&lt;/span&gt;((&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt;) =&amp;gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\n&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt;;})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;db2-表异常解决办法&#34;&gt;db2 表异常解决办法&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;connect&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;to&lt;/span&gt; dbut &lt;span style=&#34;color:#66d9ef&#34;&gt;user&lt;/span&gt; tom &lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; password01
+&lt;span style=&#34;color:#66d9ef&#34;&gt;load&lt;/span&gt; query &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; ut.userinfo
+reorg &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; ut.userinfo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;db2-导出导入表数据&#34;&gt;db2 导出导入表数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;export &lt;span style=&#34;color:#66d9ef&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;userinfo_data.ixf &lt;span style=&#34;color:#66d9ef&#34;&gt;of&lt;/span&gt; ixf &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; ut.userinfo &lt;span style=&#34;color:#66d9ef&#34;&gt;fetch&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;first&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;rows&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;only&lt;/span&gt;
+
+import &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;userinfo_data.ixf &lt;span style=&#34;color:#66d9ef&#34;&gt;of&lt;/span&gt; ixf &lt;span style=&#34;color:#66d9ef&#34;&gt;insert&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;into&lt;/span&gt; ut.userinfonew
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;java取得文件行数&#34;&gt;java取得文件行数&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;Files&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lines&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Paths&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/path/file&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)).&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;根据wsdl文件生成代码&#34;&gt;根据wsdl文件生成代码&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;wsimport -s /path/result/ file:/path/userinfo.wsdl -wsdllocation file:/serverpath/userinfo.wsdl -encoding utf-8 -Xnocompile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;linux下查看特定文件的实时内容&#34;&gt;linux下查看特定文件的实时内容&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;tail -500f /path/result/info.log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ihs启动与停止配置规则删除特定cookie&#34;&gt;IHS启动与停止，配置规则删除特定cookie&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;/usr/IBM/HTTPServer/bin/apachectl -k start -f /usr/IBM/HTTPServer/conf/httpd.conf
+/usr/IBM/HTTPServer/bin/apachectl -k stop -f /usr/IBM/HTTPServer/conf/httpd.conf
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# /usr/IBM/HTTPServer/conf/httpd.conf&lt;/span&gt;
+Header edit Set-Cookie &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^(JESSIONID=).*&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$1&lt;span style=&#34;color:#e6db74&#34;&gt;;Path=/;Expires=Thu, 01 Jan 1970 00:00:00 GMT&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux发行版信息&#34;&gt;查看linux发行版信息&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cat /proc/version
+&lt;span style=&#34;color:#75715e&#34;&gt;# Linux version 5.4.0-132-generic (buildd@lcy02-amd64-059) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022&lt;/span&gt;
+uname -a
+&lt;span style=&#34;color:#75715e&#34;&gt;# Linux vu18-VirtualBox 5.4.0-132-generic #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux&lt;/span&gt;
+lsb_release -a
+&lt;span style=&#34;color:#75715e&#34;&gt;# No LSB modules are available.&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Distributor ID:	Ubuntu&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Description:	Ubuntu 20.04.5 LTS&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Release:	20.04&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Codename:	focal&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux发行版信息-1&#34;&gt;查看linux发行版信息&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cat /proc/version
+&lt;span style=&#34;color:#75715e&#34;&gt;# Linux version 5.4.0-132-generic (buildd@lcy02-amd64-059) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022&lt;/span&gt;
+uname -a
+&lt;span style=&#34;color:#75715e&#34;&gt;# Linux vu18-VirtualBox 5.4.0-132-generic #148-Ubuntu SMP Mon Oct 17 16:02:06 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux&lt;/span&gt;
+lsb_release -a
+&lt;span style=&#34;color:#75715e&#34;&gt;# No LSB modules are available.&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Distributor ID:	Ubuntu&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Description:	Ubuntu 20.04.5 LTS&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Release:	20.04&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Codename:	focal&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;计算文件hash值&#34;&gt;计算文件hash值&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;openssl sha1 /path/file
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vim操作&#34;&gt;vim操作&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 显示行数&lt;/span&gt;
+:set nu
+&lt;span style=&#34;color:#75715e&#34;&gt;# 搜索&lt;/span&gt;
+/keyword
+&lt;span style=&#34;color:#75715e&#34;&gt;# ENTER&lt;/span&gt;
+n &lt;span style=&#34;color:#75715e&#34;&gt;#to next occurrence&lt;/span&gt; 
+N &lt;span style=&#34;color:#75715e&#34;&gt;#to prev occurrence&lt;/span&gt; 
+&lt;span style=&#34;color:#75715e&#34;&gt;# 替换&lt;/span&gt;
+:s/article/tutorial/g &lt;span style=&#34;color:#75715e&#34;&gt;# 在当前行内全部替换&lt;/span&gt;
+:%s/article/tutorial/g &lt;span style=&#34;color:#75715e&#34;&gt;# 在当前文件内全部替换&lt;/span&gt;
+:%s/article/tutorial/gi &lt;span style=&#34;color:#75715e&#34;&gt;# 在当前文件内忽略大小写全部替换&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 删除字符&lt;/span&gt;
+x
+&lt;span style=&#34;color:#75715e&#34;&gt;# 剪切行，也可用作删除&lt;/span&gt;
+dd
+&lt;span style=&#34;color:#75715e&#34;&gt;# 复制行&lt;/span&gt;
+yy 或者 Y
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在当前行前粘贴&lt;/span&gt;
+P
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在当前行后粘贴&lt;/span&gt;
+p
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 注释多行代码&lt;/span&gt;
+Ctrl + V
+使用箭头选择多行
+Shift + i
+输入# 
+ESC + ESC
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 去掉注释&lt;/span&gt;
+Ctrl + V
+使用箭头选择多行
+x
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;find命令查找文件&#34;&gt;find命令查找文件&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 列出所有文件&lt;/span&gt;
+find . -type f
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找指定名字的文件，文件夹&lt;/span&gt;
+find . -name test.md
+find . -name *.md
+find . -regex &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.*.md&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 列出所有文件夹，层数1即当前目录&lt;/span&gt;
+find . -maxdepth &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -type d
+&lt;span style=&#34;color:#75715e&#34;&gt;# 列出所有层数大于10的文件夹&lt;/span&gt;
+find . -mindepth &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; -type d
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容&lt;/span&gt;
+find . -type f -exec perl -pi -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/public/private/g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
+find . -type f -exec sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/public/private/g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
+sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/# requirepass foobared/requirepass xxx/&amp;#39;&lt;/span&gt; /etc/redis/redis_6487.conf
+sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/# maxmemory &amp;lt;bytes&amp;gt;/maxmemory 52548800/&amp;#39;&lt;/span&gt; /etc/redis/redis_6487.conf
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容(包含/)&lt;/span&gt;
+find . -type f -exec perl -pi -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s#public#private#g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
+find . -type f -exec sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s#public#private#g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找最近被修改过的三个文件&lt;/span&gt;
+find . -type f -exec stat -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;%Y %n&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt; | sort -nr | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;NR==1,NR==3 {print $2}&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找最近时间段内被修改过的文件&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 180天&lt;/span&gt;
+find . -type f -mtime -180
+find . -type f -mtime -180 -exec ls -lrt &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 120分钟&lt;/span&gt;
+find . -type f -mmin -120 -exec ls -lrt &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 复制目录结构&lt;/span&gt;
+find . -type d &amp;gt; dirs.txt
+xargs mkdir -p &amp;lt; dirs.txt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找大于100m的文件&lt;/span&gt;
+find . -type f -size +100M
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;每隔一段时间执行一段命令&#34;&gt;每隔一段时间执行一段命令&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 每隔五秒钟打印一次磁盘空间信息&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; true; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; date; df -h; sleep 5; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; true; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; date; df -h | grep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/dev/sda1&amp;#39;&lt;/span&gt;; sleep 5; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -d 高亮变化的部分 -d 间隔(单位秒)&lt;/span&gt;
+watch -d -n &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt; df -h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用scp复制远程服务器到本地复制本地文件到远程服务器&#34;&gt;使用scp复制远程服务器到本地,复制本地文件到远程服务器&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;scp -r -P &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; tom@ip:/path/file ./
+scp -P &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; /local/path/file tom@ip:~/temp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制文件夹保持原来的权限和链接&#34;&gt;复制文件夹，保持原来的权限和链接&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cp -rpH /path/ ./
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;curl使用&#34;&gt;curl使用&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# -k 忽略证书错误，-c 显示cookie&lt;/span&gt;
+curl -k -c - https://www.baeldung.com/linux/vim-search-replace
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在未安装curl的机器上请求url&lt;/span&gt;
+perl -MLWP::Simple -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;getprint &amp;#39;https://www.baeldung.com/linux/vim-search-replace&amp;#39;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 依次请求多个url&lt;/span&gt;
+curl https://jsonplaceholder.typicode.com/todos/1 https://jsonplaceholder.typicode.com/todos/12
+&lt;span style=&#34;color:#75715e&#34;&gt;# 请求时使用用户名&lt;/span&gt;
+curl -u username http://example.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;检查机器支持的ssl版本&#34;&gt;检查机器支持的ssl版本&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;openssl ciphers -v | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; | sort | uniq
+&lt;span style=&#34;color:#75715e&#34;&gt;# 检查网站的ssl版本&lt;/span&gt;
+openssl s_client -connect bing.com:443
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;正则表达式&#34;&gt;正则表达式&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 大小写转换 
+# \U$1 \L$1 全部转换为大写，小写
+# \u$1 \l$1 首字母转换为大写，小写
+# \p{Lu} \p{Ll} 匹配大写，小写字母
+# USER_PET_NAME -&amp;gt; userPetName
+([a-zA-Z0-9]+)_([a-zA-Z0-9]+)_([a-zA-Z0-9]+) -&amp;gt; \L$1\u$2\u$3
+# USER_PET_NAME &amp;lt;- userPetName
+(\p{Ll}+)(\p{Lu}\p{Ll}+)(\p{Lu}\p{Ll}+) -&amp;gt; \U$1_$2_$3
+# 常用表达式
+\s 空白字符[ \f\n\r\t\v]，会匹配全角空格符
+\S 非空白字符[^ \f\n\r\t\v]
+\d 数字字符[0-9]，会匹配全角数字字符
+\D 非数字字符[^0-9]
+\w 包括下划线的任何单词字符[A-Za-z0-9_]，会匹配中文字符
+\W 非单词字符[^A-Za-z0-9_]
+# 正向肯定预查
+(?=pattern)
+(?:pattern)
+# 正向否定预查
+(?!pattern)
+# 反向肯定预查
+(?&amp;lt;=pattern)
+# 反向否定预查
+(?&amp;lt;!pattern)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;查看linux命令位置和内容&#34;&gt;查看linux命令位置和内容&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;whereis vim
+type -a vim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;文件中搜索字符串&#34;&gt;文件中搜索字符串&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# -i 忽略大小写&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -o 不输出整行，只输出符合搜索样式的部分&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -n 显示行数&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -A 显示检索结果行之后的特定行&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -B 显示检索结果行之前的特定行&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -e 指定检索字符串，可设置复数个&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -E 使用正则表达式&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -R 检索子目录&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -h 不显示文件名&lt;/span&gt;
+grep -ion &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;keyword&amp;#39;&lt;/span&gt; /path/file -A &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt; -B &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 使用正则表达式搜索&lt;/span&gt;
+egrep -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;public|private&amp;#39;&lt;/span&gt; /path/file
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在文件夹内特定后缀的文件中检索&lt;/span&gt;
+grep -r &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt; --include &lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;.yml /path/
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在压缩文件中检索（过去的log有时会被备份为gz）&lt;/span&gt;
+zgrep -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt; -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;another pattern&amp;#39;&lt;/span&gt; /path/*
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux进程&#34;&gt;查看linux进程&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 根据名字查找&lt;/span&gt;
+ps -ef | grep java
+&lt;span style=&#34;color:#75715e&#34;&gt;# 根据监听端口号&lt;/span&gt;
+lsof -i :8080
+&lt;span style=&#34;color:#75715e&#34;&gt;# 杀掉监听指定端口好的程序&lt;/span&gt;
+kill -9 &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;lsof -t -i:8080&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找正在使用某一个文件的进程&lt;/span&gt;
+fuser /path/file
+ps -ef | grep PID
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;解压缩&#34;&gt;解压缩&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Create archive.tar from files foo and bar.&lt;/span&gt;
+tar -cf archive.tar foo bar --exclude&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;my-base-dir/target&amp;#39;&lt;/span&gt; --exclude&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;my-base-dir/.git&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# List all files in archive.tar verbosely.&lt;/span&gt;
+tar -tvf archive.tar
+&lt;span style=&#34;color:#75715e&#34;&gt;# Extract all files from archive.tar.&lt;/span&gt;
+tar -xf archive.tar
+&lt;span style=&#34;color:#75715e&#34;&gt;# 提取tar包中的特定文件&lt;/span&gt;
+tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;excel函数使用&#34;&gt;Excel函数使用&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# google表格也支持下面的函数&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 搜索 L2 单元格内的内容在 I4:I15 区域内出现的次数&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;SUMPRODUCT&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;len&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;I4:I15&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;-len&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;SUBSTITUTE&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;I4:I15,L2,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)))&lt;/span&gt;/len&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;L2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 获取A2单元格内字符2右边的内容&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;RIGHT&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A4,len&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A4&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;-find&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2&amp;#34;&lt;/span&gt;,A4&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 获取A6单元格内字符2左边的内容&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;LEFT&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A6,find&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2&amp;#34;&lt;/span&gt;,A6&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;-1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 获取文件后缀名&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;UPPER&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;RIGHT&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;C10,len&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;C10&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;-find&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.&amp;#34;&lt;/span&gt;,C10&lt;span style=&#34;color:#f92672&#34;&gt;)))&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 获取所在列(E)所在单元格上面非空的单元格数量（也可从特定行(E1)开始计算）&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;counta&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;E1:INDIRECT&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;E&amp;#34;&lt;/span&gt; &amp;amp; ROW&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; - 1&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; + &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 获取所在列以外特定列(I)中最后一个非空值&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;ARRAY_CONSTRAIN&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ARRAYFORMULA&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;LOOKUP&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;2,1/&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;I:I&amp;lt;&amp;gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;,I:I&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;, 1, 1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 获取特定列(I)中(也适用于所在列)最后一个非空值&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;ARRAY_CONSTRAIN&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ARRAYFORMULA&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;LOOKUP&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;2,1/&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;INDIRECT&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;I1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;:INDIRECT&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;I&amp;#34;&lt;/span&gt; &amp;amp; ROW&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; - 1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;&amp;lt;&amp;gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;,INDIRECT&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;I1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;:INDIRECT&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;I&amp;#34;&lt;/span&gt; &amp;amp; ROW&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; - 1&lt;span style=&#34;color:#f92672&#34;&gt;)))&lt;/span&gt;, 1, 1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 获取特定单元格(A2)的值，如果为空，取另一个单元格(B1)的值&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;IF&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ISBLANK&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;,B1,A2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 取得两个单元格的值相加&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;A1&amp;amp;B2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 比较四列数据, 如果A1中的值在C列中存在(CX),且B1=DX则为1, 在C列存在但B1!=DX否则为0, 在C列不存在则为#N/A&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;IF&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;AND&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ISNUMBER&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;MATCH&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A1,C:C,0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;,B1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;VLOOKUP&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;A1,C:D,2,0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;,1,0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wangdoc.com/javascript/stdlib/array&#34;&gt;JavaScript 教程 &amp;gt; 标准库 &amp;gt; Array 对象&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/paul8339/p/9724738.html&#34;&gt;深入理解 sudo 与 su 之间的区别&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/73319/how-to-duplicate-a-whole-line-in-vim&#34;&gt;How to duplicate a whole line in Vim?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line&#34;&gt;How to replace a string in multiple files in linux command line&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.howtogeek.com/517098/linux-file-timestamps-explained-atime-mtime-and-ctime&#34;&gt;Linux File Timestamps Explained: atime, mtime, and ctime&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://exceljet.net/formulas/get-value-of-last-non-empty-cell&#34;&gt;Get value of last non-empty cell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://udemy.benesse.co.jp/business/office/lookup-function.html&#34;&gt;【エクセルのLOOKUP関数の使い方】VLOOKUP関数とLOOKUP関数の違いも&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ablebits.com/office-addins-blog/excel-lookup-function/&#34;&gt;Excel LOOKUP function with formula examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linuxshelltips.com/run-linux-command-periodically/&#34;&gt;How to Run a Command Periodically in Linux using Watch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A8%E9%9B%86&#34;&gt;正则表达式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions&#34;&gt;How can I grep recursively, but only in files with certain extensions?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/61461/how-to-extract-specific-files-from-tar-gz&#34;&gt;How to extract specific file(s) from tar.gz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/984204/shell-command-to-tar-directory-excluding-certain-files-folders&#34;&gt;Shell command to tar directory excluding certain files/folders&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://appuals.com/how-to-kill-process-on-port/&#34;&gt;How to Kill Process on Port?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim&#34;&gt;What&amp;rsquo;s a quick way to comment/uncomment lines in Vim?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

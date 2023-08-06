@@ -6,7 +6,7 @@
 <title>工作笔记2016-2021 – HA</title>
 <meta name="description" content="停止网页重定向 window.addEventListener(&amp;amp;#34;beforeunload&amp;amp;#34;, () =&amp;amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(&amp;amp;#34;转换字符&amp;amp;#34;).replace(/%/g, &amp;amp;#34;\\&amp;amp;#34;).toLowerCase(); …">
 <meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2023-07-09T00:18:06+0800">
+<meta name="modified" content="2023-08-06T13:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,10 +31,10 @@
     "@type": "WebPage",
     "headline": "工作笔记2016-2021",
     "datePublished": "2022-12-06T20:00:00+08:00",
-    "dateModified": "2023-07-09T00:18:06+08:00",
+    "dateModified": "2023-08-06T13:00:00+08:00",
     "url" : "/blog/tip/2022120601/",
     "description": "停止网页重定向 window.addEventListener(\u0026amp;#34;beforeunload\u0026amp;#34;, () =\u0026amp;gt; { debugger; }, false); JS转换字符为UNICODE escape(\u0026amp;#34;转换字符\u0026amp;#34;).replace(/%/g, \u0026amp;#34;\\\\\u0026amp;#34;).toLowerCase(); …",
-    "keywords": ["正则表达式","automation","linux","web","js","java","bash"],
+    "keywords": ["正则表达式","automation","linux","web","js","java","bash","excel"],
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -76,11 +76,11 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/tip/" class="active" aria-current="page">Tip</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/java/">Java</a></li>
-<li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
@@ -103,6 +103,7 @@
 Tags:
 <ul>
 <li><a href="/blog/tags/java/">java</a></li>
+<li><a href="/blog/tags/excel/">excel</a></li>
 <li><a href="/blog/tags/linux/">linux</a></li>
 <li><a href="/blog/tags/automation/">automation</a></li>
 <li><a href="/blog/tags/bash/">bash</a></li>
@@ -343,6 +344,8 @@ tar -zxvf &lt;tar filename&gt; &lt;file you want to extract&gt;
 <span style="color:#f92672">=</span>IF<span style="color:#f92672">(</span>ISBLANK<span style="color:#f92672">(</span>A2<span style="color:#f92672">)</span>,B1,A2<span style="color:#f92672">)</span>
 <span style="color:#75715e"># 取得两个单元格的值相加</span>
 <span style="color:#f92672">=</span>A1&amp;B2
+<span style="color:#75715e"># 比较四列数据, 如果A1中的值在C列中存在(CX),且B1=DX则为1, 在C列存在但B1!=DX否则为0, 在C列不存在则为#N/A</span>
+<span style="color:#f92672">=</span>IF<span style="color:#f92672">(</span>AND<span style="color:#f92672">(</span>ISNUMBER<span style="color:#f92672">(</span>MATCH<span style="color:#f92672">(</span>A1,C:C,0<span style="color:#f92672">))</span>,B1<span style="color:#f92672">=</span>VLOOKUP<span style="color:#f92672">(</span>A1,C:D,2,0<span style="color:#f92672">))</span>,1,0<span style="color:#f92672">)</span>
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://wangdoc.com/javascript/stdlib/array">JavaScript 教程 &gt; 标准库 &gt; Array 对象</a></li>
@@ -366,7 +369,7 @@ tar -zxvf &lt;tar filename&gt; &lt;file you want to extract&gt;
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-07-09 00:18<br>
+Updated: 2023-08-06 13:00<br>
 Created: 2022-12-06 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
