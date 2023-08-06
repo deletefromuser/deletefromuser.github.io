@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>sql使用memo – HA</title>
-<meta name="description" content="count(1), count(*), count(column)区别  count(1)和count()是相同的, 但count()代表的语义更明确 COUNT () 统计非空值个数  使用IN时是否需要先distinct  不需要, distinct反而会降低性能  EXISTS vs IN  由于目前的数据库优化, 对于可以替代的情 …">
+<meta name="description" content="count(1), count(*), count(column)区别  count(1)和count(*)是相同的, 但count(*)代表的语义更明确 COUNT(&amp;amp;lt;expression&amp;amp;gt;) 统计非空值个数  使用IN时是否需要先distinct  不需要, distinct反而会降低性能  EXISTS vs IN  由 …">
 <meta name="created" content="2023-08-06T14:00:00+0800">
-<meta name="modified" content="2023-08-06T17:14:34+0800">
+<meta name="modified" content="2023-08-06T17:23:27+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,9 +31,9 @@
     "@type": "WebPage",
     "headline": "sql使用memo",
     "datePublished": "2023-08-06T14:00:00+08:00",
-    "dateModified": "2023-08-06T17:14:34+08:00",
+    "dateModified": "2023-08-06T17:23:27+08:00",
     "url" : "https://deletefromuser.github.io/sql/2023060301/",
-    "description": "count(1), count(*), count(column)区别  count(1)和count()是相同的, 但count()代表的语义更明确 COUNT () 统计非空值个数  使用IN时是否需要先distinct  不需要, distinct反而会降低性能  EXISTS vs IN  由于目前的数据库优化, 对于可以替代的情 …",
+    "description": "count(1), count(*), count(column)区别  count(1)和count(*)是相同的, 但count(*)代表的语义更明确 COUNT(\u0026amp;lt;expression\u0026amp;gt;) 统计非空值个数  使用IN时是否需要先distinct  不需要, distinct反而会降低性能  EXISTS vs IN  由 …",
     "keywords": ["sql","sqlserver"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -110,8 +110,8 @@ Tags:
 <div class="content">
 <h3 id="count1-count-countcolumn区别">count(1), count(*), count(column)区别</h3>
 <blockquote>
-<p>count(1)和count(<em>)是相同的, 但count(</em>)代表的语义更明确</p>
-<p>COUNT (<!-- raw HTML omitted -->) 统计非空值个数</p>
+<p><code>count(1)</code>和<code>count(*)</code>是相同的, 但<code>count(*)</code>代表的语义更明确</p>
+<p><code>COUNT(&lt;expression&gt;)</code> 统计非空值个数</p>
 </blockquote>
 <h3 id="使用in时是否需要先distinct">使用IN时是否需要先distinct</h3>
 <blockquote>
@@ -158,7 +158,7 @@ Tags:
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-08-06 17:14<br>
+Updated: 2023-08-06 17:23<br>
 Created: 2023-08-06 14:00
 </p>
 </div><script src="https://utteranc.es/client.js"
