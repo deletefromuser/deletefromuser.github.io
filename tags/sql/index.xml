@@ -16,8 +16,8 @@
       <guid>/blog/sql/2023060301/</guid>
       <description>&lt;h3 id=&#34;count1-count-countcolumn区别&#34;&gt;count(1), count(*), count(column)区别&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;count(1)和count(&lt;em&gt;)是相同的, 但count(&lt;/em&gt;)代表的语义更明确&lt;/p&gt;
-&lt;p&gt;COUNT (&lt;!-- raw HTML omitted --&gt;) 统计非空值个数&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;count(1)&lt;/code&gt;和&lt;code&gt;count(*)&lt;/code&gt;是相同的, 但&lt;code&gt;count(*)&lt;/code&gt;代表的语义更明确&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;COUNT(&amp;lt;expression&amp;gt;)&lt;/code&gt; 统计非空值个数&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;使用in时是否需要先distinct&#34;&gt;使用IN时是否需要先distinct&lt;/h3&gt;
 &lt;blockquote&gt;
