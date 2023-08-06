@@ -54,7 +54,7 @@
 &lt;li&gt;&lt;a href=&#34;https://www.couchbase.com/blog/optimistic-or-pessimistic-locking-which-one-should-you-pick/&#34;&gt;Optimistic or Pessimistic Locking: Which One Should You Pick? | Couchbase Blog&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/@manjulapiyumal/effective-usage-oracle-row-locking-with-spring-jdbc-for-concurrent-data-processing-without-having-9ae55e4331a6&#34;&gt;Effective usage Oracle Row Locking with Spring JDBC for concurrent data processing without having… | by Manjula Piyumal | Medium&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://dba.stackexchange.com/questions/35812/why-is-optimistic-locking-faster-than-pessimistic-locking&#34;&gt;Why is optimistic locking faster than pessimistic locking? - Database Administrators Stack Exchange&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.techonthenet.com/oracle/select_for_update.php&#34;&gt;Oracle / PLSQL: FOR UPDATE Clause - TechOnTheNet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.shift-the-oracle.com/sql/select-for-update.html&#34;&gt;SELECT FOR UPDATE - オラクル・Oracle SQL 入門&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.dba-oracle.com/t_select_update_skip_locked.htm&#34;&gt;SELECT FOR UPDATE SKIP LOCKED Tips (Oracle PL/SQL)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://terasolunaorg.github.io/guideline/public_review/ArchitectureInDetail/ExclusionControl.html&#34;&gt;Exclusion Control | Tutorials | Guidelines | Terasoluna Development Architecture 5.x&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium-company.com/mybatis-%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF/&#34;&gt;MyBatis 楽観ロック - Qiita&lt;/a&gt;&lt;/li&gt;
