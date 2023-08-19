@@ -1485,6 +1485,23 @@ sudo reboot
        &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;;
     };
 };
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;使用js写入文件并下载&#34;&gt;使用js写入文件并下载&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;downloadToFile&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;content&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;filename&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;contentType&lt;/span&gt;) =&amp;gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;file&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Blob&lt;/span&gt;([&lt;span style=&#34;color:#a6e22e&#34;&gt;content&lt;/span&gt;], { &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;contentType&lt;/span&gt; });
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;URL&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;createObjectURL&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;file&lt;/span&gt;);
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;download&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;filename&lt;/span&gt;;
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;click&lt;/span&gt;();
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;URL&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;revokeObjectURL&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;);
+};
+
+document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;#btnSave&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;click&amp;#39;&lt;/span&gt;, () =&amp;gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;textArea&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;textarea&amp;#39;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;downloadToFile&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;textArea&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;my-new-file.txt&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;text/plain&amp;#39;&lt;/span&gt;);
+});
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/57992901/html2canvas-not-rendering-properly-overlapping-color&#34;&gt;html2canvas not rendering properly (overlapping color)&lt;/a&gt;&lt;/li&gt;
@@ -1493,6 +1510,7 @@ sudo reboot
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/21860633/download-canvas-to-image-in-ie-using-javascript&#34;&gt;Download canvas to Image in IE using Javascript&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2509934/how-can-i-get-an-element-from-within-a-frameset-frame-using-javascript&#34;&gt;How can I get an element from within a frameset frame using JavaScript?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/5697605/limit-the-size-of-a-file-upload-html-input-element&#34;&gt;Limit the size of a file upload (html input element) - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://robkendal.co.uk/blog/2020-04-17-saving-text-to-client-side-file-using-vanilla-js/&#34;&gt;Saving text to a client-side file using vanilla JS&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1620,6 +1638,22 @@ sudo reboot
 &lt;li&gt;加油, 加入葱蒜爆香后, 加入花菜翻炒&lt;/li&gt;
 &lt;li&gt;加入盐, 酱油, 适当翻炒&lt;/li&gt;
 &lt;li&gt;加入少量热水, 盖上锅盖焖, 中间适当翻炒, 直至花菜熟&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;西兰花炒鸡肉&#34;&gt;西兰花炒鸡肉&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;西兰花切小块焯水, 鸡肉焯水后撕成条, 准备葱姜蒜切末&lt;/li&gt;
+&lt;li&gt;加油, 加入鸡肉翻炒, 再加入盐,蚝油, 再加入葱姜蒜翻炒后, 加入西兰花翻炒&lt;/li&gt;
+&lt;li&gt;加入盐, 酱油, 适当翻炒, 最后加入味精即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;香菇炒肉&#34;&gt;香菇炒肉&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;香菇切片, 猪肉切条, 准备葱姜蒜切末&lt;/li&gt;
+&lt;li&gt;加油, 加入猪肉翻炒, 再加入盐,蚝油, 再加入葱姜蒜翻炒后, 加入香菇翻炒&lt;/li&gt;
+&lt;li&gt;加入盐, 酱油, 适当翻炒, 最后加入味精即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;日式牛肉盖浇饭&#34;&gt;日式牛肉盖浇饭&lt;/h3&gt;
@@ -2195,6 +2229,13 @@ sudo timedatectl set-timezone America/New_York
 sudo rm -rf /etc/localtime
 sudo ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;America/New_York&amp;#39;&lt;/span&gt; &amp;gt; /etc/timezone
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;解析url时指定dns&#34;&gt;解析url时指定dns&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;nslookup isc.org 8.8.8.8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看占用端口号的进程&#34;&gt;查看占用端口号的进程&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# linux&lt;/span&gt;
+lsof -i :8080
+&lt;span style=&#34;color:#75715e&#34;&gt;# windows git bash&lt;/span&gt;
+netstat -ano | grep &lt;span style=&#34;color:#ae81ff&#34;&gt;8080&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
@@ -2208,6 +2249,7 @@ sudo echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;America/New_York&am
 &lt;li&gt;&lt;a href=&#34;https://www.cyberciti.biz/faq/linux-show-groups-for-user/&#34;&gt;Linux Show The Groups a User Is In&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/&#34;&gt;How to Set or Change the Time Zone in Linux | Linuxize&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes&#34;&gt;date - Docker Container time &amp;amp; timezone (will not reflect changes) - Server Fault&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nslookup.io/learning/how-to-specify-a-dns-server-in-nslookup/&#34;&gt;How to specify a DNS server in nslookup?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
