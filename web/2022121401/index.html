@@ -6,7 +6,7 @@
 <title>JS库使用问题汇总 – HA</title>
 <meta name="description" content="html2canvas 使html2canvas 在ie11中工作 &amp;amp;lt;script src=&amp;amp;#34;https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js&amp;amp;#34;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt; html2canvas 在ie11中渲染出不明 …">
 <meta name="created" content="2022-12-14T20:00:00+0800">
-<meta name="modified" content="2023-07-08T20:33:10+0800">
+<meta name="modified" content="2023-08-19T17:06:35+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "JS库使用问题汇总",
     "datePublished": "2022-12-14T20:00:00+08:00",
-    "dateModified": "2023-07-08T20:33:10+08:00",
+    "dateModified": "2023-08-19T17:06:35+08:00",
     "url" : "https://deletefromuser.github.io/web/2022121401/",
     "description": "html2canvas 使html2canvas 在ie11中工作 \u0026amp;lt;script src=\u0026amp;#34;https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js\u0026amp;#34;\u0026amp;gt;\u0026amp;lt;/script\u0026amp;gt; html2canvas 在ie11中渲染出不明 …",
     "mainEntityOfPage": {
@@ -146,6 +146,23 @@
        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
     };
 };
+</code></pre></div><h2 id="使用js写入文件并下载">使用js写入文件并下载</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">downloadToFile</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">content</span>, <span style="color:#a6e22e">filename</span>, <span style="color:#a6e22e">contentType</span>) =&gt; {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;a&#39;</span>);
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">file</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Blob</span>([<span style="color:#a6e22e">content</span>], { <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">contentType</span> });
+
+  <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">href</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">URL</span>.<span style="color:#a6e22e">createObjectURL</span>(<span style="color:#a6e22e">file</span>);
+  <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">download</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">filename</span>;
+  <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">click</span>();
+
+  <span style="color:#a6e22e">URL</span>.<span style="color:#a6e22e">revokeObjectURL</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">href</span>);
+};
+
+document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#btnSave&#39;</span>).<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, () =&gt; {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">textArea</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;textarea&#39;</span>);
+
+  <span style="color:#a6e22e">downloadToFile</span>(<span style="color:#a6e22e">textArea</span>.<span style="color:#a6e22e">value</span>, <span style="color:#e6db74">&#39;my-new-file.txt&#39;</span>, <span style="color:#e6db74">&#39;text/plain&#39;</span>);
+});
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://stackoverflow.com/questions/57992901/html2canvas-not-rendering-properly-overlapping-color">html2canvas not rendering properly (overlapping color)</a></li>
@@ -154,13 +171,14 @@
 <li><a href="https://stackoverflow.com/questions/21860633/download-canvas-to-image-in-ie-using-javascript">Download canvas to Image in IE using Javascript</a></li>
 <li><a href="https://stackoverflow.com/questions/2509934/how-can-i-get-an-element-from-within-a-frameset-frame-using-javascript">How can I get an element from within a frameset frame using JavaScript?</a></li>
 <li><a href="https://stackoverflow.com/questions/5697605/limit-the-size-of-a-file-upload-html-input-element">Limit the size of a file upload (html input element) - Stack Overflow</a></li>
+<li><a href="https://robkendal.co.uk/blog/2020-04-17-saving-text-to-client-side-file-using-vanilla-js/">Saving text to a client-side file using vanilla JS</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-07-08 20:33<br>
+Updated: 2023-08-19 17:06<br>
 Created: 2022-12-14 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
