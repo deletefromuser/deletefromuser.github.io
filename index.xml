@@ -1292,11 +1292,19 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
 &lt;blockquote&gt;
 &lt;p&gt;先后买了2T，4T的西数移动硬盘，最近两年使用的时候忘记拔掉的时候先弹出了，2T的因为满了前段时间都是用的4T的，慢慢开始卡顿，等意识到是坏道太多，已经来不及了，完全无法读取了，几百块钱+3t多数据买个教训&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;debian虚拟机安装失败debian虚拟机安装成功后无法启动&#34;&gt;debian虚拟机安装失败/debian虚拟机安装成功后无法启动&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;从官网下载iso镜像文件的时候, 不要使用首页的几百M的, 要下载3个多G的版本&lt;/p&gt;
+&lt;p&gt;virtualbox新建虚拟机指定硬盘大小要不小于32GB&lt;/p&gt;
+&lt;p&gt;安装过程中, 选择grub boot loader的时候记得选择硬盘&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://oneplusbbs.com/thread-4576245-1.html&#34;&gt;重启后 无法弹出输入法界面 卡解锁屏幕&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://community.oneplus.com/thread/874511&#34;&gt;Can&amp;rsquo;t unlock ater reboot - missing keyboard and can&amp;rsquo;t type password&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1127395/how-can-i-reset-or-restart-the-windows-10-simplified-chinese-ime-when-the-%E8%8B%B1&#34;&gt;How can I “reset” or “restart” the Windows 10 Simplified Chinese IME when the 英/中 stops responding?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/43415270/fail-to-install-software-during-debian-installation-on-virtualbox&#34;&gt;Fail to install software during Debian installation on Virtualbox - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://itsfoss.com/install-debian-easily/&#34;&gt;How to Easily Install Debian Linux&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1383,6 +1391,10 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
 &lt;blockquote&gt;
 &lt;p&gt;Those who do not move, do not notice their chains.&lt;/p&gt;
 &lt;p&gt;by &lt;em&gt;Rosa Luxemburg&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;History without discomfort is propaganda.&lt;/p&gt;
+&lt;p&gt;by &lt;em&gt;&lt;a href=&#34;https://mastodon.social/@ned@mstdn.ca/110900050265409017&#34;&gt;https://mastodon.social/@ned@mstdn.ca/110900050265409017&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
     </item>
@@ -1651,7 +1663,7 @@ document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&l
 &lt;h3 id=&#34;香菇炒肉&#34;&gt;香菇炒肉&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
-&lt;li&gt;香菇切片, 猪肉切条, 准备葱姜蒜切末&lt;/li&gt;
+&lt;li&gt;香菇切片焯水(直接炒菜会发酸), 猪肉切条, 准备葱姜蒜切末&lt;/li&gt;
 &lt;li&gt;加油, 加入猪肉翻炒, 再加入盐,蚝油, 再加入葱姜蒜翻炒后, 加入香菇翻炒&lt;/li&gt;
 &lt;li&gt;加入盐, 酱油, 适当翻炒, 最后加入味精即可&lt;/li&gt;
 &lt;/ol&gt;
@@ -1680,6 +1692,10 @@ document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&l
 &lt;li&gt;醒好后揉面，没有气孔后，面团分成几份，擀成饼状&lt;/li&gt;
 &lt;li&gt;醒20min后，上电饼铛烙熟即可&lt;/li&gt;
 &lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;鸡蛋煎饼&#34;&gt;鸡蛋煎饼&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;小葱末, 鸡蛋, 面粉, 水, 盐, 混合搅匀后上电饼铛煎即可, 3min可煎好一个&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;肉夹馍&#34;&gt;肉夹馍&lt;/h3&gt;
 &lt;blockquote&gt;
