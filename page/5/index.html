@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-08-06T14:00:00+0800">
-<meta name="modified" content="2023-08-27T01:03:38+0800">
+<meta name="created" content="2023-08-29T19:00:00+0800">
+<meta name="modified" content="2023-08-30T00:11:17+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,10 +73,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/web/">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/watch/">Watch</a></li>
-<li><a href="/web/">Web</a></li>
 <li><a href="/java/">Java</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/read/">Read</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/web/2022111402/">JavaScript POST方式打开新窗口</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-14T20:00:00&#43;08:00">2022-11-14 20:00</time>
+</div>
+
+</header>
+<div class="content">
+openWindowWithPost(url, { a: &#34;1&#34;, b: 2, }); function openWindowWithPost(url, data) { var form = document.createElement(&#34;form&#34;); form.target = &#34;UserInfo&#34;; form.method = &#34;POST&#34;; form.action = url; for (var key in data) { var input = document.createElement(&#34;input&#34;); input.type = &#34;hidden&#34;; input.name = key; input.value = data[key]; form.appendChild(input); } document.body.appendChild(form); window.open(&#39;&#39;, &#39;UserInfo&#39;,&#34;width=1000,height=550,left=100,top=100&#34;); form.submit(); document.body.removeChild(form); } reference javascript-open-new-window-posting-parameters Window.open and pass parameters by post method How to Filter or Map Nodelists with JavaScript?
+</div>
+</article>
 
 <article class="list-view list-view--bash">
 <header>
@@ -211,19 +224,6 @@ Install ‘Oracle VM VirtualBox Extension Pack’ Attaching webcam to guest OS V
 </header>
 <div class="content">
 查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; 查看表结构 SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = &#39;yourTableName&#39;; 日期 -- 当前时
-</div>
-</article>
-
-<article class="list-view list-view--watch">
-<header>
-<h2 class="title title-submitted"><a href="/watch/2022100101/">2022年4季度</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-10-10T12:00:00&#43;08:00">2022-10-10 12:00</time>
-</div>
-
-</header>
-<div class="content">
-动画 風都探偵 ベルセルク 黄金時代篇 Noumin Kanren(两话弃) 陰の実力者になりたくて! モブサイコ100 S03 機動戦士ガンダム 水星の魔女 うたわれるもの二
 </div>
 </article>
 

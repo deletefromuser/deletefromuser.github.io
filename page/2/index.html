@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-08-06T14:00:00+0800">
-<meta name="modified" content="2023-08-27T01:03:38+0800">
+<meta name="created" content="2023-08-29T19:00:00+0800">
+<meta name="modified" content="2023-08-30T00:11:17+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,10 +73,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/web/">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/watch/">Watch</a></li>
-<li><a href="/web/">Web</a></li>
 <li><a href="/java/">Java</a></li>
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/read/">Read</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/web/2023052101/">jenkins使用记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-05-21T18:00:00&#43;08:00">2023-05-21 18:00</time>
+</div>
+
+</header>
+<div class="content">
+使用docker部署jenkins # 1 docker network create jenkins # 2 为了能在docker的jenkins实例中运行docker命令 docker run \ --name jenkins-docker \ --rm \ --detach \ --privileged \ --network jenkins
+</div>
+</article>
 
 <article class="list-view list-view--web">
 <header>
@@ -211,19 +224,6 @@ chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 r
 </header>
 <div class="content">
 双花括号初始化 有时候写测试代码，需要新建hashmap或者list并赋值的时候，可以用双花括号初始化简化代码，但是据说有内存泄漏的风险，所以
-</div>
-</article>
-
-<article class="list-view list-view--java">
-<header>
-<h2 class="title title-submitted"><a href="/java/2023070202/">记一次多线程异常</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-02-18T20:00:00&#43;08:00">2023-02-18 20:00</time>
-</div>
-
-</header>
-<div class="content">
-问题描述 有一个抽数据库数据写入文件的定时任务，发现有些文件数据不全，导入一半就结束了。 实现说明 service是共用的同一个，在Quartz类
 </div>
 </article>
 
