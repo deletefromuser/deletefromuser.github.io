@@ -6,8 +6,98 @@
     <description>Recent content in web on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Dec 2022 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 29 Aug 2023 19:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>在启用Cloudflare DNS Proxy的情况下使用certbot自动更新letsencrypt证书</title>
+      <link>/blog/web/2023082901/</link>
+      <pubDate>Tue, 29 Aug 2023 19:00:00 +0800</pubDate>
+      <guid>/blog/web/2023082901/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;结论是不能, 但是Cloudflare提供了API可以开关DNS Proxy, certbot提供了hook&lt;/p&gt;
+&lt;p&gt;于是就可以先关闭DNS Proxy, 再更新证书, 完成后再开启DNS Proxy&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;获取cloudflare-dns记录id&#34;&gt;获取Cloudflare DNS记录ID&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 区域ID 可以在Cloudflare中站点主页的右下角找到, 并且有申请API令牌的快捷入口&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 返回的结果是json, 找到A记录和CNAME记录的ID&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-list-dns-records&lt;/span&gt;
+curl -X GET &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://api.cloudflare.com/client/v4/zones/[区域ID zoneId]/dns_records&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;     -H &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization: Bearer [API令牌]&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;     -H &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Content-Type:application/json&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;关闭dns-proxy&#34;&gt;关闭DNS Proxy&lt;/h3&gt;
+&lt;p&gt;把下面脚本写入&lt;code&gt;/etc/letsencrypt/renewal-hooks/pre/pre.sh&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-patch-dns-record&lt;/span&gt;
+curl -sS --request PATCH &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --url https://api.cloudflare.com/client/v4/zones/&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;区域ID zoneId&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;/dns_records/&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;A记录ID&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --header &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --header &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization: Bearer [API令牌]&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --data &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;content&amp;#34;: &amp;#34;112.112.113.114&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;name&amp;#34;: &amp;#34;example.com&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;proxied&amp;#34;: false,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;type&amp;#34;: &amp;#34;A&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;comment&amp;#34;: &amp;#34;&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;tags&amp;#34;: [
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  ],
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;ttl&amp;#34;: 3600
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&amp;#39;&lt;/span&gt; &amp;gt; test.log
+curl --request PATCH &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --url https://api.cloudflare.com/client/v4/zones/&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;区域ID zoneId&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;/dns_records/&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;CNAME记录ID&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --header &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --header &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization: Bearer [API令牌]&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --data &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;content&amp;#34;: &amp;#34;example.com&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;name&amp;#34;: &amp;#34;www&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;proxied&amp;#34;: false,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;type&amp;#34;: &amp;#34;CNAME&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;comment&amp;#34;: &amp;#34;&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;tags&amp;#34;: [
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  ],
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;ttl&amp;#34;: 3600
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 等待五分半, 确保DNS Proxy关闭起效&lt;/span&gt;
+sleep &lt;span style=&#34;color:#ae81ff&#34;&gt;330&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;开启dns-proxy&#34;&gt;开启DNS Proxy&lt;/h3&gt;
+&lt;p&gt;把下面脚本写入&lt;code&gt;/etc/letsencrypt/renewal-hooks/post/post.sh&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-patch-dns-record&lt;/span&gt;
+curl -sS --request PATCH &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --url https://api.cloudflare.com/client/v4/zones/&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;区域ID zoneId&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;/dns_records/&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;A记录ID&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --header &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --header &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization: Bearer [API令牌]&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --data &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;content&amp;#34;: &amp;#34;112.112.113.114&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;name&amp;#34;: &amp;#34;example.com&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;proxied&amp;#34;: true,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;type&amp;#34;: &amp;#34;A&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;comment&amp;#34;: &amp;#34;&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;tags&amp;#34;: [
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  ],
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;ttl&amp;#34;: 3600
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&amp;#39;&lt;/span&gt; &amp;gt; test.log
+curl --request PATCH &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --url https://api.cloudflare.com/client/v4/zones/&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;区域ID zoneId&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;/dns_records/&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;CNAME记录ID&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --header &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --header &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization: Bearer [API令牌]&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --data &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;content&amp;#34;: &amp;#34;example.com&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;name&amp;#34;: &amp;#34;www&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;proxied&amp;#34;: true,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;type&amp;#34;: &amp;#34;CNAME&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;comment&amp;#34;: &amp;#34;&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;tags&amp;#34;: [
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  ],
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#34;ttl&amp;#34;: 3600
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;测试&#34;&gt;测试&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;certbot renew --dry-run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://certbot.eff.org/instructions?ws=nginx&amp;amp;os=ubuntufocal&#34;&gt;certbot instructions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://eff-certbot.readthedocs.io/en/stable/using.html#setting-up-automated-renewal&#34;&gt;Setting up automated renewal&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>工作笔记2016-2021</title>

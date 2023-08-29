@@ -3,8 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/tags/dns/</loc>
+    <lastmod>2023-08-30T00:11:17+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/</loc>
-    <lastmod>2023-08-27T01:03:38+08:00</lastmod>
+    <lastmod>2023-08-30T00:11:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/</loc>
+    <lastmod>2023-08-30T00:11:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/web/</loc>
+    <lastmod>2023-08-30T00:11:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/web/</loc>
+    <lastmod>2023-08-30T00:11:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/web/2023082901/</loc>
+    <lastmod>2023-08-30T00:11:17+08:00</lastmod>
   </url>
   
   <url>
@@ -25,11 +50,6 @@
   <url>
     <loc>/blog/sql/2023060301/</loc>
     <lastmod>2023-08-06T17:26:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/tags/</loc>
-    <lastmod>2023-08-27T01:03:38+08:00</lastmod>
   </url>
   
   <url>
@@ -65,11 +85,6 @@
   <url>
     <loc>/blog/tags/hugo/</loc>
     <lastmod>2023-07-05T22:01:20+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/web/</loc>
-    <lastmod>2023-08-19T17:06:35+08:00</lastmod>
   </url>
   
   <url>
@@ -413,11 +428,6 @@
   </url>
   
   <url>
-    <loc>/blog/tags/web/</loc>
-    <lastmod>2023-08-06T13:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/tip/2022120601/</loc>
     <lastmod>2023-08-06T13:00:00+08:00</lastmod>
   </url>
@@ -439,7 +449,7 @@
   
   <url>
     <loc>/blog/web/2022111501/</loc>
-    <lastmod>2023-08-13T21:52:28+08:00</lastmod>
+    <lastmod>2023-08-30T00:11:17+08:00</lastmod>
   </url>
   
   <url>

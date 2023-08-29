@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>在启用Cloudflare DNS Proxy的情况下使用certbot自动更新letsencrypt证书 – HA</title>
+<meta name="description" content=" 结论是不能, 但是Cloudflare提供了API可以开关DNS Proxy, certbot提供了hook 于是就可以先关闭DNS Proxy, 再更新证书, 完成后再开启DNS Proxy  获取Cloudflare DNS记录ID # 区域ID 可以在Cloudflare中站点主页的右下角找到, 并且有申请API令牌的快捷入口 # …">
+<meta name="created" content="2023-08-29T19:00:00+0800">
+<meta name="modified" content="2023-08-30T00:11:17+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="在启用Cloudflare DNS Proxy的情况下使用certbot自动更新letsencrypt证书">
+<meta property="og:url" content="/blog/web/2023082901/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/web/2023082901/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "在启用Cloudflare DNS Proxy的情况下使用certbot自动更新letsencrypt证书",
+    "datePublished": "2023-08-29T19:00:00+08:00",
+    "dateModified": "2023-08-30T00:11:17+08:00",
+    "url" : "/blog/web/2023082901/",
+    "description": " 结论是不能, 但是Cloudflare提供了API可以开关DNS Proxy, certbot提供了hook 于是就可以先关闭DNS Proxy, 再更新证书, 完成后再开启DNS Proxy  获取Cloudflare DNS记录ID # 区域ID 可以在Cloudflare中站点主页的右下角找到, 并且有申请API令牌的快捷入口 # …",
+    "keywords": ["web","dns"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/web/" class="active" aria-current="page">Web</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/cs/">CS</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--web">
+<header>
+<h1 class="title title-submitted">在启用Cloudflare DNS Proxy的情况下使用certbot自动更新letsencrypt证书</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-08-29T19:00:00&#43;08:00">2023-08-29 19:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/dns/">dns</a></li>
+<li><a href="/blog/tags/web/">web</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<blockquote>
+<p>结论是不能, 但是Cloudflare提供了API可以开关DNS Proxy, certbot提供了hook</p>
+<p>于是就可以先关闭DNS Proxy, 再更新证书, 完成后再开启DNS Proxy</p>
+</blockquote>
+<h3 id="获取cloudflare-dns记录id">获取Cloudflare DNS记录ID</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 区域ID 可以在Cloudflare中站点主页的右下角找到, 并且有申请API令牌的快捷入口</span>
+<span style="color:#75715e"># 返回的结果是json, 找到A记录和CNAME记录的ID</span>
+<span style="color:#75715e"># https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-list-dns-records</span>
+curl -X GET <span style="color:#e6db74">&#34;https://api.cloudflare.com/client/v4/zones/[区域ID zoneId]/dns_records&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>     -H <span style="color:#e6db74">&#34;Authorization: Bearer [API令牌]&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>     -H <span style="color:#e6db74">&#34;Content-Type:application/json&#34;</span>
+</code></pre></div><h3 id="关闭dns-proxy">关闭DNS Proxy</h3>
+<p>把下面脚本写入<code>/etc/letsencrypt/renewal-hooks/pre/pre.sh</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-patch-dns-record</span>
+curl -sS --request PATCH <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --url https://api.cloudflare.com/client/v4/zones/<span style="color:#f92672">[</span>区域ID zoneId<span style="color:#f92672">]</span>/dns_records/<span style="color:#f92672">[</span>A记录ID<span style="color:#f92672">]</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#34;Authorization: Bearer [API令牌]&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --data <span style="color:#e6db74">&#39;{
+</span><span style="color:#e6db74">  &#34;content&#34;: &#34;112.112.113.114&#34;,
+</span><span style="color:#e6db74">  &#34;name&#34;: &#34;example.com&#34;,
+</span><span style="color:#e6db74">  &#34;proxied&#34;: false,
+</span><span style="color:#e6db74">  &#34;type&#34;: &#34;A&#34;,
+</span><span style="color:#e6db74">  &#34;comment&#34;: &#34;&#34;,
+</span><span style="color:#e6db74">  &#34;tags&#34;: [
+</span><span style="color:#e6db74">  ],
+</span><span style="color:#e6db74">  &#34;ttl&#34;: 3600
+</span><span style="color:#e6db74">}&#39;</span> &gt; test.log
+curl --request PATCH <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --url https://api.cloudflare.com/client/v4/zones/<span style="color:#f92672">[</span>区域ID zoneId<span style="color:#f92672">]</span>/dns_records/<span style="color:#f92672">[</span>CNAME记录ID<span style="color:#f92672">]</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#34;Authorization: Bearer [API令牌]&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --data <span style="color:#e6db74">&#39;{
+</span><span style="color:#e6db74">  &#34;content&#34;: &#34;example.com&#34;,
+</span><span style="color:#e6db74">  &#34;name&#34;: &#34;www&#34;,
+</span><span style="color:#e6db74">  &#34;proxied&#34;: false,
+</span><span style="color:#e6db74">  &#34;type&#34;: &#34;CNAME&#34;,
+</span><span style="color:#e6db74">  &#34;comment&#34;: &#34;&#34;,
+</span><span style="color:#e6db74">  &#34;tags&#34;: [
+</span><span style="color:#e6db74">  ],
+</span><span style="color:#e6db74">  &#34;ttl&#34;: 3600
+</span><span style="color:#e6db74">}&#39;</span>
+<span style="color:#75715e"># 等待五分半, 确保DNS Proxy关闭起效</span>
+sleep <span style="color:#ae81ff">330</span>
+</code></pre></div><h3 id="开启dns-proxy">开启DNS Proxy</h3>
+<p>把下面脚本写入<code>/etc/letsencrypt/renewal-hooks/post/post.sh</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-patch-dns-record</span>
+curl -sS --request PATCH <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --url https://api.cloudflare.com/client/v4/zones/<span style="color:#f92672">[</span>区域ID zoneId<span style="color:#f92672">]</span>/dns_records/<span style="color:#f92672">[</span>A记录ID<span style="color:#f92672">]</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#34;Authorization: Bearer [API令牌]&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --data <span style="color:#e6db74">&#39;{
+</span><span style="color:#e6db74">  &#34;content&#34;: &#34;112.112.113.114&#34;,
+</span><span style="color:#e6db74">  &#34;name&#34;: &#34;example.com&#34;,
+</span><span style="color:#e6db74">  &#34;proxied&#34;: true,
+</span><span style="color:#e6db74">  &#34;type&#34;: &#34;A&#34;,
+</span><span style="color:#e6db74">  &#34;comment&#34;: &#34;&#34;,
+</span><span style="color:#e6db74">  &#34;tags&#34;: [
+</span><span style="color:#e6db74">  ],
+</span><span style="color:#e6db74">  &#34;ttl&#34;: 3600
+</span><span style="color:#e6db74">}&#39;</span> &gt; test.log
+curl --request PATCH <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --url https://api.cloudflare.com/client/v4/zones/<span style="color:#f92672">[</span>区域ID zoneId<span style="color:#f92672">]</span>/dns_records/<span style="color:#f92672">[</span>CNAME记录ID<span style="color:#f92672">]</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#34;Authorization: Bearer [API令牌]&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --data <span style="color:#e6db74">&#39;{
+</span><span style="color:#e6db74">  &#34;content&#34;: &#34;example.com&#34;,
+</span><span style="color:#e6db74">  &#34;name&#34;: &#34;www&#34;,
+</span><span style="color:#e6db74">  &#34;proxied&#34;: true,
+</span><span style="color:#e6db74">  &#34;type&#34;: &#34;CNAME&#34;,
+</span><span style="color:#e6db74">  &#34;comment&#34;: &#34;&#34;,
+</span><span style="color:#e6db74">  &#34;tags&#34;: [
+</span><span style="color:#e6db74">  ],
+</span><span style="color:#e6db74">  &#34;ttl&#34;: 3600
+</span><span style="color:#e6db74">}&#39;</span>
+</code></pre></div><h3 id="测试">测试</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">certbot renew --dry-run
+</code></pre></div><p><strong>reference</strong></p>
+<ol>
+<li><a href="https://certbot.eff.org/instructions?ws=nginx&amp;os=ubuntufocal">certbot instructions</a></li>
+<li><a href="https://eff-certbot.readthedocs.io/en/stable/using.html#setting-up-automated-renewal">Setting up automated renewal</a></li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-08-30 00:11<br>
+Created: 2023-08-29 19:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

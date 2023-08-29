@@ -6,8 +6,8 @@
 <title>web – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/tags/web/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2022-12-06T20:00:00+0800">
-<meta name="modified" content="2023-08-06T13:00:00+0800">
+<meta name="created" content="2023-08-29T19:00:00+0800">
+<meta name="modified" content="2023-08-30T00:11:17+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,10 +73,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
-<li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/read/">Read</a></li>
@@ -93,6 +93,19 @@
 <h1 class="title">web</h1>
 
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/blog/web/2023082901/">在启用Cloudflare DNS Proxy的情况下使用certbot自动更新letsencrypt证书</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-08-29T19:00:00&#43;08:00">2023-08-29 19:00</time>
+</div>
+
+</header>
+<div class="content">
+结论是不能, 但是Cloudflare提供了API可以开关DNS Proxy, certbot提供了hook 于是就可以先关闭DNS Proxy, 再更新证书, 完成后再开启
+</div>
+</article>
 
 <article class="list-view list-view--tip">
 <header>
