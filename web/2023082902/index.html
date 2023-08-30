@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>使用Cloudflare &#43; Gmail创建自定义邮件地址, 收发邮件 – HA</title>
+<meta name="description" content="使用Cloudflare的电子邮件路由功能接收邮件 进入站点 -&amp;amp;gt; 电子邮件 -&amp;amp;gt; 电子邮件路由 -&amp;amp;gt; 创建, 设置下自定义邮件地址和转发邮箱地址即可 使用Gmail以自定义邮件地址发送邮件 Gmail -&amp;amp;gt; 设置 -&amp;amp;gt; 全部设置 -&amp;amp;gt; 账号和导入 -&amp;amp;gt; 名字 -&amp;amp;gt; …">
+<meta name="created" content="2023-08-29T19:00:00+0800">
+<meta name="modified" content="2023-08-30T23:54:14+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="使用Cloudflare &#43; Gmail创建自定义邮件地址, 收发邮件">
+<meta property="og:url" content="https://deletefromuser.github.io/web/2023082902/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/web/2023082902/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "使用Cloudflare + Gmail创建自定义邮件地址, 收发邮件",
+    "datePublished": "2023-08-29T19:00:00+08:00",
+    "dateModified": "2023-08-30T23:54:14+08:00",
+    "url" : "https://deletefromuser.github.io/web/2023082902/",
+    "description": "使用Cloudflare的电子邮件路由功能接收邮件 进入站点 -\u0026amp;gt; 电子邮件 -\u0026amp;gt; 电子邮件路由 -\u0026amp;gt; 创建, 设置下自定义邮件地址和转发邮箱地址即可 使用Gmail以自定义邮件地址发送邮件 Gmail -\u0026amp;gt; 设置 -\u0026amp;gt; 全部设置 -\u0026amp;gt; 账号和导入 -\u0026amp;gt; 名字 -\u0026amp;gt; …",
+    "keywords": ["web","dns","email"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/web/" class="active" aria-current="page">Web</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/cs/">CS</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--web">
+<header>
+<h1 class="title title-submitted">使用Cloudflare &#43; Gmail创建自定义邮件地址, 收发邮件</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-08-29T19:00:00&#43;08:00">2023-08-29 19:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/dns/">dns</a></li>
+<li><a href="https://deletefromuser.github.io/tags/email/">email</a></li>
+<li><a href="https://deletefromuser.github.io/tags/web/">web</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="使用cloudflare的电子邮件路由功能接收邮件">使用Cloudflare的电子邮件路由功能接收邮件</h3>
+<p>进入站点 -&gt; 电子邮件 -&gt; 电子邮件路由 -&gt; 创建, 设置下自定义邮件地址和转发邮箱地址即可</p>
+<h3 id="使用gmail以自定义邮件地址发送邮件">使用Gmail以自定义邮件地址发送邮件</h3>
+<p>Gmail -&gt; 设置 -&gt; 全部设置 -&gt; 账号和导入 -&gt; 名字 -&gt; 添加其他的电子邮箱地址</p>
+<ol>
+<li>输入名字和在Cloudflare上创建的自定义邮寄地址, 下一步</li>
+<li>依次输入smtp.gmail.com, 端口号无需修改, gmail邮箱地址@前的部分, gmail密码即google账户密码(如果开启了2FA, 会登陆失败, 这时需要设置一个APP密码, 后述), 点确定没问题即可</li>
+</ol>
+<h3 id="设置google-app密码">设置google app密码</h3>
+<p>点击头像进入账户 -&gt; 安全 -&gt; 两步验证 -&gt; app密码 -&gt; 生成即可</p>
+<h3 id="其他疑难杂症">其他疑难杂症</h3>
+<h4 id="还是收不到邮件">还是收不到邮件!</h4>
+<p>看看垃圾箱</p>
+<h4 id="还是收不到邮件-1">还是收不到邮件!!</h4>
+<p>在DNS记录里添加下面值的TXT记录</p>
+<p><code>v=spf1 [IP ADDRESS] include:_spf.google.com include:[DOMAIN] ~all</code></p>
+<p><strong>reference</strong></p>
+<ol>
+<li><a href="https://prantalks.com/how-to-create-free-business-email-using-cloudflare-and-use-smtp-on-gmail/">Send mail using Cloudflare email address</a></li>
+<li><a href="https://stackoverflow.com/questions/60701936/error-invalid-login-application-specific-password-required">node.js - Error: Invalid login: Application-specific password required - Stack Overflow</a></li>
+<li><a href="https://support.google.com/accounts/answer/185833?hl=en">Create &amp; use app passwords</a></li>
+<li><a href="https://support.google.com/googlecloud/answer/10756302">I need to set up SPF on my domain to send emails with Gmail, not receive</a></li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-08-30 23:54<br>
+Created: 2023-08-29 19:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
