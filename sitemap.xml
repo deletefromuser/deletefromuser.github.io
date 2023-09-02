@@ -3,22 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/tags/gfw/</loc>
+    <lastmod>2023-09-02T17:23:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
+    <lastmod>2023-09-02T17:23:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/</loc>
+    <lastmod>2023-09-02T17:23:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/</loc>
+    <lastmod>2023-09-02T17:23:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/v2ray/</loc>
+    <lastmod>2023-09-02T17:23:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/2023090201/</loc>
+    <lastmod>2023-09-02T17:23:08+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/tags/dns/</loc>
     <lastmod>2023-08-30T23:54:14+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/tags/email/</loc>
-    <lastmod>2023-08-30T23:54:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/</loc>
-    <lastmod>2023-08-30T23:54:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/tags/</loc>
     <lastmod>2023-08-30T23:54:14+08:00</lastmod>
   </url>
   
@@ -60,11 +80,6 @@
   <url>
     <loc>/blog/sql/2023060301/</loc>
     <lastmod>2023-08-06T17:26:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/tip/</loc>
-    <lastmod>2023-08-06T17:14:34+08:00</lastmod>
   </url>
   
   <url>

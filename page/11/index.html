@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-08-29T19:00:00+0800">
-<meta name="modified" content="2023-08-30T23:54:14+0800">
+<meta name="created" content="2023-09-02T15:00:00+0800">
+<meta name="modified" content="2023-09-02T17:23:08+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,9 +73,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
-<li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--prob">
+<header>
+<h2 class="title title-submitted"><a href="/blog/prob/2017031201/">MS-Windows下Emacs显示中文卡頓</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-12T01:33:58&#43;08:00">2017-03-12 01:33</time>
+</div>
+
+</header>
+<div class="content">
+MS-Windows下Emacs显示中文卡頓 emacs顯示中文有bug，更換一下默認字體就好了 Options-&gt;Set Default Font ps:看wiki的時候發現很多搞笑的話，
+</div>
+</article>
 
 <article class="list-view list-view--prob">
 <header>
@@ -211,19 +224,6 @@ ubuntu系統安裝 下載系統鏡像並製作U盘啟動盤 插入，按下開�
 </header>
 <div class="content">
 用網線連接連接兩台電腦進行文件傳輸 修改兩台電腦的本地連接設置，ipv4設置到一個網段下 關閉防火牆 在高級共享設置中啟用網絡發現 連接網線 將要傳輸
-</div>
-</article>
-
-<article class="list-view list-view--sql">
-<header>
-<h2 class="title title-submitted"><a href="/blog/sql/2017022301/">sqlserver row_number() 函數的用法</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-02-23T01:33:58&#43;08:00">2017-02-23 01:33</time>
-</div>
-
-</header>
-<div class="content">
-sqlserver row_number() 函數的用法 select * from fruit_month_price; select * , row_number() over (partition by name order by year, month) as sn from fruit_month_price order by name,year,month 上面代碼中意為以字段name分組，每組內部以字段year、month（默認升序）
 </div>
 </article>
 

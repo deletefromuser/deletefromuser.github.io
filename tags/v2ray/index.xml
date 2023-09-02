@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>V2Ray on HA</title>
+    <link>/blog/tags/v2ray/</link>
+    <description>Recent content in V2Ray on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Sep 2023 15:00:00 +0800</lastBuildDate>
+    <atom:link href="/blog/tags/v2ray/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>V2Ray &#43; WebSocket &#43; TLS &#43; CloudFlare配置代理</title>
+      <link>/blog/tip/2023090201/</link>
+      <pubDate>Sat, 02 Sep 2023 15:00:00 +0800</pubDate>
+      <guid>/blog/tip/2023090201/</guid>
+      <description>&lt;h3 id=&#34;1-使用docker安装-v2ray&#34;&gt;1. 使用docker安装 V2Ray&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;准备工作&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;安装docker&lt;/li&gt;
+&lt;li&gt;找个目录, cd进去, 新建&lt;code&gt;config.json&lt;/code&gt;文件, 写入下列内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;inbounds&amp;#34;&lt;/span&gt;: [{
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;port&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10086&lt;/span&gt;,
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;因为还要用&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Nginx&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;反代，这里直接监听本地就行&lt;/span&gt;
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;listen&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;127.0.0.1&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;protocol&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;vmess&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;settings&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;clients&amp;#34;&lt;/span&gt;: [
+        {
+          &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;用户&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;UUID，自己随机弄一个&lt;/span&gt;
+          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;23ad6b10-8d1a-40f7-8ad0-e3e35cd38297&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,
+          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;alterId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;
+        }
+      ]
+    },
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;streamSettings&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;指定底层传输方式为&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;WebSocket&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;network&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ws&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;wsSettings&amp;#34;&lt;/span&gt;: {
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;在哪个路径上提供&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;WS&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;服务，可自定义&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/whatever&amp;#34;&lt;/span&gt;
+      }
+    }
+  }],
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;outbounds&amp;#34;&lt;/span&gt;: [{
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;protocol&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;freedom&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;settings&amp;#34;&lt;/span&gt;: {}
+  },{
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;protocol&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blackhole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;settings&amp;#34;&lt;/span&gt;: {},
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;tag&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blocked&amp;#34;&lt;/span&gt;
+  }],
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;routing&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;rules&amp;#34;&lt;/span&gt;: [
+      {
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;默认规则，禁止访问服务器内网&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;field&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;ip&amp;#34;&lt;/span&gt;: [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;geoip:private&amp;#34;&lt;/span&gt;],
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;outboundTag&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blocked&amp;#34;&lt;/span&gt;
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-运行-v2ray&#34;&gt;2. 运行 V2Ray&lt;/h3&gt;
+&lt;p&gt;在1中的文件夹内运行下列命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker run -d --name v2ray -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PWD&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/config.json:/etc/v2ray/config.json -p 10086:10086 v2fly/v2fly-core:v5.4.1 run -c /etc/v2ray/config.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-配置-nginx&#34;&gt;3. 配置 Nginx&lt;/h3&gt;
+&lt;p&gt;在nginx的配置中添加下列内容&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;location /whatever {
+    proxy_redirect off;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection &amp;quot;upgrade&amp;quot;;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    set $is_v2ray 0;
+    if ($http_upgrade = &amp;quot;websocket&amp;quot;) {
+        set $is_v2ray 1;
+    }
+
+    if ($is_v2ray = 1) {
+        # 仅当请求为 WebSocket 时才反代到 V2Ray
+        proxy_pass http://127.0.0.1:10086;
+    }
+
+    if ($is_v2ray = 0) {
+        # 否则显示正常网页
+        rewrite ^/(.*)$ /mask-page last;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;完成后测试&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -i http://127.0.0.1:10086/whatever
+&lt;span style=&#34;color:#75715e&#34;&gt;# 400 Bad Request 则为配置成功&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-配置-cloudflare&#34;&gt;4. 配置 CloudFlare&lt;/h3&gt;
+&lt;p&gt;使用cloudflare dns, 并开启dns proxy&lt;/p&gt;
+&lt;p&gt;完成后测试&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 安装wscat, `sudo npm install -g wscat`&lt;/span&gt;
+wscat -c wss://example.com/whatever
+&lt;span style=&#34;color:#75715e&#34;&gt;# Connected (press CTRL+C to quit) 则为成功&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-配置-v2rayn-客户端&#34;&gt;5. 配置 V2RayN 客户端&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/v2rayN_setting.png&#34; alt=&#34;V2RayN 客户端截图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://printempw.github.io/v2ray-ws-tls-cloudflare/&#34;&gt;搭建备用梯子：V2Ray + WebSocket + TLS + CloudFlare - PRIN BLOG&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@coorpee/docker-v2ray-caddy-3e484d6c84bc&#34;&gt;Docker v2ray + caddy. 说明 | by Coorpee | Medium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/v2fly/v2ray-core/discussions/1508&#34;&gt;failed to read response header &amp;gt; websocket: close 1000 (normal)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
