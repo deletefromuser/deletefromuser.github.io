@@ -188,7 +188,17 @@ kill SPID;
 </code></pre></div><h3 id="生成随机数字">生成随机数字</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 时间戳+7位随机数
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> DATEDIFF(s, <span style="color:#e6db74">&#39;1970-01-01&#39;</span>, GETUTCDATE()) <span style="color:#f92672">*</span> <span style="color:#ae81ff">1</span>e7  <span style="color:#f92672">+</span> (<span style="color:#66d9ef">ABS</span>(CHECKSUM(NEWID()))<span style="color:#f92672">%</span> <span style="color:#ae81ff">10000000</span>)
-</code></pre></div><p><strong>reference</strong></p>
+</code></pre></div><h3 id="导出表的ddl-包括index">导出表的DDL, 包括INDEX</h3>
+<h4 id="方法1">方法1</h4>
+<ol>
+<li>Microsoft SQL Management tool -&gt; Tools/Options/SQL Server Object Explorer/Scripting/Script Indexes -&gt; set to true</li>
+<li>find table -&gt; Script Table as -&gt; Create to</li>
+</ol>
+<h4 id="方法2">方法2</h4>
+<ol>
+<li>Microsoft SQL Management tool -&gt; Tasks -&gt; Generate Scripts</li>
+</ol>
+<p><strong>reference</strong></p>
 <ul>
 <li><a href="https://www.cnblogs.com/lvdongjie/p/7327006.html">sqlserver 查询当前阻塞进程 并杀掉</a></li>
 <li><a href="https://stackoverflow.com/questions/59899979/how-to-batch-insert-sql-server">How to Batch INSERT SQL Server?</a></li>
@@ -211,6 +221,7 @@ kill SPID;
 <li><a href="https://www.cnblogs.com/xuelixue/p/8961418.html">sql server 获取字符串中某字符最后一次出现的位置</a></li>
 <li><a href="https://blog.csdn.net/dlw4656/article/details/101989333">Sql server中从字符串最后一个特殊字符截取到结尾_dlw4656的博客-CSDN博客</a></li>
 <li><a href="https://learn.microsoft.com/zh-cn/sql/t-sql/functions/charindex-transact-sql?view=sql-server-ver16">CHARINDEX (Transact-SQL) - SQL Server | Microsoft Learn</a></li>
+<li><a href="https://stackoverflow.com/questions/652148/how-to-copy-indexes-from-one-table-to-another-in-sql-server">How to copy indexes from one table to another in SQL Server - Stack Overflow</a></li>
 </ul>
 
 </div>

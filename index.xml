@@ -1037,11 +1037,20 @@ ssh user@remote-server /path/to/script.sh
 OuterClass&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;InnerClass&lt;/span&gt; innerObject &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; outerObject&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;InnerClass&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;初始化静态内部类&#34;&gt;初始化静态内部类&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;StaticNestedClass staticNestedObject &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; StaticNestedClass&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;list和array转换&#34;&gt;List和Array转换&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// List -&amp;gt; Array
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;Foo&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; array &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; list&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;toArray&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Foo&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;]);&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// Array -&amp;gt; List
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;asList&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; String&lt;span style=&#34;color:#f92672&#34;&gt;[]{&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;})&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// 用一个值覆盖array中的所有元素
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;fill&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;array&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/java-double-brace-initialization&#34;&gt;Java Double Brace Initialization&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.jesperdj.com/2016/07/19/dont-use-the-double-brace-initialization-trick/&#34;&gt;Don’t use the double-brace initialization trick – Jesper de Jong&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html&#34;&gt;Nested Classes (The Java™ Tutorials &amp;gt; Learning the Java Language &amp;gt; Classes and Objects)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/9572795/convert-list-to-array-in-java&#34;&gt;Convert list to array in Java - Stack Overflow)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/10078867/how-to-initialize-all-the-elements-of-an-array-to-any-specific-value-in-java&#34;&gt;How to initialize all the elements of an array to any specific value in java - Stack Overflow)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1913,12 +1922,23 @@ document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&l
 &lt;blockquote&gt;
 &lt;p&gt;TODO&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;炒粉&#34;&gt;炒粉&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TODO 龙口粉丝, 鸡蛋, 卷心菜&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;萝卜炖肋排&#34;&gt;萝卜炖肋排&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;肋排冷水下锅焯水, 萝卜切片&lt;/li&gt;
 &lt;li&gt;八角, 香叶, 花椒, 辣椒, 炒香, 下肋排, 放蚝油, 生抽, 老抽, 盐, 适当翻炒&lt;/li&gt;
 &lt;li&gt;加水(开水最好), 加萝卜, 再加生抽, 盐, 炖40min, 适当去浮沫&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;凉拌腐竹木耳&#34;&gt;凉拌腐竹木耳&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;腐竹泡发(40度温水加盐20min), 木耳泡发
+TODO&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;面食&#34;&gt;面食&lt;/h2&gt;
@@ -1983,16 +2003,34 @@ document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&l
 &lt;li&gt;南瓜洗干净切半, 上锅蒸20min即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;便当配菜&#34;&gt;便当配菜&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;西兰花焯水&lt;/li&gt;
+&lt;li&gt;辣椒炒蛋&lt;/li&gt;
+&lt;li&gt;鸡腿排&lt;/li&gt;
+&lt;li&gt;土豆炒肉&lt;/li&gt;
+&lt;li&gt;凉拌菜(腐竹, 木耳, 海带丝, )&lt;/li&gt;
+&lt;li&gt;五花肉炒卷心菜&lt;/li&gt;
+&lt;li&gt;平菇炒肉&lt;/li&gt;
+&lt;li&gt;炒小青菜&lt;/li&gt;
+&lt;li&gt;卤鸡腿&lt;/li&gt;
+&lt;li&gt;预制菜(黑椒鸡块等)&lt;/li&gt;
+&lt;li&gt;炒花菜&lt;/li&gt;
+&lt;li&gt;炒粉&lt;/li&gt;
+&lt;li&gt;卤蛋&lt;/li&gt;
+&lt;li&gt;虾仁炒蛋&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.xiachufang.com/recipe/106087260/&#34;&gt;简单又好喝的西红柿鸡蛋&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.xiachufang.com/recipe/104571573/&#34;&gt;【家常快手菜 日式炸猪排（自调酱汁）的做法步骤图】vivi_千寻_下厨房&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.xiachufang.com/recipe/104571573/&#34;&gt;【家常快手菜 日式炸猪排（自调酱汁）的做法步骤图】vivi_千寻&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=fiFYHu3jqvg&#34;&gt;How I prep a days worth of food in minutes - YouTube&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://twitter.com/shaonvbing/status/1682228207720992768&#34;&gt;里脊肉夹饼的做法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.douguo.com/cookbook/2512489.html&#34;&gt;辣炒鸡胗怎么做_辣炒鸡胗的做法_豆果美食&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.douguo.com/cookbook/1315950.html&#34;&gt;日式牛肉盖浇饭怎么做_日式牛肉盖浇饭的做法_豆果美食&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.douguo.com/cookbook/2512489.html&#34;&gt;辣炒鸡胗的做法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.douguo.com/cookbook/1315950.html&#34;&gt;日式牛肉盖浇饭的做法&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=_S9XLtKDx3g&#34;&gt;蒸鸡蛋羹 Savory Egg Custard 用科学的方法蒸出完美的蛋羹&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.xiachufang.com/recipe/104493058/&#34;&gt;【超嫩滑的番茄炒蛋的做法步骤图，怎么做好吃】cheese喵喵喵喵喵_下厨房&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.xiachufang.com/recipe/104493058/&#34;&gt;超嫩滑的番茄炒蛋的做法步骤图，怎么做好吃&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=Ha7_KfxD5qY&#34;&gt;泡腐竹&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -2382,6 +2420,7 @@ sudo update-alternatives --config mvn
 &lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html#ns-concurrent-sessions&#34;&gt;Session Management - Spring Security Reference&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://mtyurt.net/post/spring-expiring-all-sessions-of-a-user.html&#34;&gt;Spring: Expiring all sessions of a user | Mert Yürtbilir&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/15031729/svn-create-patch-from-committed-code&#34;&gt;diff - SVN create patch from committed code? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1625406/how-to-use-tortoisesvn-via-command-line&#34;&gt;svn - How to use TortoiseSVN via command line? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -3237,7 +3276,17 @@ kill SPID;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;生成随机数字&#34;&gt;生成随机数字&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 时间戳+7位随机数
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; DATEDIFF(s, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1970-01-01&amp;#39;&lt;/span&gt;, GETUTCDATE()) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;e7  &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;ABS&lt;/span&gt;(CHECKSUM(NEWID()))&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10000000&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;导出表的ddl-包括index&#34;&gt;导出表的DDL, 包括INDEX&lt;/h3&gt;
+&lt;h4 id=&#34;方法1&#34;&gt;方法1&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Microsoft SQL Management tool -&amp;gt; Tools/Options/SQL Server Object Explorer/Scripting/Script Indexes -&amp;gt; set to true&lt;/li&gt;
+&lt;li&gt;find table -&amp;gt; Script Table as -&amp;gt; Create to&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;方法2&#34;&gt;方法2&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Microsoft SQL Management tool -&amp;gt; Tasks -&amp;gt; Generate Scripts&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/lvdongjie/p/7327006.html&#34;&gt;sqlserver 查询当前阻塞进程 并杀掉&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/59899979/how-to-batch-insert-sql-server&#34;&gt;How to Batch INSERT SQL Server?&lt;/a&gt;&lt;/li&gt;
@@ -3260,6 +3309,7 @@ kill SPID;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/xuelixue/p/8961418.html&#34;&gt;sql server 获取字符串中某字符最后一次出现的位置&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/dlw4656/article/details/101989333&#34;&gt;Sql server中从字符串最后一个特殊字符截取到结尾_dlw4656的博客-CSDN博客&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/zh-cn/sql/t-sql/functions/charindex-transact-sql?view=sql-server-ver16&#34;&gt;CHARINDEX (Transact-SQL) - SQL Server | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/652148/how-to-copy-indexes-from-one-table-to-another-in-sql-server&#34;&gt;How to copy indexes from one table to another in SQL Server - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

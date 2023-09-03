@@ -704,6 +704,7 @@ sudo update-alternatives --config mvn
 &lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html#ns-concurrent-sessions&#34;&gt;Session Management - Spring Security Reference&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://mtyurt.net/post/spring-expiring-all-sessions-of-a-user.html&#34;&gt;Spring: Expiring all sessions of a user | Mert Yürtbilir&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/15031729/svn-create-patch-from-committed-code&#34;&gt;diff - SVN create patch from committed code? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1625406/how-to-use-tortoisesvn-via-command-line&#34;&gt;svn - How to use TortoiseSVN via command line? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
