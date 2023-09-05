@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>常用软件 – HA</title>
-<meta name="description" content="EarTrumpet  windows下单独控制每个应用的音量  GoldenDict  字典应用，支持导入字典文件，选中单词CTRL&#43;C&#43;C可全局唤出查询结果弹窗  Proxifier  设置代理规则，针对一些不提供代理选项的应用，选中exe程序设置规则即可  qBittorrent  bt下载工具，同时支持磁力链，rss feed …">
+<title>windows使用记录 – HA</title>
+<meta name="description" content="使用命令行控制屏幕亮度，声音 # 下载nircmd - https://www.nirsoft.net/utils/nircmd.html # 设置亮度（最大100？） nircmd.exe setbrightness 100 # 修改音量（最大65535） nircmd.exe setsysvolume 15000 # 静音，取消静音设 …">
 <meta name="created" content="0001-01-01T00:00:00+0000">
 <meta name="modified" content="2023-09-06T01:18:01+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="常用软件">
-<meta property="og:url" content="/blog/tip/2022111103/">
+<meta property="og:title" content="windows使用记录">
+<meta property="og:url" content="/blog/bash/2023090501/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/blog/tip/2022111103/">
+<link rel="canonical" href="/blog/bash/2023090501/">
 <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
@@ -29,11 +29,12 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "常用软件",
+    "headline": "windows使用记录",
     "datePublished": "0001-01-01T00:00:00Z",
     "dateModified": "2023-09-06T01:18:01+08:00",
-    "url" : "/blog/tip/2022111103/",
-    "description": "EarTrumpet  windows下单独控制每个应用的音量  GoldenDict  字典应用，支持导入字典文件，选中单词CTRL+C+C可全局唤出查询结果弹窗  Proxifier  设置代理规则，针对一些不提供代理选项的应用，选中exe程序设置规则即可  qBittorrent  bt下载工具，同时支持磁力链，rss feed …",
+    "url" : "/blog/bash/2023090501/",
+    "description": "使用命令行控制屏幕亮度，声音 # 下载nircmd - https://www.nirsoft.net/utils/nircmd.html # 设置亮度（最大100？） nircmd.exe setbrightness 100 # 修改音量（最大65535） nircmd.exe setsysvolume 15000 # 静音，取消静音设 …",
+    "keywords": ["windows","bash"],
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -75,12 +76,12 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
-<li><a href="/blog/tip/" class="active" aria-current="page">Tip</a></li>
+<li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/java/">Java</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/bash/" class="active" aria-current="page">Bash</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
@@ -92,38 +93,39 @@
 
 
 <main class="main layout__main">
-<article class="single-view single-view--tip">
+<article class="single-view single-view--bash">
 <header>
-<h1 class="title title-submitted">常用软件</h1>
+<h1 class="title title-submitted">windows使用记录</h1>
 <div class="submitted">
 
 </div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/bash/">bash</a></li>
+<li><a href="/blog/tags/windows/">windows</a></li>
+</ul>
+</div>
 </header>
 <div class="content">
-<h3 id="eartrumpet">EarTrumpet</h3>
-<blockquote>
-<p>windows下单独控制每个应用的音量</p>
-</blockquote>
-<h3 id="goldendict">GoldenDict</h3>
-<blockquote>
-<p>字典应用，支持导入字典文件，选中单词<code>CTRL+C+C</code>可全局唤出查询结果弹窗</p>
-</blockquote>
-<h3 id="proxifier">Proxifier</h3>
-<blockquote>
-<p>设置代理规则，针对一些不提供代理选项的应用，选中exe程序设置规则即可</p>
-</blockquote>
-<h3 id="qbittorrent">qBittorrent</h3>
-<blockquote>
-<p>bt下载工具，同时支持磁力链，rss feed</p>
-</blockquote>
-<h3 id="shadowsocksv2ray-v2rayn">shadowsocks，v2ray, v2rayN</h3>
-<blockquote>
-<p>fuck gfw</p>
-</blockquote>
-<p><strong>reference</strong></p>
+<h2 id="使用命令行控制屏幕亮度声音">使用命令行控制屏幕亮度，声音</h2>
+<pre><code># 下载nircmd - https://www.nirsoft.net/utils/nircmd.html
+# 设置亮度（最大100？）
+nircmd.exe setbrightness 100
+# 修改音量（最大65535）
+nircmd.exe setsysvolume 15000
+# 静音，取消静音设为1
+nircmd.exe mutesysvolume 0
+</code></pre><h2 id="目录软链接">目录软链接</h2>
+<p>以前不小心把一些文件放到C盘里，现在想转移下，但是有些软件关联了这里的文件，重新搞太麻烦，想到可以用类似linux的软链接，就找了方法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 转移资料, 创建软链接（将原先在C盘的目录转移到D盘后，创建软链接）</span>
+<span style="color:#75715e"># 第一个路径是虚拟路径</span>
+<span style="color:#75715e"># -ta 物理路径</span>
+ni C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>om<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\d</span>oc -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\doc&#34;</span>
+</code></pre></div><p><strong>reference</strong></p>
 <ul>
-<li><a href="https://nerdschalk.com/how-to-mute-an-app-on-windows-10/">How To Mute an App on Windows 10</a></li>
-<li><a href="https://downloads.freemdict.com/">Dict file download</a></li>
+<li><a href="https://www.nirsoft.net/utils/nircmd.html">NirCmd - Windows command line tool</a></li>
+<li><a href="https://superuser.com/questions/1020821/how-can-i-create-a-symbolic-link-on-windows-10">How can I create a symbolic link on Windows 10? - Super User</a></li>
 </ul>
 
 </div>

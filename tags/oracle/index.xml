@@ -493,10 +493,17 @@ createtime date
 &lt;blockquote&gt;
 &lt;p&gt;ctrl+shift+D 复制行&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;数据库格式不是unicode时的生僻字无法显示问题&#34;&gt;数据库格式不是UNICODE时的生僻字无法显示问题&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;把列类型转换为NVARCHAR即可，注意NVARCHAR2的长度是字符&lt;/p&gt;
+&lt;p&gt;如果原来是GBK编码VARCHAR2(100)最大存50个汉字，转换后NVARCHAR2(50)即可&lt;/p&gt;
+&lt;p&gt;转换完成后需要排查使用sql中用到这个字段case when或者union的情况，这里很可能会报错，union &amp;lsquo;&amp;lsquo;要改成union null或者union N&amp;rsquo;&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;用到mybatis的地方也要修改，有可能插入生僻字时，参数类型要改为NVARCHAR(#{value,jdbcType=NVARCHAR})&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://chartio.com/resources/tutorials/how-to-create-a-user-and-grant-permissions-in-oracle/&#34;&gt;How to Create a User and Grant Permissions in Oracle&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/15066408/how-to-find-the-privileges-and-roles-granted-to-a-user-in-oracle&#34;&gt;How to Create a User and Grant Permissions in Oracle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/15066408/how-to-find-the-privileges-and-roles-granted-to-a-user-in-oracle&#34;&gt;security - How to find the privileges and roles granted to a user in Oracle? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/linjiao/p/6394087.html&#34;&gt;ORACLE TRUNC()函数&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/jijm123/p/15763010.html&#34;&gt;Oracle：trunc()函数简介&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/xianz666/p/13073664.html&#34;&gt;Oracle中除数为0的两种解决办法（decode与nullif）&lt;/a&gt;&lt;/li&gt;
@@ -545,6 +552,13 @@ createtime date
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/zwl715/p/3788070.html&#34;&gt;NESTED LOOPS &amp;amp; HASH JOIN &amp;amp; SORT MERGE JOIN - 凡轩之 - 博客园&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://arkgame.com/2020/09/15/post-117916/&#34;&gt;「Oracle」改行コード(CHR(13)、CHR(10))を取得、更新、置換する方法 - 最新IT技術情報_arkgame.com&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.oracletutorial.com/oracle-basics/oracle-number-data-type/&#34;&gt;Oracle NUMBER Data Type By Practical Examples&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/rainbow--/p/17191491.html&#34;&gt;oracle 生僻字乱码问题 - 小秦的开发梦 - 博客园 ↗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/xuyufeng/p/11251657.html&#34;&gt;SQL Server中生僻字问题存储与查询问题 - 风枫疯 - 博客园 ↗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bt.hatenadiary.jp/entry/20060510/1147263152&#34;&gt;NVARCHARの桁数の罠 - bt ↗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pg-life.net/db/data-type/&#34;&gt;【SQL Server】データ型の種類｜PG-LIFE ↗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/75878235/mybatis-text-literal-n-without-tomcat-parameters/75878457#75878457&#34;&gt;sql - mybatis text literal n without Tomcat parameters - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

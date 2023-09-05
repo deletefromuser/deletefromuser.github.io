@@ -6,7 +6,7 @@
 <title>linux 命令memo – HA</title>
 <meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2023-08-19T17:06:35+0800">
+<meta name="modified" content="2023-09-06T01:18:01+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "linux 命令memo",
     "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2023-08-19T17:06:35+08:00",
+    "dateModified": "2023-09-06T01:18:01+08:00",
     "url" : "/blog/bash/2022111001/",
     "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …",
     "keywords": ["linux"],
@@ -199,6 +199,15 @@ sudo echo <span style="color:#e6db74">&#39;America/New_York&#39;</span> &gt; /et
 lsof -i :8080
 <span style="color:#75715e"># windows git bash</span>
 netstat -ano | grep <span style="color:#ae81ff">8080</span>
+</code></pre></div><h3 id="ftp命令使用">ftp命令使用</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 进入ftp</span>
+ftp
+<span style="color:#75715e"># 连接ftp, 接着输入账号密码</span>
+open 192.168.1.2
+<span style="color:#75715e"># 下载文件</span>
+get a.txt
+<span style="color:#75715e"># 上传文件</span>
+put /path/b.txt /ftppath/b.txt
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever">How to change history size for ever?</a></li>
@@ -213,13 +222,15 @@ netstat -ano | grep <span style="color:#ae81ff">8080</span>
 <li><a href="https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/">How to Set or Change the Time Zone in Linux | Linuxize</a></li>
 <li><a href="https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes">date - Docker Container time &amp; timezone (will not reflect changes) - Server Fault</a></li>
 <li><a href="https://www.nslookup.io/learning/how-to-specify-a-dns-server-in-nslookup/">How to specify a DNS server in nslookup?</a></li>
+<li><a href="https://tecadmin.net/download-upload-files-using-ftp-command-line/">How to Download and Upload Files using FTP Command Line</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ftp-put">ftp put | Microsoft Learn</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-08-19 17:06<br>
+Updated: 2023-09-06 01:18<br>
 Created: 2022-11-10 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
