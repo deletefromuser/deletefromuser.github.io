@@ -421,8 +421,7 @@ curl --request PATCH &lt;span style=&#34;color:#ae81ff&#34;&gt;\
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/huangjiandong2012/p/4040030.html&#34;&gt;https://www.cnblogs.com/huangjiandong2012/p/4040030.html&lt;/a&gt;
 &lt;a href=&#34;https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html#session-mgmt&#34;&gt;https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html#session-mgmt&lt;/a&gt;
 &lt;a href=&#34;https://mtyurt.net/post/spring-expiring-all-sessions-of-a-user.html&#34;&gt;https://mtyurt.net/post/spring-expiring-all-sessions-of-a-user.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;访问这些网址, 获取title, 给我输出成下面这样的形式, 每个一行&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;1. [title](url)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;提取url的title, 转换成markdown格式的link&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;google-bard&#34;&gt;Google Bard&lt;/h2&gt;
 &lt;h3 id=&#34;生成文章重点摘要&#34;&gt;生成文章重点摘要&lt;/h3&gt;
@@ -2560,6 +2559,15 @@ sudo echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;America/New_York&am
 lsof -i :8080
 &lt;span style=&#34;color:#75715e&#34;&gt;# windows git bash&lt;/span&gt;
 netstat -ano | grep &lt;span style=&#34;color:#ae81ff&#34;&gt;8080&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ftp命令使用&#34;&gt;ftp命令使用&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 进入ftp&lt;/span&gt;
+ftp
+&lt;span style=&#34;color:#75715e&#34;&gt;# 连接ftp, 接着输入账号密码&lt;/span&gt;
+open 192.168.1.2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 下载文件&lt;/span&gt;
+get a.txt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 上传文件&lt;/span&gt;
+put /path/b.txt /ftppath/b.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
@@ -2574,6 +2582,8 @@ netstat -ano | grep &lt;span style=&#34;color:#ae81ff&#34;&gt;8080&lt;/span&gt;
 &lt;li&gt;&lt;a href=&#34;https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/&#34;&gt;How to Set or Change the Time Zone in Linux | Linuxize&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes&#34;&gt;date - Docker Container time &amp;amp; timezone (will not reflect changes) - Server Fault&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.nslookup.io/learning/how-to-specify-a-dns-server-in-nslookup/&#34;&gt;How to specify a DNS server in nslookup?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tecadmin.net/download-upload-files-using-ftp-command-line/&#34;&gt;How to Download and Upload Files using FTP Command Line&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ftp-put&#34;&gt;ftp put | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -3136,10 +3146,17 @@ createtime date
 &lt;blockquote&gt;
 &lt;p&gt;ctrl+shift+D 复制行&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;数据库格式不是unicode时的生僻字无法显示问题&#34;&gt;数据库格式不是UNICODE时的生僻字无法显示问题&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;把列类型转换为NVARCHAR即可，注意NVARCHAR2的长度是字符&lt;/p&gt;
+&lt;p&gt;如果原来是GBK编码VARCHAR2(100)最大存50个汉字，转换后NVARCHAR2(50)即可&lt;/p&gt;
+&lt;p&gt;转换完成后需要排查使用sql中用到这个字段case when或者union的情况，这里很可能会报错，union &amp;lsquo;&amp;lsquo;要改成union null或者union N&amp;rsquo;&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;用到mybatis的地方也要修改，有可能插入生僻字时，参数类型要改为NVARCHAR(#{value,jdbcType=NVARCHAR})&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://chartio.com/resources/tutorials/how-to-create-a-user-and-grant-permissions-in-oracle/&#34;&gt;How to Create a User and Grant Permissions in Oracle&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/15066408/how-to-find-the-privileges-and-roles-granted-to-a-user-in-oracle&#34;&gt;How to Create a User and Grant Permissions in Oracle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/15066408/how-to-find-the-privileges-and-roles-granted-to-a-user-in-oracle&#34;&gt;security - How to find the privileges and roles granted to a user in Oracle? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/linjiao/p/6394087.html&#34;&gt;ORACLE TRUNC()函数&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/jijm123/p/15763010.html&#34;&gt;Oracle：trunc()函数简介&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/xianz666/p/13073664.html&#34;&gt;Oracle中除数为0的两种解决办法（decode与nullif）&lt;/a&gt;&lt;/li&gt;
@@ -3188,6 +3205,13 @@ createtime date
 &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/zwl715/p/3788070.html&#34;&gt;NESTED LOOPS &amp;amp; HASH JOIN &amp;amp; SORT MERGE JOIN - 凡轩之 - 博客园&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://arkgame.com/2020/09/15/post-117916/&#34;&gt;「Oracle」改行コード(CHR(13)、CHR(10))を取得、更新、置換する方法 - 最新IT技術情報_arkgame.com&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.oracletutorial.com/oracle-basics/oracle-number-data-type/&#34;&gt;Oracle NUMBER Data Type By Practical Examples&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/rainbow--/p/17191491.html&#34;&gt;oracle 生僻字乱码问题 - 小秦的开发梦 - 博客园 ↗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/xuyufeng/p/11251657.html&#34;&gt;SQL Server中生僻字问题存储与查询问题 - 风枫疯 - 博客园 ↗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bt.hatenadiary.jp/entry/20060510/1147263152&#34;&gt;NVARCHARの桁数の罠 - bt ↗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pg-life.net/db/data-type/&#34;&gt;【SQL Server】データ型の種類｜PG-LIFE ↗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/75878235/mybatis-text-literal-n-without-tomcat-parameters/75878457#75878457&#34;&gt;sql - mybatis text literal n without Tomcat parameters - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -6222,6 +6246,33 @@ while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;
     </item>
     
     <item>
+      <title>windows使用记录</title>
+      <link>https://deletefromuser.github.io/bash/2023090501/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://deletefromuser.github.io/bash/2023090501/</guid>
+      <description>&lt;h2 id=&#34;使用命令行控制屏幕亮度声音&#34;&gt;使用命令行控制屏幕亮度，声音&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# 下载nircmd - https://www.nirsoft.net/utils/nircmd.html
+# 设置亮度（最大100？）
+nircmd.exe setbrightness 100
+# 修改音量（最大65535）
+nircmd.exe setsysvolume 15000
+# 静音，取消静音设为1
+nircmd.exe mutesysvolume 0
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;目录软链接&#34;&gt;目录软链接&lt;/h2&gt;
+&lt;p&gt;以前不小心把一些文件放到C盘里，现在想转移下，但是有些软件关联了这里的文件，重新搞太麻烦，想到可以用类似linux的软链接，就找了方法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 转移资料, 创建软链接（将原先在C盘的目录转移到D盘后，创建软链接）&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 第一个路径是虚拟路径&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -ta 物理路径&lt;/span&gt;
+ni C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\U&lt;/span&gt;sers&lt;span style=&#34;color:#ae81ff&#34;&gt;\t&lt;/span&gt;om&lt;span style=&#34;color:#ae81ff&#34;&gt;\D&lt;/span&gt;ocuments&lt;span style=&#34;color:#ae81ff&#34;&gt;\d&lt;/span&gt;oc -i SymbolicLink -ta &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;D:\doc&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nirsoft.net/utils/nircmd.html&#34;&gt;NirCmd - Windows command line tool&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1020821/how-can-i-create-a-symbolic-link-on-windows-10&#34;&gt;How can I create a symbolic link on Windows 10? - Super User&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>常用软件</title>
       <link>https://deletefromuser.github.io/tip/2022111103/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -6242,7 +6293,7 @@ while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;
 &lt;blockquote&gt;
 &lt;p&gt;bt下载工具，同时支持磁力链，rss feed&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;shadowsocksv2ray&#34;&gt;shadowsocks，v2ray&lt;/h3&gt;
+&lt;h3 id=&#34;shadowsocksv2ray-v2rayn&#34;&gt;shadowsocks，v2ray, v2rayN&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;fuck gfw&lt;/p&gt;
 &lt;/blockquote&gt;

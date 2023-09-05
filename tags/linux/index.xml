@@ -607,6 +607,15 @@ sudo echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;America/New_York&am
 lsof -i :8080
 &lt;span style=&#34;color:#75715e&#34;&gt;# windows git bash&lt;/span&gt;
 netstat -ano | grep &lt;span style=&#34;color:#ae81ff&#34;&gt;8080&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ftp命令使用&#34;&gt;ftp命令使用&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 进入ftp&lt;/span&gt;
+ftp
+&lt;span style=&#34;color:#75715e&#34;&gt;# 连接ftp, 接着输入账号密码&lt;/span&gt;
+open 192.168.1.2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 下载文件&lt;/span&gt;
+get a.txt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 上传文件&lt;/span&gt;
+put /path/b.txt /ftppath/b.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
@@ -621,6 +630,8 @@ netstat -ano | grep &lt;span style=&#34;color:#ae81ff&#34;&gt;8080&lt;/span&gt;
 &lt;li&gt;&lt;a href=&#34;https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/&#34;&gt;How to Set or Change the Time Zone in Linux | Linuxize&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes&#34;&gt;date - Docker Container time &amp;amp; timezone (will not reflect changes) - Server Fault&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.nslookup.io/learning/how-to-specify-a-dns-server-in-nslookup/&#34;&gt;How to specify a DNS server in nslookup?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tecadmin.net/download-upload-files-using-ftp-command-line/&#34;&gt;How to Download and Upload Files using FTP Command Line&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ftp-put&#34;&gt;ftp put | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

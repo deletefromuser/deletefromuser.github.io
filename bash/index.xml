@@ -184,6 +184,15 @@ sudo echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;America/New_York&am
 lsof -i :8080
 &lt;span style=&#34;color:#75715e&#34;&gt;# windows git bash&lt;/span&gt;
 netstat -ano | grep &lt;span style=&#34;color:#ae81ff&#34;&gt;8080&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ftp命令使用&#34;&gt;ftp命令使用&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 进入ftp&lt;/span&gt;
+ftp
+&lt;span style=&#34;color:#75715e&#34;&gt;# 连接ftp, 接着输入账号密码&lt;/span&gt;
+open 192.168.1.2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 下载文件&lt;/span&gt;
+get a.txt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 上传文件&lt;/span&gt;
+put /path/b.txt /ftppath/b.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
@@ -198,6 +207,8 @@ netstat -ano | grep &lt;span style=&#34;color:#ae81ff&#34;&gt;8080&lt;/span&gt;
 &lt;li&gt;&lt;a href=&#34;https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/&#34;&gt;How to Set or Change the Time Zone in Linux | Linuxize&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes&#34;&gt;date - Docker Container time &amp;amp; timezone (will not reflect changes) - Server Fault&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.nslookup.io/learning/how-to-specify-a-dns-server-in-nslookup/&#34;&gt;How to specify a DNS server in nslookup?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tecadmin.net/download-upload-files-using-ftp-command-line/&#34;&gt;How to Download and Upload Files using FTP Command Line&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ftp-put&#34;&gt;ftp put | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -275,6 +286,33 @@ A B C D E USERNAME /path/to/command arg1 arg2
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/a/441025&#34;&gt;Zip all subfolders inside a folder to individual zip file&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/16623835/remove-a-fixed-prefix-suffix-from-a-string-in-bash&#34;&gt;Remove a fixed prefix/suffix from a string in Bash&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>windows使用记录</title>
+      <link>https://deletefromuser.github.io/bash/2023090501/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://deletefromuser.github.io/bash/2023090501/</guid>
+      <description>&lt;h2 id=&#34;使用命令行控制屏幕亮度声音&#34;&gt;使用命令行控制屏幕亮度，声音&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# 下载nircmd - https://www.nirsoft.net/utils/nircmd.html
+# 设置亮度（最大100？）
+nircmd.exe setbrightness 100
+# 修改音量（最大65535）
+nircmd.exe setsysvolume 15000
+# 静音，取消静音设为1
+nircmd.exe mutesysvolume 0
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;目录软链接&#34;&gt;目录软链接&lt;/h2&gt;
+&lt;p&gt;以前不小心把一些文件放到C盘里，现在想转移下，但是有些软件关联了这里的文件，重新搞太麻烦，想到可以用类似linux的软链接，就找了方法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 转移资料, 创建软链接（将原先在C盘的目录转移到D盘后，创建软链接）&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 第一个路径是虚拟路径&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -ta 物理路径&lt;/span&gt;
+ni C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\U&lt;/span&gt;sers&lt;span style=&#34;color:#ae81ff&#34;&gt;\t&lt;/span&gt;om&lt;span style=&#34;color:#ae81ff&#34;&gt;\D&lt;/span&gt;ocuments&lt;span style=&#34;color:#ae81ff&#34;&gt;\d&lt;/span&gt;oc -i SymbolicLink -ta &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;D:\doc&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nirsoft.net/utils/nircmd.html&#34;&gt;NirCmd - Windows command line tool&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1020821/how-can-i-create-a-symbolic-link-on-windows-10&#34;&gt;How can I create a symbolic link on Windows 10? - Super User&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
