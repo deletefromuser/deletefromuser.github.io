@@ -6,7 +6,7 @@
 <title>linux 命令memo – HA</title>
 <meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2023-09-06T01:18:01+0800">
+<meta name="modified" content="2023-09-07T23:20:15+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "linux 命令memo",
     "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2023-09-06T01:18:01+08:00",
+    "dateModified": "2023-09-07T23:20:15+08:00",
     "url" : "/blog/bash/2022111001/",
     "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …",
     "keywords": ["linux"],
@@ -76,12 +76,12 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
+<li><a href="/blog/bash/" class="active" aria-current="page">Bash</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/java/">Java</a></li>
-<li><a href="/blog/bash/" class="active" aria-current="page">Bash</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
@@ -178,6 +178,8 @@ find . -typf f | clip
 </code></pre></div><h3 id="查看linux用户所在组">查看linux用户所在组</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">groups
 groups tom
+<span style="color:#75715e"># 添加用户到某个组</span>
+sudo usermod -a -G groupname username
 </code></pre></div><h3 id="修改系统时区">修改系统时区</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 检查当前时区</span>
 timedatectl
@@ -230,7 +232,7 @@ put /path/b.txt /ftppath/b.txt
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-09-06 01:18<br>
+Updated: 2023-09-07 23:20<br>
 Created: 2022-11-10 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"

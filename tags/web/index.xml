@@ -236,11 +236,13 @@ find . -regex &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.*.md&amp;#39;&
 find . -maxdepth &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -type d
 &lt;span style=&#34;color:#75715e&#34;&gt;# 列出所有层数大于10的文件夹&lt;/span&gt;
 find . -mindepth &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; -type d
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容（所有文件的修改日期都会变掉）&lt;/span&gt;
 find . -type f -exec perl -pi -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/public/private/g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
 find . -type f -exec sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/public/private/g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
 sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/# requirepass foobared/requirepass xxx/&amp;#39;&lt;/span&gt; /etc/redis/redis_6487.conf
 sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/# maxmemory &amp;lt;bytes&amp;gt;/maxmemory 52548800/&amp;#39;&lt;/span&gt; /etc/redis/redis_6487.conf
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容（如果没有包含关键字则不修改文件，修改日期不会变）&lt;/span&gt;
+grep -rli &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;old-word&amp;#39;&lt;/span&gt; * | xargs -i@ sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/old-word/new-word/g&amp;#39;&lt;/span&gt; @
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容(包含/)&lt;/span&gt;
 find . -type f -exec perl -pi -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s#public#private#g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
 find . -type f -exec sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s#public#private#g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
@@ -384,6 +386,7 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/984204/shell-command-to-tar-directory-excluding-certain-files-folders&#34;&gt;Shell command to tar directory excluding certain files/folders&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://appuals.com/how-to-kill-process-on-port/&#34;&gt;How to Kill Process on Port?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim&#34;&gt;What&amp;rsquo;s a quick way to comment/uncomment lines in Vim?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line&#34;&gt;How to replace a string in multiple files in linux command line - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

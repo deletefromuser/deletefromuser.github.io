@@ -6,7 +6,7 @@
 <title>docker使用记录 – HA</title>
 <meta name="description" content="使用docker实例命令行 docker exec -it spring-cloud-config-server_1 bash # 以root实行 docker exec -u 0 -it mycontainer bash 网络配置，使不同的docker实例互相联通 # 连接mysql的docker实例 docker network …">
 <meta name="created" content="2023-05-20T18:00:00+0800">
-<meta name="modified" content="2023-05-21T19:15:37+0800">
+<meta name="modified" content="2023-09-07T23:20:15+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "docker使用记录",
     "datePublished": "2023-05-20T18:00:00+08:00",
-    "dateModified": "2023-05-21T19:15:37+08:00",
+    "dateModified": "2023-09-07T23:20:15+08:00",
     "url" : "/blog/web/2023052001/",
     "description": "使用docker实例命令行 docker exec -it spring-cloud-config-server_1 bash # 以root实行 docker exec -u 0 -it mycontainer bash 网络配置，使不同的docker实例互相联通 # 连接mysql的docker实例 docker network …",
     "keywords": ["docker","linux"],
@@ -76,12 +76,12 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/web/" class="active" aria-current="page">Web</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/java/">Java</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
@@ -205,6 +205,10 @@ echo <span style="color:#e6db74">&#34;-----BEGIN CERTIFICATE-----
 </span><span style="color:#e6db74">&#34;</span> &gt;&gt; /etc/ssl/certs/ca-certificates.crt
 <span style="color:#75715e"># 之后重启实例</span>
 docker restart jenkins-docker
+</code></pre></div><h3 id="复制容器内文件到host">复制容器内文件到host</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker cp mycontainer:/path/to/file file
+<span style="color:#75715e"># 导出容器内全部文件</span>
+docker export mycontainer -o container_fs.tar
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://docs.docker.com/engine/install/linux-postinstall/">Manage Docker as a non-root user</a></li>
@@ -223,13 +227,14 @@ docker restart jenkins-docker
 <li><a href="https://unix.stackexchange.com/questions/90450/adding-a-self-signed-certificate-to-the-trusted-list/132163#132163">curl - Adding a self-signed certificate to the &ldquo;trusted list&rdquo; - Unix &amp; Linux Stack Exchange</a></li>
 <li><a href="https://stackoverflow.com/questions/50768317/docker-pull-certificate-signed-by-unknown-authority/50768414#50768414">ssl - &ldquo;docker pull&rdquo; certificate signed by unknown authority - Stack Overflow</a></li>
 <li><a href="https://gitlab.com/gitlab-org/gitlab-runner/-/issues/1842">Problem building with docker-in-docker using gitlab Registry Container with self-signed certificate</a></li>
+<li><a href="https://blog.px.dev/container-filesystems/">Where are my container&rsquo;s files? Inspecting container filesystems | Pixie Labs Blog</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-05-21 19:15<br>
+Updated: 2023-09-07 23:20<br>
 Created: 2023-05-20 18:00
 </p>
 </div><script src="https://utteranc.es/client.js"
