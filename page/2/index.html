@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-09-02T15:00:00+0800">
-<meta name="modified" content="2023-09-06T01:18:01+0800">
+<meta name="created" content="2023-09-05T22:00:00+0800">
+<meta name="modified" content="2023-09-07T23:20:15+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,12 +73,12 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/bash/">Bash</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/web/">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/java/">Java</a></li>
-<li><a href="/bash/">Bash</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/prob/">Prob</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--java">
+<header>
+<h2 class="title title-submitted"><a href="/java/2023070801/">记一次OOM异常解决</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-06-04T20:00:00&#43;08:00">2023-06-04 20:00</time>
+</div>
+
+</header>
+<div class="content">
+问题描述 一台服务器出现OOM（为本应用分配了4G内存），挂掉了 java.lang.OutOfMemoryError: GC overhead limit exceeded 问题排查 拿到dump文件，使用jvisualvm打开查看后，发现下面
+</div>
+</article>
 
 <article class="list-view list-view--tip">
 <header>
@@ -171,7 +184,7 @@ word中快速粘贴无格式文本 Ctrl+Alt+V excel中查找重复记录 Home -&
 
 </header>
 <div class="content">
-生成gpg密钥 gpg --gen-key # 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用） 导出公钥 gpg --armor --output mypubkey.gpg --export your.name@youreamil.com # 复制公钥内容 # cat
+生成gpg密钥 gpg --gen-key # 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用） 导出私钥(私钥和passphase要保
 </div>
 </article>
 
@@ -211,19 +224,6 @@ word中快速粘贴无格式文本 Ctrl+Alt+V excel中查找重复记录 Home -&
 </header>
 <div class="content">
 前提 视频文件内容必须统一，一般是剧集类的，并且要是mkv格式的 打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/web/2023042502/">使用nginx和ssh tunneling实现通过公网ip访问本地计算机</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-04-25T20:00:00&#43;08:00">2023-04-25 20:00</time>
-</div>
-
-</header>
-<div class="content">
-假设本地计算机上，已开发的应用可通过http://localhost:19080来访问 在有公网ip的服务器上添加下列配置后部署nginx（监
 </div>
 </article>
 

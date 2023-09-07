@@ -76,12 +76,12 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/">Home</a></li>
+<li><a href="/bash/">Bash</a></li>
 <li><a href="/tip/" class="active" aria-current="page">Tip</a></li>
 <li><a href="/web/">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/java/">Java</a></li>
-<li><a href="/bash/">Bash</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/prob/">Prob</a></li>
@@ -102,12 +102,12 @@
 <div class="tags">
 Tags:
 <ul>
+<li><a href="https://deletefromuser.github.io/tags/bash/">bash</a></li>
 <li><a href="https://deletefromuser.github.io/tags/web/">web</a></li>
 <li><a href="https://deletefromuser.github.io/tags/java/">java</a></li>
 <li><a href="https://deletefromuser.github.io/tags/excel/">excel</a></li>
 <li><a href="https://deletefromuser.github.io/tags/linux/">linux</a></li>
 <li><a href="https://deletefromuser.github.io/tags/automation/">automation</a></li>
-<li><a href="https://deletefromuser.github.io/tags/bash/">bash</a></li>
 <li><a href="https://deletefromuser.github.io/tags/js/">js</a></li>
 <li><a href="https://deletefromuser.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></li>
 </ul>
@@ -215,11 +215,13 @@ find . -regex <span style="color:#e6db74">&#39;.*.md&#39;</span>
 find . -maxdepth <span style="color:#ae81ff">1</span> -type d
 <span style="color:#75715e"># 列出所有层数大于10的文件夹</span>
 find . -mindepth <span style="color:#ae81ff">10</span> -type d
-<span style="color:#75715e"># 查找文件并替换对应内容</span>
+<span style="color:#75715e"># 查找文件并替换对应内容（所有文件的修改日期都会变掉）</span>
 find . -type f -exec perl -pi -e <span style="color:#e6db74">&#39;s/public/private/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
 find . -type f -exec sed -i <span style="color:#e6db74">&#39;s/public/private/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
 sed -i <span style="color:#e6db74">&#39;s/# requirepass foobared/requirepass xxx/&#39;</span> /etc/redis/redis_6487.conf
 sed -i <span style="color:#e6db74">&#39;s/# maxmemory &lt;bytes&gt;/maxmemory 52548800/&#39;</span> /etc/redis/redis_6487.conf
+<span style="color:#75715e"># 查找文件并替换对应内容（如果没有包含关键字则不修改文件，修改日期不会变）</span>
+grep -rli <span style="color:#e6db74">&#39;old-word&#39;</span> * | xargs -i@ sed -i <span style="color:#e6db74">&#39;s/old-word/new-word/g&#39;</span> @
 <span style="color:#75715e"># 查找文件并替换对应内容(包含/)</span>
 find . -type f -exec perl -pi -e <span style="color:#e6db74">&#39;s#public#private#g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
 find . -type f -exec sed -i <span style="color:#e6db74">&#39;s#public#private#g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
@@ -363,6 +365,7 @@ tar -zxvf &lt;tar filename&gt; &lt;file you want to extract&gt;
 <li><a href="https://stackoverflow.com/questions/984204/shell-command-to-tar-directory-excluding-certain-files-folders">Shell command to tar directory excluding certain files/folders</a></li>
 <li><a href="https://appuals.com/how-to-kill-process-on-port/">How to Kill Process on Port?</a></li>
 <li><a href="https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim">What&rsquo;s a quick way to comment/uncomment lines in Vim?</a></li>
+<li><a href="https://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line">How to replace a string in multiple files in linux command line - Stack Overflow</a></li>
 </ul>
 
 </div>

@@ -111,6 +111,10 @@ echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-----BEGIN CERTIFICATE--
 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/ssl/certs/ca-certificates.crt
 &lt;span style=&#34;color:#75715e&#34;&gt;# 之后重启实例&lt;/span&gt;
 docker restart jenkins-docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制容器内文件到host&#34;&gt;复制容器内文件到host&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker cp mycontainer:/path/to/file file
+&lt;span style=&#34;color:#75715e&#34;&gt;# 导出容器内全部文件&lt;/span&gt;
+docker export mycontainer -o container_fs.tar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/install/linux-postinstall/&#34;&gt;Manage Docker as a non-root user&lt;/a&gt;&lt;/li&gt;
@@ -129,6 +133,7 @@ docker restart jenkins-docker
 &lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/90450/adding-a-self-signed-certificate-to-the-trusted-list/132163#132163&#34;&gt;curl - Adding a self-signed certificate to the &amp;ldquo;trusted list&amp;rdquo; - Unix &amp;amp; Linux Stack Exchange&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/50768317/docker-pull-certificate-signed-by-unknown-authority/50768414#50768414&#34;&gt;ssl - &amp;ldquo;docker pull&amp;rdquo; certificate signed by unknown authority - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://gitlab.com/gitlab-org/gitlab-runner/-/issues/1842&#34;&gt;Problem building with docker-in-docker using gitlab Registry Container with self-signed certificate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.px.dev/container-filesystems/&#34;&gt;Where are my container&amp;rsquo;s files? Inspecting container filesystems | Pixie Labs Blog&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width">
 <title>windows使用记录 – HA</title>
 <meta name="description" content="使用命令行控制屏幕亮度，声音 # 下载nircmd - https://www.nirsoft.net/utils/nircmd.html # 设置亮度（最大100？） nircmd.exe setbrightness 100 # 修改音量（最大65535） nircmd.exe setsysvolume 15000 # 静音，取消静音设 …">
-<meta name="created" content="0001-01-01T00:00:00+0000">
-<meta name="modified" content="2023-09-06T01:18:01+0800">
+<meta name="created" content="2023-09-05T22:00:00+0800">
+<meta name="modified" content="2023-09-07T23:20:15+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -30,8 +30,8 @@
     "@context": "https://schema.org",
     "@type": "WebPage",
     "headline": "windows使用记录",
-    "datePublished": "0001-01-01T00:00:00Z",
-    "dateModified": "2023-09-06T01:18:01+08:00",
+    "datePublished": "2023-09-05T22:00:00+08:00",
+    "dateModified": "2023-09-07T23:20:15+08:00",
     "url" : "https://deletefromuser.github.io/bash/2023090501/",
     "description": "使用命令行控制屏幕亮度，声音 # 下载nircmd - https://www.nirsoft.net/utils/nircmd.html # 设置亮度（最大100？） nircmd.exe setbrightness 100 # 修改音量（最大65535） nircmd.exe setsysvolume 15000 # 静音，取消静音设 …",
     "keywords": ["windows","bash"],
@@ -76,12 +76,12 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/">Home</a></li>
+<li><a href="/bash/" class="active" aria-current="page">Bash</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/web/">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/java/">Java</a></li>
-<li><a href="/bash/" class="active" aria-current="page">Bash</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/prob/">Prob</a></li>
@@ -97,7 +97,7 @@
 <header>
 <h1 class="title title-submitted">windows使用记录</h1>
 <div class="submitted">
-
+<time class="created-date" datetime="2023-09-05T22:00:00&#43;08:00">2023-09-05 22:00</time>
 </div>
 <div class="tags">
 Tags:
@@ -118,10 +118,21 @@ nircmd.exe setsysvolume 15000
 nircmd.exe mutesysvolume 0
 </code></pre><h2 id="目录软链接">目录软链接</h2>
 <p>以前不小心把一些文件放到C盘里，现在想转移下，但是有些软件关联了这里的文件，重新搞太麻烦，想到可以用类似linux的软链接，就找了方法</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 转移资料, 创建软链接（将原先在C盘的目录转移到D盘后，创建软链接）</span>
+<p>这种方法可以实现无痛把我的文档, 我的视频这些转移到别的盘中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mv /c/Users/tom/Documents/doc /d/doc
+mv /c/Users/tom/3D<span style="color:#ae81ff">\ </span>Objects /d/win10_user/3D<span style="color:#ae81ff">\ </span>Objects
+mv /c/Users/tom/Videos /d/win10_user/Videos
+mv /c/Users/tom/Music /d/win10_user/Music
+mv /c/Users/tom/Pictures /d/win10_user/Pictures
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># 需管理员模式打开powershell</span>
+<span style="color:#75715e"># 转移资料后, 创建软链接（将原先在C盘的目录转移到D盘后，创建软链接）</span>
 <span style="color:#75715e"># 第一个路径是虚拟路径</span>
 <span style="color:#75715e"># -ta 物理路径</span>
-ni C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>om<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\d</span>oc -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\doc&#34;</span>
+ni C:\Users\tom\Documents\doc -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\doc&#34;</span>
+ni <span style="color:#e6db74">&#34;C:\Users\tom\3D Objects&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\3D_Objects&#34;</span>
+ni <span style="color:#e6db74">&#34;C:\Users\tom\Music&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\Music&#34;</span>
+ni <span style="color:#e6db74">&#34;C:\Users\tom\Videos&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\Videos&#34;</span>
+ni <span style="color:#e6db74">&#34;C:\Users\tom\Pictures&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\Pictures&#34;</span>
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://www.nirsoft.net/utils/nircmd.html">NirCmd - Windows command line tool</a></li>
@@ -132,8 +143,8 @@ ni C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</sp
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-09-06 01:18<br>
-Created: 0001-01-01 00:00
+Updated: 2023-09-07 23:20<br>
+Created: 2023-09-05 22:00
 </p>
 </div><script src="https://utteranc.es/client.js"
         repo="deletefromuser/deletefromuser.github.io"

@@ -179,6 +179,10 @@ echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-----BEGIN CERTIFICATE--
 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/ssl/certs/ca-certificates.crt
 &lt;span style=&#34;color:#75715e&#34;&gt;# 之后重启实例&lt;/span&gt;
 docker restart jenkins-docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制容器内文件到host&#34;&gt;复制容器内文件到host&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker cp mycontainer:/path/to/file file
+&lt;span style=&#34;color:#75715e&#34;&gt;# 导出容器内全部文件&lt;/span&gt;
+docker export mycontainer -o container_fs.tar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/install/linux-postinstall/&#34;&gt;Manage Docker as a non-root user&lt;/a&gt;&lt;/li&gt;
@@ -197,6 +201,7 @@ docker restart jenkins-docker
 &lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/90450/adding-a-self-signed-certificate-to-the-trusted-list/132163#132163&#34;&gt;curl - Adding a self-signed certificate to the &amp;ldquo;trusted list&amp;rdquo; - Unix &amp;amp; Linux Stack Exchange&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/50768317/docker-pull-certificate-signed-by-unknown-authority/50768414#50768414&#34;&gt;ssl - &amp;ldquo;docker pull&amp;rdquo; certificate signed by unknown authority - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://gitlab.com/gitlab-org/gitlab-runner/-/issues/1842&#34;&gt;Problem building with docker-in-docker using gitlab Registry Container with self-signed certificate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.px.dev/container-filesystems/&#34;&gt;Where are my container&amp;rsquo;s files? Inspecting container filesystems | Pixie Labs Blog&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -322,11 +327,13 @@ find . -regex &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.*.md&amp;#39;&
 find . -maxdepth &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -type d
 &lt;span style=&#34;color:#75715e&#34;&gt;# 列出所有层数大于10的文件夹&lt;/span&gt;
 find . -mindepth &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; -type d
-&lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容（所有文件的修改日期都会变掉）&lt;/span&gt;
 find . -type f -exec perl -pi -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/public/private/g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
 find . -type f -exec sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/public/private/g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
 sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/# requirepass foobared/requirepass xxx/&amp;#39;&lt;/span&gt; /etc/redis/redis_6487.conf
 sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/# maxmemory &amp;lt;bytes&amp;gt;/maxmemory 52548800/&amp;#39;&lt;/span&gt; /etc/redis/redis_6487.conf
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容（如果没有包含关键字则不修改文件，修改日期不会变）&lt;/span&gt;
+grep -rli &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;old-word&amp;#39;&lt;/span&gt; * | xargs -i@ sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/old-word/new-word/g&amp;#39;&lt;/span&gt; @
 &lt;span style=&#34;color:#75715e&#34;&gt;# 查找文件并替换对应内容(包含/)&lt;/span&gt;
 find . -type f -exec perl -pi -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s#public#private#g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
 find . -type f -exec sed -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s#public#private#g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;
@@ -470,6 +477,7 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/984204/shell-command-to-tar-directory-excluding-certain-files-folders&#34;&gt;Shell command to tar directory excluding certain files/folders&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://appuals.com/how-to-kill-process-on-port/&#34;&gt;How to Kill Process on Port?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim&#34;&gt;What&amp;rsquo;s a quick way to comment/uncomment lines in Vim?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line&#34;&gt;How to replace a string in multiple files in linux command line - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -586,6 +594,8 @@ find . -typf f | clip
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux用户所在组&#34;&gt;查看linux用户所在组&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;groups
 groups tom
+&lt;span style=&#34;color:#75715e&#34;&gt;# 添加用户到某个组&lt;/span&gt;
+sudo usermod -a -G groupname username
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改系统时区&#34;&gt;修改系统时区&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 检查当前时区&lt;/span&gt;
 timedatectl
