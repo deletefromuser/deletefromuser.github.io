@@ -6,8 +6,21 @@
     <description>Recent content in Tip on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Sep 2023 15:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 08 Sep 2023 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/tip/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>绕过前端强制手动输入限制</title>
+      <link>/blog/tip/2023090801/</link>
+      <pubDate>Fri, 08 Sep 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/tip/2023090801/</guid>
+      <description>&lt;h3 id=&#34;问题&#34;&gt;问题&lt;/h3&gt;
+&lt;p&gt;在客户的系统里登陆，要求填写一个保证书一样的东西，最后有几个输入框不允许复制粘贴，只允许手动输入，而且通过控制台设置的值还通不过检查，因为画面也不是原生html+js的，是前端框架写出来的代码，没找到检查的逻辑，最后只能手动输入了。&lt;/p&gt;
+&lt;p&gt;但是等输入完了之后，突然想到了一个解法&lt;/p&gt;
+&lt;h3 id=&#34;解法&#34;&gt;解法&lt;/h3&gt;
+&lt;p&gt;利用输入法的自定义短语功能，把要输入的一坨东西加到短语里，然后快捷键输入进去，感觉应该是可以的&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>V2Ray &#43; WebSocket &#43; TLS &#43; CloudFlare配置代理</title>

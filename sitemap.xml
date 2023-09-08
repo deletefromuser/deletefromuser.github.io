@@ -3,22 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/tags/bullshitwork/</loc>
+    <lastmod>2023-09-09T00:10:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
+    <lastmod>2023-09-09T00:10:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/</loc>
+    <lastmod>2023-09-09T00:10:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/</loc>
+    <lastmod>2023-09-09T00:10:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/2023090801/</loc>
+    <lastmod>2023-09-09T00:10:54+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/bash/</loc>
     <lastmod>2023-09-07T23:20:15+08:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/tags/bash/</loc>
-    <lastmod>2023-09-07T23:20:15+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/</loc>
-    <lastmod>2023-09-07T23:20:15+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/tags/</loc>
     <lastmod>2023-09-07T23:20:15+08:00</lastmod>
   </url>
   
@@ -35,11 +50,6 @@
   <url>
     <loc>/blog/tags/gfw/</loc>
     <lastmod>2023-09-02T17:23:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/tip/</loc>
-    <lastmod>2023-09-07T23:20:15+08:00</lastmod>
   </url>
   
   <url>
