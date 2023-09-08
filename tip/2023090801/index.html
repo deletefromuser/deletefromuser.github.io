@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>绕过前端强制手动输入限制 – HA</title>
+<meta name="description" content="问题 在客户的系统里登陆，要求填写一个保证书一样的东西，最后有几个输入框不允许复制粘贴，只允许手动输入，而且通过控制台设置的值还通不过检查，因为画面也不是原生html&#43;js的，是前端框架写出来的代码，没找到检查的逻辑，最后只能手动输入了。 但是等输入完了之后，突然想到了一个解法 解法 利用输入法的自定义短语功能，把要输入的一坨东西加到短语 …">
+<meta name="created" content="2023-09-08T20:00:00+0800">
+<meta name="modified" content="2023-09-09T00:10:54+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="绕过前端强制手动输入限制">
+<meta property="og:url" content="https://deletefromuser.github.io/tip/2023090801/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/tip/2023090801/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "绕过前端强制手动输入限制",
+    "datePublished": "2023-09-08T20:00:00+08:00",
+    "dateModified": "2023-09-09T00:10:54+08:00",
+    "url" : "https://deletefromuser.github.io/tip/2023090801/",
+    "description": "问题 在客户的系统里登陆，要求填写一个保证书一样的东西，最后有几个输入框不允许复制粘贴，只允许手动输入，而且通过控制台设置的值还通不过检查，因为画面也不是原生html+js的，是前端框架写出来的代码，没找到检查的逻辑，最后只能手动输入了。 但是等输入完了之后，突然想到了一个解法 解法 利用输入法的自定义短语功能，把要输入的一坨东西加到短语 …",
+    "keywords": ["bullshitwork"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/tip/" class="active" aria-current="page">Tip</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/cs/">CS</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--tip">
+<header>
+<h1 class="title title-submitted">绕过前端强制手动输入限制</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-09-08T20:00:00&#43;08:00">2023-09-08 20:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/bullshitwork/">bullshitwork</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="问题">问题</h3>
+<p>在客户的系统里登陆，要求填写一个保证书一样的东西，最后有几个输入框不允许复制粘贴，只允许手动输入，而且通过控制台设置的值还通不过检查，因为画面也不是原生html+js的，是前端框架写出来的代码，没找到检查的逻辑，最后只能手动输入了。</p>
+<p>但是等输入完了之后，突然想到了一个解法</p>
+<h3 id="解法">解法</h3>
+<p>利用输入法的自定义短语功能，把要输入的一坨东西加到短语里，然后快捷键输入进去，感觉应该是可以的</p>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-09-09 00:10<br>
+Created: 2023-09-08 20:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-09-05T22:00:00+0800">
-<meta name="modified" content="2023-09-07T23:20:15+0800">
+<meta name="created" content="2023-09-08T20:00:00+0800">
+<meta name="modified" content="2023-09-09T00:10:54+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
-<li><a href="/bash/">Bash</a></li>
 <li><a href="/tip/">Tip</a></li>
+<li><a href="/bash/">Bash</a></li>
 <li><a href="/web/">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/watch/">Watch</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/tip/2022120601/">工作笔记2016-2021</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-12-06T20:00:00&#43;08:00">2022-12-06 20:00</time>
+</div>
+
+</header>
+<div class="content">
+停止网页重定向 window.addEventListener(&#34;beforeunload&#34;, () =&gt; { debugger; }, false); JS转换字符为UNICODE escape(&#34;转换字符&#34;).replace(/%/g, &#34;\\&#34;).toLowerCase(); // 十进制u
+</div>
+</article>
 
 <article class="list-view list-view--bash">
 <header>
@@ -211,19 +224,6 @@ nohup java -jar /web/server.jar &gt; log.log 2&gt;&amp;1 &amp; reference Run jav
 </header>
 <div class="content">
 crontab -e A B C D E USERNAME /path/to/command arg1 arg2 Explanation of above cron syntax: A: Minutes range: 0 – 59 B: Hours range: 0 – 23 C: Days range: 0 – 31 D: Months range: 0 – 12 E: Days of the week range: 0 – 7. Starting from Monday, 0 or 7 represents Sunday USERNAME: replace this with your username /path/to/command – The name of the script
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/prob/2022110603/">oracle安装后连接问题</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
-</div>
-
-</header>
-<div class="content">
-1. ORA-12505: TNS:listener does not currently know of SID given in connect descriptor add to tnsnames.ora file, and run lsnrctl reload ORCL = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVICE = DEDICATED) (SERVICE_NAME = orcl) ) ) excute alter system set local_listener = '(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))' scope = both; in sqlplus.(username sys, password, orcl as sysdba) 2. 状态: 失败 -测试
 </div>
 </article>
 
