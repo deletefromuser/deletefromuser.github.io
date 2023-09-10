@@ -6,8 +6,26 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Sep 2023 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 09 Sep 2023 08:33:58 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>日语学习memo</title>
+      <link>https://deletefromuser.github.io/jpns/2023090802/</link>
+      <pubDate>Sat, 09 Sep 2023 08:33:58 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/jpns/2023090802/</guid>
+      <description>&lt;h3 id=&#34;かやと的区别&#34;&gt;か、や、と的区别&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;か 是或者的意思， A或者B&lt;/li&gt;
+&lt;li&gt;や 是举例的意思，有ABCDE，说A呀B呀之类的&lt;/li&gt;
+&lt;li&gt;と 是和的意思，A和B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;reference:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://ameblo.jp/stravaganza-no2/entry-11956781116.html&#34;&gt;並列助詞の「と」「か」「や」について&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>绕过前端强制手动输入限制</title>
@@ -1928,6 +1946,10 @@ document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&l
 &lt;li&gt;加入生抽, 盐翻炒, 停火后加入鸡精翻炒后出锅&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;蒜苗炒鸡蛋&#34;&gt;蒜苗炒鸡蛋&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;做法同上，想要鸡蛋嫩一点可以往鸡蛋液里加点水搅拌均匀&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;炒土豆丝&#34;&gt;炒土豆丝&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
@@ -1985,6 +2007,14 @@ document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&l
 &lt;li&gt;西红柿表面划浅十字, 开水从顶部浇下, 持续10秒钟后, 去皮切条&lt;/li&gt;
 &lt;li&gt;加油, 放入西红柿煎, 加入糖, 盐, 煎至糊状后, 放入鸡蛋, 搅拌均匀后即可&lt;/li&gt;
 &lt;li&gt;最后加入葱花&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;回锅肉&#34;&gt;回锅肉&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;五花肉焯水后切薄片，蒜苗叶子和茎分开切段&lt;/li&gt;
+&lt;li&gt;加油，下入五花肉片翻炒一会后，加入老抽少许，盐，翻炒后再加入蒜苗茎段&lt;/li&gt;
+&lt;li&gt;翻炒一会后再加入蒜苗叶翻炒，差不多后加入盐，生抽，最后加入味精&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;日式牛肉盖浇饭&#34;&gt;日式牛肉盖浇饭&lt;/h3&gt;
@@ -6344,10 +6374,31 @@ while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;
 &lt;blockquote&gt;
 &lt;p&gt;fuck gfw&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;calibre&#34;&gt;calibre&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;电子书阅读，转换(格式转换，去DRM，日语书竖排转横排(也可以使用注释里推友制作的工具，也不错))&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;wallabag&#34;&gt;wallabag&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;收藏文章，本地保存（可设置代理，配图也可自动下载本地保存）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;joplin&#34;&gt;joplin&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;笔记软件，也可剪藏文章，还可以只剪藏截图，选择内容&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;miniflux&#34;&gt;miniflux&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;rss订阅&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://nerdschalk.com/how-to-mute-an-app-on-windows-10/&#34;&gt;How To Mute an App on Windows 10&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://downloads.freemdict.com/&#34;&gt;Dict file download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://news.ycombinator.com/item?id=24587059&#34;&gt;Unfortunately Calibre is pretty bad for reading Japanese novels. Every amazon.jp&amp;hellip; | Hacker News&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/yihong0618/epubhv&#34;&gt;yihong0618/epubhv: Make your epub books vertical or horizontal.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/wallabag/wallabag/issues/3273#issuecomment-1678206292&#34;&gt;fetching articles via HTTP(S) proxy · Issue #3273 · wallabag/wallabag&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/wallabag/wallabag/issues/3687&#34;&gt;Download images locally isn’t working · Issue #3687 · wallabag/wallabag&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://discourse.joplinapp.org/t/new-install-invalid-origin-error/17891/13&#34;&gt;New Install - Invalid origin error - Support - Joplin Forum&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
