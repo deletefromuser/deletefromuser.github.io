@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-09-08T20:00:00+0800">
-<meta name="modified" content="2023-09-09T00:10:54+0800">
+<meta name="created" content="2023-09-09T08:33:58+0800">
+<meta name="modified" content="2023-09-10T23:20:57+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,6 +73,7 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/web/">Web</a></li>
@@ -84,7 +85,6 @@
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/cs/">CS</a></li>
-<li><a href="/blog/jpns/">Jpns</a></li>
 </ul>
 </nav>
 
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/blog/web/2023042501/">spring boot开发记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-04-25T20:00:00&#43;08:00">2023-04-25 20:00</time>
+</div>
+
+</header>
+<div class="content">
+热部署 maven中添加下面的依赖 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt; &lt;optional&gt;true&lt;/optional&gt; &lt;/dependency&gt; 启动jar时，修改log级别 java -jar myapp.jar --debug 切换命令行maven的JDK版本 # 重点在于修改JAVA_HOM
+</div>
+</article>
 
 <article class="list-view list-view--tip">
 <header>
@@ -211,19 +224,6 @@ chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 r
 </header>
 <div class="content">
 手动创建image 在项目内创建Dockerfile FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=docker&#34;]# ENTRYPOINT [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=dock
-</div>
-</article>
-
-<article class="list-view list-view--read">
-<header>
-<h2 class="title title-submitted"><a href="/blog/read/2023012901/">2023年读书记录</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-01-29T20:00:00&#43;08:00">2023-01-29 20:00</time>
-</div>
-
-</header>
-<div class="content">
-name auther start end 技术陷阱：从工业革命到AI时代，技术创新下的资本、劳动与权力 * 卡尔•贝内迪克特•弗雷 20230128 20230301 从零开始的女性主义 上野千鹤子 20230301 20230306 满愿 米泽穗信
 </div>
 </article>
 

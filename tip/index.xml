@@ -846,10 +846,31 @@ git clone https://username:token@github.com/username/repository.git
 &lt;blockquote&gt;
 &lt;p&gt;fuck gfw&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;calibre&#34;&gt;calibre&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;电子书阅读，转换(格式转换，去DRM，日语书竖排转横排(也可以使用注释里推友制作的工具，也不错))&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;wallabag&#34;&gt;wallabag&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;收藏文章，本地保存（可设置代理，配图也可自动下载本地保存）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;joplin&#34;&gt;joplin&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;笔记软件，也可剪藏文章，还可以只剪藏截图，选择内容&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;miniflux&#34;&gt;miniflux&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;rss订阅&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://nerdschalk.com/how-to-mute-an-app-on-windows-10/&#34;&gt;How To Mute an App on Windows 10&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://downloads.freemdict.com/&#34;&gt;Dict file download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://news.ycombinator.com/item?id=24587059&#34;&gt;Unfortunately Calibre is pretty bad for reading Japanese novels. Every amazon.jp&amp;hellip; | Hacker News&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/yihong0618/epubhv&#34;&gt;yihong0618/epubhv: Make your epub books vertical or horizontal.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/wallabag/wallabag/issues/3273#issuecomment-1678206292&#34;&gt;fetching articles via HTTP(S) proxy · Issue #3273 · wallabag/wallabag&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/wallabag/wallabag/issues/3687&#34;&gt;Download images locally isn’t working · Issue #3687 · wallabag/wallabag&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://discourse.joplinapp.org/t/new-install-invalid-origin-error/17891/13&#34;&gt;New Install - Invalid origin error - Support - Joplin Forum&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
