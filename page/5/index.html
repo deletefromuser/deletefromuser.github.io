@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-09-09T08:33:58+0800">
-<meta name="modified" content="2023-09-10T23:20:57+0800">
+<meta name="created" content="2023-09-24T15:00:00+0800">
+<meta name="modified" content="2023-09-24T17:24:34+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/jpns/">Jpns</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/blog/web/2022121401/">JS库使用问题汇总</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-12-14T20:00:00&#43;08:00">2022-12-14 20:00</time>
+</div>
+
+</header>
+<div class="content">
+html2canvas 使html2canvas 在ie11中工作 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js&#34;&gt;&lt;/script&gt; html2canvas 在ie11中渲染出不明色块 html2canvas(document.querySelector(&#39;#preview_modal&#39;), { allowTaint: false, useCORS: true, scale: 2, }) 使用 html2canvas 生成图片在新tab打开 var image = new Image(); image.src = canvas.toDataURL(); var wImage
+</div>
+</article>
 
 <article class="list-view list-view--life">
 <header>
@@ -211,19 +224,6 @@ nohup java -jar /web/server.jar &gt; log.log 2&gt;&amp;1 &amp; reference Run jav
 </header>
 <div class="content">
 以前竟然不知道，每周都要上网站手动搜索 下载网站找到rss feed url，比如https://nyaa.si/?page=rss&amp;q=ubu
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2022110801/">weblogic console忘记密码的解决办法</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-08T12:00:00&#43;08:00">2022-11-08 12:00</time>
-</div>
-
-</header>
-<div class="content">
-重置密码太麻烦了，所以用解密 cd /u01/app/oracle/middleware/oracle_common/common/bin ./wlst.sh domain = &#34;/u01/app/oracle/middleware/user_projects/domains/wl_domain&#34; service = weblogic.security.internal.SerializedSystemIni.getEncryptionService(domain) encryption = weblogic.security.internal.encryption.ClearOrEncryptedService(service) # 密文中有`\`的话，解密会报错，要去掉 # find encrptyed username and password in domainnamexxx/servers/AdminServer/security/boot.properties print encryption.decrypt(&#34;{AES}nFIptO4HdY8fxSgLjrS8ZNqsVlcB2zQZzYJQ9o7AbJU=&#34;) reference Quickest way to decrypt passwords in Oracle WebLogic Server 12c Decrypt your boot.properties
 </div>
 </article>
 

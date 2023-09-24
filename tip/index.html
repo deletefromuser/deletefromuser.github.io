@@ -6,8 +6,8 @@
 <title>Tip – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/tip/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-09-08T20:00:00+0800">
-<meta name="modified" content="2023-09-10T23:20:57+0800">
+<meta name="created" content="2023-09-24T15:00:00+0800">
+<meta name="modified" content="2023-09-24T17:24:34+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/jpns/">Jpns</a></li>
 <li><a href="/blog/tip/" class="active" aria-current="page">Tip</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
@@ -93,6 +93,19 @@
 <h1 class="title">Tip</h1>
 
 
+
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/blog/tip/2023092401/">Mega &#43; nginx搭建webdav服务</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-09-24T15:00:00&#43;08:00">2023-09-24 15:00</time>
+</div>
+
+</header>
+<div class="content">
+需求 电子书阅读一直都是用的moonreader, 但是一直都是分别下载到每个设备里, 同步阅读进度很不方便, 以前也没想过这些, 这两年折腾dock
+</div>
+</article>
 
 <article class="list-view list-view--tip">
 <header>
@@ -208,19 +221,6 @@ word中快速粘贴无格式文本 Ctrl+Alt+V excel中查找重复记录 Home -&
 </header>
 <div class="content">
 前提 视频文件内容必须统一，一般是剧集类的，并且要是mkv格式的 打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出
-</div>
-</article>
-
-<article class="list-view list-view--tip">
-<header>
-<h2 class="title title-submitted"><a href="/blog/tip/2023021801/">使用js手动post数据</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-02-17T20:00:00&#43;08:00">2023-02-17 20:00</time>
-</div>
-
-</header>
-<div class="content">
-(async () =&gt; { const rawResponse = await fetch(&#39;https://httpbin.org/post&#39;, { method: &#39;POST&#39;, headers: { &#39;Accept&#39;: &#39;application/json&#39;, &#39;Content-Type&#39;: &#39;application/json&#39; }, body: JSON.stringify({a: 1, b: &#39;Textual content&#39;}) }); // const content = await rawResponse.json(); const content = await rawResponse.text(); console.log(content); })(); reference Fetch: POST JSON data
 </div>
 </article>
 
