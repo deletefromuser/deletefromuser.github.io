@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>webdav on HA</title>
+    <link>https://deletefromuser.github.io/tags/webdav/</link>
+    <description>Recent content in webdav on HA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 Sep 2023 15:00:00 +0800</lastBuildDate>
+    <atom:link href="https://deletefromuser.github.io/tags/webdav/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Mega &#43; nginx搭建webdav服务</title>
+      <link>https://deletefromuser.github.io/tip/2023092401/</link>
+      <pubDate>Sun, 24 Sep 2023 15:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/tip/2023092401/</guid>
+      <description>&lt;h3 id=&#34;需求&#34;&gt;需求&lt;/h3&gt;
+&lt;p&gt;电子书阅读一直都是用的moonreader, 但是一直都是分别下载到每个设备里, 同步阅读进度很不方便,&lt;/p&gt;
+&lt;p&gt;以前也没想过这些, 这两年折腾docker, 发现很多服务都可以自己部署, 于是想到可以自己部署一个webdav服务&lt;/p&gt;
+&lt;p&gt;搜索了一番, 尝试了&lt;a href=&#34;https://github.com/seaweedfs/seaweedfs&#34;&gt;seaweedfs&lt;/a&gt;, &lt;a href=&#34;https://github.com/micromata/dave&#34;&gt;dave&lt;/a&gt;, 这两个都是本地部署的, 指定文件夹就好, 缺点是迁移的话有点麻烦, 还要备份文件夹重新部署&lt;/p&gt;
+&lt;p&gt;后来发现mega提供了工具可以实现webdav, 刚好我也在使用mega, 刚好符合要求, 目前只是同步了阅读进度, 考虑以后把电子书也转移过去&lt;/p&gt;
+&lt;h3 id=&#34;使用mega-cmd搭建webdav超级简单&#34;&gt;使用mega-cmd搭建webdav(超级简单)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 0. 需要先注册一个mega账户, 免费版有20G容量, 还是不错的&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 1. 安装[MEGAcmd](https://mega.io/zh-hans/cmd#downloadapps)&lt;/span&gt;
+mega-cmd
+&lt;span style=&#34;color:#75715e&#34;&gt;# 输入账户密码, 2FA码(如果设置了的话)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 成功后退出&lt;/span&gt;
+quit
+&lt;span style=&#34;color:#75715e&#34;&gt;# 选择一个mega目录, 配置webdav&lt;/span&gt;
+mega-webdav /mega-path
+&lt;span style=&#34;color:#75715e&#34;&gt;# 输出类似于 http://127.0.0.1:4443/TuGwbDVb/mega-path&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;配置nginx反向代理&#34;&gt;配置nginx反向代理&lt;/h3&gt;
+&lt;h4 id=&#34;创建密码&#34;&gt;创建密码&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;怎么想也不能搭建一个任何人都可以访问修改的webdav吧, 所以要配置反向代理时设置允许访问的账户和密码, 要事先创建密码文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo htpasswd -c /etc/apache2/.htpasswd user1
+&lt;span style=&#34;color:#75715e&#34;&gt;# 根据提示输入账号和密码即可&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# htpasswd不存在的话, 说明需要安装apache2-utils或httpd-tools&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;配置nginx&#34;&gt;配置nginx&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;    location /webdavblah/ {
+        auth_basic           &amp;quot;moonreader webdav&amp;quot;;
+        auth_basic_user_file /etc/apache2/.htpasswd;
+        client_max_body_size 100M;
+
+        proxy_pass http://127.0.0.1:4443/TuGwbDVb/;
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;测试&#34;&gt;测试&lt;/h4&gt;
+&lt;p&gt;浏览器访问&lt;code&gt;https://example.com/webdavblah/mega-path&lt;/code&gt;, 输入账号密码后看能否访问成功&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 或者可以使用命令行测试&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看列表&lt;/span&gt;
+curl --user &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;user:pass&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://example.com/webdavblah/mega-path&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 创建test目录&lt;/span&gt;
+curl --user &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;user:pass&amp;#39;&lt;/span&gt; -X MKCOL &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://example.com/webdavblah/mega-path/test&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 往test目录上传文件&lt;/span&gt;
+curl --user &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;user:pass&amp;#39;&lt;/span&gt; -T &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/path/to/local/file.txt&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://example.com/webdavblah/mega-path/test/&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;其他问题&#34;&gt;其他问题&lt;/h3&gt;
+&lt;h3 id=&#34;nginx的上传文件限制&#34;&gt;nginx的上传文件限制&lt;/h3&gt;
+&lt;p&gt;nginx的默认文件上传大小限制是1M, 要修改需要的配置文件的http, server, location都添加&lt;code&gt;client_max_body_size 100M;&lt;/code&gt;, 之后重启&lt;/p&gt;
+&lt;h3 id=&#34;添加webdav到windows的文件管理器&#34;&gt;添加webdav到windows的文件管理器&lt;/h3&gt;
+&lt;p&gt;我的电脑 -&amp;gt; 右键&amp;quot;添加一个网络位置&amp;rdquo; -&amp;gt; 输入&lt;code&gt;https://example.com/webdavblah/mega-path&lt;/code&gt;, 之后输入账号密码即可&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dimoulis.net/posts/webdav-behind-reverse-proxy/&#34;&gt;WebDAV Behind A Nginx Reverse Proxy - Tech Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.qed42.com/insights/coe/drupal/using-curl-commands-webdav&#34;&gt;Using Curl commands with Webdav | QED42&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/&#34;&gt;Restricting Access with HTTP Basic Authentication | NGINX Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.rackspace.com/docs/limit-file-upload-size-in-nginx&#34;&gt;Limit File Upload Size in NGINX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/254113/how-to-connect-to-an-https-webdav-folder-on-windows-7&#34;&gt;How to connect to an HTTPS WebDAV Folder on Windows 7?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

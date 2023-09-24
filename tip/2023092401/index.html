@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Mega &#43; nginx搭建webdav服务 – HA</title>
+<meta name="description" content="需求 电子书阅读一直都是用的moonreader, 但是一直都是分别下载到每个设备里, 同步阅读进度很不方便, 以前也没想过这些, 这两年折腾docker, 发现很多服务都可以自己部署, 于是想到可以自己部署一个webdav服务 搜索了一番, 尝试了seaweedfs, dave, 这两个都是本地部署的, 指定文件夹就好, 缺点是迁移的话 …">
+<meta name="created" content="2023-09-24T15:00:00+0800">
+<meta name="modified" content="2023-09-24T17:24:34+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="Mega &#43; nginx搭建webdav服务">
+<meta property="og:url" content="https://deletefromuser.github.io/tip/2023092401/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/tip/2023092401/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Mega + nginx搭建webdav服务",
+    "datePublished": "2023-09-24T15:00:00+08:00",
+    "dateModified": "2023-09-24T17:24:34+08:00",
+    "url" : "https://deletefromuser.github.io/tip/2023092401/",
+    "description": "需求 电子书阅读一直都是用的moonreader, 但是一直都是分别下载到每个设备里, 同步阅读进度很不方便, 以前也没想过这些, 这两年折腾docker, 发现很多服务都可以自己部署, 于是想到可以自己部署一个webdav服务 搜索了一番, 尝试了seaweedfs, dave, 这两个都是本地部署的, 指定文件夹就好, 缺点是迁移的话 …",
+    "keywords": ["webdav","web","selfhost"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/tip/" class="active" aria-current="page">Tip</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/cs/">CS</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--tip">
+<header>
+<h1 class="title title-submitted">Mega &#43; nginx搭建webdav服务</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-09-24T15:00:00&#43;08:00">2023-09-24 15:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/selfhost/">selfhost</a></li>
+<li><a href="https://deletefromuser.github.io/tags/web/">web</a></li>
+<li><a href="https://deletefromuser.github.io/tags/webdav/">webdav</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="需求">需求</h3>
+<p>电子书阅读一直都是用的moonreader, 但是一直都是分别下载到每个设备里, 同步阅读进度很不方便,</p>
+<p>以前也没想过这些, 这两年折腾docker, 发现很多服务都可以自己部署, 于是想到可以自己部署一个webdav服务</p>
+<p>搜索了一番, 尝试了<a href="https://github.com/seaweedfs/seaweedfs">seaweedfs</a>, <a href="https://github.com/micromata/dave">dave</a>, 这两个都是本地部署的, 指定文件夹就好, 缺点是迁移的话有点麻烦, 还要备份文件夹重新部署</p>
+<p>后来发现mega提供了工具可以实现webdav, 刚好我也在使用mega, 刚好符合要求, 目前只是同步了阅读进度, 考虑以后把电子书也转移过去</p>
+<h3 id="使用mega-cmd搭建webdav超级简单">使用mega-cmd搭建webdav(超级简单)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 0. 需要先注册一个mega账户, 免费版有20G容量, 还是不错的</span>
+<span style="color:#75715e"># 1. 安装[MEGAcmd](https://mega.io/zh-hans/cmd#downloadapps)</span>
+mega-cmd
+<span style="color:#75715e"># 输入账户密码, 2FA码(如果设置了的话)</span>
+<span style="color:#75715e"># 成功后退出</span>
+quit
+<span style="color:#75715e"># 选择一个mega目录, 配置webdav</span>
+mega-webdav /mega-path
+<span style="color:#75715e"># 输出类似于 http://127.0.0.1:4443/TuGwbDVb/mega-path</span>
+</code></pre></div><h3 id="配置nginx反向代理">配置nginx反向代理</h3>
+<h4 id="创建密码">创建密码</h4>
+<blockquote>
+<p>怎么想也不能搭建一个任何人都可以访问修改的webdav吧, 所以要配置反向代理时设置允许访问的账户和密码, 要事先创建密码文件</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo htpasswd -c /etc/apache2/.htpasswd user1
+<span style="color:#75715e"># 根据提示输入账号和密码即可</span>
+<span style="color:#75715e"># htpasswd不存在的话, 说明需要安装apache2-utils或httpd-tools</span>
+</code></pre></div><h4 id="配置nginx">配置nginx</h4>
+<pre><code class="language-conf" data-lang="conf">    location /webdavblah/ {
+        auth_basic           &quot;moonreader webdav&quot;;
+        auth_basic_user_file /etc/apache2/.htpasswd;
+        client_max_body_size 100M;
+
+        proxy_pass http://127.0.0.1:4443/TuGwbDVb/;
+    }
+</code></pre><h4 id="测试">测试</h4>
+<p>浏览器访问<code>https://example.com/webdavblah/mega-path</code>, 输入账号密码后看能否访问成功</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 或者可以使用命令行测试</span>
+<span style="color:#75715e"># 查看列表</span>
+curl --user <span style="color:#e6db74">&#39;user:pass&#39;</span> <span style="color:#e6db74">&#39;https://example.com/webdavblah/mega-path&#39;</span>
+<span style="color:#75715e"># 创建test目录</span>
+curl --user <span style="color:#e6db74">&#39;user:pass&#39;</span> -X MKCOL <span style="color:#e6db74">&#39;https://example.com/webdavblah/mega-path/test&#39;</span>
+<span style="color:#75715e"># 往test目录上传文件</span>
+curl --user <span style="color:#e6db74">&#39;user:pass&#39;</span> -T <span style="color:#e6db74">&#39;/path/to/local/file.txt&#39;</span> <span style="color:#e6db74">&#39;https://example.com/webdavblah/mega-path/test/&#39;</span>
+</code></pre></div><h3 id="其他问题">其他问题</h3>
+<h3 id="nginx的上传文件限制">nginx的上传文件限制</h3>
+<p>nginx的默认文件上传大小限制是1M, 要修改需要的配置文件的http, server, location都添加<code>client_max_body_size 100M;</code>, 之后重启</p>
+<h3 id="添加webdav到windows的文件管理器">添加webdav到windows的文件管理器</h3>
+<p>我的电脑 -&gt; 右键&quot;添加一个网络位置&rdquo; -&gt; 输入<code>https://example.com/webdavblah/mega-path</code>, 之后输入账号密码即可</p>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://www.dimoulis.net/posts/webdav-behind-reverse-proxy/">WebDAV Behind A Nginx Reverse Proxy - Tech Blog</a></li>
+<li><a href="https://www.qed42.com/insights/coe/drupal/using-curl-commands-webdav">Using Curl commands with Webdav | QED42</a></li>
+<li><a href="https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/">Restricting Access with HTTP Basic Authentication | NGINX Documentation</a></li>
+<li><a href="https://docs.rackspace.com/docs/limit-file-upload-size-in-nginx">Limit File Upload Size in NGINX</a></li>
+<li><a href="https://superuser.com/questions/254113/how-to-connect-to-an-https-webdav-folder-on-windows-7">How to connect to an HTTPS WebDAV Folder on Windows 7?</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-09-24 17:24<br>
+Created: 2023-09-24 15:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
