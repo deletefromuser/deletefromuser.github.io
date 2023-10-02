@@ -233,6 +233,10 @@ open 192.168.1.2
 get a.txt
 &lt;span style=&#34;color:#75715e&#34;&gt;# 上传文件&lt;/span&gt;
 put /path/b.txt /ftppath/b.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;unzip&#34;&gt;unzip&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 解压时指定字符编码&lt;/span&gt;
+unzip -O shift-jis ~/Downloads/【新入荷ECM】資料.zip
+&lt;span style=&#34;color:#75715e&#34;&gt;# rar的话没找到, 可以在virtualbox里装个日文版win7里解压&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
@@ -249,6 +253,7 @@ put /path/b.txt /ftppath/b.txt
 &lt;li&gt;&lt;a href=&#34;https://www.nslookup.io/learning/how-to-specify-a-dns-server-in-nslookup/&#34;&gt;How to specify a DNS server in nslookup?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://tecadmin.net/download-upload-files-using-ftp-command-line/&#34;&gt;How to Download and Upload Files using FTP Command Line&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ftp-put&#34;&gt;ftp put | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/935022/how-to-unzip-a-japanese-zip-file-and-avoid-mojibake-garbled-characters&#34;&gt;encoding - How to unzip a Japanese ZIP file, and avoid mojibake/garbled characters - Ask Ubuntu&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

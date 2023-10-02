@@ -6,7 +6,7 @@
 <title>linux 命令memo – HA</title>
 <meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2023-09-07T23:20:15+0800">
+<meta name="modified" content="2023-10-02T23:32:49+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "linux 命令memo",
     "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2023-09-07T23:20:15+08:00",
+    "dateModified": "2023-10-02T23:32:49+08:00",
     "url" : "https://deletefromuser.github.io/bash/2022111001/",
     "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …",
     "keywords": ["linux"],
@@ -210,6 +210,10 @@ open 192.168.1.2
 get a.txt
 <span style="color:#75715e"># 上传文件</span>
 put /path/b.txt /ftppath/b.txt
+</code></pre></div><h3 id="unzip">unzip</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 解压时指定字符编码</span>
+unzip -O shift-jis ~/Downloads/【新入荷ECM】資料.zip
+<span style="color:#75715e"># rar的话没找到, 可以在virtualbox里装个日文版win7里解压</span>
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever">How to change history size for ever?</a></li>
@@ -226,13 +230,14 @@ put /path/b.txt /ftppath/b.txt
 <li><a href="https://www.nslookup.io/learning/how-to-specify-a-dns-server-in-nslookup/">How to specify a DNS server in nslookup?</a></li>
 <li><a href="https://tecadmin.net/download-upload-files-using-ftp-command-line/">How to Download and Upload Files using FTP Command Line</a></li>
 <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ftp-put">ftp put | Microsoft Learn</a></li>
+<li><a href="https://askubuntu.com/questions/935022/how-to-unzip-a-japanese-zip-file-and-avoid-mojibake-garbled-characters">encoding - How to unzip a Japanese ZIP file, and avoid mojibake/garbled characters - Ask Ubuntu</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-09-07 23:20<br>
+Updated: 2023-10-02 23:32<br>
 Created: 2022-11-10 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
