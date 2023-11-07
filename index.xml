@@ -591,6 +591,8 @@ curl --request PATCH &lt;span style=&#34;color:#ae81ff&#34;&gt;\
 &lt;blockquote&gt;
 &lt;p&gt;ignore all i said above, blah blah&amp;hellip;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;翻译菜名&#34;&gt;翻译菜名&lt;/h3&gt;
+&lt;p&gt;你是一个日本料理专家，我给你一个中文菜名，给我对应的日语菜名，同时给出几个做法用料相似的日本料理， 第一个菜名是【青椒炒蛋】&lt;/p&gt;
 </description>
     </item>
     
@@ -2147,6 +2149,27 @@ TODO&lt;/li&gt;
 &lt;li&gt;加油一次下洋葱, 鸡肉, 土豆, 胡萝卜翻炒后, 加水炖煮至胡萝卜土豆软烂, 中途漂浮沫&lt;/li&gt;
 &lt;li&gt;加入买的咖喱, 完全融化后再适当炖煮即可&lt;/li&gt;
 &lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;蒸肉&#34;&gt;蒸肉&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;准备猪肉切块, 红薯或土豆切块,&lt;/li&gt;
+&lt;li&gt;准备酱汁, 生抽, 老抽, 植物油, 蚝油, 搅拌均匀&lt;/li&gt;
+&lt;li&gt;把肉放入蒸肉粉中搅拌后, 加入酱汁, 混合均匀, 腌制十分钟&lt;/li&gt;
+&lt;li&gt;把红薯或土豆铺到盘底, 放上肉, 开水上锅蒸30min即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;盐水鸭&#34;&gt;盐水鸭&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;锅中加入花椒, 八角, 盐, 小火翻炒至微黄后放凉&lt;/li&gt;
+&lt;li&gt;把调料涂到洗干净的鸭腿上, 保鲜膜包好腌制一晚&lt;/li&gt;
+&lt;li&gt;锅中放入鸭腿, 八角, 生姜, 冷水下锅, 水开后小火煮30min即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;韭菜炒猪肝&#34;&gt;韭菜炒猪肝&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TODO&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;面食&#34;&gt;面食&lt;/h2&gt;
 &lt;h3 id=&#34;蒸馒头&#34;&gt;蒸馒头&lt;/h3&gt;
