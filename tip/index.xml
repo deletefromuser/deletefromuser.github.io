@@ -936,6 +936,11 @@ git clone https://username:token@github.com/username/repository.git
 &lt;blockquote&gt;
 &lt;p&gt;rss订阅&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;snapdrop&#34;&gt;snapdrop&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本地网络内无线文件传送&lt;/p&gt;
+&lt;p&gt;部署 &lt;code&gt;docker run -d --restart=always -p 8080:80 linuxserver/snapdrop&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://nerdschalk.com/how-to-mute-an-app-on-windows-10/&#34;&gt;How To Mute an App on Windows 10&lt;/a&gt;&lt;/li&gt;
