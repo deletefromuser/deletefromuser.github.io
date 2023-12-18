@@ -112,6 +112,9 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd /mnt
 ./VBoxLinuxAdditions.run
 reboot
+</code></pre></div><h3 id="linux虚拟机内非root用户读写共享文件夹">linux虚拟机内非root用户读写共享文件夹</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">usermod -a -G vboxsf username
+<span style="color:#75715e"># logout and login again</span>
 </code></pre></div><p><strong>reference:</strong></p>
 <ol>
 <li><a href="http://blog.csdn.net/q1302182594/article/details/8720545">VirtualBox安装Windows XP——图解</a></li>

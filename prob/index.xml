@@ -189,6 +189,9 @@ VboxManage controlvm &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Ubuntu 1
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cd /mnt
 ./VBoxLinuxAdditions.run
 reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;linux虚拟机内非root用户读写共享文件夹&#34;&gt;linux虚拟机内非root用户读写共享文件夹&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;usermod -a -G vboxsf username
+&lt;span style=&#34;color:#75715e&#34;&gt;# logout and login again&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/q1302182594/article/details/8720545&#34;&gt;VirtualBox安装Windows XP——图解&lt;/a&gt;&lt;/li&gt;
