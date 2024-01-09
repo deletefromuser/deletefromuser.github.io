@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-12-16T20:00:00+0800">
-<meta name="modified" content="2024-01-04T00:08:41+0800">
+<meta name="created" content="2024-01-06T20:00:00+0800">
+<meta name="modified" content="2024-01-08T21:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,6 +73,7 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
@@ -80,7 +81,6 @@
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/java/">Java</a></li>
-<li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sh/">SH</a></li>
@@ -96,6 +96,32 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--bash">
+<header>
+<h2 class="title title-submitted"><a href="/blog/bash/2022111001/">linux 命令memo</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
+</div>
+
+</header>
+<div class="content">
+uuidgen 生成uuid history 命令行历史 修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m
+</div>
+</article>
+
+<article class="list-view list-view--java">
+<header>
+<h2 class="title title-submitted"><a href="/blog/java/2022111002/">linux下让Java程序运行在后台</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
+</div>
+
+</header>
+<div class="content">
+nohup java -jar /web/server.jar &gt; log.log 2&gt;&amp;1 &amp; reference Run java jar file on a server as background process Launch springboot project in the background on Linux 2&gt;&amp;1到底是什么意思？
+</div>
+</article>
 
 <article class="list-view list-view--prob">
 <header>
@@ -198,32 +224,6 @@ Install ‘Oracle VM VirtualBox Extension Pack’ Attaching webcam to guest OS V
 </header>
 <div class="content">
 动画 風都探偵 ベルセルク 黄金時代篇 Noumin Kanren(两话弃) 陰の実力者になりたくて! モブサイコ100 S03 機動戦士ガンダム 水星の魔女 うたわれるもの二
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/blog/web/2022071101/">引用cdn静态资源时添加哈希值验证防篡改</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-07-11T17:00:00&#43;08:00">2022-07-11 17:00</time>
-</div>
-
-</header>
-<div class="content">
-例子： &lt;script src=&#34;https://example.com/example-framework.js&#34; integrity=&#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt; 生成 SRI 哈希的工具 shasum -b -a 384 example-framework.js | xxd -r -p | base64 reference Subresource Integrity - Web 安全 | MDN
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2022070801/">win10 开始菜单去掉web搜索结果</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-07-08T10:00:00&#43;08:00">2022-07-08 10:00</time>
-</div>
-
-</header>
-<div class="content">
-针对Windows 10 version 1909 打开注册表编辑器 regedit 进入 计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Window
 </div>
 </article>
 
