@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-12-16T20:00:00+0800">
-<meta name="modified" content="2024-01-04T00:08:41+0800">
+<meta name="created" content="2024-01-06T20:00:00+0800">
+<meta name="modified" content="2024-01-08T21:00:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,6 +73,7 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/read/">Read</a></li>
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/jpns/">Jpns</a></li>
@@ -80,7 +81,6 @@
 <li><a href="/web/">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/java/">Java</a></li>
-<li><a href="/read/">Read</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/prob/">Prob</a></li>
 <li><a href="/sh/">SH</a></li>
@@ -96,6 +96,32 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/sql/2023060301/">sql使用memo</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-08-06T14:00:00&#43;08:00">2023-08-06 14:00</time>
+</div>
+
+</header>
+<div class="content">
+count(1), count(*), count(column)区别 count(1)和count(*)是相同的, 但count(*)代表的语义更明确 COUNT(&lt;expression&gt;) 统计非空值个数 使用IN时是
+</div>
+</article>
+
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/tip/2023071701/">开发软件使用记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-07-17T20:00:00&#43;08:00">2023-07-17 20:00</time>
+</div>
+
+</header>
+<div class="content">
+VSCODE 切换命令行(PoserShell-&gt;Git Bash) CTRL + SHIFT + P后，输入Select Default Profile，选择bash即可 大小写转换 CTRL + SHIFT + P后，
+</div>
+</article>
 
 <article class="list-view list-view--watch">
 <header>
@@ -198,32 +224,6 @@ word中快速粘贴无格式文本 Ctrl+Alt+V excel中查找重复记录 Home -&
 </header>
 <div class="content">
 使用docker部署jenkins # 1 docker network create jenkins # 2 为了能在docker的jenkins实例中运行docker命令 docker run \ --name jenkins-docker \ --rm \ --detach \ --privileged \ --network jenkins
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/web/2023052001/">docker使用记录</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-05-20T18:00:00&#43;08:00">2023-05-20 18:00</time>
-</div>
-
-</header>
-<div class="content">
-使用docker实例命令行 docker exec -it spring-cloud-config-server_1 bash # 以root实行 docker exec -u 0 -it mycontainer bash 网络配置，使不同的docker实例互相联通 # 连接mysql的docker实
-</div>
-</article>
-
-<article class="list-view list-view--sql">
-<header>
-<h2 class="title title-submitted"><a href="/sql/2023051301/">mariadb(mysql)使用</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-05-13T19:00:00&#43;08:00">2023-05-13 19:00</time>
-</div>
-
-</header>
-<div class="content">
-导出数据 mysqldump -u username -p database_name &gt; data-dump.sql reference 4 Ways to Insert Multiple Rows in Oracle
 </div>
 </article>
 
