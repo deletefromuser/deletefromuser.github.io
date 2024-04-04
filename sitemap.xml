@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/watch/2024040101/</loc>
+    <lastmod>2024-04-04T20:56:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
+    <lastmod>2024-04-04T20:56:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/watch/</loc>
+    <lastmod>2024-04-04T20:56:44+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/watch/2024010101/</loc>
     <lastmod>2024-03-31T15:44:41+08:00</lastmod>
   </url>
@@ -13,18 +28,8 @@
   </url>
   
   <url>
-    <loc>/blog/</loc>
-    <lastmod>2024-03-31T15:44:41+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/read/</loc>
     <lastmod>2024-03-27T21:42:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/watch/</loc>
-    <lastmod>2024-03-31T15:44:41+08:00</lastmod>
   </url>
   
   <url>
