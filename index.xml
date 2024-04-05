@@ -2058,6 +2058,27 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
 &lt;p&gt;Either you run the day or the day runs you.&lt;/p&gt;
 &lt;p&gt;by &lt;em&gt;Jim Rohn&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;很长一段时间，我的生活看似马上就要开始了，但是总有一些障碍阻挡着。我以为有些事得先解决，有些工作还有待完成，还有一笔债务要去付清，然后生活才会重新开始。最后我终于明白，这些障碍，正是我的生活。&lt;/p&gt;
+&lt;p&gt;by &lt;em&gt;艾弗里德·德索萨&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一件物品的代价，就是为它而牺牲的生活，不论是即刻还是长期的。&lt;/p&gt;
+&lt;p&gt;by &lt;em&gt;《瓦尔登湖》亨利·大卫·梭罗&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;花几天时间，心甘情愿地吃最廉价的食物，穿粗糙简陋的衣服，同时问自己：‘这就是我所恐惧的吗？’&lt;/p&gt;
+&lt;p&gt;by &lt;em&gt;塞内卡&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;弄清楚我们想做什么是世上最困难的事情之一。不但在青少年时代如此，在我们一生中，这个问题都存在着。除非你亲自弄清楚什么是你真正想做的事，否则你会做一些对你没有太大意义的事，你的生命就会变得十分悲惨，正因为你过得很悲惨，你就必须从戏院、酗酒、阅读数不尽的书籍、做社会改革的工作以及其他事情来让自己分心。……你一旦发现真正爱做的事，你就是一个自由的人了，然后你就会有能力、信心和主动创造的力量。但是如果你不知道自己真正爱做的是什么，你只好去做人人羡慕的律师、政客或这个那个，于是你就不会有快乐，因为那份职业会变成毁灭你自己及其他人的工具。&lt;/p&gt;
+&lt;p&gt;by &lt;em&gt;克里斯纳穆提&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;年轻时，我犯的最大错误，就是没有及时离职。我以为我必须向公司证明自己，然后再离开，但这其实没有任何意义。你不欠雇主任何东西，不必向雇主证明任何事情。他们对你丝毫没有忠诚度，对你做对或做错、是聪明还是愚蠢，毫不在意。
+把时间用在你最终不会引以为豪的东西上面，是一件可怕的事情，浪费了你在地球上的短暂旅程。&lt;/p&gt;
+&lt;p&gt;by &lt;em&gt;TODO&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -2380,6 +2401,10 @@ document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&l
 &lt;blockquote&gt;
 &lt;p&gt;TODO&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;天妇罗&#34;&gt;天妇罗&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;炒粉&#34;&gt;炒粉&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;TODO 龙口粉丝, 鸡蛋, 卷心菜&lt;/p&gt;
@@ -2515,6 +2540,7 @@ TODO&lt;/li&gt;
 &lt;li&gt;炒粉&lt;/li&gt;
 &lt;li&gt;卤蛋&lt;/li&gt;
 &lt;li&gt;虾仁炒蛋&lt;/li&gt;
+&lt;li&gt;鸡腿排&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ul&gt;
@@ -6803,6 +6829,10 @@ while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;
 &lt;blockquote&gt;
 &lt;p&gt;本地网络内无线文件传送&lt;/p&gt;
 &lt;p&gt;部署 &lt;code&gt;docker run -d --restart=always -p 8080:80 linuxserver/snapdrop&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;vlc--mpv&#34;&gt;vlc &amp;amp; mpv&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;视频播放&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
