@@ -868,8 +868,13 @@ git clone https://username:token@github.com/username/repository.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-bash中使用sh命令时出现警告__git_ps1-command-not-found&#34;&gt;git bash中使用sh命令时出现警告&amp;rdquo;__git_ps1: command not found&amp;rdquo;&lt;/h3&gt;
 &lt;p&gt;找到completion/git-prompt.sh，在~/.bash_profile或者内部引用的配置文件中添加&lt;code&gt;source /path/git-prompt.sh&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;导出svn-patch&#34;&gt;导出svn patch&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;git diff --no-prefix &amp;gt; ~/some-feature.diff
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git diff --no-prefix &amp;gt; ~/some-feature.diff
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-rebase&#34;&gt;git rebase&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 把多个commit合并成一个&lt;/span&gt;
+git rebase -i &amp;lt;待合并commit的前一个commit&amp;gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 如果已经push到了remote，rebase完成后需要强制push&lt;/span&gt;
+git push -f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://githowto.com/moving_files&#34;&gt;20. Moving files&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit&#34;&gt;How do I list all the files in a commit?&lt;/a&gt;&lt;/li&gt;
@@ -887,6 +892,7 @@ git clone https://username:token@github.com/username/repository.git
 &lt;li&gt;&lt;a href=&#34;https://www.quora.com/How-do-I-kill-all-processes-with-the-same-name-in-Windows&#34;&gt;How to kill all processes with the same name in Windows - Quora&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git&#34;&gt;version control - How do I undo the most recent local commits in Git? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name&#34;&gt;repository - How do I rename both a Git local and remote branch name? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sejuku.net/blog/71919&#34;&gt;これで完璧! 図解でわかるgit rebaseの2つの使い方!&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
