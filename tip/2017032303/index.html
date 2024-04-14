@@ -187,8 +187,13 @@ git clone https://username:token@github.com/username/repository.git
 </code></pre></div><h3 id="git-bash中使用sh命令时出现警告__git_ps1-command-not-found">git bash中使用sh命令时出现警告&rdquo;__git_ps1: command not found&rdquo;</h3>
 <p>找到completion/git-prompt.sh，在~/.bash_profile或者内部引用的配置文件中添加<code>source /path/git-prompt.sh</code></p>
 <h3 id="导出svn-patch">导出svn patch</h3>
-<pre><code>git diff --no-prefix &gt; ~/some-feature.diff
-</code></pre><p><strong>reference</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git diff --no-prefix &gt; ~/some-feature.diff
+</code></pre></div><h3 id="git-rebase">git rebase</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 把多个commit合并成一个</span>
+git rebase -i &lt;待合并commit的前一个commit&gt;
+<span style="color:#75715e"># 如果已经push到了remote，rebase完成后需要强制push</span>
+git push -f
+</code></pre></div><p><strong>reference</strong></p>
 <ol>
 <li><a href="https://githowto.com/moving_files">20. Moving files</a></li>
 <li><a href="https://stackoverflow.com/questions/424071/how-do-i-list-all-the-files-in-a-commit">How do I list all the files in a commit?</a></li>
@@ -206,6 +211,7 @@ git clone https://username:token@github.com/username/repository.git
 <li><a href="https://www.quora.com/How-do-I-kill-all-processes-with-the-same-name-in-Windows">How to kill all processes with the same name in Windows - Quora</a></li>
 <li><a href="https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git">version control - How do I undo the most recent local commits in Git? - Stack Overflow</a></li>
 <li><a href="https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name">repository - How do I rename both a Git local and remote branch name? - Stack Overflow</a></li>
+<li><a href="https://www.sejuku.net/blog/71919">これで完璧! 図解でわかるgit rebaseの2つの使い方!</a></li>
 </ol>
 
 </div>
