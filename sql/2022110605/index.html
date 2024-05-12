@@ -128,6 +128,10 @@ Tags:
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> USER_SYS_PRIVS; 
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> USER_TAB_PRIVS; 
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> USER_ROLE_PRIVS;
+</code></pre></div><h3 id="登录sys用户">登录sys用户</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sqlplus / as sysdba
+-- 输入sys
+-- 输入密码 as sysdba
 </code></pre></div><h3 id="修改数据库编码">修改数据库编码</h3>
 <p>重要数据记得备份，我导入的数据转码之后汉字全都乱码了</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 查看oracle数据库的编码
@@ -161,9 +165,19 @@ startup
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> name, value <span style="color:#66d9ef">FROM</span> v$parameter <span style="color:#66d9ef">WHERE</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sessions&#39;</span>;
 
 <span style="color:#66d9ef">select</span> current_utilization, limit_value <span style="color:#66d9ef">from</span> v$resource_limit <span style="color:#66d9ef">where</span> resource_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sessions&#39;</span>;
+</code></pre></div><h3 id="导出数据库">导出数据库</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 导出某个用户下全部数据
+</span><span style="color:#75715e"></span>exp tom<span style="color:#f92672">/</span>a12345678<span style="color:#f92672">@</span>orcl file<span style="color:#f92672">=/</span>path<span style="color:#f92672">/</span>backup.dmp <span style="color:#66d9ef">owner</span><span style="color:#f92672">=</span>tom
+<span style="color:#75715e">-- 导出某个用户下特定表
+</span><span style="color:#75715e"></span>exp tom<span style="color:#f92672">/</span>a12345678<span style="color:#f92672">@</span>orcl file<span style="color:#f92672">=/</span>path<span style="color:#f92672">/</span>backup.dmp tables<span style="color:#f92672">=</span>tableA,tableB
 </code></pre></div><h3 id="导入数据库">导入数据库</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 导入的时候确定，导出和导入的数据库编码一致
-</span><span style="color:#75715e"></span>imp tom<span style="color:#f92672">/</span>a12345678<span style="color:#f92672">@</span>orcl file<span style="color:#f92672">=/</span>path<span style="color:#f92672">/</span>backup.dmp fromuser<span style="color:#f92672">=</span>tom touser<span style="color:#f92672">=</span>jack <span style="color:#66d9ef">ignore</span>;
+</span><span style="color:#75715e"></span>imp tom<span style="color:#f92672">/</span>a12345678<span style="color:#f92672">@</span>orcl file<span style="color:#f92672">=/</span>path<span style="color:#f92672">/</span>backup.dmp fromuser<span style="color:#f92672">=</span>tom touser<span style="color:#f92672">=</span>jack <span style="color:#66d9ef">ignore</span>
+<span style="color:#75715e">-- 导入特定表
+</span><span style="color:#75715e"></span>imp tom<span style="color:#f92672">/</span>a12345678<span style="color:#f92672">@</span>orcl file<span style="color:#f92672">=/</span>path<span style="color:#f92672">/</span>backup.dmp fromuser<span style="color:#f92672">=</span>tom touser<span style="color:#f92672">=</span>jack tables<span style="color:#f92672">=</span>tableA,tableB <span style="color:#66d9ef">ignore</span>
+<span style="color:#75715e">-- or
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> DIRECTORY MY_DIR <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">&#39;/path/&#39;</span>;
+impdb <span style="color:#e6db74">&#34;&#39;sys/sys@orcl as sysdba&#39;&#34;</span> directory<span style="color:#f92672">=</span>MY_DIR  DUMPFILE<span style="color:#f92672">=</span>backup.dmp TABLES<span style="color:#f92672">=</span><span style="color:#66d9ef">All</span>
 </code></pre></div><h3 id="缩小oracle数据库内存占用">缩小oracle数据库内存占用</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> v$parameter <span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%size%&#39;</span> <span style="color:#66d9ef">OR</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%target%&#39;</span>;
 <span style="color:#66d9ef">show</span> <span style="color:#66d9ef">parameter</span> sga;
@@ -598,6 +612,8 @@ createtime date
 <li><a href="https://bt.hatenadiary.jp/entry/20060510/1147263152">NVARCHARの桁数の罠 - bt ↗</a></li>
 <li><a href="https://pg-life.net/db/data-type/">【SQL Server】データ型の種類｜PG-LIFE ↗</a></li>
 <li><a href="https://stackoverflow.com/questions/75878235/mybatis-text-literal-n-without-tomcat-parameters/75878457#75878457">sql - mybatis text literal n without Tomcat parameters - Stack Overflow</a></li>
+<li><a href="https://stackoverflow.com/questions/2560269/exporting-many-tables-on-oracle">Exporting many tables on Oracle</a></li>
+<li><a href="https://stackoverflow.com/questions/23647408/how-to-export-database-schema-in-oracle-to-a-dump-file">How to export database schema in Oracle to a dump file</a></li>
 </ul>
 
 </div>
