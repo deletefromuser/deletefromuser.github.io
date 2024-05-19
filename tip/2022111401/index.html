@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>批量下载youtube视频 – HA</title>
-<meta name="description" content=" 获取视频url   F12，打开控制台，运行[...document.querySelectorAll(&amp;#39;[id=thumbnail]&amp;#39;)].map(item =&amp;amp;gt; item.href).join(&amp;amp;quot; &amp;amp;quot;)  下载  # 下载音频 youtube-dl -f …">
+<meta name="description" content=" 获取视频url   F12，打开控制台，运行[...document.querySelectorAll(&amp;#39;[id=thumbnail]&amp;#39;)].map(item =&amp;amp;gt; item.href).join(&amp;amp;quot; &amp;amp;quot;) 从播放列表中获得url，先F12选中整个播放列表，然后运 …">
 <meta name="created" content="0001-01-01T00:00:00+0000">
-<meta name="modified" content="2023-02-11T16:37:54+0800">
+<meta name="modified" content="2024-05-19T22:05:18+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,9 +31,9 @@
     "@type": "WebPage",
     "headline": "批量下载youtube视频",
     "datePublished": "0001-01-01T00:00:00Z",
-    "dateModified": "2023-02-11T16:37:54+08:00",
+    "dateModified": "2024-05-19T22:05:18+08:00",
     "url" : "/blog/tip/2022111401/",
-    "description": " 获取视频url   F12，打开控制台，运行[...document.querySelectorAll(\u0026#39;[id=thumbnail]\u0026#39;)].map(item =\u0026amp;gt; item.href).join(\u0026amp;quot; \u0026amp;quot;)  下载  # 下载音频 youtube-dl -f …",
+    "description": " 获取视频url   F12，打开控制台，运行[...document.querySelectorAll(\u0026#39;[id=thumbnail]\u0026#39;)].map(item =\u0026amp;gt; item.href).join(\u0026amp;quot; \u0026amp;quot;) 从播放列表中获得url，先F12选中整个播放列表，然后运 …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -105,6 +105,7 @@
 </ol>
 <blockquote>
 <p>F12，打开控制台，运行<code>[...document.querySelectorAll('[id=thumbnail]')].map(item =&gt; item.href).join(&quot; &quot;)</code></p>
+<p>从播放列表中获得url，先F12选中整个播放列表，然后运行<code>[...$0.querySelectorAll(&quot;[id=wc-endpoint]&quot;)].map(item =&gt; item.href).join(&quot;\n&quot;)</code></p>
 </blockquote>
 <ol start="2">
 <li>下载</li>
@@ -132,7 +133,7 @@ youtube-dl --all-subs --skip-download https://www.youtube.com/watch?v<span style
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-02-11 16:37<br>
+Updated: 2024-05-19 22:05<br>
 Created: 0001-01-01 00:00
 </p>
 </div><script src="https://utteranc.es/client.js"
