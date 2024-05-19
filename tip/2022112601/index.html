@@ -6,7 +6,7 @@
 <title>使用命令行上传文件到共享网站file.io – HA</title>
 <meta name="description" content="在~/.bashrc最后添加下面脚本 upload () { if [ $# = 1 -o $# = 2 ];then if [ -f &amp;amp;#34;$1&amp;amp;#34; ];then if [ $# = 1 ];then curl -F &amp;amp;#34;file=@$1&amp;amp;#34; https://file.io/ --no-progress-meter …">
 <meta name="created" content="2022-11-26T20:00:00+0800">
-<meta name="modified" content="2023-02-11T16:37:54+0800">
+<meta name="modified" content="2024-05-19T22:05:18+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "使用命令行上传文件到共享网站file.io",
     "datePublished": "2022-11-26T20:00:00+08:00",
-    "dateModified": "2023-02-11T16:37:54+08:00",
+    "dateModified": "2024-05-19T22:05:18+08:00",
     "url" : "https://deletefromuser.github.io/tip/2022112601/",
     "description": "在~/.bashrc最后添加下面脚本 upload () { if [ $# = 1 -o $# = 2 ];then if [ -f \u0026amp;#34;$1\u0026amp;#34; ];then if [ $# = 1 ];then curl -F \u0026amp;#34;file=@$1\u0026amp;#34; https://file.io/ --no-progress-meter …",
     "mainEntityOfPage": {
@@ -104,6 +104,9 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">upload <span style="color:#f92672">()</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> -o $# <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">]</span>;<span style="color:#66d9ef">then</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>;<span style="color:#66d9ef">then</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>;<span style="color:#66d9ef">then</span> curl -F <span style="color:#e6db74">&#34;file=@</span>$1<span style="color:#e6db74">&#34;</span> https://file.io/ --no-progress-meter | grep -Eo <span style="color:#e6db74">&#34;http|https://[a-zA-Z0-9./?=_%:-]*&#34;</span>;<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span>~ ^<span style="color:#f92672">[</span>1-9<span style="color:#f92672">]</span>+<span style="color:#f92672">[</span>wmy<span style="color:#f92672">]</span>$ <span style="color:#f92672">]]</span>;<span style="color:#66d9ef">then</span> curl -F <span style="color:#e6db74">&#34;file=@</span>$1<span style="color:#e6db74">&#34;</span> https://file.io/<span style="color:#ae81ff">\?</span>expires<span style="color:#f92672">=</span>$2 --no-progress-meter | grep -Eo <span style="color:#e6db74">&#34;http|https://[a-zA-Z0-9./?=_%:-]*&#34;</span>;<span style="color:#66d9ef">else</span> echo <span style="color:#e6db74">$&#39;Wrong expiration format.\neg. 1(w/m/y), etc.&#39;</span>;<span style="color:#66d9ef">fi</span>;<span style="color:#66d9ef">fi</span>;<span style="color:#66d9ef">else</span> echo <span style="color:#e6db74">&#34;file doesn&#39;t exist&#34;</span>;<span style="color:#66d9ef">fi</span>;<span style="color:#66d9ef">else</span> echo <span style="color:#e6db74">$&#39;usage: upload file_name.ext [expiration]\nexpiration format: 1-9(w/m/y) # (w)eeks, m(onths), (y)ear&#39;</span>;<span style="color:#66d9ef">fi</span> <span style="color:#f92672">}</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">source ~/.bashrc
 
+<span style="color:#75715e"># 文件太大时分割文件</span>
+zip existing.zip --out new.zip -s 500m
+
 <span style="color:#75715e"># 上传</span>
 upload testfile.txt
 
@@ -112,13 +115,14 @@ wget -O dirs.zip https://file.io/lhQ7adehy7xc
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="http://amanroy.me/upload-file-from-terminal">Make terminal upload file using file.io</a></li>
+<li><a href="https://superuser.com/questions/336219/how-do-i-split-a-zip-file-into-multiple-segments">How do I split a .zip file into multiple segments?</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-02-11 16:37<br>
+Updated: 2024-05-19 22:05<br>
 Created: 2022-11-26 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
