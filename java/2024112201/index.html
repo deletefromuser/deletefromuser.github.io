@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>控制台出现不明log，如何排查 – HA</title>
+<meta name="description" content="定位控制台中的未知log, 并抑制输出 历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖, 在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz) 1. 定位log输出位置及log接口类(jcl, slf4j等) 一般log前都会有 …">
+<meta name="created" content="2024-11-22T20:00:00+0800">
+<meta name="modified" content="2024-11-23T23:45:53+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="控制台出现不明log，如何排查">
+<meta property="og:url" content="https://deletefromuser.github.io/java/2024112201/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/java/2024112201/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "控制台出现不明log，如何排查",
+    "datePublished": "2024-11-22T20:00:00+08:00",
+    "dateModified": "2024-11-23T23:45:53+08:00",
+    "url" : "https://deletefromuser.github.io/java/2024112201/",
+    "description": "定位控制台中的未知log, 并抑制输出 历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖, 在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz) 1. 定位log输出位置及log接口类(jcl, slf4j等) 一般log前都会有 …",
+    "keywords": ["java","programming"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/java/" class="active" aria-current="page">Java</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/cs/">CS</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--java">
+<header>
+<h1 class="title title-submitted">控制台出现不明log，如何排查</h1>
+<div class="submitted">
+<time class="created-date" datetime="2024-11-22T20:00:00&#43;08:00">2024-11-22 20:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/java/">java</a></li>
+<li><a href="https://deletefromuser.github.io/tags/programming/">programming</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="定位控制台中的未知log-并抑制输出">定位控制台中的未知log, 并抑制输出</h3>
+<p>历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖,
+在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz)</p>
+<h3 id="1-定位log输出位置及log接口类jcl-slf4j等">1. 定位log输出位置及log接口类(jcl, slf4j等)</h3>
+<p>一般log前都会有类名输出, 这种很好找(类似 xxx.xxx.Logger)
+如果没有,则可能要拿log关键字全局搜索, 可能存在于依赖包中
+还是找不到的话则需要反编译依赖包后再全局检索</p>
+<h3 id="定位log实现类-确定log实现框架">定位log实现类, 确定log实现框架</h3>
+<p>新建测试类, 使用1中找的logger创建log, debug测试类, 查看logger的实现类(log4j, log4j2, logback, simplelogger)</p>
+<h3 id="添加或修改log配置">添加或修改log配置</h3>
+<p>项目内未知log实现框架的配置文件如果没有配置的话, 新增配置并抑制输出即可</p>
+<h3 id="抑制quartz-log">抑制quartz log</h3>
+<p><strong>simplelogger.properties</strong></p>
+<pre><code class="language-properties" data-lang="properties">org.slf4j.simpleLogger.defaultLogLevel=warn
+</code></pre><p><strong>reference</strong></p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/21091536/stop-quartz-debug-logging-log4j">https://stackoverflow.com/questions/21091536/stop-quartz-debug-logging-log4j</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2024-11-23 23:45<br>
+Created: 2024-11-22 20:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

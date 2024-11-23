@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2024-07-20T20:00:00+0800">
-<meta name="modified" content="2024-09-21T22:38:19+0800">
+<meta name="created" content="2024-11-22T20:00:00+0800">
+<meta name="modified" content="2024-11-23T23:45:53+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,6 +73,7 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/java/">Java</a></li>
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/tip/">Tip</a></li>
@@ -80,7 +81,6 @@
 <li><a href="/bash/">Bash</a></li>
 <li><a href="/web/">Web</a></li>
 <li><a href="/sql/">Sql</a></li>
-<li><a href="/java/">Java</a></li>
 <li><a href="/life/">Life</a></li>
 <li><a href="/prob/">Prob</a></li>
 <li><a href="/sh/">SH</a></li>
@@ -96,6 +96,32 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--java">
+<header>
+<h2 class="title title-submitted"><a href="/java/2023070801/">记一次OOM异常解决</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-06-04T20:00:00&#43;08:00">2023-06-04 20:00</time>
+</div>
+
+</header>
+<div class="content">
+问题描述 一台服务器出现OOM（为本应用分配了4G内存），挂掉了 java.lang.OutOfMemoryError: GC overhead limit exceeded 问题排查 拿到dump文件，使用jvisualvm打开查看后，发现下面
+</div>
+</article>
+
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/tip/2023060301/">office使用记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-06-03T20:00:00&#43;08:00">2023-06-03 20:00</time>
+</div>
+
+</header>
+<div class="content">
+word中快速粘贴无格式文本 Ctrl+Alt+V excel中查找重复记录 Home -&gt; Conditional Formatting -&gt; Highlight Cells Rules, Duplicate Values excel中查找相同记录个数为3的 Home -&gt; Conditional Formatting -&gt; New Rule -&gt; Use a formula to determine which cells to
+</div>
+</article>
 
 <article class="list-view list-view--watch">
 <header>
@@ -198,32 +224,6 @@
 </header>
 <div class="content">
 前提 视频文件内容必须统一，一般是剧集类的，并且要是mkv格式的 打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/web/2023042502/">使用nginx和ssh tunneling实现通过公网ip访问本地计算机</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-04-25T20:00:00&#43;08:00">2023-04-25 20:00</time>
-</div>
-
-</header>
-<div class="content">
-假设本地计算机上，已开发的应用可通过http://localhost:19080来访问 在有公网ip的服务器上添加下列配置后部署nginx（监
-</div>
-</article>
-
-<article class="list-view list-view--bash">
-<header>
-<h2 class="title title-submitted"><a href="/bash/2023041801/">比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-04-24T21:02:00&#43;08:00">2023-04-24 21:02</time>
-</div>
-
-</header>
-<div class="content">
-chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 rootDir=$(cd &#34;$(dirname &#34;${BASH_SOURCE[0]}&#34;)&#34; &amp;&amp; pwd) # 输出服务器ip echo &#34;--- $(hostname -i): $rootDir---&#34; dir1=$rootDir/old dir2=$rootDir/new find $dir1 -type f | while read file; do filename=${file#$dir1} if [ -e $dir2/$filename ];
 </div>
 </article>
 

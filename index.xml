@@ -6,8 +6,58 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Jul 2024 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 22 Nov 2024 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>控制台出现不明log，如何排查</title>
+      <link>https://deletefromuser.github.io/java/2024112201/</link>
+      <pubDate>Fri, 22 Nov 2024 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/java/2024112201/</guid>
+      <description>&lt;h3 id=&#34;定位控制台中的未知log-并抑制输出&#34;&gt;定位控制台中的未知log, 并抑制输出&lt;/h3&gt;
+&lt;p&gt;历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖,
+在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz)&lt;/p&gt;
+&lt;h3 id=&#34;1-定位log输出位置及log接口类jcl-slf4j等&#34;&gt;1. 定位log输出位置及log接口类(jcl, slf4j等)&lt;/h3&gt;
+&lt;p&gt;一般log前都会有类名输出, 这种很好找(类似 xxx.xxx.Logger)
+如果没有,则可能要拿log关键字全局搜索, 可能存在于依赖包中
+还是找不到的话则需要反编译依赖包后再全局检索&lt;/p&gt;
+&lt;h3 id=&#34;定位log实现类-确定log实现框架&#34;&gt;定位log实现类, 确定log实现框架&lt;/h3&gt;
+&lt;p&gt;新建测试类, 使用1中找的logger创建log, debug测试类, 查看logger的实现类(log4j, log4j2, logback, simplelogger)&lt;/p&gt;
+&lt;h3 id=&#34;添加或修改log配置&#34;&gt;添加或修改log配置&lt;/h3&gt;
+&lt;p&gt;项目内未知log实现框架的配置文件如果没有配置的话, 新增配置并抑制输出即可&lt;/p&gt;
+&lt;h3 id=&#34;抑制quartz-log&#34;&gt;抑制quartz log&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;simplelogger.properties&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34; data-lang=&#34;properties&#34;&gt;org.slf4j.simpleLogger.defaultLogLevel=warn
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/21091536/stop-quartz-debug-logging-log4j&#34;&gt;https://stackoverflow.com/questions/21091536/stop-quartz-debug-logging-log4j&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2024年4季度</title>
+      <link>https://deletefromuser.github.io/watch/2024100101/</link>
+      <pubDate>Sun, 10 Nov 2024 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/watch/2024100101/</guid>
+      <description>&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Re:ゼロから始める異世界生活 3rd season&lt;/li&gt;
+&lt;li&gt;シャングリラ・フロンティア～クソゲーハンター、神ゲーに挑まんとす～ 2nd season&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;剧集&#34;&gt;剧集&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Succession.S01-S04&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
+&lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;遥かな町へ&lt;/li&gt;
+&lt;li&gt;魔都精兵のスレイブ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;游戏&#34;&gt;游戏&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>2024年3季度</title>
@@ -2538,7 +2588,12 @@ document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&l
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;午餐肉&#34;&gt;午餐肉&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;TODO&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;鸡胸肉加葱末打成肉泥&lt;/li&gt;
+&lt;li&gt;将淀粉,面粉,鸡蛋,水调成稀面糊后, 放入肉末搅拌&lt;/li&gt;
+&lt;li&gt;再加入糖, 鸡精, 姜末, 白胡椒粉, 料酒, 食用油后搅拌均匀&lt;/li&gt;
+&lt;li&gt;倒入玻璃饭盒中, 铝箔纸盖好, 放入上锅蒸30min&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;天妇罗&#34;&gt;天妇罗&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -2564,11 +2619,21 @@ document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&l
 &lt;li&gt;煮60min出锅&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;炖萝卜&#34;&gt;炖萝卜&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;萝卜去皮, 切成4cm的圆柱块, 在其中一面上切2cm深的十字花刀方便煮熟入味&lt;/li&gt;
+&lt;li&gt;萝卜放入电饭锅, 加入淘米水(没有的话, 凉水+加点米也可以), 炖30min&lt;/li&gt;
+&lt;li&gt;倒掉水后重新加凉水, 加两勺生抽+鸡精(鸡精可以替换为一个鸡腿或者等量猪肉+料酒), 炖40min&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;凉拌腐竹木耳&#34;&gt;凉拌腐竹木耳&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
-&lt;li&gt;腐竹泡发(40度温水加盐20min), 木耳泡发
-TODO&lt;/li&gt;
+&lt;li&gt;腐竹泡发(40度温水加盐20min), 木耳泡发&lt;/li&gt;
+&lt;li&gt;烧开水, 腐竹木耳焯水&lt;/li&gt;
+&lt;li&gt;葱末姜末老干妈芝麻放入碗中, 烧热油浇上后加一大勺生抽, 再加鸡精, 糖搅拌&lt;/li&gt;
+&lt;li&gt;酱料淋到腐竹木耳上后搅拌即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;咖喱饭&#34;&gt;咖喱饭&lt;/h3&gt;
@@ -2617,7 +2682,7 @@ TODO&lt;/li&gt;
 &lt;h3 id=&#34;卤蛋&#34;&gt;卤蛋&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
-&lt;li&gt;TODO&lt;/li&gt;
+&lt;li&gt;鸡蛋煮熟后外壳敲裂放入卤水中煮30min后关火留在卤水中过夜&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;鸡丝凉面&#34;&gt;鸡丝凉面&lt;/h3&gt;
@@ -2739,6 +2804,9 @@ TODO&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.xiachufang.com/recipe/102340880/&#34;&gt;韭菜炒猪肝&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://xiachufang.com/recipe/104555011/&#34;&gt;🥒鸡丝凉面&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://xiachufang.com/recipe/100414097/&#34;&gt;卤鸡腿&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=ONsGd9qTdrk&#34;&gt;料理人がつくる大根の煮物&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=97Jml88tV5A&#34;&gt;10款实用酱料，实现低成本快速烹饪！&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.xiachufang.com/recipe/100608484/&#34;&gt;自制午餐肉&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
