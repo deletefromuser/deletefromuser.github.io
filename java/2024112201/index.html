@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>控制台出现不明log，如何排查 – HA</title>
-<meta name="description" content="定位控制台中的未知log, 并抑制输出 历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖, 在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz) 1. 定位log输出位置及log接口类(jcl, slf4j等) 一般log前都会有 …">
+<meta name="description" content="1. 定位控制台中的未知log, 并抑制输出 历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖, 在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz) 2. 定位log输出位置及log接口类(jcl, slf4j等) 一般log前 …">
 <meta name="created" content="2024-11-22T20:00:00+0800">
-<meta name="modified" content="2024-11-23T23:45:53+0800">
+<meta name="modified" content="2024-11-29T23:48:51+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,9 +31,9 @@
     "@type": "WebPage",
     "headline": "控制台出现不明log，如何排查",
     "datePublished": "2024-11-22T20:00:00+08:00",
-    "dateModified": "2024-11-23T23:45:53+08:00",
+    "dateModified": "2024-11-29T23:48:51+08:00",
     "url" : "/blog/java/2024112201/",
-    "description": "定位控制台中的未知log, 并抑制输出 历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖, 在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz) 1. 定位log输出位置及log接口类(jcl, slf4j等) 一般log前都会有 …",
+    "description": "1. 定位控制台中的未知log, 并抑制输出 历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖, 在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz) 2. 定位log输出位置及log接口类(jcl, slf4j等) 一般log前 …",
     "keywords": ["java","programming"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -108,30 +108,31 @@ Tags:
 </div>
 </header>
 <div class="content">
-<h3 id="定位控制台中的未知log-并抑制输出">定位控制台中的未知log, 并抑制输出</h3>
+<h3 id="1-定位控制台中的未知log-并抑制输出">1. 定位控制台中的未知log, 并抑制输出</h3>
 <p>历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖,
 在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz)</p>
-<h3 id="1-定位log输出位置及log接口类jcl-slf4j等">1. 定位log输出位置及log接口类(jcl, slf4j等)</h3>
+<h3 id="2-定位log输出位置及log接口类jcl-slf4j等">2. 定位log输出位置及log接口类(jcl, slf4j等)</h3>
 <p>一般log前都会有类名输出, 这种很好找(类似 xxx.xxx.Logger)
 如果没有,则可能要拿log关键字全局搜索, 可能存在于依赖包中
 还是找不到的话则需要反编译依赖包后再全局检索</p>
-<h3 id="定位log实现类-确定log实现框架">定位log实现类, 确定log实现框架</h3>
+<h3 id="3-定位log实现类-确定log实现框架">3. 定位log实现类, 确定log实现框架</h3>
 <p>新建测试类, 使用1中找的logger创建log, debug测试类, 查看logger的实现类(log4j, log4j2, logback, simplelogger)</p>
-<h3 id="添加或修改log配置">添加或修改log配置</h3>
+<h3 id="4-添加或修改log配置">4. 添加或修改log配置</h3>
 <p>项目内未知log实现框架的配置文件如果没有配置的话, 新增配置并抑制输出即可</p>
-<h3 id="抑制quartz-log">抑制quartz log</h3>
+<h4 id="抑制quartz-log">抑制quartz log</h4>
 <p><strong>simplelogger.properties</strong></p>
 <pre><code class="language-properties" data-lang="properties">org.slf4j.simpleLogger.defaultLogLevel=warn
 </code></pre><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://stackoverflow.com/questions/21091536/stop-quartz-debug-logging-log4j">https://stackoverflow.com/questions/21091536/stop-quartz-debug-logging-log4j</a></li>
+<li><a href="https://stackoverflow.com/questions/14544991/how-to-configure-slf4j-simple">How to configure slf4j-simple</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2024-11-23 23:45<br>
+Updated: 2024-11-29 23:48<br>
 Created: 2024-11-22 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
