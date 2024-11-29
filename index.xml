@@ -14,23 +14,24 @@
       <link>https://deletefromuser.github.io/java/2024112201/</link>
       <pubDate>Fri, 22 Nov 2024 20:00:00 +0800</pubDate>
       <guid>https://deletefromuser.github.io/java/2024112201/</guid>
-      <description>&lt;h3 id=&#34;定位控制台中的未知log-并抑制输出&#34;&gt;定位控制台中的未知log, 并抑制输出&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;1-定位控制台中的未知log-并抑制输出&#34;&gt;1. 定位控制台中的未知log, 并抑制输出&lt;/h3&gt;
 &lt;p&gt;历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖,
 在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz)&lt;/p&gt;
-&lt;h3 id=&#34;1-定位log输出位置及log接口类jcl-slf4j等&#34;&gt;1. 定位log输出位置及log接口类(jcl, slf4j等)&lt;/h3&gt;
+&lt;h3 id=&#34;2-定位log输出位置及log接口类jcl-slf4j等&#34;&gt;2. 定位log输出位置及log接口类(jcl, slf4j等)&lt;/h3&gt;
 &lt;p&gt;一般log前都会有类名输出, 这种很好找(类似 xxx.xxx.Logger)
 如果没有,则可能要拿log关键字全局搜索, 可能存在于依赖包中
 还是找不到的话则需要反编译依赖包后再全局检索&lt;/p&gt;
-&lt;h3 id=&#34;定位log实现类-确定log实现框架&#34;&gt;定位log实现类, 确定log实现框架&lt;/h3&gt;
+&lt;h3 id=&#34;3-定位log实现类-确定log实现框架&#34;&gt;3. 定位log实现类, 确定log实现框架&lt;/h3&gt;
 &lt;p&gt;新建测试类, 使用1中找的logger创建log, debug测试类, 查看logger的实现类(log4j, log4j2, logback, simplelogger)&lt;/p&gt;
-&lt;h3 id=&#34;添加或修改log配置&#34;&gt;添加或修改log配置&lt;/h3&gt;
+&lt;h3 id=&#34;4-添加或修改log配置&#34;&gt;4. 添加或修改log配置&lt;/h3&gt;
 &lt;p&gt;项目内未知log实现框架的配置文件如果没有配置的话, 新增配置并抑制输出即可&lt;/p&gt;
-&lt;h3 id=&#34;抑制quartz-log&#34;&gt;抑制quartz log&lt;/h3&gt;
+&lt;h4 id=&#34;抑制quartz-log&#34;&gt;抑制quartz log&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;simplelogger.properties&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-properties&#34; data-lang=&#34;properties&#34;&gt;org.slf4j.simpleLogger.defaultLogLevel=warn
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/21091536/stop-quartz-debug-logging-log4j&#34;&gt;https://stackoverflow.com/questions/21091536/stop-quartz-debug-logging-log4j&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/14544991/how-to-configure-slf4j-simple&#34;&gt;How to configure slf4j-simple&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -50,6 +51,9 @@
 &lt;li&gt;Succession.S01-S04&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ルックバック&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;遥かな町へ&lt;/li&gt;
@@ -482,10 +486,14 @@ ni &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C:\Users\tom\3D Objects&am
 ni &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C:\Users\tom\Music&amp;#34;&lt;/span&gt; -i SymbolicLink -ta &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;D:\win10_user\Music&amp;#34;&lt;/span&gt;
 ni &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C:\Users\tom\Videos&amp;#34;&lt;/span&gt; -i SymbolicLink -ta &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;D:\win10_user\Videos&amp;#34;&lt;/span&gt;
 ni &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C:\Users\tom\Pictures&amp;#34;&lt;/span&gt; -i SymbolicLink -ta &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;D:\win10_user\Pictures&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;删除服务&#34;&gt;删除服务&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 使用管理员身份打开powershell&lt;/span&gt;
+sc.exe delete &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;服务名&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.nirsoft.net/utils/nircmd.html&#34;&gt;NirCmd - Windows command line tool&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1020821/how-can-i-create-a-symbolic-link-on-windows-10&#34;&gt;How can I create a symbolic link on Windows 10? - Super User&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/76074/how-can-i-delete-a-service-in-windows&#34;&gt;How can I delete a service in Windows?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

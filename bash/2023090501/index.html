@@ -6,7 +6,7 @@
 <title>windows使用记录 – HA</title>
 <meta name="description" content="使用命令行控制屏幕亮度，声音 # 下载nircmd - https://www.nirsoft.net/utils/nircmd.html # 设置亮度（最大100？） nircmd.exe setbrightness 100 # 修改音量（最大65535） nircmd.exe setsysvolume 15000 # 静音，取消静音设 …">
 <meta name="created" content="2023-09-05T22:00:00+0800">
-<meta name="modified" content="2023-09-07T23:20:15+0800">
+<meta name="modified" content="2024-11-29T23:48:51+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "windows使用记录",
     "datePublished": "2023-09-05T22:00:00+08:00",
-    "dateModified": "2023-09-07T23:20:15+08:00",
+    "dateModified": "2024-11-29T23:48:51+08:00",
     "url" : "https://deletefromuser.github.io/bash/2023090501/",
     "description": "使用命令行控制屏幕亮度，声音 # 下载nircmd - https://www.nirsoft.net/utils/nircmd.html # 设置亮度（最大100？） nircmd.exe setbrightness 100 # 修改音量（最大65535） nircmd.exe setsysvolume 15000 # 静音，取消静音设 …",
     "keywords": ["windows","bash"],
@@ -133,17 +133,21 @@ ni <span style="color:#e6db74">&#34;C:\Users\tom\3D Objects&#34;</span> -i Symbo
 ni <span style="color:#e6db74">&#34;C:\Users\tom\Music&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\Music&#34;</span>
 ni <span style="color:#e6db74">&#34;C:\Users\tom\Videos&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\Videos&#34;</span>
 ni <span style="color:#e6db74">&#34;C:\Users\tom\Pictures&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\Pictures&#34;</span>
+</code></pre></div><h3 id="删除服务">删除服务</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># 使用管理员身份打开powershell</span>
+sc.exe delete <span style="color:#e6db74">&#34;服务名&#34;</span>
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://www.nirsoft.net/utils/nircmd.html">NirCmd - Windows command line tool</a></li>
 <li><a href="https://superuser.com/questions/1020821/how-can-i-create-a-symbolic-link-on-windows-10">How can I create a symbolic link on Windows 10? - Super User</a></li>
+<li><a href="https://stackoverflow.com/questions/76074/how-can-i-delete-a-service-in-windows">How can I delete a service in Windows?</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-09-07 23:20<br>
+Updated: 2024-11-29 23:48<br>
 Created: 2023-09-05 22:00
 </p>
 </div><script src="https://utteranc.es/client.js"
