@@ -6,8 +6,8 @@
 <title>oracle – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/tags/oracle/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-02-11T19:00:00+0800">
-<meta name="modified" content="2023-07-01T20:00:00+0800">
+<meta name="created" content="2024-11-22T20:00:00+0800">
+<meta name="modified" content="2024-12-08T16:22:25+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -93,6 +93,19 @@
 <h1 class="title">oracle</h1>
 
 
+
+<article class="list-view list-view--java">
+<header>
+<h2 class="title title-submitted"><a href="/java/2024112202/">测试包含truncate table的方法(oracle数据库)</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2024-11-22T20:00:00&#43;08:00">2024-11-22 20:00</time>
+</div>
+
+</header>
+<div class="content">
+测试方法 @BeforeEach 备份表 执行方法 @AfterEach 从备份表恢复数据并删除备份表 示例代码: { @Autowired private JdbcTemplate jdbcTemplate; @BeforeEach public void before() { // 备份表 String today = LocalDate.now().format(DateTimeFormatter.ofPattern(&#34;uuMMdd&#34;)); template.execute(String.format(&#34;create table test_table_%s as select * from test_table&#34;, today)); } @AfterEach public void after() { String today = LocalDate.now().format(DateTimeFormatter.ofPattern(&#34;uuMMdd&#34;)); template.execute(String.format(&#34;insert
+</div>
+</article>
 
 <article class="list-view list-view--sql">
 <header>

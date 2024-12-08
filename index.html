@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2024-11-22T20:00:00+0800">
-<meta name="modified" content="2024-11-29T23:48:51+0800">
+<meta name="modified" content="2024-12-08T16:22:25+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -110,6 +110,19 @@
 </div>
 </article>
 
+<article class="list-view list-view--java">
+<header>
+<h2 class="title title-submitted"><a href="/java/2024112202/">测试包含truncate table的方法(oracle数据库)</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2024-11-22T20:00:00&#43;08:00">2024-11-22 20:00</time>
+</div>
+
+</header>
+<div class="content">
+测试方法 @BeforeEach 备份表 执行方法 @AfterEach 从备份表恢复数据并删除备份表 示例代码: { @Autowired private JdbcTemplate jdbcTemplate; @BeforeEach public void before() { // 备份表 String today = LocalDate.now().format(DateTimeFormatter.ofPattern(&#34;uuMMdd&#34;)); template.execute(String.format(&#34;create table test_table_%s as select * from test_table&#34;, today)); } @AfterEach public void after() { String today = LocalDate.now().format(DateTimeFormatter.ofPattern(&#34;uuMMdd&#34;)); template.execute(String.format(&#34;insert
+</div>
+</article>
+
 <article class="list-view list-view--watch">
 <header>
 <h2 class="title title-submitted"><a href="/watch/2024100101/">2024年4季度</a></h2>
@@ -119,7 +132,7 @@
 
 </header>
 <div class="content">
-动画 Re:ゼロから始める異世界生活 3rd season シャングリラ・フロンティア～クソゲーハンター、神ゲーに挑まんとす～ 2nd season 剧集 Succession.S01-S04 电影 ルックバック 漫画 遥かな
+动画 Re:ゼロから始める異世界生活 3rd season シャングリラ・フロンティア～クソゲーハンター、神ゲーに挑まんとす～ 2nd season 剧集 Succession.S01-S04 Only.Murders.in.the.Building.S04 电影 ルックバック 漫画 遥か
 </div>
 </article>
 
@@ -211,19 +224,6 @@ name auther start end 大国空巢 * 易富贤 20231225 20240104 致命爱人：
 </header>
 <div class="content">
 か、や、と的区别 か 是或者的意思， A或者B や 是举例的意思，有ABCDE，说A呀B呀之类的 と 是和的意思，A和B reference: 並列助詞の「と」「か」「や」につ
-</div>
-</article>
-
-<article class="list-view list-view--tip">
-<header>
-<h2 class="title title-submitted"><a href="/tip/2023090801/">绕过前端强制手动输入限制</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-09-08T20:00:00&#43;08:00">2023-09-08 20:00</time>
-</div>
-
-</header>
-<div class="content">
-问题 在客户的系统里登陆，要求填写一个保证书一样的东西，最后有几个输入框不允许复制粘贴，只允许手动输入，而且通过控制台设置的值还通不过检查，因
 </div>
 </article>
 
