@@ -493,7 +493,14 @@ createtime date
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> sample_table
 <span style="color:#66d9ef">WHERE</span> REGEXP_LIKE(text, <span style="color:#e6db74">&#39;yakiniku&#39;</span>, <span style="color:#e6db74">&#39;i&#39;</span>);
 <span style="color:#75715e">-- I love YAKINIKU
-</span></code></pre></div><h3 id="count函数">count函数</h3>
+</span></code></pre></div><h3 id="位运算">位运算</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 位与运算
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> bitand(<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">4</span>) <span style="color:#66d9ef">FROM</span> dual;
+<span style="color:#75715e">-- 位或运算 BITOR(x,y)  =  x + y - BITAND(x,y)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">-</span> bitand(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">FROM</span> dual;
+<span style="color:#75715e">-- 位与或运算 BITOR(x,y)  =  x + y - 2 * BITAND(x,y)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> bitand(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">FROM</span> dual;
+</code></pre></div><h3 id="count函数">count函数</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- count(1)和count(*)是相同的
 </span><span style="color:#75715e">-- COUNT (&lt;expression&gt;) 统计非空值个数
 </span></code></pre></div><h3 id="有则更新无则插入">有则更新，无则插入</h3>
@@ -613,7 +620,9 @@ createtime date
 <li><a href="https://pg-life.net/db/data-type/">【SQL Server】データ型の種類｜PG-LIFE ↗</a></li>
 <li><a href="https://stackoverflow.com/questions/75878235/mybatis-text-literal-n-without-tomcat-parameters/75878457#75878457">sql - mybatis text literal n without Tomcat parameters - Stack Overflow</a></li>
 <li><a href="https://stackoverflow.com/questions/2560269/exporting-many-tables-on-oracle">Exporting many tables on Oracle</a></li>
-<li><a href="https://stackoverflow.com/questions/23647408/how-to-export-database-schema-in-oracle-to-a-dump-file">How to export database schema in Oracle to a dump file</a></li>
+<li><a href="https://blog.go-faster.co.uk/2022/10/there-is-no-bitor-in-oracle-sql.html?m=1">There is no BITOR() in Oracle SQL</a></li>
+<li><a href="https://stackoverflow.com/questions/72234118/how-to-use-oracle-bitwise-operators">How to use Oracle bitwise operators &amp;, |, ^, ~?</a></li>
+<li><a href="https://www.shift-the-oracle.com/sql/functions/binand_xor_or.html">２つの数値をビットデータとして扱いビット演算を行なう</a></li>
 </ul>
 
 </div>
