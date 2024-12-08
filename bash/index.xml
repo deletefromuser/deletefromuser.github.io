@@ -42,11 +42,16 @@ ni &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C:\Users\tom\Pictures&amp;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;删除服务&#34;&gt;删除服务&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 使用管理员身份打开powershell&lt;/span&gt;
 sc.exe delete &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;服务名&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查询占用某个文件的进程&#34;&gt;查询占用某个文件的进程&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;任务管理器 -&amp;gt; 资源管理器 -&amp;gt; cpu -&amp;gt; 选中进程中的checkbox -&amp;gt; 在关联的句柄区域搜索文件名&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.nirsoft.net/utils/nircmd.html&#34;&gt;NirCmd - Windows command line tool&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1020821/how-can-i-create-a-symbolic-link-on-windows-10&#34;&gt;How can I create a symbolic link on Windows 10? - Super User&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/76074/how-can-i-delete-a-service-in-windows&#34;&gt;How can I delete a service in Windows?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/117902/find-out-which-process-is-locking-a-file-or-folder-in-windows&#34;&gt;Find out which process is locking a file or folder in Windows&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
