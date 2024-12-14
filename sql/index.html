@@ -6,8 +6,8 @@
 <title>Sql – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/sql/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2023-08-06T14:00:00+0800">
-<meta name="modified" content="2023-08-06T17:26:00+0800">
+<meta name="created" content="2024-12-14T14:00:00+0800">
+<meta name="modified" content="2024-12-14T22:00:29+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,6 +73,7 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/sql/" class="active" aria-current="page">Sql</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/read/">Read</a></li>
@@ -80,7 +81,6 @@
 <li><a href="/blog/jpns/">Jpns</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/web/">Web</a></li>
-<li><a href="/blog/sql/" class="active" aria-current="page">Sql</a></li>
 <li><a href="/blog/life/">Life</a></li>
 <li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sh/">SH</a></li>
@@ -93,6 +93,19 @@
 <h1 class="title">Sql</h1>
 
 
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2024121401/">迁移mariadb/mysql数据库到pgsql</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2024-12-14T14:00:00&#43;08:00">2024-12-14 14:00</time>
+</div>
+
+</header>
+<div class="content">
+0. 修改mysql数据库中tinyint为smallint pgloader默认会把mysql的tinyint字段转为boolean字段，如果需
+</div>
+</article>
 
 <article class="list-view list-view--sql">
 <header>
@@ -208,19 +221,6 @@ sqlserver 事务简单使用 今天第一次在工作中用到事务，在找一
 </header>
 <div class="content">
 sqlserver row_number() 函數的用法 select * from fruit_month_price; select * , row_number() over (partition by name order by year, month) as sn from fruit_month_price order by name,year,month 上面代碼中意為以字段name分組，每組內部以字段year、month（默認升序）
-</div>
-</article>
-
-<article class="list-view list-view--sql">
-<header>
-<h2 class="title title-submitted"><a href="/blog/sql/2017022001/">outer apply 和 left join 再辨析</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-02-20T01:33:58&#43;08:00">2017-02-20 01:33</time>
-</div>
-
-</header>
-<div class="content">
-outer apply 和 left join 再辨析 過濾條件位置不同（看下面例子可以看出來） outer apply可以較方便地實現控制參照表參照記錄的個數，left join稍微麻煩一些 下
 </div>
 </article>
 
