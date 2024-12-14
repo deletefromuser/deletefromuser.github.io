@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>迁移mariadb/mysql数据库到pgsql – HA</title>
+<meta name="description" content="0. 修改mysql数据库中tinyint为smallint  pgloader默认会把mysql的tinyint字段转为boolean字段，如果需要整型，需要事先转换  -- 1. 查询tinyint字段并组装为更新表字段语句 SELECT CONCAT(&amp;amp;#39;ALTER TABLE &amp;amp;#39;, table_name, &amp;amp;#39; …">
+<meta name="created" content="2024-12-14T14:00:00+0800">
+<meta name="modified" content="2024-12-14T22:00:29+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="迁移mariadb/mysql数据库到pgsql">
+<meta property="og:url" content="https://deletefromuser.github.io/sql/2024121401/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/sql/2024121401/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "迁移mariadb/mysql数据库到pgsql",
+    "datePublished": "2024-12-14T14:00:00+08:00",
+    "dateModified": "2024-12-14T22:00:29+08:00",
+    "url" : "https://deletefromuser.github.io/sql/2024121401/",
+    "description": "0. 修改mysql数据库中tinyint为smallint  pgloader默认会把mysql的tinyint字段转为boolean字段，如果需要整型，需要事先转换  -- 1. 查询tinyint字段并组装为更新表字段语句 SELECT CONCAT(\u0026amp;#39;ALTER TABLE \u0026amp;#39;, table_name, \u0026amp;#39; …",
+    "keywords": ["sql","pgsql","mariadb"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/sql/" class="active" aria-current="page">Sql</a></li>
+<li><a href="/java/">Java</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/cs/">CS</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--sql">
+<header>
+<h1 class="title title-submitted">迁移mariadb/mysql数据库到pgsql</h1>
+<div class="submitted">
+<time class="created-date" datetime="2024-12-14T14:00:00&#43;08:00">2024-12-14 14:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/mariadb/">mariadb</a></li>
+<li><a href="https://deletefromuser.github.io/tags/pgsql/">pgsql</a></li>
+<li><a href="https://deletefromuser.github.io/tags/sql/">sql</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="0-修改mysql数据库中tinyint为smallint">0. 修改mysql数据库中tinyint为smallint</h3>
+<blockquote>
+<p>pgloader默认会把mysql的tinyint字段转为boolean字段，如果需要整型，需要事先转换</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 1. 查询tinyint字段并组装为更新表字段语句
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span>
+	CONCAT(<span style="color:#e6db74">&#39;ALTER TABLE &#39;</span>, <span style="color:#66d9ef">table_name</span>, <span style="color:#e6db74">&#39; MODIFY &#39;</span>, <span style="color:#66d9ef">column_name</span>, <span style="color:#e6db74">&#39; SMALLINT;&#39;</span>)
+<span style="color:#66d9ef">FROM</span>
+	INFORMATION_SCHEMA.COLUMNS
+<span style="color:#66d9ef">WHERE</span>
+	TABLE_SCHEMA <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;database_name&#39;</span>
+	<span style="color:#66d9ef">AND</span> DATA_TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;tinyint&#39;</span>;
+<span style="color:#75715e">-- 2. 复制查询结果并执行
+</span></code></pre></div><h3 id="1-安装最新版pgloader迁移数据">1. 安装最新版pgloader迁移数据</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">apt-get install sbcl unzip libsqlite3-dev make curl gawk freetds-dev libzip-dev
+git clone https://github.com/dimitri/pgloader
+cd pgloader
+make save
+./build/bin/pgloader --help
+./build/bin/pgloader mysql://mysqluser:password@&lt;mysql-server&gt;:&lt;mysql-port&gt;/&lt;source-database&gt; postgresql://&lt;pgsql-user&gt;:password@&lt;pgsql_server&gt;:&lt;postgresql-port&gt;/&lt;target-database&gt;
+</code></pre></div><h3 id="2-修改schema">2. 修改schema</h3>
+<blockquote>
+<p>迁移成功后, 默认会在pg指定数据库中创建名为mysql数据库名的schema, 因此需要迁移数据到public的schema中</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 连接数据库
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">BEGIN</span> <span style="color:#66d9ef">TRANSACTION</span>;
+  <span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SCHEMA</span> <span style="color:#66d9ef">public</span>          <span style="color:#66d9ef">RENAME</span> <span style="color:#66d9ef">TO</span> public_original;
+  <span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SCHEMA</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">source</span><span style="color:#f92672">-</span><span style="color:#66d9ef">database</span><span style="color:#f92672">&gt;</span>           <span style="color:#66d9ef">RENAME</span> <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">public</span>;
+  <span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">SCHEMA</span>  public_original <span style="color:#66d9ef">CASCADE</span>;
+<span style="color:#66d9ef">COMMIT</span>;
+</code></pre></div><p><strong>reference</strong></p>
+<ol>
+<li><a href="https://estuary.dev/mariadb-to-postgres/">How to Migrate MariaDB to Postgres: A Step-By-Step Guide | Estuary</a></li>
+<li><a href="https://github.com/dimitri/pgloader/issues/1183#issuecomment-1715995515">pgloader 10 fell through ECASE expression · Issue #1183 · dimitri/pgloader</a></li>
+<li><a href="https://pgloader.readthedocs.io/en/latest/install.html#building-from-sources-on-debian">Installing pgloader — pgloader 3.6.9 documentation</a></li>
+<li><a href="https://github.com/dimitri/pgloader/issues/645">How to import into public schema</a></li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2024-12-14 22:00<br>
+Created: 2024-12-14 14:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

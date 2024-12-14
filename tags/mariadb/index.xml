@@ -6,8 +6,53 @@
     <description>Recent content in mariadb on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 May 2023 19:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 14 Dec 2024 14:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/tags/mariadb/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>迁移mariadb/mysql数据库到pgsql</title>
+      <link>https://deletefromuser.github.io/sql/2024121401/</link>
+      <pubDate>Sat, 14 Dec 2024 14:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/sql/2024121401/</guid>
+      <description>&lt;h3 id=&#34;0-修改mysql数据库中tinyint为smallint&#34;&gt;0. 修改mysql数据库中tinyint为smallint&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;pgloader默认会把mysql的tinyint字段转为boolean字段，如果需要整型，需要事先转换&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 1. 查询tinyint字段并组装为更新表字段语句
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt;
+	CONCAT(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ALTER TABLE &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;table_name&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; MODIFY &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;column_name&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; SMALLINT;&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt;
+	INFORMATION_SCHEMA.COLUMNS
+&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt;
+	TABLE_SCHEMA &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;database_name&amp;#39;&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;AND&lt;/span&gt; DATA_TYPE &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;tinyint&amp;#39;&lt;/span&gt;;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 2. 复制查询结果并执行
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-安装最新版pgloader迁移数据&#34;&gt;1. 安装最新版pgloader迁移数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt-get install sbcl unzip libsqlite3-dev make curl gawk freetds-dev libzip-dev
+git clone https://github.com/dimitri/pgloader
+cd pgloader
+make save
+./build/bin/pgloader --help
+./build/bin/pgloader mysql://mysqluser:password@&amp;lt;mysql-server&amp;gt;:&amp;lt;mysql-port&amp;gt;/&amp;lt;source-database&amp;gt; postgresql://&amp;lt;pgsql-user&amp;gt;:password@&amp;lt;pgsql_server&amp;gt;:&amp;lt;postgresql-port&amp;gt;/&amp;lt;target-database&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-修改schema&#34;&gt;2. 修改schema&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;迁移成功后, 默认会在pg指定数据库中创建名为mysql数据库名的schema, 因此需要迁移数据到public的schema中&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- 连接数据库
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;BEGIN&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TRANSACTION&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SCHEMA&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt;          &lt;span style=&#34;color:#66d9ef&#34;&gt;RENAME&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; public_original;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SCHEMA&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;source&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;           &lt;span style=&#34;color:#66d9ef&#34;&gt;RENAME&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;DROP&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SCHEMA&lt;/span&gt;  public_original &lt;span style=&#34;color:#66d9ef&#34;&gt;CASCADE&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;COMMIT&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://estuary.dev/mariadb-to-postgres/&#34;&gt;How to Migrate MariaDB to Postgres: A Step-By-Step Guide | Estuary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dimitri/pgloader/issues/1183#issuecomment-1715995515&#34;&gt;pgloader 10 fell through ECASE expression · Issue #1183 · dimitri/pgloader&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pgloader.readthedocs.io/en/latest/install.html#building-from-sources-on-debian&#34;&gt;Installing pgloader — pgloader 3.6.9 documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dimitri/pgloader/issues/645&#34;&gt;How to import into public schema&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>mariadb(mysql)使用</title>
