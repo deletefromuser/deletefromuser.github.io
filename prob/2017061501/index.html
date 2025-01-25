@@ -115,11 +115,19 @@ reboot
 </code></pre></div><h3 id="linux虚拟机内非root用户读写共享文件夹">linux虚拟机内非root用户读写共享文件夹</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">usermod -a -G vboxsf username
 <span style="color:#75715e"># logout and login again</span>
-</code></pre></div><p><strong>reference:</strong></p>
+</code></pre></div><h3 id="虚拟机磁盘满了后无法启动">虚拟机磁盘满了后无法启动</h3>
+<blockquote>
+<p>使用livecd启动系统，删除掉一些文件</p>
+</blockquote>
+<ul>
+<li>debian livecd <a href="https://saimei.ftp.acc.umu.se/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.8.0-amd64-gnome.iso">download</a></li>
+</ul>
+<p><strong>reference:</strong></p>
 <ol>
 <li><a href="http://blog.csdn.net/q1302182594/article/details/8720545">VirtualBox安装Windows XP——图解</a></li>
 <li><a href="http://jingyan.baidu.com/article/574c521917db806c8d9dc18c.html">VirtualBox主机与虚拟机不能复制粘贴的解决办法</a>(这个对我没用，我先设的这个再装的增强功能，不知道这个是不是必须的)</li>
 <li><a href="https://askubuntu.com/questions/22743/how-do-i-install-guest-additions-in-a-virtualbox-vm">VirtualBox主机与虚拟机不能复制粘贴的解决办法</a></li>
+<li><a href="https://superuser.com/questions/1646971/ubuntu-can-not-boot-due-to-disk-space-full">Ubuntu can not boot due to disk space full</a></li>
 </ol>
 
 </div>

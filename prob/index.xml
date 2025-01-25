@@ -192,11 +192,19 @@ reboot
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;linux虚拟机内非root用户读写共享文件夹&#34;&gt;linux虚拟机内非root用户读写共享文件夹&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;usermod -a -G vboxsf username
 &lt;span style=&#34;color:#75715e&#34;&gt;# logout and login again&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference:&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;虚拟机磁盘满了后无法启动&#34;&gt;虚拟机磁盘满了后无法启动&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用livecd启动系统，删除掉一些文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;debian livecd &lt;a href=&#34;https://saimei.ftp.acc.umu.se/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.8.0-amd64-gnome.iso&#34;&gt;download&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;reference:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/q1302182594/article/details/8720545&#34;&gt;VirtualBox安装Windows XP——图解&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://jingyan.baidu.com/article/574c521917db806c8d9dc18c.html&#34;&gt;VirtualBox主机与虚拟机不能复制粘贴的解决办法&lt;/a&gt;(这个对我没用，我先设的这个再装的增强功能，不知道这个是不是必须的)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/22743/how-do-i-install-guest-additions-in-a-virtualbox-vm&#34;&gt;VirtualBox主机与虚拟机不能复制粘贴的解决办法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1646971/ubuntu-can-not-boot-due-to-disk-space-full&#34;&gt;Ubuntu can not boot due to disk space full&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
