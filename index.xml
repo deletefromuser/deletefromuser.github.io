@@ -6,8 +6,41 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Dec 2024 14:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Feb 2025 20:00:00 +0800</lastBuildDate>
     <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2025年1季度</title>
+      <link>/blog/watch/2025010101/</link>
+      <pubDate>Wed, 26 Feb 2025 20:00:00 +0800</pubDate>
+      <guid>/blog/watch/2025010101/</guid>
+      <description>&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;シャングリラ・フロンティア～クソゲーハンター、神ゲーに挑まんとす～ 2nd season&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;剧集&#34;&gt;剧集&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Chernobyl.S01&lt;/li&gt;
+&lt;li&gt;Matlock.S01&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;姥姥的外孙.2024&lt;/li&gt;
+&lt;li&gt;Maharaja.2024&lt;/li&gt;
+&lt;li&gt;烈日灼心.2015&lt;/li&gt;
+&lt;li&gt;哪吒之魔童降世.2019&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;賭ケグルイ&lt;/li&gt;
+&lt;li&gt;そうだ、売国しよう ～天才王子の赤字国家再生術～&lt;/li&gt;
+&lt;li&gt;転生貴族、鑑定スキルで成り上がる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;游戏&#34;&gt;游戏&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>迁移mariadb/mysql数据库到pgsql</title>
