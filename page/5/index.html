@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2024-12-14T14:00:00+0800">
-<meta name="modified" content="2025-01-25T12:47:58+0800">
+<meta name="created" content="2025-02-26T20:00:00+0800">
+<meta name="modified" content="2025-03-02T15:31:30+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,9 +73,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/watch/">Watch</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/java/">Java</a></li>
-<li><a href="/watch/">Watch</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/jpns/">Jpns</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/web/2023020501/">将SpringBoot应用部署到docker</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-05T20:00:00&#43;08:00">2023-02-05 20:00</time>
+</div>
+
+</header>
+<div class="content">
+手动创建image 在项目内创建Dockerfile FROMmaven:3.8.7-eclipse-temurin-11-focalCOPY . .CMD [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=docker&#34;]# ENTRYPOINT [&#34;mvn&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=dock
+</div>
+</article>
 
 <article class="list-view list-view--read">
 <header>
@@ -211,19 +224,6 @@ systemctl --user mask tracker-store.service tracker-miner-fs.service tracker-min
 </header>
 <div class="content">
 F12 -&gt; Sources -&gt; Snippets -&gt; new snippet可新建代码片段，创建完成后右键运行即可 reference Run snippets of JavaScript
-</div>
-</article>
-
-<article class="list-view list-view--web">
-<header>
-<h2 class="title title-submitted"><a href="/web/2022121401/">JS库使用问题汇总</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-12-14T20:00:00&#43;08:00">2022-12-14 20:00</time>
-</div>
-
-</header>
-<div class="content">
-html2canvas 使html2canvas 在ie11中工作 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js&#34;&gt;&lt;/script&gt; html2canvas 在ie11中渲染出不明色块 html2canvas(document.querySelector(&#39;#preview_modal&#39;), { allowTaint: false, useCORS: true, scale: 2, }) 使用 html2canvas 生成图片在新tab打开 var image = new Image(); image.src = canvas.toDataURL(); var wImage
 </div>
 </article>
 
