@@ -6,7 +6,7 @@
 <title>linux 命令memo – HA</title>
 <meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2023-10-02T23:32:49+0800">
+<meta name="modified" content="2025-03-06T22:35:52+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "linux 命令memo",
     "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2023-10-02T23:32:49+08:00",
+    "dateModified": "2025-03-06T22:35:52+08:00",
     "url" : "/blog/bash/2022111001/",
     "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …",
     "keywords": ["linux"],
@@ -76,10 +76,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
+<li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/java/">Java</a></li>
-<li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
 <li><a href="/blog/bash/" class="active" aria-current="page">Bash</a></li>
@@ -139,6 +139,7 @@ rename <span style="color:#e6db74">&#39;s/^\D+(\d+)\D+/$1/&#39;</span> *
 rename <span style="color:#e6db74">&#39;s/^\D+([cp]\d+.+)/$1/&#39;</span> *
 
 <span style="color:#66d9ef">for</span> f in * ; <span style="color:#66d9ef">do</span> mv — <span style="color:#e6db74">&#34;</span>$f<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;PRE_</span>$f<span style="color:#e6db74">&#34;</span> ; <span style="color:#66d9ef">done</span>
+counter<span style="color:#f92672">=</span>1; <span style="color:#66d9ef">for</span> file in *; <span style="color:#66d9ef">do</span> <span style="color:#f92672">[[</span> -f $file <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo mv -i <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> PRE_<span style="color:#66d9ef">$(</span>printf <span style="color:#e6db74">&#39;%02d&#39;</span> $counter<span style="color:#66d9ef">)</span>.zip <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">((</span>counter++<span style="color:#f92672">))</span>; <span style="color:#66d9ef">done</span>
 </code></pre></div><h3 id="简单加密文件名">简单加密文件名</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 不加密后缀</span>
 <span style="color:#66d9ef">for</span> file in *; <span style="color:#66d9ef">do</span>
@@ -237,7 +238,7 @@ unzip -O shift-jis ~/Downloads/【新入荷ECM】資料.zip
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-10-02 23:32<br>
+Updated: 2025-03-06 22:35<br>
 Created: 2022-11-10 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"

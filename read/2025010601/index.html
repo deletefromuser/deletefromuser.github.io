@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code – HA</title>
-<meta name="description" content="使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code 在Android Studio中加了一个依赖之后，编译出错，解决办法是在项目的属性中设置 sourceCompatibility …">
-<meta name="created" content="2017-03-26T03:33:58+0800">
-<meta name="modified" content="2022-12-10T21:21:10+0800">
+<title>2025年读书记录 – HA</title>
+<meta name="description" content="   name auther start end     吸血企业 今野晴贵 20250218 20250304   囚徒健身 - 20241223 20250205   想死不如健身 泰史特龍 久保孝史 20250301 20250306    ">
+<meta name="created" content="2025-03-06T20:00:00+0800">
+<meta name="modified" content="2025-03-06T22:35:52+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code">
-<meta property="og:url" content="/blog/prob/2017032603/">
+<meta property="og:title" content="2025年读书记录">
+<meta property="og:url" content="/blog/read/2025010601/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/blog/prob/2017032603/">
+<link rel="canonical" href="/blog/read/2025010601/">
 <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code",
-    "datePublished": "2017-03-26T03:33:58+08:00",
-    "dateModified": "2022-12-10T21:21:10+08:00",
-    "url" : "/blog/prob/2017032603/",
-    "description": "使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code 在Android Studio中加了一个依赖之后，编译出错，解决办法是在项目的属性中设置 sourceCompatibility …",
+    "headline": "2025年读书记录",
+    "datePublished": "2025-03-06T20:00:00+08:00",
+    "dateModified": "2025-03-06T22:35:52+08:00",
+    "url" : "/blog/read/2025010601/",
+    "description": "   name auther start end     吸血企业 今野晴贵 20250218 20250304   囚徒健身 - 20241223 20250205   想死不如健身 泰史特龍 久保孝史 20250301 20250306    ",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -75,7 +75,7 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
-<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/read/" class="active" aria-current="page">Read</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/java/">Java</a></li>
@@ -84,7 +84,7 @@
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/life/">Life</a></li>
-<li><a href="/blog/prob/" class="active" aria-current="page">Prob</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sh/">SH</a></li>
 <li><a href="/blog/cs/">CS</a></li>
 </ul>
@@ -92,44 +92,57 @@
 
 
 <main class="main layout__main">
-<article class="single-view single-view--prob">
+<article class="single-view single-view--read">
 <header>
-<h1 class="title title-submitted">使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code</h1>
+<h1 class="title title-submitted">2025年读书记录</h1>
 <div class="submitted">
-<time class="created-date" datetime="2017-03-26T03:33:58&#43;08:00">2017-03-26 03:33</time>
+<time class="created-date" datetime="2025-03-06T20:00:00&#43;08:00">2025-03-06 20:00</time>
 </div>
 </header>
 <div class="content">
-<p>使用第三方类库报错Error converting bytecode to dex: Cause: Dex cannot parse version 52 byte code</p>
-<p>在Android Studio中加了一个依赖之后，编译出错，解决办法是在项目的属性中设置 sourceCompatibility 和 targetCompatibility 为1.7</p>
-<p>同时在build.gradle中添加jackOptions</p>
-<pre><code>android {
-    defaultConfig {
-        ...
-        jackOptions{
-            enabled true
-        }
-    }
-}
-</code></pre><p><strong>reference</strong></p>
-<ul>
-<li>
-<p><a href="https://stackoverflow.com/questions/37020413/android-dex-cannot-parse-version-52-byte-code">Android: Dex cannot parse version 52 byte code</a></p>
-</li>
-<li>
-<p><a href="http://www.jianshu.com/p/a13c6326671d">Android进阶之自定义注解</a></p>
-</li>
-<li>
-<p><a href="http://www.cnblogs.com/ning-blogs/p/5516357.html">《ANDROID 导入第三方源码JAR包遇到的坑》</a></p>
-</li>
-</ul>
+
+
+
+
+
+
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+<th align="left">name</th>
+<th align="center">auther</th>
+<th align="center">start</th>
+<th align="center">end</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">吸血企业</td>
+<td align="center">今野晴贵</td>
+<td align="center">20250218</td>
+<td align="center">20250304</td>
+</tr>
+<tr>
+<td align="left">囚徒健身</td>
+<td align="center">-</td>
+<td align="center">20241223</td>
+<td align="center">20250205</td>
+</tr>
+<tr>
+<td align="left">想死不如健身</td>
+<td align="center">泰史特龍 久保孝史</td>
+<td align="center">20250301</td>
+<td align="center">20250306</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2022-12-10 21:21<br>
-Created: 2017-03-26 03:33
+Updated: 2025-03-06 22:35<br>
+Created: 2025-03-06 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
         repo="deletefromuser/deletefromuser.github.io"
