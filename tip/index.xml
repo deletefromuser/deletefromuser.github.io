@@ -6,8 +6,28 @@
     <description>Recent content in Tip on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Sep 2023 15:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 19 Apr 2025 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/tip/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Firefox多用户</title>
+      <link>https://deletefromuser.github.io/tip/2025041901/</link>
+      <pubDate>Sat, 19 Apr 2025 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/tip/2025041901/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;进入&lt;a href=&#34;about:profiles&#34;&gt;about:profiles&lt;/a&gt;, 创建新用户(比如tom)&lt;/li&gt;
+&lt;li&gt;点击【Launch profile in new browser】按钮启动&lt;/li&gt;
+&lt;li&gt;windows快捷方式进入&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;复制出一个新的快捷方式，右键属性，在目标属性值中添加&lt;code&gt; -p tom&lt;/code&gt;即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.mozilla.org/en-US/kb/profile-manager-create-remove-switch-firefox-profiles&#34;&gt;Profile Manager - Create, remove or switch Firefox profiles&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Mega &#43; nginx搭建webdav服务</title>
