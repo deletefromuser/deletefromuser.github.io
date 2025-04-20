@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2025-04-19T20:00:00+0800">
-<meta name="modified" content="2025-04-19T22:53:47+0800">
+<meta name="created" content="2025-04-20T20:00:00+0800">
+<meta name="modified" content="2025-04-20T23:08:30+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,9 +73,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/watch/">Watch</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/read/">Read</a></li>
-<li><a href="/watch/">Watch</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/java/">Java</a></li>
 <li><a href="/jpns/">Jpns</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/tip/2023021801/">使用js手动post数据</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-17T20:00:00&#43;08:00">2023-02-17 20:00</time>
+</div>
+
+</header>
+<div class="content">
+(async () =&gt; { const rawResponse = await fetch(&#39;https://httpbin.org/post&#39;, { method: &#39;POST&#39;, headers: { &#39;Accept&#39;: &#39;application/json&#39;, &#39;Content-Type&#39;: &#39;application/json&#39; }, body: JSON.stringify({a: 1, b: &#39;Textual content&#39;}) }); // const content = await rawResponse.json(); const content = await rawResponse.text(); console.log(content); })(); reference Fetch: POST JSON data
+</div>
+</article>
 
 <article class="list-view list-view--web">
 <header>
@@ -211,19 +224,6 @@ name auther start end 技术陷阱：从工业革命到AI时代，技术创新�
 </header>
 <div class="content">
 Those who cannot remember the past are condemned to repeat it. by George Santayana Those who do not move, do not notice their chains. by Rosa Luxemburg History without discomfort is propaganda. by https://mastodon.social/@ned@mstdn.ca/110900050265409017 Living is more a question of what one spends than what one makes. by Marcel Duchamp 刀を鳥に加えて、鳥の血に悲しめども、魚に
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/prob/2022122101/">Ubuntu 20.04下tracker-miner-fs进程占用大量内存和cpu</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-12-21T20:00:00&#43;08:00">2022-12-21 20:00</time>
-</div>
-
-</header>
-<div class="content">
-systemctl --user mask tracker-store.service tracker-miner-fs.service tracker-miner-rss.service tracker-extract.service tracker-miner-apps.service tracker-writeback.service tracker reset --hard sudo reboot reference Tracker process taking lot of CPU
 </div>
 </article>
 
