@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2025-04-19T20:00:00+0800">
-<meta name="modified" content="2025-04-19T22:53:47+0800">
+<meta name="created" content="2025-04-20T20:00:00+0800">
+<meta name="modified" content="2025-04-20T23:08:30+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,9 +73,9 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/read/">Read</a></li>
-<li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/blog/web/2017031901/">JSONP跨域獲取JSON數據</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-19T01:33:58&#43;08:00">2017-03-19 01:33</time>
+</div>
+
+</header>
+<div class="content">
+JSONP跨域獲取JSON數據 客戶端請求數據 &lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;App Engine Demo&lt;/title&gt; &lt;script src=&#34;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&#34;&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;result&#34;&gt;Loading...&lt;/div&gt; &lt;br /&gt; &lt;p&gt;add p&lt;/p&gt; &lt;br /&gt; &lt;script&gt; $(document).ready(function() { $.ajax({ async : false, url : &#34;https://hanotfun.appspot.com/demo&#34;, type : &#34;GET&#34;, dataType : &#39;jsonp&#39;, jsonp : &#39;callback&#39;, success : function(data) { $(&#39;#result&#39;).html(&#34;Hello, &#34; + data.name); } });
+</div>
+</article>
 
 <article class="list-view list-view--prob">
 <header>
@@ -211,19 +224,6 @@ MS-Windows下Emacs显示中文卡頓 emacs顯示中文有bug，更換一下默�
 </header>
 <div class="content">
 windows遠程桌面設置全屏快捷鍵 在開啟遠程桌面的時候，上方有一個連接欄顯示很煩人，可以通過設置去掉，但是去掉之後就需要使用快捷鍵來返回主
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017030402/">Git的配置和初级使用</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-04T02:33:58&#43;08:00">2017-03-04 02:33</time>
-</div>
-
-</header>
-<div class="content">
-Git的配置和初级使用 下载安装Git之后，先把仓库下载下来 git clone https://github.com/rsa2063/rsa2063.github.io 在下载下来的文件夹中右键Git Bash Here，当然也有一个Git GUI Here，但是
 </div>
 </article>
 
