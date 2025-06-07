@@ -24,7 +24,9 @@
 &lt;li&gt;Black.Mirror.S04&lt;/li&gt;
 &lt;li&gt;Black.Mirror.S05&lt;/li&gt;
 &lt;li&gt;Black.Mirror.S06&lt;/li&gt;
+&lt;li&gt;Black.Mirror.S07&lt;/li&gt;
 &lt;li&gt;Adolescence.2025&lt;/li&gt;
+&lt;li&gt;The.Studio.2025&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
 &lt;ul&gt;
@@ -41,6 +43,7 @@
 &lt;h2 id=&#34;游戏&#34;&gt;游戏&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Into the Breach&lt;/li&gt;
+&lt;li&gt;Torchlight II&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -5079,6 +5082,8 @@ sudo systemctl enable tomcat
 &lt;p&gt;###转发80端口到8080端口&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
 iptables -t nat -I OUTPUT -p tcp -o lo --dport 80 -j REDIRECT --to-ports 8080
+
+iptables -t nat -L -n  | grep 8080
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;改完之后应该可以不用加端口号访问了，以后443转发8443也是同样的操作&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 8443
 iptables -t nat -I OUTPUT -p tcp -o lo --dport 443 -j REDIRECT --to-ports 8443
