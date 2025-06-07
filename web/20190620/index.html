@@ -6,7 +6,7 @@
 <title>tomcat安装&amp;let&#39;s encrypt配置 – HA</title>
 <meta name="description" content="tomcat安装&amp;amp;amp;let&amp;amp;rsquo;s encrypt配置 ###安装java cd /hometar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz// tempexport PATH=$PWD/jdk8u212-b04/bin:$PATHjava …">
 <meta name="created" content="2019-06-20T01:33:58+0800">
-<meta name="modified" content="2020-12-20T11:17:02+0800">
+<meta name="modified" content="2025-06-07T22:50:02+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "tomcat安装\u0026let's encrypt配置",
     "datePublished": "2019-06-20T01:33:58+08:00",
-    "dateModified": "2020-12-20T11:17:02+08:00",
+    "dateModified": "2025-06-07T22:50:02+08:00",
     "url" : "/blog/web/20190620/",
     "description": "tomcat安装\u0026amp;amp;let\u0026amp;rsquo;s encrypt配置 ###安装java cd /home\rtar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz\r// temp\rexport PATH=$PWD/jdk8u212-b04/bin:$PATH\rjava …",
     "mainEntityOfPage": {
@@ -148,6 +148,8 @@ sudo systemctl enable tomcat
 <p>###转发80端口到8080端口</p>
 <pre><code>iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
 iptables -t nat -I OUTPUT -p tcp -o lo --dport 80 -j REDIRECT --to-ports 8080
+
+iptables -t nat -L -n  | grep 8080
 </code></pre><p>改完之后应该可以不用加端口号访问了，以后443转发8443也是同样的操作</p>
 <pre><code>iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 8443
 iptables -t nat -I OUTPUT -p tcp -o lo --dport 443 -j REDIRECT --to-ports 8443
@@ -223,7 +225,7 @@ service tomcat restart
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2020-12-20 11:17<br>
+Updated: 2025-06-07 22:50<br>
 Created: 2019-06-20 01:33
 </p>
 </div><script src="https://utteranc.es/client.js"
