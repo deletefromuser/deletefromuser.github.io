@@ -3,12 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/watch/2025040101/</loc>
-    <lastmod>2025-06-07T22:50:02+08:00</lastmod>
+    <loc>/blog/</loc>
+    <lastmod>2025-06-08T21:05:11+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/</loc>
+    <loc>/blog/tags/handshake/</loc>
+    <lastmod>2025-06-08T21:05:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/</loc>
+    <lastmod>2025-06-08T21:05:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/</loc>
+    <lastmod>2025-06-08T21:05:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/2025060801/</loc>
+    <lastmod>2025-06-08T21:05:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/watch/2025040101/</loc>
     <lastmod>2025-06-07T22:50:02+08:00</lastmod>
   </url>
   
@@ -24,16 +44,6 @@
   
   <url>
     <loc>/blog/tip/2025041901/</loc>
-    <lastmod>2025-04-19T16:20:17+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/tags/</loc>
-    <lastmod>2025-04-19T16:20:17+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/tip/</loc>
     <lastmod>2025-04-19T16:20:17+08:00</lastmod>
   </url>
   

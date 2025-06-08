@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>使用handshake转换视频时利用gpu – HA</title>
+<meta name="description" content="视频分页设置中的编解码器选择H.264/H.265 (NVEnc) 参考  How to enable hardware acceleration?  ">
+<meta name="created" content="2025-06-08T20:00:00+0800">
+<meta name="modified" content="2025-06-08T21:05:11+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="使用handshake转换视频时利用gpu">
+<meta property="og:url" content="/blog/tip/2025060801/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/tip/2025060801/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "使用handshake转换视频时利用gpu",
+    "datePublished": "2025-06-08T20:00:00+08:00",
+    "dateModified": "2025-06-08T21:05:11+08:00",
+    "url" : "/blog/tip/2025060801/",
+    "description": "视频分页设置中的编解码器选择H.264/H.265 (NVEnc) 参考  How to enable hardware acceleration?  ",
+    "keywords": ["handshake"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/tip/" class="active" aria-current="page">Tip</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/sql/">Sql</a></li>
+<li><a href="/blog/java/">Java</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+<li><a href="/blog/bash/">Bash</a></li>
+<li><a href="/blog/web/">Web</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/prob/">Prob</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+<li><a href="/blog/cs/">CS</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--tip">
+<header>
+<h1 class="title title-submitted">使用handshake转换视频时利用gpu</h1>
+<div class="submitted">
+<time class="created-date" datetime="2025-06-08T20:00:00&#43;08:00">2025-06-08 20:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/handshake/">handshake</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<p>视频分页设置中的编解码器选择<code>H.264/H.265 (NVEnc)</code></p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://www.reddit.com/r/handbrake/comments/11ikwdd/comment/l3ejtjd/">How to enable hardware acceleration?</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2025-06-08 21:05<br>
+Created: 2025-06-08 20:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
