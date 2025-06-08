@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2025-04-20T20:00:00+0800">
-<meta name="modified" content="2025-06-07T22:50:02+0800">
+<meta name="created" content="2025-06-08T20:00:00+0800">
+<meta name="modified" content="2025-06-08T21:05:11+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
-<li><a href="/watch/">Watch</a></li>
 <li><a href="/tip/">Tip</a></li>
+<li><a href="/watch/">Watch</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/java/">Java</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--web">
+<header>
+<h2 class="title title-submitted"><a href="/web/20190620/">tomcat安装&amp;let&#39;s encrypt配置</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2019-06-20T01:33:58&#43;08:00">2019-06-20 01:33</time>
+</div>
+
+</header>
+<div class="content">
+tomcat安装&amp;let&rsquo;s encrypt配置 ###安装java cd /home tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz // temp export PATH=$PWD/jdk8u212-b04/bin:$PATH java -version //final vi /etc/profile ` JAVA_HOME=/home/jdk8u212-b04 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin export JAVA_HOME export PATH ` log out and log in wget
+</div>
+</article>
 
 <article class="list-view list-view--watch">
 <header>
@@ -211,19 +224,6 @@ Java 将对象序列化为字符串 读取字符串反序列化为对象 import 
 </header>
 <div class="content">
 让你的每一天更有意义的十种方法 by Dan Pedersen 早起 享受日出，享受宁静，使用这段时间去沉思、祈祷、写作、锻炼等等 为要做的事设定优先级 记住做那些对你和你的
-</div>
-</article>
-
-<article class="list-view list-view--sql">
-<header>
-<h2 class="title title-submitted"><a href="/sql/2017040501/">sqlserver 修改主键约束</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-04-05T01:33:58&#43;08:00">2017-04-05 01:33</time>
-</div>
-
-</header>
-<div class="content">
-sqlserver 修改主键约束 sp_help book if exists (select 1 from sysobjects where name = &#39;PK__book__AFEBF550AD55A29F&#39;) begin print &#39;pk exists&#39; alter table book drop constraint PK__book__AFEBF550AD55A29F end alter table book add constraint PK__book primary key clustered ( book_name asc, id asc ) reference SQL Server 创建表 添加主键 添加列常用SQL语句
 </div>
 </article>
 

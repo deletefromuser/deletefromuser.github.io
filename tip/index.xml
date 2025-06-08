@@ -6,8 +6,21 @@
     <description>Recent content in Tip on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Apr 2025 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 08 Jun 2025 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/tip/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>使用handshake转换视频时利用gpu</title>
+      <link>https://deletefromuser.github.io/tip/2025060801/</link>
+      <pubDate>Sun, 08 Jun 2025 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/tip/2025060801/</guid>
+      <description>&lt;p&gt;视频分页设置中的编解码器选择&lt;code&gt;H.264/H.265 (NVEnc)&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.reddit.com/r/handbrake/comments/11ikwdd/comment/l3ejtjd/&#34;&gt;How to enable hardware acceleration?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Firefox多用户</title>
