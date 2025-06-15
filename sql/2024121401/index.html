@@ -6,7 +6,7 @@
 <title>迁移mariadb/mysql数据库到pgsql – HA</title>
 <meta name="description" content="0. 修改mysql数据库中tinyint为smallint  pgloader默认会把mysql的tinyint字段转为boolean字段，如果需要整型，需要事先转换  -- 1. 查询tinyint字段并组装为更新表字段语句 SELECT CONCAT(&amp;amp;#39;ALTER TABLE &amp;amp;#39;, table_name, &amp;amp;#39; …">
 <meta name="created" content="2024-12-14T14:00:00+0800">
-<meta name="modified" content="2024-12-14T22:00:29+0800">
+<meta name="modified" content="2025-06-15T18:57:51+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "迁移mariadb/mysql数据库到pgsql",
     "datePublished": "2024-12-14T14:00:00+08:00",
-    "dateModified": "2024-12-14T22:00:29+08:00",
+    "dateModified": "2025-06-15T18:57:51+08:00",
     "url" : "https://deletefromuser.github.io/sql/2024121401/",
     "description": "0. 修改mysql数据库中tinyint为smallint  pgloader默认会把mysql的tinyint字段转为boolean字段，如果需要整型，需要事先转换  -- 1. 查询tinyint字段并组装为更新表字段语句 SELECT CONCAT(\u0026amp;#39;ALTER TABLE \u0026amp;#39;, table_name, \u0026amp;#39; …",
     "keywords": ["sql","pgsql","mariadb"],
@@ -139,7 +139,17 @@ make save
   <span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SCHEMA</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">source</span><span style="color:#f92672">-</span><span style="color:#66d9ef">database</span><span style="color:#f92672">&gt;</span>           <span style="color:#66d9ef">RENAME</span> <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">public</span>;
   <span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">SCHEMA</span>  public_original <span style="color:#66d9ef">CASCADE</span>;
 <span style="color:#66d9ef">COMMIT</span>;
-</code></pre></div><p><strong>reference</strong></p>
+</code></pre></div><h3 id="3-修改pgsql中的timestamp类型字段">3. 修改pgsql中的timestamp类型字段</h3>
+<blockquote>
+<p>将timestamp with time zone类型字段修改为timestamp</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> 
+<span style="color:#e6db74">&#39;alter table &#39;</span> <span style="color:#f92672">||</span><span style="color:#66d9ef">table_name</span> <span style="color:#f92672">||</span><span style="color:#e6db74">&#39; alter column &#39;</span><span style="color:#f92672">||</span> <span style="color:#66d9ef">column_name</span> <span style="color:#f92672">||</span><span style="color:#e6db74">&#39; type timestamp;&#39;</span>
+<span style="color:#66d9ef">from</span> information_schema.columns
+<span style="color:#66d9ef">where</span> table_schema <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;public&#39;</span> <span style="color:#66d9ef">and</span> data_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;timestamp with time zone&#39;</span>
+;
+<span style="color:#75715e">-- 复制出查询结果并执行
+</span></code></pre></div><p><strong>reference</strong></p>
 <ol>
 <li><a href="https://estuary.dev/mariadb-to-postgres/">How to Migrate MariaDB to Postgres: A Step-By-Step Guide | Estuary</a></li>
 <li><a href="https://github.com/dimitri/pgloader/issues/1183#issuecomment-1715995515">pgloader 10 fell through ECASE expression · Issue #1183 · dimitri/pgloader</a></li>
@@ -151,7 +161,7 @@ make save
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2024-12-14 22:00<br>
+Updated: 2025-06-15 18:57<br>
 Created: 2024-12-14 14:00
 </p>
 </div><script src="https://utteranc.es/client.js"
