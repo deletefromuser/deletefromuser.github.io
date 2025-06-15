@@ -44,7 +44,17 @@ make save
   &lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SCHEMA&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;source&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;           &lt;span style=&#34;color:#66d9ef&#34;&gt;RENAME&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt;;
   &lt;span style=&#34;color:#66d9ef&#34;&gt;DROP&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SCHEMA&lt;/span&gt;  public_original &lt;span style=&#34;color:#66d9ef&#34;&gt;CASCADE&lt;/span&gt;;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMIT&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-修改pgsql中的timestamp类型字段&#34;&gt;3. 修改pgsql中的timestamp类型字段&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;将timestamp with time zone类型字段修改为timestamp&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; 
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;alter table &amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;table_name&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; alter column &amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;column_name&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; type timestamp;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; information_schema.columns
+&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; table_schema &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;public&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;and&lt;/span&gt; data_type&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;timestamp with time zone&amp;#39;&lt;/span&gt;
+;
+&lt;span style=&#34;color:#75715e&#34;&gt;-- 复制出查询结果并执行
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://estuary.dev/mariadb-to-postgres/&#34;&gt;How to Migrate MariaDB to Postgres: A Step-By-Step Guide | Estuary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/dimitri/pgloader/issues/1183#issuecomment-1715995515&#34;&gt;pgloader 10 fell through ECASE expression · Issue #1183 · dimitri/pgloader&lt;/a&gt;&lt;/li&gt;
