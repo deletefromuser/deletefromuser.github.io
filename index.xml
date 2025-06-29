@@ -1785,7 +1785,10 @@ export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span styl
     &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; Date date&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;输入中包含文件&#34;&gt;输入中包含文件&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 不使用json形式提交+@RequestBody, 改用传统form
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-bash中运行maven时中文乱码&#34;&gt;git bash中运行maven时中文乱码&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 切换为英文&lt;/span&gt;
+export JAVA_TOOL_OPTIONS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Duser.language=en&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/46144346/hot-swapping-in-spring-boot-in-visual-studio-code&#34;&gt;Hot swapping in Spring Boot in Visual Studio Code&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/1.5.22.RELEASE/reference/html/boot-features-logging.html&#34;&gt;26. Logging&lt;/a&gt;&lt;/li&gt;
@@ -1796,6 +1799,8 @@ export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span styl
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11757487/how-to-tell-jackson-to-ignore-a-field-during-serialization-if-its-value-is-null&#34;&gt;java - How to tell Jackson to ignore a field during serialization if its value is null? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://reflectoring.io/jackson/&#34;&gt;All You Need To Know About JSON Parsing With Jackson&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/48051177/content-type-multipart-form-databoundary-charset-utf-8-not-supported&#34;&gt;java - Content type &amp;lsquo;multipart/form-data;boundary=&amp;mdash;-&amp;hellip;;charset=UTF-8&amp;rsquo; not supported - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/71905990/git-bash-terminal-encoding-issue-with-java&#34;&gt;Git Bash Terminal Encoding Issue with Java&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/envvars002.html&#34;&gt;The JAVA_TOOL_OPTIONS Environment Variable&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
