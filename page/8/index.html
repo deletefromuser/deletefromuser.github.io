@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2025-06-08T20:00:00+0800">
-<meta name="modified" content="2025-07-01T22:46:20+0800">
+<meta name="created" content="2025-07-06T20:00:00+0800">
+<meta name="modified" content="2025-07-06T23:05:24+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
-<li><a href="/tip/">Tip</a></li>
 <li><a href="/watch/">Watch</a></li>
+<li><a href="/tip/">Tip</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/java/">Java</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/sql/2023020901/">sqlserver常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+
+</header>
+<div class="content">
+查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; 查看表结构 SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = &#39;yourTableName&#39;; 日期 -- 当前时
+</div>
+</article>
 
 <article class="list-view list-view--watch">
 <header>
@@ -211,19 +224,6 @@ click File &gt; Virtual Media Manager in the main VirtualBox window Select a vir
 </header>
 <div class="content">
 name start end 圈外编辑 20220201 20220307 最好的决定 20220308 20220526 我能有什么坏心思呢 20220523 20220714 东京贫困女子 * 20220527 20220821 互联网与中国后现代性呓语 20220711 20220720 人生十二法则 20220824 ing 那些古怪又让人忧心的问题
-</div>
-</article>
-
-<article class="list-view list-view--watch">
-<header>
-<h2 class="title title-submitted"><a href="/watch/2022010101/">2022年1季度</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-01-01T12:00:00&#43;08:00">2022-01-01 12:00</time>
-</div>
-
-</header>
-<div class="content">
-动画 ハコヅメ〜交番女子の逆襲〜 怪人開発部の黒井津さん 天才王子の赤字国家再生術 电影 The Nice Guys Dont Look Up The Worlds End Hot Fuzz
 </div>
 </article>
 
