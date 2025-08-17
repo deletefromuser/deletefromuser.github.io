@@ -17,6 +17,12 @@
       <description>&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;ギャグマンガ日和 S01-S05&lt;/li&gt;
+&lt;li&gt;雨と君と&lt;/li&gt;
+&lt;li&gt;まったく最近の探偵ときたら&lt;/li&gt;
+&lt;li&gt;フードコートで、また明日。&lt;/li&gt;
+&lt;li&gt;ぐらんぶる Season 2&lt;/li&gt;
+&lt;li&gt;CITY THE ANIMATION&lt;/li&gt;
+&lt;li&gt;光が死んだ夏&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;剧集&#34;&gt;剧集&lt;/h2&gt;
 &lt;ul&gt;
@@ -25,6 +31,7 @@
 &lt;li&gt;Dept. Q S01&lt;/li&gt;
 &lt;li&gt;Ludwig.S01&lt;/li&gt;
 &lt;li&gt;The Queen&amp;rsquo;s Gambit&lt;/li&gt;
+&lt;li&gt;Rick.and.Morty.S05&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
 &lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
@@ -250,13 +257,29 @@
 &lt;td align=&#34;center&#34;&gt;ing&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;这才是心理学&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;这才是心理学 &lt;strong&gt;&lt;a href=&#34;#%E8%BF%99%E6%89%8D%E6%98%AF%E5%BF%83%E7%90%86%E5%AD%A6%E6%84%9F%E6%83%B3&#34;&gt;*&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;基思·斯坦诺维奇&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;20250701&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20250815&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;別把你的錢留到死&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;比爾 · 柏金斯&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20250731&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;ing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;性的进化&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;贾雷德·戴蒙德&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20250726&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;ing&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h3 id=&#34;这才是心理学感想&#34;&gt;这才是心理学感想&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;值得买一本收藏&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -1829,6 +1852,7 @@ export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span styl
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-bash中运行maven时中文乱码&#34;&gt;git bash中运行maven时中文乱码&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 切换为英文&lt;/span&gt;
 export JAVA_TOOL_OPTIONS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Duser.language=en&amp;#34;&lt;/span&gt;
+export JAVA_TOOL_OPTIONS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Duser.language=en -Dfile.encoding=UTF-8&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/46144346/hot-swapping-in-spring-boot-in-visual-studio-code&#34;&gt;Hot swapping in Spring Boot in Visual Studio Code&lt;/a&gt;&lt;/li&gt;
