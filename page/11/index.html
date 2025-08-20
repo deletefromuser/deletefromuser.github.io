@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2025-07-06T20:00:00+0800">
-<meta name="modified" content="2025-08-17T15:37:18+0800">
+<meta name="created" content="2025-08-20T20:00:00+0800">
+<meta name="modified" content="2025-08-20T22:38:42+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,11 +73,11 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
 <li><a href="/blog/bash/">Bash</a></li>
 <li><a href="/blog/web/">Web</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--sql">
+<header>
+<h2 class="title title-submitted"><a href="/blog/sql/2017042601/">判断日期是否是工作日(sqlserver)，判断一个月中有多少工作日(C#)</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-04-26T01:33:58&#43;08:00">2017-04-26 01:33</time>
+</div>
+
+</header>
+<div class="content">
+判断日期是否是工作日(sqlserver)，判断一个月中有多少工作日(C#) print (datepart(weekday, &#39;2017-04-24&#39;) + 5) % 7 print (datepart(weekday, &#39;2017-04-26&#39;) + 5) % 7 print (datepart(weekday, &#39;2017-04-30&#39;) + 5) % 7 --周一到周日 0-6 public static int
+</div>
+</article>
 
 <article class="list-view list-view--sh">
 <header>
@@ -211,19 +224,6 @@ Android Studio 函数描述弹出很慢的问题 找到版本对应的目录，�
 </header>
 <div class="content">
 Chrome Keep扩展运行出错的问题解决 主要问题还是扩展连接的网址被墙的原因，将其加入代理即可 *.googleapis.com *.googleusercontent.com //跟google翻译的扩展问题一样 //不同在于k
-</div>
-</article>
-
-<article class="list-view list-view--tip">
-<header>
-<h2 class="title title-submitted"><a href="/blog/tip/2017032303/">git 常用命令</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-23T03:33:58&#43;08:00">2017-03-23 03:33</time>
-</div>
-
-</header>
-<div class="content">
-常用命令 # 拉取代码 git pull --all # 提交dev分支到远程仓库 git push origin dev # 将某一个提交的变更应用到代码库 git cherry-pick -n bd61ad98 # 将某区间提交的变更应用到代码库 git cherry-pick -n bd61ad98^..ade56rq1 #
 </div>
 </article>
 
