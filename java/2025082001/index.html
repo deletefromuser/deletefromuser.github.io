@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>使用pdfbox将文字pdf转换为图片pdf – HA</title>
+<meta name="description" content="添加pdfbox &amp;amp;lt;dependency&amp;amp;gt; &amp;amp;lt;groupId&amp;amp;gt;org.apache.pdfbox&amp;amp;lt;/groupId&amp;amp;gt; &amp;amp;lt;artifactId&amp;amp;gt;pdfbox&amp;amp;lt;/artifactId&amp;amp;gt; &amp;amp;lt;version&amp;amp;gt;3.0.5&amp;amp;lt;/version&amp;amp;gt; …">
+<meta name="created" content="2025-08-20T20:00:00+0800">
+<meta name="modified" content="2025-08-20T22:38:42+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="使用pdfbox将文字pdf转换为图片pdf">
+<meta property="og:url" content="https://deletefromuser.github.io/java/2025082001/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/java/2025082001/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "使用pdfbox将文字pdf转换为图片pdf",
+    "datePublished": "2025-08-20T20:00:00+08:00",
+    "dateModified": "2025-08-20T22:38:42+08:00",
+    "url" : "https://deletefromuser.github.io/java/2025082001/",
+    "description": "添加pdfbox \u0026amp;lt;dependency\u0026amp;gt; \u0026amp;lt;groupId\u0026amp;gt;org.apache.pdfbox\u0026amp;lt;/groupId\u0026amp;gt; \u0026amp;lt;artifactId\u0026amp;gt;pdfbox\u0026amp;lt;/artifactId\u0026amp;gt; \u0026amp;lt;version\u0026amp;gt;3.0.5\u0026amp;lt;/version\u0026amp;gt; …",
+    "keywords": ["java","programming","pdf"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/java/" class="active" aria-current="page">Java</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/tip/">Tip</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/sql/">Sql</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+<li><a href="/bash/">Bash</a></li>
+<li><a href="/web/">Web</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/prob/">Prob</a></li>
+<li><a href="/sh/">SH</a></li>
+<li><a href="/cs/">CS</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--java">
+<header>
+<h1 class="title title-submitted">使用pdfbox将文字pdf转换为图片pdf</h1>
+<div class="submitted">
+<time class="created-date" datetime="2025-08-20T20:00:00&#43;08:00">2025-08-20 20:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/java/">java</a></li>
+<li><a href="https://deletefromuser.github.io/tags/pdf/">pdf</a></li>
+<li><a href="https://deletefromuser.github.io/tags/programming/">programming</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="添加pdfbox">添加pdfbox</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.pdfbox<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>pdfbox<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>3.0.5<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.pdfbox<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>fontbox<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>3.0.5<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><h3 id="使用pdfbox将文字pdf转换为图片pdf">使用pdfbox将文字pdf转换为图片pdf</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String inputPath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;input.pdf&#34;</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 输入 PDF
+</span><span style="color:#75715e"></span>String outputPath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;output_image_pdf.pdf&#34;</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 输出图片 PDF
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> dpi <span style="color:#f92672">=</span> 300<span style="color:#f92672">;</span> <span style="color:#75715e">// 渲染分辨率
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>PDDocument document <span style="color:#f92672">=</span> Loader<span style="color:#f92672">.</span><span style="color:#a6e22e">loadPDF</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>inputPath<span style="color:#f92672">)))</span> <span style="color:#f92672">{</span>
+    PDFRenderer pdfRenderer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PDFRenderer<span style="color:#f92672">(</span>document<span style="color:#f92672">);</span>
+    PDDocument imagePdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PDDocument<span style="color:#f92672">();</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> pageIndex <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> pageIndex <span style="color:#f92672">&lt;</span> document<span style="color:#f92672">.</span><span style="color:#a6e22e">getNumberOfPages</span><span style="color:#f92672">();</span> pageIndex<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 1. 渲染为 BufferedImage
+</span><span style="color:#75715e"></span>        BufferedImage bim <span style="color:#f92672">=</span> pdfRenderer<span style="color:#f92672">.</span><span style="color:#a6e22e">renderImageWithDPI</span><span style="color:#f92672">(</span>pageIndex<span style="color:#f92672">,</span> dpi<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">// 2. 新建 PDF 页面，尺寸与原图一致
+</span><span style="color:#75715e"></span>        PDPage page <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PDPage<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> PDRectangle<span style="color:#f92672">(</span>bim<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> bim<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">()));</span>
+        imagePdf<span style="color:#f92672">.</span><span style="color:#a6e22e">addPage</span><span style="color:#f92672">(</span>page<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">// 3. 把图片画到新 PDF 页面
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>PDPageContentStream contentStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PDPageContentStream<span style="color:#f92672">(</span>imagePdf<span style="color:#f92672">,</span> page<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            contentStream<span style="color:#f92672">.</span><span style="color:#a6e22e">drawImage</span><span style="color:#f92672">(</span>
+                    LosslessFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">createFromImage</span><span style="color:#f92672">(</span>imagePdf<span style="color:#f92672">,</span> bim<span style="color:#f92672">),</span>
+                    0<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> bim<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> bim<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    imagePdf<span style="color:#f92672">.</span><span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>outputPath<span style="color:#f92672">);</span>
+    imagePdf<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span>e<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;转换完成，输出文件：&#34;</span> <span style="color:#f92672">+</span> outputPath<span style="color:#f92672">);</span>
+</code></pre></div>
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2025-08-20 22:38<br>
+Created: 2025-08-20 20:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
