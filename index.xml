@@ -95,6 +95,7 @@ System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#3
 &lt;li&gt;Hacks.S03&lt;/li&gt;
 &lt;li&gt;Hacks.S04&lt;/li&gt;
 &lt;li&gt;Dexter.S01&lt;/li&gt;
+&lt;li&gt;Wednesday.S02&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
 &lt;ul&gt;
@@ -102,6 +103,9 @@ System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#3
 &lt;li&gt;F1.The.Movie.2025&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;異世界黙示録マイノグーラ〜破滅の文明で始める世界征服〜&lt;/li&gt;
+&lt;/ul&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;h2 id=&#34;游戏&#34;&gt;游戏&lt;/h2&gt;
 &lt;h3 id=&#34;ぐらんぶる-season-2&#34;&gt;ぐらんぶる Season 2&lt;/h3&gt;
@@ -1949,7 +1953,9 @@ export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span styl
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;输入中包含文件&#34;&gt;输入中包含文件&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 不使用json形式提交+@RequestBody, 改用传统form
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-bash中运行maven时中文乱码&#34;&gt;git bash中运行maven时中文乱码&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 切换为英文&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 切换编码为utf-8&lt;/span&gt;
+export JAVA_TOOL_OPTIONS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Dfile.encoding=UTF-8&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 还不行,切换语言&lt;/span&gt;
 export JAVA_TOOL_OPTIONS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Duser.language=en&amp;#34;&lt;/span&gt;
 export JAVA_TOOL_OPTIONS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Duser.language=en -Dfile.encoding=UTF-8&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
