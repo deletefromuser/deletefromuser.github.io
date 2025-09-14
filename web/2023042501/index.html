@@ -6,7 +6,7 @@
 <title>spring boot开发记录 – HA</title>
 <meta name="description" content="热部署 maven中添加下面的依赖 &amp;amp;lt;dependency&amp;amp;gt; &amp;amp;lt;groupId&amp;amp;gt;org.springframework.boot&amp;amp;lt;/groupId&amp;amp;gt; &amp;amp;lt;artifactId&amp;amp;gt;spring-boot-devtools&amp;amp;lt;/artifactId&amp;amp;gt; …">
 <meta name="created" content="2023-04-25T20:00:00+0800">
-<meta name="modified" content="2025-08-17T15:37:18+0800">
+<meta name="modified" content="2025-09-14T23:26:23+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "spring boot开发记录",
     "datePublished": "2023-04-25T20:00:00+08:00",
-    "dateModified": "2025-08-17T15:37:18+08:00",
+    "dateModified": "2025-09-14T23:26:23+08:00",
     "url" : "/blog/web/2023042501/",
     "description": "热部署 maven中添加下面的依赖 \u0026amp;lt;dependency\u0026amp;gt; \u0026amp;lt;groupId\u0026amp;gt;org.springframework.boot\u0026amp;lt;/groupId\u0026amp;gt; \u0026amp;lt;artifactId\u0026amp;gt;spring-boot-devtools\u0026amp;lt;/artifactId\u0026amp;gt; …",
     "mainEntityOfPage": {
@@ -139,7 +139,9 @@ export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;
 </code></pre></div><h3 id="输入中包含文件">输入中包含文件</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 不使用json形式提交+@RequestBody, 改用传统form
 </span></code></pre></div><h3 id="git-bash中运行maven时中文乱码">git bash中运行maven时中文乱码</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 切换为英文</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 切换编码为utf-8</span>
+export JAVA_TOOL_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-Dfile.encoding=UTF-8&#34;</span>
+<span style="color:#75715e"># 还不行,切换语言</span>
 export JAVA_TOOL_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-Duser.language=en&#34;</span>
 export JAVA_TOOL_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-Duser.language=en -Dfile.encoding=UTF-8&#34;</span>
 </code></pre></div><p><strong>reference</strong></p>
@@ -161,7 +163,7 @@ export JAVA_TOOL_OPTIONS<span style="color:#f92672">=</span><span style="color:#
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2025-08-17 15:37<br>
+Updated: 2025-09-14 23:26<br>
 Created: 2023-04-25 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
