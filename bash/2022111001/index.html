@@ -6,7 +6,7 @@
 <title>linux 命令memo – HA</title>
 <meta name="description" content="uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …">
 <meta name="created" content="2022-11-10T20:00:00+0800">
-<meta name="modified" content="2025-03-06T22:35:52+0800">
+<meta name="modified" content="2025-09-21T22:05:25+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "linux 命令memo",
     "datePublished": "2022-11-10T20:00:00+08:00",
-    "dateModified": "2025-03-06T22:35:52+08:00",
+    "dateModified": "2025-09-21T22:05:25+08:00",
     "url" : "/blog/bash/2022111001/",
     "description": "uuidgen  生成uuid  history  命令行历史  修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m -d 1 | …",
     "keywords": ["linux"],
@@ -215,6 +215,11 @@ put /path/b.txt /ftppath/b.txt
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 解压时指定字符编码</span>
 unzip -O shift-jis ~/Downloads/【新入荷ECM】資料.zip
 <span style="color:#75715e"># rar的话没找到, 可以在virtualbox里装个日文版win7里解压</span>
+</code></pre></div><h3 id="使用git-bash-把文件夹下的所有srt后缀文件编码从big5转换为utf8">使用git bash 把文件夹下的所有srt后缀文件编码从big5转换为utf8</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> f in *.srt; <span style="color:#66d9ef">do</span>
+  iconv -f BIG5 -t UTF-8 <span style="color:#e6db74">&#34;</span>$f<span style="color:#e6db74">&#34;</span> &gt; <span style="color:#e6db74">&#34;</span>$f<span style="color:#e6db74">.utf8&#34;</span>
+  mv <span style="color:#e6db74">&#34;</span>$f<span style="color:#e6db74">.utf8&#34;</span> <span style="color:#e6db74">&#34;</span>$f<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">done</span>
 </code></pre></div><p><strong>reference</strong></p>
 <ul>
 <li><a href="https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever">How to change history size for ever?</a></li>
@@ -238,7 +243,7 @@ unzip -O shift-jis ~/Downloads/【新入荷ECM】資料.zip
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2025-03-06 22:35<br>
+Updated: 2025-09-21 22:05<br>
 Created: 2022-11-10 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
