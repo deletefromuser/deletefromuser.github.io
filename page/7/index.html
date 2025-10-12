@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2025-08-20T20:00:00+0800">
-<meta name="modified" content="2025-09-30T13:34:38+0800">
+<meta name="created" content="2025-10-06T20:00:00+0800">
+<meta name="modified" content="2025-10-12T23:07:06+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--bash">
+<header>
+<h2 class="title title-submitted"><a href="/blog/bash/2022120301/">ubuntu使用技巧</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-12-03T20:00:00&#43;08:00">2022-12-03 20:00</time>
+</div>
+
+</header>
+<div class="content">
+为命令行配置代理 # 注意代理要是http代理，sock代理是不行的 export HTTP_PROXY='127.0.0.1:1086' export HTTPS_PROXY='127.0.0.1:1086' 把desktop文件的程序固定到任务栏 复制desktop文件到~/.
+</div>
+</article>
 
 <article class="list-view list-view--tip">
 <header>
@@ -211,19 +224,6 @@ crontab -e A B C D E USERNAME /path/to/command arg1 arg2 Explanation of above cr
 </header>
 <div class="content">
 1. ORA-12505: TNS:listener does not currently know of SID given in connect descriptor add to tnsnames.ora file, and run lsnrctl reload ORCL = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVICE = DEDICATED) (SERVICE_NAME = orcl) ) ) excute alter system set local_listener = '(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))' scope = both; in sqlplus.(username sys, password, orcl as sysdba) 2. 状态: 失败 -测试
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2022110604/">virtualbox虚拟机启用宿主机摄像头</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
-</div>
-
-</header>
-<div class="content">
-Install ‘Oracle VM VirtualBox Extension Pack’ Attaching webcam to guest OS VBoxManage list webcams VboxManage controlvm &#34;Ubuntu 16.04.3&#34; webcam attach .2 reference Enabling Webcam in VirtualBox Guest OS on Windows Host
 </div>
 </article>
 

@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2025-08-20T20:00:00+0800">
-<meta name="modified" content="2025-09-30T13:34:38+0800">
+<meta name="created" content="2025-10-06T20:00:00+0800">
+<meta name="modified" content="2025-10-12T23:07:06+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--java">
+<header>
+<h2 class="title title-submitted"><a href="/blog/java/2017051901/">Java 将对象序列化为字符串 读取字符串反序列化为对象</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-05-19T01:33:58&#43;08:00">2017-05-19 01:33</time>
+</div>
+
+</header>
+<div class="content">
+Java 将对象序列化为字符串 读取字符串反序列化为对象 import java.io.Serializable; class test { public static String object2String(Object obj) { String objBody = null; ByteArrayOutputStream baops = null; ObjectOutputStream oos = null; try { baops = new ByteArrayOutputStream(); oos = new ObjectOutputStream(baops); oos.writeObject(obj); byte[] bytes = baops.toByteArray(); objBody = Base64.encodeToString(bytes, Base64.DEFAULT); } catch(IOException e) { Log.e(tag,
+</div>
+</article>
 
 <article class="list-view list-view--sql">
 <header>
@@ -211,19 +224,6 @@ Android连接电脑新增文件无法显示的问题 在调试app时，创建文
 </header>
 <div class="content">
 Android Studio 函数描述弹出很慢的问题 找到版本对应的目录，将在线查询替换为本地查询，需要在SDKmanager中先下载SDK文档 .AndroidStudio2.2\config\options\jdk.table.xml 将该文件中的http:
-</div>
-</article>
-
-<article class="list-view list-view--prob">
-<header>
-<h2 class="title title-submitted"><a href="/blog/prob/2017032501/">Chrome Keep扩展运行出错的问题解决</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-25T01:33:58&#43;08:00">2017-03-25 01:33</time>
-</div>
-
-</header>
-<div class="content">
-Chrome Keep扩展运行出错的问题解决 主要问题还是扩展连接的网址被墙的原因，将其加入代理即可 *.googleapis.com *.googleusercontent.com //跟google翻译的扩展问题一样 //不同在于k
 </div>
 </article>
 

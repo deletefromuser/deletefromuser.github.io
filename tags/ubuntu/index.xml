@@ -44,6 +44,33 @@ export HTTPS_PROXY=&#39;127.0.0.1:1086&#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;自动安装安全更新&#34;&gt;自动安装安全更新&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo apt-get install unattended-upgrades
 sudo dpkg-reconfigure --priority&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;low unattended-upgrades
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看安全更新&#34;&gt;查看安全更新&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt list --upgradable | grep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;security&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;升级大版本&#34;&gt;升级大版本&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;less /etc/update-manager/release-upgrades
+&lt;span style=&#34;color:#75715e&#34;&gt;# 确认内容为Prompt=lts&lt;/span&gt;
+sudo apt-mark showhold
+&lt;span style=&#34;color:#75715e&#34;&gt;# 确认为空&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 如果不为空 sudo apt-mark unhold pkg1 pkg2&lt;/span&gt;
+sudo apt-get update
+&lt;span style=&#34;color:#75715e&#34;&gt;# 确认报错的源,注释掉&lt;/span&gt;
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo vim /etc/apt/sources.list
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo reboot
+&lt;span style=&#34;color:#75715e&#34;&gt;# 记录升级前版本号&lt;/span&gt;
+uname -mrs
+lsb_release -a
+sudo ufw allow 1022/tcp comment &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Open port ssh tcp port 1022 as failsafe option for upgrades&amp;#39;&lt;/span&gt;
+sudo ufw status
+&lt;span style=&#34;color:#75715e&#34;&gt;#升级&lt;/span&gt;
+sudo &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;-release-upgrade
+sudo ufw delete allow 1022/tcp
+&lt;span style=&#34;color:#75715e&#34;&gt;# 确认升级成功&lt;/span&gt;
+uname -mrs
+lsb_release -a
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;列出命令行所有可用命令&#34;&gt;列出命令行所有可用命令&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# No 1&lt;/span&gt;
 ls &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PATH//:/ &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;
@@ -56,6 +83,9 @@ compgen -c | sort -u &amp;gt; commands &lt;span style=&#34;color:#f92672&#34;&gt
 &lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened&#34;&gt;How do I open a terminal window and execute a command after the shell has opened?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/AutomaticSecurityUpdates&#34;&gt;AutomaticSecurityUpdates&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/403435/how-to-get-a-list-of-all-the-commands-available-for-ubuntu&#34;&gt;How to get a list of all the commands available for Ubuntu?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cyberciti.biz/faq/upgrade-ubuntu-20-04-lts-to-22-04-lts/&#34;&gt;How to upgrade to 22.04 LTS from 20.04 LTS using a GUI method&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1231817/invalid-package-information-error-when-upgrading-to-ubuntu-20-04&#34;&gt;&amp;ldquo;Invalid package information&amp;rdquo; error when upgrading to Ubuntu 20.04&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ohdear.app/news-and-updates/how-to-upgrade-from-ubuntu-2004-lts-to-ubuntu-2204-lts&#34;&gt;How to upgrade from Ubuntu 20.04 LTS to Ubuntu 22.04 LTS&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
