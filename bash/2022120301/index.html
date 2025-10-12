@@ -76,8 +76,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/">Home</a></li>
-<li><a href="/java/">Java</a></li>
 <li><a href="/watch/">Watch</a></li>
+<li><a href="/java/">Java</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/sql/">Sql</a></li>
@@ -123,6 +123,33 @@ export HTTPS_PROXY='127.0.0.1:1086'
 </code></pre></div><h3 id="自动安装安全更新">自动安装安全更新</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt-get install unattended-upgrades
 sudo dpkg-reconfigure --priority<span style="color:#f92672">=</span>low unattended-upgrades
+</code></pre></div><h3 id="查看安全更新">查看安全更新</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">apt list --upgradable | grep <span style="color:#e6db74">&#34;security&#34;</span>
+</code></pre></div><h3 id="升级大版本">升级大版本</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">less /etc/update-manager/release-upgrades
+<span style="color:#75715e"># 确认内容为Prompt=lts</span>
+sudo apt-mark showhold
+<span style="color:#75715e"># 确认为空</span>
+<span style="color:#75715e"># 如果不为空 sudo apt-mark unhold pkg1 pkg2</span>
+sudo apt-get update
+<span style="color:#75715e"># 确认报错的源,注释掉</span>
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo vim /etc/apt/sources.list
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo reboot
+<span style="color:#75715e"># 记录升级前版本号</span>
+uname -mrs
+lsb_release -a
+sudo ufw allow 1022/tcp comment <span style="color:#e6db74">&#39;Open port ssh tcp port 1022 as failsafe option for upgrades&#39;</span>
+sudo ufw status
+<span style="color:#75715e">#升级</span>
+sudo <span style="color:#66d9ef">do</span>-release-upgrade
+sudo ufw delete allow 1022/tcp
+<span style="color:#75715e"># 确认升级成功</span>
+uname -mrs
+lsb_release -a
 </code></pre></div><h3 id="列出命令行所有可用命令">列出命令行所有可用命令</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># No 1</span>
 ls <span style="color:#e6db74">${</span>PATH//:/ <span style="color:#e6db74">}</span>
@@ -135,6 +162,9 @@ compgen -c | sort -u &gt; commands <span style="color:#f92672">&amp;&amp;</span>
 <li><a href="https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened">How do I open a terminal window and execute a command after the shell has opened?</a></li>
 <li><a href="https://help.ubuntu.com/community/AutomaticSecurityUpdates">AutomaticSecurityUpdates</a></li>
 <li><a href="https://askubuntu.com/questions/403435/how-to-get-a-list-of-all-the-commands-available-for-ubuntu">How to get a list of all the commands available for Ubuntu?</a></li>
+<li><a href="https://www.cyberciti.biz/faq/upgrade-ubuntu-20-04-lts-to-22-04-lts/">How to upgrade to 22.04 LTS from 20.04 LTS using a GUI method</a></li>
+<li><a href="https://askubuntu.com/questions/1231817/invalid-package-information-error-when-upgrading-to-ubuntu-20-04">&ldquo;Invalid package information&rdquo; error when upgrading to Ubuntu 20.04</a></li>
+<li><a href="https://ohdear.app/news-and-updates/how-to-upgrade-from-ubuntu-2004-lts-to-ubuntu-2204-lts">How to upgrade from Ubuntu 20.04 LTS to Ubuntu 22.04 LTS</a></li>
 </ul>
 
 </div>

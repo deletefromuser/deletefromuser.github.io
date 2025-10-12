@@ -6,8 +6,8 @@
 <title>HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2025-08-20T20:00:00+0800">
-<meta name="modified" content="2025-09-30T13:34:38+0800">
+<meta name="created" content="2025-10-06T20:00:00+0800">
+<meta name="modified" content="2025-10-12T23:07:06+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
-<li><a href="/java/">Java</a></li>
 <li><a href="/watch/">Watch</a></li>
+<li><a href="/java/">Java</a></li>
 <li><a href="/tip/">Tip</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/sql/">Sql</a></li>
@@ -96,6 +96,19 @@
 </div>
 </article>
 
+
+<article class="list-view list-view--bash">
+<header>
+<h2 class="title title-submitted"><a href="/bash/2023090501/">windows使用记录</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-09-05T22:00:00&#43;08:00">2023-09-05 22:00</time>
+</div>
+
+</header>
+<div class="content">
+使用命令行控制屏幕亮度，声音 # 下载nircmd - https://www.nirsoft.net/utils/nircmd.html # 设置亮度（最大100？） nircmd.exe setbrightness 100 # 修改音量（最大65535） nircmd.exe setsysvolume 15000 # 静音，取消静音设为1 nircmd.exe
+</div>
+</article>
 
 <article class="list-view list-view--tip">
 <header>
@@ -211,19 +224,6 @@ Bing AI 根据汉字描述，生成数据库表字段名 书籍名称 根据上�
 </header>
 <div class="content">
 前置准备 7z2hashcat - hashcat 使用7z2hashcat获取给hashcat解密用的hash perl 7z2hashcat.pl file.7z &gt; hash.txt 使用hashcat暴力破解 hashcat -a 3 -m 11600 hash.txt 密码较长的话，花费
-</div>
-</article>
-
-<article class="list-view list-view--java">
-<header>
-<h2 class="title title-submitted"><a href="/java/2023070801/">记一次OOM异常解决</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-06-04T20:00:00&#43;08:00">2023-06-04 20:00</time>
-</div>
-
-</header>
-<div class="content">
-问题描述 一台服务器出现OOM（为本应用分配了4G内存），挂掉了 java.lang.OutOfMemoryError: GC overhead limit exceeded 问题排查 拿到dump文件，使用jvisualvm打开查看后，发现下面
 </div>
 </article>
 
