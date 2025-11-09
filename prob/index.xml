@@ -740,7 +740,7 @@ gdm3自帶gnome還是怎樣，反正這個可以用，前幾次只裝了gnome，
 &lt;li&gt;之後一路繼續，選擇地區、鍵盤、用戶名、計算機名、密碼，之後等待系統安裝完成即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;安裝之後由於ubuntu系統所在分區是ext4格式分區，所以在windows下能看到盤符但是打不開，可下載 &lt;a href=&#34;http://www.ext2fsd.com/&#34;&gt;Ext2Fsd&lt;/a&gt; 安裝即可&lt;/p&gt;
-&lt;p&gt;reference__&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://teliute.org/linux/Ubsetup/lesson21/lesson21.html&#34;&gt;Ubuntu安装基础教程&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://snailvfx.github.io/2016/03/31/install-ubuntu/&#34;&gt;geek第一步：安装Ubuntu系统&lt;/a&gt;&lt;/li&gt;
