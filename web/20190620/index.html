@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>tomcat安装&amp;let&#39;s encrypt配置 – HA</title>
-<meta name="description" content="tomcat安装&amp;amp;amp;let&amp;amp;rsquo;s encrypt配置 ###安装java cd /hometar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz// tempexport PATH=$PWD/jdk8u212-b04/bin:$PATHjava …">
+<meta name="description" content="安装java cd /hometar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz# tempexport PATH=$PWD/jdk8u212-b04/bin:$PATHjava -version# finalvi /etc/profile&amp;amp;gt; …">
 <meta name="created" content="2019-06-20T01:33:58+0800">
-<meta name="modified" content="2025-06-07T22:50:02+0800">
+<meta name="modified" content="2025-11-09T23:09:13+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,9 +31,9 @@
     "@type": "WebPage",
     "headline": "tomcat安装\u0026let's encrypt配置",
     "datePublished": "2019-06-20T01:33:58+08:00",
-    "dateModified": "2025-06-07T22:50:02+08:00",
+    "dateModified": "2025-11-09T23:09:13+08:00",
     "url" : "/blog/web/20190620/",
-    "description": "tomcat安装\u0026amp;amp;let\u0026amp;rsquo;s encrypt配置 ###安装java cd /home\rtar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz\r// temp\rexport PATH=$PWD/jdk8u212-b04/bin:$PATH\rjava …",
+    "description": "安装java cd /home\rtar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz\r# temp\rexport PATH=$PWD/jdk8u212-b04/bin:$PATH\rjava -version\r# final\rvi /etc/profile\r\u0026amp;gt; …",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -100,33 +100,32 @@
 </div>
 </header>
 <div class="content">
-<p>tomcat安装&amp;let&rsquo;s encrypt配置</p>
-<p>###安装java</p>
-<pre><code>cd /home
+<h3 id="安装java">安装java</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd /home
 tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz
-// temp
-export PATH=$PWD/jdk8u212-b04/bin:$PATH
+<span style="color:#75715e"># temp</span>
+export PATH<span style="color:#f92672">=</span>$PWD/jdk8u212-b04/bin:$PATH
 java -version
 
-//final
+<span style="color:#75715e"># final</span>
 vi /etc/profile
-`
-JAVA_HOME=/home/jdk8u212-b04
-PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+&gt;
+JAVA_HOME<span style="color:#f92672">=</span>/home/jdk8u212-b04
+PATH<span style="color:#f92672">=</span>$PATH:$HOME/bin:$JAVA_HOME/bin
 export JAVA_HOME
 export PATH
-`
-log out and log in
+&gt;
+<span style="color:#75715e"># log out and log in</span>
 
-wget -O- -q -T 1 -t 1 https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b04/OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz.sha256.txt | sha256sum -c
-</code></pre><p>###安装tomcat</p>
-<pre><code>sudo groupadd tomcat
+wget -O- -q -T <span style="color:#ae81ff">1</span> -t <span style="color:#ae81ff">1</span> https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b04/OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz.sha256.txt | sha256sum -c
+</code></pre></div><h3 id="安装tomcat">安装tomcat</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo groupadd tomcat
 sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 
 cd /tmp
 curl -O http://apache.mirrors.pair.com/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.tar.gz
 sudo mkdir /opt/tomcat
-sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
+sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components<span style="color:#f92672">=</span>1
 
 cd /opt/tomcat
 sudo chgrp -R tomcat /opt/tomcat
@@ -135,7 +134,7 @@ sudo chmod g+x conf
 sudo chown -R tomcat webapps/ work/ temp/ logs/
 
 sudo nano /etc/systemd/system/tomcat.service
-修改Environment=JAVA_HOME=/home/jdk8u212-b04
+<span style="color:#75715e"># 修改Environment=JAVA_HOME=/home/jdk8u212-b04</span>
 
 sudo systemctl daemon-reload
 sudo systemctl start tomcat
@@ -144,17 +143,17 @@ sudo systemctl status tomcat
 sudo ufw allow 8080
 
 sudo systemctl enable tomcat
-</code></pre><p>现在应该可以用8080端口正常访问了</p>
-<p>###转发80端口到8080端口</p>
-<pre><code>iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
-iptables -t nat -I OUTPUT -p tcp -o lo --dport 80 -j REDIRECT --to-ports 8080
+</code></pre></div><p>现在应该可以用8080端口正常访问了</p>
+<h3 id="转发80端口到8080端口">转发80端口到8080端口</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">iptables -t nat -I PREROUTING -p tcp --dport <span style="color:#ae81ff">80</span> -j REDIRECT --to-ports 8080
+iptables -t nat -I OUTPUT -p tcp -o lo --dport <span style="color:#ae81ff">80</span> -j REDIRECT --to-ports 8080
 
 iptables -t nat -L -n  | grep 8080
-</code></pre><p>改完之后应该可以不用加端口号访问了，以后443转发8443也是同样的操作</p>
-<pre><code>iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 8443
-iptables -t nat -I OUTPUT -p tcp -o lo --dport 443 -j REDIRECT --to-ports 8443
-</code></pre><p>###配置letsencrypt</p>
-<pre><code>sudo apt-get update
+</code></pre></div><p>改完之后应该可以不用加端口号访问了，以后443转发8443也是同样的操作</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">iptables -t nat -I PREROUTING -p tcp --dport <span style="color:#ae81ff">443</span> -j REDIRECT --to-ports 8443
+iptables -t nat -I OUTPUT -p tcp -o lo --dport <span style="color:#ae81ff">443</span> -j REDIRECT --to-ports 8443
+</code></pre></div><h3 id="配置letsencrypt">配置letsencrypt</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt-get update
 sudo apt-get install software-properties-common
 sudo add-apt-repository universe
 sudo add-apt-repository ppa:certbot/certbot
@@ -162,9 +161,9 @@ sudo apt-get update
 sudo apt-get install certbot
 
 sudo certbot certonly --webroot
-这里需要输入两个东西，域名和tomcat ROOT所在地址
-www.xxx.com
-/opt/tomcat/webapps/ROOT
+<span style="color:#75715e"># 这里需要输入两个东西，域名和tomcat ROOT所在地址</span>
+<span style="color:#75715e"># www.xxx.com</span>
+<span style="color:#75715e"># /opt/tomcat/webapps/ROOT</span>
 
 cd /etc/letsencrypt/live/www.xxx.com
 cp cert.pem /opt/tomcat/conf
@@ -173,7 +172,7 @@ cp privkey.pem /opt/tomcat/conf
 
 chown tomcat:tomcat *.pem
 
-///etc/letsencrypt/renewal-hooks/post/copy2tomcat.sh
+<span style="color:#75715e"># etc/letsencrypt/renewal-hooks/post/copy2tomcat.sh</span>
 cd /etc/letsencrypt/live/www.xxx.cc
 cp cert.pem /opt/tomcat/conf
 cp chain.pem /opt/tomcat/conf
@@ -183,36 +182,39 @@ cd /opt/tomcat/conf
 chown tomcat:tomcat *.pem
 
 service tomcat restart
-</code></pre><p>然后转发443端口到8443端口之后，就可以通过https访问网站了</p>
+</code></pre></div><p>然后转发443端口到8443端口之后，就可以通过https访问网站了</p>
 <p>###重定向http到https</p>
 <p><strong>server.xml</strong></p>
-<pre><code> &lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; 
-               redirectPort=&quot;443&quot;/&gt;
-</code></pre><p><strong>web.xml(<code>&lt;/web-app&gt;之前</code>)</strong></p>
-<pre><code> &lt;!-- Require HTTPS for everything except /img (favicon) and /css. --&gt;
-    &lt;security-constraint&gt;
-        &lt;web-resource-collection&gt;
-            &lt;web-resource-name&gt;HTTPSOnly&lt;/web-resource-name&gt;
-            &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-        &lt;/web-resource-collection&gt;
-        &lt;user-data-constraint&gt;
-            &lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;
-        &lt;/user-data-constraint&gt;
-    &lt;/security-constraint&gt;
-    &lt;security-constraint&gt;
-        &lt;web-resource-collection&gt;
-            &lt;web-resource-name&gt;HTTPSOrHTTP&lt;/web-resource-name&gt;
-            &lt;url-pattern&gt;*.ico&lt;/url-pattern&gt;
-            &lt;url-pattern&gt;/img/*&lt;/url-pattern&gt;
-            &lt;url-pattern&gt;/css/*&lt;/url-pattern&gt;
-        &lt;/web-resource-collection&gt;
-        &lt;user-data-constraint&gt;
-            &lt;transport-guarantee&gt;NONE&lt;/transport-guarantee&gt;
-        &lt;/user-data-constraint&gt;
-    &lt;/security-constraint&gt;
-</code></pre><p>ps:修改完之后记得查看文件的权限，如果被改成root的话，需要再修改权限<code>chown tomcat:tomcat web.xml</code></p>
-<p>###自动更新证书（todo）</p>
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"> <span style="color:#f92672">&lt;Connector</span> <span style="color:#a6e22e">port=</span><span style="color:#e6db74">&#34;8080&#34;</span> <span style="color:#a6e22e">protocol=</span><span style="color:#e6db74">&#34;HTTP/1.1&#34;</span> 
+               <span style="color:#a6e22e">redirectPort=</span><span style="color:#e6db74">&#34;443&#34;</span><span style="color:#f92672">/&gt;</span>
+</code></pre></div><p><strong>web.xml(<code>&lt;/web-app&gt;之前</code>)</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"> <span style="color:#75715e">&lt;!-- Require HTTPS for everything except /img (favicon) and /css. --&gt;</span>
+    <span style="color:#f92672">&lt;security-constraint&gt;</span>
+        <span style="color:#f92672">&lt;web-resource-collection&gt;</span>
+            <span style="color:#f92672">&lt;web-resource-name&gt;</span>HTTPSOnly<span style="color:#f92672">&lt;/web-resource-name&gt;</span>
+            <span style="color:#f92672">&lt;url-pattern&gt;</span>/*<span style="color:#f92672">&lt;/url-pattern&gt;</span>
+        <span style="color:#f92672">&lt;/web-resource-collection&gt;</span>
+        <span style="color:#f92672">&lt;user-data-constraint&gt;</span>
+            <span style="color:#f92672">&lt;transport-guarantee&gt;</span>CONFIDENTIAL<span style="color:#f92672">&lt;/transport-guarantee&gt;</span>
+        <span style="color:#f92672">&lt;/user-data-constraint&gt;</span>
+    <span style="color:#f92672">&lt;/security-constraint&gt;</span>
+    <span style="color:#f92672">&lt;security-constraint&gt;</span>
+        <span style="color:#f92672">&lt;web-resource-collection&gt;</span>
+            <span style="color:#f92672">&lt;web-resource-name&gt;</span>HTTPSOrHTTP<span style="color:#f92672">&lt;/web-resource-name&gt;</span>
+            <span style="color:#f92672">&lt;url-pattern&gt;</span>*.ico<span style="color:#f92672">&lt;/url-pattern&gt;</span>
+            <span style="color:#f92672">&lt;url-pattern&gt;</span>/img/*<span style="color:#f92672">&lt;/url-pattern&gt;</span>
+            <span style="color:#f92672">&lt;url-pattern&gt;</span>/css/*<span style="color:#f92672">&lt;/url-pattern&gt;</span>
+        <span style="color:#f92672">&lt;/web-resource-collection&gt;</span>
+        <span style="color:#f92672">&lt;user-data-constraint&gt;</span>
+            <span style="color:#f92672">&lt;transport-guarantee&gt;</span>NONE<span style="color:#f92672">&lt;/transport-guarantee&gt;</span>
+        <span style="color:#f92672">&lt;/user-data-constraint&gt;</span>
+    <span style="color:#f92672">&lt;/security-constraint&gt;</span>
+</code></pre></div><p>ps:修改完之后记得查看文件的权限，如果被改成root的话，需要再修改权限<code>chown tomcat:tomcat web.xml</code></p>
+<h3 id="自动更新证书todo">自动更新证书（todo）</h3>
+<h3 id="tomcat限制内存使用量">tomcat限制内存使用量</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># In your /tomcat/bin/setenv.sh file (create if it doesn&#39;t exist)</span>
+export CATALINA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$CATALINA_OPTS<span style="color:#e6db74"> -Xms156m -Xmx218m -server&#34;</span>
+</code></pre></div><ul>
 <li><a href="https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804">https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804</a></li>
 <li><a href="https://adoptopenjdk.net/installation.html#x64_linux-jdk">https://adoptopenjdk.net/installation.html#x64_linux-jdk</a></li>
 <li><a href="https://serverfault.com/questions/211536/iptables-port-redirect-not-working-for-localhost">https://serverfault.com/questions/211536/iptables-port-redirect-not-working-for-localhost</a></li>
@@ -225,7 +227,7 @@ service tomcat restart
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2025-06-07 22:50<br>
+Updated: 2025-11-09 23:09<br>
 Created: 2019-06-20 01:33
 </p>
 </div><script src="https://utteranc.es/client.js"

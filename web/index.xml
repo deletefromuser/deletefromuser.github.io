@@ -809,33 +809,32 @@ sudo update-alternatives --config mvn
       <link>/blog/web/20190620/</link>
       <pubDate>Thu, 20 Jun 2019 01:33:58 +0800</pubDate>
       <guid>/blog/web/20190620/</guid>
-      <description>&lt;p&gt;tomcat安装&amp;amp;let&amp;rsquo;s encrypt配置&lt;/p&gt;
-&lt;p&gt;###安装java&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;cd /home
+      <description>&lt;h3 id=&#34;安装java&#34;&gt;安装java&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cd /home
 tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz
-// temp
-export PATH=$PWD/jdk8u212-b04/bin:$PATH
+&lt;span style=&#34;color:#75715e&#34;&gt;# temp&lt;/span&gt;
+export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$PWD/jdk8u212-b04/bin:$PATH
 java -version
 
-//final
+&lt;span style=&#34;color:#75715e&#34;&gt;# final&lt;/span&gt;
 vi /etc/profile
-`
-JAVA_HOME=/home/jdk8u212-b04
-PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+&amp;gt;
+JAVA_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/home/jdk8u212-b04
+PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$PATH:$HOME/bin:$JAVA_HOME/bin
 export JAVA_HOME
 export PATH
-`
-log out and log in
+&amp;gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# log out and log in&lt;/span&gt;
 
-wget -O- -q -T 1 -t 1 https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b04/OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz.sha256.txt | sha256sum -c
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###安装tomcat&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo groupadd tomcat
+wget -O- -q -T &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -t &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b04/OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz.sha256.txt | sha256sum -c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;安装tomcat&#34;&gt;安装tomcat&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo groupadd tomcat
 sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 
 cd /tmp
 curl -O http://apache.mirrors.pair.com/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.tar.gz
 sudo mkdir /opt/tomcat
-sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
+sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;1
 
 cd /opt/tomcat
 sudo chgrp -R tomcat /opt/tomcat
@@ -844,7 +843,7 @@ sudo chmod g+x conf
 sudo chown -R tomcat webapps/ work/ temp/ logs/
 
 sudo nano /etc/systemd/system/tomcat.service
-修改Environment=JAVA_HOME=/home/jdk8u212-b04
+&lt;span style=&#34;color:#75715e&#34;&gt;# 修改Environment=JAVA_HOME=/home/jdk8u212-b04&lt;/span&gt;
 
 sudo systemctl daemon-reload
 sudo systemctl start tomcat
@@ -853,17 +852,17 @@ sudo systemctl status tomcat
 sudo ufw allow 8080
 
 sudo systemctl enable tomcat
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;现在应该可以用8080端口正常访问了&lt;/p&gt;
-&lt;p&gt;###转发80端口到8080端口&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
-iptables -t nat -I OUTPUT -p tcp -o lo --dport 80 -j REDIRECT --to-ports 8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;现在应该可以用8080端口正常访问了&lt;/p&gt;
+&lt;h3 id=&#34;转发80端口到8080端口&#34;&gt;转发80端口到8080端口&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;iptables -t nat -I PREROUTING -p tcp --dport &lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt; -j REDIRECT --to-ports 8080
+iptables -t nat -I OUTPUT -p tcp -o lo --dport &lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt; -j REDIRECT --to-ports 8080
 
 iptables -t nat -L -n  | grep 8080
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;改完之后应该可以不用加端口号访问了，以后443转发8443也是同样的操作&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 8443
-iptables -t nat -I OUTPUT -p tcp -o lo --dport 443 -j REDIRECT --to-ports 8443
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###配置letsencrypt&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt-get update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;改完之后应该可以不用加端口号访问了，以后443转发8443也是同样的操作&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;iptables -t nat -I PREROUTING -p tcp --dport &lt;span style=&#34;color:#ae81ff&#34;&gt;443&lt;/span&gt; -j REDIRECT --to-ports 8443
+iptables -t nat -I OUTPUT -p tcp -o lo --dport &lt;span style=&#34;color:#ae81ff&#34;&gt;443&lt;/span&gt; -j REDIRECT --to-ports 8443
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;配置letsencrypt&#34;&gt;配置letsencrypt&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo apt-get update
 sudo apt-get install software-properties-common
 sudo add-apt-repository universe
 sudo add-apt-repository ppa:certbot/certbot
@@ -871,9 +870,9 @@ sudo apt-get update
 sudo apt-get install certbot
 
 sudo certbot certonly --webroot
-这里需要输入两个东西，域名和tomcat ROOT所在地址
-www.xxx.com
-/opt/tomcat/webapps/ROOT
+&lt;span style=&#34;color:#75715e&#34;&gt;# 这里需要输入两个东西，域名和tomcat ROOT所在地址&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# www.xxx.com&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# /opt/tomcat/webapps/ROOT&lt;/span&gt;
 
 cd /etc/letsencrypt/live/www.xxx.com
 cp cert.pem /opt/tomcat/conf
@@ -882,7 +881,7 @@ cp privkey.pem /opt/tomcat/conf
 
 chown tomcat:tomcat *.pem
 
-///etc/letsencrypt/renewal-hooks/post/copy2tomcat.sh
+&lt;span style=&#34;color:#75715e&#34;&gt;# etc/letsencrypt/renewal-hooks/post/copy2tomcat.sh&lt;/span&gt;
 cd /etc/letsencrypt/live/www.xxx.cc
 cp cert.pem /opt/tomcat/conf
 cp chain.pem /opt/tomcat/conf
@@ -892,36 +891,39 @@ cd /opt/tomcat/conf
 chown tomcat:tomcat *.pem
 
 service tomcat restart
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后转发443端口到8443端口之后，就可以通过https访问网站了&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后转发443端口到8443端口之后，就可以通过https访问网站了&lt;/p&gt;
 &lt;p&gt;###重定向http到https&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;server.xml&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &amp;lt;Connector port=&amp;quot;8080&amp;quot; protocol=&amp;quot;HTTP/1.1&amp;quot; 
-               redirectPort=&amp;quot;443&amp;quot;/&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;web.xml(&lt;code&gt;&amp;lt;/web-app&amp;gt;之前&lt;/code&gt;)&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &amp;lt;!-- Require HTTPS for everything except /img (favicon) and /css. --&amp;gt;
-    &amp;lt;security-constraint&amp;gt;
-        &amp;lt;web-resource-collection&amp;gt;
-            &amp;lt;web-resource-name&amp;gt;HTTPSOnly&amp;lt;/web-resource-name&amp;gt;
-            &amp;lt;url-pattern&amp;gt;/*&amp;lt;/url-pattern&amp;gt;
-        &amp;lt;/web-resource-collection&amp;gt;
-        &amp;lt;user-data-constraint&amp;gt;
-            &amp;lt;transport-guarantee&amp;gt;CONFIDENTIAL&amp;lt;/transport-guarantee&amp;gt;
-        &amp;lt;/user-data-constraint&amp;gt;
-    &amp;lt;/security-constraint&amp;gt;
-    &amp;lt;security-constraint&amp;gt;
-        &amp;lt;web-resource-collection&amp;gt;
-            &amp;lt;web-resource-name&amp;gt;HTTPSOrHTTP&amp;lt;/web-resource-name&amp;gt;
-            &amp;lt;url-pattern&amp;gt;*.ico&amp;lt;/url-pattern&amp;gt;
-            &amp;lt;url-pattern&amp;gt;/img/*&amp;lt;/url-pattern&amp;gt;
-            &amp;lt;url-pattern&amp;gt;/css/*&amp;lt;/url-pattern&amp;gt;
-        &amp;lt;/web-resource-collection&amp;gt;
-        &amp;lt;user-data-constraint&amp;gt;
-            &amp;lt;transport-guarantee&amp;gt;NONE&amp;lt;/transport-guarantee&amp;gt;
-        &amp;lt;/user-data-constraint&amp;gt;
-    &amp;lt;/security-constraint&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ps:修改完之后记得查看文件的权限，如果被改成root的话，需要再修改权限&lt;code&gt;chown tomcat:tomcat web.xml&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;###自动更新证书（todo）&lt;/p&gt;
-&lt;ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;Connector&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;port=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;8080&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;protocol=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;HTTP/1.1&amp;#34;&lt;/span&gt; 
+               &lt;span style=&#34;color:#a6e22e&#34;&gt;redirectPort=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;443&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;web.xml(&lt;code&gt;&amp;lt;/web-app&amp;gt;之前&lt;/code&gt;)&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- Require HTTPS for everything except /img (favicon) and /css. --&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;security-constraint&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;web-resource-collection&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;web-resource-name&amp;gt;&lt;/span&gt;HTTPSOnly&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/web-resource-name&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/*&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/web-resource-collection&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;user-data-constraint&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;transport-guarantee&amp;gt;&lt;/span&gt;CONFIDENTIAL&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/transport-guarantee&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/user-data-constraint&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/security-constraint&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;security-constraint&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;web-resource-collection&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;web-resource-name&amp;gt;&lt;/span&gt;HTTPSOrHTTP&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/web-resource-name&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;*.ico&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/img/*&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/css/*&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/web-resource-collection&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;user-data-constraint&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;transport-guarantee&amp;gt;&lt;/span&gt;NONE&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/transport-guarantee&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/user-data-constraint&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/security-constraint&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ps:修改完之后记得查看文件的权限，如果被改成root的话，需要再修改权限&lt;code&gt;chown tomcat:tomcat web.xml&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;自动更新证书todo&#34;&gt;自动更新证书（todo）&lt;/h3&gt;
+&lt;h3 id=&#34;tomcat限制内存使用量&#34;&gt;tomcat限制内存使用量&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# In your /tomcat/bin/setenv.sh file (create if it doesn&amp;#39;t exist)&lt;/span&gt;
+export CATALINA_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$CATALINA_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt; -Xms156m -Xmx218m -server&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804&#34;&gt;https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://adoptopenjdk.net/installation.html#x64_linux-jdk&#34;&gt;https://adoptopenjdk.net/installation.html#x64_linux-jdk&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/211536/iptables-port-redirect-not-working-for-localhost&#34;&gt;https://serverfault.com/questions/211536/iptables-port-redirect-not-working-for-localhost&lt;/a&gt;&lt;/li&gt;
