@@ -6,7 +6,7 @@
 <title>常用软件 – HA</title>
 <meta name="description" content="EarTrumpet  windows下单独控制每个应用的音量  nircmd  使用命令行控制windows系统的音量,屏幕亮度  GoldenDict  字典应用，支持导入字典文件，选中单词CTRL&#43;C&#43;C可全局唤出查询结果弹窗  Proxifier  设置代理规则，针对一些不提供代理选项的应用，选中exe …">
 <meta name="created" content="0001-01-01T00:00:00+0000">
-<meta name="modified" content="2024-04-05T23:31:18+0800">
+<meta name="modified" content="2025-11-16T10:59:50+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "常用软件",
     "datePublished": "0001-01-01T00:00:00Z",
-    "dateModified": "2024-04-05T23:31:18+08:00",
+    "dateModified": "2025-11-16T10:59:50+08:00",
     "url" : "/blog/tip/2022111103/",
     "description": "EarTrumpet  windows下单独控制每个应用的音量  nircmd  使用命令行控制windows系统的音量,屏幕亮度  GoldenDict  字典应用，支持导入字典文件，选中单词CTRL+C+C可全局唤出查询结果弹窗  Proxifier  设置代理规则，针对一些不提供代理选项的应用，选中exe …",
     "mainEntityOfPage": {
@@ -142,8 +142,30 @@
 </blockquote>
 <h3 id="snapdrop">snapdrop</h3>
 <blockquote>
-<p>本地网络内无线文件传送</p>
-<p>部署 <code>docker run -d --restart=always -p 8080:80 linuxserver/snapdrop</code></p>
+<h1 id="本地网络内无线文件传送">本地网络内无线文件传送</h1>
+<ol>
+<li>部署</li>
+</ol>
+<p>部署 <code>docker run -d --restart=always -p 8001:80 linuxserver/snapdrop</code>
+2. nginx配置</p>
+<pre><code class="language-conf" data-lang="conf">server {
+    listen       80;
+    listen      443 ssl;
+    server_name  snapdrop.example.com;
+
+    location / {
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &quot;upgrade&quot;;
+        proxy_pass http://localhost:8001;
+    }
+}
+</code></pre><ol start="3">
+<li>证书配置</li>
+</ol>
+<ul>
+<li>dns服务商中为子域名添加A记录</li>
+<li>certbot中增加子域名配置 <code>certbot --expand -d existing.com,snapdrop.example.com</code></li>
+</ul>
 </blockquote>
 <h3 id="vlc--mpv">vlc &amp; mpv</h3>
 <blockquote>
@@ -158,13 +180,18 @@
 <li><a href="https://github.com/wallabag/wallabag/issues/3273#issuecomment-1678206292">fetching articles via HTTP(S) proxy · Issue #3273 · wallabag/wallabag</a></li>
 <li><a href="https://github.com/wallabag/wallabag/issues/3687">Download images locally isn’t working · Issue #3687 · wallabag/wallabag</a></li>
 <li><a href="https://discourse.joplinapp.org/t/new-install-invalid-origin-error/17891/13">New Install - Invalid origin error - Support - Joplin Forum</a></li>
+<li><a href="https://eff-certbot.readthedocs.io/en/latest/using.html#re-creating-and-updating-existing-certificates">Re-creating and Updating Existing Certificates</a></li>
+<li><a href="https://unix.stackexchange.com/questions/560092/how-can-i-add-subdomains-to-letsencrypt-using-certbots">How can I add subdomains to letsencrypt using certbots?</a></li>
+<li><a href="https://www.oneworldcoders.com/apprentice-journals/4qmelzy08o0fn4jbcxipekxpd6sufk">How to setup secure subdomains using nginx and certbot on a digitalocean VPS</a></li>
+<li><a href="https://stackoverflow.com/questions/77252403/issue-with-certbot-no-valid-a-records-found-during-certificate-renewal">Issue with Certbot: &ldquo;no valid A records found&rdquo; during certificate renewal</a></li>
+<li><a href="https://ajmaradiaga.com/Allowing-web-sockets-when-using-NGINX-as-reverse-proxy/">Allowing web socket connection when using NGINX as reverse proxy</a></li>
 </ul>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2024-04-05 23:31<br>
+Updated: 2025-11-16 10:59<br>
 Created: 0001-01-01 00:00
 </p>
 </div><script src="https://utteranc.es/client.js"

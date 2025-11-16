@@ -17,6 +17,10 @@
       <description>&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;金田一少年の事件簿&lt;/li&gt;
+&lt;li&gt;友達の妹が俺にだけウザい&lt;/li&gt;
+&lt;li&gt;最後にひとつだけお願いしてもよろしいでしょうか&lt;/li&gt;
+&lt;li&gt;東島丹三郎は仮面ライダーになりたい&lt;/li&gt;
+&lt;li&gt;DIGIMON BEATBREAK&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;剧集&#34;&gt;剧集&lt;/h2&gt;
 &lt;ul&gt;
@@ -38,6 +42,10 @@
 &lt;/ul&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;h2 id=&#34;游戏&#34;&gt;游戏&lt;/h2&gt;
+&lt;h3 id=&#34;友達の妹が俺にだけウザい&#34;&gt;友達の妹が俺にだけウザい&lt;/h3&gt;
+&lt;p&gt;中途弃, 男主感觉完美的没有人味&lt;/p&gt;
+&lt;h3 id=&#34;最後にひとつだけお願いしてもよろしいでしょうか&#34;&gt;最後にひとつだけお願いしてもよろしいでしょうか&lt;/h3&gt;
+&lt;p&gt;中途弃, 女版龙傲天, 唯一看点就是主角爱好打人?&lt;/p&gt;
 </description>
     </item>
     
@@ -7799,8 +7807,30 @@ while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;snapdrop&#34;&gt;snapdrop&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;本地网络内无线文件传送&lt;/p&gt;
-&lt;p&gt;部署 &lt;code&gt;docker run -d --restart=always -p 8080:80 linuxserver/snapdrop&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;本地网络内无线文件传送&#34;&gt;本地网络内无线文件传送&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;部署&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;部署 &lt;code&gt;docker run -d --restart=always -p 8001:80 linuxserver/snapdrop&lt;/code&gt;
+2. nginx配置&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;server {
+    listen       80;
+    listen      443 ssl;
+    server_name  snapdrop.example.com;
+
+    location / {
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &amp;quot;upgrade&amp;quot;;
+        proxy_pass http://localhost:8001;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;证书配置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;dns服务商中为子域名添加A记录&lt;/li&gt;
+&lt;li&gt;certbot中增加子域名配置 &lt;code&gt;certbot --expand -d existing.com,snapdrop.example.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;vlc--mpv&#34;&gt;vlc &amp;amp; mpv&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -7815,6 +7845,11 @@ while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/wallabag/wallabag/issues/3273#issuecomment-1678206292&#34;&gt;fetching articles via HTTP(S) proxy · Issue #3273 · wallabag/wallabag&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/wallabag/wallabag/issues/3687&#34;&gt;Download images locally isn’t working · Issue #3687 · wallabag/wallabag&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://discourse.joplinapp.org/t/new-install-invalid-origin-error/17891/13&#34;&gt;New Install - Invalid origin error - Support - Joplin Forum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://eff-certbot.readthedocs.io/en/latest/using.html#re-creating-and-updating-existing-certificates&#34;&gt;Re-creating and Updating Existing Certificates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/560092/how-can-i-add-subdomains-to-letsencrypt-using-certbots&#34;&gt;How can I add subdomains to letsencrypt using certbots?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oneworldcoders.com/apprentice-journals/4qmelzy08o0fn4jbcxipekxpd6sufk&#34;&gt;How to setup secure subdomains using nginx and certbot on a digitalocean VPS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/77252403/issue-with-certbot-no-valid-a-records-found-during-certificate-renewal&#34;&gt;Issue with Certbot: &amp;ldquo;no valid A records found&amp;rdquo; during certificate renewal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ajmaradiaga.com/Allowing-web-sockets-when-using-NGINX-as-reverse-proxy/&#34;&gt;Allowing web socket connection when using NGINX as reverse proxy&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
