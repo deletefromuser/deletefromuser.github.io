@@ -19,14 +19,9 @@
 &lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Zootopia.2.2025&lt;/li&gt;
+&lt;li&gt;One.Battle.After.Another.2025&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;賭ケグルイ&lt;/li&gt;
-&lt;li&gt;そうだ、売国しよう ～天才王子の赤字国家再生術～&lt;/li&gt;
-&lt;li&gt;転生貴族、鑑定スキルで成り上がる&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;h2 id=&#34;游戏&#34;&gt;游戏&lt;/h2&gt;
 </description>
@@ -2790,6 +2785,10 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
 &lt;p&gt;为什么我的英语一直没有变好，这个问题的原因我非常清楚。因为就算我不学习，还可以勉强跟人交流。就算不知道用英语怎么说，我可以把它转换成我可以说出来的表达方式。结果我不主动学习，也不爱查词典。因此我的英语一直都处于瓶颈期。我认为日语水平中级或高级的学生也会有这样的问题。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;by &lt;em&gt;&lt;a href=&#34;https://twitter.com/wonaishenye/status/1685524182397054976&#34;&gt;神野先生（日语&amp;amp;汉语私教）&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一个冷知识：根本没有完美的性格啊，细腻的性格就会敏感记仇，大大咧咧的性格就容易冒犯，情绪稳定的容易冷暴力，喜怒哀乐都摆在脸上的人就会阴晴不定。人不能既要又要，养狗还得帮狗捡屎呢&lt;/p&gt;
+&lt;p&gt;by &lt;em&gt;&lt;a href=&#34;https://x.com/pearl0812lucky/status/2010147559776629004&#34;&gt;orange cat&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
     </item>
@@ -7872,6 +7871,10 @@ while(&lt;span style=&#34;color:#f92672&#34;&gt;@@&lt;/span&gt;FETCH_STATUS &lt;
 &lt;h3 id=&#34;vlc--mpv&#34;&gt;vlc &amp;amp; mpv&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;视频播放&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;ubuntu-桌面自定义&#34;&gt;ubuntu 桌面自定义&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;gnome Dash to Panel&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
