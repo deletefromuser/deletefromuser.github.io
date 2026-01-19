@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>ubuntu使用技巧 – HA</title>
-<meta name="description" content="为命令行配置代理 # 注意代理要是http代理，sock代理是不行的 export HTTP_PROXY=&amp;#39;127.0.0.1:1086&amp;#39; export HTTPS_PROXY=&amp;#39;127.0.0.1:1086&amp;#39; 把desktop文件的程序固定到任务栏  复制desktop文件到~/.local/share/applications下，需要 …">
+<meta name="description" content="为命令行配置代理 # 注意代理要是http代理，sock代理是不行的export HTTP_PROXY=&amp;#39;127.0.0.1:1086&amp;#39;export HTTPS_PROXY=&amp;#39;127.0.0.1:1086&amp;#39;把desktop文件的程序固定到任务栏  复制desktop文件到~/.local/share/applications下，需要 …">
 <meta name="created" content="2022-12-03T20:00:00+0800">
 <meta name="modified" content="2023-03-23T20:00:00+0800">
 
@@ -33,7 +33,7 @@
     "datePublished": "2022-12-03T20:00:00+08:00",
     "dateModified": "2023-03-23T20:00:00+08:00",
     "url" : "/blog/bash/2022120301/",
-    "description": "为命令行配置代理 # 注意代理要是http代理，sock代理是不行的 export HTTP_PROXY=\u0026#39;127.0.0.1:1086\u0026#39; export HTTPS_PROXY=\u0026#39;127.0.0.1:1086\u0026#39; 把desktop文件的程序固定到任务栏  复制desktop文件到~/.local/share/applications下，需要 …",
+    "description": "为命令行配置代理 # 注意代理要是http代理，sock代理是不行的\rexport HTTP_PROXY=\u0026#39;127.0.0.1:1086\u0026#39;\rexport HTTPS_PROXY=\u0026#39;127.0.0.1:1086\u0026#39;\r把desktop文件的程序固定到任务栏  复制desktop文件到~/.local/share/applications下，需要 …",
     "keywords": ["linux","ubuntu"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -150,7 +150,14 @@ sudo ufw delete allow 1022/tcp
 <span style="color:#75715e"># 确认升级成功</span>
 uname -mrs
 lsb_release -a
-</code></pre></div><h3 id="列出命令行所有可用命令">列出命令行所有可用命令</h3>
+</code></pre></div><h3 id="升级后启动失败问题修复">升级后启动失败问题修复</h3>
+<blockquote>
+<blockquote>
+<p>Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)</p>
+</blockquote>
+<p>使用livecd启动系统， 安装boot-repair， <code>open &gt; advanced options &gt; GRUB options &gt; perge GRUB before installing it + purge the kernels then reinstall the latest kernel &gt; Apply</code></p>
+</blockquote>
+<h3 id="列出命令行所有可用命令">列出命令行所有可用命令</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># No 1</span>
 ls <span style="color:#e6db74">${</span>PATH//:/ <span style="color:#e6db74">}</span>
 <span style="color:#75715e"># No 2</span>
@@ -165,6 +172,8 @@ compgen -c | sort -u &gt; commands <span style="color:#f92672">&amp;&amp;</span>
 <li><a href="https://www.cyberciti.biz/faq/upgrade-ubuntu-20-04-lts-to-22-04-lts/">How to upgrade to 22.04 LTS from 20.04 LTS using a GUI method</a></li>
 <li><a href="https://askubuntu.com/questions/1231817/invalid-package-information-error-when-upgrading-to-ubuntu-20-04">&ldquo;Invalid package information&rdquo; error when upgrading to Ubuntu 20.04</a></li>
 <li><a href="https://ohdear.app/news-and-updates/how-to-upgrade-from-ubuntu-2004-lts-to-ubuntu-2204-lts">How to upgrade from Ubuntu 20.04 LTS to Ubuntu 22.04 LTS</a></li>
+<li><a href="https://askubuntu.com/questions/1522289/error-on-boot-kernel-panic-not-syncing">Error on boot Kernel panic-not syncing:</a></li>
+<li><a href="https://askubuntu.com/questions/851444/configuring-unattended-upgrades-which-option-to-select">Configuring unattended-upgrades - which option to select?</a></li>
 </ul>
 
 </div>

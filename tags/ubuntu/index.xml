@@ -71,7 +71,14 @@ sudo ufw delete allow 1022/tcp
 &lt;span style=&#34;color:#75715e&#34;&gt;# 确认升级成功&lt;/span&gt;
 uname -mrs
 lsb_release -a
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;列出命令行所有可用命令&#34;&gt;列出命令行所有可用命令&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;升级后启动失败问题修复&#34;&gt;升级后启动失败问题修复&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;使用livecd启动系统， 安装boot-repair， &lt;code&gt;open &amp;gt; advanced options &amp;gt; GRUB options &amp;gt; perge GRUB before installing it + purge the kernels then reinstall the latest kernel &amp;gt; Apply&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;列出命令行所有可用命令&#34;&gt;列出命令行所有可用命令&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# No 1&lt;/span&gt;
 ls &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PATH//:/ &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# No 2&lt;/span&gt;
@@ -86,6 +93,8 @@ compgen -c | sort -u &amp;gt; commands &lt;span style=&#34;color:#f92672&#34;&gt
 &lt;li&gt;&lt;a href=&#34;https://www.cyberciti.biz/faq/upgrade-ubuntu-20-04-lts-to-22-04-lts/&#34;&gt;How to upgrade to 22.04 LTS from 20.04 LTS using a GUI method&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1231817/invalid-package-information-error-when-upgrading-to-ubuntu-20-04&#34;&gt;&amp;ldquo;Invalid package information&amp;rdquo; error when upgrading to Ubuntu 20.04&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://ohdear.app/news-and-updates/how-to-upgrade-from-ubuntu-2004-lts-to-ubuntu-2204-lts&#34;&gt;How to upgrade from Ubuntu 20.04 LTS to Ubuntu 22.04 LTS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1522289/error-on-boot-kernel-panic-not-syncing&#34;&gt;Error on boot Kernel panic-not syncing:&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/851444/configuring-unattended-upgrades-which-option-to-select&#34;&gt;Configuring unattended-upgrades - which option to select?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
