@@ -78,6 +78,10 @@ lsb_release -a
 &lt;/blockquote&gt;
 &lt;p&gt;使用livecd启动系统， 安装boot-repair， &lt;code&gt;open &amp;gt; advanced options &amp;gt; GRUB options &amp;gt; perge GRUB before installing it + purge the kernels then reinstall the latest kernel &amp;gt; Apply&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;virtualbox启动后四分之三区域黑屏-可见区域内鼠标无法操作-只能任务栏可操作&#34;&gt;virtualbox启动后四分之三区域黑屏, 可见区域内鼠标无法操作, 只能任务栏可操作&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注销用户后重新登陆&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;列出命令行所有可用命令&#34;&gt;列出命令行所有可用命令&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# No 1&lt;/span&gt;
 ls &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PATH//:/ &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;
