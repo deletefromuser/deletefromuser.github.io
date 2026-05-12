@@ -6,8 +6,30 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Jan 2026 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2026 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2026年2季度</title>
+      <link>https://deletefromuser.github.io/watch/2026040101/</link>
+      <pubDate>Sun, 19 Apr 2026 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/watch/2026040101/</guid>
+      <description>&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;瑠璃の宝石&lt;/li&gt;
+&lt;li&gt;ドロヘドロ Season2&lt;/li&gt;
+&lt;li&gt;Re:ゼロから始める異世界生活 4th season 喪失編&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;剧集&#34;&gt;剧集&lt;/h2&gt;
+&lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
+&lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;とある科学の超電磁砲&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;游戏&#34;&gt;游戏&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>2026年1季度</title>
@@ -2820,9 +2842,9 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
     
     <item>
       <title>格言摘录</title>
-      <link>https://deletefromuser.github.io/life/2023010102/</link>
+      <link>https://deletefromuser.github.io/life/2023010102_quotes/</link>
       <pubDate>Sun, 01 Jan 2023 19:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/life/2023010102/</guid>
+      <guid>https://deletefromuser.github.io/life/2023010102_quotes/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Those who cannot remember the past are condemned to repeat it.&lt;/p&gt;
 &lt;p&gt;by &lt;em&gt;George Santayana&lt;/em&gt;&lt;/p&gt;
@@ -2917,6 +2939,10 @@ sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc
 &lt;blockquote&gt;
 &lt;p&gt;Life&amp;rsquo;s a journey, not a destination&lt;/p&gt;
 &lt;p&gt;by &lt;em&gt;Ralph Waldo Emerson&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;與其思考下次放假是什麼時候，或許你該思考，如何創造一個不會想要逃離的生活。&lt;/p&gt;
+&lt;p&gt;by &lt;em&gt;賽斯‧高汀(Seth Godin)&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
     </item>
