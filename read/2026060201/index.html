@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>聽說Linq – HA</title>
-<meta name="description" content="聽說Linq using System.Linq; ... public static void LinqTest() { int[] array = { 1, 5, 2, 10, 7 }; // Select squares of all odd numbers in the array sorted in descending …">
-<meta name="created" content="2017-03-20T03:33:58+0800">
-<meta name="modified" content="2023-04-26T09:26:30+0800">
+<title>2026年读书记录 – HA</title>
+<meta name="description" content="   name auther start end     哲学的故事 威尔·杜兰特 20260121 ing   遇真纪事  20260326 ing   与塞涅卡共进早餐 大卫·菲德勒 20260326 ing   乱世人心 押沙龙 20260531 20260602    ">
+<meta name="created" content="2026-02-02T20:00:00+0800">
+<meta name="modified" content="2026-06-02T23:00:44+0800">
 
 
 <meta property="og:site_name" content="HA">
-<meta property="og:title" content="聽說Linq">
-<meta property="og:url" content="/blog/cs/2017032003/">
+<meta property="og:title" content="2026年读书记录">
+<meta property="og:url" content="/blog/read/2026060201/">
 <meta property="og:type" content="article">
 
 <meta name="generator" content="Hugo 0.68.3" />
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<link rel="canonical" href="/blog/cs/2017032003/">
+<link rel="canonical" href="/blog/read/2026060201/">
 <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
 
 <link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
@@ -29,11 +29,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "聽說Linq",
-    "datePublished": "2017-03-20T03:33:58+08:00",
-    "dateModified": "2023-04-26T09:26:30+08:00",
-    "url" : "/blog/cs/2017032003/",
-    "description": "聽說Linq using System.Linq; ... public static void LinqTest() { int[] array = { 1, 5, 2, 10, 7 }; // Select squares of all odd numbers in the array sorted in descending …",
+    "headline": "2026年读书记录",
+    "datePublished": "2026-02-02T20:00:00+08:00",
+    "dateModified": "2026-06-02T23:00:44+08:00",
+    "url" : "/blog/read/2026060201/",
+    "description": "   name auther start end     哲学的故事 威尔·杜兰特 20260121 ing   遇真纪事  20260326 ing   与塞涅卡共进早餐 大卫·菲德勒 20260326 ing   乱世人心 押沙龙 20260531 20260602    ",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "/blog/"
@@ -76,7 +76,7 @@
 <ul class="navbar">
 <li><a href="/blog/">Home</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
-<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/read/" class="active" aria-current="page">Read</a></li>
 <li><a href="/blog/java/">Java</a></li>
 <li><a href="/blog/tip/">Tip</a></li>
 <li><a href="/blog/sql/">Sql</a></li>
@@ -92,41 +92,63 @@
 
 
 <main class="main layout__main">
-<article class="single-view single-view--cs">
+<article class="single-view single-view--read">
 <header>
-<h1 class="title title-submitted">聽說Linq</h1>
+<h1 class="title title-submitted">2026年读书记录</h1>
 <div class="submitted">
-<time class="created-date" datetime="2017-03-20T03:33:58&#43;08:00">2017-03-20 03:33</time>
+<time class="created-date" datetime="2026-02-02T20:00:00&#43;08:00">2026-02-02 20:00</time>
 </div>
 </header>
 <div class="content">
-<p>聽說Linq</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">using</span> System.Linq;
-...
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> LinqTest() {
-            <span style="color:#66d9ef">int</span>[] array = { <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">7</span> };
-            <span style="color:#75715e">// Select squares of all odd numbers in the array sorted in descending order
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> results = <span style="color:#66d9ef">from</span> x <span style="color:#66d9ef">in</span> array
-                          <span style="color:#66d9ef">where</span> x % <span style="color:#ae81ff">2</span> == <span style="color:#ae81ff">1</span>
-                          <span style="color:#66d9ef">orderby</span> x <span style="color:#66d9ef">descending</span>
-                          <span style="color:#66d9ef">select</span> x * x;
-            <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> result <span style="color:#66d9ef">in</span> results) {
-                log(result.ToString());
-            }
-        }
-<span style="color:#75715e">//49 25 1
-</span></code></pre></div><p><strong>reference</strong></p>
-<ul>
-<li><a href="https://zh.wikipedia.org/wiki/%E8%AF%AD%E8%A8%80%E9%9B%86%E6%88%90%E6%9F%A5%E8%AF%A2">语言集成查询</a></li>
-<li><a href="http://blog.jobbole.com/110626/">为什么说 LINQ 要胜过 SQL</a></li>
-</ul>
+
+
+
+
+
+
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+<th align="left">name</th>
+<th align="center">auther</th>
+<th align="center">start</th>
+<th align="center">end</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">哲学的故事</td>
+<td align="center">威尔·杜兰特</td>
+<td align="center">20260121</td>
+<td align="center">ing</td>
+</tr>
+<tr>
+<td align="left">遇真纪事</td>
+<td align="center"></td>
+<td align="center">20260326</td>
+<td align="center">ing</td>
+</tr>
+<tr>
+<td align="left">与塞涅卡共进早餐</td>
+<td align="center">大卫·菲德勒</td>
+<td align="center">20260326</td>
+<td align="center">ing</td>
+</tr>
+<tr>
+<td align="left">乱世人心</td>
+<td align="center">押沙龙</td>
+<td align="center">20260531</td>
+<td align="center">20260602</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2023-04-26 09:26<br>
-Created: 2017-03-20 03:33
+Updated: 2026-06-02 23:00<br>
+Created: 2026-02-02 20:00
 </p>
 </div><script src="https://utteranc.es/client.js"
         repo="deletefromuser/deletefromuser.github.io"
