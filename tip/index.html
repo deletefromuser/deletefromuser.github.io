@@ -6,8 +6,8 @@
 <title>Tip – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/tip/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2025-06-08T20:00:00+0800">
-<meta name="modified" content="2026-04-19T18:11:45+0800">
+<meta name="created" content="2026-09-28T08:00:00+0800">
+<meta name="modified" content="2026-09-28T10:49:36+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,10 +73,10 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
+<li><a href="/tip/" class="active" aria-current="page">Tip</a></li>
 <li><a href="/watch/">Watch</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/java/">Java</a></li>
-<li><a href="/tip/" class="active" aria-current="page">Tip</a></li>
 <li><a href="/sql/">Sql</a></li>
 <li><a href="/jpns/">Jpns</a></li>
 <li><a href="/bash/">Bash</a></li>
@@ -93,6 +93,19 @@
 <h1 class="title">Tip</h1>
 
 
+
+<article class="list-view list-view--tip">
+<header>
+<h2 class="title title-submitted"><a href="/tip/2026092801/">win10/11 家庭版中使用Hyper-V虚拟机</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2026-09-28T08:00:00&#43;08:00">2026-09-28 08:00</time>
+</div>
+
+</header>
+<div class="content">
+开启Hyper-V # 执行命令后重启 pushd &#34;%~dp0&#34; dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum &gt;hyper-v.txt for /f %%i in (&#39;findstr /i . hyper-v.txt 2^&gt;nul&#39;) do dism /online /norestart /add-package:&#34;%SystemRoot%\servicing\Packages\%%i&#34; del hyper-v.txt Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL pause 将vbox虚拟机实例转换为Hyper-V支持的
+</div>
+</article>
 
 <article class="list-view list-view--tip">
 <header>
@@ -208,19 +221,6 @@ Bing AI 根据汉字描述，生成数据库表字段名 书籍名称 根据上�
 </header>
 <div class="content">
 word中快速粘贴无格式文本 Ctrl+Alt+V excel中查找重复记录 Home -&gt; Conditional Formatting -&gt; Highlight Cells Rules, Duplicate Values excel中查找相同记录个数为3的 Home -&gt; Conditional Formatting -&gt; New Rule -&gt; Use a formula to determine which cells to
-</div>
-</article>
-
-<article class="list-view list-view--tip">
-<header>
-<h2 class="title title-submitted"><a href="/tip/2023051302/">使用gpg加密文件</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-04-27T20:00:00&#43;08:00">2023-04-27 20:00</time>
-</div>
-
-</header>
-<div class="content">
-生成gpg密钥 gpg --gen-key # 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用） 导出私钥(私钥和passphase要保
 </div>
 </article>
 

@@ -6,8 +6,42 @@
     <description>Recent content in Tip on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Jun 2025 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 08:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/tip/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>win10/11 家庭版中使用Hyper-V虚拟机</title>
+      <link>https://deletefromuser.github.io/tip/2026092801/</link>
+      <pubDate>Mon, 28 Sep 2026 08:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/tip/2026092801/</guid>
+      <description>&lt;h3 id=&#34;开启hyper-v&#34;&gt;开启Hyper-V&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 执行命令后重启&lt;/span&gt;
+pushd &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%~dp0&amp;#34;&lt;/span&gt;
+dir /b %SystemRoot%&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ervicing&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;ackages&lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;Hyper-V*.mum &amp;gt;hyper-v.txt
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; /f %%i in &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;findstr /i . hyper-v.txt 2^&amp;gt;nul&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; dism /online /norestart /add-package:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%SystemRoot%\servicing\Packages\%%i&amp;#34;&lt;/span&gt;
+del hyper-v.txt
+Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL
+pause
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;将vbox虚拟机实例转换为hyper-v支持的vhd格式&#34;&gt;将vbox虚拟机实例转换为Hyper-V支持的vhd格式&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;VBoxManage.exe clonehd &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;D:\path\ubuntu20_0124-disk1.vdi&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;D:\path\ubuntu22.vhd&amp;#34;&lt;/span&gt; --format VHD
+&lt;span style=&#34;color:#75715e&#34;&gt;# 转换完成后,在Hyper-V管理器中新建虚拟机时选择磁盘时选中已存在的vhd文件&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;连接到hyper-v虚拟机中的服务&#34;&gt;连接到Hyper-V虚拟机中的服务&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;ifconfig&lt;/code&gt;查看eth0的对应的ip&lt;/li&gt;
+&lt;li&gt;在宿主机上使用1中的ip进行连接即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;虚拟机和宿主机中共享文件夹&#34;&gt;虚拟机和宿主机中共享文件夹&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;虚拟机中安装smaba &lt;code&gt;sudo apt install samba&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;虚拟机中设置smb密码 &lt;code&gt;sudo smbpasswd -a linux用户名&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;虚拟机中在想要共享的文件夹中的Properties中的Local Network Share中启用共享&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/HimDek/6edde284203a620745fad3f762be603b&#34;&gt;Hyper-V in Windows 10 and Windows 11 Home Edition&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>使用handshake转换视频时利用gpu</title>
@@ -1022,6 +1056,10 @@ git push -f
 &lt;p&gt;caesium-clt&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;abc
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;游戏镜像文件读取&#34;&gt;游戏镜像文件读取&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;WinCDEmu&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://nerdschalk.com/how-to-mute-an-app-on-windows-10/&#34;&gt;How To Mute an App on Windows 10&lt;/a&gt;&lt;/li&gt;
