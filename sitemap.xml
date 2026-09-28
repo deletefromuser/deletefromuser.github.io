@@ -3,12 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/watch/2026070101/</loc>
-    <lastmod>2026-08-30T10:49:14+08:00</lastmod>
+    <loc>/blog/</loc>
+    <lastmod>2026-09-28T10:49:36+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/</loc>
+    <loc>/blog/tags/hyper-v/</loc>
+    <lastmod>2026-09-28T10:49:36+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/</loc>
+    <lastmod>2026-09-28T10:49:36+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/</loc>
+    <lastmod>2026-09-28T10:49:36+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tags/vm/</loc>
+    <lastmod>2026-09-28T10:49:36+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/tip/2026092801/</loc>
+    <lastmod>2026-09-28T10:49:36+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/watch/2026070101/</loc>
     <lastmod>2026-08-30T10:49:14+08:00</lastmod>
   </url>
   
@@ -63,11 +88,6 @@
   </url>
   
   <url>
-    <loc>/blog/tags/</loc>
-    <lastmod>2026-05-12T23:37:32+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/java/2025082001/</loc>
     <lastmod>2025-08-20T22:38:42+08:00</lastmod>
   </url>
@@ -85,11 +105,6 @@
   <url>
     <loc>/blog/tags/handshake/</loc>
     <lastmod>2025-06-22T21:16:09+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/tip/</loc>
-    <lastmod>2026-04-19T18:11:45+08:00</lastmod>
   </url>
   
   <url>
@@ -1098,7 +1113,7 @@
   
   <url>
     <loc>/blog/tip/2022111103/</loc>
-    <lastmod>2026-04-19T18:11:45+08:00</lastmod>
+    <lastmod>2026-09-28T10:49:36+08:00</lastmod>
   </url>
   
   <url>
