@@ -6,7 +6,7 @@
 <title>win10/11 家庭版中使用Hyper-V虚拟机 – HA</title>
 <meta name="description" content="开启Hyper-V # 执行命令后重启pushd &amp;amp;#34;%~dp0&amp;amp;#34;dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum &amp;amp;gt;hyper-v.txtfor /f %%i in (&amp;amp;#39;findstr /i . hyper-v.txt …">
 <meta name="created" content="2026-09-28T08:00:00+0800">
-<meta name="modified" content="2026-09-28T10:49:36+0800">
+<meta name="modified" content="2026-09-28T10:55:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -31,7 +31,7 @@
     "@type": "WebPage",
     "headline": "win10/11 家庭版中使用Hyper-V虚拟机",
     "datePublished": "2026-09-28T08:00:00+08:00",
-    "dateModified": "2026-09-28T10:49:36+08:00",
+    "dateModified": "2026-09-28T10:55:00+08:00",
     "url" : "https://deletefromuser.github.io/tip/2026092801/",
     "description": "开启Hyper-V # 执行命令后重启\rpushd \u0026amp;#34;%~dp0\u0026amp;#34;\rdir /b %SystemRoot%\\servicing\\Packages\\*Hyper-V*.mum \u0026amp;gt;hyper-v.txt\rfor /f %%i in (\u0026amp;#39;findstr /i . hyper-v.txt …",
     "keywords": ["vm","hyper-v"],
@@ -116,6 +116,13 @@ dir /b %SystemRoot%<span style="color:#ae81ff">\s</span>ervicing<span style="col
 del hyper-v.txt
 Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL
 pause
+</code></pre></div><h3 id="将windows普通用户加入hyper-v用户组中">将windows普通用户加入Hyper-V用户组中</h3>
+<blockquote>
+<p>如果不加的话就只能在管理员账户中使用Hyper-V
+管理员模式打开powershell,执行下面命令</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$loggedInUser <span style="color:#f92672">=</span>  <span style="color:#f92672">(</span>get-wmiobject  win32_computersystem<span style="color:#f92672">)</span>.username
+Add-LocalGroupMember -group <span style="color:#e6db74">&#34;Hyper-V Administrators&#34;</span> -member $loggedInUser -ErrorAction SilentlyContinue
 </code></pre></div><h3 id="将vbox虚拟机实例转换为hyper-v支持的vhd格式">将vbox虚拟机实例转换为Hyper-V支持的vhd格式</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage.exe clonehd <span style="color:#e6db74">&#34;D:\path\ubuntu20_0124-disk1.vdi&#34;</span> <span style="color:#e6db74">&#34;D:\path\ubuntu22.vhd&#34;</span> --format VHD
 <span style="color:#75715e"># 转换完成后,在Hyper-V管理器中新建虚拟机时选择磁盘时选中已存在的vhd文件</span>
@@ -130,7 +137,9 @@ pause
 <li>虚拟机中设置smb密码 <code>sudo smbpasswd -a linux用户名</code></li>
 <li>虚拟机中在想要共享的文件夹中的Properties中的Local Network Share中启用共享</li>
 </ol>
-<h2 id="参考">参考</h2>
+<h3 id="调整虚拟机分辨率">调整虚拟机分辨率</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">set-vmvideo 虚拟机名 -horizontalresolution:1920 -verticalresolution:1080 -resolutiontype single
+</code></pre></div><h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://gist.github.com/HimDek/6edde284203a620745fad3f762be603b">Hyper-V in Windows 10 and Windows 11 Home Edition</a></li>
 </ul>
@@ -139,7 +148,7 @@ pause
 
 <div class="content content--bottom">
 <p class="content-dates">
-Updated: 2026-09-28 10:49<br>
+Updated: 2026-09-28 10:55<br>
 Created: 2026-09-28 08:00
 </p>
 </div><script src="https://utteranc.es/client.js"

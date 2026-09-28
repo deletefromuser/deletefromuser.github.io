@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2026-09-28T08:00:00+0800">
-<meta name="modified" content="2026-09-28T10:49:36+0800">
+<meta name="modified" content="2026-09-28T10:55:00+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -106,7 +106,7 @@
 
 </header>
 <div class="content">
-开启Hyper-V # 执行命令后重启 pushd &#34;%~dp0&#34; dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum &gt;hyper-v.txt for /f %%i in (&#39;findstr /i . hyper-v.txt 2^&gt;nul&#39;) do dism /online /norestart /add-package:&#34;%SystemRoot%\servicing\Packages\%%i&#34; del hyper-v.txt Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL pause 将vbox虚拟机实例转换为Hyper-V支持的
+开启Hyper-V # 执行命令后重启 pushd &#34;%~dp0&#34; dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum &gt;hyper-v.txt for /f %%i in (&#39;findstr /i . hyper-v.txt 2^&gt;nul&#39;) do dism /online /norestart /add-package:&#34;%SystemRoot%\servicing\Packages\%%i&#34; del hyper-v.txt Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL pause 将windows普通用户加入Hyper-V用户
 </div>
 </article>
 
