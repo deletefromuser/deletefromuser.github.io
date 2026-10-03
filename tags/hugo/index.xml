@@ -11,9 +11,9 @@
     
     <item>
       <title>使用Utterances为Hugo添加评论功能</title>
-      <link>https://deletefromuser.github.io/web/2023070203/</link>
+      <link>https://deletefromuser.github.io/pgm/2023070203/</link>
       <pubDate>Sun, 02 Jul 2023 18:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/web/2023070203/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023070203/</guid>
       <description>&lt;h3 id=&#34;在github中添加uterances&#34;&gt;在github中添加Uterances&lt;/h3&gt;
 &lt;p&gt;因为评论是存储在仓库的issue中，所以要给Uterances权限，添加时只需要给一个公有仓库的权限即可（通常是github pages）&lt;/p&gt;
 &lt;ul&gt;

@@ -11,9 +11,9 @@
     
     <item>
       <title>win10/11 家庭版中使用Hyper-V虚拟机</title>
-      <link>https://deletefromuser.github.io/tip/2026092801/</link>
+      <link>https://deletefromuser.github.io/pgm/2026092801/</link>
       <pubDate>Mon, 28 Sep 2026 08:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/tip/2026092801/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2026092801/</guid>
       <description>&lt;h3 id=&#34;开启hyper-v&#34;&gt;开启Hyper-V&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 执行命令后重启&lt;/span&gt;
 pushd &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%~dp0&amp;#34;&lt;/span&gt;
@@ -37,6 +37,16 @@ Add-LocalGroupMember -group &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;H
 &lt;li&gt;&lt;code&gt;ifconfig&lt;/code&gt;查看eth0的对应的ip&lt;/li&gt;
 &lt;li&gt;在宿主机上使用1中的ip进行连接即可&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h3 id=&#34;让虚拟机获得固定ip&#34;&gt;让虚拟机获得固定IP&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;虚拟机每次重启都会通过DHCP拿到新的IP,可以给虚拟机分配静态MAC地址,然后在路由器上将该MAC地址绑定到固定IP&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;VM Settings -&amp;gt; Hardware -&amp;gt; Network Adapter -&amp;gt; Advanced Features -&amp;gt; MAC address&lt;/code&gt; 中选择&lt;code&gt;Static&lt;/code&gt;并填入一个MAC地址&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;需要虚拟机关机状态下才能修改&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;虚拟机和宿主机中共享文件夹&#34;&gt;虚拟机和宿主机中共享文件夹&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;虚拟机中安装smaba &lt;code&gt;sudo apt install samba&lt;/code&gt;&lt;/li&gt;
@@ -48,6 +58,7 @@ Add-LocalGroupMember -group &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;H
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://gist.github.com/HimDek/6edde284203a620745fad3f762be603b&#34;&gt;Hyper-V in Windows 10 and Windows 11 Home Edition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/a/1504633&#34;&gt;How to add a Static IP-Adress to a Virtual Machine in Hyper V&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

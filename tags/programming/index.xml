@@ -11,9 +11,9 @@
     
     <item>
       <title>使用pdfbox将文字pdf转换为图片pdf</title>
-      <link>https://deletefromuser.github.io/java/2025082001/</link>
+      <link>https://deletefromuser.github.io/pgm/2025082001/</link>
       <pubDate>Wed, 20 Aug 2025 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/java/2025082001/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2025082001/</guid>
       <description>&lt;h3 id=&#34;添加pdfbox&#34;&gt;添加pdfbox&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
     &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.pdfbox&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
@@ -63,9 +63,9 @@ System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#3
     
     <item>
       <title>控制台出现不明log，如何排查</title>
-      <link>https://deletefromuser.github.io/java/2024112201/</link>
+      <link>https://deletefromuser.github.io/pgm/2024112201/</link>
       <pubDate>Fri, 22 Nov 2024 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/java/2024112201/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2024112201/</guid>
       <description>&lt;h3 id=&#34;1-定位控制台中的未知log-并抑制输出&#34;&gt;1. 定位控制台中的未知log, 并抑制输出&lt;/h3&gt;
 &lt;p&gt;历史遗留项目中依赖很多, 有时会有很多不同的日志框架被整合进来, 就有可能会遇到某些依赖包中的日志输出没有被日志设置覆盖,
 在调试过程中会出现一些未知log, 无论怎么调整日志设置都还是不停出现(比如quartz)&lt;/p&gt;
@@ -90,9 +90,9 @@ System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#3
     
     <item>
       <title>测试包含truncate table的方法(oracle数据库)</title>
-      <link>https://deletefromuser.github.io/java/2024112202/</link>
+      <link>https://deletefromuser.github.io/pgm/2024112202/</link>
       <pubDate>Fri, 22 Nov 2024 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/java/2024112202/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2024112202/</guid>
       <description>&lt;h3 id=&#34;测试方法&#34;&gt;测试方法&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;@BeforeEach 备份表&lt;/li&gt;
@@ -134,9 +134,9 @@ System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#3
     
     <item>
       <title>记一次OOM异常解决</title>
-      <link>https://deletefromuser.github.io/java/2023070801/</link>
+      <link>https://deletefromuser.github.io/pgm/2023070801/</link>
       <pubDate>Sun, 04 Jun 2023 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/java/2023070801/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023070801/</guid>
       <description>&lt;h3 id=&#34;问题描述&#34;&gt;问题描述&lt;/h3&gt;
 &lt;p&gt;一台服务器出现OOM（为本应用分配了4G内存），挂掉了&lt;/p&gt;
 &lt;blockquote&gt;

@@ -11,9 +11,9 @@
     
     <item>
       <title>sql使用memo</title>
-      <link>https://deletefromuser.github.io/sql/2023060301/</link>
+      <link>https://deletefromuser.github.io/pgm/sql-2023060301/</link>
       <pubDate>Sun, 06 Aug 2023 14:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/sql/2023060301/</guid>
+      <guid>https://deletefromuser.github.io/pgm/sql-2023060301/</guid>
       <description>&lt;h3 id=&#34;count1-count-countcolumn区别&#34;&gt;count(1), count(*), count(column)区别&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;count(1)&lt;/code&gt;和&lt;code&gt;count(*)&lt;/code&gt;是相同的, 但&lt;code&gt;count(*)&lt;/code&gt;代表的语义更明确&lt;/p&gt;
@@ -64,9 +64,9 @@
     
     <item>
       <title>sqlserver常用命令</title>
-      <link>https://deletefromuser.github.io/sql/2023020901/</link>
+      <link>https://deletefromuser.github.io/pgm/2023020901/</link>
       <pubDate>Sun, 06 Nov 2022 19:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/sql/2023020901/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023020901/</guid>
       <description>&lt;h3 id=&#34;查找lock&#34;&gt;查找lock&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; master.dbo.sysprocesses 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; DB_NAME(dbid)&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;’&lt;/span&gt;test&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;’&lt;/span&gt; 

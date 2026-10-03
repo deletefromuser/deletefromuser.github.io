@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>windows使用记录 – HA</title>
+<meta name="description" content="使用命令行控制屏幕亮度，声音 # 下载nircmd - https://www.nirsoft.net/utils/nircmd.html # 设置亮度（最大100？） nircmd.exe setbrightness 100 # 修改音量（最大65535） nircmd.exe setsysvolume 15000 # 静音，取消静音设 …">
+<meta name="created" content="2023-09-05T22:00:00+0800">
+<meta name="modified" content="2026-10-03T16:41:35+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="windows使用记录">
+<meta property="og:url" content="https://deletefromuser.github.io/pgm/2023090501/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/pgm/2023090501/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "windows使用记录",
+    "datePublished": "2023-09-05T22:00:00+08:00",
+    "dateModified": "2026-10-03T16:41:35+08:00",
+    "url" : "https://deletefromuser.github.io/pgm/2023090501/",
+    "description": "使用命令行控制屏幕亮度，声音 # 下载nircmd - https://www.nirsoft.net/utils/nircmd.html # 设置亮度（最大100？） nircmd.exe setbrightness 100 # 修改音量（最大65535） nircmd.exe setsysvolume 15000 # 静音，取消静音设 …",
+    "keywords": ["windows","bash"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/pgm/" class="active" aria-current="page">Pgm</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/sh/">SH</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--pgm">
+<header>
+<h1 class="title title-submitted">windows使用记录</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-09-05T22:00:00&#43;08:00">2023-09-05 22:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/bash/">bash</a></li>
+<li><a href="https://deletefromuser.github.io/tags/windows/">windows</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h2 id="使用命令行控制屏幕亮度声音">使用命令行控制屏幕亮度，声音</h2>
+<pre><code># 下载nircmd - https://www.nirsoft.net/utils/nircmd.html
+# 设置亮度（最大100？）
+nircmd.exe setbrightness 100
+# 修改音量（最大65535）
+nircmd.exe setsysvolume 15000
+# 静音，取消静音设为1
+nircmd.exe mutesysvolume 0
+</code></pre><h2 id="目录软链接">目录软链接</h2>
+<p>以前不小心把一些文件放到C盘里，现在想转移下，但是有些软件关联了这里的文件，重新搞太麻烦，想到可以用类似linux的软链接，就找了方法</p>
+<p>这种方法可以实现无痛把我的文档, 我的视频这些转移到别的盘中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mv /c/Users/tom/Documents/doc /d/doc
+mv /c/Users/tom/3D<span style="color:#ae81ff">\ </span>Objects /d/win10_user/3D<span style="color:#ae81ff">\ </span>Objects
+mv /c/Users/tom/Videos /d/win10_user/Videos
+mv /c/Users/tom/Music /d/win10_user/Music
+mv /c/Users/tom/Pictures /d/win10_user/Pictures
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># 需管理员模式打开powershell</span>
+<span style="color:#75715e"># 转移资料后, 创建软链接（将原先在C盘的目录转移到D盘后，创建软链接）</span>
+<span style="color:#75715e"># 第一个路径是虚拟路径</span>
+<span style="color:#75715e"># -ta 物理路径</span>
+ni C:\Users\tom\Documents\doc -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\doc&#34;</span>
+ni <span style="color:#e6db74">&#34;C:\Users\tom\3D Objects&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\3D_Objects&#34;</span>
+ni <span style="color:#e6db74">&#34;C:\Users\tom\Music&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\Music&#34;</span>
+ni <span style="color:#e6db74">&#34;C:\Users\tom\Videos&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\Videos&#34;</span>
+ni <span style="color:#e6db74">&#34;C:\Users\tom\Pictures&#34;</span> -i SymbolicLink -ta <span style="color:#e6db74">&#34;D:\win10_user\Pictures&#34;</span>
+</code></pre></div><h3 id="删除服务">删除服务</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># 使用管理员身份打开powershell</span>
+sc.exe delete <span style="color:#e6db74">&#34;服务名&#34;</span>
+</code></pre></div><h3 id="查询占用某个文件的进程">查询占用某个文件的进程</h3>
+<blockquote>
+<p>任务管理器 -&gt; 资源管理器 -&gt; cpu -&gt; 选中进程中的checkbox -&gt; 在关联的句柄区域搜索文件名</p>
+</blockquote>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://www.nirsoft.net/utils/nircmd.html">NirCmd - Windows command line tool</a></li>
+<li><a href="https://superuser.com/questions/1020821/how-can-i-create-a-symbolic-link-on-windows-10">How can I create a symbolic link on Windows 10? - Super User</a></li>
+<li><a href="https://stackoverflow.com/questions/76074/how-can-i-delete-a-service-in-windows">How can I delete a service in Windows?</a></li>
+<li><a href="https://superuser.com/questions/117902/find-out-which-process-is-locking-a-file-or-folder-in-windows">Find out which process is locking a file or folder in Windows</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2026-10-03 16:41<br>
+Created: 2023-09-05 22:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

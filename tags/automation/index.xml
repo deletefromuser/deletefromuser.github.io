@@ -11,9 +11,9 @@
     
     <item>
       <title>使用scrcpy在pc上控制android手机</title>
-      <link>https://deletefromuser.github.io/tip/2023042702/</link>
+      <link>https://deletefromuser.github.io/pgm/2023042702/</link>
       <pubDate>Thu, 27 Apr 2023 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/tip/2023042702/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023042702/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;下载scrcpy，解压&lt;/li&gt;
 &lt;li&gt;手机开启USB debuging&lt;/li&gt;
@@ -26,9 +26,9 @@
     
     <item>
       <title>使用mkvtoolnix批量去除mkv格式视频外挂字幕</title>
-      <link>https://deletefromuser.github.io/tip/2023042503/</link>
+      <link>https://deletefromuser.github.io/pgm/2023042503/</link>
       <pubDate>Tue, 25 Apr 2023 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/tip/2023042503/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023042503/</guid>
       <description>&lt;h3 id=&#34;前提&#34;&gt;前提&lt;/h3&gt;
 &lt;p&gt;视频文件内容必须统一，一般是剧集类的，并且要是mkv格式的&lt;/p&gt;
 &lt;h3 id=&#34;打开mkvtoolnix选择某一个视频文件找到不要的字幕轨道取消选择导出optionsjson到视频所在文件夹&#34;&gt;打开mkvtoolnix，选择某一个视频文件，找到不要的字幕轨道取消选择，导出options.json到视频所在文件夹&lt;/h3&gt;
@@ -47,9 +47,9 @@
     
     <item>
       <title>比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</title>
-      <link>https://deletefromuser.github.io/bash/2023041801/</link>
+      <link>https://deletefromuser.github.io/pgm/2023041801/</link>
       <pubDate>Mon, 24 Apr 2023 21:02:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/bash/2023041801/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023041801/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;chatgpt确实好用，比自己吭哧吭哧google快多了&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -89,9 +89,9 @@ ssh user@remote-server /path/to/script.sh
     
     <item>
       <title>工作笔记2016-2021</title>
-      <link>https://deletefromuser.github.io/tip/2022120601/</link>
+      <link>https://deletefromuser.github.io/pgm/2022120601/</link>
       <pubDate>Tue, 06 Dec 2022 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/tip/2022120601/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2022120601/</guid>
       <description>&lt;h3 id=&#34;停止网页重定向&#34;&gt;停止网页重定向&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;window.&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;beforeunload&amp;#34;&lt;/span&gt;, () =&amp;gt; { &lt;span style=&#34;color:#66d9ef&#34;&gt;debugger&lt;/span&gt;; }, &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;);
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;js转换字符为unicode&#34;&gt;JS转换字符为UNICODE&lt;/h3&gt;
@@ -350,9 +350,9 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
     
     <item>
       <title>将所有文件夹的内容分别打包到同名的zip文件内 &amp; 批量解压rar文件</title>
-      <link>https://deletefromuser.github.io/bash/2021022801/</link>
+      <link>https://deletefromuser.github.io/pgm/2021022801/</link>
       <pubDate>Sun, 28 Feb 2021 21:02:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/bash/2021022801/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2021022801/</guid>
       <description>&lt;p&gt;下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件&lt;/p&gt;
 &lt;p&gt;以前还写了个sh好像，没想到一行就能搞定&lt;/p&gt;
 &lt;h2 id=&#34;将所有文件夹的内容分别打包到同名的zip文件内&#34;&gt;将所有文件夹的内容分别打包到同名的zip文件内&lt;/h2&gt;

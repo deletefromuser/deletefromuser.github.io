@@ -11,9 +11,9 @@
     
     <item>
       <title>绕过前端强制手动输入限制</title>
-      <link>https://deletefromuser.github.io/tip/2023090801/</link>
+      <link>https://deletefromuser.github.io/pgm/2023090801/</link>
       <pubDate>Fri, 08 Sep 2023 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/tip/2023090801/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023090801/</guid>
       <description>&lt;h3 id=&#34;问题&#34;&gt;问题&lt;/h3&gt;
 &lt;p&gt;在客户的系统里登陆，要求填写一个保证书一样的东西，最后有几个输入框不允许复制粘贴，只允许手动输入，而且通过控制台设置的值还通不过检查，因为画面也不是原生html+js的，是前端框架写出来的代码，没找到检查的逻辑，最后只能手动输入了。&lt;/p&gt;
 &lt;p&gt;但是等输入完了之后，突然想到了一个解法&lt;/p&gt;

@@ -11,9 +11,9 @@
     
     <item>
       <title>记一次多线程异常</title>
-      <link>https://deletefromuser.github.io/java/2023070202/</link>
+      <link>https://deletefromuser.github.io/pgm/2023070202/</link>
       <pubDate>Sat, 18 Feb 2023 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/java/2023070202/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023070202/</guid>
       <description>&lt;h3 id=&#34;问题描述&#34;&gt;问题描述&lt;/h3&gt;
 &lt;p&gt;有一个抽数据库数据写入文件的定时任务，发现有些文件数据不全，导入一半就结束了。&lt;/p&gt;
 &lt;h3 id=&#34;实现说明&#34;&gt;实现说明&lt;/h3&gt;

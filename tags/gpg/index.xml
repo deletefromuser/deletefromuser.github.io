@@ -11,9 +11,9 @@
     
     <item>
       <title>使用gpg加密文件</title>
-      <link>https://deletefromuser.github.io/tip/2023051302/</link>
+      <link>https://deletefromuser.github.io/pgm/2023051302/</link>
       <pubDate>Thu, 27 Apr 2023 20:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/tip/2023051302/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023051302/</guid>
       <description>&lt;h4 id=&#34;生成gpg密钥&#34;&gt;生成gpg密钥&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --gen-key
 &lt;span style=&#34;color:#75715e&#34;&gt;# 需要输入姓名和邮箱，之后还需要输入passphase（需要记下来，解密的时候要用）&lt;/span&gt;

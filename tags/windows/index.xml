@@ -11,9 +11,9 @@
     
     <item>
       <title>windows使用记录</title>
-      <link>https://deletefromuser.github.io/bash/2023090501/</link>
+      <link>https://deletefromuser.github.io/pgm/2023090501/</link>
       <pubDate>Tue, 05 Sep 2023 22:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/bash/2023090501/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023090501/</guid>
       <description>&lt;h2 id=&#34;使用命令行控制屏幕亮度声音&#34;&gt;使用命令行控制屏幕亮度，声音&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;# 下载nircmd - https://www.nirsoft.net/utils/nircmd.html
 # 设置亮度（最大100？）

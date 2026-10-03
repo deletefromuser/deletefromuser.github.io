@@ -11,9 +11,9 @@
     
     <item>
       <title>使用Cloudflare &#43; Gmail创建自定义邮件地址, 收发邮件</title>
-      <link>https://deletefromuser.github.io/web/2023082902/</link>
+      <link>https://deletefromuser.github.io/pgm/2023082902/</link>
       <pubDate>Tue, 29 Aug 2023 19:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/web/2023082902/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023082902/</guid>
       <description>&lt;h3 id=&#34;使用cloudflare的电子邮件路由功能接收邮件&#34;&gt;使用Cloudflare的电子邮件路由功能接收邮件&lt;/h3&gt;
 &lt;p&gt;进入站点 -&amp;gt; 电子邮件 -&amp;gt; 电子邮件路由 -&amp;gt; 创建, 设置下自定义邮件地址和转发邮箱地址即可&lt;/p&gt;
 &lt;h3 id=&#34;使用gmail以自定义邮件地址发送邮件&#34;&gt;使用Gmail以自定义邮件地址发送邮件&lt;/h3&gt;
@@ -42,9 +42,9 @@
     
     <item>
       <title>在启用Cloudflare DNS Proxy的情况下使用certbot自动更新letsencrypt证书</title>
-      <link>https://deletefromuser.github.io/web/2023082901/</link>
+      <link>https://deletefromuser.github.io/pgm/2023082901/</link>
       <pubDate>Tue, 29 Aug 2023 19:00:00 +0800</pubDate>
-      <guid>https://deletefromuser.github.io/web/2023082901/</guid>
+      <guid>https://deletefromuser.github.io/pgm/2023082901/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;结论是不能, 但是Cloudflare提供了API可以开关DNS Proxy, certbot提供了hook&lt;/p&gt;
 &lt;p&gt;于是就可以先关闭DNS Proxy, 再更新证书, 完成后再开启DNS Proxy&lt;/p&gt;

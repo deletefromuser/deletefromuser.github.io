@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>sqlserver常用命令 – HA</title>
+<meta name="description" content="查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&amp;amp;lt;&amp;amp;gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, …">
+<meta name="created" content="2022-11-06T19:00:00+0800">
+<meta name="modified" content="2023-07-05T20:00:00+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="sqlserver常用命令">
+<meta property="og:url" content="https://deletefromuser.github.io/pgm/2023020901/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://deletefromuser.github.io/pgm/2023020901/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "sqlserver常用命令",
+    "datePublished": "2022-11-06T19:00:00+08:00",
+    "dateModified": "2023-07-05T20:00:00+08:00",
+    "url" : "https://deletefromuser.github.io/pgm/2023020901/",
+    "description": "查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid\u0026amp;lt;\u0026amp;gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, …",
+    "keywords": ["sql","sqlserver"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://deletefromuser.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "https://deletefromuser.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/pgm/" class="active" aria-current="page">Pgm</a></li>
+<li><a href="/watch/">Watch</a></li>
+<li><a href="/read/">Read</a></li>
+<li><a href="/jpns/">Jpns</a></li>
+<li><a href="/life/">Life</a></li>
+<li><a href="/sh/">SH</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--pgm">
+<header>
+<h1 class="title title-submitted">sqlserver常用命令</h1>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="https://deletefromuser.github.io/tags/sql/">sql</a></li>
+<li><a href="https://deletefromuser.github.io/tags/sqlserver/">sqlserver</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="查找lock">查找lock</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> master.dbo.sysprocesses 
+<span style="color:#66d9ef">where</span> DB_NAME(dbid)<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">’</span>test<span style="color:#960050;background-color:#1e0010">’</span> 
+<span style="color:#66d9ef">and</span> spid<span style="color:#f92672">&lt;&gt;@@</span>SPID;
+
+<span style="color:#66d9ef">exec</span> sp_lock
+<span style="color:#66d9ef">exec</span> sp_who2 SPID;
+
+<span style="color:#66d9ef">select</span> request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type
+<span style="color:#66d9ef">from</span> sys.dm_tran_locks;
+
+kill SPID;
+</code></pre></div><h3 id="查看表结构">查看表结构</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COLUMN_NAME</span>, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
+<span style="color:#66d9ef">FROM</span> INFORMATION_SCHEMA.COLUMNS 
+<span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;yourTableName&#39;</span>;
+</code></pre></div><h3 id="日期">日期</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 当前时间
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> getdate();
+<span style="color:#75715e">-- 当前日期
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">CAST</span>( GETDATE() <span style="color:#66d9ef">AS</span> Date ) ;
+<span style="color:#75715e">-- 日期增减计算
+</span><span style="color:#75715e"></span>DATEADD(<span style="color:#66d9ef">DAY</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">30</span>, GETDATE());
+<span style="color:#75715e">-- 字符串转日期
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">Convert</span>(DATETIME, <span style="color:#e6db74">&#39;19990101&#39;</span>, <span style="color:#ae81ff">112</span>)<span style="color:#960050;background-color:#1e0010">；</span>
+<span style="color:#75715e">-- datetime2和datetime的区别
+</span><span style="color:#75715e">-- datetime2支持的日期范围更广，00010101-99991231
+</span><span style="color:#75715e">-- datetime的年支持范围为1753-9999
+</span><span style="color:#75715e">-- 如果遇到datetime2往datetime里插入的要特别注意
+</span><span style="color:#75715e">-- 有小于1753年的数据则会报错  The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range
+</span></code></pre></div><h3 id="字符串">字符串</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 查看字符串长度
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> LEN(FirstName) <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">Length</span>, FirstName, LastName   
+<span style="color:#66d9ef">FROM</span> Sales.vIndividualCustomer  
+<span style="color:#66d9ef">WHERE</span> CountryRegionName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Australia&#39;</span>; 
+<span style="color:#75715e">-- 查看字节长度
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">length</span> <span style="color:#f92672">=</span> DATALENGTH(EnglishProductName), EnglishProductName  
+<span style="color:#66d9ef">FROM</span> dbo.DimProduct  
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> EnglishProductName;  
+<span style="color:#75715e">-- 字符串转换为数字类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">cast</span>(<span style="color:#e6db74">&#39;123&#39;</span> <span style="color:#66d9ef">as</span> int);
+<span style="color:#66d9ef">select</span> <span style="color:#66d9ef">convert</span>(int, <span style="color:#e6db74">&#39;123&#39;</span>);
+<span style="color:#75715e">-- 翻转字符串
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> reverse(<span style="color:#e6db74">&#39;description&#39;</span>)
+<span style="color:#75715e">-- 查找特定字符串位置, 从1开始计数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> charindex(<span style="color:#e6db74">&#39;cri&#39;</span>, <span style="color:#e6db74">&#39;description&#39;</span>); <span style="color:#75715e">-- 4
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> charindex(<span style="color:#e6db74">&#39;i&#39;</span>, <span style="color:#e6db74">&#39;description&#39;</span>, <span style="color:#ae81ff">9</span>); <span style="color:#75715e">-- 9
+</span><span style="color:#75715e">-- 区分大小写
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> charindex(<span style="color:#e6db74">&#39;crI&#39;</span>, <span style="color:#e6db74">&#39;description&#39;</span> <span style="color:#66d9ef">COLLATE</span> Latin1_General_CS_AS); <span style="color:#75715e">-- 0
+</span><span style="color:#75715e">-- 截取字符串
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">substring</span>(<span style="color:#e6db74">&#39;description&#39;</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>); <span style="color:#75715e">-- rip
+</span><span style="color:#75715e">-- 截取最后一个单词
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">substring</span>(<span style="color:#e6db74">&#39;Robust LDAP server for Java&#39;</span>, len(<span style="color:#e6db74">&#39;Robust LDAP server for Java&#39;</span>) <span style="color:#f92672">-</span> charindex(<span style="color:#e6db74">&#39; &#39;</span>, reverse(<span style="color:#e6db74">&#39;Robust LDAP server for Java&#39;</span>), <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, charindex(<span style="color:#e6db74">&#39; &#39;</span>, reverse(<span style="color:#e6db74">&#39;Robust LDAP server for Java&#39;</span>), <span style="color:#ae81ff">1</span>))
+</code></pre></div><h3 id="复制表">复制表</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> ABC_1 <span style="color:#66d9ef">FROM</span> ABC
+<span style="color:#75715e">-- 只复制表结构
+</span><span style="color:#75715e">-- where 1 = 2;
+</span></code></pre></div><h3 id="修改字段类型">修改字段类型</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> dbo.doc_exy <span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">COLUMN</span> column_a DECIMAL (<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">2</span>);  
+</code></pre></div><h3 id="批量插入">批量插入</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">into</span> table2
+   <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+   <span style="color:#66d9ef">FROM</span> table1 t1
+   <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> (<span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">FROM</span> table2 t2 <span style="color:#66d9ef">WHERE</span> t2.id <span style="color:#f92672">=</span> t1.id);
+</code></pre></div><h3 id="在更新的时候使用join">在更新的时候使用join</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> R 
+<span style="color:#66d9ef">SET</span> R.status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span> 
+<span style="color:#66d9ef">FROM</span> dbo.ProductReviews <span style="color:#66d9ef">AS</span> R
+<span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> dbo.products <span style="color:#66d9ef">AS</span> P 
+       <span style="color:#66d9ef">ON</span> R.pid <span style="color:#f92672">=</span> P.id 
+<span style="color:#66d9ef">WHERE</span> R.id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;17190&#39;</span> 
+  <span style="color:#66d9ef">AND</span> P.shopkeeper <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;89137&#39;</span>;
+</code></pre></div><h3 id="比较两个表的数据">比较两个表的数据</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- EXCEPT 相当于oracle里的 minus
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> CustId, CustName, CustAddress, CustPhone <span style="color:#66d9ef">FROM</span> Original
+<span style="color:#66d9ef">EXCEPT</span>
+<span style="color:#66d9ef">SELECT</span> CustId, CustName, CustAddress, CustPhone <span style="color:#66d9ef">FROM</span> Revised
+</code></pre></div><h3 id="生成随机数字">生成随机数字</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 时间戳+7位随机数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> DATEDIFF(s, <span style="color:#e6db74">&#39;1970-01-01&#39;</span>, GETUTCDATE()) <span style="color:#f92672">*</span> <span style="color:#ae81ff">1</span>e7  <span style="color:#f92672">+</span> (<span style="color:#66d9ef">ABS</span>(CHECKSUM(NEWID()))<span style="color:#f92672">%</span> <span style="color:#ae81ff">10000000</span>)
+</code></pre></div><h3 id="导出表的ddl-包括index">导出表的DDL, 包括INDEX</h3>
+<h4 id="方法1">方法1</h4>
+<ol>
+<li>Microsoft SQL Management tool -&gt; Tools/Options/SQL Server Object Explorer/Scripting/Script Indexes -&gt; set to true</li>
+<li>find table -&gt; Script Table as -&gt; Create to</li>
+</ol>
+<h4 id="方法2">方法2</h4>
+<ol>
+<li>Microsoft SQL Management tool -&gt; Tasks -&gt; Generate Scripts</li>
+</ol>
+<p><strong>reference</strong></p>
+<ul>
+<li><a href="https://www.cnblogs.com/lvdongjie/p/7327006.html">sqlserver 查询当前阻塞进程 并杀掉</a></li>
+<li><a href="https://stackoverflow.com/questions/59899979/how-to-batch-insert-sql-server">How to Batch INSERT SQL Server?</a></li>
+<li><a href="https://learnsql.com/cookbook/how-to-get-the-current-date-without-time-in-t-sql/">How to Get the Current Date (Without Time) in T-SQL</a></li>
+<li><a href="https://popsql.com/learn-sql/sql-server/how-to-duplicate-a-table-in-sql-server">How to Duplicate a Table in SQL Server</a></li>
+<li><a href="https://stackoverflow.com/questions/9588423/sql-server-inner-join-when-updating">SQL Server - inner join when updating</a></li>
+<li><a href="https://stackoverflow.com/questions/27247770/how-to-subtract-30-days-from-the-current-date-using-sql-server">How to subtract 30 days from the current date using SQL Server</a></li>
+<li><a href="https://stackoverflow.com/questions/1334143/datetime2-vs-datetime-in-sql-server">DateTime2 vs DateTime in SQL Server</a></li>
+<li><a href="https://stackoverflow.com/questions/207190/sql-server-string-to-date-conversion">Sql Server string to date conversion</a></li>
+<li><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/len-transact-sql?view=sql-server-ver16">LEN (Transact-SQL)</a></li>
+<li><a href="https://stackoverflow.com/questions/13405572/sql-statement-to-get-column-type">SQL statement to get column type</a></li>
+<li><a href="https://learn.microsoft.com/en-us/sql/relational-databases/tables/modify-columns-database-engine?view=sql-server-ver16">Modify Columns (Database Engine) - SQL Server | Microsoft Learn</a></li>
+<li><a href="https://stackoverflow.com/questions/707335/t-sql-cast-versus-convert">sql server - T-SQL Cast versus Convert - Stack Overflow</a></li>
+<li><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql?view=sql-server-ver16">CAST and CONVERT (Transact-SQL) - SQL Server | Microsoft Learn</a></li>
+</ul>
+<ul>
+<li><a href="https://www.sqlshack.com/compare-tables-sql-server/">4 Ways to Insert Multiple Rows in Oracle</a></li>
+<li><a href="https://stackoverflow.com/questions/2847092/how-to-get-numeric-random-uniqueid-in-sql-server">How to get numeric random uniqueid in SQL Server - Stack Overflow</a></li>
+<li><a href="https://stackoverflow.com/questions/8837225/unix-timestamp-in-sql-server">UNIX_TIMESTAMP in SQL Server - Stack Overflow</a></li>
+<li><a href="https://www.cnblogs.com/xuelixue/p/8961418.html">sql server 获取字符串中某字符最后一次出现的位置</a></li>
+<li><a href="https://blog.csdn.net/dlw4656/article/details/101989333">Sql server中从字符串最后一个特殊字符截取到结尾_dlw4656的博客-CSDN博客</a></li>
+<li><a href="https://learn.microsoft.com/zh-cn/sql/t-sql/functions/charindex-transact-sql?view=sql-server-ver16">CHARINDEX (Transact-SQL) - SQL Server | Microsoft Learn</a></li>
+<li><a href="https://stackoverflow.com/questions/652148/how-to-copy-indexes-from-one-table-to-another-in-sql-server">How to copy indexes from one table to another in SQL Server - Stack Overflow</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2023-07-05 20:00<br>
+Created: 2022-11-06 19:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>
