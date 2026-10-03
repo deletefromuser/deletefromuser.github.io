@@ -11,9 +11,9 @@
     
     <item>
       <title>office使用记录</title>
-      <link>/blog/tip/2023060301/</link>
+      <link>/blog/pgm/tip-2023060301/</link>
       <pubDate>Sat, 03 Jun 2023 20:00:00 +0800</pubDate>
-      <guid>/blog/tip/2023060301/</guid>
+      <guid>/blog/pgm/tip-2023060301/</guid>
       <description>&lt;h4 id=&#34;word中快速粘贴无格式文本&#34;&gt;word中快速粘贴无格式文本&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;Ctrl+Alt+V&lt;/code&gt;&lt;/p&gt;
@@ -40,9 +40,9 @@
     
     <item>
       <title>工作笔记2016-2021</title>
-      <link>/blog/tip/2022120601/</link>
+      <link>/blog/pgm/2022120601/</link>
       <pubDate>Tue, 06 Dec 2022 20:00:00 +0800</pubDate>
-      <guid>/blog/tip/2022120601/</guid>
+      <guid>/blog/pgm/2022120601/</guid>
       <description>&lt;h3 id=&#34;停止网页重定向&#34;&gt;停止网页重定向&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;window.&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;beforeunload&amp;#34;&lt;/span&gt;, () =&amp;gt; { &lt;span style=&#34;color:#66d9ef&#34;&gt;debugger&lt;/span&gt;; }, &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;);
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;js转换字符为unicode&#34;&gt;JS转换字符为UNICODE&lt;/h3&gt;

@@ -11,9 +11,9 @@
     
     <item>
       <title>jenkins使用记录</title>
-      <link>/blog/web/2023052101/</link>
+      <link>/blog/pgm/2023052101/</link>
       <pubDate>Sun, 21 May 2023 18:00:00 +0800</pubDate>
-      <guid>/blog/web/2023052101/</guid>
+      <guid>/blog/pgm/2023052101/</guid>
       <description>&lt;h3 id=&#34;使用docker部署jenkins&#34;&gt;使用docker部署jenkins&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 1&lt;/span&gt;
 docker network create jenkins
@@ -79,9 +79,9 @@ docker run &lt;span style=&#34;color:#ae81ff&#34;&gt;\
     
     <item>
       <title>docker使用记录</title>
-      <link>/blog/web/2023052001/</link>
+      <link>/blog/pgm/2023052001/</link>
       <pubDate>Sat, 20 May 2023 18:00:00 +0800</pubDate>
-      <guid>/blog/web/2023052001/</guid>
+      <guid>/blog/pgm/2023052001/</guid>
       <description>&lt;p&gt;使用docker实例命令行&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker exec -it spring-cloud-config-server_1 bash
 &lt;span style=&#34;color:#75715e&#34;&gt;# 以root实行&lt;/span&gt;
@@ -183,6 +183,25 @@ docker restart jenkins-docker
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker cp mycontainer:/path/to/file file
 &lt;span style=&#34;color:#75715e&#34;&gt;# 导出容器内全部文件&lt;/span&gt;
 docker export mycontainer -o container_fs.tar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;清理磁盘空间overlay2目录过大&#34;&gt;清理磁盘空间(overlay2目录过大)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;/var/lib/docker/overlay2&lt;/code&gt; 过大时,用官方命令逐步清理,不要直接手动删除该目录,否则docker会损坏&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看容器,镜像,卷,构建缓存的使用量&lt;/span&gt;
+docker system df
+&lt;span style=&#34;color:#75715e&#34;&gt;# 删除停止的容器,未使用的网络,无标签的旧镜像(dangling image),构建缓存&lt;/span&gt;
+docker system prune
+&lt;span style=&#34;color:#75715e&#34;&gt;# 加上-a,删除所有未被使用的镜像(不只是无标签的)&lt;/span&gt;
+docker system prune --all
+&lt;span style=&#34;color:#75715e&#34;&gt;# 加上--volumes,删除未被使用的卷,卷中数据无法恢复&lt;/span&gt;
+docker system prune --volumes
+&lt;span style=&#34;color:#75715e&#34;&gt;# 等价于只清理卷&lt;/span&gt;
+docker volume prune
+&lt;span style=&#34;color:#75715e&#34;&gt;# 清理buildx的构建缓存&lt;/span&gt;
+docker buildx prune --all
+&lt;span style=&#34;color:#75715e&#34;&gt;# 清理后容量没减少的话,可能是运行中的容器还在占用文件&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 停掉不需要的容器后重新prune&lt;/span&gt;
+docker stop containerName
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/install/linux-postinstall/&#34;&gt;Manage Docker as a non-root user&lt;/a&gt;&lt;/li&gt;
@@ -208,9 +227,9 @@ docker export mycontainer -o container_fs.tar
     
     <item>
       <title>Ubuntu 20.04下tracker-miner-fs进程占用大量内存和cpu</title>
-      <link>/blog/prob/2022122101/</link>
+      <link>/blog/pgm/2022122101/</link>
       <pubDate>Wed, 21 Dec 2022 20:00:00 +0800</pubDate>
-      <guid>/blog/prob/2022122101/</guid>
+      <guid>/blog/pgm/2022122101/</guid>
       <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;systemctl --user mask tracker-store.service tracker-miner-fs.service tracker-miner-rss.service tracker-extract.service tracker-miner-apps.service tracker-writeback.service
 tracker reset --hard
 sudo reboot
@@ -223,9 +242,9 @@ sudo reboot
     
     <item>
       <title>工作笔记2016-2021</title>
-      <link>/blog/tip/2022120601/</link>
+      <link>/blog/pgm/2022120601/</link>
       <pubDate>Tue, 06 Dec 2022 20:00:00 +0800</pubDate>
-      <guid>/blog/tip/2022120601/</guid>
+      <guid>/blog/pgm/2022120601/</guid>
       <description>&lt;h3 id=&#34;停止网页重定向&#34;&gt;停止网页重定向&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;window.&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;beforeunload&amp;#34;&lt;/span&gt;, () =&amp;gt; { &lt;span style=&#34;color:#66d9ef&#34;&gt;debugger&lt;/span&gt;; }, &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;);
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;js转换字符为unicode&#34;&gt;JS转换字符为UNICODE&lt;/h3&gt;
@@ -484,9 +503,9 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
     
     <item>
       <title>ubuntu使用技巧</title>
-      <link>/blog/bash/2022120301/</link>
+      <link>/blog/pgm/2022120301/</link>
       <pubDate>Sat, 03 Dec 2022 20:00:00 +0800</pubDate>
-      <guid>/blog/bash/2022120301/</guid>
+      <guid>/blog/pgm/2022120301/</guid>
       <description>&lt;h3 id=&#34;为命令行配置代理&#34;&gt;为命令行配置代理&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;# 注意代理要是http代理，sock代理是不行的
 export HTTP_PROXY=&#39;127.0.0.1:1086&#39;
@@ -563,9 +582,9 @@ compgen -c | sort -u &amp;gt; commands &lt;span style=&#34;color:#f92672&#34;&gt
     
     <item>
       <title>linux 命令memo</title>
-      <link>/blog/bash/2022111001/</link>
+      <link>/blog/pgm/2022111001/</link>
       <pubDate>Thu, 10 Nov 2022 20:00:00 +0800</pubDate>
-      <guid>/blog/bash/2022111001/</guid>
+      <guid>/blog/pgm/2022111001/</guid>
       <description>&lt;h3 id=&#34;uuidgen&#34;&gt;&lt;code&gt;uuidgen&lt;/code&gt;&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;生成uuid&lt;/p&gt;
@@ -702,9 +721,9 @@ unzip -O shift-jis ~/Downloads/【新入荷ECM】資料.zip
     
     <item>
       <title>linux下设置定时任务</title>
-      <link>/blog/bash/2022110602/</link>
+      <link>/blog/pgm/2022110602/</link>
       <pubDate>Sun, 06 Nov 2022 19:30:00 +0800</pubDate>
-      <guid>/blog/bash/2022110602/</guid>
+      <guid>/blog/pgm/2022110602/</guid>
       <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;crontab -e
 
 A B C D E USERNAME /path/to/command arg1 arg2
@@ -727,9 +746,9 @@ A B C D E USERNAME /path/to/command arg1 arg2
     
     <item>
       <title>bash函数 &amp; user 代行</title>
-      <link>/blog/bash/2022070701/</link>
+      <link>/blog/pgm/2022070701/</link>
       <pubDate>Thu, 07 Jul 2022 16:00:00 +0800</pubDate>
-      <guid>/blog/bash/2022070701/</guid>
+      <guid>/blog/pgm/2022070701/</guid>
       <description>&lt;h2 id=&#34;bash函数&#34;&gt;bash函数&lt;/h2&gt;
 &lt;p&gt;将函数追加写入&lt;code&gt;~/.bashrc&lt;/code&gt;文件即可持久化，否则只在当前shell session内有效，关闭即无效&lt;/p&gt;
 &lt;blockquote&gt;

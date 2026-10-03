@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>java中不常用的语法 – HA</title>
+<meta name="description" content="双花括号初始化 有时候写测试代码，需要新建hashmap或者list并赋值的时候，可以用双花括号初始化简化代码，但是据说有内存泄漏的风险，所以测试以外不要用 Set&amp;amp;lt;String&amp;amp;gt; countries = new HashSet&amp;amp;lt;String&amp;amp;gt;() { { add(&amp;amp;#34;India&amp;amp;#34;); …">
+<meta name="created" content="2023-02-18T20:00:00+0800">
+<meta name="modified" content="2026-10-03T16:41:35+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="java中不常用的语法">
+<meta property="og:url" content="/blog/pgm/2023021802/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/pgm/2023021802/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "java中不常用的语法",
+    "datePublished": "2023-02-18T20:00:00+08:00",
+    "dateModified": "2026-10-03T16:41:35+08:00",
+    "url" : "/blog/pgm/2023021802/",
+    "description": "双花括号初始化 有时候写测试代码，需要新建hashmap或者list并赋值的时候，可以用双花括号初始化简化代码，但是据说有内存泄漏的风险，所以测试以外不要用 Set\u0026amp;lt;String\u0026amp;gt; countries = new HashSet\u0026amp;lt;String\u0026amp;gt;() { { add(\u0026amp;#34;India\u0026amp;#34;); …",
+    "keywords": ["java"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/pgm/" class="active" aria-current="page">Pgm</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--pgm">
+<header>
+<h1 class="title title-submitted">java中不常用的语法</h1>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-18T20:00:00&#43;08:00">2023-02-18 20:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/java/">java</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="双花括号初始化">双花括号初始化</h3>
+<p>有时候写测试代码，需要新建hashmap或者list并赋值的时候，可以用双花括号初始化简化代码，但是据说有内存泄漏的风险，所以测试以外不要用</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Set<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> countries <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">{</span>
+       add<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;India&#34;</span><span style="color:#f92672">);</span>
+       add<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;USSR&#34;</span><span style="color:#f92672">);</span>
+       add<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;USA&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">};</span>
+</code></pre></div><h3 id="初始化内部类">初始化内部类</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">OuterClass outerObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OuterClass<span style="color:#f92672">();</span>
+OuterClass<span style="color:#f92672">.</span><span style="color:#a6e22e">InnerClass</span> innerObject <span style="color:#f92672">=</span> outerObject<span style="color:#f92672">.</span><span style="color:#a6e22e">new</span> <span style="color:#a6e22e">InnerClass</span><span style="color:#f92672">();</span>
+</code></pre></div><h3 id="初始化静态内部类">初始化静态内部类</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">StaticNestedClass staticNestedObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StaticNestedClass<span style="color:#f92672">();</span>
+</code></pre></div><h3 id="list和array转换">List和Array转换</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// List -&gt; Array
+</span><span style="color:#75715e"></span>Foo<span style="color:#f92672">[]</span> array <span style="color:#f92672">=</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Foo<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span>
+<span style="color:#75715e">// Array -&gt; List
+</span><span style="color:#75715e"></span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> String<span style="color:#f92672">[]{</span><span style="color:#e6db74">&#34;1&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">})</span>
+<span style="color:#75715e">// 用一个值覆盖array中的所有元素
+</span><span style="color:#75715e"></span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">fill</span><span style="color:#f92672">(</span>array<span style="color:#f92672">,</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">);</span>
+</code></pre></div><p><strong>reference</strong></p>
+<ul>
+<li><a href="https://www.baeldung.com/java-double-brace-initialization">Java Double Brace Initialization</a></li>
+<li><a href="https://www.jesperdj.com/2016/07/19/dont-use-the-double-brace-initialization-trick/">Don’t use the double-brace initialization trick – Jesper de Jong</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html">Nested Classes (The Java™ Tutorials &gt; Learning the Java Language &gt; Classes and Objects)</a></li>
+<li><a href="https://stackoverflow.com/questions/9572795/convert-list-to-array-in-java">Convert list to array in Java - Stack Overflow)</a></li>
+<li><a href="https://stackoverflow.com/questions/10078867/how-to-initialize-all-the-elements-of-an-array-to-any-specific-value-in-java">How to initialize all the elements of an array to any specific value in java - Stack Overflow)</a></li>
+</ul>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2026-10-03 16:41<br>
+Created: 2023-02-18 20:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

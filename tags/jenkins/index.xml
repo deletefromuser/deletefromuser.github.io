@@ -11,9 +11,9 @@
     
     <item>
       <title>jenkins使用记录</title>
-      <link>/blog/web/2023052101/</link>
+      <link>/blog/pgm/2023052101/</link>
       <pubDate>Sun, 21 May 2023 18:00:00 +0800</pubDate>
-      <guid>/blog/web/2023052101/</guid>
+      <guid>/blog/pgm/2023052101/</guid>
       <description>&lt;h3 id=&#34;使用docker部署jenkins&#34;&gt;使用docker部署jenkins&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 1&lt;/span&gt;
 docker network create jenkins

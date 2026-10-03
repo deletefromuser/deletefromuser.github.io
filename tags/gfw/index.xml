@@ -11,9 +11,9 @@
     
     <item>
       <title>V2Ray &#43; WebSocket &#43; TLS &#43; CloudFlare配置代理</title>
-      <link>/blog/tip/2023090201/</link>
+      <link>/blog/pgm/2023090201/</link>
       <pubDate>Sat, 02 Sep 2023 15:00:00 +0800</pubDate>
-      <guid>/blog/tip/2023090201/</guid>
+      <guid>/blog/pgm/2023090201/</guid>
       <description>&lt;h3 id=&#34;1-使用docker安装-v2ray&#34;&gt;1. 使用docker安装 V2Ray&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;准备工作&lt;/li&gt;

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>outer apply 和 left join 再辨析 – HA</title>
+<meta name="description" content="outer apply 和 left join 再辨析  過濾條件位置不同（看下面例子可以看出來） outer apply可以較方便地實現控制參照表參照記錄的個數，left join稍微麻煩一些  下面要實現一個需求，現在有兩個表，一個作者表（裡面主要有作者名稱字段、作者id字段）、還有一個書籍表（主要有書籍名稱、作者id、價格）。現在我 …">
+<meta name="created" content="2017-02-20T01:33:58+0800">
+<meta name="modified" content="2026-10-03T16:41:35+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="outer apply 和 left join 再辨析">
+<meta property="og:url" content="/blog/pgm/2017022001/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/pgm/2017022001/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "outer apply 和 left join 再辨析",
+    "datePublished": "2017-02-20T01:33:58+08:00",
+    "dateModified": "2026-10-03T16:41:35+08:00",
+    "url" : "/blog/pgm/2017022001/",
+    "description": "outer apply 和 left join 再辨析  過濾條件位置不同（看下面例子可以看出來） outer apply可以較方便地實現控制參照表參照記錄的個數，left join稍微麻煩一些  下面要實現一個需求，現在有兩個表，一個作者表（裡面主要有作者名稱字段、作者id字段）、還有一個書籍表（主要有書籍名稱、作者id、價格）。現在我 …",
+    "keywords": ["sql"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/pgm/" class="active" aria-current="page">Pgm</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--pgm">
+<header>
+<h1 class="title title-submitted">outer apply 和 left join 再辨析</h1>
+<div class="submitted">
+<time class="created-date" datetime="2017-02-20T01:33:58&#43;08:00">2017-02-20 01:33</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/sql/">sql</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<p>outer apply 和 left join 再辨析</p>
+<ol>
+<li>過濾條件位置不同（看下面例子可以看出來）</li>
+<li>outer apply可以較方便地實現控制參照表參照記錄的個數，left join稍微麻煩一些</li>
+</ol>
+<p>下面要實現一個需求，現在有兩個表，一個作者表（裡面主要有作者名稱字段、作者id字段）、還有一個書籍表（主要有書籍名稱、作者id、價格）。現在我們需要找出查出作者信息，同時要參照出該作者所寫書籍中價格最高的一本書的名字、價格。</p>
+<p>mssql</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--加查詢條件是為了顯示效果，去掉沒用的記錄
+</span><span style="color:#75715e">--兩個表的信息 圖一
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> author <span style="color:#66d9ef">where</span> author_id <span style="color:#66d9ef">in</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>);
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> book <span style="color:#66d9ef">where</span> author_id <span style="color:#66d9ef">in</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>) 
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> author_id,price <span style="color:#66d9ef">desc</span>;
+<span style="color:#75715e">--outer apply實現 圖二 上
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>, <span style="color:#66d9ef">isnull</span>(sub.book_name, <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">as</span> book_name, <span style="color:#66d9ef">isnull</span>(sub.price, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">as</span> price
+<span style="color:#66d9ef">from</span> author main
+<span style="color:#66d9ef">outer</span> apply (<span style="color:#66d9ef">select</span> top <span style="color:#ae81ff">1</span> book_name, price 
+           <span style="color:#66d9ef">from</span> book s 
+		   <span style="color:#66d9ef">where</span> s.author_id <span style="color:#f92672">=</span> main.author_id
+		   <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> price
+) sub
+<span style="color:#66d9ef">where</span> <span style="color:#66d9ef">isnull</span>(sub.price, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#75715e">--left join實現 圖二下
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>, <span style="color:#66d9ef">isnull</span>(sub.book_name, <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">as</span> book_name, <span style="color:#66d9ef">isnull</span>(sub.price, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">as</span> price
+<span style="color:#66d9ef">from</span> author main
+<span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> book sub <span style="color:#66d9ef">on</span> sub.author_id <span style="color:#f92672">=</span> main.author_id
+                      <span style="color:#66d9ef">and</span> sub.id <span style="color:#f92672">=</span> (<span style="color:#66d9ef">select</span> top <span style="color:#ae81ff">1</span> s.id 
+					                <span style="color:#66d9ef">from</span> book s
+									<span style="color:#66d9ef">where</span> s.author_id <span style="color:#f92672">=</span> main.author_id)
+<span style="color:#66d9ef">where</span> <span style="color:#66d9ef">isnull</span>(sub.price, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#75715e">--錯誤語句 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>,sub.book_name
+<span style="color:#66d9ef">from</span> author main
+<span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> (<span style="color:#66d9ef">select</span> top <span style="color:#ae81ff">1</span> book_name 
+           <span style="color:#66d9ef">from</span> book s 
+		   <span style="color:#66d9ef">where</span> s.author_id <span style="color:#f92672">=</span> main.author_id <span style="color:#75715e">--无法绑定由多个部分组成的标识符 &#34;main.author_id&#34;。可看出在這個位置獲取不到主表的數據
+</span><span style="color:#75715e"></span>) sub <span style="color:#66d9ef">on</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>);
+<span style="color:#75715e">--在outer apply的別名後也不能再進行過濾了
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>, <span style="color:#66d9ef">isnull</span>(sub.book_name, <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">as</span> book_name, <span style="color:#66d9ef">isnull</span>(sub.price, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">as</span> price
+<span style="color:#66d9ef">from</span> author main
+<span style="color:#66d9ef">outer</span> apply (<span style="color:#66d9ef">select</span> top <span style="color:#ae81ff">1</span> book_name, price 
+           <span style="color:#66d9ef">from</span> book s 
+		   <span style="color:#66d9ef">where</span> s.author_id <span style="color:#f92672">=</span> main.author_id
+		   <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> price
+) sub <span style="color:#66d9ef">on</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#75715e">--該處有語法錯誤
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">where</span> <span style="color:#66d9ef">isnull</span>(sub.price, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>;
+
+<span style="color:#75715e">--參照表更新表數據的方式 雖然下面語句參照完全沒有必要
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">update</span> main
+<span style="color:#66d9ef">set</span> main.age <span style="color:#f92672">=</span> main.age <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">from</span> author main
+<span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> book sub <span style="color:#66d9ef">on</span> sub.author_id <span style="color:#66d9ef">in</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>) 
+           <span style="color:#66d9ef">and</span> main.author_id <span style="color:#f92672">=</span> sub.author_id;
+</code></pre></div><p><img src="https://i.imgur.com/ODO8msP.jpg" alt="圖一">
+<img src="https://i.imgur.com/0IiKvF6.jpg" alt="圖二"></p>
+<p>mysql</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> fruit(
+fruit_name char(<span style="color:#ae81ff">40</span>) <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,
+fruit_id int(<span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,
+id int <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> auto_increment,
+<span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span>(id)
+)
+<span style="color:#75715e">/*關閉安全更新模式，同時參照子表更新主表*/</span>
+<span style="color:#66d9ef">set</span> sql_safe_updates <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">update</span> fruit_month_price main
+<span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> fruit sub <span style="color:#66d9ef">on</span> sub.fruit_name <span style="color:#f92672">=</span> main.name
+<span style="color:#66d9ef">set</span> main.fruit_id <span style="color:#f92672">=</span> sub.fruit_id;
+<span style="color:#75715e">/*查詢水果表，並參照出價格價格最高所在記錄的數量和價格*/</span>
+<span style="color:#66d9ef">select</span> main.<span style="color:#f92672">*</span>, ifnull(sub.num, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">as</span> num, ifnull(sub.price, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">as</span> price
+<span style="color:#66d9ef">from</span> fruit main
+<span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> fruit_month_price sub <span style="color:#66d9ef">on</span> main.fruit_id <span style="color:#f92672">=</span> sub.fruit_id
+								   <span style="color:#66d9ef">and</span> sub.id <span style="color:#f92672">=</span> (<span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> fruit_month_price s
+                                                  <span style="color:#66d9ef">where</span> s.fruit_id <span style="color:#f92672">=</span> main.fruit_id
+                                                  <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> price <span style="color:#66d9ef">desc</span>
+                                                  <span style="color:#66d9ef">limit</span> <span style="color:#ae81ff">1</span>)
+</code></pre></div><p><strong>reference</strong></p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/3348705/how-to-limit-results-of-a-left-join">How to limit results of a LEFT JOIN</a></li>
+<li><a href="https://stackoverflow.com/questions/15626493/left-join-only-first-row">LEFT JOIN only first row</a></li>
+<li><a href="https://stackoverflow.com/questions/9588423/sql-server-inner-join-when-updating">SQL Server - inner join when updating [duplicate]</a></li>
+<li><a href="https://stackoverflow.com/questions/8057565/mysql-update-statement-inner-join-tables">MYSQL Update Statement Inner Join Tables</a></li>
+<li><a href="https://stackoverflow.com/questions/11448068/mysql-error-code-1175-during-update-in-mysql-workbench">MySQL error code: 1175 during UPDATE in MySQL Workbench</a></li>
+<li><a href="http://www.cnblogs.com/JuneZhang/archive/2010/08/26/1809306.html">MySql 里的IFNULL、NULLIF和ISNULL用法</a></li>
+</ol>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2026-10-03 16:41<br>
+Created: 2017-02-20 01:33
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

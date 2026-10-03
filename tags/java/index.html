@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/tags/java/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2025-08-20T20:00:00+0800">
-<meta name="modified" content="2025-08-20T22:38:42+0800">
+<meta name="modified" content="2026-10-03T16:41:35+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,18 +73,12 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/pgm/">Pgm</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/read/">Read</a></li>
-<li><a href="/blog/java/">Java</a></li>
-<li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/life/">Life</a></li>
-<li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sh/">SH</a></li>
-<li><a href="/blog/cs/">CS</a></li>
 </ul>
 </nav>
 
@@ -94,9 +88,9 @@
 
 
 
-<article class="list-view list-view--java">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/java/2025082001/">使用pdfbox将文字pdf转换为图片pdf</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2025082001/">使用pdfbox将文字pdf转换为图片pdf</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2025-08-20T20:00:00&#43;08:00">2025-08-20 20:00</time>
 </div>
@@ -107,9 +101,9 @@
 </div>
 </article>
 
-<article class="list-view list-view--java">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/java/2024112201/">控制台出现不明log，如何排查</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2024112201/">控制台出现不明log，如何排查</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2024-11-22T20:00:00&#43;08:00">2024-11-22 20:00</time>
 </div>
@@ -120,9 +114,9 @@
 </div>
 </article>
 
-<article class="list-view list-view--java">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/java/2024112202/">测试包含truncate table的方法(oracle数据库)</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2024112202/">测试包含truncate table的方法(oracle数据库)</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2024-11-22T20:00:00&#43;08:00">2024-11-22 20:00</time>
 </div>
@@ -133,9 +127,9 @@
 </div>
 </article>
 
-<article class="list-view list-view--java">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/java/2023070801/">记一次OOM异常解决</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2023070801/">记一次OOM异常解决</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2023-06-04T20:00:00&#43;08:00">2023-06-04 20:00</time>
 </div>
@@ -146,9 +140,22 @@
 </div>
 </article>
 
-<article class="list-view list-view--java">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/java/2023070202/">记一次多线程异常</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2023021802/">java中不常用的语法</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-02-18T20:00:00&#43;08:00">2023-02-18 20:00</time>
+</div>
+
+</header>
+<div class="content">
+双花括号初始化 有时候写测试代码，需要新建hashmap或者list并赋值的时候，可以用双花括号初始化简化代码，但是据说有内存泄漏的风险，所以
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2023070202/">记一次多线程异常</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2023-02-18T20:00:00&#43;08:00">2023-02-18 20:00</time>
 </div>
@@ -159,9 +166,22 @@
 </div>
 </article>
 
-<article class="list-view list-view--tip">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/tip/2022120601/">工作笔记2016-2021</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022121901/">java删除文件夹</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-12-19T20:00:00&#43;08:00">2022-12-19 20:00</time>
+</div>
+
+</header>
+<div class="content">
+// use spring FileSystemUtils.deleteRecursively(file); // java 8 Files.walk(path) .sorted(Comparator.reverseOrder()) .map(Path::toFile) .forEach(File::delete); reference Delete a Directory Recursively in Java | Baeldung
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022120601/">工作笔记2016-2021</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2022-12-06T20:00:00&#43;08:00">2022-12-06 20:00</time>
 </div>
@@ -172,6 +192,35 @@
 </div>
 </article>
 
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022111002/">linux下让Java程序运行在后台</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
+</div>
+
+</header>
+<div class="content">
+nohup java -jar /web/server.jar &gt; log.log 2&gt;&amp;1 &amp; reference Run java jar file on a server as background process Launch springboot project in the background on Linux 2&gt;&amp;1到底是什么意思？
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2017051901/">Java 将对象序列化为字符串 读取字符串反序列化为对象</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-05-19T01:33:58&#43;08:00">2017-05-19 01:33</time>
+</div>
+
+</header>
+<div class="content">
+Java 将对象序列化为字符串 读取字符串反序列化为对象 import java.io.Serializable; class test { public static String object2String(Object obj) { String objBody = null; ByteArrayOutputStream baops = null; ObjectOutputStream oos = null; try { baops = new ByteArrayOutputStream(); oos = new ObjectOutputStream(baops); oos.writeObject(obj); byte[] bytes = baops.toByteArray(); objBody = Base64.encodeToString(bytes, Base64.DEFAULT); } catch(IOException e) { Log.e(tag,
+</div>
+</article>
+
+<nav class="pager">
+<a href="/blog/tags/java/page/2/" rel="next" class="pager-item pager-next">Next</a>
+</nav>
 
 </main>
 

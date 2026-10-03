@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/tags/bash/index.xml">
 <meta name="description" content="">
 <meta name="created" content="2023-09-05T22:00:00+0800">
-<meta name="modified" content="2024-12-08T20:34:27+0800">
+<meta name="modified" content="2026-10-03T16:41:35+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,18 +73,12 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/tip/">Tip</a></li>
+<li><a href="/blog/pgm/">Pgm</a></li>
 <li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/read/">Read</a></li>
-<li><a href="/blog/java/">Java</a></li>
-<li><a href="/blog/sql/">Sql</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
-<li><a href="/blog/bash/">Bash</a></li>
-<li><a href="/blog/web/">Web</a></li>
 <li><a href="/blog/life/">Life</a></li>
-<li><a href="/blog/prob/">Prob</a></li>
 <li><a href="/blog/sh/">SH</a></li>
-<li><a href="/blog/cs/">CS</a></li>
 </ul>
 </nav>
 
@@ -94,9 +88,9 @@
 
 
 
-<article class="list-view list-view--bash">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/bash/2023090501/">windows使用记录</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2023090501/">windows使用记录</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2023-09-05T22:00:00&#43;08:00">2023-09-05 22:00</time>
 </div>
@@ -107,9 +101,9 @@
 </div>
 </article>
 
-<article class="list-view list-view--bash">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/bash/2023041801/">比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2023041801/">比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2023-04-24T21:02:00&#43;08:00">2023-04-24 21:02</time>
 </div>
@@ -120,9 +114,9 @@ chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 r
 </div>
 </article>
 
-<article class="list-view list-view--tip">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/tip/2022120601/">工作笔记2016-2021</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022120601/">工作笔记2016-2021</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2022-12-06T20:00:00&#43;08:00">2022-12-06 20:00</time>
 </div>
@@ -133,9 +127,48 @@ chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 r
 </div>
 </article>
 
-<article class="list-view list-view--bash">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/bash/2022070701/">bash函数 &amp; user 代行</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022120301/">ubuntu使用技巧</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-12-03T20:00:00&#43;08:00">2022-12-03 20:00</time>
+</div>
+
+</header>
+<div class="content">
+为命令行配置代理 # 注意代理要是http代理，sock代理是不行的 export HTTP_PROXY='127.0.0.1:1086' export HTTPS_PROXY='127.0.0.1:1086' 把desktop文件的程序固定到任务栏 复制desktop文件到~/.
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022111001/">linux 命令memo</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
+</div>
+
+</header>
+<div class="content">
+uuidgen 生成uuid history 命令行历史 修改history容量，~/.bashrc最后追加 export HISTSIZE=10000 export HISTFILESIZE=10000 df du # 查看磁盘占用 df -h # 查看文件夹大小 du -h -d 1 # 排序 du -m
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022110602/">linux下设置定时任务</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
+</div>
+
+</header>
+<div class="content">
+crontab -e A B C D E USERNAME /path/to/command arg1 arg2 Explanation of above cron syntax: A: Minutes range: 0 – 59 B: Hours range: 0 – 23 C: Days range: 0 – 31 D: Months range: 0 – 12 E: Days of the week range: 0 – 7. Starting from Monday, 0 or 7 represents Sunday USERNAME: replace this with your username /path/to/command – The name of the script
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022070701/">bash函数 &amp; user 代行</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2022-07-07T16:00:00&#43;08:00">2022-07-07 16:00</time>
 </div>
@@ -146,9 +179,9 @@ bash函数 将函数追加写入~/.bashrc文件即可持久化，否则只在当
 </div>
 </article>
 
-<article class="list-view list-view--bash">
+<article class="list-view list-view--pgm">
 <header>
-<h2 class="title title-submitted"><a href="/blog/bash/2021022801/">将所有文件夹的内容分别打包到同名的zip文件内 &amp; 批量解压rar文件</a></h2>
+<h2 class="title title-submitted"><a href="/blog/pgm/2021022801/">将所有文件夹的内容分别打包到同名的zip文件内 &amp; 批量解压rar文件</a></h2>
 <div class="submitted">
 <time class="created-date" datetime="2021-02-28T21:02:00&#43;08:00">2021-02-28 21:02</time>
 </div>

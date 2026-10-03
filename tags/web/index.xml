@@ -11,9 +11,9 @@
     
     <item>
       <title>Mega &#43; nginx搭建webdav服务</title>
-      <link>/blog/tip/2023092401/</link>
+      <link>/blog/pgm/2023092401/</link>
       <pubDate>Sun, 24 Sep 2023 15:00:00 +0800</pubDate>
-      <guid>/blog/tip/2023092401/</guid>
+      <guid>/blog/pgm/2023092401/</guid>
       <description>&lt;h3 id=&#34;需求&#34;&gt;需求&lt;/h3&gt;
 &lt;p&gt;电子书阅读一直都是用的moonreader, 但是一直都是分别下载到每个设备里, 同步阅读进度很不方便,&lt;/p&gt;
 &lt;p&gt;以前也没想过这些, 这两年折腾docker, 发现很多服务都可以自己部署, 于是想到可以自己部署一个webdav服务&lt;/p&gt;
@@ -79,9 +79,9 @@ curl --user &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;user:pass&amp;#39
     
     <item>
       <title>使用Cloudflare &#43; Gmail创建自定义邮件地址, 收发邮件</title>
-      <link>/blog/web/2023082902/</link>
+      <link>/blog/pgm/2023082902/</link>
       <pubDate>Tue, 29 Aug 2023 19:00:00 +0800</pubDate>
-      <guid>/blog/web/2023082902/</guid>
+      <guid>/blog/pgm/2023082902/</guid>
       <description>&lt;h3 id=&#34;使用cloudflare的电子邮件路由功能接收邮件&#34;&gt;使用Cloudflare的电子邮件路由功能接收邮件&lt;/h3&gt;
 &lt;p&gt;进入站点 -&amp;gt; 电子邮件 -&amp;gt; 电子邮件路由 -&amp;gt; 创建, 设置下自定义邮件地址和转发邮箱地址即可&lt;/p&gt;
 &lt;h3 id=&#34;使用gmail以自定义邮件地址发送邮件&#34;&gt;使用Gmail以自定义邮件地址发送邮件&lt;/h3&gt;
@@ -110,9 +110,9 @@ curl --user &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;user:pass&amp;#39
     
     <item>
       <title>在启用Cloudflare DNS Proxy的情况下使用certbot自动更新letsencrypt证书</title>
-      <link>/blog/web/2023082901/</link>
+      <link>/blog/pgm/2023082901/</link>
       <pubDate>Tue, 29 Aug 2023 19:00:00 +0800</pubDate>
-      <guid>/blog/web/2023082901/</guid>
+      <guid>/blog/pgm/2023082901/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;结论是不能, 但是Cloudflare提供了API可以开关DNS Proxy, certbot提供了hook&lt;/p&gt;
 &lt;p&gt;于是就可以先关闭DNS Proxy, 再更新证书, 完成后再开启DNS Proxy&lt;/p&gt;
@@ -199,10 +199,546 @@ curl --request PATCH &lt;span style=&#34;color:#ae81ff&#34;&gt;\
     </item>
     
     <item>
+      <title>使用Utterances为Hugo添加评论功能</title>
+      <link>/blog/pgm/2023070203/</link>
+      <pubDate>Sun, 02 Jul 2023 18:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2023070203/</guid>
+      <description>&lt;h3 id=&#34;在github中添加uterances&#34;&gt;在github中添加Uterances&lt;/h3&gt;
+&lt;p&gt;因为评论是存储在仓库的issue中，所以要给Uterances权限，添加时只需要给一个公有仓库的权限即可（通常是github pages）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/apps/utterances&#34;&gt;utterances&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;生成产生评论的js脚本&#34;&gt;生成产生评论的js脚本&lt;/h3&gt;
+&lt;p&gt;输入repo，theme，点击copy即可&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://utteranc.es/&#34;&gt;utterances&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;设置hugo-theme&#34;&gt;设置hugo theme&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;layouts/partials/comments.html （没有则创建）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;{{- /* Comments area start */ -}}
+
+&amp;lt;!-- 上一步复制的东西 --&amp;gt;
+
+{{- /* Comments area end */ -}}
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;修改layouts/_default/single.html&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在&lt;code&gt;&amp;lt;/article&amp;gt;&lt;/code&gt;之前添加下列内容&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{- if (.Param &amp;quot;comments&amp;quot;) }}
+  {{- partial &amp;quot;comments.html&amp;quot; . }}
+{{- end }}
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;修改config.yml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;[Params]
+  ...
+  comments = true
+  ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.pugillum.com/posts/2021_11_28_github_issues_as_comments/&#34;&gt;Add comments to your Hugo blog linked to Github issues with utterances&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>jenkins使用记录</title>
+      <link>/blog/pgm/2023052101/</link>
+      <pubDate>Sun, 21 May 2023 18:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2023052101/</guid>
+      <description>&lt;h3 id=&#34;使用docker部署jenkins&#34;&gt;使用docker部署jenkins&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 1&lt;/span&gt;
+docker network create jenkins
+&lt;span style=&#34;color:#75715e&#34;&gt;# 2 为了能在docker的jenkins实例中运行docker命令&lt;/span&gt;
+docker run &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --name jenkins-docker &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --rm &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --detach &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --privileged &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --network jenkins &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --network-alias docker &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --env DOCKER_TLS_CERTDIR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/certs &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --volume jenkins-docker-certs:/certs/client &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --volume jenkins-data:/var/jenkins_home &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --publish 2376:2376 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  docker:dind &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --storage-driver overlay2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Dockerfile&#34; data-lang=&#34;Dockerfile&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 创建dockerfile&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; jenkins/jenkins:lts-jdk11&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;USER&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; root&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;ENV&lt;/span&gt; TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc/GMT-8&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; echo $TZ &amp;gt; /etc/timezone&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; apt-get update &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y lsb-release&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  https://download.docker.com/linux/debian/gpg&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;deb [arch=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;dpkg --print-architecture&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  https://download.docker.com/linux/debian \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;lsb_release -cs&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; stable&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/docker.list&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; apt-get update &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y docker-ce-cli&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;USER&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; jenkins&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; jenkins-plugin-cli --plugins &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blueocean docker-workflow&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 3 创建自定义Jenkins Docker image&lt;/span&gt;
+docker build -t myjenkins-blueocean:lts-jdk11 .
+&lt;span style=&#34;color:#75715e&#34;&gt;# 4 创建Jenkins Docker实例&lt;/span&gt;
+docker run &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --name jenkins-blueocean &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --restart&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;on-failure &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --detach &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --network jenkins &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --env DOCKER_HOST&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tcp://docker:2376 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --env DOCKER_CERT_PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/certs/client &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --env DOCKER_TLS_VERIFY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --publish 19080:8080 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --publish 49000:50000 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --volume jenkins-data:/var/jenkins_home &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --volume jenkins-docker-certs:/certs/client:ro &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  myjenkins-blueocean:lts-jdk11
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;启动报错-an-error-occurred-during-installation-no-such-plugin-cloudbees-folder&#34;&gt;启动报错 &lt;code&gt;An error occurred during installation: No such plugin: cloudbees-folder&lt;/code&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;重启即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;设置代理以访问githubgfw-again&#34;&gt;设置代理以访问github（GFW again）&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Manage Jenkins &amp;gt; Manage Plugins &amp;gt; Advanced &amp;gt; HTTP Proxy Configuration&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/53822806/how-to-configure-proxy-in-jenkins-to-access-git-repository&#34;&gt;How to configure proxy in Jenkins to access Git Repository?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>docker使用记录</title>
+      <link>/blog/pgm/2023052001/</link>
+      <pubDate>Sat, 20 May 2023 18:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2023052001/</guid>
+      <description>&lt;p&gt;使用docker实例命令行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker exec -it spring-cloud-config-server_1 bash
+&lt;span style=&#34;color:#75715e&#34;&gt;# 以root实行&lt;/span&gt;
+docker exec -u &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; -it mycontainer bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;网络配置，使不同的docker实例互相联通&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 连接mysql的docker实例&lt;/span&gt;
+docker network create mysql_network
+docker network connect mysql_network mysql_instance
+docker network connect mysql_network spring-cloud-config-server_1
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络列表&lt;/span&gt;
+docker network list
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看网络详细，找到gateway地址，加上3306即可访问mysql&lt;/span&gt;
+docker network inspect mysql_network
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 在docker实例中访问host&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 创建实例时添加下面的参数，即可在实例内通过host.docker.internal访问host&lt;/span&gt;
+--add-host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;host.docker.internal:host-gateway
+&lt;span style=&#34;color:#75715e&#34;&gt;# 使用docker compose的时候&lt;/span&gt;
+  servicename:
+    extra_hosts:
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host.docker.internal:host-gateway&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看实例&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 正在运行中的&lt;/span&gt;
+docker ps
+&lt;span style=&#34;color:#75715e&#34;&gt;# 全部&lt;/span&gt;
+docker ps -a
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例运行log&lt;/span&gt;
+docker logs containerName
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看实例占用内存等&lt;/span&gt;
+docker stats
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看创建实例时的命令&lt;/span&gt;
+docker inspect &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt; --format &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;curl -s https://gist.githubusercontent.com/ictus4u/e28b47dc826644412629093d5c9185be/raw/run.tpl&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt; containerName
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看image&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker image list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;docker compose&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 创建&lt;/span&gt;
+docker compose up
+&lt;span style=&#34;color:#75715e&#34;&gt;# 销毁&lt;/span&gt;
+docker compose down
+&lt;span style=&#34;color:#75715e&#34;&gt;# 启动&lt;/span&gt;
+docker compose start
+&lt;span style=&#34;color:#75715e&#34;&gt;# 停止&lt;/span&gt;
+docker compose stop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在离线电脑上安装image&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 从有网络的机器上下载image包&lt;/span&gt;
+docker save couchbase &amp;gt; couchbase.tar
+&lt;span style=&#34;color:#75715e&#34;&gt;# 放到离线机器上安装&lt;/span&gt;
+docker load &amp;lt; couchbase.tar.xz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;非root用户下运行docker&#34;&gt;非root用户下运行docker&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用spring的maven插件build image的时候，需要当前用户有docker的运行权限&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker ps
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;自建docker注册中心&#34;&gt;自建docker注册中心&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 生成一个自签名证书&lt;/span&gt;
+curl -sS https://raw.githubusercontent.com/antelle/generate-ip-cert/master/generate-ip-cert.sh | bash -s 127.0.0.1
+&lt;span style=&#34;color:#75715e&#34;&gt;# 不放心的话可以把脚本下载下来&lt;/span&gt;
+sh generate-ip-cert.sh 127.0.0.1
+&lt;span style=&#34;color:#75715e&#34;&gt;# 配置证书，把证书放到certs文件夹里&lt;/span&gt;
+mkdir -p certs
+&lt;span style=&#34;color:#75715e&#34;&gt;# 启动注册中心&lt;/span&gt;
+docker run -d &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --restart&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;always &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --name registry &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -v &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;pwd&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;/certs:/certs &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -e REGISTRY_HTTP_ADDR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0.0.0.0:443 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -e REGISTRY_HTTP_TLS_CERTIFICATE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/certs/domain.crt &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -e REGISTRY_HTTP_TLS_KEY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/certs/domain.key &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -p 443:443 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  registry:2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看是否启动成功（-k 忽略证书错误）&lt;/span&gt;
+curl -k https://127.0.0.1/v2/_catalog
+&lt;span style=&#34;color:#75715e&#34;&gt;# 虽然部署成功了，但是在往里面push image的时候，会报证书错误&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 添加证书到信任列表&lt;/span&gt;
+sudo cp domian.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates
+&lt;span style=&#34;color:#75715e&#34;&gt;# 重启docker&lt;/span&gt;
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看是否添加成功&lt;/span&gt;
+curl https://127.0.0.1/v2/_catalog
+&lt;span style=&#34;color:#75715e&#34;&gt;# 当使用jenkins的时候，用到了docker:dind，&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 这时候在docker:dind的实例里添加证书到信任列表&lt;/span&gt;
+docker exec -it -u &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; jenkins-docker sh
+cat /certs/ca.crt &amp;gt;&amp;gt; /etc/ssl/certs/ca-certificates.crt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 当无法把文件传到实例里的时候，可以把证书内容复制出来&lt;/span&gt;
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-----BEGIN CERTIFICATE-----
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;...
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;-----END CERTIFICATE-----
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/ssl/certs/ca-certificates.crt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 之后重启实例&lt;/span&gt;
+docker restart jenkins-docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;复制容器内文件到host&#34;&gt;复制容器内文件到host&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker cp mycontainer:/path/to/file file
+&lt;span style=&#34;color:#75715e&#34;&gt;# 导出容器内全部文件&lt;/span&gt;
+docker export mycontainer -o container_fs.tar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;清理磁盘空间overlay2目录过大&#34;&gt;清理磁盘空间(overlay2目录过大)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;/var/lib/docker/overlay2&lt;/code&gt; 过大时,用官方命令逐步清理,不要直接手动删除该目录,否则docker会损坏&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看容器,镜像,卷,构建缓存的使用量&lt;/span&gt;
+docker system df
+&lt;span style=&#34;color:#75715e&#34;&gt;# 删除停止的容器,未使用的网络,无标签的旧镜像(dangling image),构建缓存&lt;/span&gt;
+docker system prune
+&lt;span style=&#34;color:#75715e&#34;&gt;# 加上-a,删除所有未被使用的镜像(不只是无标签的)&lt;/span&gt;
+docker system prune --all
+&lt;span style=&#34;color:#75715e&#34;&gt;# 加上--volumes,删除未被使用的卷,卷中数据无法恢复&lt;/span&gt;
+docker system prune --volumes
+&lt;span style=&#34;color:#75715e&#34;&gt;# 等价于只清理卷&lt;/span&gt;
+docker volume prune
+&lt;span style=&#34;color:#75715e&#34;&gt;# 清理buildx的构建缓存&lt;/span&gt;
+docker buildx prune --all
+&lt;span style=&#34;color:#75715e&#34;&gt;# 清理后容量没减少的话,可能是运行中的容器还在占用文件&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 停掉不需要的容器后重新prune&lt;/span&gt;
+docker stop containerName
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/install/linux-postinstall/&#34;&gt;Manage Docker as a non-root user&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/htmlsingle/#build-image.examples.builder-configuration&#34;&gt;Spring Boot Maven Plugin Documentation - Builder Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/spring-boot-docker-start-with-profile&#34;&gt;Starting Spring Boot Application in Docker With Profile&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/ops/docker-compose&#34;&gt;Introduction to Docker Compose | Baeldung&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reflectoring.io/spring-boot-docker/&#34;&gt;Creating Optimized Docker Images for a Spring Boot Application&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/68023763/spring-boot-buildpack-always-downloads-latest-packeto-images-from-git&#34;&gt;spring boot buildpack always downloads latest packeto images from git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container&#34;&gt;How to show the run command of a docker container&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container&#34;&gt;Root password inside a Docker container - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found&#34;&gt;Docker - Ubuntu - bash: ping: command not found - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37905763/how-do-i-download-docker-images-without-using-the-pull-command&#34;&gt;How do I download Docker images without using the pull command?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/registry/deploying/&#34;&gt;Deploy a registry server | Docker Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@antelle/how-to-generate-a-self-signed-ssl-certificate-for-an-ip-address-f0dd8dddf754&#34;&gt;How to generate a self-signed SSL certificate for an IP address | by Dimitri Witkowski | Medium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/23733678/how-to-search-images-from-private-1-0-registry-in-docker&#34;&gt;How to search images from private 1.0 registry in docker?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/90450/adding-a-self-signed-certificate-to-the-trusted-list/132163#132163&#34;&gt;curl - Adding a self-signed certificate to the &amp;ldquo;trusted list&amp;rdquo; - Unix &amp;amp; Linux Stack Exchange&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/50768317/docker-pull-certificate-signed-by-unknown-authority/50768414#50768414&#34;&gt;ssl - &amp;ldquo;docker pull&amp;rdquo; certificate signed by unknown authority - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitlab.com/gitlab-org/gitlab-runner/-/issues/1842&#34;&gt;Problem building with docker-in-docker using gitlab Registry Container with self-signed certificate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.px.dev/container-filesystems/&#34;&gt;Where are my container&amp;rsquo;s files? Inspecting container filesystems | Pixie Labs Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>spring boot开发记录</title>
+      <link>/blog/pgm/2023042501/</link>
+      <pubDate>Tue, 25 Apr 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2023042501/</guid>
+      <description>&lt;h3 id=&#34;热部署&#34;&gt;热部署&lt;/h3&gt;
+&lt;p&gt;maven中添加下面的依赖&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-devtools&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;optional&amp;gt;&lt;/span&gt;true&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/optional&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;启动jar时修改log级别&#34;&gt;启动jar时，修改log级别&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;java -jar myapp.jar --debug
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;切换命令行maven的jdk版本&#34;&gt;切换命令行maven的JDK版本&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 重点在于修改JAVA_HOME环境变量&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# git bash&lt;/span&gt;
+export JAVA_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/c/Program Files/Eclipse Adoptium/jdk-17.0.4.8-hotspot&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# or&lt;/span&gt;
+declare -x JAVA_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/c/Program Files/Eclipse Adoptium/jdk-17.0.4.8-hotspot&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# linux&lt;/span&gt;
+JAVA_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/opt/jdk8u265-b01
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;切换命令行java的jdk版本&#34;&gt;切换命令行java的JDK版本&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 重点在于修改PATH环境变量&lt;/span&gt;
+export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/c/Program Files/Eclipse Adoptium/jdk-17.0.4.8-hotspot/bin:&lt;/span&gt;$PATH&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;序列化对象时的jackson设置&#34;&gt;序列化对象时的jackson设置&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 不输出该字段
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@com.fasterxml.jackson.annotation.JsonIgnore&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; intValue&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// 设置日期的输出格式
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@com.fasterxml.jackson.annotation.JsonFormat&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;shape &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; JsonFormat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Shape&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;STRING&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; pattern &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yyyy-MM-dd&amp;#39;T&amp;#39;HH:mm:ss.SSS&amp;#39;Z&amp;#39;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; timezone &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UTC&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; Date date&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// 忽略为null的字段
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@com.fasterxml.jackson.annotation.JsonInclude&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Include&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;NON_NULL&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Foo&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  String bar&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// 解析日期格式输入
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@org.springframework.format.annotation.DateTimeFormat&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;pattern &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yyyy-MM-dd HH:mm:ss&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; Date date&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;输入中包含文件&#34;&gt;输入中包含文件&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 不使用json形式提交+@RequestBody, 改用传统form
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-bash中运行maven时中文乱码&#34;&gt;git bash中运行maven时中文乱码&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 切换编码为utf-8&lt;/span&gt;
+export JAVA_TOOL_OPTIONS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Dfile.encoding=UTF-8&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 还不行,切换语言&lt;/span&gt;
+export JAVA_TOOL_OPTIONS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Duser.language=en&amp;#34;&lt;/span&gt;
+export JAVA_TOOL_OPTIONS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Duser.language=en -Dfile.encoding=UTF-8&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/46144346/hot-swapping-in-spring-boot-in-visual-studio-code&#34;&gt;Hot swapping in Spring Boot in Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/1.5.22.RELEASE/reference/html/boot-features-logging.html&#34;&gt;26. Logging&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2503658/specify-jdk-for-maven-to-use&#34;&gt;settings - Specify JDK for Maven to use - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/821094/what-is-the-difference-between-set-env-declare-and-export-when-setting-a-varia&#34;&gt;bash - What is the difference between set, env, declare and export when setting a variable in a Linux shell? - Super User&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.w3docs.com/snippets/java/date-format-mapping-to-json-jackson.html#:~:text=You%20can%20use%20the%20%40JsonFormat,serializing%20or%20deserializing%20using%20Jackson.&amp;amp;text=This%20will%20format%20the%20date,&#39;HH%3Amm%3Ass.&#34;&gt;Date format Mapping to JSON Jackson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/jackson-ignore-properties-on-serialization&#34;&gt;Jackson Ignore Properties on Marshalling | Baeldung&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11757487/how-to-tell-jackson-to-ignore-a-field-during-serialization-if-its-value-is-null&#34;&gt;java - How to tell Jackson to ignore a field during serialization if its value is null? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reflectoring.io/jackson/&#34;&gt;All You Need To Know About JSON Parsing With Jackson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/48051177/content-type-multipart-form-databoundary-charset-utf-8-not-supported&#34;&gt;java - Content type &amp;lsquo;multipart/form-data;boundary=&amp;mdash;-&amp;hellip;;charset=UTF-8&amp;rsquo; not supported - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/71905990/git-bash-terminal-encoding-issue-with-java&#34;&gt;Git Bash Terminal Encoding Issue with Java&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/envvars002.html&#34;&gt;The JAVA_TOOL_OPTIONS Environment Variable&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用nginx和ssh tunneling实现通过公网ip访问本地计算机</title>
+      <link>/blog/pgm/2023042502/</link>
+      <pubDate>Tue, 25 Apr 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2023042502/</guid>
+      <description>&lt;h4 id=&#34;假设本地计算机上已开发的应用可通过httplocalhost19080来访问&#34;&gt;假设本地计算机上，已开发的应用可通过http://localhost:19080来访问&lt;/h4&gt;
+&lt;h4 id=&#34;在有公网ip的服务器上添加下列配置后部署nginx监听19001端口收到请求后发送到19000端口&#34;&gt;在有公网ip的服务器上添加下列配置后部署nginx（监听19001端口，收到请求后发送到19000端口）&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-nginxconf&#34; data-lang=&#34;nginxconf&#34;&gt;server {
+    listen       19001;
+    location / {
+        proxy_pass http://localhost:19000;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;在本地计算机上设置ssh-tunneling&#34;&gt;在本地计算机上设置SSH tunneling&lt;/h4&gt;
+&lt;h4 id=&#34;与远程服务器的19000端口建立连接本地在19080端口响应&#34;&gt;与远程服务器的19000端口建立连接，本地在19080端口响应&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ssh -f -N -T -R 19000:localhost:19080 -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;22&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;username@remote&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 直连不行的话（thanks to GFW），可设置代理&lt;/span&gt;
+ssh -f -N -T -R 19000:localhost:19080 -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;22&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;username@remote&amp;#39;&lt;/span&gt; -o &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ProxyCommand=nc -X connect -x PROXYHOST:PROXYPORT %h %p&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;配置完成后即可访问&#34;&gt;配置完成后即可访问&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;http://远程服务器ip:19001/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/the-software-reliever/expose-localhost-to-the-public-www-with-a-vps-nginx-and-ssh-tunneling-daefc0275757&#34;&gt;Expose localhost to the public WWW with a VPS, nginx and SSH tunneling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dev.to/elwin013/how-to-expose-local-service-using-nginx-and-ssh-1jmj&#34;&gt;How to expose local service using nginx and SSH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/19161960/connect-with-ssh-through-a-proxy&#34;&gt;Connect with SSH through a proxy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用OBS虚拟摄像头</title>
+      <link>/blog/pgm/web-2023021101/</link>
+      <pubDate>Sat, 11 Feb 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/pgm/web-2023021101/</guid>
+      <description>&lt;p&gt;工作中要测试网页的视频录制功能，但是是在客户的虚拟机上，没有摄像头，这时候可以使用OBS模拟摄像头来测试&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装OBS，及FireFox（CHROME无法选择虚拟摄像头）&lt;/li&gt;
+&lt;li&gt;启动OBS，在下方来源中添加视频文件，然后点击【启动虚拟摄像机】右边的设置，选择输出类型为来源，选择视频文件，点击【启动虚拟摄像机】&lt;/li&gt;
+&lt;li&gt;在Firefox中测试，录制时会弹窗选择摄像头，选择【OBS Virtual Camera】即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://obsproject.com/kb/virtual-camera-guide&#34;&gt;Virtual Camera Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.onlinemictest.com/webcam-test/&#34;&gt;Webcam Test&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>将SpringBoot应用部署到docker</title>
+      <link>/blog/pgm/2023020501/</link>
+      <pubDate>Sun, 05 Feb 2023 20:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2023020501/</guid>
+      <description>&lt;h3 id=&#34;手动创建image&#34;&gt;手动创建image&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;在项目内创建Dockerfile&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; maven:3.8.7-eclipse-temurin-11-focal&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;COPY&lt;/span&gt; . .&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CMD&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mvn&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;spring-boot:run&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Dspring-boot.run.profiles=docker&amp;#34;&lt;/span&gt;]&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# ENTRYPOINT [&amp;#34;mvn&amp;#34;, &amp;#34;spring-boot:run&amp;#34;, &amp;#34;-Dspring-boot.run.profiles=docker&amp;#34;]&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;创建Docker Image&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# build过程中下载经常卡住(不知道是不是gfw，因为每次卡住的资源都不一样)，&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 前面加DOCKER_BUILDKIT=1，使缓存生效，这样重试的时候已经下载过的资源就不会重新下载&lt;/span&gt;
+sudo DOCKER_BUILDKIT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; docker build -t spring-cloud-config-server .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;运行docker实例&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# -e 设置环境变量（TZ：实例的时区）&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -d 运行在后台&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# --name spring-cloud-config-server_1 指定实例名&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -v /home/vu18/.m2:/root/.m2 将主机的maven仓库映射到docker实例，免得再次下载&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -p8888:8888 主机端口：docker实例端口映射&lt;/span&gt;
+sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc/GMT-8 -d --name spring-cloud-config-server_1 -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;HOME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/.m2:/root/.m2 -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PWD&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/logs:/logs -p8888:8888 spring-cloud-config-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用spring-boot-maven-plugin创建image需要当前用户有执行docker的权限2023052001非root用户下运行docker&#34;&gt;使用spring-boot-maven-plugin创建image(&lt;a href=&#34;../2023052001/#%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E4%B8%8B%E8%BF%90%E8%A1%8Cdocker&#34;&gt;需要当前用户有执行docker的权限&lt;/a&gt;)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mvn spring-boot:build-image
+sudo docker run -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Etc/GMT-8 -d --name config-server_1 -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SPRING_PROFILES_ACTIVE=docker&amp;#34;&lt;/span&gt; -v &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PWD&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/logs:/logs -p8888:8888 config-server:0.0.1-SNAPSHOT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;注意事项&#34;&gt;注意事项&lt;/h4&gt;
+&lt;p&gt;第一个命令到最后会从github下载jre包，因为gfw会报错，需要在pom.xml中配置代理，而且代理只支持http代理，且不能使用localhost或者127.0.0.1作为ip，而应使用本机的网卡ip地址。（http代理尝试用shadowsocks-rust配了一下没成功，可能哪里配错了，用v2ray配置成功了）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pom.xml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;project&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-maven-plugin&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;image&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;env&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;HTTP_PROXY&amp;gt;&lt;/span&gt;http://proxy.example.com&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/HTTP_PROXY&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;HTTPS_PROXY&amp;gt;&lt;/span&gt;https://proxy.example.com&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/HTTPS_PROXY&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/env&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 防止重复下载buildpack --&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;pullPolicy&amp;gt;&lt;/span&gt;IF_NOT_PRESENT&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/pullPolicy&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/image&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;v2ray-config.json&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsonc&#34; data-lang=&#34;jsonc&#34;&gt;&amp;quot;inbounds&amp;quot;: [
+    {
+        {
+            &amp;quot;port&amp;quot;: 1086,
+            &amp;quot;listen&amp;quot;: &amp;quot;0.0.0.0&amp;quot;,
+            &amp;quot;protocol&amp;quot;: &amp;quot;http&amp;quot;,
+            &amp;quot;settings&amp;quot;: {
+                &amp;quot;udp&amp;quot;: false
+            }
+        }
+    }
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/dockerizing-spring-boot-application&#34;&gt;Dockerizing a Spring Boot Application&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/get-started/02_our_app/&#34;&gt;Containerize an application&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/build/buildkit/&#34;&gt;BuildKit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/LucasSong/p/12701357.html&#34;&gt;CMD和ENTRYPOINT的区别&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/36234088/how-do-i-point-a-docker-image-to-my-m2-directory-for-running-maven-in-docker-on&#34;&gt;How do I point a docker image to my .m2 directory for running maven in docker on a mac?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/58764482/19120213&#34;&gt;accessing a docker container from another container&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/18861834/mounting-multiple-volumes-on-a-docker-container&#34;&gt;Mounting multiple volumes on a docker container?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JS库使用问题汇总</title>
+      <link>/blog/pgm/2022121401/</link>
+      <pubDate>Wed, 14 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2022121401/</guid>
+      <description>&lt;h2 id=&#34;___html2canvas___&#34;&gt;&lt;em&gt;&lt;strong&gt;html2canvas&lt;/strong&gt;&lt;/em&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;使html2canvas-在ie11中工作&#34;&gt;使html2canvas 在ie11中工作&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;html2canvas-在ie11中渲染出不明色块&#34;&gt;html2canvas 在ie11中渲染出不明色块&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;html2canvas&lt;/span&gt;(document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;#preview_modal&amp;#39;&lt;/span&gt;), {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;allowTaint&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;useCORS&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用-html2canvas-生成图片在新tab打开&#34;&gt;使用 html2canvas 生成图片在新tab打开&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;image&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Image&lt;/span&gt;();
+&lt;span style=&#34;color:#a6e22e&#34;&gt;image&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;toDataURL&lt;/span&gt;();
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;wImage&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; window.&lt;span style=&#34;color:#a6e22e&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+&lt;span style=&#34;color:#a6e22e&#34;&gt;setTimeout&lt;/span&gt;(() =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;wImage&lt;/span&gt;.document.&lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
+&lt;span style=&#34;color:#a6e22e&#34;&gt;wImage&lt;/span&gt;.document.&lt;span style=&#34;color:#a6e22e&#34;&gt;write&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;image&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;outerHTML&lt;/span&gt;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用-html2canvas-生成图片并下载&#34;&gt;使用 html2canvas 生成图片并下载&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;link&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;);
+&lt;span style=&#34;color:#a6e22e&#34;&gt;link&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;download&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;filename.png&amp;#39;&lt;/span&gt;;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;link&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;toDataURL&lt;/span&gt;()
+&lt;span style=&#34;color:#a6e22e&#34;&gt;link&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;click&lt;/span&gt;();
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// 适配IE11
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;html2canvas&lt;/span&gt;(document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#outImage&amp;#34;&lt;/span&gt;), { &lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; }).&lt;span style=&#34;color:#a6e22e&#34;&gt;then&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;msToBlob&lt;/span&gt;) { &lt;span style=&#34;color:#75715e&#34;&gt;// IE
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;blob&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;msToBlob&lt;/span&gt;();
+        window.&lt;span style=&#34;color:#a6e22e&#34;&gt;navigator&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;msSaveBlob&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;blob&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;name.png&amp;#39;&lt;/span&gt;);
+    } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; { &lt;span style=&#34;color:#75715e&#34;&gt;// CH, FF
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;link&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;);
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;link&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;download&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;name.png&amp;#39;&lt;/span&gt;;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;link&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;toDataURL&lt;/span&gt;()
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;link&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;click&lt;/span&gt;();
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;获取frame内的元素&#34;&gt;获取frame内的元素&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;window.&lt;span style=&#34;color:#a6e22e&#34;&gt;frames&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;].document.&lt;span style=&#34;color:#a6e22e&#34;&gt;getElementById&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;someElementId&amp;#39;&lt;/span&gt;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;限制上传文件大小&#34;&gt;限制上传文件大小&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;uploadField&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;getElementById&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;file&amp;#34;&lt;/span&gt;);
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;uploadField&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;onchange&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;() {
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 1MB = 1048576 1KB=1024
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;files&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;].&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2097152&lt;/span&gt;){
+       &lt;span style=&#34;color:#a6e22e&#34;&gt;alert&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;File is too big!&amp;#34;&lt;/span&gt;);
+       &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;;
+    };
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;使用js写入文件并下载&#34;&gt;使用js写入文件并下载&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;downloadToFile&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;content&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;filename&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;contentType&lt;/span&gt;) =&amp;gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;file&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Blob&lt;/span&gt;([&lt;span style=&#34;color:#a6e22e&#34;&gt;content&lt;/span&gt;], { &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;contentType&lt;/span&gt; });
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;URL&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;createObjectURL&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;file&lt;/span&gt;);
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;download&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;filename&lt;/span&gt;;
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;click&lt;/span&gt;();
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;URL&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;revokeObjectURL&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;);
+};
+
+document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;#btnSave&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;click&amp;#39;&lt;/span&gt;, () =&amp;gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;textArea&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;textarea&amp;#39;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;downloadToFile&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;textArea&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;my-new-file.txt&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;text/plain&amp;#39;&lt;/span&gt;);
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/57992901/html2canvas-not-rendering-properly-overlapping-color&#34;&gt;html2canvas not rendering properly (overlapping color)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://html2canvas.hertzen.com/documentation.html#browser-compatibility&#34;&gt;About html2canvas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/taylorhakes/promise-polyfill&#34;&gt;Promise Polyfill&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/21860633/download-canvas-to-image-in-ie-using-javascript&#34;&gt;Download canvas to Image in IE using Javascript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2509934/how-can-i-get-an-element-from-within-a-frameset-frame-using-javascript&#34;&gt;How can I get an element from within a frameset frame using JavaScript?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/5697605/limit-the-size-of-a-file-upload-html-input-element&#34;&gt;Limit the size of a file upload (html input element) - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://robkendal.co.uk/blog/2020-04-17-saving-text-to-client-side-file-using-vanilla-js/&#34;&gt;Saving text to a client-side file using vanilla JS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>工作笔记2016-2021</title>
-      <link>/blog/tip/2022120601/</link>
+      <link>/blog/pgm/2022120601/</link>
       <pubDate>Tue, 06 Dec 2022 20:00:00 +0800</pubDate>
-      <guid>/blog/tip/2022120601/</guid>
+      <guid>/blog/pgm/2022120601/</guid>
       <description>&lt;h3 id=&#34;停止网页重定向&#34;&gt;停止网页重定向&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;window.&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;beforeunload&amp;#34;&lt;/span&gt;, () =&amp;gt; { &lt;span style=&#34;color:#66d9ef&#34;&gt;debugger&lt;/span&gt;; }, &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;);
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;js转换字符为unicode&#34;&gt;JS转换字符为UNICODE&lt;/h3&gt;
@@ -455,6 +991,589 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
 &lt;li&gt;&lt;a href=&#34;https://appuals.com/how-to-kill-process-on-port/&#34;&gt;How to Kill Process on Port?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim&#34;&gt;What&amp;rsquo;s a quick way to comment/uncomment lines in Vim?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line&#34;&gt;How to replace a string in multiple files in linux command line - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Spring开发memo</title>
+      <link>/blog/pgm/2022111501/</link>
+      <pubDate>Tue, 15 Nov 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2022111501/</guid>
+      <description>&lt;h3 id=&#34;解密jasypt密文&#34;&gt;解密Jasypt密文&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;开发中遇到一些配置的密文，有解密的需要&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;AES256TextEncryptor encryptor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; AES256TextEncryptor&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+encryptor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setPassword&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;some_salt&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+String plainText &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; encryptor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;decrypt&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;myEncryptedText&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Decrypted: &amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;plainText&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;winmerge-除外特定文件或文件夹&#34;&gt;winmerge 除外特定文件或文件夹&lt;/h3&gt;
+&lt;p&gt;进入 Tools | Filters&amp;hellip; | Filefilters选项，编辑&lt;code&gt;Exclude Source Control&lt;/code&gt;(也可以新建，但是编辑这个更方便，内置filter可以除外掉版本管理文件)&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-flt&#34; data-lang=&#34;flt&#34;&gt;## Ignore Java class and jar files
+f: \.class$
+f: \.jar$
+
+## Ignore target directories
+d: \\target$
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;maven运行时出现警告-an-illegal-reflective-access-operation-has-occurred&#34;&gt;maven运行时出现警告: An illegal reflective access operation has occurred&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;wget https://www.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+sudo update-alternatives --install /usr/bin/mvn mvn /opt/apache-maven-3.6.3/bin/mvn &lt;span style=&#34;color:#ae81ff&#34;&gt;363&lt;/span&gt;
+sudo update-alternatives --config mvn
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;手动调用spring组数据校验&#34;&gt;手动调用spring组数据校验&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 定义SmartValidator
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Bean&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Primary&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Validator &lt;span style=&#34;color:#a6e22e&#34;&gt;myValidator&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; LocalValidatorFactoryBean&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 使用的时候注入SmartValidator, validationHints可以指定group
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    smartValidator&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;validate&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;target&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; errors&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; validationHints&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// 默认校验只能单层, 如果自定义对象成员变量时, 就需要给成员变量加@Valid, 才能校验自定义对象里的内容
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;并发控制&#34;&gt;并发控制&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 1. 定义HttpSessionEventPublisher
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Bean&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; HttpSessionEventPublisher &lt;span style=&#34;color:#a6e22e&#34;&gt;httpSessionEventPublisher&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HttpSessionEventPublisher&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;// 2. 设置maximumSessions
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Bean&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; SecurityFilterChain &lt;span style=&#34;color:#a6e22e&#34;&gt;filterChain&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpSecurity http&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    http
+        &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sessionManagement&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;session &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; session
+            &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;maximumSessions&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; http&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;build&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;导出svn-patch&#34;&gt;导出svn patch&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Show Log -&amp;gt; Show differences as unified diff -&amp;gt; copy + save to file
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/22067552/decrypt-using-jasypt&#34;&gt;Decrypt using Jasypt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/1477287/19120213&#34;&gt;How to ignore SVN folders in WinMerge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/63876216/19120213&#34;&gt;maven: An illegal reflective access operation has occurred&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/javax-validation-groups&#34;&gt;Grouping Javax Validation Constraints | Baeldung&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spring-projects/spring-boot/issues/8495&#34;&gt;Multiple &amp;lsquo;org.springframework.validation.Validator&amp;rsquo; beans are exposed as of Spring Boot 1.5 · Issue #8495 · spring-projects/spring-boot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28150405/validation-of-a-list-of-objects-in-spring&#34;&gt;java - Validation of a list of objects in Spring - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/28702809/how-to-manually-trigger-spring-validation&#34;&gt;java - How to manually trigger Spring validation? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/35766872/what-type-of-exception-to-throw-in-spring-restcontroller-when-validation-fails&#34;&gt;java - What type of exception to throw in Spring RestController when validation fails? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/huangjiandong2012/p/4040030.html&#34;&gt;Spring Security Session管理 - 黄建东 - 博客园&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html#ns-concurrent-sessions&#34;&gt;Session Management - Spring Security Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mtyurt.net/post/spring-expiring-all-sessions-of-a-user.html&#34;&gt;Spring: Expiring all sessions of a user | Mert Yürtbilir&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/15031729/svn-create-patch-from-committed-code&#34;&gt;diff - SVN create patch from committed code? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/1625406/how-to-use-tortoisesvn-via-command-line&#34;&gt;svn - How to use TortoiseSVN via command line? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JavaScript POST方式打开新窗口</title>
+      <link>/blog/pgm/2022111402/</link>
+      <pubDate>Mon, 14 Nov 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2022111402/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;openWindowWithPost&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;, {
+		&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+		&lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,
+	});
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;openWindowWithPost&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;form&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UserInfo&amp;#34;&lt;/span&gt;;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;method&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;POST&amp;#34;&lt;/span&gt;;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;action&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;input&amp;#34;&lt;/span&gt;);
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;input&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;input&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt;;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;input&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt;];
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;appendChild&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;input&lt;/span&gt;);
+    }
+    document.&lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;appendChild&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;);
+    window.&lt;span style=&#34;color:#a6e22e&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;UserInfo&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;width=1000,height=550,left=100,top=100&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;submit&lt;/span&gt;();
+    document.&lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;removeChild&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;form&lt;/span&gt;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://codepad.co/snippet/javascript-open-new-window-posting-parameters&#34;&gt;javascript-open-new-window-posting-parameters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/3951768/window-open-and-pass-parameters-by-post-method&#34;&gt;Window.open and pass parameters by post method&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://thewebdev.info/2021/05/31/how-to-filter-or-map-nodelists-with-javascript/&#34;&gt;How to Filter or Map Nodelists with JavaScript?&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>引用cdn静态资源时添加哈希值验证防篡改</title>
+      <link>/blog/pgm/2022071101/</link>
+      <pubDate>Mon, 11 Jul 2022 17:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2022071101/</guid>
+      <description>&lt;p&gt;例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://example.com/example-framework.js&amp;#34;&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;integrity&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&amp;#34;&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;crossorigin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;生成-sri-哈希的工具&#34;&gt;生成 SRI 哈希的工具&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;shasum -b -a &lt;span style=&#34;color:#ae81ff&#34;&gt;384&lt;/span&gt; example-framework.js | xxd -r -p | base64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity&#34;&gt;Subresource Integrity - Web 安全 | MDN&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>测试Google Cloud Translation API v2</title>
+      <link>/blog/pgm/20220703/</link>
+      <pubDate>Sun, 03 Jul 2022 10:33:00 +0800</pubDate>
+      <guid>/blog/pgm/20220703/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;事先申请api key，免费额度足够用了(每月50w字符)&lt;/li&gt;
+&lt;li&gt;curl测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -s -X POST -H &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Content-Type: application/json&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\ \
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --data &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;q&amp;#39;: &amp;#39;The Great Pyramid of Giza (also known as the Pyramid of Khufu or the
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        Pyramid of Cheops) is the oldest and largest of the three pyramids in
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        the Giza pyramid complex.&amp;#39;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;source&amp;#39;: &amp;#39;en&amp;#39;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;target&amp;#39;: &amp;#39;es&amp;#39;,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;format&amp;#39;: &amp;#39;text&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://translation.googleapis.com/language/translate/v2?key=XXXXXXXXXXXXXXXXXXXXXXXXXX&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/62231731/google-cloud-translation-api-issue&#34;&gt;Google cloud translation API issue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/translate/docs/reference/rest/v2/translate&#34;&gt;Method: translate | Cloud Translation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/translate/pricing&#34;&gt;Pricing | Cloud Translation&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>tomcat安装&amp;let&#39;s encrypt配置</title>
+      <link>/blog/pgm/20190620/</link>
+      <pubDate>Thu, 20 Jun 2019 01:33:58 +0800</pubDate>
+      <guid>/blog/pgm/20190620/</guid>
+      <description>&lt;h3 id=&#34;安装java&#34;&gt;安装java&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cd /home
+tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz
+&lt;span style=&#34;color:#75715e&#34;&gt;# temp&lt;/span&gt;
+export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$PWD/jdk8u212-b04/bin:$PATH
+java -version
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# final&lt;/span&gt;
+vi /etc/profile
+&amp;gt;
+JAVA_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/home/jdk8u212-b04
+PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$PATH:$HOME/bin:$JAVA_HOME/bin
+export JAVA_HOME
+export PATH
+&amp;gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# log out and log in&lt;/span&gt;
+
+wget -O- -q -T &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -t &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b04/OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz.sha256.txt | sha256sum -c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;安装tomcat&#34;&gt;安装tomcat&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo groupadd tomcat
+sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+
+cd /tmp
+curl -O http://apache.mirrors.pair.com/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.tar.gz
+sudo mkdir /opt/tomcat
+sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;1
+
+cd /opt/tomcat
+sudo chgrp -R tomcat /opt/tomcat
+sudo chmod -R g+r conf
+sudo chmod g+x conf
+sudo chown -R tomcat webapps/ work/ temp/ logs/
+
+sudo nano /etc/systemd/system/tomcat.service
+&lt;span style=&#34;color:#75715e&#34;&gt;# 修改Environment=JAVA_HOME=/home/jdk8u212-b04&lt;/span&gt;
+
+sudo systemctl daemon-reload
+sudo systemctl start tomcat
+sudo systemctl status tomcat
+
+sudo ufw allow 8080
+
+sudo systemctl enable tomcat
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;现在应该可以用8080端口正常访问了&lt;/p&gt;
+&lt;h3 id=&#34;转发80端口到8080端口&#34;&gt;转发80端口到8080端口&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;iptables -t nat -I PREROUTING -p tcp --dport &lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt; -j REDIRECT --to-ports 8080
+iptables -t nat -I OUTPUT -p tcp -o lo --dport &lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt; -j REDIRECT --to-ports 8080
+
+iptables -t nat -L -n  | grep 8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;改完之后应该可以不用加端口号访问了，以后443转发8443也是同样的操作&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;iptables -t nat -I PREROUTING -p tcp --dport &lt;span style=&#34;color:#ae81ff&#34;&gt;443&lt;/span&gt; -j REDIRECT --to-ports 8443
+iptables -t nat -I OUTPUT -p tcp -o lo --dport &lt;span style=&#34;color:#ae81ff&#34;&gt;443&lt;/span&gt; -j REDIRECT --to-ports 8443
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;配置letsencrypt&#34;&gt;配置letsencrypt&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot
+
+sudo certbot certonly --webroot
+&lt;span style=&#34;color:#75715e&#34;&gt;# 这里需要输入两个东西，域名和tomcat ROOT所在地址&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# www.xxx.com&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# /opt/tomcat/webapps/ROOT&lt;/span&gt;
+
+cd /etc/letsencrypt/live/www.xxx.com
+cp cert.pem /opt/tomcat/conf
+cp chain.pem /opt/tomcat/conf
+cp privkey.pem /opt/tomcat/conf
+
+chown tomcat:tomcat *.pem
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# etc/letsencrypt/renewal-hooks/post/copy2tomcat.sh&lt;/span&gt;
+cd /etc/letsencrypt/live/www.xxx.cc
+cp cert.pem /opt/tomcat/conf
+cp chain.pem /opt/tomcat/conf
+cp privkey.pem /opt/tomcat/conf
+
+cd /opt/tomcat/conf
+chown tomcat:tomcat *.pem
+
+service tomcat restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后转发443端口到8443端口之后，就可以通过https访问网站了&lt;/p&gt;
+&lt;p&gt;###重定向http到https&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;server.xml&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;Connector&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;port=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;8080&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;protocol=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;HTTP/1.1&amp;#34;&lt;/span&gt; 
+               &lt;span style=&#34;color:#a6e22e&#34;&gt;redirectPort=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;443&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;web.xml(&lt;code&gt;&amp;lt;/web-app&amp;gt;之前&lt;/code&gt;)&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- Require HTTPS for everything except /img (favicon) and /css. --&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;security-constraint&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;web-resource-collection&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;web-resource-name&amp;gt;&lt;/span&gt;HTTPSOnly&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/web-resource-name&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/*&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/web-resource-collection&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;user-data-constraint&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;transport-guarantee&amp;gt;&lt;/span&gt;CONFIDENTIAL&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/transport-guarantee&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/user-data-constraint&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/security-constraint&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;security-constraint&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;web-resource-collection&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;web-resource-name&amp;gt;&lt;/span&gt;HTTPSOrHTTP&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/web-resource-name&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;*.ico&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/img/*&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/css/*&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/web-resource-collection&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;user-data-constraint&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;transport-guarantee&amp;gt;&lt;/span&gt;NONE&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/transport-guarantee&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/user-data-constraint&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/security-constraint&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ps:修改完之后记得查看文件的权限，如果被改成root的话，需要再修改权限&lt;code&gt;chown tomcat:tomcat web.xml&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;自动更新证书todo&#34;&gt;自动更新证书（todo）&lt;/h3&gt;
+&lt;h3 id=&#34;tomcat限制内存使用量&#34;&gt;tomcat限制内存使用量&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# In your /tomcat/bin/setenv.sh file (create if it doesn&amp;#39;t exist)&lt;/span&gt;
+export CATALINA_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$CATALINA_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt; -Xms156m -Xmx218m -server&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804&#34;&gt;https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://adoptopenjdk.net/installation.html#x64_linux-jdk&#34;&gt;https://adoptopenjdk.net/installation.html#x64_linux-jdk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/211536/iptables-port-redirect-not-working-for-localhost&#34;&gt;https://serverfault.com/questions/211536/iptables-port-redirect-not-working-for-localhost&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://certbot.eff.org/lets-encrypt/ubuntubionic-other&#34;&gt;https://certbot.eff.org/lets-encrypt/ubuntubionic-other&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@raupach/how-to-install-lets-encrypt-with-tomcat-3db8a469e3d2&#34;&gt;https://medium.com/@raupach/how-to-install-lets-encrypt-with-tomcat-3db8a469e3d2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.infoworld.com/article/3304289/how-to-configure-tomcat-to-always-require-https.html&#34;&gt;https://www.infoworld.com/article/3304289/how-to-configure-tomcat-to-always-require-https.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用thymeleaf和spring security提供的csrf方法</title>
+      <link>/blog/pgm/20190113/</link>
+      <pubDate>Sun, 13 Jan 2019 01:33:58 +0800</pubDate>
+      <guid>/blog/pgm/20190113/</guid>
+      <description>&lt;h3 id=&#34;使用thymeleaf和spring-security提供的csrf方法&#34;&gt;使用thymeleaf和spring security提供的csrf方法&lt;/h3&gt;
+&lt;p&gt;只需要在html内的form在设置action时使用thymeleaf属性th:action即可&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;th:action&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@{login}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;label&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;for&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt;&amp;gt;Username&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;label&lt;/span&gt;&amp;gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt; /&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;label&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;for&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;&amp;gt;Password&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;label&lt;/span&gt;&amp;gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt; /&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;submit&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;btn&amp;#34;&lt;/span&gt;&amp;gt;Log in&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;自定义csrf校验&#34;&gt;自定义csrf校验&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;spring security配置文件中去掉自带的csrf校验&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@EnableWebSecurity&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;WebSecurityConfig&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; WebSecurityConfigurerAdapter &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+	&lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;protected&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;configure&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpSecurity http&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; Exception &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;...&lt;/span&gt;
+        http&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;csrf&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;disable&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;...&lt;/span&gt; 
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;...&lt;/span&gt;
+
+	&lt;span style=&#34;color:#75715e&#34;&gt;/***
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	 * 说明见步骤2
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	 * @see &amp;lt;a href=
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	 *      &amp;#34;https://blog.eyallupu.com/2012/04/csrf-defense-in-spring-mvc-31.html&amp;#34;&amp;gt;New
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	 *      in Spring MVC 3.1: CSRF Protection using
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	 *      RequestDataValueProcessor&amp;lt;/a&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	 */&lt;/span&gt;
+	&lt;span style=&#34;color:#a6e22e&#34;&gt;@Bean&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; CSRFRequestDataValueProcessor &lt;span style=&#34;color:#a6e22e&#34;&gt;requestDataValueProcessor&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; CSRFRequestDataValueProcessor&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+	&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;实现RequestDataValueProcessor接口，关键方法是&lt;code&gt;getExtraHiddenFields&lt;/code&gt;，然后把它添加到spring security配置文件中（参照步骤1中代码）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; springSecurity.csrf&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.util.HashMap&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.util.Map&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.servlet.http.HttpServletRequest&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; org.springframework.web.servlet.support.RequestDataValueProcessor&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CSRFRequestDataValueProcessor&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; RequestDataValueProcessor &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+	&lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; String &lt;span style=&#34;color:#a6e22e&#34;&gt;processAction&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpServletRequest request&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String action&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String httpMethod&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; action&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+	&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+	&lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; String &lt;span style=&#34;color:#a6e22e&#34;&gt;processFormFieldValue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpServletRequest request&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String name&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String value&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String type&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; value&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+	&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+	&lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;getExtraHiddenFields&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpServletRequest request&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+		Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; hiddenFields &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;();&lt;/span&gt;
+		hiddenFields&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;CSRFTokenManager&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CSRF_PARAM_NAME&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; CSRFTokenManager&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getTokenForSession&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getSession&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()));&lt;/span&gt;
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; hiddenFields&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+	&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+	&lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; String &lt;span style=&#34;color:#a6e22e&#34;&gt;processUrl&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpServletRequest request&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String url&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; url&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+	&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;添加自定义拦截器并添加到spring mvc配置文件中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; springSecurity.csrf&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.servlet.http.HttpServletRequest&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.servlet.http.HttpServletResponse&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; org.springframework.web.servlet.handler.HandlerInterceptorAdapter&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; lombok.val&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CSRFHandlerInterceptor&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; HandlerInterceptorAdapter &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+	&lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;preHandle&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpServletRequest request&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; HttpServletResponse response&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; Object handler&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+			&lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; Exception &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+		val me &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getMethod&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(!&lt;/span&gt;request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getMethod&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;equalsIgnoreCase&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;POST&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+			&lt;span style=&#34;color:#75715e&#34;&gt;// Not a POST - allow the request
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;			&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+		&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+			&lt;span style=&#34;color:#75715e&#34;&gt;// This is a POST request - need to check the CSRF token
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;			String sessionToken &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; CSRFTokenManager&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getTokenForSession&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getSession&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;());&lt;/span&gt;
+			String requestToken &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; CSRFTokenManager&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getTokenFromRequest&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;request&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+			&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;sessionToken&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;equals&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;requestToken&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+				&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+			&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+				response&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sendError&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpServletResponse&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;SC_FORBIDDEN&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bad or missing CSRF value&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+				&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+			&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+	&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Configuration&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;@EnableWebMvc&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;@EnableGlobalMethodSecurity&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;@ComponentScan&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;service,servlet,controller,springSecurity&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;AppcationContextConfig&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; WebMvcConfigurerAdapter &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; ApplicationContextAware &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;...&lt;/span&gt;
+	&lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;addInterceptors&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;InterceptorRegistry registry&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+		registry&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;addInterceptor&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; CSRFHandlerInterceptor&lt;span style=&#34;color:#f92672&#34;&gt;());&lt;/span&gt;
+	&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;...&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;工具类&lt;code&gt;CSRFTokenManager&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; springSecurity.csrf&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.util.UUID&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.servlet.http.HttpServletRequest&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.servlet.http.HttpSession&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CSRFTokenManager&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;final&lt;/span&gt; String CSRF_PARAM_NAME &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;CSRFToken&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;final&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; String CSRF_TOKEN_FOR_SESSION_ATTR_NAME &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; CSRFTokenManager&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getName&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.tokenval&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; String &lt;span style=&#34;color:#a6e22e&#34;&gt;getTokenForSession&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpSession session&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+		String token &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+		&lt;span style=&#34;color:#75715e&#34;&gt;// I cannot allow more than one token on a session - in the case of two
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// requests trying to
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// init the token concurrently.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// Notice: in real life I wouldn&amp;#39;t synchronize on the session instance.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// This should be done on an attribute on the session. But for the
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// blog demo this is fine
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;synchronized&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;session&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+			token &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; session&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getAttribute&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;CSRF_TOKEN_FOR_SESSION_ATTR_NAME&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+			&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; token&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+				token &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; UUID&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;randomUUID&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;toString&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+				session&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setAttribute&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;CSRF_TOKEN_FOR_SESSION_ATTR_NAME&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; token&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+			&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; token&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+	&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; String &lt;span style=&#34;color:#a6e22e&#34;&gt;getTokenFromRequest&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpServletRequest request&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getParameter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;CSRF_PARAM_NAME&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+	&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CSRFTokenManager&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+	&lt;span style=&#34;color:#f92672&#34;&gt;};&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;参考&lt;a href=&#34;https://blog.eyallupu.com/2012/04/csrf-defense-in-spring-mvc-31.html&#34;&gt;New in Spring MVC 3.1: CSRF Protection using RequestDataValueProcessor&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JSONP跨域獲取JSON數據</title>
+      <link>/blog/pgm/2017031901/</link>
+      <pubDate>Sun, 19 Mar 2017 01:33:58 +0800</pubDate>
+      <guid>/blog/pgm/2017031901/</guid>
+      <description>&lt;p&gt;JSONP跨域獲取JSON數據&lt;/p&gt;
+&lt;p&gt;客戶端請求數據&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!doctype html&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;title&lt;/span&gt;&amp;gt;App Engine Demo&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;title&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;
+	&lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
+	&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;result&amp;#34;&lt;/span&gt;&amp;gt;Loading...&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+	&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+	&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;add p&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+	&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+	&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+		&lt;span style=&#34;color:#a6e22e&#34;&gt;$&lt;/span&gt;(document).&lt;span style=&#34;color:#a6e22e&#34;&gt;ready&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;() {
+			&lt;span style=&#34;color:#a6e22e&#34;&gt;$&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ajax&lt;/span&gt;({
+				&lt;span style=&#34;color:#a6e22e&#34;&gt;async&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+				&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://hanotfun.appspot.com/demo&amp;#34;&lt;/span&gt;,
+				&lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GET&amp;#34;&lt;/span&gt;,
+				&lt;span style=&#34;color:#a6e22e&#34;&gt;dataType&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;jsonp&amp;#39;&lt;/span&gt;,
+				&lt;span style=&#34;color:#a6e22e&#34;&gt;jsonp&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;callback&amp;#39;&lt;/span&gt;,
+				&lt;span style=&#34;color:#a6e22e&#34;&gt;success&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;) {
+					&lt;span style=&#34;color:#a6e22e&#34;&gt;$&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;#result&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;html&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello, &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;);
+				}
+			});
+		});
+	&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;服務器端必須對處理請求，不能直接返回json數據，而要用callback參數對數據進行包裝&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/*
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * Copyright 2016 Google Inc. All Rights Reserved.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * Licensed under the Apache License, Version 2.0 (the &amp;#34;License&amp;#34;);
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * you may not use this file except in compliance with the License.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * You may obtain a copy of the License at
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * http://www.apache.org/licenses/LICENSE-2.0
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * Unless required by applicable law or agreed to in writing, software
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * distributed under the License is distributed on an &amp;#34;AS IS&amp;#34; BASIS,
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * See the License for the specific language governing permissions and
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * limitations under the License.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; */&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; myapp&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.IOException&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.servlet.http.HttpServlet&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.servlet.http.HttpServletRequest&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.servlet.http.HttpServletResponse&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;DemoServlet&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; HttpServlet &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;doGet&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HttpServletRequest req&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; HttpServletResponse resp&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; IOException &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+	  String callback &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; req&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getParameter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;callback&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;callback &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; callback&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+			resp&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setContentType&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text/plain&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+			resp&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getWriter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;callback &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;({ \&amp;#34;name\&amp;#34;: \&amp;#34;World\&amp;#34; })&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+		&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+			resp&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setContentType&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text/plain&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+			resp&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getWriter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{ \&amp;#34;name\&amp;#34;: \&amp;#34;World\&amp;#34; }&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+		&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;//如果不包裝會報“Uncaught SyntaxError: Unexpected token :”錯誤
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;檢測到請求中包含callback參數時對返回數據進行包裝，否則直接返回json數據。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/ada-zheng/p/4349840.html&#34;&gt;JSONP跨域请求数据报错 “Unexpected token :”的解决办法&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/ada-zheng/p/4349845.html&#34;&gt;js中几种实用的跨域方法原理详解&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/10507345/ajax-and-jsonp-parseerror-and-uncaught-syntaxerror-unexpected-token&#34;&gt;$.ajax and JSONP. ParseError and Uncaught SyntaxError: Unexpected token :&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/33366992/ajax-with-jsonp-returns-error-callback-is-undefined&#34;&gt;AJAX with JSONP returns error Callback is Undefined&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/14318710/ajax-get-status-was-ok-but-jsonp-callback-returns-undefined-data&#34;&gt;AJAX Get status was Ok but jsonp callback returns undefined data&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://crossoverjie.top/2016/10/18/SSM6/&#34;&gt;SSM(六)跨域传输&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://8366.iteye.com/blog/744057&#34;&gt;使用Jsonp方式跨域获取json&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/13993385/returning-jsonp-instead-of-json-from-a-jsp&#34;&gt;Returning JSONP instead of JSON from a JSP&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.fbloggs.com/2010/07/09/how-to-access-cross-domain-data-with-ajax-using-jsonp-jquery-and-php/&#34;&gt;How to access cross-domain data with AJAX using JSONP, jQuery and PHP&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://code-ken.github.io/2016/07/13/jsonp-json-ajax/&#34;&gt;JSONP跨域问题的解决方法&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html&#34;&gt;说说JSON和JSONP，也许你会豁然开朗，含jQuery用例&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://learn.jquery.com/ajax/working-with-jsonp/&#34;&gt;Working with JSONP&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/7936610/json-uncaught-syntaxerror-unexpected-token&#34;&gt;json Uncaught SyntaxError: Unexpected token :&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.magicsite.cn/blog/web/JS/JS142838.html&#34;&gt;Jsonp完成js跨域请求&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

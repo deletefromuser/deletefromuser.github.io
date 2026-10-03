@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Pgm – HA</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/pgm/index.xml">
+<meta name="description" content="">
+<meta name="created" content="2026-09-28T08:00:00+0800">
+<meta name="modified" content="2026-10-03T16:41:35+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="Pgm">
+<meta property="og:url" content="/blog/pgm/">
+<meta property="og:type" content="website">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/pgm/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url" : "/blog/pgm/",
+    "name": "Pgm",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="list-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/" class="active" aria-current="page">Home</a></li>
+<li><a href="/blog/pgm/" class="active" aria-current="page">Pgm</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<h1 class="title">Pgm</h1>
+
+
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022110604/">virtualbox虚拟机启用宿主机摄像头</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
+</div>
+
+</header>
+<div class="content">
+Install ‘Oracle VM VirtualBox Extension Pack’ Attaching webcam to guest OS VBoxManage list webcams VboxManage controlvm &#34;Ubuntu 16.04.3&#34; webcam attach .2 reference Enabling Webcam in VirtualBox Guest OS on Windows Host
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022110605/">oracle常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+
+</header>
+<div class="content">
+在线执行环境，缺点是需要注册 Oracle live SQL http://sqlfiddle.com/ 创建用户 alter session set &#34;_ORACLE_SCRIPT&#34;=true; CREATE USER TOM IDENTIFIED BY a12345678; GRANT CONNECT, RESOURCE, DBA TO TOM; GRANT select on tom.contacts TO TOM; REVOKE DBA FROM TOM; REVOKE select on tom.contacts FROM TOM; DROP USER TOM; -- 同时删除用户下的所有对象
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2023020901/">sqlserver常用命令</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:00:00&#43;08:00">2022-11-06 19:00</time>
+</div>
+
+</header>
+<div class="content">
+查找lock select * from master.dbo.sysprocesses where DB_NAME(dbid)=’test’ and spid&lt;&gt;@@SPID; exec sp_lock exec sp_who2 SPID; select request_session_id, resource_type, resource_description, request_mode, request_status, request_owner_type from sys.dm_tran_locks; kill SPID; 查看表结构 SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = &#39;yourTableName&#39;; 日期 -- 当前时
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022071101/">引用cdn静态资源时添加哈希值验证防篡改</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-07-11T17:00:00&#43;08:00">2022-07-11 17:00</time>
+</div>
+
+</header>
+<div class="content">
+例子： &lt;script src=&#34;https://example.com/example-framework.js&#34; integrity=&#34;sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt; 生成 SRI 哈希的工具 shasum -b -a 384 example-framework.js | xxd -r -p | base64 reference Subresource Integrity - Web 安全 | MDN
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022070801/">win10 开始菜单去掉web搜索结果</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-07-08T10:00:00&#43;08:00">2022-07-08 10:00</time>
+</div>
+
+</header>
+<div class="content">
+针对Windows 10 version 1909 打开注册表编辑器 regedit 进入 计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Window
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022070701/">bash函数 &amp; user 代行</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-07-07T16:00:00&#43;08:00">2022-07-07 16:00</time>
+</div>
+
+</header>
+<div class="content">
+bash函数 将函数追加写入~/.bashrc文件即可持久化，否则只在当前shell session内有效，关闭即无效 不要忘记加完需要sourc
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022070401/">virtualbox 虚拟机硬盘扩容</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-07-04T16:00:00&#43;08:00">2022-07-04 16:00</time>
+</div>
+
+</header>
+<div class="content">
+click File &gt; Virtual Media Manager in the main VirtualBox window Select a virtual hard disk in the list and use the “Size” slider at the bottom of the window to change its size. Click “Apply” when you’re done boot ubuntu virtual machine, use GParted to Resize reference How To Enlarge a Virtual M
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/20220703/">测试Google Cloud Translation API v2</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-07-03T10:33:00&#43;08:00">2022-07-03 10:33</time>
+</div>
+
+</header>
+<div class="content">
+事先申请api key，免费额度足够用了(每月50w字符) curl测试 curl -s -X POST -H &#34;Content-Type: application/json&#34; \ \ --data &#34;{ &#39;q&#39;: &#39;The Great Pyramid of Giza (also known as the Pyramid of Khufu or the Pyramid of Cheops) is the oldest and largest of the
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2021022801/">将所有文件夹的内容分别打包到同名的zip文件内 &amp; 批量解压rar文件</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2021-02-28T21:02:00&#43;08:00">2021-02-28 21:02</time>
+</div>
+
+</header>
+<div class="content">
+下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件 以前还写了个sh好像，没想到一行就
+</div>
+</article>
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/20190620/">tomcat安装&amp;let&#39;s encrypt配置</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2019-06-20T01:33:58&#43;08:00">2019-06-20 01:33</time>
+</div>
+
+</header>
+<div class="content">
+安装java cd /home tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz # temp export PATH=$PWD/jdk8u212-b04/bin:$PATH java -version # final vi /etc/profile &gt; JAVA_HOME=/home/jdk8u212-b04 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin export JAVA_HOME export PATH &gt; # log out and log in wget -O- -q -T 1 -t 1 https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b04/OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz.sha256.txt | sha256sum -c 安装tomcat sudo groupadd tomcat sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat cd /tmp curl -O
+</div>
+</article>
+
+<nav class="pager">
+<a href="/blog/pgm/page/5/" rel="prev" class="pager-item pager-prev">Prev</a>
+<a href="/blog/pgm/page/7/" rel="next" class="pager-item pager-next">Next</a>
+</nav>
+
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

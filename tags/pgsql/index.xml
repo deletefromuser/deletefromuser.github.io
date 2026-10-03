@@ -11,9 +11,9 @@
     
     <item>
       <title>迁移mariadb/mysql数据库到pgsql</title>
-      <link>/blog/sql/2024121401/</link>
+      <link>/blog/pgm/2024121401/</link>
       <pubDate>Sat, 14 Dec 2024 14:00:00 +0800</pubDate>
-      <guid>/blog/sql/2024121401/</guid>
+      <guid>/blog/pgm/2024121401/</guid>
       <description>&lt;h3 id=&#34;0-修改mysql数据库中tinyint为smallint&#34;&gt;0. 修改mysql数据库中tinyint为smallint&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;pgloader默认会把mysql的tinyint字段转为boolean字段，如果需要整型，需要事先转换&lt;/p&gt;

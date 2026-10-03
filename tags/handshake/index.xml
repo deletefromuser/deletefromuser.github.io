@@ -11,9 +11,9 @@
     
     <item>
       <title>使用handshake转换视频时利用gpu</title>
-      <link>/blog/tip/2025060801/</link>
+      <link>/blog/pgm/2025060801/</link>
       <pubDate>Sun, 08 Jun 2025 20:00:00 +0800</pubDate>
-      <guid>/blog/tip/2025060801/</guid>
+      <guid>/blog/pgm/2025060801/</guid>
       <description>&lt;p&gt;视频分页设置中的编解码器选择&lt;code&gt;H.264/H.265 (NVEnc)&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;使用ffmpeg将mp4转换为mp3&#34;&gt;使用ffmpeg将mp4转换为MP3&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ffmpeg -i myfile.mp4 myfile.mp3

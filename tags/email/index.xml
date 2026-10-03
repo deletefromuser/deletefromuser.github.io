@@ -11,9 +11,9 @@
     
     <item>
       <title>使用Cloudflare &#43; Gmail创建自定义邮件地址, 收发邮件</title>
-      <link>/blog/web/2023082902/</link>
+      <link>/blog/pgm/2023082902/</link>
       <pubDate>Tue, 29 Aug 2023 19:00:00 +0800</pubDate>
-      <guid>/blog/web/2023082902/</guid>
+      <guid>/blog/pgm/2023082902/</guid>
       <description>&lt;h3 id=&#34;使用cloudflare的电子邮件路由功能接收邮件&#34;&gt;使用Cloudflare的电子邮件路由功能接收邮件&lt;/h3&gt;
 &lt;p&gt;进入站点 -&amp;gt; 电子邮件 -&amp;gt; 电子邮件路由 -&amp;gt; 创建, 设置下自定义邮件地址和转发邮箱地址即可&lt;/p&gt;
 &lt;h3 id=&#34;使用gmail以自定义邮件地址发送邮件&#34;&gt;使用Gmail以自定义邮件地址发送邮件&lt;/h3&gt;

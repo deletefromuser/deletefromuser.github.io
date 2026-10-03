@@ -11,9 +11,9 @@
     
     <item>
       <title>windows使用记录</title>
-      <link>/blog/bash/2023090501/</link>
+      <link>/blog/pgm/2023090501/</link>
       <pubDate>Tue, 05 Sep 2023 22:00:00 +0800</pubDate>
-      <guid>/blog/bash/2023090501/</guid>
+      <guid>/blog/pgm/2023090501/</guid>
       <description>&lt;h2 id=&#34;使用命令行控制屏幕亮度声音&#34;&gt;使用命令行控制屏幕亮度，声音&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;# 下载nircmd - https://www.nirsoft.net/utils/nircmd.html
 # 设置亮度（最大100？）
@@ -58,9 +58,9 @@ sc.exe delete &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;服务名&amp;#
     
     <item>
       <title>比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</title>
-      <link>/blog/bash/2023041801/</link>
+      <link>/blog/pgm/2023041801/</link>
       <pubDate>Mon, 24 Apr 2023 21:02:00 +0800</pubDate>
-      <guid>/blog/bash/2023041801/</guid>
+      <guid>/blog/pgm/2023041801/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;chatgpt确实好用，比自己吭哧吭哧google快多了&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -100,9 +100,9 @@ ssh user@remote-server /path/to/script.sh
     
     <item>
       <title>工作笔记2016-2021</title>
-      <link>/blog/tip/2022120601/</link>
+      <link>/blog/pgm/2022120601/</link>
       <pubDate>Tue, 06 Dec 2022 20:00:00 +0800</pubDate>
-      <guid>/blog/tip/2022120601/</guid>
+      <guid>/blog/pgm/2022120601/</guid>
       <description>&lt;h3 id=&#34;停止网页重定向&#34;&gt;停止网页重定向&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;window.&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;beforeunload&amp;#34;&lt;/span&gt;, () =&amp;gt; { &lt;span style=&#34;color:#66d9ef&#34;&gt;debugger&lt;/span&gt;; }, &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;);
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;js转换字符为unicode&#34;&gt;JS转换字符为UNICODE&lt;/h3&gt;
@@ -360,10 +360,253 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
     </item>
     
     <item>
+      <title>ubuntu使用技巧</title>
+      <link>/blog/pgm/2022120301/</link>
+      <pubDate>Sat, 03 Dec 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2022120301/</guid>
+      <description>&lt;h3 id=&#34;为命令行配置代理&#34;&gt;为命令行配置代理&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 注意代理要是http代理，sock代理是不行的
+export HTTP_PROXY=&#39;127.0.0.1:1086&#39;
+export HTTPS_PROXY=&#39;127.0.0.1:1086&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;把desktop文件的程序固定到任务栏&#34;&gt;把desktop文件的程序固定到任务栏&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;复制desktop文件到&lt;code&gt;~/.local/share/applications&lt;/code&gt;下，需要确保文件内的路径复制后仍然正确，改为绝对路径&lt;/li&gt;
+&lt;li&gt;命令行启动desktop&lt;/li&gt;
+&lt;li&gt;任务栏右键add to favorites&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;在新命令行窗口执行命令&#34;&gt;在新命令行窗口执行命令&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gnome-terminal -x bash -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;echo &amp;#39;hello&amp;#39;; exec bash&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;自动安装安全更新&#34;&gt;自动安装安全更新&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo apt-get install unattended-upgrades
+sudo dpkg-reconfigure --priority&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;low unattended-upgrades
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看安全更新&#34;&gt;查看安全更新&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt list --upgradable | grep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;security&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;升级大版本&#34;&gt;升级大版本&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;less /etc/update-manager/release-upgrades
+&lt;span style=&#34;color:#75715e&#34;&gt;# 确认内容为Prompt=lts&lt;/span&gt;
+sudo apt-mark showhold
+&lt;span style=&#34;color:#75715e&#34;&gt;# 确认为空&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 如果不为空 sudo apt-mark unhold pkg1 pkg2&lt;/span&gt;
+sudo apt-get update
+&lt;span style=&#34;color:#75715e&#34;&gt;# 确认报错的源,注释掉&lt;/span&gt;
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo vim /etc/apt/sources.list
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo reboot
+&lt;span style=&#34;color:#75715e&#34;&gt;# 记录升级前版本号&lt;/span&gt;
+uname -mrs
+lsb_release -a
+sudo ufw allow 1022/tcp comment &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Open port ssh tcp port 1022 as failsafe option for upgrades&amp;#39;&lt;/span&gt;
+sudo ufw status
+&lt;span style=&#34;color:#75715e&#34;&gt;#升级&lt;/span&gt;
+sudo &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;-release-upgrade
+sudo ufw delete allow 1022/tcp
+&lt;span style=&#34;color:#75715e&#34;&gt;# 确认升级成功&lt;/span&gt;
+uname -mrs
+lsb_release -a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;升级后启动失败问题修复&#34;&gt;升级后启动失败问题修复&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;使用livecd启动系统， 安装boot-repair， &lt;code&gt;open &amp;gt; advanced options &amp;gt; GRUB options &amp;gt; perge GRUB before installing it + purge the kernels then reinstall the latest kernel &amp;gt; Apply&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;virtualbox启动后四分之三区域黑屏-可见区域内鼠标无法操作-只能任务栏可操作&#34;&gt;virtualbox启动后四分之三区域黑屏, 可见区域内鼠标无法操作, 只能任务栏可操作&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注销用户后重新登陆&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;列出命令行所有可用命令&#34;&gt;列出命令行所有可用命令&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# No 1&lt;/span&gt;
+ls &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;PATH//:/ &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# No 2&lt;/span&gt;
+compgen -c | sort -u &amp;gt; commands &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; less commands
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1026528/adding-custom-programs-to-favourites-of-ubuntu-dock&#34;&gt;Adding custom programs to favourites of Ubuntu Dock&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.delftstack.com/howto/linux/start-a-new-bash-session&#34;&gt;Start a New Terminal Session in Bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/318619/how-do-i-open-a-terminal-window-and-execute-a-command-after-the-shell-has-opened&#34;&gt;How do I open a terminal window and execute a command after the shell has opened?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/AutomaticSecurityUpdates&#34;&gt;AutomaticSecurityUpdates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/403435/how-to-get-a-list-of-all-the-commands-available-for-ubuntu&#34;&gt;How to get a list of all the commands available for Ubuntu?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cyberciti.biz/faq/upgrade-ubuntu-20-04-lts-to-22-04-lts/&#34;&gt;How to upgrade to 22.04 LTS from 20.04 LTS using a GUI method&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1231817/invalid-package-information-error-when-upgrading-to-ubuntu-20-04&#34;&gt;&amp;ldquo;Invalid package information&amp;rdquo; error when upgrading to Ubuntu 20.04&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ohdear.app/news-and-updates/how-to-upgrade-from-ubuntu-2004-lts-to-ubuntu-2204-lts&#34;&gt;How to upgrade from Ubuntu 20.04 LTS to Ubuntu 22.04 LTS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/1522289/error-on-boot-kernel-panic-not-syncing&#34;&gt;Error on boot Kernel panic-not syncing:&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/851444/configuring-unattended-upgrades-which-option-to-select&#34;&gt;Configuring unattended-upgrades - which option to select?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>linux 命令memo</title>
+      <link>/blog/pgm/2022111001/</link>
+      <pubDate>Thu, 10 Nov 2022 20:00:00 +0800</pubDate>
+      <guid>/blog/pgm/2022111001/</guid>
+      <description>&lt;h3 id=&#34;uuidgen&#34;&gt;&lt;code&gt;uuidgen&lt;/code&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;生成uuid&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;history&#34;&gt;&lt;code&gt;history&lt;/code&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;命令行历史&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;修改history容量，&lt;code&gt;~/.bashrc&lt;/code&gt;最后追加&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;export HISTSIZE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;
+export HISTFILESIZE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;df-du&#34;&gt;&lt;code&gt;df du&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看磁盘占用&lt;/span&gt;
+df -h
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 查看文件夹大小&lt;/span&gt;
+du -h -d &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 排序&lt;/span&gt;
+du -m -d &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; | sort -n
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# ping服务器的特定端口&lt;/span&gt;
+nc -vz 192.168.0.1 &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;shell文件中的脚本生成的文件名末尾有一个问号&#34;&gt;shell文件中的脚本生成的文件名末尾有一个问号&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;检查换行符是否是\n，如果是\r\n需要替换&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;批量修改文件名&#34;&gt;批量修改文件名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^Pre/Post/&amp;#39;&lt;/span&gt; *
+rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^\D+(\d+)\D+/$1/&amp;#39;&lt;/span&gt; *
+rename &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^\D+([cp]\d+.+)/$1/&amp;#39;&lt;/span&gt; *
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f in * ; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; mv — &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PRE_&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; ; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+counter&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;1; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; file in *; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[[&lt;/span&gt; -f $file &lt;span style=&#34;color:#f92672&#34;&gt;]]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; echo mv -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; PRE_&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;%02d&amp;#39;&lt;/span&gt; $counter&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;.zip &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;((&lt;/span&gt;counter++&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;简单加密文件名&#34;&gt;简单加密文件名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 不加密后缀&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; file in *; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;
+  mv -- &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file%.*&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; | base32&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file##*.&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 解密&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; file in *; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;
+  mv -- &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file%.*&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; | base32 -d&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file##*.&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 加密后缀&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; file in *; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;
+  mv -- &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; | base32&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 解密&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; file in *; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;
+  mv -- &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$file&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;file&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; | base32 -d&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;创建软连接&#34;&gt;创建软连接&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 磁盘满的时候，使用软连接把老数据转移到别的硬盘上个人觉得也是个办法，&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 就是不知道客户为什么说不稳定&lt;/span&gt;
+ln -s &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;真实磁盘路径&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;连接所在位置&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;命令行内容输出到剪贴板&#34;&gt;命令行内容输出到剪贴板&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# git bash（windows）&lt;/span&gt;
+find . -typf f | clip
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# linux&lt;/span&gt;
+find . -typf f | | xclip -selection clipboard
+&lt;span style=&#34;color:#75715e&#34;&gt;# or&lt;/span&gt;
+alias clip&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;xclip -selection clipboard&amp;#39;&lt;/span&gt;
+find . -typf f | clip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看linux用户所在组&#34;&gt;查看linux用户所在组&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;groups
+groups tom
+&lt;span style=&#34;color:#75715e&#34;&gt;# 添加用户到某个组&lt;/span&gt;
+sudo usermod -a -G groupname username
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改系统时区&#34;&gt;修改系统时区&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 检查当前时区&lt;/span&gt;
+timedatectl
+&lt;span style=&#34;color:#75715e&#34;&gt;# or&lt;/span&gt;
+ls -l /etc/localtime
+&lt;span style=&#34;color:#75715e&#34;&gt;# 检查时区列表&lt;/span&gt;
+timedatectl list-timezones
+&lt;span style=&#34;color:#75715e&#34;&gt;# 修改时区&lt;/span&gt;
+sudo timedatectl set-timezone America/New_York
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 没有timedatectl组件时（比如docker）&lt;/span&gt;
+sudo rm -rf /etc/localtime
+sudo ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+sudo echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;America/New_York&amp;#39;&lt;/span&gt; &amp;gt; /etc/timezone
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;解析url时指定dns&#34;&gt;解析url时指定dns&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;nslookup isc.org 8.8.8.8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看占用端口号的进程&#34;&gt;查看占用端口号的进程&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# linux&lt;/span&gt;
+lsof -i :8080
+&lt;span style=&#34;color:#75715e&#34;&gt;# windows git bash&lt;/span&gt;
+netstat -ano | grep &lt;span style=&#34;color:#ae81ff&#34;&gt;8080&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ftp命令使用&#34;&gt;ftp命令使用&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 进入ftp&lt;/span&gt;
+ftp
+&lt;span style=&#34;color:#75715e&#34;&gt;# 连接ftp, 接着输入账号密码&lt;/span&gt;
+open 192.168.1.2
+&lt;span style=&#34;color:#75715e&#34;&gt;# 下载文件&lt;/span&gt;
+get a.txt
+&lt;span style=&#34;color:#75715e&#34;&gt;# 上传文件&lt;/span&gt;
+put /path/b.txt /ftppath/b.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;unzip&#34;&gt;unzip&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 解压时指定字符编码&lt;/span&gt;
+unzip -O shift-jis ~/Downloads/【新入荷ECM】資料.zip
+&lt;span style=&#34;color:#75715e&#34;&gt;# rar的话没找到, 可以在virtualbox里装个日文版win7里解压&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用git-bash-把文件夹下的所有srt后缀文件编码从big5转换为utf8&#34;&gt;使用git bash 把文件夹下的所有srt后缀文件编码从big5转换为utf8&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f in *.srt; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+  iconv -f BIG5 -t UTF-8 &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;.utf8&amp;#34;&lt;/span&gt;
+  mv &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;.utf8&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/307541/how-to-change-history-size-for-ever&#34;&gt;How to change history size for ever?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37566064/why-questionmark-comes-in-the-end-of-filename-when-i-create-txt-file-through-sh&#34;&gt;why questionmark comes in the end of filename when i create .txt file through shell script?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://suggestcloud.com/add-prefix-suffix-to-all-existing-files-in-linux-directory/&#34;&gt;Add Prefix-Suffix To All Existing Files in Linux Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://linuxhint.com/ping-specific-port-netcat-nmap/&#34;&gt;How do I Ping a Specific Port?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37445732/bash-rename-files-to-base64-value-of-the-filenames&#34;&gt;Bash - Rename files to base64 value of the filenames&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/3945541/base64-encoding-safe-for-filenames&#34;&gt;Base64 Encoding safe for filenames?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/flyingeagle/articles/9219047.html&#34;&gt;Linux运用软链接解决目录空间不足&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/how-to-copy-command-output-to-linux-clipboard-directly/&#34;&gt;How To Copy Command Output To Linux Clipboard Directly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cyberciti.biz/faq/linux-show-groups-for-user/&#34;&gt;Linux Show The Groups a User Is In&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/&#34;&gt;How to Set or Change the Time Zone in Linux | Linuxize&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes&#34;&gt;date - Docker Container time &amp;amp; timezone (will not reflect changes) - Server Fault&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nslookup.io/learning/how-to-specify-a-dns-server-in-nslookup/&#34;&gt;How to specify a DNS server in nslookup?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tecadmin.net/download-upload-files-using-ftp-command-line/&#34;&gt;How to Download and Upload Files using FTP Command Line&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ftp-put&#34;&gt;ftp put | Microsoft Learn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/935022/how-to-unzip-a-japanese-zip-file-and-avoid-mojibake-garbled-characters&#34;&gt;encoding - How to unzip a Japanese ZIP file, and avoid mojibake/garbled characters - Ask Ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>linux下设置定时任务</title>
+      <link>/blog/pgm/2022110602/</link>
+      <pubDate>Sun, 06 Nov 2022 19:30:00 +0800</pubDate>
+      <guid>/blog/pgm/2022110602/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;crontab -e
+
+A B C D E USERNAME /path/to/command arg1 arg2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Explanation of above cron syntax:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A: Minutes range: 0 – 59&lt;/li&gt;
+&lt;li&gt;B: Hours range: 0 – 23&lt;/li&gt;
+&lt;li&gt;C: Days range: 0 – 31&lt;/li&gt;
+&lt;li&gt;D: Months range: 0 – 12&lt;/li&gt;
+&lt;li&gt;E: Days of the week range: 0 – 7. Starting from Monday, 0 or 7 represents Sunday&lt;/li&gt;
+&lt;li&gt;USERNAME: replace this with your username&lt;/li&gt;
+&lt;li&gt;/path/to/command – The name of the script or command you want to schedule&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tecmint.com/create-and-manage-cron-jobs-on-linux/&#34;&gt;How to Create and Manage Cron Jobs on Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>bash函数 &amp; user 代行</title>
-      <link>/blog/bash/2022070701/</link>
+      <link>/blog/pgm/2022070701/</link>
       <pubDate>Thu, 07 Jul 2022 16:00:00 +0800</pubDate>
-      <guid>/blog/bash/2022070701/</guid>
+      <guid>/blog/pgm/2022070701/</guid>
       <description>&lt;h2 id=&#34;bash函数&#34;&gt;bash函数&lt;/h2&gt;
 &lt;p&gt;将函数追加写入&lt;code&gt;~/.bashrc&lt;/code&gt;文件即可持久化，否则只在当前shell session内有效，关闭即无效&lt;/p&gt;
 &lt;blockquote&gt;
@@ -392,9 +635,9 @@ tar -zxvf &amp;lt;tar filename&amp;gt; &amp;lt;file you want to extract&amp;gt;
     
     <item>
       <title>将所有文件夹的内容分别打包到同名的zip文件内 &amp; 批量解压rar文件</title>
-      <link>/blog/bash/2021022801/</link>
+      <link>/blog/pgm/2021022801/</link>
       <pubDate>Sun, 28 Feb 2021 21:02:00 +0800</pubDate>
-      <guid>/blog/bash/2021022801/</guid>
+      <guid>/blog/pgm/2021022801/</guid>
       <description>&lt;p&gt;下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件&lt;/p&gt;
 &lt;p&gt;以前还写了个sh好像，没想到一行就能搞定&lt;/p&gt;
 &lt;h2 id=&#34;将所有文件夹的内容分别打包到同名的zip文件内&#34;&gt;将所有文件夹的内容分别打包到同名的zip文件内&lt;/h2&gt;
