@@ -6,8 +6,29 @@
     <description>Recent content on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Sep 2026 08:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2026年4季度</title>
+      <link>https://deletefromuser.github.io/watch/2026100101/</link>
+      <pubDate>Sun, 18 Oct 2026 20:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/watch/2026100101/</guid>
+      <description>&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ロメリア戦記&lt;/li&gt;
+&lt;li&gt;生徒会にも穴はある&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;剧集&#34;&gt;剧集&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Boston Legal S05&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;电影&#34;&gt;电影&lt;/h2&gt;
+&lt;h2 id=&#34;漫画&#34;&gt;漫画&lt;/h2&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;游戏&#34;&gt;游戏&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>win10/11 家庭版中使用Hyper-V虚拟机</title>
@@ -143,6 +164,7 @@ Add-LocalGroupMember -group &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;H
 &lt;th align=&#34;center&#34;&gt;auther&lt;/th&gt;
 &lt;th align=&#34;center&#34;&gt;start&lt;/th&gt;
 &lt;th align=&#34;center&#34;&gt;end&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;通读&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -151,33 +173,54 @@ Add-LocalGroupMember -group &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;H
 &lt;td align=&#34;center&#34;&gt;威尔·杜兰特&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;20260121&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;ing&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;是&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;遇真纪事&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;20260326&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;ing&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;是&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;与塞涅卡共进早餐&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;大卫·菲德勒&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;20260326&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;20261001&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;是&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;乱世人心&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;押沙龙&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;20260531&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;20260602&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;是&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;上瘾五百年：烟、酒、咖啡和鸦片的历史&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;[美] 戴维·考特莱特&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;20261002&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;ing&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20261011&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;深度數位大掃除：3分飽連線方案，在喧囂世界過專注人生&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;卡爾．紐波特（Cal Newport）&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20261011&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20261018&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;吃的美德 餐桌上的哲學思考 The Virtues of the Table (Julian Baggini)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Julian Baggini&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20261018&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;20261025&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;是&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h3 id=&#34;吃的美德感想&#34;&gt;吃的美德感想&lt;/h3&gt;
+&lt;p&gt;作者提到动物被屠宰的痛苦要少于在自然状态下被捕食者咬死的痛苦，我不太认同，因为被屠宰的痛苦本来就是人类为了吃肉饲养他们才产生的，如果没有这么多吃肉的需求，怎么会有工业化养殖和屠宰呢，接着问题就变成衣食无忧过完短时间生命的快乐能否削减被屠宰时的短暂痛苦，我是觉得还是要少吃肉，要吃的话 小型鱼虾贝类&amp;gt;禽类&amp;gt;猪牛羊(按感受痛苦的神经程度依次递减)，多吃点豆制品挺好的&lt;/p&gt;
 </description>
     </item>
     
