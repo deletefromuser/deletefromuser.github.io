@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Java RSA 加密 BadPaddingException 修复 – HA</title>
+<meta name="description" content="原始配置 Cipher.getInstance(&amp;amp;quot;RSA&amp;amp;quot;) 传输到另一台服务器中解密时报错 javax.crypto.BadPaddingException: Padding error in decryption at …">
+<meta name="created" content="2026-11-15T22:00:00+0800">
+<meta name="modified" content="2026-11-16T16:12:48+0800">
+
+
+<meta property="og:site_name" content="HA">
+<meta property="og:title" content="Java RSA 加密 BadPaddingException 修复">
+<meta property="og:url" content="/blog/pgm/2026111501_java-rsa-badpadding/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="/blog/pgm/2026111501_java-rsa-badpadding/">
+<link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/blog/css/styles.71ae0f0325ddcf91e9debb680c9a36fc5f79228837808ede37ec01a12d9bf30b.css">
+<link rel="stylesheet" href="/blog/css/print.c44e36c38770a06d7a3e314d59b503dd8fadcd356b709f8673f131c88b4e684e.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Java RSA 加密 BadPaddingException 修复",
+    "datePublished": "2026-11-15T22:00:00+08:00",
+    "dateModified": "2026-11-16T16:12:48+08:00",
+    "url" : "/blog/pgm/2026111501_java-rsa-badpadding/",
+    "description": "原始配置 Cipher.getInstance(\u0026amp;quot;RSA\u0026amp;quot;) 传输到另一台服务器中解密时报错 javax.crypto.BadPaddingException: Padding error in decryption at …",
+    "keywords": ["java","rsa","tip"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/blog/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HA",
+      "url": "/blog/"
+    }
+  }
+</script>
+
+<script src="/blog/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/blog/js/lib/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/blog/js/script.min.121e233f43e2e538c8219693c291bb4494e101723104532900727c88916192fa.js"></script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "i6t4kzbml0");
+</script>
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<a href="/blog/" title="Home" rel="home" class="header__logo"><img src="/blog/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/blog/" title="Home" class="header__site-link" rel="home"><span>HA</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/blog/">Home</a></li>
+<li><a href="/blog/pgm/" class="active" aria-current="page">Pgm</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
+<li><a href="/blog/read/">Read</a></li>
+<li><a href="/blog/jpns/">Jpns</a></li>
+<li><a href="/blog/life/">Life</a></li>
+<li><a href="/blog/sh/">SH</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="single-view single-view--pgm">
+<header>
+<h1 class="title title-submitted">Java RSA 加密 BadPaddingException 修复</h1>
+<div class="submitted">
+<time class="created-date" datetime="2026-11-15T22:00:00&#43;08:00">2026-11-15 22:00</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/blog/tags/java/">java</a></li>
+<li><a href="/blog/tags/rsa/">rsa</a></li>
+<li><a href="/blog/tags/tip/">tip</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<h3 id="原始配置">原始配置</h3>
+<p><code>Cipher.getInstance(&quot;RSA&quot;)</code></p>
+<h3 id="传输到另一台服务器中解密时报错">传输到另一台服务器中解密时报错</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">javax.crypto.BadPaddingException: Padding error in decryption
+	at com.sun.crypto.provider.RSACipher.doFinal(RSACipher.java:387)
+	at com.sun.crypto.provider.RSACipher.engineDoFinal(RSACipher.java:451)
+	at javax.crypto.Cipher.doFinal(Cipher.java:2168)
+</code></pre></div><h3 id="背景">背景</h3>
+<p>刚更新了 jasypt 的加密方法，添加了新的 BouncyCastle 的 loader 以支持新的加密算法</p>
+<h3 id="排查过程">排查过程</h3>
+<ol>
+<li>发现使用 java 直接加密出密文，再拿密文在另一台服务器中可以解密</li>
+<li>在 web 服务器中加密的密文无法解密，且在相同明文的情况下每次密文都相同，本地执行和不经过 web 服务器直接执行 java 时每次生成的密文都不一样</li>
+<li>打印出 Cipher 的 provider 后，发现直接执行时 provider 为 sunjce，在 Web 服务器中为 BC</li>
+</ol>
+<h3 id="原因">原因</h3>
+<p>rsa 默认加密 provider 被替换</p>
+<h3 id="解决方案">解决方案</h3>
+<p><code>Cipher.getInstance(&quot;RSA/ECB/PKCS1Padding&quot;, &quot;SunJCE&quot;)</code></p>
+
+</div>
+
+<div class="content content--bottom">
+<p class="content-dates">
+Updated: 2026-11-16 16:12<br>
+Created: 2026-11-15 22:00
+</p>
+</div><script src="https://utteranc.es/client.js"
+        repo="deletefromuser/deletefromuser.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        integrity="sha384-fu37qCdzTFjEWsnuik0ASdJij1SVwzCpeltZfuSulYExo7P5sTcD0aG6ECQHQR62"
+        async>
+</script>
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer">
+<p><span>© HA</span></p>
+
+
+</footer>
+</div>
+</body>
+</html>

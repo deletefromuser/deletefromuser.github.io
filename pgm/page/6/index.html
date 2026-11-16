@@ -6,8 +6,8 @@
 <title>Pgm – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/pgm/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2026-09-28T08:00:00+0800">
-<meta name="modified" content="2026-11-05T13:53:33+0800">
+<meta name="created" content="2026-11-15T22:00:00+0800">
+<meta name="modified" content="2026-11-16T16:12:48+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/pgm/" class="active" aria-current="page">Pgm</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
 <li><a href="/blog/life/">Life</a></li>
@@ -87,6 +87,19 @@
 <h1 class="title">Pgm</h1>
 
 
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2022110603/">oracle安装后连接问题</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2022-11-06T19:30:00&#43;08:00">2022-11-06 19:30</time>
+</div>
+
+</header>
+<div class="content">
+1. ORA-12505: TNS:listener does not currently know of SID given in connect descriptor add to tnsnames.ora file, and run lsnrctl reload ORCL = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVICE = DEDICATED) (SERVICE_NAME = orcl) ) ) excute alter system set local_listener = '(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))' scope = both; in sqlplus.(username sys, password, orcl as sysdba) 2. 状态: 失败 -测试
+</div>
+</article>
 
 <article class="list-view list-view--pgm">
 <header>
@@ -202,19 +215,6 @@ click File &gt; Virtual Media Manager in the main VirtualBox window Select a vir
 </header>
 <div class="content">
 下载下来的漫画合集是rar格式，放到perfectview里也不能读，只能解压出来把每一卷压缩成zip文件 以前还写了个sh好像，没想到一行就
-</div>
-</article>
-
-<article class="list-view list-view--pgm">
-<header>
-<h2 class="title title-submitted"><a href="/blog/pgm/20190620/">tomcat安装&amp;let&#39;s encrypt配置</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2019-06-20T01:33:58&#43;08:00">2019-06-20 01:33</time>
-</div>
-
-</header>
-<div class="content">
-安装java cd /home tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz # temp export PATH=$PWD/jdk8u212-b04/bin:$PATH java -version # final vi /etc/profile &gt; JAVA_HOME=/home/jdk8u212-b04 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin export JAVA_HOME export PATH &gt; # log out and log in wget -O- -q -T 1 -t 1 https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b04/OpenJDK8U-jdk_x64_linux_hotspot_8u212b04.tar.gz.sha256.txt | sha256sum -c 安装tomcat sudo groupadd tomcat sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat cd /tmp curl -O
 </div>
 </article>
 

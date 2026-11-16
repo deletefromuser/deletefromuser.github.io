@@ -6,8 +6,8 @@
 <title>Pgm – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/pgm/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2026-09-28T08:00:00+0800">
-<meta name="modified" content="2026-11-05T13:53:33+0800">
+<meta name="created" content="2026-11-15T22:00:00+0800">
+<meta name="modified" content="2026-11-16T16:12:48+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/blog/" class="active" aria-current="page">Home</a></li>
-<li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/pgm/" class="active" aria-current="page">Pgm</a></li>
+<li><a href="/blog/watch/">Watch</a></li>
 <li><a href="/blog/read/">Read</a></li>
 <li><a href="/blog/jpns/">Jpns</a></li>
 <li><a href="/blog/life/">Life</a></li>
@@ -87,6 +87,19 @@
 <h1 class="title">Pgm</h1>
 
 
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2017032003/">聽說Linq</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2017-03-20T03:33:58&#43;08:00">2017-03-20 03:33</time>
+</div>
+
+</header>
+<div class="content">
+聽說Linq using System.Linq; ... public static void LinqTest() { int[] array = { 1, 5, 2, 10, 7 }; // Select squares of all odd numbers in the array sorted in descending order var results = from x in array where x % 2 == 1 orderby x descending select x * x; foreach (var result in results) { log(result.ToString()); } } //49 25 1
+</div>
+</article>
 
 <article class="list-view list-view--pgm">
 <header>
@@ -202,19 +215,6 @@ Tomcat配置問題匯總 解壓後點擊startup運行閃退 原因可能是沒�
 </header>
 <div class="content">
 使用gcloud source克隆代碼出錯的問題 gcloud source repos clone java-gae-quickstart --project=mytest-161202 在Google Cloud Platform中創建好代碼庫，並且在本機安裝好Google Cloud SD
-</div>
-</article>
-
-<article class="list-view list-view--pgm">
-<header>
-<h2 class="title title-submitted"><a href="/blog/pgm/2017031201/">MS-Windows下Emacs显示中文卡頓</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-03-12T01:33:58&#43;08:00">2017-03-12 01:33</time>
-</div>
-
-</header>
-<div class="content">
-MS-Windows下Emacs显示中文卡頓 emacs顯示中文有bug，更換一下默認字體就好了 Options-&gt;Set Default Font ps:看wiki的時候發現很多搞笑的話，
 </div>
 </article>
 
