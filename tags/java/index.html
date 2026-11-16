@@ -6,8 +6,8 @@
 <title>java – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/tags/java/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2025-08-20T20:00:00+0800">
-<meta name="modified" content="2026-10-03T16:41:35+0800">
+<meta name="created" content="2026-11-15T22:00:00+0800">
+<meta name="modified" content="2026-11-16T16:12:48+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
-<li><a href="/watch/">Watch</a></li>
 <li><a href="/pgm/">Pgm</a></li>
+<li><a href="/watch/">Watch</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/jpns/">Jpns</a></li>
 <li><a href="/life/">Life</a></li>
@@ -87,6 +87,19 @@
 <h1 class="title">java</h1>
 
 
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/pgm/2026111501_java-rsa-badpadding/">Java RSA 加密 BadPaddingException 修复</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2026-11-15T22:00:00&#43;08:00">2026-11-15 22:00</time>
+</div>
+
+</header>
+<div class="content">
+原始配置 Cipher.getInstance(&quot;RSA&quot;) 传输到另一台服务器中解密时报错 javax.crypto.BadPaddingException: Padding error in decryption at com.sun.crypto.provider.RSACipher.doFinal(RSACipher.java:387) at com.sun.crypto.provider.RSACipher.engineDoFinal(RSACipher.java:451) at javax.crypto.Cipher.doFinal(Cipher.java:2168) 背景 刚更新了 jasypt 的加密方法，添加了新的 BouncyCastle 的 loader 以支持新的加密算法 排查过程 发现使用 java
+</div>
+</article>
 
 <article class="list-view list-view--pgm">
 <header>
@@ -202,19 +215,6 @@
 </header>
 <div class="content">
 nohup java -jar /web/server.jar &gt; log.log 2&gt;&amp;1 &amp; reference Run java jar file on a server as background process Launch springboot project in the background on Linux 2&gt;&amp;1到底是什么意思？
-</div>
-</article>
-
-<article class="list-view list-view--pgm">
-<header>
-<h2 class="title title-submitted"><a href="/pgm/2017051901/">Java 将对象序列化为字符串 读取字符串反序列化为对象</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2017-05-19T01:33:58&#43;08:00">2017-05-19 01:33</time>
-</div>
-
-</header>
-<div class="content">
-Java 将对象序列化为字符串 读取字符串反序列化为对象 import java.io.Serializable; class test { public static String object2String(Object obj) { String objBody = null; ByteArrayOutputStream baops = null; ObjectOutputStream oos = null; try { baops = new ByteArrayOutputStream(); oos = new ObjectOutputStream(baops); oos.writeObject(obj); byte[] bytes = baops.toByteArray(); objBody = Base64.encodeToString(bytes, Base64.DEFAULT); } catch(IOException e) { Log.e(tag,
 </div>
 </article>
 

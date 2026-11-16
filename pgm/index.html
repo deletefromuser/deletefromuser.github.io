@@ -6,8 +6,8 @@
 <title>Pgm – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/pgm/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2026-09-28T08:00:00+0800">
-<meta name="modified" content="2026-11-05T13:53:33+0800">
+<meta name="created" content="2026-11-15T22:00:00+0800">
+<meta name="modified" content="2026-11-16T16:12:48+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -73,8 +73,8 @@
 <h2 class="visually-hidden">Main menu</h2>
 <ul class="navbar">
 <li><a href="/" class="active" aria-current="page">Home</a></li>
-<li><a href="/watch/">Watch</a></li>
 <li><a href="/pgm/" class="active" aria-current="page">Pgm</a></li>
+<li><a href="/watch/">Watch</a></li>
 <li><a href="/read/">Read</a></li>
 <li><a href="/jpns/">Jpns</a></li>
 <li><a href="/life/">Life</a></li>
@@ -87,6 +87,19 @@
 <h1 class="title">Pgm</h1>
 
 
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/pgm/2026111501_java-rsa-badpadding/">Java RSA 加密 BadPaddingException 修复</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2026-11-15T22:00:00&#43;08:00">2026-11-15 22:00</time>
+</div>
+
+</header>
+<div class="content">
+原始配置 Cipher.getInstance(&quot;RSA&quot;) 传输到另一台服务器中解密时报错 javax.crypto.BadPaddingException: Padding error in decryption at com.sun.crypto.provider.RSACipher.doFinal(RSACipher.java:387) at com.sun.crypto.provider.RSACipher.engineDoFinal(RSACipher.java:451) at javax.crypto.Cipher.doFinal(Cipher.java:2168) 背景 刚更新了 jasypt 的加密方法，添加了新的 BouncyCastle 的 loader 以支持新的加密算法 排查过程 发现使用 java
+</div>
+</article>
 
 <article class="list-view list-view--pgm">
 <header>
@@ -202,19 +215,6 @@
 </header>
 <div class="content">
 问题 在客户的系统里登陆，要求填写一个保证书一样的东西，最后有几个输入框不允许复制粘贴，只允许手动输入，而且通过控制台设置的值还通不过检查，因
-</div>
-</article>
-
-<article class="list-view list-view--pgm">
-<header>
-<h2 class="title title-submitted"><a href="/pgm/2023090501/">windows使用记录</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-09-05T22:00:00&#43;08:00">2023-09-05 22:00</time>
-</div>
-
-</header>
-<div class="content">
-使用命令行控制屏幕亮度，声音 # 下载nircmd - https://www.nirsoft.net/utils/nircmd.html # 设置亮度（最大100？） nircmd.exe setbrightness 100 # 修改音量（最大65535） nircmd.exe setsysvolume 15000 # 静音，取消静音设为1 nircmd.exe
 </div>
 </article>
 
