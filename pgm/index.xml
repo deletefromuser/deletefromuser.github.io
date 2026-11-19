@@ -6,8 +6,37 @@
     <description>Recent content in Pgm on HA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Nov 2026 22:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://deletefromuser.github.io/pgm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Collections.singletonList 使用注意事项</title>
+      <link>https://deletefromuser.github.io/pgm/2026111701/</link>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 +0800</pubDate>
+      <guid>https://deletefromuser.github.io/pgm/2026111701/</guid>
+      <description>&lt;h2 id=&#34;报错现象&#34;&gt;报错现象&lt;/h2&gt;
+&lt;p&gt;在对 &lt;code&gt;Collections.singletonList()&lt;/code&gt; 返回的列表进行元素删除或保留操作时，抛出：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;java.lang.UnsupportedOperationException: null
+at java.base/java.util.Collections$1.remove (Collections.java:4821)
+at java.base/java.util.AbstractCollection.retainAll (AbstractCollection.java:404)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;原因&#34;&gt;原因&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Collections.singletonList()&lt;/code&gt; 返回的是一个固定大小、不可修改的只读列表（内部类 &lt;code&gt;Collections$1&lt;/code&gt;）。它不支持结构性修改操作，如 &lt;code&gt;remove&lt;/code&gt;、&lt;code&gt;retainAll&lt;/code&gt;、&lt;code&gt;add&lt;/code&gt;、&lt;code&gt;clear&lt;/code&gt; 等，调用这些方法会直接抛出 &lt;code&gt;UnsupportedOperationException&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;AbstractCollection.retainAll&lt;/code&gt; 内部会遍历并尝试移除不匹配的元素，进而触发 &lt;code&gt;remove&lt;/code&gt;，因此报错。&lt;/p&gt;
+&lt;h2 id=&#34;避坑提示idea-优化建议&#34;&gt;避坑提示（IDEA 优化建议）&lt;/h2&gt;
+&lt;p&gt;IDEA 在检测到代码将单个元素包装成列表时，可能会提示使用 &lt;code&gt;Collections.singletonList()&lt;/code&gt; 进行优化。但&lt;strong&gt;如果该列表后续还需要做变更处理（增删改），且测试不完善，就很容易掉进这个坑里&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;建议：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;看到 IDEA 的优化提示时，先确认该列表后续是否需要结构性修改。&lt;/li&gt;
+&lt;li&gt;如果需要修改，不要盲目应用优化，或者在优化后立即包装成可变列表。&lt;/li&gt;
+&lt;li&gt;补充单元测试，覆盖列表的修改路径，避免线上运行时才暴露问题。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;解决方案&#34;&gt;解决方案&lt;/h2&gt;
+&lt;p&gt;在需要修改列表前，先将其包装成可变列表：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; list &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;Collections&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;singletonList&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;));&lt;/span&gt;
+list&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;remove&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// 正常
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或直接使用可变列表实现，避免对 &lt;code&gt;singletonList&lt;/code&gt; 返回结果做增删操作。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Java RSA 加密 BadPaddingException 修复</title>

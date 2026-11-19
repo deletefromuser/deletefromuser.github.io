@@ -6,8 +6,8 @@
 <title>Pgm – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://deletefromuser.github.io/pgm/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2026-11-15T22:00:00+0800">
-<meta name="modified" content="2026-11-16T16:12:48+0800">
+<meta name="created" content="2026-11-17T00:00:00+0800">
+<meta name="modified" content="2026-11-19T13:32:14+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -87,6 +87,19 @@
 <h1 class="title">Pgm</h1>
 
 
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/pgm/2023041801/">比较两个目录内的同名文件（后缀yml，xml的文件）的非空行数是否一致</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2023-04-24T21:02:00&#43;08:00">2023-04-24 21:02</time>
+</div>
+
+</header>
+<div class="content">
+chatgpt确实好用，比自己吭哧吭哧google快多了 #脚本所在目录 rootDir=$(cd &#34;$(dirname &#34;${BASH_SOURCE[0]}&#34;)&#34; &amp;&amp; pwd) # 输出服务器ip echo &#34;--- $(hostname -i): $rootDir---&#34; dir1=$rootDir/old dir2=$rootDir/new find $dir1 -type f | while read file; do filename=${file#$dir1} if [ -e $dir2/$filename ];
+</div>
+</article>
 
 <article class="list-view list-view--pgm">
 <header>
@@ -202,19 +215,6 @@ systemctl --user mask tracker-store.service tracker-miner-fs.service tracker-min
 </header>
 <div class="content">
 F12 -&gt; Sources -&gt; Snippets -&gt; new snippet可新建代码片段，创建完成后右键运行即可 reference Run snippets of JavaScript
-</div>
-</article>
-
-<article class="list-view list-view--pgm">
-<header>
-<h2 class="title title-submitted"><a href="/pgm/2022121401/">JS库使用问题汇总</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-12-14T20:00:00&#43;08:00">2022-12-14 20:00</time>
-</div>
-
-</header>
-<div class="content">
-html2canvas 使html2canvas 在ie11中工作 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js&#34;&gt;&lt;/script&gt; html2canvas 在ie11中渲染出不明色块 html2canvas(document.querySelector(&#39;#preview_modal&#39;), { allowTaint: false, useCORS: true, scale: 2, }) 使用 html2canvas 生成图片在新tab打开 var image = new Image(); image.src = canvas.toDataURL(); var wImage
 </div>
 </article>
 
