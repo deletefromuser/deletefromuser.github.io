@@ -6,8 +6,8 @@
 <title>java – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/tags/java/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2026-11-15T22:00:00+0800">
-<meta name="modified" content="2026-11-16T16:12:48+0800">
+<meta name="created" content="2026-11-17T00:00:00+0800">
+<meta name="modified" content="2026-11-19T13:32:14+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -87,6 +87,19 @@
 <h1 class="title">java</h1>
 
 
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2026111701/">Collections.singletonList 使用注意事项</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2026-11-17T00:00:00&#43;08:00">2026-11-17 00:00</time>
+</div>
+
+</header>
+<div class="content">
+报错现象 在对 Collections.singletonList() 返回的列表进行元素删除或保留操作时，抛出： java.lang.UnsupportedOperationException: null at java.base/java.util.Collections$1.remove (Collections.java:4821) at java.base/java.util.AbstractCollection.retainAll (AbstractCollection.java:404) 原因 Collections.singletonList() 返回的是一个固定大小、不可修改的只读列表（内部类 Collect
+</div>
+</article>
 
 <article class="list-view list-view--pgm">
 <header>
@@ -202,19 +215,6 @@
 </header>
 <div class="content">
 停止网页重定向 window.addEventListener(&#34;beforeunload&#34;, () =&gt; { debugger; }, false); JS转换字符为UNICODE escape(&#34;转换字符&#34;).replace(/%/g, &#34;\\&#34;).toLowerCase(); // 十进制u
-</div>
-</article>
-
-<article class="list-view list-view--pgm">
-<header>
-<h2 class="title title-submitted"><a href="/blog/pgm/2022111002/">linux下让Java程序运行在后台</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2022-11-10T20:00:00&#43;08:00">2022-11-10 20:00</time>
-</div>
-
-</header>
-<div class="content">
-nohup java -jar /web/server.jar &gt; log.log 2&gt;&amp;1 &amp; reference Run java jar file on a server as background process Launch springboot project in the background on Linux 2&gt;&amp;1到底是什么意思？
 </div>
 </article>
 

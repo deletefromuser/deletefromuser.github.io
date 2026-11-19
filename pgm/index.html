@@ -6,8 +6,8 @@
 <title>Pgm – HA</title>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/pgm/index.xml">
 <meta name="description" content="">
-<meta name="created" content="2026-11-15T22:00:00+0800">
-<meta name="modified" content="2026-11-16T16:12:48+0800">
+<meta name="created" content="2026-11-17T00:00:00+0800">
+<meta name="modified" content="2026-11-19T13:32:14+0800">
 
 
 <meta property="og:site_name" content="HA">
@@ -87,6 +87,19 @@
 <h1 class="title">Pgm</h1>
 
 
+
+<article class="list-view list-view--pgm">
+<header>
+<h2 class="title title-submitted"><a href="/blog/pgm/2026111701/">Collections.singletonList 使用注意事项</a></h2>
+<div class="submitted">
+<time class="created-date" datetime="2026-11-17T00:00:00&#43;08:00">2026-11-17 00:00</time>
+</div>
+
+</header>
+<div class="content">
+报错现象 在对 Collections.singletonList() 返回的列表进行元素删除或保留操作时，抛出： java.lang.UnsupportedOperationException: null at java.base/java.util.Collections$1.remove (Collections.java:4821) at java.base/java.util.AbstractCollection.retainAll (AbstractCollection.java:404) 原因 Collections.singletonList() 返回的是一个固定大小、不可修改的只读列表（内部类 Collect
+</div>
+</article>
 
 <article class="list-view list-view--pgm">
 <header>
@@ -202,19 +215,6 @@
 </header>
 <div class="content">
 需求 电子书阅读一直都是用的moonreader, 但是一直都是分别下载到每个设备里, 同步阅读进度很不方便, 以前也没想过这些, 这两年折腾dock
-</div>
-</article>
-
-<article class="list-view list-view--pgm">
-<header>
-<h2 class="title title-submitted"><a href="/blog/pgm/2023090801/">绕过前端强制手动输入限制</a></h2>
-<div class="submitted">
-<time class="created-date" datetime="2023-09-08T20:00:00&#43;08:00">2023-09-08 20:00</time>
-</div>
-
-</header>
-<div class="content">
-问题 在客户的系统里登陆，要求填写一个保证书一样的东西，最后有几个输入框不允许复制粘贴，只允许手动输入，而且通过控制台设置的值还通不过检查，因
 </div>
 </article>
 
